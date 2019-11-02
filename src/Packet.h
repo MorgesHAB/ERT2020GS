@@ -4,6 +4,12 @@
  * This class manage to write and parse every needed type of Data in a RF packet \n
  * RF packet : uint8_t packet[MAX_SIZE] \n
  *
+ * Utilisation :
+ * call the methods write(Type t) and parse(Type t) for the following type :
+ *  - float - int - char - bool - string - uint32_t - uint16_t - uint8_t
+ *  Doesn't work for type - double
+ *
+ *
  *  Compilation requirement : \n
  *  These code files need to be compiled with -std=c++11 option \n
  *
@@ -11,8 +17,8 @@
  * \date        02.11.2019
  */
 
-#ifndef PACKET_MANAGER_H
-#define PACKET_MANAGER_H
+#ifndef PACKET_H
+#define PACKET_H
 
 #include <iostream>
 
@@ -25,7 +31,6 @@ public:
     void startParsing();
     void write(std::string& msg);
     void parse(std::string& msg);
-
 
     template<typename T>
     void write(T t);
@@ -78,4 +83,4 @@ void Packet::parseY(T &t) {
     t = *reinterpret_cast<T *> (&r);
 }
 
-#endif //PACKET_MANAGER_H
+#endif //PACKET_H
