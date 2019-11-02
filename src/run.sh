@@ -1,2 +1,8 @@
 
-cd build
+cd ../build/
+
+cmake ..
+
+make
+
+./Packet
