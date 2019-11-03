@@ -14,7 +14,7 @@ int main() {
     GPS gps(46.654268333, 6.961496667, 9985.7, 70.9884, "2017-07-01T08:11:39.000Z");
     gps.write(Xbee);
 
-    cout << setprecision(100);
+    cout << setprecision(10);
     GPS gpsData;
     Xbee.startParsing();
     gpsData.parse(Xbee);
