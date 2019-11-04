@@ -18,6 +18,7 @@ public:
     explicit LoRa(double frequency = 868.0, double TxPower = 23, int mode = 1);
     void send(const Packet &packet);
     void receive(const Packet &packet);
+    int getRSSI();
 
 private:
     RH_RF95 rf95;

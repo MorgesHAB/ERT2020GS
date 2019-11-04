@@ -48,3 +48,7 @@ void LoRa::receive(const Packet &packet) {
         }
     }
 }
+
+int LoRa::getRSSI() {
+    return rf95.lastRssi();
+}
