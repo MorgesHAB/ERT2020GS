@@ -1,14 +1,16 @@
-<img src="img/bellalui.svg" width=150 align="right" >
+<img src="img/bellalui.svg" width=180 align="right" >
 
-# EPFL Rocket Team Bella Lui Project
+# EPFL Rocket Team - <em>Bella Lui Project 2020</em>
 
-## Goal : Spaceport America Cup competition 
+### Goal : Spaceport America Cup competition 
 
-## Description
-... coming
+### Description
+Code of the <b>Ground Segment system</b>
+
+Launch a rocket
 
 -----------------------------------------------------------------
-## Installation of image magick
+## Installation of cmake
 First you need to update & upgrade your Raspberry Pi
 ```
 sudo apt-get update
@@ -20,6 +22,7 @@ sudo apt install cmake
 ```
 -----------------------------------------------------------------
 ## Building
+Go in the root directory of the project
 ```
 sudo bash run.sh
 ```
@@ -43,6 +46,8 @@ sudo apt install qt5-default
 ```
 sudo apt-get install qt5-doc qtbase5-examples qtbase5-doc-html
 ```
+
+
 
 
 <img src="img/ERT.png" width=800>
