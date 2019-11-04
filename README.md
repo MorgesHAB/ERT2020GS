@@ -56,7 +56,7 @@ sudo apt-get install qt5-doc qtbase5-examples qtbase5-doc-html
 
 -----------------------------------------------------------------
 ## Installation of Raspbian
-Installation of Raspbian exploitation system on your Rapsberry Pi
+Installation of Raspbian operating system on your Rapsberry Pi
 
 Download the last version of Raspbian on (a .img file): https://www.raspberrypi.org/downloads/raspbian/
 
