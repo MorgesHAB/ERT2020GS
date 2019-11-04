@@ -1,12 +1,15 @@
 /*!
  * \file GPS.cpp
-
+ *
  * \brief GPS module implementation
  *
  * \author      ISOZ Lionel - EPFL EL BA3
  * \date        02.11.2019
  */
+#include <iomanip>
 #include "GPS.h"
+
+GPS::GPS() : latitude(0), longitude(0), altitude(0),speed(0), time("") {}
 
 GPS::GPS(float latitude, float longitude, float altitude, float speed,
          const std::string& time) : latitude(latitude), longitude(longitude),
@@ -30,6 +33,7 @@ void GPS::parse(Packet &packet) {
 }
 
 void GPS::print() const {
+    std::cout << std::setprecision(10);
     std::cout << "----- GPS DATA --------------" << std::endl;
     std::cout << "latitude : " << latitude << std::endl
               << "longitude : " << longitude << std::endl
@@ -37,5 +41,3 @@ void GPS::print() const {
               << "speed : " << speed << std::endl
               << "time : " << time << std::endl;
 }
-
-GPS::GPS() : latitude(0), longitude(0), altitude(0),speed(0), time("") {}

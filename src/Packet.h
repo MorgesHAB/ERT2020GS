@@ -37,6 +37,8 @@ public:
     template<typename T>
     void parse(T &t);
 
+    uint8_t *getPacket() const;
+    uint8_t getSize() const;
 private:
     template<typename R, typename T>
     void writeY(T t);
@@ -82,5 +84,6 @@ void Packet::parseY(T &t) {
 
     t = *reinterpret_cast<T *> (&r);
 }
+
 
 #endif //PACKET_H

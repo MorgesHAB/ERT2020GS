@@ -8,8 +8,9 @@
  */
 
 #include "LoRa.h"
+#include <iostream>
 
-LoRa(double frequency, double TxPower, int mode) {
+LoRa::LoRa(double frequency, double TxPower, int mode) {
     wiringPiSetupGpio();
 
     if (!rf95.init()) {
@@ -35,7 +36,15 @@ LoRa(double frequency, double TxPower, int mode) {
 }
 
 
-void send(const uint8_t* data, uint8_t len) {
-    rf95.send(data, len);
+void LoRa::send(const Packet &packet) {
+    rf95.send(packet.getPacket(), packet.getSize());
 }
 
+void LoRa::receive(const Packet &packet) {
+    if (rf95.available()) {
+        uint8_t length(RH_RF95_MAX_MESSAGE_LEN);
+        if (rf95.recv(packet.getPacket(), &length)) {
+            std::cout << "Packet Received" << std::endl;
+        }
+    }
+}

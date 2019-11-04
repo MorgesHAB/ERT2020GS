@@ -1,6 +1,6 @@
 /*!
  * \file Controller.cpp
-
+ *
  * \brief Packet module implementation
  *
  * \author      ISOZ Lionel - EPFL EL BA3
@@ -33,4 +33,12 @@ void Packet::parse(std::string& msg)  {
         parse(c);
         msg += c;
     }
+}
+
+uint8_t *Packet::getPacket() const {
+    return packet;
+}
+
+uint8_t Packet::getSize() const {
+    return packetPosition - packet;
 }

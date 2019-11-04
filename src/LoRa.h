@@ -10,12 +10,14 @@
 #ifndef LoRa_H
 #define LoRa_H
 
-#include <RH_RF95.h>
+#include "Packet.h"
+#include "../lib/RH_RF95.h"
 
 class LoRa {
 public:
-    LoRa(double frequency = 868.0, double TxPower = 23, int mode = 1);
-    void send(const uint8_t* data, uint8_t len);
+    explicit LoRa(double frequency = 868.0, double TxPower = 23, int mode = 1);
+    void send(const Packet &packet);
+    void receive(const Packet &packet);
 
 private:
     RH_RF95 rf95;
