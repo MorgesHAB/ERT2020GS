@@ -26,6 +26,7 @@ sudo bash run.sh
 
 -----------------------------------------------------------------
 <img src="img/Qt.png" width=120 align="right" >
+
 ## Install Qt on Raspberry Pi
 Tutorial source : https://vitux.com/compiling-your-first-qt-program-in-ubuntu/
 
