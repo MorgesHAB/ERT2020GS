@@ -5,7 +5,7 @@
 ### Goal : Spaceport America Cup competition 
 
 ### Description
-Code of the <b>Ground Segment system</b>
+Code of the <b style="color: #731768;">Ground Segment system</b>
 
 Launch a rocket
 
