@@ -20,7 +20,28 @@ sudo apt install cmake
 ```
 -----------------------------------------------------------------
 ## Building
+```
+sudo bash run.sh
+```
+
+-----------------------------------------------------------------
+<img src="img/Qt.png" width=120 align="right" >
+## Install Qt on Raspberry Pi
+Tutorial source : https://vitux.com/compiling-your-first-qt-program-in-ubuntu/
+
+Now, run the following command as sudo in order to install needed packages
+```
+sudo apt-get install build-essential
+```
+```
+sudo apt-get install qtcreator
+```
+```
+sudo apt install qt5-default
+```
+```
+sudo apt-get install qt5-doc qtbase5-examples qtbase5-doc-html
+```
 
 
 <img src="img/ERT.png" width=800>
-<p align="center"><em>Illustration of the two LoRa modem, one on a Raspberry Pi zero and one on a RPi 3B</em><br></p>
