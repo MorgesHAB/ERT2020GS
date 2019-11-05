@@ -2,40 +2,33 @@
 
 # EPFL Rocket Team - <em>Bella Lui Project 2020</em>
 
-### Goal : Spaceport America Cup competition 
+### Goal 
+Spaceport America Cup competition - Launch a Rocket to the exact altitude of 10'000 feets
 
 ### Description
 Code of the <b>Ground Segment system</b> which will run on a Raspberry Pi 4.
 
 -----------------------------------------------------------------
-## Installation of cmake
+## Installation of the required software
 
 First you need to update & upgrade your Raspberry Pi
 ```
 sudo apt-get update
+```
+```
 sudo apt-get upgrade
 ```
-Then we need to install cmake to compile the code
+Now we need to install cmake to compile the code
 ```
 sudo apt install cmake
 ```
------------------------------------------------------------------
-## Building
-###(Don't forget to install necessary Qt5 packages before this step!)
-
-First install git and clone this GitHub repository.
-
-Install git:
+Then we need to install wiringpi to interact with the Raspberry Pi GPIO
+```
+sudo apt install wiringpi
+```
+Finally install git to be able to clone this git repository
 ```
 sudo apt-get install git
-```
-Then clone the repository in a folder using:
-```
-git clone https://github.com/MorgesHAB/RF-PacketManager.git
-```
-Move to the root folder of the project and run the bash to build the executable file:
-```
-sudo bash run.sh
 ```
 
 -----------------------------------------------------------------
@@ -60,6 +53,18 @@ sudo apt install qt5-default
 ```
 ```
 sudo apt-get install qt5-doc qtbase5-examples qtbase5-doc-html
+```
+
+-----------------------------------------------------------------
+## Building software
+
+First clone this GitHub repository in a folder using:
+```
+git clone https://github.com/MorgesHAB/ERT2020GS.git
+```
+Move to the root folder of the project and run the bash to build the executable file:
+```
+sudo bash run.sh
 ```
 
 -----------------------------------------------------------------
