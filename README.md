@@ -11,6 +11,10 @@ Code of the <b>Ground Segment system</b> which will run on a Raspberry Pi 4.
 -----------------------------------------------------------------
 ## Prerequisites
 
+- [x] Operating system installed
+
+If you just buy a Raspberry Pi and have a SD card, please follow this part first [Installation of Raspbian](#InstallationofRaspbian)
+
 In order to have a correct building, you will need to install the following software
 
 First open a terminal, and update your Raspberry Pi, then upgrade it
@@ -33,10 +37,9 @@ Finally install git to be able to clone this git repository
 sudo apt-get install git
 ```
 
------------------------------------------------------------------
 <img src="img/Qt.png" width=120 align="right" >
 
-## Install necessary Qt5 packages on Raspberry Pi 4
+### Install necessary Qt5 packages on Raspberry Pi 4
 
 Run the following command as sudo in order to get needed packages before installing Qt5
 ```console
