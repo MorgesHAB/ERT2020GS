@@ -4,7 +4,9 @@
 CXX=g++
 libPath=lib
 srcPath=src
-CPPFILES= $(srcPath)/*.cpp $(srcPath)/*.h
+incPath=src
+HFILES= $(incPath)/*.h
+CPPFILES= $(srcPath)/*.cpp
 OFILES = $(CPPFILES:.cpp=.o)
 Transceiver1=GST
 Transceiver2=GSE
@@ -23,18 +25,14 @@ all:
 	@echo "Type : 'make GST' or 'make GSE'"
 
 # default command
-%.o: %.cpp
+%.o: %.cpp %.h
 	$(CXX) $(CPPFLAGS) -o $@ -c $<
 
-$(Transceiver1): $(Transceiver1).o $(RH95_OBJS)
+$(Transceiver1): $(OFILES) $(RH95_OBJS)
 	$(CXX) $(LDFLAGS) -o $@ $^
 
-$(Transceiver2): $(Transceiver2).o $(RH95_OBJS)
+$(Transceiver2): $(OFILES) $(RH95_OBJS)
 	$(CXX) $(LDFLAGS) -o $@ $^
-
-#change this part after
-$(Transceiver1).o: $(CPPFILES)
-$(Transceiver2).o: $(CPPFILES)
 
 clean:
 	rm -f $(RH95_OBJS) $(Transceiver1) $(Transceiver2) $(OFILES)
