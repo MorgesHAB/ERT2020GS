@@ -11,9 +11,9 @@ Code of the <b>Ground Segment system</b> which will run on a Raspberry Pi 4.
 -----------------------------------------------------------------
 ## Prerequisites
 
-- [x] Operating system installed
+- [x] Raspbian operating system installed
 
-If you just buy a Raspberry Pi and have a SD card, please follow this part first [Installation of Raspbian](#InstallationofRaspbian)
+If you just buy a Raspberry Pi, please follow this part first [Installation of Raspbian](#Installation&#32;of&#32;Raspbian)
 
 In order to have a correct building, you will need to install the following software
 
