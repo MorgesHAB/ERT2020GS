@@ -21,7 +21,7 @@ sudo apt install cmake
 ```
 -----------------------------------------------------------------
 ## Building
-####(Don't forget to install necessary Qt5 packages before this step!)
+###(Don't forget to install necessary Qt5 packages before this step!)
 
 First install git and clone this GitHub repository.
 
