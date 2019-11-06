@@ -5,4 +5,4 @@ cmake ..
 
 make
 
-./BELLA_LUI_GS_SOFTWARE
+./ERT2020GS

@@ -38,6 +38,7 @@ LoRa::LoRa(double frequency, double TxPower, int mode) {
 
 void LoRa::send(const Packet &packet) {
     rf95.send(packet.getPacket(), packet.getSize());
+    std::cout << "Packet have been sent" << std::endl;
 }
 
 void LoRa::receive(const Packet &packet) {
