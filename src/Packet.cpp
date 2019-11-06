@@ -35,7 +35,7 @@ void Packet::parse(std::string& msg)  {
     }
 }
 
-uint8_t *Packet::getPacket() const {
+uint8_t *Packet::getPacket() {
     return packet;
 }
 
