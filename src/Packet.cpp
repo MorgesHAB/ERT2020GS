@@ -28,6 +28,7 @@ void Packet::write(std::string& msg)  {
 }
 
 void Packet::parse(std::string& msg)  {
+    msg.clear();
     uint8_t size(0);
     parse(size);
     for (int i(0); i < size; ++i) {
