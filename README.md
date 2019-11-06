@@ -85,4 +85,4 @@ Plug a keyboard & a mouse via USB port and a screen via HDMI port to your Raspbe
 
 -----------------------------------------------------------------
 
-<img src="doc/img/ERT.png" width=800>
+<img src="doc/img/ERTbig.png" width=800>
