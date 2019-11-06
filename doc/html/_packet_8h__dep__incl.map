@@ -1,0 +1,10 @@
+<map id="C:/Users/disoz/Documents/GitHub/ERT2020GS/src/Packet.h" name="C:/Users/disoz/Documents/GitHub/ERT2020GS/src/Packet.h">
+<area shape="rect" id="node1" title=" " alt="" coords="457,5,677,47"/>
+<area shape="rect" id="node2" href="$_g_p_s_8h.html" title="GPS module interface." alt="" coords="231,95,438,136"/>
+<area shape="rect" id="node4" href="$_g_s_e_8cpp.html" title="Ground Support Equipment Transceiver." alt="" coords="5,184,227,225"/>
+<area shape="rect" id="node5" href="$_g_s_t_8cpp.html" title="Ground Station Transceiver." alt="" coords="496,184,715,225"/>
+<area shape="rect" id="node6" href="$_lo_ra_8h.html" title="LoRa module interface." alt="" coords="462,95,671,136"/>
+<area shape="rect" id="node8" href="$_packet_8cpp.html" title=" " alt="" coords="747,95,981,136"/>
+<area shape="rect" id="node3" href="$_g_p_s_8cpp.html" title="GPS module implementation." alt="" coords="251,184,472,225"/>
+<area shape="rect" id="node7" href="$_lo_ra_8cpp.html" title="LoRa module implementation." alt="" coords="739,184,962,225"/>
+</map>

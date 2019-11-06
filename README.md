@@ -1,4 +1,4 @@
-<img src="doc/img/bellalui.svg" width=180 align="right" >
+<img src="doc/img/bellalui.png" width=180 align="right" >
 
 # EPFL Rocket Team - <em>Bella Lui Project 2020</em>
 
