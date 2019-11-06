@@ -11,7 +11,7 @@
 #define LoRa_H
 
 #include "Packet.h"
-#include "../lib/RH_RF95.h"
+#include <RH_RF95.h>
 
 class LoRa {
 public:

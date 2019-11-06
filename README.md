@@ -1,4 +1,4 @@
-<img src="img/bellalui.svg" width=180 align="right" >
+<img src="doc/img/bellalui.svg" width=180 align="right" >
 
 # EPFL Rocket Team - <em>Bella Lui Project 2020</em>
 
@@ -37,7 +37,7 @@ Finally install git to be able to clone this git repository
 sudo apt-get install git
 ```
 
-<img src="img/Qt.png" width=120 align="right" >
+<img src="doc/img/Qt.png" width=120 align="right" >
 
 ### Install necessary Qt5 packages on Raspberry Pi 4
 
@@ -85,4 +85,4 @@ Plug a keyboard & a mouse via USB port and a screen via HDMI port to your Raspbe
 
 -----------------------------------------------------------------
 
-<img src="img/ERT.png" width=800>
+<img src="doc/img/ERT.png" width=800>
