@@ -41,13 +41,15 @@ void LoRa::send(const Packet &packet) {
     std::cout << "Packet have been sent" << std::endl;
 }
 
-void LoRa::receive(const Packet &packet) {
+bool LoRa::receive(const Packet &packet) {
     if (rf95.available()) {
         uint8_t length(RH_RF95_MAX_MESSAGE_LEN);
         if (rf95.recv(packet.getPacket(), &length)) {
             std::cout << "Packet Received" << std::endl;
+            return true;
         }
     }
+    return false;
 }
 
 int LoRa::getRSSI() {

@@ -19,10 +19,14 @@ int main() {
     GPS gpsData;
     LoRa loRa;
 
-    loRa.receive(packetRx);
-
-    gpsData.parse(packetRx);
-    gpsData.print();
+    while (true) {
+        if (loRa.receive(packetRx)) {
+            std::cout << "LoRa last RSSI : " << loRa.getRSSI() << std::endl;
+            gpsData.parse(packetRx);
+            gpsData.print();
+        }
+        usleep(1); //microseconds
+    }
 
     return 0;
 }
