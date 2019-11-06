@@ -22,7 +22,7 @@ int main() {
     while (true) {
         if (loRa.receive(packetRx)) {
             std::cout << "LoRa last RSSI : " << loRa.getRSSI() << std::endl;
-            packetRx.startParsing();
+            packetRx.startParsing(); // important !
             gpsData.parse(packetRx);
             gpsData.print();
         }
