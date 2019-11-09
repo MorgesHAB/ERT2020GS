@@ -37,6 +37,24 @@ Finally install git to be able to clone this git repository
 sudo apt-get install git
 ```
 
+### Install & configure your Pi to run a GPS (optional)
+
+First follow this tutorial to [configure GPSD on your Raspberry Pi](https://wiki.dragino.com/index.php?title=Getting_GPS_to_work_on_Raspberry_Pi_3_Model_B)
+
+Once this part achieved, install the library to use gpsd with c++
+```console
+sudo apt-get install libgps-dev
+```
+So at every boot you have to run this command to be 
+able to read GPS data via gpsd
+```console
+ sudo gpsd /dev/ttyS0 -F /var/run/gpsd.sock
+```
+You can also add this command in the file ```/etc/rc.local```
+in order to let the Raspberry Pi run this command automatically on boot
+
+
+
 <img src="doc/img/Qt.png" width=120 align="right" >
 
 ### Install necessary Qt5 packages on Raspberry Pi 4
@@ -85,4 +103,4 @@ Plug a keyboard & a mouse via USB port and a screen via HDMI port to your Raspbe
 
 -----------------------------------------------------------------
 
-<img src="doc/img/ERTbig.png" width=800>
+[<img src="doc/img/ERTbig.png" width=800>](https://epflrocketteam.ch/fr/)
