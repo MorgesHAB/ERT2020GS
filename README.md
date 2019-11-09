@@ -1,4 +1,4 @@
-<img src="doc/img/bellalui.png" width=180 align="right" >
+[<img src="doc/img/bellalui.png" width=180 align="right" >](https://epflrocketteam.ch/fr/)
 
 # EPFL Rocket Team - <em>Bella Lui Project 2020</em>
 
@@ -87,11 +87,59 @@ git clone https://github.com/MorgesHAB/ERT2020GS.git
 ```
 Move to the root folder of the project and run the bash to build the executable file:
 ```console
-sudo bash run.sh
+sudo bash autoBuild.sh
 ```
 
 -----------------------------------------------------------------
-## Installation of Raspbian
+## How to use the software
+Create a `main.cpp` file. Add a Packet instance and your Transceiver instance
+
+This is an example for the transmitter part with LoRa as RF modem :
+```cpp
+#include "Packet.h"
+#include "LoRa.h"
+
+int main() {
+    LoRa loRa;
+    Packet packet;
+    
+    // fill your packet with some data
+    packet.write(123);
+    packet.write(float(34.56));
+    packet.write('A');
+    packet.write("Hello World");
+
+    // Finally send your packet by RF
+    loRa.send(packet);
+
+    return 0;
+}
+```
+
+If you want to develop some more complex data 
+structure, see GPS class as an example.
+
+-----------------------------------------------------------------
+## Repository organization
+
+ * doc
+    * ...
+    * html
+        * ...
+        * index.html // open this file on a web browser 
+                after cloning the project, to read the doxygen documentation 
+        * ...
+  * lib
+    * ... // the RadioHead library required for the LoRa class
+  * src
+    * ... // all the modules
+    * GSE.cpp // main() for the transmitter
+    * GST.cpp // main() for the Receiver
+
+
+-----------------------------------------------------------------
+## Appendix
+### Installation of Raspbian
 
 Installation of Raspbian operating system on your Rapsberry Pi
 
