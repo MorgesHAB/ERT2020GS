@@ -6,7 +6,7 @@
 Spaceport America Cup competition - Launch a Rocket to the exact altitude of 10'000 feets
 
 ### Description
-Code of the <b>Ground Segment system</b> which will run on a Raspberry Pi 4.
+Code of the <b>Ground Segment system</b> which will run on a Raspberry Pi 4 :rocket:
 
 -----------------------------------------------------------------
 ## Prerequisites
@@ -14,6 +14,13 @@ Code of the <b>Ground Segment system</b> which will run on a Raspberry Pi 4.
 - [x] Raspbian operating system installed
 
 If you just buy a Raspberry Pi, please follow this part first [Installation of Raspbian](#installation-of-Raspbian)
+
+First enable the SPI interface on your Pi with 
+```console
+sudo raspi-config
+```
+In `Interfacing options` 
+- [x] SPI
 
 In order to have a correct building, you will need to install the following software
 
@@ -92,7 +99,12 @@ sudo bash autoBuild.sh
 
 -----------------------------------------------------------------
 ## How to use the software
-Create a `main.cpp` file. Add a Packet instance and your Transceiver instance
+Create a `main.cpp` file. Add a Packet instance and your Transceiver instance 
+and fill data on your packet.
+The Packet::write(T t) method can take all the data that are 
+of a size 8, 16 or 32 bits. You can override this method and adapt it to for 
+example string or GPS data as it's already done. 
+This is the same thing for the Packet::parse(T t) method.
 
 This is an example for the transmitter part with LoRa as RF modem :
 ```cpp
