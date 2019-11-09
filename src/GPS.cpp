@@ -10,7 +10,14 @@
 #include <iomanip>
 #include "GPS.h"
 
-GPS::GPS() : latitude(0), longitude(0), altitude(0),speed(0), time("NO TIME") {}
+GPS::GPS() : latitude(0), longitude(0), altitude(0),speed(0), time("NO TIME"),
+             gps_rec("localhost", DEFAULT_GPSD_PORT) {
+
+    if (gps_rec.stream(WATCH_ENABLE|WATCH_JSON) == NULL) {
+        std::cerr << "No GPSD running" << std::endl;
+        exit(0);
+    }
+}
 
 GPS::GPS(float latitude, float longitude, float altitude, float speed,
          const std::string& time) : latitude(latitude), longitude(longitude),

@@ -20,12 +20,6 @@ int main() {
     GPS gpsTest(46.654268333, 6.961496667, 9985.7, 70.9884, "2017-07-01T08:11:39.000Z");
     GPS gps;
 
-    gpsmm gps_rec("localhost", DEFAULT_GPSD_PORT);
-
-    if (gps_rec.stream(WATCH_ENABLE|WATCH_JSON) == NULL) {
-        std::cerr << "No GPSD running" << std::endl;
-        return 1;
-    }
     while (true) {
         if (gps.readData()) {
             gps.print();
