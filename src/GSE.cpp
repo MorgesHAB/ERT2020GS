@@ -10,12 +10,9 @@
 #include "Packet.h"
 #include "GPS.h"
 #include "LoRa.h"
-#include <libgpsmm.h>
-
 
 
 int main() {
-    Packet packet;
     LoRa loRa;
     GPS gpsTest(46.654268333, 6.961496667, 9985.7, 70.9884, "2017-07-01T08:11:39.000Z");
     GPS gps;
@@ -23,6 +20,7 @@ int main() {
     while (true) {
         if (gps.readData()) {
             gps.print();
+            Packet packet;
             gps.write(packet);
             loRa.send(packet);
         }
