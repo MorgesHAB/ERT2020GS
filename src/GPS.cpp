@@ -8,11 +8,10 @@
  */
 #include <iostream>
 #include <iomanip>
-#include <ctime>
 #include "GPS.h"
 
-GPS::GPS() : gpsd("localhost", DEFAULT_GPSD_PORT),
-             latitude(0), longitude(0), altitude(0),speed(0), time(0) {
+GPS::GPS() : gpsd("localhost", DEFAULT_GPSD_PORT), latitude(0), longitude(0),
+             altitude(0),speed(0), time(std::time(nullptr)) {
 
     if (gpsd.stream(WATCH_ENABLE|WATCH_JSON) == NULL) {
         std::cerr << "No GPSD running" << std::endl;
@@ -21,10 +20,9 @@ GPS::GPS() : gpsd("localhost", DEFAULT_GPSD_PORT),
 }
 
 // for debug
-GPS::GPS(float latitude, float longitude, float altitude, float speed,
-         int time) : gpsd("localhost", DEFAULT_GPSD_PORT),
-                                    latitude(latitude), longitude(longitude),
-                                    altitude(altitude), speed(speed), time(time) {}
+GPS::GPS(float latitude, float longitude, float altitude, float speed, std::time_t time)
+        : gpsd("localhost", DEFAULT_GPSD_PORT), latitude(latitude),
+          longitude(longitude), altitude(altitude), speed(speed), time(time) {}
 
 void GPS::write(Packet &packet) {
     packet.write(latitude);
@@ -46,12 +44,12 @@ void GPS::parse(Packet &packet) {
 void GPS::print() const {
     std::cout << std::setprecision(10);
     std::cout << "----- GPS DATA --------------" << std::endl;
-    std::time_t timeHuman(time);
+    //std::time_t timeHuman(time);
     std::cout << "latitude : " << latitude << std::endl
               << "longitude : " << longitude << std::endl
               << "altitude : " << altitude << std::endl
               << "speed : " << speed << std::endl
-              << "time : " << std::asctime(std::localtime(&timeHuman)) << std::endl;
+              << "time : " << std::asctime(std::localtime(&time)) << std::endl;
 }
 
 bool GPS::readData() {

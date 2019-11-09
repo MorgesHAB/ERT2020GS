@@ -12,13 +12,14 @@
 
 
 #include <string>
+#include <ctime>
 #include <libgpsmm.h>
 #include "Packet.h"
 
 class GPS {
 public:
     GPS();
-    GPS(float latitude, float longitude, float altitude, float speed, int time);
+    GPS(float latitude, float longitude, float altitude, float speed, std::time_t);
     void print() const;
 
     bool readData();
@@ -33,7 +34,7 @@ private:
     float longitude;
     float altitude;
     float speed;
-    int time;
+    std::time_t time;
 };
 
 
