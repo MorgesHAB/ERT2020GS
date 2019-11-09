@@ -28,7 +28,7 @@ public:
     void parse(Packet &packet);
 
 private:
-    gpsmm gps_rec;
+    gpsmm gpsd;
 
     float latitude;
     float longitude;

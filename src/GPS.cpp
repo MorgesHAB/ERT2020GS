@@ -10,10 +10,10 @@
 #include <iomanip>
 #include "GPS.h"
 
-GPS::GPS() : latitude(0), longitude(0), altitude(0),speed(0), time("NO TIME"),
-             gps_rec("localhost", DEFAULT_GPSD_PORT) {
+GPS::GPS() : gpsd("localhost", DEFAULT_GPSD_PORT),
+             latitude(0), longitude(0), altitude(0),speed(0), time("NO TIME") {
 
-    if (gps_rec.stream(WATCH_ENABLE|WATCH_JSON) == NULL) {
+    if (gpsd.stream(WATCH_ENABLE|WATCH_JSON) == NULL) {
         std::cerr << "No GPSD running" << std::endl;
         exit(0);
     }
@@ -54,9 +54,9 @@ bool GPS::readData() {
 
     struct gps_data_t* newData;
 
-    if (!gps_rec.waiting(5000000)) return false;
+    if (!gpsd.waiting(5000000)) return false;
 
-    if ((newData = gps_rec.read()) == NULL) {
+    if ((newData = gpsd.read()) == NULL) {
         std::cerr << "Read error" << std::endl;
         exit(0);
     } else {
