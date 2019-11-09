@@ -59,16 +59,23 @@ bool GPS::readData() {
         std::cerr << "Read error" << std::endl;
         exit(0);
     } else {
-        if (newData->set & ALTITUDE_SET)
+        if (newData->set & ALTITUDE_SET) {
+            std::cout << "Altitude : " << newData->fix.altitude << std::endl;
             altitude = newData->fix.altitude;
+        }
         if (newData->set & LATLON_SET) {
+            std::cout << "Lat / Lon : " << newData->fix.latitude << " / " << newData->fix.longitude << std::endl;
             latitude = newData->fix.latitude;
             longitude = newData->fix.longitude;
         }
-        if (newData->set & SPEED_SET)
+        if (newData->set & SPEED_SET) {
+            std::cout << "Speed : " << newData->fix.speed << std::endl;
             speed = newData->fix.speed;
-        if (newData->set & TIME_SET)
+        }
+        if (newData->set & TIME_SET) {
+            std::cout << "Time : " << newData->fix.time << std::endl;
             time = newData->fix.time;
+        }
         return true;
     }
 }
