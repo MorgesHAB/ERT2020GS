@@ -44,12 +44,6 @@ void GPS::print() const {
 }
 
 bool GPS::readData() {
-    gpsmm gps_rec("localhost", DEFAULT_GPSD_PORT);
-
-    if (gps_rec.stream(WATCH_ENABLE|WATCH_JSON) == NULL) {
-        std::cerr << "No GPSD running" << std::endl;
-        exit(0);
-    }
 
     struct gps_data_t* newData;
 
