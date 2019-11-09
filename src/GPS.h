@@ -18,8 +18,7 @@
 class GPS {
 public:
     GPS();
-    GPS(float latitude, float longitude, float altitude, float speed,
-        const std::string &time);
+    GPS(float latitude, float longitude, float altitude, float speed, int time);
     void print() const;
 
     bool readData();
@@ -34,7 +33,7 @@ private:
     float longitude;
     float altitude;
     float speed;
-    std::string time;
+    int time;
 };
 
 
