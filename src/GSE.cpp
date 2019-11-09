@@ -14,9 +14,16 @@
 
 int main() {
     Packet packet;
-    GPS gps(46.654268333, 6.961496667, 9985.7, 70.9884, "2017-07-01T08:11:39.000Z");
-    gps.write(packet);
     LoRa loRa;
-    loRa.send(packet);
+    GPS gpsTest(46.654268333, 6.961496667, 9985.7, 70.9884, "2017-07-01T08:11:39.000Z");
+    GPS gps;
+    while (true) {
+        if (gps.readData()) {
+            gps.print();
+            gps.write(packet);
+            loRa.send(packet);
+        }
+    }
+
     return 0;
 }
