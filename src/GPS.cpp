@@ -20,7 +20,8 @@ GPS::GPS() : gpsd("localhost", DEFAULT_GPSD_PORT),
 }
 
 GPS::GPS(float latitude, float longitude, float altitude, float speed,
-         const std::string& time) : latitude(latitude), longitude(longitude),
+         const std::string& time) : gpsd("localhost", DEFAULT_GPSD_PORT),
+                                    latitude(latitude), longitude(longitude),
                                     altitude(altitude), speed(speed), time(time) {}
 
 void GPS::write(Packet &packet) {
