@@ -18,7 +18,7 @@ void IgnitionData::parse(Packet &packet) {
 }
 
 void IgnitionData::update() {
-    ignition = "H.3l[Vx72_97J<{.p|Q35$g~7Z157,3m&a+µc}!UHm2/IEby677C>}1cX8{MpvS1y<YCkYzBB#0mxM6(2S95^b%#hUF9v=+pycrUHF46A€P3o8DT7fv3eA=t6G_x46BPVTodEf|4o3&W!&Ksjl,?qf}YH=JS~:KH41=wTHl7d;)O60P99tWw+G7+g<$7^Q~3I/1Jtu7488faV3Ce€£636fF)3cJeDG5P3qF3{JPm[zL5a4bjxw(Zok$mt*p6}f+?y|JeP7B[£nC5R+£X_986[U9b4[96|~6-0yK=fi4:KP2|";
+    ignition = "NMNu{Yh£97Xm_R$0{BP3l/zKxL4QKs3P]W){8YQ5AU]N9mkA3OH}73+/)4Xkz2iTO,hdco65}_i8We4+Q3£19tj£$A.5Z0qw7xcxQZ#L]?m€€2mT67?03d3Dnyi_TuurlGFuWnP6n9d-0rO1µG4{Q}1C<W082K[41%7(05%0vY2(L3sl1qo3p5F{O2WZµ£,2klw^nJMe0p]q}u)957aF$F:%9@!-xu:H!~";
 }
 
 void IgnitionData::print() const {
