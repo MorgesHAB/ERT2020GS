@@ -53,9 +53,15 @@ private:
 
 template<typename T>
 void Packet::write(T t) {
-    if (sizeof(t) == 1) writeY<uint8_t>(t);
-    else if (sizeof(t) == 2) writeY<uint16_t>(t);
-    else if (sizeof(t) == 4) writeY<uint32_t>(t);
+    uint8_t size(sizeof(t));
+    if (packetPosition + size >= PACKET_SIZE) {
+        std::cout << "Error : Packet is full - bigger than " << PACKET_SIZE
+                  << "\nA packet reorganization is required." << std::endl;
+        exit(0);
+    }
+    else if (size == 1) writeY<uint8_t>(t);
+    else if (size == 2) writeY<uint16_t>(t);
+    else if (size == 4) writeY<uint32_t>(t);
     else std::cout << "Error : Inconciliable type..." << std::endl;
 }
 

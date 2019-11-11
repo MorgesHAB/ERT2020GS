@@ -12,6 +12,7 @@
 #include "DataHandler.h"
 #include "GPS.h"
 #include "PressureData.h"
+#include "IgnitionData.h"
 
 
 int main() {
@@ -22,14 +23,15 @@ int main() {
     DataHandler dataHandler;
     dataHandler.add(new GPS);
     dataHandler.add(new PressureData);
+    dataHandler.add(new IgnitionData);
     // dataHandler.add(new CPUData);
     // dataHandler.add(new TemperatureData); // etc...
 
-    std::cout << "LoRa Reception is active... waiting for RF packet..." << std::endl;
+    std::cout << "\nLoRa Reception is active... waiting for RF packet..." << std::endl;
 
     while (true) {
         if (loRa.receive(dataHandler.getDataPacket())) {
-            std::cout << "LoRa last RSSI : " << loRa.getRSSI() << std::endl;
+            std::cout << "LoRa last RSSI : " << loRa.getRSSI() << " dBm" << std::endl;
             dataHandler.parse();
             dataHandler.print();
         }

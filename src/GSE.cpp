@@ -11,6 +11,7 @@
 #include "DataHandler.h"
 #include "GPS.h"
 #include "PressureData.h"
+#include "IgnitionData.h"
 
 
 int main() {
@@ -21,6 +22,7 @@ int main() {
     DataHandler dataHandler;
     dataHandler.add(new GPS);
     dataHandler.add(new PressureData);
+    dataHandler.add(new IgnitionData);
    // dataHandler.add(new CPUData);
    // dataHandler.add(new TemperatureData); // etc...
 
