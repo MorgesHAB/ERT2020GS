@@ -24,6 +24,10 @@ void DataHandler::parse() {
     }
 }
 
+void DataHandler::print() const {
+    for (auto &data : dataHandler) data->print();
+}
+
 Packet &DataHandler::getDataPacket() {
     return dataPacket;
 }

@@ -8,25 +8,30 @@
  * \date        04.11.2019	
  */
 
-#include "Packet.h"
-#include "GPS.h"
 #include "LoRa.h"
+#include "DataHandler.h"
+#include "GPS.h"
+#include "PressureData.h"
 
-using namespace std;
 
 int main() {
-    Packet packetRx;
-    GPS gpsData;
+    // Your RF modem
     LoRa loRa;
 
-    while (true) {
-        if (loRa.receive(packetRx)) {
-            std::cout << "LoRa last RSSI : " << loRa.getRSSI() << std::endl;
-            gpsData.parse(packetRx);
-            gpsData.print();
-        }
-        usleep(1); //microseconds
-    }
+    // What's in my RF Packet ? give the data in the same order as in Tx serialisation
+    DataHandler dataHandler;
+    dataHandler.add(new GPS);
+    dataHandler.add(new PressureData);
+    // dataHandler.add(new CPUData);
+    // dataHandler.add(new TemperatureData); // etc...
 
+    while (true) {
+        if (loRa.receive(dataHandler.getDataPacket())) {
+            std::cout << "LoRa last RSSI : " << loRa.getRSSI() << std::endl;
+            dataHandler.parse();
+            dataHandler.print();
+        }
+        usleep(10); //microseconds
+    }
     return 0;
 }

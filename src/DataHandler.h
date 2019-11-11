@@ -19,6 +19,7 @@ class DataHandler {
 public:
     void update();
     void parse();
+    void print() const;
 
     void add(Data * data);
     Packet &getDataPacket();
