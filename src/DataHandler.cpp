@@ -10,9 +10,9 @@
 #include "DataHandler.h"
 
 void DataHandler::update() {
+    dataPacket.restart();
     for (auto &data : dataHandler) {
         data->update();
-        dataPacket.restart();
         data->write(dataPacket);
     }
 }
@@ -31,4 +31,8 @@ Packet &DataHandler::getDataPacket() {
 
 void DataHandler::add(Data *data) {
     dataHandler.push_back(data);
+}
+
+DataHandler::~DataHandler() {
+    for (auto &data : dataHandler) delete data;
 }

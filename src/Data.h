@@ -20,6 +20,7 @@ public:
     virtual void parse(Packet& packet) = 0;
     virtual void update() = 0;
     virtual void print() const = 0;
+    virtual ~Data() = default;
 };
 
 
