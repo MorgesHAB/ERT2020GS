@@ -25,6 +25,8 @@ int main() {
     // dataHandler.add(new CPUData);
     // dataHandler.add(new TemperatureData); // etc...
 
+    std::cout << "LoRa Reception is active... waiting for RF packet..." << std::endl;
+
     while (true) {
         if (loRa.receive(dataHandler.getDataPacket())) {
             std::cout << "LoRa last RSSI : " << loRa.getRSSI() << std::endl;

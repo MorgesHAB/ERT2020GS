@@ -27,7 +27,7 @@ int main() {
     while (true) {
         dataHandler.update();
         loRa.send(dataHandler.getDataPacket());
-        usleep(1000000);
+        usleep(500);
     }
 
     return 0;

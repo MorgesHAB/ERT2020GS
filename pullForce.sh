@@ -3,6 +3,8 @@
 
 cd build/
 
+git reset --hard
+
 git pull
 
 make

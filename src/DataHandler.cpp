@@ -18,10 +18,7 @@ void DataHandler::update() {
 }
 
 void DataHandler::parse() {
-    for (auto &data : dataHandler) {
-        dataPacket.restart();
-        data->parse(dataPacket);
-    }
+    for (auto &data : dataHandler) data->parse(dataPacket);
 }
 
 void DataHandler::print() const {
