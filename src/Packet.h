@@ -28,7 +28,7 @@ class Packet {
 public:
     Packet();
     virtual ~Packet();
-    void startParsing();
+    void restart();
     void write(std::string& msg);
     void parse(std::string& msg);
 

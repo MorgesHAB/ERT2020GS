@@ -19,12 +19,7 @@ GPS::GPS() : gpsd("localhost", DEFAULT_GPSD_PORT), latitude(0), longitude(0),
     }
 }
 
-// for debug
-GPS::GPS(float latitude, float longitude, float altitude, float speed, std::time_t time)
-        : gpsd("localhost", DEFAULT_GPSD_PORT), latitude(latitude),
-          longitude(longitude), altitude(altitude), speed(speed), time(time) {}
-
-void GPS::write(Packet &packet) {
+void GPS::write(Packet& packet) {
     packet.write(latitude);
     packet.write(longitude);
     packet.write(altitude);
@@ -33,7 +28,7 @@ void GPS::write(Packet &packet) {
 }
 
 
-void GPS::parse(Packet &packet) {
+void GPS::parse(Packet& packet) {
     packet.parse(latitude);
     packet.parse(longitude);
     packet.parse(altitude);
@@ -44,7 +39,6 @@ void GPS::parse(Packet &packet) {
 void GPS::print() const {
     std::cout << std::setprecision(10);
     std::cout << "----- GPS DATA --------------" << std::endl;
-    //std::time_t timeHuman(time);
     std::cout << "latitude : " << latitude << std::endl
               << "longitude : " << longitude << std::endl
               << "altitude : " << altitude << std::endl
@@ -52,33 +46,20 @@ void GPS::print() const {
               << "time : " << std::asctime(std::localtime(&time)) << std::endl;
 }
 
-bool GPS::readData() {
-
+void GPS::update() {
     struct gps_data_t* newData;
 
-    if (!gpsd.waiting(5000000)) return false;
+    if (!gpsd.waiting(5000000)) return;
 
     if ((newData = gpsd.read()) == NULL) {
         std::cerr << "Read error" << std::endl;
-        exit(0);
     } else {
-        if (newData->set & ALTITUDE_SET) {
-            std::cout << "Altitude : " << newData->fix.altitude << std::endl;
-            altitude = newData->fix.altitude;
-        }
+        if (newData->set & ALTITUDE_SET) altitude = newData->fix.altitude;
+        if (newData->set & SPEED_SET) speed = newData->fix.speed;
+        if (newData->set & TIME_SET) time = newData->fix.time;
         if (newData->set & LATLON_SET) {
-            std::cout << "Lat / Lon : " << newData->fix.latitude << " / " << newData->fix.longitude << std::endl;
             latitude = newData->fix.latitude;
             longitude = newData->fix.longitude;
         }
-        if (newData->set & SPEED_SET) {
-            std::cout << "Speed : " << newData->fix.speed << std::endl;
-            speed = newData->fix.speed;
-        }
-        if (newData->set & TIME_SET) {
-            std::cout << "Time : " << newData->fix.time << std::endl;
-            time = newData->fix.time;
-        }
-        return true;
     }
 }

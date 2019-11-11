@@ -63,7 +63,7 @@ public:
         delete[] packet;
     }
 
-    void startParsing() {
+    void restart() {
         packetPosition = packet;
     }
 private:
@@ -101,7 +101,7 @@ int main() {
 ////////////////////////////////////
     uint8_t x;
     std::string msgRx;
-    post.startParsing();
+    post.restart();
     post.parse(fr);
     post.parse(ir);
     post.parse(ar);

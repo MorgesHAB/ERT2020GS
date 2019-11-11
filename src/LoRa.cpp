@@ -43,7 +43,7 @@ void LoRa::send(Packet &packet) {
 
 bool LoRa::receive(Packet &packet) {
     if (rf95.available()) {
-        packet.startParsing();
+        packet.restart();
         uint8_t length(RH_RF95_MAX_MESSAGE_LEN);
         if (rf95.recv(packet.getPacket(), &length)) {
             std::cout << "Packet Received" << std::endl;

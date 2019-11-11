@@ -16,7 +16,7 @@ int main() {
 
     cout << setprecision(10);
     GPS gpsData;
-    Xbee.startParsing();
+    Xbee.restart();
     gpsData.parse(Xbee);
     gpsData.print();
 
@@ -52,7 +52,7 @@ void f() {
 ////////////////////////////////////
     uint8_t x;
     std::string msgRx;
-    post.startParsing();
+    post.restart();
     post.parse(fr);
     post.parse(ir);
     post.parse(ar);

@@ -16,7 +16,7 @@ Packet::~Packet() {
     delete[] packet;
 }
 
-void Packet::startParsing() {
+void Packet::restart() {
     delete[] packet;
     packet = new uint8_t[PACKET_SIZE];
     packetPosition = packet;

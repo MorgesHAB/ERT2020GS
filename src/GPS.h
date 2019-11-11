@@ -10,22 +10,18 @@
 #ifndef GPS_H
 #define GPS_H
 
-
-#include <string>
 #include <ctime>
+#include "Data.h"
 #include <libgpsmm.h>
-#include "Packet.h"
 
-class GPS {
+
+class GPS : public Data {
 public:
     GPS();
-    GPS(float latitude, float longitude, float altitude, float speed, std::time_t);
-    void print() const;
-
-    bool readData();
-
-    void write(Packet &packet);
-    void parse(Packet &packet);
+    void write(Packet& packet) override;
+    void parse(Packet& packet) override;
+    void update() override;
+    void print() const override ;
 
 private:
     gpsmm gpsd;

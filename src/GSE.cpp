@@ -7,23 +7,26 @@
  * \date        04.11.2019	
  */
 
-#include "Packet.h"
-#include "GPS.h"
 #include "LoRa.h"
+#include "DataHandler.h"
+#include "GPS.h"
+#include "PressureData.h"
 
 
 int main() {
+    // Your RF modem
     LoRa loRa;
-    GPS gpsTest(46.654268333, 6.961496667, 9985.7, 70.9884, 0);
-    GPS gps;
+
+    // Create your RF Packet serialisation
+    DataHandler dataHandler;
+    dataHandler.add(new GPS);
+    dataHandler.add(new PressureData);
+   // dataHandler.add(new CPUData);
+   // dataHandler.add(new TemperatureData); // etc...
 
     while (true) {
-        if (gps.readData()) {
-            gps.print();
-            Packet packet;
-            gps.write(packet);
-            loRa.send(packet);
-        }
+        dataHandler.update();
+        loRa.send(dataHandler.getDataPacket());
     }
 
     return 0;
