@@ -16,7 +16,7 @@
 
 class LoRa {
 public:
-    explicit LoRa(double frequency = 868.0, double TxPower = 23, int mode = 1);
+    explicit LoRa(double frequency = 868.0, double TxPower = 23, int mode = 3);
     void send(Packet &packet);
     bool receive(Packet &packet);
     int getRSSI();
