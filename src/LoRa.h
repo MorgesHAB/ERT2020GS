@@ -10,8 +10,9 @@
 #ifndef LoRa_H
 #define LoRa_H
 
-#include "Packet.h"
 #include <RH_RF95.h>
+#include "Packet.h"
+
 
 class LoRa {
 public:

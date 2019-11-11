@@ -18,7 +18,7 @@ void PressureData::parse(Packet &packet) {
 }
 
 void PressureData::update() {
-    pressure = 1015.25;
+    pressure = 850 + ((float) rand()/ RAND_MAX) * 300;
 }
 
 void PressureData::print() const {
