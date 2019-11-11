@@ -54,7 +54,7 @@ private:
 template<typename T>
 void Packet::write(T t) {
     uint8_t size(sizeof(t));
-    if (packetPosition + size >= PACKET_SIZE) {
+    if (getSize() + size > PACKET_SIZE) {
         std::cout << "Error : Packet is full - bigger than " << PACKET_SIZE
                   << "\nA packet reorganization is required." << std::endl;
         exit(0);
