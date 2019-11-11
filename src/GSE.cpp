@@ -7,6 +7,8 @@
  * \date        04.11.2019	
  */
 
+#include <chrono>
+#include <thread>
 #include "LoRa.h"
 #include "DataHandler.h"
 #include "GPS.h"
@@ -27,7 +29,7 @@ int main() {
     while (true) {
         dataHandler.update();
         loRa.send(dataHandler.getDataPacket());
-        usleep(500);
+        std::this_thread::sleep_for(std::chrono::milliseconds(500));
     }
 
     return 0;
