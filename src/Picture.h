@@ -1,25 +1,23 @@
 /*!
- * \file Image.h
+ * \file Picture.h
  *
- * \brief Image module interface
+ * \brief Picture module interface
  *
  * \author      ISOZ Lionel - EPFL EL BA3
  * \date        12.11.2019	
  */
 
-#ifndef Image_H
-#define Image_H
+#ifndef Picture_H
+#define Picture_H
 
 #include <string>
 #include <vector>
 #include "Data.h"
 
-class Image : public Data {
+class Picture : public Data {
 public:
-    Image(uint8_t bytePerPacket, const std::string &fileName = "picture",
+    Picture(uint8_t bytePerPacket, const std::string &fileName = "picture",
           uint16_t width = 300, uint16_t heigth = 300);
-
-    ~Image() override;
 
     void write(Packet &packet) override;
     void parse(Packet &packet) override;
@@ -36,4 +34,4 @@ private:
 };
 
 
-#endif //Image_H
+#endif //Picture_H

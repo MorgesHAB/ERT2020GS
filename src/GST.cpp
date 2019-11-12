@@ -14,6 +14,7 @@
 #include "PressureData.h"
 #include "IgnitionData.h"
 #include "States.h"
+#include "Picture.h"
 
 
 int main() {

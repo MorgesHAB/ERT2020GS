@@ -13,7 +13,7 @@
 #include "PressureData.h"
 #include "IgnitionData.h"
 #include "States.h"
-#include "Image.h"
+#include "Picture.h"
 
 
 int main() {
@@ -26,7 +26,7 @@ int main() {
     dataHandler.add(new PressureData);
     //dataHandler.add(new IgnitionData);
     dataHandler.add(new States({1, 0, 1, 1, 0, 0, 1, 0}));
-    //dataHandler.add(new Image(100));
+    //dataHandler.add(new Picture(100));
    // dataHandler.add(new CPUData);
    // dataHandler.add(new TemperatureData); // etc...
 

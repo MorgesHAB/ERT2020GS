@@ -1,7 +1,7 @@
 /*!
- * \file Image.cpp
+ * \file Picture.cpp
  *
- * \brief Image module implementation
+ * \brief Picture module implementation
  *
  * \author      ISOZ Lionel - EPFL EL BA3
  * \date        12.11.2019	
@@ -9,14 +9,14 @@
 
 #include <cstdlib>
 #include <fstream>
-#include "Image.h"
+#include "Picture.h"
 
-Image::Image(uint8_t bytePerPacket, const std::string &fileName, uint16_t width,
+Picture::Picture(uint8_t bytePerPacket, const std::string &fileName, uint16_t width,
              uint16_t heigth) : bytePerPacket(bytePerPacket), fileName(fileName),
                                 width(width), heigth(heigth), pictureIsSending(false),
                                 nbrSentImg(0), packetNbr(0) {}
 
-void Image::write(Packet &packet) {
+void Picture::write(Packet &packet) {
     static std::ifstream fileIn(fileName + ".jpg", std::ios::in);
 
     packet.write(++packetNbr);
@@ -30,7 +30,7 @@ void Image::write(Packet &packet) {
     }
 }
 
-void Image::parse(Packet &packet) {
+void Picture::parse(Packet &packet) {
     static std::ofstream fileOut(fileName + ".jpg", std::ios::out | std::ios::app);
 
     packet.parse(packetNbr);
@@ -41,7 +41,7 @@ void Image::parse(Packet &packet) {
     }
 }
 
-void Image::update() {
+void Picture::update() {
     if (!pictureIsSending) {
         fileName = fileName + std::to_string(++nbrSentImg);
         // Take a picture with the raspicam
@@ -54,7 +54,7 @@ void Image::update() {
     }
 }
 
-void Image::print() const {
-    std::cout << "Image Data cf " << fileName << ".jpg  -- Packet n° " << packetNbr
+void Picture::print() const {
+    std::cout << "Picture Data cf " << fileName << ".jpg  -- Packet n° " << packetNbr
               << std::endl;
 }
