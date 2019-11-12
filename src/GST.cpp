@@ -23,11 +23,11 @@ int main() {
 
     // What's in my RF Packet ? give the data in the same order as in Tx serialisation
     DataHandler dataHandler;
-    //dataHandler.add(new GPS);
+    dataHandler.add(new GPS);
     dataHandler.add(new PressureData);
-    //dataHandler.add(new IgnitionData);
+    dataHandler.add(new IgnitionData);
     dataHandler.add(new States({0, 0, 0, 0, 0, 0, 0, 0}));
-    dataHandler.add(new Picture(100));
+    //dataHandler.add(new Picture(100));
     // dataHandler.add(new CPUData);
     // dataHandler.add(new TemperatureData); // etc...
 

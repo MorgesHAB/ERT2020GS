@@ -22,11 +22,11 @@ int main() {
 
     // Create your RF Packet serialisation
     DataHandler dataHandler;
-    //dataHandler.add(new GPS);
+    dataHandler.add(new GPS);
     dataHandler.add(new PressureData);
-    //dataHandler.add(new IgnitionData);
+    dataHandler.add(new IgnitionData);
     dataHandler.add(new States({1, 0, 1, 1, 0, 0, 1, 0}));
-    dataHandler.add(new Picture(100));
+    //dataHandler.add(new Picture(100));
    // dataHandler.add(new CPUData);
    // dataHandler.add(new TemperatureData); // etc...
 
