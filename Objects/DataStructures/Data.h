@@ -10,7 +10,7 @@
 #ifndef Data_H
 #define Data_H
 
-#include "Packet.h"
+#include <Packet.h>
 
 // Abstract SuperClass
 // Requirements methods for communicate a data via the protocol

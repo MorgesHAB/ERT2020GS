@@ -8,13 +8,13 @@
  * \date        04.11.2019	
  */
 
-#include "LoRa.h"
-#include "DataHandler.h"
-#include "GPS.h"
-#include "PressureData.h"
-#include "IgnitionData.h"
-#include "States.h"
-#include "Picture.h"
+#include <LoRa.h>
+#include <DataHandler.h>
+#include <GPS.h>
+#include <PressureData.h>
+#include <IgnitionData.h>
+#include <States.h>
+#include <Picture.h>
 
 
 int main() {

@@ -1,19 +1,19 @@
 /*!
- * \file IgnitionData.h
+ * \file PressureData.h
  *
- * \brief IgnitionData module interface
+ * \brief PressureData module interface
  *
  * \author      ISOZ Lionel - EPFL EL BA3
  * \date        11.11.2019	
  */
 
-#ifndef IgnitionData_H
-#define IgnitionData_H
+#ifndef PressureData_H
+#define PressureData_H
 
-#include <string>
-#include "Data.h"
 
-class IgnitionData : public Data {
+#include <Data.h>
+
+class PressureData : public Data {
 public:
     void write(Packet& packet) override;
     void parse(Packet& packet) override;
@@ -21,8 +21,8 @@ public:
     void print() const override;
 
 private:
-    std::string ignition;
+    float pressure;
 };
 
 
-#endif //IgnitionData_H
+#endif //PressureData_H

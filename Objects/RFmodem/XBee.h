@@ -11,7 +11,7 @@
 #define XBee_H
 
 //#include <serial/serial.h>
-#include "Packet.h"
+#include <Packet.h>
 
 class XBee {
     void send(Packet &packet);

@@ -12,7 +12,7 @@
 
 #include <string>
 #include <vector>
-#include "Data.h"
+#include <Data.h>
 
 class Picture : public Data {
 public:

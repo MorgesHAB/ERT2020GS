@@ -11,7 +11,7 @@
 #define GPS_H
 
 #include <ctime>
-#include "Data.h"
+#include <Data.h>
 #include <libgpsmm.h>
 
 
