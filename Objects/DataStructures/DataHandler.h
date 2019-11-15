@@ -24,6 +24,8 @@ public:
     void add(Data * data);
     Packet &getDataPacket();
 
+    const std::vector<Data *> &getDataHandler() const;
+
     virtual ~DataHandler();
 private:
     std::vector<Data*> dataHandler;

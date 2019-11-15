@@ -20,6 +20,8 @@ public:
     void update() override;
     void print() const override;
 
+    float getPressure() const;
+
 private:
     float pressure;
 };

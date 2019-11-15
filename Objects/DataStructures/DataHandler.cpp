@@ -36,3 +36,7 @@ void DataHandler::add(Data *data) {
 DataHandler::~DataHandler() {
     for (auto &data : dataHandler) delete data;
 }
+
+const std::vector<Data *> &DataHandler::getDataHandler() const {
+    return dataHandler;
+}

@@ -24,3 +24,7 @@ void PressureData::update() {
 void PressureData::print() const {
     std::cout << "Pressure Data : " << pressure << " hPa" << std::endl;
 }
+
+float PressureData::getPressure() const {
+    return pressure;
+}
