@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.16"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Bella Lui 2020 - Ground Segment: C:/Users/disoz/Documents/GitHub/ERT2020GS/src/LoRa.cpp Source File</title>
+<title>Bella Lui 2020 - Ground Segment: C:/Users/disoz/Documents/GitHub/ERT2020GS/Objects/RFmodem/LoRa.cpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -127,10 +127,10 @@ $(document).ready(function(){initNavTree('_lo_ra_8cpp_source.html','');});
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
 <div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="class_lo_ra.html#a4666f056ac5844cdbef506d24511731a">   44</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="class_lo_ra.html#a4666f056ac5844cdbef506d24511731a">LoRa::receive</a>(<a class="code" href="class_packet.html">Packet</a> &amp;packet) {</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordflow">if</span> (rf95.available()) {</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        packet.<a class="code" href="class_packet.html#a0279158057d8be98482f7f5b68c02de5">startParsing</a>();</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        packet.<a class="code" href="class_packet.html#af6f5fc43c3b9027d09f32835a1d74ad0">restart</a>();</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        uint8_t length(RH_RF95_MAX_MESSAGE_LEN);</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keywordflow">if</span> (rf95.recv(packet.<a class="code" href="class_packet.html#a18e22ca27c4fdfe87d711a18e6444dad">getPacket</a>(), &amp;length)) {</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            std::cout &lt;&lt; <span class="stringliteral">&quot;Packet Received&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            std::cout &lt;&lt; <span class="stringliteral">&quot;\n\nPacket Received&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        }</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    }</div>
@@ -146,15 +146,15 @@ $(document).ready(function(){initNavTree('_lo_ra_8cpp_source.html','');});
 <div class="ttc" id="aclass_lo_ra_html_a06ec3ef676c9b4c1efd670440908ae3f"><div class="ttname"><a href="class_lo_ra.html#a06ec3ef676c9b4c1efd670440908ae3f">LoRa::getRSSI</a></div><div class="ttdeci">int getRSSI()</div><div class="ttdef"><b>Definition:</b> <a href="_lo_ra_8cpp_source.html#l00056">LoRa.cpp:56</a></div></div>
 <div class="ttc" id="aclass_packet_html_a54c558beaf45424689ce47795470ef3b"><div class="ttname"><a href="class_packet.html#a54c558beaf45424689ce47795470ef3b">Packet::getSize</a></div><div class="ttdeci">uint8_t getSize() const</div><div class="ttdef"><b>Definition:</b> <a href="_packet_8cpp_source.html#l00045">Packet.cpp:45</a></div></div>
 <div class="ttc" id="a_lo_ra_8h_html"><div class="ttname"><a href="_lo_ra_8h.html">LoRa.h</a></div><div class="ttdoc">LoRa module interface.</div></div>
+<div class="ttc" id="aclass_packet_html_af6f5fc43c3b9027d09f32835a1d74ad0"><div class="ttname"><a href="class_packet.html#af6f5fc43c3b9027d09f32835a1d74ad0">Packet::restart</a></div><div class="ttdeci">void restart()</div><div class="ttdef"><b>Definition:</b> <a href="_packet_8cpp_source.html#l00019">Packet.cpp:19</a></div></div>
 <div class="ttc" id="aclass_lo_ra_html_a4666f056ac5844cdbef506d24511731a"><div class="ttname"><a href="class_lo_ra.html#a4666f056ac5844cdbef506d24511731a">LoRa::receive</a></div><div class="ttdeci">bool receive(Packet &amp;packet)</div><div class="ttdef"><b>Definition:</b> <a href="_lo_ra_8cpp_source.html#l00044">LoRa.cpp:44</a></div></div>
 <div class="ttc" id="aclass_packet_html_a18e22ca27c4fdfe87d711a18e6444dad"><div class="ttname"><a href="class_packet.html#a18e22ca27c4fdfe87d711a18e6444dad">Packet::getPacket</a></div><div class="ttdeci">uint8_t * getPacket()</div><div class="ttdef"><b>Definition:</b> <a href="_packet_8cpp_source.html#l00041">Packet.cpp:41</a></div></div>
 <div class="ttc" id="aclass_lo_ra_html_a67ffa798207c33293ad63721e1d0d643"><div class="ttname"><a href="class_lo_ra.html#a67ffa798207c33293ad63721e1d0d643">LoRa::send</a></div><div class="ttdeci">void send(Packet &amp;packet)</div><div class="ttdef"><b>Definition:</b> <a href="_lo_ra_8cpp_source.html#l00039">LoRa.cpp:39</a></div></div>
-<div class="ttc" id="aclass_packet_html_a0279158057d8be98482f7f5b68c02de5"><div class="ttname"><a href="class_packet.html#a0279158057d8be98482f7f5b68c02de5">Packet::startParsing</a></div><div class="ttdeci">void startParsing()</div><div class="ttdef"><b>Definition:</b> <a href="_packet_8cpp_source.html#l00019">Packet.cpp:19</a></div></div>
 <div class="ttc" id="aclass_packet_html"><div class="ttname"><a href="class_packet.html">Packet</a></div><div class="ttdef"><b>Definition:</b> <a href="_packet_8h_source.html#l00027">Packet.h:27</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="_lo_ra_8cpp.html">LoRa.cpp</a></li>
+    <li class="navelem"><a class="el" href="dir_5dafd4660615c7e05a84a5ee9d9fd12b.html">Objects</a></li><li class="navelem"><a class="el" href="dir_1804c2014f980b2361ff7534750e178a.html">RFmodem</a></li><li class="navelem"><a class="el" href="_lo_ra_8cpp.html">LoRa.cpp</a></li>
     <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.16 </li>

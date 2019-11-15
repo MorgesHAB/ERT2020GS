@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.16"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Bella Lui 2020 - Ground Segment: C:/Users/disoz/Documents/GitHub/ERT2020GS/src/LoRa.h Source File</title>
+<title>Bella Lui 2020 - Ground Segment: C:/Users/disoz/Documents/GitHub/ERT2020GS/Objects/RFmodem/LoRa.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -94,27 +94,28 @@ $(document).ready(function(){initNavTree('_lo_ra_8h_source.html','');});
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#ifndef LoRa_H</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#define LoRa_H</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_packet_8h.html">Packet.h</a>&quot;</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;RH_RF95.h&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;RH_RF95.h&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="_packet_8h.html">Packet.h</a>&gt;</span></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="class_lo_ra.html">   16</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_lo_ra.html">LoRa</a> {</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="class_lo_ra.html#add01349547d8f36a69d2cad70b9363e5">LoRa</a>(<span class="keywordtype">double</span> frequency = 868.0, <span class="keywordtype">double</span> TxPower = 23, <span class="keywordtype">int</span> mode = 1);</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_lo_ra.html#a67ffa798207c33293ad63721e1d0d643">send</a>(<a class="code" href="class_packet.html">Packet</a> &amp;packet);</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_lo_ra.html#a4666f056ac5844cdbef506d24511731a">receive</a>(<a class="code" href="class_packet.html">Packet</a> &amp;packet);</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_lo_ra.html#a06ec3ef676c9b4c1efd670440908ae3f">getRSSI</a>();</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    RH_RF95 rf95;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;};</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="class_lo_ra.html">   17</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_lo_ra.html">LoRa</a> {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="class_lo_ra.html#add01349547d8f36a69d2cad70b9363e5">LoRa</a>(<span class="keywordtype">double</span> frequency = 868.0, <span class="keywordtype">double</span> TxPower = 23, <span class="keywordtype">int</span> mode = 1);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_lo_ra.html#a67ffa798207c33293ad63721e1d0d643">send</a>(<a class="code" href="class_packet.html">Packet</a> &amp;packet);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_lo_ra.html#a4666f056ac5844cdbef506d24511731a">receive</a>(<a class="code" href="class_packet.html">Packet</a> &amp;packet);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_lo_ra.html#a06ec3ef676c9b4c1efd670440908ae3f">getRSSI</a>();</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    RH_RF95 rf95;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;};</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#endif //LoRa_H</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#endif //LoRa_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclass_lo_ra_html_add01349547d8f36a69d2cad70b9363e5"><div class="ttname"><a href="class_lo_ra.html#add01349547d8f36a69d2cad70b9363e5">LoRa::LoRa</a></div><div class="ttdeci">LoRa(double frequency=868.0, double TxPower=23, int mode=1)</div><div class="ttdef"><b>Definition:</b> <a href="_lo_ra_8cpp_source.html#l00013">LoRa.cpp:13</a></div></div>
 <div class="ttc" id="aclass_lo_ra_html_a06ec3ef676c9b4c1efd670440908ae3f"><div class="ttname"><a href="class_lo_ra.html#a06ec3ef676c9b4c1efd670440908ae3f">LoRa::getRSSI</a></div><div class="ttdeci">int getRSSI()</div><div class="ttdef"><b>Definition:</b> <a href="_lo_ra_8cpp_source.html#l00056">LoRa.cpp:56</a></div></div>
-<div class="ttc" id="aclass_lo_ra_html"><div class="ttname"><a href="class_lo_ra.html">LoRa</a></div><div class="ttdef"><b>Definition:</b> <a href="_lo_ra_8h_source.html#l00016">LoRa.h:16</a></div></div>
+<div class="ttc" id="aclass_lo_ra_html"><div class="ttname"><a href="class_lo_ra.html">LoRa</a></div><div class="ttdef"><b>Definition:</b> <a href="_lo_ra_8h_source.html#l00017">LoRa.h:17</a></div></div>
 <div class="ttc" id="aclass_lo_ra_html_a4666f056ac5844cdbef506d24511731a"><div class="ttname"><a href="class_lo_ra.html#a4666f056ac5844cdbef506d24511731a">LoRa::receive</a></div><div class="ttdeci">bool receive(Packet &amp;packet)</div><div class="ttdef"><b>Definition:</b> <a href="_lo_ra_8cpp_source.html#l00044">LoRa.cpp:44</a></div></div>
 <div class="ttc" id="a_packet_8h_html"><div class="ttname"><a href="_packet_8h.html">Packet.h</a></div></div>
 <div class="ttc" id="aclass_lo_ra_html_a67ffa798207c33293ad63721e1d0d643"><div class="ttname"><a href="class_lo_ra.html#a67ffa798207c33293ad63721e1d0d643">LoRa::send</a></div><div class="ttdeci">void send(Packet &amp;packet)</div><div class="ttdef"><b>Definition:</b> <a href="_lo_ra_8cpp_source.html#l00039">LoRa.cpp:39</a></div></div>
@@ -122,7 +123,7 @@ $(document).ready(function(){initNavTree('_lo_ra_8h_source.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="_lo_ra_8h.html">LoRa.h</a></li>
+    <li class="navelem"><a class="el" href="dir_5dafd4660615c7e05a84a5ee9d9fd12b.html">Objects</a></li><li class="navelem"><a class="el" href="dir_1804c2014f980b2361ff7534750e178a.html">RFmodem</a></li><li class="navelem"><a class="el" href="_lo_ra_8h.html">LoRa.h</a></li>
     <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.16 </li>

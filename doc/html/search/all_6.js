@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['write_21',['write',['../class_g_p_s.html#ae9e4a5b29829b83c86b29407ec3fcc80',1,'GPS::write()'],['../class_packet.html#a7ae864e00d852062e614149ad1c38f2b',1,'Packet::write(std::string &amp;msg)'],['../class_packet.html#ab69b4811d3878531ac371c35281072ae',1,'Packet::write(T t)']]]
+  ['receive_31',['receive',['../class_lo_ra.html#a4666f056ac5844cdbef506d24511731a',1,'LoRa']]],
+  ['restart_32',['restart',['../class_packet.html#af6f5fc43c3b9027d09f32835a1d74ad0',1,'Packet']]]
 ];

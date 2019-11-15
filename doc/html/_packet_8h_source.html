@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.16"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Bella Lui 2020 - Ground Segment: C:/Users/disoz/Documents/GitHub/ERT2020GS/src/Packet.h Source File</title>
+<title>Bella Lui 2020 - Ground Segment: C:/Users/disoz/Documents/GitHub/ERT2020GS/Objects/Serializer/Packet.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -102,7 +102,7 @@ $(document).ready(function(){initNavTree('_packet_8h_source.html','');});
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">public</span>:</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <a class="code" href="class_packet.html#aabcfb963c0d5bc0fa554668f92989622">Packet</a>();</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="class_packet.html#a48938391fb7e07460bb0e01198ae5ede">~Packet</a>();</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_packet.html#a0279158057d8be98482f7f5b68c02de5">startParsing</a>();</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_packet.html#af6f5fc43c3b9027d09f32835a1d74ad0">restart</a>();</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_packet.html#a7ae864e00d852062e614149ad1c38f2b">write</a>(std::string&amp; msg);</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_packet.html#a1880fd8b1b5d54e3a341ec7fe2a43305">parse</a>(std::string&amp; msg);</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
@@ -127,54 +127,61 @@ $(document).ready(function(){initNavTree('_packet_8h_source.html','');});
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="class_packet.html#ab69b4811d3878531ac371c35281072ae">   55</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_packet.html#a7ae864e00d852062e614149ad1c38f2b">Packet::write</a>(T t) {</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordflow">if</span> (<span class="keyword">sizeof</span>(t) == 1) writeY&lt;uint8_t&gt;(t);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<span class="keyword">sizeof</span>(t) == 2) writeY&lt;uint16_t&gt;(t);</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<span class="keyword">sizeof</span>(t) == 4) writeY&lt;uint32_t&gt;(t);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordflow">else</span> std::cout &lt;&lt; <span class="stringliteral">&quot;Error : Inconciliable type...&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;}</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="class_packet.html#ad39b5491b7ff0c75842d5ec17ccefaed">   63</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_packet.html#a1880fd8b1b5d54e3a341ec7fe2a43305">Packet::parse</a>(T &amp;t) {</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordflow">if</span> (<span class="keyword">sizeof</span>(t) == 1) parseY&lt;uint8_t&gt;(t);</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<span class="keyword">sizeof</span>(t) == 2) parseY&lt;uint16_t&gt;(t);</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<span class="keyword">sizeof</span>(t) == 4) parseY&lt;uint32_t&gt;(t);</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordflow">else</span> std::cout &lt;&lt; <span class="stringliteral">&quot;Error : Inconciliable type...&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;}</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> R, <span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="keywordtype">void</span> Packet::writeY(T t)  {</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    R r = *reinterpret_cast&lt;R *&gt; (&amp;t);</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = <span class="keyword">sizeof</span>(t) - 1; i &gt;= 0; --i)</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        *(packetPosition++) = r &gt;&gt; (8 * i);</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;}</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> R, <span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="keywordtype">void</span> Packet::parseY(T &amp;t) {</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    R r(0);</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = <span class="keyword">sizeof</span>(t) - 1; i &gt;= 0; --i)</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        r |= (*(packetPosition++) &lt;&lt; (8 * i));</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    uint8_t size(<span class="keyword">sizeof</span>(t));</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="class_packet.html#a54c558beaf45424689ce47795470ef3b">getSize</a>() + size &gt; <a class="code" href="_packet_8h.html#aebdc7d8ca8e25ed8efc90bb88ef7ef5b">PACKET_SIZE</a>) {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;Error : Packet is full - bigger than &quot;</span> &lt;&lt; <a class="code" href="_packet_8h.html#aebdc7d8ca8e25ed8efc90bb88ef7ef5b">PACKET_SIZE</a></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                  &lt;&lt; <span class="stringliteral">&quot;\nA packet reorganization is required.&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        exit(0);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    }</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (size == 1) writeY&lt;uint8_t&gt;(t);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (size == 2) writeY&lt;uint16_t&gt;(t);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (size == 4) writeY&lt;uint32_t&gt;(t);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">else</span> std::cout &lt;&lt; <span class="stringliteral">&quot;Error : Inconciliable type...&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;}</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="class_packet.html#ad39b5491b7ff0c75842d5ec17ccefaed">   69</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_packet.html#a1880fd8b1b5d54e3a341ec7fe2a43305">Packet::parse</a>(T &amp;t) {</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordflow">if</span> (<span class="keyword">sizeof</span>(t) == 1) parseY&lt;uint8_t&gt;(t);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<span class="keyword">sizeof</span>(t) == 2) parseY&lt;uint16_t&gt;(t);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<span class="keyword">sizeof</span>(t) == 4) parseY&lt;uint32_t&gt;(t);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordflow">else</span> std::cout &lt;&lt; <span class="stringliteral">&quot;Error : Inconciliable type...&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;}</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> R, <span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="keywordtype">void</span> Packet::writeY(T t)  {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    R r = *reinterpret_cast&lt;R *&gt; (&amp;t);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = <span class="keyword">sizeof</span>(t) - 1; i &gt;= 0; --i)</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        *(packetPosition++) = r &gt;&gt; (8 * i);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;}</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    t = *reinterpret_cast&lt;T *&gt; (&amp;r);</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;}</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="preprocessor">#endif //PACKET_H</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> R, <span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="keywordtype">void</span> Packet::parseY(T &amp;t) {</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    R r(0);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = <span class="keyword">sizeof</span>(t) - 1; i &gt;= 0; --i)</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        r |= (*(packetPosition++) &lt;&lt; (8 * i));</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    t = *reinterpret_cast&lt;T *&gt; (&amp;r);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;}</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="preprocessor">#endif //PACKET_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclass_packet_html_a48938391fb7e07460bb0e01198ae5ede"><div class="ttname"><a href="class_packet.html#a48938391fb7e07460bb0e01198ae5ede">Packet::~Packet</a></div><div class="ttdeci">virtual ~Packet()</div><div class="ttdef"><b>Definition:</b> <a href="_packet_8cpp_source.html#l00015">Packet.cpp:15</a></div></div>
 <div class="ttc" id="aclass_packet_html_a54c558beaf45424689ce47795470ef3b"><div class="ttname"><a href="class_packet.html#a54c558beaf45424689ce47795470ef3b">Packet::getSize</a></div><div class="ttdeci">uint8_t getSize() const</div><div class="ttdef"><b>Definition:</b> <a href="_packet_8cpp_source.html#l00045">Packet.cpp:45</a></div></div>
+<div class="ttc" id="a_packet_8h_html_aebdc7d8ca8e25ed8efc90bb88ef7ef5b"><div class="ttname"><a href="_packet_8h.html#aebdc7d8ca8e25ed8efc90bb88ef7ef5b">PACKET_SIZE</a></div><div class="ttdeci">#define PACKET_SIZE</div><div class="ttdef"><b>Definition:</b> <a href="_packet_8h_source.html#l00025">Packet.h:25</a></div></div>
 <div class="ttc" id="aclass_packet_html_a7ae864e00d852062e614149ad1c38f2b"><div class="ttname"><a href="class_packet.html#a7ae864e00d852062e614149ad1c38f2b">Packet::write</a></div><div class="ttdeci">void write(std::string &amp;msg)</div><div class="ttdef"><b>Definition:</b> <a href="_packet_8cpp_source.html#l00025">Packet.cpp:25</a></div></div>
+<div class="ttc" id="aclass_packet_html_af6f5fc43c3b9027d09f32835a1d74ad0"><div class="ttname"><a href="class_packet.html#af6f5fc43c3b9027d09f32835a1d74ad0">Packet::restart</a></div><div class="ttdeci">void restart()</div><div class="ttdef"><b>Definition:</b> <a href="_packet_8cpp_source.html#l00019">Packet.cpp:19</a></div></div>
 <div class="ttc" id="aclass_packet_html_aabcfb963c0d5bc0fa554668f92989622"><div class="ttname"><a href="class_packet.html#aabcfb963c0d5bc0fa554668f92989622">Packet::Packet</a></div><div class="ttdeci">Packet()</div><div class="ttdef"><b>Definition:</b> <a href="_packet_8cpp_source.html#l00013">Packet.cpp:13</a></div></div>
 <div class="ttc" id="aclass_packet_html_a1880fd8b1b5d54e3a341ec7fe2a43305"><div class="ttname"><a href="class_packet.html#a1880fd8b1b5d54e3a341ec7fe2a43305">Packet::parse</a></div><div class="ttdeci">void parse(std::string &amp;msg)</div><div class="ttdef"><b>Definition:</b> <a href="_packet_8cpp_source.html#l00030">Packet.cpp:30</a></div></div>
 <div class="ttc" id="aclass_packet_html_a18e22ca27c4fdfe87d711a18e6444dad"><div class="ttname"><a href="class_packet.html#a18e22ca27c4fdfe87d711a18e6444dad">Packet::getPacket</a></div><div class="ttdeci">uint8_t * getPacket()</div><div class="ttdef"><b>Definition:</b> <a href="_packet_8cpp_source.html#l00041">Packet.cpp:41</a></div></div>
-<div class="ttc" id="aclass_packet_html_a0279158057d8be98482f7f5b68c02de5"><div class="ttname"><a href="class_packet.html#a0279158057d8be98482f7f5b68c02de5">Packet::startParsing</a></div><div class="ttdeci">void startParsing()</div><div class="ttdef"><b>Definition:</b> <a href="_packet_8cpp_source.html#l00019">Packet.cpp:19</a></div></div>
 <div class="ttc" id="aclass_packet_html"><div class="ttname"><a href="class_packet.html">Packet</a></div><div class="ttdef"><b>Definition:</b> <a href="_packet_8h_source.html#l00027">Packet.h:27</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="_packet_8h.html">Packet.h</a></li>
+    <li class="navelem"><a class="el" href="dir_5dafd4660615c7e05a84a5ee9d9fd12b.html">Objects</a></li><li class="navelem"><a class="el" href="dir_dca40be619523b9c899c70d9875ba133.html">Serializer</a></li><li class="navelem"><a class="el" href="_packet_8h.html">Packet.h</a></li>
     <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.16 </li>

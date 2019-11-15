@@ -1,6 +1,6 @@
-<map id="C:/Users/disoz/Documents/GitHub/ERT2020GS/src/LoRa.h" name="C:/Users/disoz/Documents/GitHub/ERT2020GS/src/LoRa.h">
-<area shape="rect" id="node1" title="LoRa module interface." alt="" coords="5,5,215,47"/>
-<area shape="rect" id="node2" href="$_packet_8h.html" title=" " alt="" coords="19,95,94,121"/>
-<area shape="rect" id="node4" title=" " alt="" coords="119,95,208,121"/>
-<area shape="rect" id="node3" title=" " alt="" coords="21,169,93,196"/>
+<map id="C:/Users/disoz/Documents/GitHub/ERT2020GS/Objects/RFmodem/LoRa.h" name="C:/Users/disoz/Documents/GitHub/ERT2020GS/Objects/RFmodem/LoRa.h">
+<area shape="rect" id="node1" title="LoRa module interface." alt="" coords="8,5,199,61"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,109,95,136"/>
+<area shape="rect" id="node3" href="$_packet_8h.html" title=" " alt="" coords="119,109,194,136"/>
+<area shape="rect" id="node4" title=" " alt="" coords="121,184,193,211"/>
 </map>

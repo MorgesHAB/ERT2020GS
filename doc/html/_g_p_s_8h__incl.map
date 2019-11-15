@@ -1,6 +1,8 @@
-<map id="C:/Users/disoz/Documents/GitHub/ERT2020GS/src/GPS.h" name="C:/Users/disoz/Documents/GitHub/ERT2020GS/src/GPS.h">
-<area shape="rect" id="node1" title="GPS module interface." alt="" coords="5,5,212,47"/>
-<area shape="rect" id="node2" title=" " alt="" coords="37,95,92,121"/>
-<area shape="rect" id="node3" href="$_packet_8h.html" title=" " alt="" coords="117,95,191,121"/>
-<area shape="rect" id="node4" title=" " alt="" coords="118,169,190,196"/>
+<map id="C:/Users/disoz/Documents/GitHub/ERT2020GS/Objects/DataStructures/GPS.h" name="C:/Users/disoz/Documents/GitHub/ERT2020GS/Objects/DataStructures/GPS.h">
+<area shape="rect" id="node1" title="GPS module interface." alt="" coords="19,5,209,61"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,109,60,136"/>
+<area shape="rect" id="node3" href="$_data_8h.html" title="Data module interface." alt="" coords="84,109,144,136"/>
+<area shape="rect" id="node6" title=" " alt="" coords="168,109,257,136"/>
+<area shape="rect" id="node4" href="$_packet_8h.html" title=" " alt="" coords="77,184,151,211"/>
+<area shape="rect" id="node5" title=" " alt="" coords="78,259,150,285"/>
 </map>

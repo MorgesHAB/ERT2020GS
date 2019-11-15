@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.16"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Bella Lui 2020 - Ground Segment: C:/Users/disoz/Documents/GitHub/ERT2020GS/src/Packet.cpp Source File</title>
+<title>Bella Lui 2020 - Ground Segment: C:/Users/disoz/Documents/GitHub/ERT2020GS/Objects/Serializer/Packet.cpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -100,7 +100,7 @@ $(document).ready(function(){initNavTree('_packet_8cpp_source.html','');});
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keyword">delete</span>[] packet;</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;}</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="class_packet.html#a0279158057d8be98482f7f5b68c02de5">   19</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_packet.html#a0279158057d8be98482f7f5b68c02de5">Packet::startParsing</a>() {</div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="class_packet.html#af6f5fc43c3b9027d09f32835a1d74ad0">   19</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_packet.html#af6f5fc43c3b9027d09f32835a1d74ad0">Packet::restart</a>() {</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keyword">delete</span>[] packet;</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    packet = <span class="keyword">new</span> uint8_t[<a class="code" href="_packet_8h.html#aebdc7d8ca8e25ed8efc90bb88ef7ef5b">PACKET_SIZE</a>];</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    packetPosition = packet;</div>
@@ -135,15 +135,15 @@ $(document).ready(function(){initNavTree('_packet_8cpp_source.html','');});
 <div class="ttc" id="aclass_packet_html_a54c558beaf45424689ce47795470ef3b"><div class="ttname"><a href="class_packet.html#a54c558beaf45424689ce47795470ef3b">Packet::getSize</a></div><div class="ttdeci">uint8_t getSize() const</div><div class="ttdef"><b>Definition:</b> <a href="_packet_8cpp_source.html#l00045">Packet.cpp:45</a></div></div>
 <div class="ttc" id="a_packet_8h_html_aebdc7d8ca8e25ed8efc90bb88ef7ef5b"><div class="ttname"><a href="_packet_8h.html#aebdc7d8ca8e25ed8efc90bb88ef7ef5b">PACKET_SIZE</a></div><div class="ttdeci">#define PACKET_SIZE</div><div class="ttdef"><b>Definition:</b> <a href="_packet_8h_source.html#l00025">Packet.h:25</a></div></div>
 <div class="ttc" id="aclass_packet_html_a7ae864e00d852062e614149ad1c38f2b"><div class="ttname"><a href="class_packet.html#a7ae864e00d852062e614149ad1c38f2b">Packet::write</a></div><div class="ttdeci">void write(std::string &amp;msg)</div><div class="ttdef"><b>Definition:</b> <a href="_packet_8cpp_source.html#l00025">Packet.cpp:25</a></div></div>
+<div class="ttc" id="aclass_packet_html_af6f5fc43c3b9027d09f32835a1d74ad0"><div class="ttname"><a href="class_packet.html#af6f5fc43c3b9027d09f32835a1d74ad0">Packet::restart</a></div><div class="ttdeci">void restart()</div><div class="ttdef"><b>Definition:</b> <a href="_packet_8cpp_source.html#l00019">Packet.cpp:19</a></div></div>
 <div class="ttc" id="aclass_packet_html_aabcfb963c0d5bc0fa554668f92989622"><div class="ttname"><a href="class_packet.html#aabcfb963c0d5bc0fa554668f92989622">Packet::Packet</a></div><div class="ttdeci">Packet()</div><div class="ttdef"><b>Definition:</b> <a href="_packet_8cpp_source.html#l00013">Packet.cpp:13</a></div></div>
 <div class="ttc" id="aclass_packet_html_a1880fd8b1b5d54e3a341ec7fe2a43305"><div class="ttname"><a href="class_packet.html#a1880fd8b1b5d54e3a341ec7fe2a43305">Packet::parse</a></div><div class="ttdeci">void parse(std::string &amp;msg)</div><div class="ttdef"><b>Definition:</b> <a href="_packet_8cpp_source.html#l00030">Packet.cpp:30</a></div></div>
 <div class="ttc" id="aclass_packet_html_a18e22ca27c4fdfe87d711a18e6444dad"><div class="ttname"><a href="class_packet.html#a18e22ca27c4fdfe87d711a18e6444dad">Packet::getPacket</a></div><div class="ttdeci">uint8_t * getPacket()</div><div class="ttdef"><b>Definition:</b> <a href="_packet_8cpp_source.html#l00041">Packet.cpp:41</a></div></div>
 <div class="ttc" id="a_packet_8h_html"><div class="ttname"><a href="_packet_8h.html">Packet.h</a></div></div>
-<div class="ttc" id="aclass_packet_html_a0279158057d8be98482f7f5b68c02de5"><div class="ttname"><a href="class_packet.html#a0279158057d8be98482f7f5b68c02de5">Packet::startParsing</a></div><div class="ttdeci">void startParsing()</div><div class="ttdef"><b>Definition:</b> <a href="_packet_8cpp_source.html#l00019">Packet.cpp:19</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="_packet_8cpp.html">Packet.cpp</a></li>
+    <li class="navelem"><a class="el" href="dir_5dafd4660615c7e05a84a5ee9d9fd12b.html">Objects</a></li><li class="navelem"><a class="el" href="dir_dca40be619523b9c899c70d9875ba133.html">Serializer</a></li><li class="navelem"><a class="el" href="_packet_8cpp.html">Packet.cpp</a></li>
     <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.16 </li>

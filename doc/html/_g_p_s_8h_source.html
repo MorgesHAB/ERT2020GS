@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.16"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Bella Lui 2020 - Ground Segment: C:/Users/disoz/Documents/GitHub/ERT2020GS/src/GPS.h Source File</title>
+<title>Bella Lui 2020 - Ground Segment: C:/Users/disoz/Documents/GitHub/ERT2020GS/Objects/DataStructures/GPS.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -94,43 +94,46 @@ $(document).ready(function(){initNavTree('_g_p_s_8h_source.html','');});
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#ifndef GPS_H</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#define GPS_H</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_packet_8h.html">Packet.h</a>&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;ctime&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="_data_8h.html">Data.h</a>&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;libgpsmm.h&gt;</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="class_g_p_s.html">   17</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_g_p_s.html">GPS</a> {</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="class_g_p_s.html#a0c347a188512d0d5cf7ed5c91b145fc4">GPS</a>();</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="class_g_p_s.html#a0c347a188512d0d5cf7ed5c91b145fc4">GPS</a>(<span class="keywordtype">float</span> latitude, <span class="keywordtype">float</span> longitude, <span class="keywordtype">float</span> altitude, <span class="keywordtype">float</span> speed,</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keyword">const</span> std::string &amp;time);</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_g_p_s.html#a07db0da660df474c3ad0abeef8616aea">print</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_g_p_s.html#ae9e4a5b29829b83c86b29407ec3fcc80">write</a>(<a class="code" href="class_packet.html">Packet</a> &amp;packet);</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_g_p_s.html#afaf832890cdf9a406629d3e2f4d7809d">parse</a>(<a class="code" href="class_packet.html">Packet</a> &amp;packet);</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordtype">float</span> latitude;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordtype">float</span> longitude;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">float</span> altitude;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordtype">float</span> speed;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    std::string time;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;};</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="class_g_p_s.html">   18</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_g_p_s.html">GPS</a> : <span class="keyword">public</span> <a class="code" href="class_data.html">Data</a> {</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="class_g_p_s.html#a0c347a188512d0d5cf7ed5c91b145fc4">GPS</a>();</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_g_p_s.html#a32e876e0ad0387d33fcc7ae04e8bd6a8">write</a>(<a class="code" href="class_packet.html">Packet</a>&amp; packet) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_g_p_s.html#a795f8d50269bad4258e86985c4617037">parse</a>(<a class="code" href="class_packet.html">Packet</a>&amp; packet) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_g_p_s.html#a5f3e2a4e925216e9d9cf1c07cf7b2dbd">update</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_g_p_s.html#a7a62d679f74922e0706ed2cc6f9cf28b">print</a>() <span class="keyword">const override</span> ;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    gpsmm gpsd;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordtype">float</span> latitude;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">float</span> longitude;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordtype">float</span> altitude;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordtype">float</span> speed;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    std::time_t time;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;};</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#endif //GPS_H</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#endif //GPS_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclass_g_p_s_html_ae9e4a5b29829b83c86b29407ec3fcc80"><div class="ttname"><a href="class_g_p_s.html#ae9e4a5b29829b83c86b29407ec3fcc80">GPS::write</a></div><div class="ttdeci">void write(Packet &amp;packet)</div><div class="ttdef"><b>Definition:</b> <a href="_g_p_s_8cpp_source.html#l00018">GPS.cpp:18</a></div></div>
-<div class="ttc" id="aclass_g_p_s_html"><div class="ttname"><a href="class_g_p_s.html">GPS</a></div><div class="ttdef"><b>Definition:</b> <a href="_g_p_s_8h_source.html#l00017">GPS.h:17</a></div></div>
-<div class="ttc" id="aclass_g_p_s_html_a0c347a188512d0d5cf7ed5c91b145fc4"><div class="ttname"><a href="class_g_p_s.html#a0c347a188512d0d5cf7ed5c91b145fc4">GPS::GPS</a></div><div class="ttdeci">GPS()</div><div class="ttdef"><b>Definition:</b> <a href="_g_p_s_8cpp_source.html#l00012">GPS.cpp:12</a></div></div>
-<div class="ttc" id="a_packet_8h_html"><div class="ttname"><a href="_packet_8h.html">Packet.h</a></div></div>
-<div class="ttc" id="aclass_g_p_s_html_afaf832890cdf9a406629d3e2f4d7809d"><div class="ttname"><a href="class_g_p_s.html#afaf832890cdf9a406629d3e2f4d7809d">GPS::parse</a></div><div class="ttdeci">void parse(Packet &amp;packet)</div><div class="ttdef"><b>Definition:</b> <a href="_g_p_s_8cpp_source.html#l00027">GPS.cpp:27</a></div></div>
-<div class="ttc" id="aclass_g_p_s_html_a07db0da660df474c3ad0abeef8616aea"><div class="ttname"><a href="class_g_p_s.html#a07db0da660df474c3ad0abeef8616aea">GPS::print</a></div><div class="ttdeci">void print() const</div><div class="ttdef"><b>Definition:</b> <a href="_g_p_s_8cpp_source.html#l00035">GPS.cpp:35</a></div></div>
+<div class="ttc" id="aclass_g_p_s_html_a5f3e2a4e925216e9d9cf1c07cf7b2dbd"><div class="ttname"><a href="class_g_p_s.html#a5f3e2a4e925216e9d9cf1c07cf7b2dbd">GPS::update</a></div><div class="ttdeci">void update() override</div><div class="ttdef"><b>Definition:</b> <a href="_g_p_s_8cpp_source.html#l00049">GPS.cpp:49</a></div></div>
+<div class="ttc" id="aclass_g_p_s_html_a32e876e0ad0387d33fcc7ae04e8bd6a8"><div class="ttname"><a href="class_g_p_s.html#a32e876e0ad0387d33fcc7ae04e8bd6a8">GPS::write</a></div><div class="ttdeci">void write(Packet &amp;packet) override</div><div class="ttdef"><b>Definition:</b> <a href="_g_p_s_8cpp_source.html#l00022">GPS.cpp:22</a></div></div>
+<div class="ttc" id="aclass_g_p_s_html_a7a62d679f74922e0706ed2cc6f9cf28b"><div class="ttname"><a href="class_g_p_s.html#a7a62d679f74922e0706ed2cc6f9cf28b">GPS::print</a></div><div class="ttdeci">void print() const override</div><div class="ttdef"><b>Definition:</b> <a href="_g_p_s_8cpp_source.html#l00039">GPS.cpp:39</a></div></div>
+<div class="ttc" id="aclass_g_p_s_html"><div class="ttname"><a href="class_g_p_s.html">GPS</a></div><div class="ttdef"><b>Definition:</b> <a href="_g_p_s_8h_source.html#l00018">GPS.h:18</a></div></div>
+<div class="ttc" id="aclass_data_html"><div class="ttname"><a href="class_data.html">Data</a></div><div class="ttdef"><b>Definition:</b> <a href="_data_8h_source.html#l00017">Data.h:17</a></div></div>
+<div class="ttc" id="aclass_g_p_s_html_a0c347a188512d0d5cf7ed5c91b145fc4"><div class="ttname"><a href="class_g_p_s.html#a0c347a188512d0d5cf7ed5c91b145fc4">GPS::GPS</a></div><div class="ttdeci">GPS()</div><div class="ttdef"><b>Definition:</b> <a href="_g_p_s_8cpp_source.html#l00013">GPS.cpp:13</a></div></div>
+<div class="ttc" id="aclass_g_p_s_html_a795f8d50269bad4258e86985c4617037"><div class="ttname"><a href="class_g_p_s.html#a795f8d50269bad4258e86985c4617037">GPS::parse</a></div><div class="ttdeci">void parse(Packet &amp;packet) override</div><div class="ttdef"><b>Definition:</b> <a href="_g_p_s_8cpp_source.html#l00031">GPS.cpp:31</a></div></div>
+<div class="ttc" id="a_data_8h_html"><div class="ttname"><a href="_data_8h.html">Data.h</a></div><div class="ttdoc">Data module interface.</div></div>
 <div class="ttc" id="aclass_packet_html"><div class="ttname"><a href="class_packet.html">Packet</a></div><div class="ttdef"><b>Definition:</b> <a href="_packet_8h_source.html#l00027">Packet.h:27</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="_g_p_s_8h.html">GPS.h</a></li>
+    <li class="navelem"><a class="el" href="dir_5dafd4660615c7e05a84a5ee9d9fd12b.html">Objects</a></li><li class="navelem"><a class="el" href="dir_f88f864a092348b46e4ae62edf6bc018.html">DataStructures</a></li><li class="navelem"><a class="el" href="_g_p_s_8h.html">GPS.h</a></li>
     <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.16 </li>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['lora_24',['LoRa',['../class_lo_ra.html',1,'']]]
+  ['gps_47',['GPS',['../class_g_p_s.html',1,'']]]
 ];

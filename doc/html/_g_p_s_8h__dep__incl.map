@@ -1,6 +1,4 @@
-<map id="C:/Users/disoz/Documents/GitHub/ERT2020GS/src/GPS.h" name="C:/Users/disoz/Documents/GitHub/ERT2020GS/src/GPS.h">
-<area shape="rect" id="node1" title="GPS module interface." alt="" coords="258,5,465,47"/>
-<area shape="rect" id="node2" href="$_g_p_s_8cpp.html" title="GPS module implementation." alt="" coords="5,95,227,136"/>
-<area shape="rect" id="node3" href="$_g_s_e_8cpp.html" title="Ground Support Equipment Transceiver." alt="" coords="251,95,472,136"/>
-<area shape="rect" id="node4" href="$_g_s_t_8cpp.html" title="Ground Station Transceiver." alt="" coords="496,95,715,136"/>
+<map id="C:/Users/disoz/Documents/GitHub/ERT2020GS/Objects/DataStructures/GPS.h" name="C:/Users/disoz/Documents/GitHub/ERT2020GS/Objects/DataStructures/GPS.h">
+<area shape="rect" id="node1" title="GPS module interface." alt="" coords="5,5,196,61"/>
+<area shape="rect" id="node2" href="$_g_p_s_8cpp.html" title="GPS module implementation." alt="" coords="5,109,196,165"/>
 </map>
