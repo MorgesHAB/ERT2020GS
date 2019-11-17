@@ -1,6 +1,6 @@
 #!/bin/bash
 # bash script to compile the software
-rm -R build
+sudo rm -R build
 
 mkdir build/ && cd build/
 
