@@ -13,7 +13,6 @@
 #include <RH_RF95.h>
 #include <Packet.h>
 
-
 class LoRa {
 public:
     explicit LoRa(double frequency = 868.0, double TxPower = 23, int mode = 1);
