@@ -22,8 +22,8 @@ int main() {
 
     // Create your RF Packet serialisation
     DataHandler dataHandler;
-    //dataHandler.add(new GPS);
-    dataHandler.add(new PressureData);
+    dataHandler.add(new GPS);
+    //dataHandler.add(new PressureData);
     //dataHandler.add(new IgnitionData);
     //dataHandler.add(new States({1, 0, 1, 1, 0, 0, 1, 0}));
     //dataHandler.add(new Picture(100));
@@ -33,7 +33,7 @@ int main() {
     while (true) {
         dataHandler.update();
         loRa.send(dataHandler.getDataPacket());
-        usleep(100000);
+        //usleep(100000);
     }
 
     return 0;
