@@ -3,11 +3,10 @@ project(ERT2020GS)
 
 set(CMAKE_CXX_STANDARD 11)
 
-file(GLOB_RECURSE SOURCES Objects/*.cpp)
-file(GLOB_RECURSE SOURCES_LIB lib/RadioHead/RH_RF95.cpp lib/RadioHead/RHGenericSPI.cpp
-     lib/RadioHead/RHLinuxSPI.cpp lib/RadioHead/RHGenericDriver.cpp)
-
+add_subdirectory(lib/RadioHead)
 add_subdirectory(lib/serial)
+
+file(GLOB_RECURSE SOURCES Objects/*.cpp)
 
 add_executable(${PROJECT_NAME} ${SOURCES} ${SOURCES_LIB} src/GSE.cpp)
 #add_executable(${PROJECT_NAME} ${SOURCES} ${SOURCES_LIB} src/GST.cpp)

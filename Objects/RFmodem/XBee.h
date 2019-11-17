@@ -10,16 +10,18 @@
 #ifndef XBee_H
 #define XBee_H
 
-//#include <serial/serial.h>
+#include <serial/serial.h>
 #include <Packet.h>
 
 class XBee {
     void send(Packet &packet);
     bool receive(Packet &packet);
     //int getRSSI();
+public:
+    virtual ~XBee();
 
 private:
-    //serial::Serial serialPort;
+    serial::Serial serialPort;
 };
 
 

@@ -10,12 +10,17 @@
 #include "XBee.h"
 
 void XBee::send(Packet &packet) {
-/*    if (serialPort.isOpen()) {
+    if (serialPort.isOpen()) {
         serialPort.write(packet.getPacket(), packet.getSize());
         std::cout << "Packet have been sent" << std::endl;
-    }*/
+    }
 }
 
 bool XBee::receive(Packet &packet) {
     return false;
+}
+
+XBee::~XBee() {
+    std::cout << "Closing radio receiver" << std::endl;
+    serialPort.close();
 }
