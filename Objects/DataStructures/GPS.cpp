@@ -10,8 +10,8 @@
 #include <iomanip>
 #include "GPS.h"
 
-GPS::GPS() : gpsd("localhost", DEFAULT_GPSD_PORT),
-             gpsData{0, 0, 0, 0, std::time(nullptr)} {
+GPS::GPS() : gpsData{0, 0, 0, 0, std::time(nullptr)},
+             gpsd("localhost", DEFAULT_GPSD_PORT) {
 
     if (gpsd.stream(WATCH_ENABLE|WATCH_JSON) == NULL) {
         std::cerr << "No GPSD running" << std::endl;
