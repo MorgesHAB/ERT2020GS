@@ -1,10 +1,10 @@
 #include "gpswindow.h"
 #include <iostream>
 #include <QString>
-#include <DataHandler.h>
 #include <LoRa.h>
 #include <DataHandler.h>
 #include <PressureData.h>
+#include <GPS.h>
 
 GPSWindow::GPSWindow(uint32_t refresh_rate) : timer_(new QTimer(this))
 {
@@ -24,7 +24,8 @@ void GPSWindow::push_data(){
     static DataHandler dataHandler;
     static bool first(true);
     if (first) {
-        dataHandler.add(new PressureData);
+        //dataHandler.add(new PressureData);
+        dataHandler.add(new GPS);
         first = false;
     }
 
@@ -32,10 +33,11 @@ void GPSWindow::push_data(){
         std::cout << "LoRa last RSSI : " << loRa.getRSSI() << " dBm" << std::endl;
         dataHandler.parse();
         dataHandler.print();
-        this->altitude_lcd->display(dynamic_cast<PressureData>(dataHandler.getDataHandler()[0]).getPressure());
-        //this->speed_lcd->display(GET_SPEED);
-        //this->latitude_panel->setText(QString::number(GET_LATITUDE) + "<sup>o</sup>");
-        //this->longitude_panel->setText(QString::number(GET_LONGITUDE) + "<sup>o</sup>");
+        GPS* gps(dynamic_cast<GPS*>(dataHandler.getDataHandler()[0]));
+        this->altitude_lcd->display(gps->getGpsData().altitude);
+        this->speed_lcd->display(gps->getGpsData().speed);
+        this->latitude_panel->setText(QString::number(gps->getGpsData().latitude) + "<sup>o</sup>");
+        this->longitude_panel->setText(QString::number(gps->getGpsData().longitude) + "<sup>o</sup>");
         this->rssi_panel->setText(QString::number(loRa.getRSSI()) + " dBm");
     }
 }
