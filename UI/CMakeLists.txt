@@ -1,18 +1,18 @@
-##########################################
-### CMakeLists for Ground Station Code with
-### Graphical User Interface
-##########################################
 cmake_minimum_required(VERSION 3.6.2)
 project(ERT2020GS)
 
 set(CMAKE_CXX_STANDARD 11)
 
-set(CMAKE_INCLUDE_CURRENT_DIR  ON) # Qt
-set(CMAKE_AUTOMOC ON)  # Qt
-set(CMAKE_AUTORCC ON)  # Qt
-#set(CMAKE_AUTOUIC ON)  # Qt
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
+#set(CMAKE_AUTOUIC ON)
 
-add_subdirectory(Telecom)
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+
+add_subdirectory(../Telecom)
 
 find_package(Qt5Widgets)
 
