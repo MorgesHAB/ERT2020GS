@@ -3,8 +3,6 @@
 #include <QString>
 #include <LoRa.h>
 #include <DataHandler.h>
-#include <PressureData.h>
-#include <GPS.h>
 
 GPSWindow::GPSWindow(uint32_t refresh_rate) : timer_(new QTimer(this))
 {
@@ -22,18 +20,12 @@ void GPSWindow::push_data(){
     */
     static LoRa loRa;
     static DataHandler dataHandler;
-    static bool first(true);
-    if (first) {
-        //dataHandler.add(new PressureData);
-        dataHandler.add(new GPS);
-        first = false;
-    }
 
-    if (loRa.receive(dataHandler.getDataPacket())) {
+    if (loRa.receive(dataHandler.getPacket(GPS))) {
         std::cout << "LoRa last RSSI : " << loRa.getRSSI() << " dBm" << std::endl;
-        dataHandler.parse();
-        dataHandler.print();
-        GPS* gps(dynamic_cast<GPS*>(dataHandler.getDataHandler()[0]));
+        dataHandler.parse(GPS);
+        dataHandler.print(GPS);
+        GPS* gps(dynamic_cast<GPS*>(dataHandler.getPacket(GPS)[0]));
         this->altitude_lcd->display(gps->getGpsData().altitude);
         this->speed_lcd->display(gps->getGpsData().speed);
         this->latitude_panel->setText(QString::number(gps->getGpsData().latitude) + "<sup>o</sup>");

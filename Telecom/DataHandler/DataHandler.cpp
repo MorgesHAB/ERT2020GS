@@ -1,0 +1,65 @@
+/*!
+ * \file DataHandler.cpp
+ *
+ * \brief DataHandler module implementation
+ *
+ * \author      ISOZ Lionel - EPFL EL BA3
+ * \date        18.11.2019	
+ */
+
+#include <GPS.h>
+#include <PressureData.h>
+#include <IgnitionData.h>
+#include <States.h>
+#include <Picture.h>
+
+#include "DataHandler.h"
+
+
+DataHandler::DataHandler() : dataHandler(NBR_OF_TYPE, nullptr) {
+    // Create your RF Packet Datagram here
+
+    //// Packet Type GPS
+    Datagram* datagram1 = new Datagram;
+    datagram1->add(new GPS);
+    datagram1->add(new PressureData);
+    dataHandler[GPS] = datagram1;
+
+    //// Packet Type n°2
+    Datagram* datagram2 = new Datagram;
+    datagram2->add(new PressureData);
+    datagram2->add(new IgnitionData);
+    datagram2->add(new States({1, 0, 1, 1, 0, 0, 1, 0}));
+    dataHandler[PAYLOAD] = datagram2;
+
+    //// Packet Type n°3
+    Datagram* datagram3 = new Datagram;
+    datagram3->add(new Picture(100));
+    dataHandler[AVIONICS] = datagram3;
+
+    //// Packet Type n°4
+    Datagram* datagram4 = new Datagram;
+    datagram4->add(new PressureData);
+    dataHandler[PROPULSION] = datagram4;
+}
+
+DataHandler::~DataHandler() {
+    for (auto& datagram : dataHandler) delete datagram;
+}
+
+void DataHandler::update(PacketType type) {
+    dataHandler[type]->update();
+}
+
+void DataHandler::parse(PacketType type) {
+    dataHandler[type]->parse();
+
+}
+
+void DataHandler::print(PacketType type) const {
+    dataHandler[type]->print();
+}
+
+Packet &DataHandler::getPacket(PacketType type) {
+    return dataHandler[type]->getDataPacket();
+}

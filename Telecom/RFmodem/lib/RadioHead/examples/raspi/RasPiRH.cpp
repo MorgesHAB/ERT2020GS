@@ -61,12 +61,12 @@ int main (int argc, const char* argv[] )
     Serial.println("setRF failed");
   End Driver Only Init Code */
 
-  /* Begin Reliable Datagram Init Code */
+  /* Begin Reliable DataHandler Init Code */
   if (!manager.init())
   {
     printf( "Init failed\n" );
   }
-  /* End Reliable Datagram Init Code */
+  /* End Reliable DataHandler Init Code */
 
   uint8_t buf[RH_NRF24_MAX_MESSAGE_LEN];
 
@@ -95,7 +95,7 @@ int main (int argc, const char* argv[] )
     }
     End Driver Only Code*/
 
-    /* Begin Reliable Datagram Code */
+    /* Begin Reliable DataHandler Code */
     if (manager.available())
     {
       // Wait for a message addressed to us from the client
@@ -109,7 +109,7 @@ int main (int argc, const char* argv[] )
         Serial.println((char*)buf);
       }
     }
-    /* End Reliable Datagram Code */
+    /* End Reliable DataHandler Code */
 
     if (flag)
     {
