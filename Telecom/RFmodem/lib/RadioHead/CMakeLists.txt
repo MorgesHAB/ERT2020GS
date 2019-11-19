@@ -12,4 +12,3 @@ target_compile_options(${PROJECT_NAME} PUBLIC -g -Wall
                        -DRH_PLATFORM=RH_PLATFORM_RPI -D__RASPBERRY_PI_)
 
 target_link_libraries(${PROJECT_NAME} wiringPi)
-
