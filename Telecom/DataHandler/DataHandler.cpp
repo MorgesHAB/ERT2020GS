@@ -17,7 +17,7 @@
 #include "DataHandler.h"
 
 
-DataHandler::DataHandler() : dataHandler(NBR_OF_TYPE, nullptr) {
+DataHandler::DataHandler() : dataHandler(NBR_OF_TYPE, nullptr), lastPacketRx(GPSID) {
     // Create your RF Packet Datagram here
 
     //// Packet Type GPS
@@ -45,6 +45,7 @@ DataHandler::DataHandler() : dataHandler(NBR_OF_TYPE, nullptr) {
     Datagram* datagram4 = new Datagram;
     datagram4->add(new PacketType(PROPULSION));
     datagram4->add(new PressureData);
+    datagram4->add(new PressureData);
     dataHandler[PROPULSION] = datagram4;
 }
 
@@ -58,7 +59,6 @@ void DataHandler::update(PacketID type) {
 
 void DataHandler::parse(PacketID type) {
     dataHandler[type]->parse();
-
 }
 
 void DataHandler::print(PacketID type) const {
@@ -67,4 +67,14 @@ void DataHandler::print(PacketID type) const {
 
 Packet &DataHandler::getPacket(PacketID type) {
     return dataHandler[type]->getDataPacket();
+}
+
+void DataHandler::setPacket(Packet &packet) {
+    lastPacketRx = (PacketID) packet.getType();
+    dataHandler[lastPacketRx]->getDataPacket() = packet;
+    dataHandler[lastPacketRx]->parse();
+}
+
+void DataHandler::print() const {
+    dataHandler[lastPacketRx]->print();
 }

@@ -20,21 +20,16 @@ LoRa::LoRa(double frequency, double TxPower, int mode) {
     rf95.setFrequency(frequency); /* MHz */
     rf95.setTxPower(TxPower);
     switch(mode) {
-        case 1 :
-            rf95.setModemConfig(RH_RF95::Bw125Cr45Sf128);
+        case 1 : rf95.setModemConfig(RH_RF95::Bw125Cr45Sf128);
             break;
-        case 2 :
-            rf95.setModemConfig(RH_RF95::Bw500Cr45Sf128);
+        case 2 : rf95.setModemConfig(RH_RF95::Bw500Cr45Sf128);
             break;
-        case 3 :
-            rf95.setModemConfig(RH_RF95::Bw31_25Cr48Sf512);
+        case 3 : rf95.setModemConfig(RH_RF95::Bw31_25Cr48Sf512);
             break;
-        case 4 :
-            rf95.setModemConfig(RH_RF95::Bw125Cr48Sf4096);
+        case 4 : rf95.setModemConfig(RH_RF95::Bw125Cr48Sf4096);
             break;
     }
 }
-
 
 void LoRa::send(Packet &packet) {
     rf95.send(packet.getPacket(), packet.getSize());
@@ -47,6 +42,21 @@ bool LoRa::receive(Packet &packet) {
         uint8_t length(RH_RF95_MAX_MESSAGE_LEN);
         if (rf95.recv(packet.getPacket(), &length)) {
             std::cout << "\n\nPacket Received" << std::endl;
+            std::cout << "LoRa last RSSI : " << getRSSI() << " dBm" << std::endl;
+            return true;
+        }
+    }
+    return false;
+}
+
+bool LoRa::receive(DataHandler &dataHandler) {
+    if (rf95.available()) {
+        Packet packet; // should be new to avoid copy !!
+        uint8_t length(RH_RF95_MAX_MESSAGE_LEN);
+        if (rf95.recv(packet.getPacket(), &length)) {
+            std::cout << "\n\nNew Packet Received" << std::endl;
+            std::cout << "LoRa last RSSI : " << getRSSI() << " dBm" << std::endl;
+            dataHandler.setPacket(packet);
             return true;
         }
     }

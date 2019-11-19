@@ -28,9 +28,13 @@ public:
     void parse(PacketID type);
     void print(PacketID type) const;
     Packet &getPacket(PacketID type);
+    void setPacket(Packet &packet);
+
+    void print() const;
 
 private:
     std::vector<Datagram*> dataHandler;
+    PacketID lastPacketRx;
 };
 
 

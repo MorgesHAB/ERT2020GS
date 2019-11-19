@@ -45,3 +45,10 @@ uint8_t *Packet::getPacket() {
 uint8_t Packet::getSize() const {
     return packetPosition - packet;
 }
+
+uint8_t Packet::getType() {
+    uint8_t type;
+    parse(type);
+    packetPosition = packet;
+    return type;
+}

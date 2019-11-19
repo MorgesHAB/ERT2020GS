@@ -12,12 +12,14 @@
 
 #include <RH_RF95.h>
 #include <Packet.h>
+#include <DataHandler.h>
 
 class LoRa {
 public:
     explicit LoRa(double frequency = 868.0, double TxPower = 23, int mode = 1);
     void send(Packet &packet);
     bool receive(Packet &packet);
+    bool receive(DataHandler &dataHandler);
     int getRSSI();
 
 private:

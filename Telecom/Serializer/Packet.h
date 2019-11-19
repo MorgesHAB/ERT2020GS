@@ -39,6 +39,7 @@ public:
 
     uint8_t *getPacket();
     uint8_t getSize() const;
+    uint8_t getType();
 private:
     template<typename R, typename T>
     void writeY(T t);

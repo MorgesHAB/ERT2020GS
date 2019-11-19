@@ -20,6 +20,9 @@ int main() {
     while (true) {
         dataHandler.update(PAYLOAD);
         loRa.send(dataHandler.getPacket(PAYLOAD));
+
+        dataHandler.update(PROPULSION);
+        loRa.send(dataHandler.getPacket(PROPULSION));
         usleep(100000);
     }
 

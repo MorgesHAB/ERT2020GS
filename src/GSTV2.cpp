@@ -20,10 +20,10 @@ int main() {
 
     std::cout << "\nLoRa Reception is active... waiting for RF packet..." << std::endl;
 
+    // Automatic detection of the packet type - then auto parse
     while (true) {
-        if (loRa.receive(dataHandler.getPacket(PAYLOAD))) {
-            dataHandler.parse(PAYLOAD);
-            dataHandler.print(PAYLOAD);
+        if (loRa.receive(dataHandler)) {
+            dataHandler.print();
         }
         usleep(10); //microseconds
     }

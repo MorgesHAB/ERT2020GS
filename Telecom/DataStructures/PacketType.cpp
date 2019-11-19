@@ -7,6 +7,7 @@
  * \date        18.11.2019	
  */
 
+#include <DataHandler.h>
 #include "PacketType.h"
 
 PacketType::PacketType(uint8_t type) : type(type) {}
@@ -22,5 +23,17 @@ void PacketType::parse(Packet &packet) {
 void PacketType::update() {}
 
 void PacketType::print() const {
-    std::cout << "Packet Type : " << type << std::endl;
+    std::cout << "*** Packet Type : ";
+    switch (type) {
+        case GPSID: std::cout << "GPS";
+            break;
+        case PAYLOAD: std::cout << "Payload";
+            break;
+        case AVIONICS: std::cout << "Avionics";
+            break;
+        case PROPULSION: std::cout << "Propulsion";
+            break;
+        default: std::cout << "Unknown";
+    }
+    std::cout << std::endl;
 }
