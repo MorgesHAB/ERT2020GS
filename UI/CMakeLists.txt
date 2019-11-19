@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.6.2)
 project(GUI)
 
+add_subdirectory(../Telecom ${CMAKE_CURRENT_BINARY_DIR}/Telcom)
+
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
