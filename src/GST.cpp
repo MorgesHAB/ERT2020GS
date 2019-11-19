@@ -21,10 +21,10 @@ int main() {
     std::cout << "\nLoRa Reception is active... waiting for RF packet..." << std::endl;
 
     while (true) {
-        if (loRa.receive(dataHandler.getPacket(GPSID))) {
+        if (loRa.receive(dataHandler.getPacket(PAYLOAD))) {
             std::cout << "LoRa last RSSI : " << loRa.getRSSI() << " dBm" << std::endl;
-            dataHandler.parse(GPSID);
-            dataHandler.print(GPSID);
+            dataHandler.parse(PAYLOAD);
+            dataHandler.print(PAYLOAD);
         }
         usleep(10); //microseconds
     }
