@@ -15,7 +15,7 @@
 #include "Datagram.h"
 
 enum PacketID {
-    GPSID, PAYLOAD, AVIONICS, PROPULSION,
+    GPSID = 1, PAYLOAD, AVIONICS, PROPULSION,
     NBR_OF_TYPE = 4
 };
 

@@ -24,10 +24,11 @@ int main(int argc, char** argv) {
     // RF packet handler
     DataHandler dataHandler;
 
-    if (argc == 1) {
+    if (argc == 2) {
         PacketID type = (PacketID) atoi(argv[1]);
         dataHandler.update(type);
         loRa.send(dataHandler.getPacket(type));
+        return 0;
     }
 
     while (true) {
