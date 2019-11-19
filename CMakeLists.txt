@@ -5,11 +5,12 @@ set(CMAKE_CXX_STANDARD 11)
 
 set(USE_GUI OFF)
 set(USE_LORA ON)
-set(USE_XBEE ON)
+set(USE_XBEE OFF)
 
 add_subdirectory(Telecom)
 
-add_executable(${PROJECT_NAME} src/GSE.cpp)
-#add_executable(${PROJECT_NAME} src/GST.cpp)
+add_executable(GSE src/GSE.cpp)
+add_executable(GST src/GST.cpp)
 
-target_link_libraries(${PROJECT_NAME} Telecom)
+target_link_libraries(GSE Telecom)
+target_link_libraries(GST Telecom)

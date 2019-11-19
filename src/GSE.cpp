@@ -24,6 +24,7 @@ int main(int argc, char** argv) {
     // RF packet handler
     DataHandler dataHandler;
 
+    // ./GSE X        X = Packet Type nbr {1,2,3,4}
     if (argc == 2) {
         PacketID type = (PacketID) atoi(argv[1]);
         dataHandler.update(type);
@@ -37,7 +38,7 @@ int main(int argc, char** argv) {
 
         dataHandler.update(PROPULSION);
         loRa.send(dataHandler.getPacket(PROPULSION));
-        usleep(100000);
+        usleep(500000);
     }
 
     return 0;

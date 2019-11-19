@@ -20,7 +20,7 @@
 DataHandler::DataHandler() : dataHandler(NBR_OF_TYPE, nullptr), lastPacketRx(GPSID) {
     // Create your RF Packet Datagram here
 
-    //// Packet Type GPS
+    //// Packet Type n° 1 GPS
     Datagram* datagram1 = new Datagram;
     datagram1->add(new PacketType(GPSID));
     datagram1->add(new GPS);
@@ -38,8 +38,7 @@ DataHandler::DataHandler() : dataHandler(NBR_OF_TYPE, nullptr), lastPacketRx(GPS
     //// Packet Type n°3
     Datagram* datagram3 = new Datagram;
     datagram3->add(new PacketType(AVIONICS));
-    datagram2->add(new States({1, 1, 1, 1, 0, 0, 1, 0}));
-    //datagram3->add(new Picture(100));
+    datagram3->add(new States({1, 1, 1, 1, 0, 0, 1, 0}));
     dataHandler[AVIONICS] = datagram3;
 
     //// Packet Type n°4
@@ -48,6 +47,11 @@ DataHandler::DataHandler() : dataHandler(NBR_OF_TYPE, nullptr), lastPacketRx(GPS
     datagram4->add(new PressureData);
     datagram4->add(new PressureData);
     dataHandler[PROPULSION] = datagram4;
+
+    //// Packet Type n°5
+    Datagram* datagram5 = new Datagram;
+    datagram5->add(new Picture(100));
+    dataHandler[IMAGE] = datagram5;
 }
 
 DataHandler::~DataHandler() {
@@ -76,6 +80,6 @@ void DataHandler::setPacket(Packet &packet) {
     dataHandler[lastPacketRx]->parse();
 }
 
-void DataHandler::print() const {
+void DataHandler::printLastRxPacket() const {
     dataHandler[lastPacketRx]->print();
 }

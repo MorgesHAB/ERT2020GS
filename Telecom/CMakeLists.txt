@@ -3,15 +3,17 @@ project(Telecom)
 
 if (USE_LORA)
     add_subdirectory(RFmodem/lib/RadioHead)
+    file(GLOB SOURCES_RF RFmodem/LoRa.cpp)
 endif (USE_LORA)
 if (USE_XBEE)
     add_subdirectory(RFmodem/lib/serial)
+    file(GLOB SOURCES_RF RFmodem/XBee.cpp)
 endif (USE_XBEE)
 
 file(GLOB SOURCES DataStructures/*.cpp RFmodem/*.cpp Serializer/*.cpp
                   DataHandler/*.cpp)
 
-add_library(${PROJECT_NAME} ${SOURCES})
+add_library(${PROJECT_NAME} ${SOURCES} ${SOURCES_RF})
 
 target_include_directories(${PROJECT_NAME} PUBLIC DataStructures)
 target_include_directories(${PROJECT_NAME} PUBLIC RFmodem)

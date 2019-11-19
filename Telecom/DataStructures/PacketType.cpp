@@ -33,6 +33,8 @@ void PacketType::print() const {
             break;
         case PROPULSION: std::cout << "Propulsion";
             break;
+        case IMAGE: std::cout << "Image";
+            break;
         default: std::cout << "Unknown";
     }
     std::cout << std::endl;

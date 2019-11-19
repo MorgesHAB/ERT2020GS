@@ -15,8 +15,8 @@
 #include "Datagram.h"
 
 enum PacketID {
-    GPSID = 1, PAYLOAD, AVIONICS, PROPULSION,
-    NBR_OF_TYPE = 4
+    GPSID, PAYLOAD, AVIONICS, PROPULSION, IMAGE,
+    NBR_OF_TYPE  // <-- size of the vector
 };
 
 class DataHandler {
@@ -30,7 +30,7 @@ public:
     Packet &getPacket(PacketID type);
     void setPacket(Packet &packet);
 
-    void print() const;
+    void printLastRxPacket() const;
 
 private:
     std::vector<Datagram*> dataHandler;
