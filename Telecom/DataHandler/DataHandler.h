@@ -14,8 +14,8 @@
 #include <vector>
 #include "Datagram.h"
 
-enum PacketType {
-    GPS, PAYLOAD, AVIONICS, PROPULSION,
+enum PacketID {
+    GPSID, PAYLOAD, AVIONICS, PROPULSION,
     NBR_OF_TYPE = 4
 };
 
@@ -24,10 +24,10 @@ public:
     DataHandler();
     virtual ~DataHandler();
 
-    void update(PacketType type);
-    void parse(PacketType type);
-    void print(PacketType type) const;
-    Packet &getPacket(PacketType type);
+    void update(PacketID type);
+    void parse(PacketID type);
+    void print(PacketID type) const;
+    Packet &getPacket(PacketID type);
 
 private:
     std::vector<Datagram*> dataHandler;

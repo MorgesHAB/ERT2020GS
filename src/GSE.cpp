@@ -18,8 +18,10 @@ int main() {
     DataHandler dataHandler;
 
     while (true) {
-        dataHandler.update(GPS);
-        loRa.send(dataHandler.getPacket(GPS));
+        dataHandler.update(GPSID);
+        loRa.send(dataHandler.getPacket(GPSID));
+        dataHandler.update(PAYLOAD);
+        loRa.send(dataHandler.getPacket(PAYLOAD));
         //usleep(100000);
     }
 

@@ -1,8 +1,12 @@
 cmake_minimum_required(VERSION 3.6.2)
 project(Telecom)
 
-add_subdirectory(RFmodem/lib/RadioHead)
-add_subdirectory(RFmodem/lib/serial)
+if (USE_LORA)
+    add_subdirectory(RFmodem/lib/RadioHead)
+endif (USE_LORA)
+if (USE_XBEE)
+    add_subdirectory(RFmodem/lib/serial)
+endif (USE_XBEE)
 
 file(GLOB SOURCES DataStructures/*.cpp RFmodem/*.cpp Serializer/*.cpp
                   DataHandler/*.cpp)
@@ -16,8 +20,15 @@ target_include_directories(${PROJECT_NAME} PUBLIC Serializer)
 target_include_directories(${PROJECT_NAME} PUBLIC DataHandler)
 
 target_link_libraries(${PROJECT_NAME} gps) # GPS
+
+if (USE_LORA)
 target_link_libraries(${PROJECT_NAME} RadioHead) # LoRa
+endif (USE_LORA)
+
 # Xbee serial
-include_directories(${CMAKE_BINARY_DIR}/serial-src/include/)
-target_link_libraries(${PROJECT_NAME} serial)
+if (USE_XBEE)
+    include_directories(${CMAKE_BINARY_DIR}/serial-src/include/)
+    target_link_libraries(${PROJECT_NAME} serial)
+endif (USE_XBEE)
+
 

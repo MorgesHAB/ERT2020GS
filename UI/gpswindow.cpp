@@ -21,11 +21,11 @@ void GPSWindow::push_data(){
     static LoRa loRa;
     static DataHandler dataHandler;
 
-    if (loRa.receive(dataHandler.getPacket(GPS))) {
+    if (loRa.receive(dataHandler.getPacket(GPSID))) {
         std::cout << "LoRa last RSSI : " << loRa.getRSSI() << " dBm" << std::endl;
-        dataHandler.parse(GPS);
-        dataHandler.print(GPS);
-        GPS* gps(dynamic_cast<GPS*>(dataHandler.getPacket(GPS)[0]));
+        dataHandler.parse(GPSID);
+        dataHandler.print(GPSID);
+        GPS* gps(dynamic_cast<GPS*>(dataHandler.getPacket(GPSID)[0]));
         this->altitude_lcd->display(gps->getGpsData().altitude);
         this->speed_lcd->display(gps->getGpsData().speed);
         this->latitude_panel->setText(QString::number(gps->getGpsData().latitude) + "<sup>o</sup>");

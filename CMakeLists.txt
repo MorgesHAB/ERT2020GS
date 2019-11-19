@@ -3,6 +3,10 @@ project(ERT2020GS)
 
 set(CMAKE_CXX_STANDARD 11)
 
+set(USE_GUI OFF)
+set(USE_LORA ON)
+set(USE_XBEE ON)
+
 add_subdirectory(Telecom)
 
 add_executable(${PROJECT_NAME} src/GSE.cpp)
