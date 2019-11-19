@@ -38,7 +38,8 @@ DataHandler::DataHandler() : dataHandler(NBR_OF_TYPE, nullptr), lastPacketRx(GPS
     //// Packet Type n°3
     Datagram* datagram3 = new Datagram;
     datagram3->add(new PacketType(AVIONICS));
-    datagram3->add(new Picture(100));
+    datagram2->add(new States({1, 1, 1, 1, 0, 0, 1, 0}));
+    //datagram3->add(new Picture(100));
     dataHandler[AVIONICS] = datagram3;
 
     //// Packet Type n°4
