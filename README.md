@@ -3,10 +3,12 @@
 # EPFL Rocket Team - <em>Bella Lui Project 2020</em>
 
 ### Goal 
-Spaceport America Cup competition - Launch a Rocket to the exact altitude of 10'000 feets
+Spaceport America Cup competition - Launch a Rocket to the exact altitude of 10'000 feets  
+SRAD Hybrid Engine category. 
+For more informations : https://epflrocketteam.ch/fr/ :rocket:
 
 ### Description
-Code of the <b>Ground Segment system</b> which will run on a Raspberry Pi 4 :rocket:
+Code of the <b>Ground Segment system</b> which will run on a Raspberry Pi 4 with XBee RF modems.
 
 -----------------------------------------------------------------
 ## Prerequisites
