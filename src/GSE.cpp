@@ -16,6 +16,7 @@
 
 #include <LoRa.h>
 #include <DataHandler.h>
+#include <PacketType.h>
 
 
 int main(int argc, char** argv) {
@@ -29,6 +30,8 @@ int main(int argc, char** argv) {
         PacketID type = (PacketID) atoi(argv[1]);
         dataHandler.update(type);
         loRa.send(dataHandler.getPacket(type));
+        PacketType(type).print();
+        std::cout << " sent" << std::endl;
         return 0;
     }
 
