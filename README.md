@@ -96,7 +96,21 @@ Move to the root folder of the project and run the bash to build the executable 
 ```console
 sudo bash autoBuild.sh
 ```
-
+-----------------------------------------------------------------
+## Run software
+After having run the autoBuild.sh script correctly (no errors), three executable should have been created:  
+Transmitter modem 
+```console
+./GSE
+```
+Receiver modem on terminal
+```console
+./GST
+```
+Receiver modem with Graphical User Interface
+```console
+./ERT2020GS
+```
 -----------------------------------------------------------------
 ## How to use the software
 Create a `main.cpp` file. Add a Packet instance and your Transceiver instance 
@@ -128,8 +142,47 @@ int main() {
 }
 ```
 
-If you want to develop some more complex data 
-structure, see GPS class as an example.
+If you want to develop some more complex data structure, you have to follow this template:
+```cpp
+// Pattern class
+#include <Data.h>
+
+class MyData : public Data {         // must inherite of the super class Data
+public:
+    void write(Packet& packet) override;
+    void parse(Packet& packet) override;
+    void update() override;
+    void print() const override;
+
+private:
+    float nbr;
+    int x;
+    char id;
+    // ... Your class attributes
+};
+```
+Then choose the data you want to transmit for example nbr & x  
+So you just need to implement the write & parse function by adding 
+```cpp
+void MyData::write(Packet &packet) {
+    packet.write(nbr);  // Use low level function to write bit to bit the RFpacket
+    packet.write(x);
+}
+// Now in same same data order :
+void MyData::parse(Packet &packet) {
+    packet.parse(nbr);  // Use low level function to parse bit to bit the RFpacket
+    packet.parse(x);
+}
+```
+Finally use std::cout for the print() function & update() your data as you need.
+
+Now you can create your own Datagram in the [constructor of DataHandler](Telecom/DataHandler/DataHandler.cpp)
+After adding a new PacketID in [DataHandler.h](Telecom/DataHandler/DataHandler.h)
+```cpp
+enum PacketID {
+    GPSID, ..., MY_DATA_TYPE,
+};
+```
 
 -----------------------------------------------------------------
 ## Repository organization
@@ -141,12 +194,23 @@ structure, see GPS class as an example.
         * index.html // open this file on a web browser 
                 after cloning the project, to read the doxygen documentation 
         * ...
-  * lib
-    * ... // the RadioHead library required for the LoRa class
   * src
-    * ... // all the modules
     * GSE.cpp // main() for the transmitter
     * GST.cpp // main() for the Receiver
+  * Telecom // Telecommunication Objects
+    * DataHandler
+    * DataStructures
+    * RFmodem
+      * lib
+        * serial // library for XBee module
+        * RadioHead // library for LoRa module
+      * ... // Your RFmodem classes 
+    * Serializer
+  * UI
+    * main.cc // Receiver with Qt Gui
+    * ... // gui classes
+  * CmakeLists.txt // Compilation
+  * autoBuild.sh // bash script to compile the software : `bash autoBuild.sh`
 
 
 -----------------------------------------------------------------
