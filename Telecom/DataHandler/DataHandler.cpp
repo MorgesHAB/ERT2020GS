@@ -17,10 +17,11 @@
 #include "DataHandler.h"
 
 
-DataHandler::DataHandler() : dataHandler(NBR_OF_TYPE, new Datagram), lastRxID(GPSID) {
+DataHandler::DataHandler() : dataHandler(NBR_OF_TYPE, nullptr), lastRxID(GPSID) {
     // Create your RF Packet Datagram here
     //default protocol add packet Type (& after Rx address)
     for (uint8_t id(0); id < NBR_OF_TYPE; ++id) {
+        dataHandler[id] = new Datagram;
         dataHandler[id]->add(new PacketType(id));
     }
 

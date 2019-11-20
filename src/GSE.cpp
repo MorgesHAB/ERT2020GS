@@ -31,7 +31,6 @@ int main(int argc, char** argv) {
         dataHandler.update(type);
         loRa.send(dataHandler.getPacket(type));
         PacketType(type).print();
-        std::cout << " sent" << std::endl;
         return 0;
     }
 
