@@ -50,7 +50,8 @@ DataHandler::DataHandler() : dataHandler(NBR_OF_TYPE, nullptr), lastPacketRx(GPS
 
     //// Packet Type n°5
     Datagram* datagram5 = new Datagram;
-    datagram5->add(new Picture(100));
+    datagram5->add(new PressureData);
+    //datagram5->add(new Picture(100));
     dataHandler[IMAGE] = datagram5;
 }
 
