@@ -10,7 +10,7 @@ GPSWindow::GPSWindow(uint32_t refresh_rate) : timer_(new QTimer(this))
     timer_->start(refresh_rate);
 }
 
-void update() {
+void GPSWindow::update() {
     this->push_data();
     this->QWidget::update();
 }
@@ -18,7 +18,6 @@ void update() {
 void GPSWindow::push_data() {
 
     if (loRa.receive(dataHandler.getPacket(GPSID))) {
-        std::cout << "LoRa last RSSI : " << loRa.getRSSI() << " dBm" << std::endl;
         dataHandler.parse(GPSID);
         dataHandler.print(GPSID);
         // Test V.0 - Dirty

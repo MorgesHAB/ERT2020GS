@@ -31,7 +31,7 @@ int main() {
     while (true) {
         if (loRa.receive(dataHandler)) {
             dataHandler.printLastRxPacket();
-            uint8_t id(dataHandler.getLastPacketRx());
+            uint8_t id(dataHandler.getLastRxID());
             dataHandler.update((PacketID) ((++id) % NBR_OF_TYPE));
             loRa.send(dataHandler.getPacket((PacketID) (id % NBR_OF_TYPE)));
         }
