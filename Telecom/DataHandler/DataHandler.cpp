@@ -83,3 +83,7 @@ void DataHandler::setPacket(Packet &packet) {
 void DataHandler::printLastRxPacket() const {
     dataHandler[lastPacketRx]->print();
 }
+
+const std::vector<Data *> &DataHandler::getDatagram(PacketID type) {
+    return dataHandler[type]->getDatagram();
+}

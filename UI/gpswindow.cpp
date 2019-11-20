@@ -25,7 +25,8 @@ void GPSWindow::push_data(){
         std::cout << "LoRa last RSSI : " << loRa.getRSSI() << " dBm" << std::endl;
         dataHandler.parse(GPSID);
         dataHandler.print(GPSID);
-        GPS* gps(dynamic_cast<GPS*>(dataHandler.getPacket(GPSID)[0]));
+        // Test V.0 - Dirty
+        GPS* gps(dynamic_cast<GPS*>(dataHandler.getDatagram(GPSID)[1]));
         this->altitude_lcd->display(gps->getGpsData().altitude);
         this->speed_lcd->display(gps->getGpsData().speed);
         this->latitude_panel->setText(QString::number(gps->getGpsData().latitude) + "<sup>o</sup>");
