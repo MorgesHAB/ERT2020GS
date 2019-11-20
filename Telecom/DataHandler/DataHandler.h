@@ -33,6 +33,8 @@ public:
 
     void printLastRxPacket() const;
 
+    PacketID getLastPacketRx() const;
+
 private:
     std::vector<Datagram*> dataHandler;
     PacketID lastPacketRx;

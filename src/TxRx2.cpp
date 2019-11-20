@@ -27,15 +27,15 @@ int main() {
 
     std::cout << "\nLoRa Reception is active... waiting for RF packet..." << std::endl;
 
-    dataHandler.update(PAYLOAD);
-    loRa.send(dataHandler.getPacket(PAYLOAD));
+    dataHandler.update(GPSID);
+    loRa.send(dataHandler.getPacket(GPSID));
     // Automatic detection of the packet type - then auto parse
     while (true) {
         if (loRa.receive(dataHandler)) {
             dataHandler.printLastRxPacket();
-            dataHandler.update(PAYLOAD);
-            loRa.send(dataHandler.getPacket(PAYLOAD));
-            usleep(1000000); // 1 second
+            uint8_t id(dataHandler.getLastPacketRx());
+            dataHandler.update((PacketID) ((++id) % NBR_OF_TYPE));
+            loRa.send(dataHandler.getPacket((PacketID) (id % NBR_OF_TYPE)));
         }
         usleep(10); //microseconds
     }

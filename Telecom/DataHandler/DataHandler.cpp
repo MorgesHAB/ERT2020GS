@@ -87,3 +87,7 @@ void DataHandler::printLastRxPacket() const {
 const std::vector<Data *> &DataHandler::getDatagram(PacketID type) {
     return dataHandler[type]->getDatagram();
 }
+
+PacketID DataHandler::getLastPacketRx() const {
+    return lastPacketRx;
+}
