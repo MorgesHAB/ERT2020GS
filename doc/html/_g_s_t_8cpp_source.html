@@ -91,41 +91,33 @@ $(document).ready(function(){initNavTree('_g_s_t_8cpp_source.html','');});
 </div><!--header-->
 <div class="contents">
 <a href="_g_s_t_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_packet_8h.html">Packet.h</a>&quot;</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_g_p_s_8h.html">GPS.h</a>&quot;</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_lo_ra_8h.html">LoRa.h</a>&quot;</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">using namespace </span>std;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="_g_s_t_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">   17</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="_g_s_t_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a>() {</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <a class="code" href="class_packet.html">Packet</a> packetRx;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="class_g_p_s.html">GPS</a> gpsData;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="class_lo_ra.html">LoRa</a> loRa;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;LoRa.h&gt;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="_data_handler_8h.html">DataHandler.h</a>&gt;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordflow">while</span> (<span class="keyword">true</span>) {</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keywordflow">if</span> (loRa.<a class="code" href="class_lo_ra.html#a4666f056ac5844cdbef506d24511731a">receive</a>(packetRx)) {</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            std::cout &lt;&lt; <span class="stringliteral">&quot;LoRa last RSSI : &quot;</span> &lt;&lt; loRa.<a class="code" href="class_lo_ra.html#a06ec3ef676c9b4c1efd670440908ae3f">getRSSI</a>() &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            gpsData.<a class="code" href="class_g_p_s.html#afaf832890cdf9a406629d3e2f4d7809d">parse</a>(packetRx);</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            gpsData.<a class="code" href="class_g_p_s.html#a07db0da660df474c3ad0abeef8616aea">print</a>();</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        }</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        usleep(1); <span class="comment">//microseconds</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    }</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;}</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="_g_s_t_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">   22</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="_g_s_t_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a>() {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="comment">// Your RF modem</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    LoRa loRa;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="comment">// RF packet handler</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <a class="code" href="class_data_handler.html">DataHandler</a> dataHandler;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;\nLoRa Reception is active... waiting for RF packet...&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="comment">// Automatic detection of the packet type - then auto parse</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordflow">while</span> (<span class="keyword">true</span>) {</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keywordflow">if</span> (loRa.receive(dataHandler)) {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            dataHandler.<a class="code" href="class_data_handler.html#a724f268d281de87ee7c64603c1e52249">printLastRxPacket</a>();</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        }</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        usleep(10); <span class="comment">//microseconds</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    }</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclass_lo_ra_html_a06ec3ef676c9b4c1efd670440908ae3f"><div class="ttname"><a href="class_lo_ra.html#a06ec3ef676c9b4c1efd670440908ae3f">LoRa::getRSSI</a></div><div class="ttdeci">int getRSSI()</div><div class="ttdef"><b>Definition:</b> <a href="_lo_ra_8cpp_source.html#l00056">LoRa.cpp:56</a></div></div>
-<div class="ttc" id="aclass_lo_ra_html"><div class="ttname"><a href="class_lo_ra.html">LoRa</a></div><div class="ttdef"><b>Definition:</b> <a href="_lo_ra_8h_source.html#l00016">LoRa.h:16</a></div></div>
-<div class="ttc" id="aclass_g_p_s_html"><div class="ttname"><a href="class_g_p_s.html">GPS</a></div><div class="ttdef"><b>Definition:</b> <a href="_g_p_s_8h_source.html#l00017">GPS.h:17</a></div></div>
-<div class="ttc" id="a_g_s_t_8cpp_html_ae66f6b31b5ad750f1fe042a706a4e3d4"><div class="ttname"><a href="_g_s_t_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a></div><div class="ttdeci">int main()</div><div class="ttdef"><b>Definition:</b> <a href="_g_s_t_8cpp_source.html#l00017">GST.cpp:17</a></div></div>
-<div class="ttc" id="a_lo_ra_8h_html"><div class="ttname"><a href="_lo_ra_8h.html">LoRa.h</a></div><div class="ttdoc">LoRa module interface.</div></div>
-<div class="ttc" id="aclass_lo_ra_html_a4666f056ac5844cdbef506d24511731a"><div class="ttname"><a href="class_lo_ra.html#a4666f056ac5844cdbef506d24511731a">LoRa::receive</a></div><div class="ttdeci">bool receive(Packet &amp;packet)</div><div class="ttdef"><b>Definition:</b> <a href="_lo_ra_8cpp_source.html#l00044">LoRa.cpp:44</a></div></div>
-<div class="ttc" id="a_g_p_s_8h_html"><div class="ttname"><a href="_g_p_s_8h.html">GPS.h</a></div><div class="ttdoc">GPS module interface.</div></div>
-<div class="ttc" id="a_packet_8h_html"><div class="ttname"><a href="_packet_8h.html">Packet.h</a></div></div>
-<div class="ttc" id="aclass_g_p_s_html_afaf832890cdf9a406629d3e2f4d7809d"><div class="ttname"><a href="class_g_p_s.html#afaf832890cdf9a406629d3e2f4d7809d">GPS::parse</a></div><div class="ttdeci">void parse(Packet &amp;packet)</div><div class="ttdef"><b>Definition:</b> <a href="_g_p_s_8cpp_source.html#l00027">GPS.cpp:27</a></div></div>
-<div class="ttc" id="aclass_g_p_s_html_a07db0da660df474c3ad0abeef8616aea"><div class="ttname"><a href="class_g_p_s.html#a07db0da660df474c3ad0abeef8616aea">GPS::print</a></div><div class="ttdeci">void print() const</div><div class="ttdef"><b>Definition:</b> <a href="_g_p_s_8cpp_source.html#l00035">GPS.cpp:35</a></div></div>
-<div class="ttc" id="aclass_packet_html"><div class="ttname"><a href="class_packet.html">Packet</a></div><div class="ttdef"><b>Definition:</b> <a href="_packet_8h_source.html#l00027">Packet.h:27</a></div></div>
+<div class="ttc" id="a_data_handler_8h_html"><div class="ttname"><a href="_data_handler_8h.html">DataHandler.h</a></div><div class="ttdoc">DataHandler module interface.</div></div>
+<div class="ttc" id="aclass_data_handler_html"><div class="ttname"><a href="class_data_handler.html">DataHandler</a></div><div class="ttdef"><b>Definition:</b> <a href="_data_handler_8h_source.html#l00022">DataHandler.h:22</a></div></div>
+<div class="ttc" id="a_g_s_t_8cpp_html_ae66f6b31b5ad750f1fe042a706a4e3d4"><div class="ttname"><a href="_g_s_t_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a></div><div class="ttdeci">int main()</div><div class="ttdef"><b>Definition:</b> <a href="_g_s_t_8cpp_source.html#l00022">GST.cpp:22</a></div></div>
+<div class="ttc" id="aclass_data_handler_html_a724f268d281de87ee7c64603c1e52249"><div class="ttname"><a href="class_data_handler.html#a724f268d281de87ee7c64603c1e52249">DataHandler::printLastRxPacket</a></div><div class="ttdeci">void printLastRxPacket() const</div><div class="ttdef"><b>Definition:</b> <a href="_data_handler_8cpp_source.html#l00083">DataHandler.cpp:83</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

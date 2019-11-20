@@ -1,8 +1,7 @@
 #include "gpswindow.h"
 #include <iostream>
 #include <QString>
-#include <LoRa.h>
-#include <DataHandler.h>
+#include <GPS.h>
 
 GPSWindow::GPSWindow(uint32_t refresh_rate) : timer_(new QTimer(this))
 {
@@ -11,15 +10,12 @@ GPSWindow::GPSWindow(uint32_t refresh_rate) : timer_(new QTimer(this))
     timer_->start(refresh_rate);
 }
 
-void GPSWindow::push_data(){
-    /**
-    * 1- Include the header containing data getter methods.
-    * 2- Change GET_ALTITUDE, GET_SPEED, etc. with corresponding getter methods.
-    * 3- Uncomment the instructions run the QTApplication instance on main and have fun :)
-    * 
-    */
-    static LoRa loRa;
-    static DataHandler dataHandler;
+void update() {
+    this->push_data();
+    this->QWidget::update();
+}
+
+void GPSWindow::push_data() {
 
     if (loRa.receive(dataHandler.getPacket(GPSID))) {
         std::cout << "LoRa last RSSI : " << loRa.getRSSI() << " dBm" << std::endl;

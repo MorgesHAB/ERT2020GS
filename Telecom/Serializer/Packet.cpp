@@ -47,6 +47,7 @@ uint8_t Packet::getSize() const {
 }
 
 uint8_t Packet::getType() {
+    // Required that the type is the first byte to read in tha datagram
     uint8_t type;
     parse(type);
     packetPosition = packet;

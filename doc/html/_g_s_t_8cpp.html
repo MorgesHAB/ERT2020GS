@@ -95,21 +95,21 @@ $(document).ready(function(){initNavTree('_g_s_t_8cpp.html','');});
 
 <p>Ground Station Transceiver.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="_packet_8h_source.html">Packet.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_g_p_s_8h_source.html">GPS.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_lo_ra_8h_source.html">LoRa.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &lt;LoRa.h&gt;</code><br />
+<code>#include &lt;<a class="el" href="_data_handler_8h_source.html">DataHandler.h</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for GST.cpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="_g_s_t_8cpp__incl.png" border="0" usemap="#_c_1_2_users_2disoz_2_documents_2_git_hub_2_e_r_t2020_g_s_2src_2_g_s_t_8cpp" alt=""/></div>
 <map name="_c_1_2_users_2disoz_2_documents_2_git_hub_2_e_r_t2020_g_s_2src_2_g_s_t_8cpp" id="_c_1_2_users_2disoz_2_documents_2_git_hub_2_e_r_t2020_g_s_2src_2_g_s_t_8cpp">
-<area shape="rect" title="Ground Station Transceiver." alt="" coords="13,5,231,47"/>
-<area shape="rect" href="_packet_8h.html" title=" " alt="" coords="85,169,159,196"/>
-<area shape="rect" href="_g_p_s_8h.html" title="GPS module interface." alt="" coords="23,95,85,121"/>
-<area shape="rect" href="_lo_ra_8h.html" title="LoRa module interface." alt="" coords="160,95,223,121"/>
-<area shape="rect" title=" " alt="" coords="86,244,158,271"/>
-<area shape="rect" title=" " alt="" coords="5,169,60,196"/>
-<area shape="rect" title=" " alt="" coords="184,169,273,196"/>
+<area shape="rect" title="Ground Station Transceiver." alt="" coords="5,5,224,47"/>
+<area shape="rect" title=" " alt="" coords="30,95,93,121"/>
+<area shape="rect" href="_data_handler_8h.html" title="DataHandler module interface." alt="" coords="117,95,221,121"/>
+<area shape="rect" title=" " alt="" coords="100,244,156,271"/>
+<area shape="rect" href="_datagram_8h.html" title="Datagram module interface." alt="" coords="166,169,255,196"/>
+<area shape="rect" href="_data_8h.html" title="Data module interface." alt="" coords="181,244,241,271"/>
+<area shape="rect" href="_packet_8h.html" title=" " alt="" coords="207,319,281,345"/>
+<area shape="rect" title=" " alt="" coords="208,393,280,420"/>
 </map>
 </div>
 </div>
@@ -122,7 +122,13 @@ Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Ground Station Transceiver. </p>
-<dl class="section author"><dt>Author</dt><dd>ISOZ Lionel - EPFL EL BA3 </dd></dl>
+<pre class="fragment"> ______ _____ _______      _____  _____     ___   ___ ___   ___
+|  ____|  __ \__   __|    / ____|/ ____|   |__ \ / _ \__ \ / _ \
+| |__  | |__) | | |      | |  __| (___        ) | | | | ) | | | |
+|  __| |  _  /  | |      | | |_ |\___ \      / /| | | |/ /| | | |
+| |____| | \ \  | |      | |__| |____) |    / /_| |_| / /_| |_| |
+|______|_|  \_\ |_|       \_____|_____/    |____|\___/____|\___/
+</pre><dl class="section author"><dt>Author</dt><dd>ISOZ Lionel - EPFL EL BA3 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>04.11.2019 </dd></dl>
 
 <p class="definition">Definition in file <a class="el" href="_g_s_t_8cpp_source.html">GST.cpp</a>.</p>
@@ -142,20 +148,14 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_g_s_t_8cpp_source.html#l00017">17</a> of file <a class="el" href="_g_s_t_8cpp_source.html">GST.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_s_t_8cpp_source.html#l00022">22</a> of file <a class="el" href="_g_s_t_8cpp_source.html">GST.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="_g_s_t_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4_cgraph.png" border="0" usemap="#_g_s_t_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4_cgraph" alt=""/></div>
 <map name="_g_s_t_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4_cgraph" id="_g_s_t_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4_cgraph">
-<area shape="rect" title=" " alt="" coords="5,81,56,108"/>
-<area shape="rect" href="class_lo_ra.html#a06ec3ef676c9b4c1efd670440908ae3f" title=" " alt="" coords="104,5,212,32"/>
-<area shape="rect" href="class_g_p_s.html#afaf832890cdf9a406629d3e2f4d7809d" title=" " alt="" coords="113,56,203,83"/>
-<area shape="rect" href="class_g_p_s.html#a07db0da660df474c3ad0abeef8616aea" title=" " alt="" coords="117,107,199,133"/>
-<area shape="rect" href="class_lo_ra.html#a4666f056ac5844cdbef506d24511731a" title=" " alt="" coords="108,157,208,184"/>
-<area shape="rect" href="class_packet.html#a1880fd8b1b5d54e3a341ec7fe2a43305" title=" " alt="" coords="279,56,382,83"/>
-<area shape="rect" href="class_packet.html#a18e22ca27c4fdfe87d711a18e6444dad" title=" " alt="" coords="265,132,396,159"/>
-<area shape="rect" href="class_packet.html#a0279158057d8be98482f7f5b68c02de5" title=" " alt="" coords="260,183,401,209"/>
+<area shape="rect" title=" " alt="" coords="5,13,56,39"/>
+<area shape="rect" href="class_data_handler.html#a724f268d281de87ee7c64603c1e52249" title=" " alt="" coords="104,5,271,47"/>
 </map>
 </div>
 

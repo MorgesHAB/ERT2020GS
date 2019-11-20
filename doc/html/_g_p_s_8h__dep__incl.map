@@ -1,4 +1,6 @@
-<map id="C:/Users/disoz/Documents/GitHub/ERT2020GS/Objects/DataStructures/GPS.h" name="C:/Users/disoz/Documents/GitHub/ERT2020GS/Objects/DataStructures/GPS.h">
-<area shape="rect" id="node1" title="GPS module interface." alt="" coords="5,5,196,61"/>
-<area shape="rect" id="node2" href="$_g_p_s_8cpp.html" title="GPS module implementation." alt="" coords="5,109,196,165"/>
+<map id="C:/Users/disoz/Documents/GitHub/ERT2020GS/Telecom/DataStructures/GPS.h" name="C:/Users/disoz/Documents/GitHub/ERT2020GS/Telecom/DataStructures/GPS.h">
+<area shape="rect" id="node1" title="GPS module interface." alt="" coords="281,5,476,61"/>
+<area shape="rect" id="node2" href="$gpswindow_8cpp.html" title=" " alt="" coords="5,117,256,158"/>
+<area shape="rect" id="node3" href="$_data_handler_8cpp.html" title="DataHandler module implementation." alt="" coords="280,109,477,165"/>
+<area shape="rect" id="node4" href="$_g_p_s_8cpp.html" title="GPS module implementation." alt="" coords="501,109,696,165"/>
 </map>

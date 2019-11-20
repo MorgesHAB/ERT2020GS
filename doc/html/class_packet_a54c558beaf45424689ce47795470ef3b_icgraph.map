@@ -1,5 +1,4 @@
 <map id="Packet::getSize" name="Packet::getSize">
-<area shape="rect" id="node1" title=" " alt="" coords="152,31,267,57"/>
-<area shape="rect" id="node2" href="$class_lo_ra.html#a67ffa798207c33293ad63721e1d0d643" title=" " alt="" coords="11,5,99,32"/>
-<area shape="rect" id="node3" href="$class_packet.html#ab69b4811d3878531ac371c35281072ae" title=" " alt="" coords="5,56,104,83"/>
+<area shape="rect" id="node1" title=" " alt="" coords="152,5,267,32"/>
+<area shape="rect" id="node2" href="$class_packet.html#ab69b4811d3878531ac371c35281072ae" title=" " alt="" coords="5,5,104,32"/>
 </map>

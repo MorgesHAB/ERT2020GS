@@ -95,21 +95,21 @@ $(document).ready(function(){initNavTree('_g_s_e_8cpp.html','');});
 
 <p>Ground Support Equipment Transceiver.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="_packet_8h_source.html">Packet.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_g_p_s_8h_source.html">GPS.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_lo_ra_8h_source.html">LoRa.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &lt;LoRa.h&gt;</code><br />
+<code>#include &lt;<a class="el" href="_data_handler_8h_source.html">DataHandler.h</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for GSE.cpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="_g_s_e_8cpp__incl.png" border="0" usemap="#_c_1_2_users_2disoz_2_documents_2_git_hub_2_e_r_t2020_g_s_2src_2_g_s_e_8cpp" alt=""/></div>
 <map name="_c_1_2_users_2disoz_2_documents_2_git_hub_2_e_r_t2020_g_s_2src_2_g_s_e_8cpp" id="_c_1_2_users_2disoz_2_documents_2_git_hub_2_e_r_t2020_g_s_2src_2_g_s_e_8cpp">
-<area shape="rect" title="Ground Support Equipment Transceiver." alt="" coords="11,5,233,47"/>
-<area shape="rect" href="_packet_8h.html" title=" " alt="" coords="85,169,159,196"/>
-<area shape="rect" href="_g_p_s_8h.html" title="GPS module interface." alt="" coords="23,95,85,121"/>
-<area shape="rect" href="_lo_ra_8h.html" title="LoRa module interface." alt="" coords="160,95,223,121"/>
-<area shape="rect" title=" " alt="" coords="86,244,158,271"/>
-<area shape="rect" title=" " alt="" coords="5,169,60,196"/>
-<area shape="rect" title=" " alt="" coords="184,169,273,196"/>
+<area shape="rect" title="Ground Support Equipment Transceiver." alt="" coords="5,5,227,47"/>
+<area shape="rect" title=" " alt="" coords="31,95,94,121"/>
+<area shape="rect" href="_data_handler_8h.html" title="DataHandler module interface." alt="" coords="119,95,223,121"/>
+<area shape="rect" title=" " alt="" coords="101,244,157,271"/>
+<area shape="rect" href="_datagram_8h.html" title="Datagram module interface." alt="" coords="167,169,257,196"/>
+<area shape="rect" href="_data_8h.html" title="Data module interface." alt="" coords="182,244,242,271"/>
+<area shape="rect" href="_packet_8h.html" title=" " alt="" coords="208,319,283,345"/>
+<area shape="rect" title=" " alt="" coords="209,393,281,420"/>
 </map>
 </div>
 </div>
@@ -117,18 +117,24 @@ Include dependency graph for GSE.cpp:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_g_s_e_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a> ()</td></tr>
-<tr class="separator:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c04138a5bfe5d72780bb7e82a18e627"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_g_s_e_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a> (int argc, char **argv)</td></tr>
+<tr class="separator:a3c04138a5bfe5d72780bb7e82a18e627"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Ground Support Equipment Transceiver. </p>
-<dl class="section author"><dt>Author</dt><dd>ISOZ Lionel - EPFL EL BA3 </dd></dl>
+<pre class="fragment"> ______ _____ _______      _____  _____     ___   ___ ___   ___
+|  ____|  __ \__   __|    / ____|/ ____|   |__ \ / _ \__ \ / _ \
+| |__  | |__) | | |      | |  __| (___        ) | | | | ) | | | |
+|  __| |  _  /  | |      | | |_ |\___ \      / /| | | |/ /| | | |
+| |____| | \ \  | |      | |__| |____) |    / /_| |_| / /_| |_| |
+|______|_|  \_\ |_|       \_____|_____/    |____|\___/____|\___/
+</pre><dl class="section author"><dt>Author</dt><dd>ISOZ Lionel - EPFL EL BA3 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>04.11.2019 </dd></dl>
 
 <p class="definition">Definition in file <a class="el" href="_g_s_e_8cpp_source.html">GSE.cpp</a>.</p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="ae66f6b31b5ad750f1fe042a706a4e3d4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae66f6b31b5ad750f1fe042a706a4e3d4">&#9670;&nbsp;</a></span>main()</h2>
+<a id="a3c04138a5bfe5d72780bb7e82a18e627"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c04138a5bfe5d72780bb7e82a18e627">&#9670;&nbsp;</a></span>main()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -136,24 +142,32 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int main </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>argv</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_g_s_e_8cpp_source.html#l00015">15</a> of file <a class="el" href="_g_s_e_8cpp_source.html">GSE.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_g_s_e_8cpp_source.html#l00021">21</a> of file <a class="el" href="_g_s_e_8cpp_source.html">GSE.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="_g_s_e_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4_cgraph.png" border="0" usemap="#_g_s_e_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4_cgraph" alt=""/></div>
-<map name="_g_s_e_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4_cgraph" id="_g_s_e_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4_cgraph">
-<area shape="rect" title=" " alt="" coords="5,81,56,108"/>
-<area shape="rect" href="class_lo_ra.html#a67ffa798207c33293ad63721e1d0d643" title=" " alt="" coords="104,56,192,83"/>
-<area shape="rect" href="class_g_p_s.html#ae9e4a5b29829b83c86b29407ec3fcc80" title=" " alt="" coords="105,107,191,133"/>
-<area shape="rect" href="class_packet.html#a18e22ca27c4fdfe87d711a18e6444dad" title=" " alt="" coords="240,5,371,32"/>
-<area shape="rect" href="class_packet.html#a54c558beaf45424689ce47795470ef3b" title=" " alt="" coords="248,56,363,83"/>
-<area shape="rect" href="class_packet.html#a7ae864e00d852062e614149ad1c38f2b" title=" " alt="" coords="256,107,355,133"/>
+<div class="center"><img src="_g_s_e_8cpp_a3c04138a5bfe5d72780bb7e82a18e627_cgraph.png" border="0" usemap="#_g_s_e_8cpp_a3c04138a5bfe5d72780bb7e82a18e627_cgraph" alt=""/></div>
+<map name="_g_s_e_8cpp_a3c04138a5bfe5d72780bb7e82a18e627_cgraph" id="_g_s_e_8cpp_a3c04138a5bfe5d72780bb7e82a18e627_cgraph">
+<area shape="rect" title=" " alt="" coords="5,31,56,57"/>
+<area shape="rect" href="class_data_handler.html#ae318d2e644c345fa6bcacc7a714181e9" title=" " alt="" coords="104,5,264,32"/>
+<area shape="rect" href="class_data_handler.html#a345c375e4c8c08926828124a09ee96ed" title=" " alt="" coords="114,56,254,83"/>
 </map>
 </div>
 

@@ -4,6 +4,7 @@ var class_packet =
     [ "~Packet", "class_packet.html#a48938391fb7e07460bb0e01198ae5ede", null ],
     [ "getPacket", "class_packet.html#a18e22ca27c4fdfe87d711a18e6444dad", null ],
     [ "getSize", "class_packet.html#a54c558beaf45424689ce47795470ef3b", null ],
+    [ "getType", "class_packet.html#adb0f0ba264c79fd68bfba89b0d23c0e9", null ],
     [ "parse", "class_packet.html#a1880fd8b1b5d54e3a341ec7fe2a43305", null ],
     [ "parse", "class_packet.html#ad39b5491b7ff0c75842d5ec17ccefaed", null ],
     [ "restart", "class_packet.html#af6f5fc43c3b9027d09f32835a1d74ad0", null ],

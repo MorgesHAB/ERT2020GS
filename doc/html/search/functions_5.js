@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['send_87',['send',['../class_lo_ra.html#a67ffa798207c33293ad63721e1d0d643',1,'LoRa']]],
-  ['states_88',['States',['../class_states.html#a9fd32ec5502289301066ea34c7102175',1,'States']]]
+  ['restart_140',['restart',['../class_packet.html#af6f5fc43c3b9027d09f32835a1d74ad0',1,'Packet']]],
+  ['retranslateui_141',['retranslateUi',['../class_ui___form.html#ad05dfdbcadce5efd8a7e8da759e41aa4',1,'Ui_Form']]]
 ];
