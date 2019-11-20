@@ -76,7 +76,7 @@ Packet &DataHandler::getPacket(PacketID type) {
 }
 
 void DataHandler::setPacket(Packet &packet) {
-    lastRxID = (PacketID) packet.getType();
+    lastRxID = (PacketID) (packet.getType() % NBR_OF_TYPE); // tmp avoid seg fault
     dataHandler[lastRxID]->getDataPacket() = packet;
     dataHandler[lastRxID]->parse();
 }
