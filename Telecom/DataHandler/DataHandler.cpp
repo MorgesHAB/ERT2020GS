@@ -17,46 +17,35 @@
 #include "DataHandler.h"
 
 
-DataHandler::DataHandler() : dataHandler(NBR_OF_TYPE, nullptr), lastRxID(GPSID) {
+DataHandler::DataHandler() : dataHandler(NBR_OF_TYPE, new Datagram), lastRxID(GPSID) {
     // Create your RF Packet Datagram here
+    //default protocol add packet Type (& after Rx address)
+    for (uint8_t id(0); id < NBR_OF_TYPE; ++id) {
+        dataHandler[id]->add(new PacketType(id));
+    }
 
     //// Packet Type n° 1 GPS
-    Datagram* datagram1 = new Datagram;
-    datagram1->add(new PacketType(GPSID));
-    datagram1->add(new GPS);
-    datagram1->add(new PressureData);
-    dataHandler[GPSID] = datagram1;
+    dataHandler[GPSID]->add(new GPS);
+    dataHandler[GPSID]->add(new PressureData);
 
     //// Packet Type n°2
-    Datagram* datagram2 = new Datagram;
-    datagram2->add(new PacketType(PAYLOAD));
-    datagram2->add(new PressureData);
-    datagram2->add(new IgnitionData);
-    datagram2->add(new States({1, 0, 1, 1, 0, 0, 1, 0}));
-    dataHandler[PAYLOAD] = datagram2;
+    dataHandler[PAYLOAD]->add(new PressureData);
+    dataHandler[PAYLOAD]->add(new IgnitionData);
+    dataHandler[PAYLOAD]->add(new States({1, 0, 1, 1, 0, 0, 1, 0}));
 
     //// Packet Type n°3
-    Datagram* datagram3 = new Datagram;
-    datagram3->add(new PacketType(AVIONICS));
-    datagram3->add(new States({1, 1, 1, 1, 0, 0, 1, 0}));
-    dataHandler[AVIONICS] = datagram3;
+    dataHandler[AVIONICS]->add(new States({1, 1, 1, 1, 0, 0, 1, 0}));
 
     //// Packet Type n°4
-    Datagram* datagram4 = new Datagram;
-    datagram4->add(new PacketType(PROPULSION));
-    datagram4->add(new PressureData);
-    datagram4->add(new PressureData);
-    dataHandler[PROPULSION] = datagram4;
+    dataHandler[PROPULSION]->add(new PressureData);
+    dataHandler[PROPULSION]->add(new PressureData);
 
     //// Packet Type n°5
-    Datagram* datagram5 = new Datagram;
-    datagram5->add(new PacketType(IMAGE));
-    datagram5->add(new PressureData);
-    datagram5->add(new PressureData);
-    datagram5->add(new PressureData);
-    datagram5->add(new PressureData);
-    //datagram5->add(new Picture(100));
-    dataHandler[IMAGE] = datagram5;
+    dataHandler[IMAGE]->add(new PressureData);
+    dataHandler[IMAGE]->add(new PressureData);
+    dataHandler[IMAGE]->add(new PressureData);
+    dataHandler[IMAGE]->add(new PressureData);
+    //dataHandler[IMAGE]->add(new Picture(100));
 }
 
 DataHandler::~DataHandler() {
