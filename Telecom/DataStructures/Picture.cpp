@@ -42,7 +42,7 @@ void Picture::parse(Packet &packet) {
 }
 
 void Picture::update() {
-    if (!pictureIsSending) {
+    /*if (!pictureIsSending) {
         fileName = fileName + std::to_string(++nbrSentImg);
         // Take a picture with the raspicam
         std::string command("raspistill -o " + fileName + ".jpg -hf -vf -w " +
@@ -51,7 +51,7 @@ void Picture::update() {
         system(command.c_str());
         std::cout << "New picture taken - " << fileName << ".jpg" << std::endl;
         pictureIsSending = true;
-    }
+    }*/
 }
 
 void Picture::print() const {
