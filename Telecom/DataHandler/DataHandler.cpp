@@ -26,7 +26,7 @@ DataHandler::DataHandler() : dataHandler(NBR_OF_TYPE, nullptr), lastRxID(GPSID) 
     }
 
     //// Packet Type n° 1 GPS
-    //dataHandler[GPSID]->add(new GPS);
+    dataHandler[GPSID]->add(new GPS);
     dataHandler[GPSID]->add(new PressureData);
 
     //// Packet Type n°2
@@ -69,9 +69,9 @@ Packet &DataHandler::getPacket(PacketID type) {
     return dataHandler[type]->getDataPacket();
 }
 
-void DataHandler::setPacket(Packet &packet) {
-    lastRxID = (PacketID) (packet.getType() % NBR_OF_TYPE); // tmp avoid seg fault
-    dataHandler[lastRxID]->getDataPacket() = packet;
+void DataHandler::setPacket(Packet* packet) {
+    lastRxID = (PacketID) (packet->getType() % NBR_OF_TYPE); // tmp avoid seg fault
+    dataHandler[lastRxID]->getDataPacket() = *packet;
     dataHandler[lastRxID]->parse();
 }
 

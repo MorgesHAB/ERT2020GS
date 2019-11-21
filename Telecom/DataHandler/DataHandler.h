@@ -29,7 +29,7 @@ public:
     void print(PacketID type) const;
     Packet &getPacket(PacketID type);
     const std::vector<Data*> &getDatagram(PacketID type);
-    void setPacket(Packet &packet);
+    void setPacket(Packet* packet);
 
     void printLastRxPacket() const;
 
