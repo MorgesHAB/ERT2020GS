@@ -15,6 +15,8 @@
 
 class PressureData : public Data {
 public:
+    PressureData();
+
     void write(Packet& packet) override;
     void parse(Packet& packet) override;
     void update() override;

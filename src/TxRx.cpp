@@ -17,7 +17,6 @@
 
 #include <LoRa.h>
 #include <DataHandler.h>
-#include <PacketType.h>
 
 
 int main() {
@@ -33,10 +32,9 @@ int main() {
         if (loRa.receive(dataHandler)) {
             dataHandler.printLastRxPacket();
             uint8_t id(dataHandler.getLastRxID());
+            usleep(500000);
             dataHandler.update((PacketID) ((++id) % NBR_OF_TYPE));
-            PacketType(id).print();
             loRa.send(dataHandler.getPacket((PacketID) (id % NBR_OF_TYPE)));
-            //usleep(500000);
         }
         usleep(10); //microseconds
     }

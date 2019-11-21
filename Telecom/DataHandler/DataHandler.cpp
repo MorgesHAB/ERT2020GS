@@ -26,7 +26,7 @@ DataHandler::DataHandler() : dataHandler(NBR_OF_TYPE, nullptr), lastRxID(GPSID) 
     }
 
     //// Packet Type n° 1 GPS
-    dataHandler[GPSID]->add(new GPS);
+    //dataHandler[GPSID]->add(new GPS);
     dataHandler[GPSID]->add(new PressureData);
 
     //// Packet Type n°2

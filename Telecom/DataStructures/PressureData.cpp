@@ -7,7 +7,13 @@
  * \date        11.11.2019	
  */
 
+#include <ctime>
 #include "PressureData.h"
+
+PressureData::PressureData() : pressure(0) {
+    srand(time(0)); // for simulation random
+}
+
 
 void PressureData::write(Packet &packet) {
     packet.write(pressure);
