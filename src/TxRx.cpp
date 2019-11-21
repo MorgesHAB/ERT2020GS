@@ -6,26 +6,45 @@
  *     | |____| | \ \  | |      | |__| |____) |    / /_| |_| / /_| |_| |
  *     |______|_|  \_\ |_|       \_____|_____/    |____|\___/____|\___/
  *
- * \file GST.cpp
+ * \file TxRx.cpp
  *
  * \brief Ground Station Transceiver
  *
  *
  * \author      ISOZ Lionel - EPFL EL BA3
- * \date        04.11.2019	
+ * \date        04.11.2019
+ *
+ * This test program can be use to test the communication between two LoRa modem
+ * Start the first LoRa with :     ./TxRx
+ * On the 2nd one run :            ./TxRx 0        // start to send packet type 0
+ * Now let the two modem communicate automatically. They will exchange some
+ * datagram together. In fact if one received the packetID n it will send the n + 1
+ * PacketID
+ *
  */
 
 #include <LoRa.h>
 #include <DataHandler.h>
 
 
-int main() {
+int main(int argc, char** argv) {
     // Your RF modem
     LoRa loRa;
     // RF packet handler
     DataHandler dataHandler;
 
     std::cout << "\nLoRa Reception is active... waiting for RF packet..." << std::endl;
+
+    // ./TxRx X        X = Packet Type nbr {1,2,3,4}
+    if (argc == 2) {
+        PacketID type = (PacketID) atoi(argv[1]);
+        if (type >= NBR_OF_TYPE || type < 0) {
+            std::cout << "Type invalid" << std::endl;
+            return 0;
+        }
+        dataHandler.update(type);
+        loRa.send(dataHandler.getPacket(type));
+    }
 
     // Automatic detection of the packet type - then auto parse
     while (true) {
