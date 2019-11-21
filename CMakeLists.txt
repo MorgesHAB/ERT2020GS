@@ -1,11 +1,13 @@
 cmake_minimum_required(VERSION 3.6.2)
 project(ERT2020GS)
 
-set(CMAKE_CXX_STANDARD 11)
-
+###############################################################
+# Set the varialble to ON or OFF on your need
 set(USE_GUI OFF)
 set(USE_LORA ON)
 set(USE_XBEE OFF)
+###############################################################
+set(CMAKE_CXX_STANDARD 11)
 
 add_subdirectory(Telecom)
 if (USE_GUI)

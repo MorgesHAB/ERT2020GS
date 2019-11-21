@@ -39,7 +39,7 @@ sudo apt install cmake
 ```
 Then we need to install wiringpi to interact with the Raspberry Pi GPIO
 ```console
-sudo apt install wiringpi
+sudo apt-get install wiringpi
 ```
 Finally install git to be able to clone this git repository
 ```console

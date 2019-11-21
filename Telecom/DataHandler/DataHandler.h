@@ -15,7 +15,7 @@
 #include "Datagram.h"
 
 enum PacketID {
-    GPSID, PAYLOAD, AVIONICS, PROPULSION, IMAGE,
+    GPSID, PAYLOAD, AVIONICS, PROPULSION, IMAGE,       // <-- add new type here
     NBR_OF_TYPE  // <-- size of the vector
 };
 
