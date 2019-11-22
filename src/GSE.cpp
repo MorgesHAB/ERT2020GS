@@ -16,7 +16,7 @@
 
 #include <LoRa.h>
 #include <DataHandler.h>
-#include <PacketType.h>
+#include <Header.h>
 
 
 int main(int argc, char** argv) {
@@ -34,7 +34,7 @@ int main(int argc, char** argv) {
         }
         dataHandler.update(type);
         loRa.send(dataHandler.getPacket(type));
-        PacketType(type).print();
+        Header(type).print();
         return 0;
     }
 
