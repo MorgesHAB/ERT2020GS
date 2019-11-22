@@ -22,7 +22,8 @@ First enable the SPI interface on your Pi with
 sudo raspi-config
 ```
 In `Interfacing options` 
-- [x] SPI
+- [x] SPI   
+- [x] Serial
 
 In order to have a correct building, you will need to install the following software
 
