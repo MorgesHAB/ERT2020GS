@@ -7,22 +7,21 @@
  * \date        18.11.2019	
  */
 
+#include <Header.h>
 #include <GPS.h>
 #include <PressureData.h>
 #include <IgnitionData.h>
 #include <States.h>
 #include <Picture.h>
-#include <PacketType.h>
-
 #include "DataHandler.h"
 
 
 DataHandler::DataHandler() : dataHandler(NBR_OF_TYPE, nullptr), lastRxID(GPSID) {
     // Create your RF Packet Datagram here
-    //default protocol add packet Type (& after Rx address)
+    // default protocol header ex: packet Type, packet nbr, timestamp
     for (uint8_t id(0); id < NBR_OF_TYPE; ++id) {
         dataHandler[id] = new Datagram;
-        dataHandler[id]->add(new PacketType(id));
+        dataHandler[id]->add(new Header(id));
     }
 
     //// Packet Type n° 1 GPS
