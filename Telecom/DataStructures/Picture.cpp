@@ -17,27 +17,37 @@ Picture::Picture(uint8_t bytePerPacket, const std::string &fileName, uint16_t wi
                                 nbrSentImg(0), packetNbr(0), imgSize(0) {}
 
 void Picture::write(Packet &packet) {
-    packet.write(++packetNbr);
-    if (packetNbr == 1) packet.write(imgSize);
+    if (pictureIsSending) {
+        packet.write(++packetNbr);
+        if (packetNbr == 1) packet.write(imgSize);
 
-    for (size_t i((packetNbr - 1) * bytePerPacket); i < packetNbr * bytePerPacket && i < imgSize; ++i) {
-        packet.write(image[i]);
+        for (size_t i((packetNbr - 1) * bytePerPacket);
+             i < packetNbr * bytePerPacket && i < imgSize; ++i) {
+            packet.write(image[i]);
+        }
+        if (packetNbr == imgSize / bytePerPacket + 1) pictureIsSending = false;
     }
 }
 
 void Picture::parse(Packet &packet) {
-    packet.parse(packetNbr);
-    if (packetNbr == 1) {
-        packet.parse(imgSize);
-        image.resize(imgSize);
-        RxPacket.resize(imgSize / bytePerPacket + 1);
+    if (pictureIsSending) {
+        packet.parse(packetNbr);
+        if (packetNbr == 1) {
+            packet.parse(imgSize);
+            image.resize(imgSize);
+            RxPacket.resize(imgSize / bytePerPacket + 1);
+        }
+        RxPacket[packetNbr] = true;
+        for (size_t i((packetNbr - 1) * bytePerPacket);
+             i < packetNbr * bytePerPacket && i < imgSize; ++i) {
+            packet.parse(image[i]);
+        }
+        // build image V1 condition not good // if last packet
+        if (packetNbr == imgSize / bytePerPacket + 1) {
+            pictureIsSending = false;
+            buildImage();
+        }
     }
-    RxPacket[packetNbr] = true;
-    for (size_t i((packetNbr - 1) * bytePerPacket); i < packetNbr * bytePerPacket && i < imgSize; ++i) {
-        packet.parse(image[i]);
-    }
-    // build image V1 condition not good // if last packet
-    if (packetNbr == imgSize / bytePerPacket + 1) buildImage();
 }
 
 void Picture::update() {
@@ -71,9 +81,9 @@ void Picture::takePicture() {
 }
 
 void Picture::buildImage() {
-    for(size_t i(1); i < imgSize / bytePerPacket + 1; ++i)
+    for(size_t i(1); i <= imgSize / bytePerPacket + 1; ++i)
         if (!RxPacket[i])
-            std::cout << "packet " << RxPacket[i] << " not received" << std::endl;
+            std::cout << "packet " << i << " not received" << std::endl;
 
     std::ofstream fileOut(fileName + ".jpg", std::ios::out | std::ios::binary);
 
