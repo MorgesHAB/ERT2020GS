@@ -59,22 +59,21 @@ void Picture::takePicture() {
     pictureIsSending = true;
 
     // Store all bytes of the image
-    std::ifstream fileIn(fileName + ".jpg", std::ios::in);
+    std::ifstream fileIn(fileName + ".jpg", std::ios::in | std::ios::binary);
 
     while (!fileIn.eof()) {
-        uint8_t byte;
-        fileIn >> byte;
-        image.push_back(byte);
+        image.push_back(fileIn.get());
     }
     imgSize = image.size(); // entire division
 }
 
 void Picture::buildImage() {
-    std::ofstream fileOut(fileName + ".jpg", std::ios::out | std::ios::app);
+    std::ofstream fileOut(fileName + ".jpg", std::ios::out | std::ios::binary);
 
     for (size_t i(0); i < imgSize; ++i) {
-        fileOut << image[i];
+        fileOut.put(image[i]);
     }
     std::cout << "New received picture is available as " << fileName << ".jpg"
               << std::endl;
+    exit(0); // tmp
 }

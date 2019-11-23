@@ -41,7 +41,7 @@ DataHandler::DataHandler() : dataHandler(NBR_OF_TYPE, nullptr), lastRxID(GPSID) 
     dataHandler[PROPULSION]->add(new PressureData);
 
     //// Packet Type n°5
-    dataHandler[IMAGE]->add(new Picture(200, "pictureX", 50, 50));
+    dataHandler[IMAGE]->add(new Picture(200, "pictureX", 20, 20));
     //dataHandler[IMAGE]->add(new Picture(100));
 }
 
