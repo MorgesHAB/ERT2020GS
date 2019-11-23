@@ -12,49 +12,69 @@
 #include "Picture.h"
 
 Picture::Picture(uint8_t bytePerPacket, const std::string &fileName, uint16_t width,
-             uint16_t heigth) : bytePerPacket(bytePerPacket), fileName(fileName),
+                 uint16_t heigth) : bytePerPacket(bytePerPacket), fileName(fileName),
                                 width(width), heigth(heigth), pictureIsSending(false),
-                                nbrSentImg(0), packetNbr(0) {}
+                                nbrSentImg(0), packetNbr(0), imgSize(0) {}
 
 void Picture::write(Packet &packet) {
-    static std::ifstream fileIn(fileName + ".jpg", std::ios::in);
-
     packet.write(++packetNbr);
-    for (uint8_t i(0); i < bytePerPacket; ++i) {
-        uint8_t byte;
-        if (fileIn >> byte) packet.write(byte);
-        else {
-            pictureIsSending = false;
-            break;
-        }
+    if (packetNbr == 1) packet.write(imgSize);
+
+    for (size_t i(packetNbr - 1 * bytePerPacket); i < imgSize / (packetNbr* bytePerPacket); ++i) {
+        packet.write(image[i]);
     }
 }
 
 void Picture::parse(Packet &packet) {
-    static std::ofstream fileOut(fileName + ".jpg", std::ios::out | std::ios::app);
-
     packet.parse(packetNbr);
-    for (uint8_t i(0); i < bytePerPacket; ++i) {
-        uint8_t byte;
-        packet.parse(byte);
-        fileOut << byte;
+    if (packetNbr == 1) {
+        packet.parse(imgSize);
+        image.resize(imgSize);
     }
+
+    for (size_t i(packetNbr - 1 * bytePerPacket); i < imgSize / (packetNbr * bytePerPacket); ++i) {
+        packet.parse(image[i]);
+    }
+    // build image V1 condition not good
+    if (packetNbr == imgSize / bytePerPacket) buildImage();
 }
 
 void Picture::update() {
-    /*if (!pictureIsSending) {
-        fileName = fileName + std::to_string(++nbrSentImg);
-        // Take a picture with the raspicam
-        std::string command("raspistill -o " + fileName + ".jpg -hf -vf -w " +
-                            std::to_string(width) + " -h " +
-                            std::to_string(heigth));
-        system(command.c_str());
-        std::cout << "New picture taken - " << fileName << ".jpg" << std::endl;
-        pictureIsSending = true;
-    }*/
+    if (!pictureIsSending) takePicture();
 }
 
 void Picture::print() const {
-    std::cout << "Picture Data cf " << fileName << ".jpg  -- Packet n° " << packetNbr
+    std::cout << "Picture Data " << fileName << ".jpg  -- Packet n° " << packetNbr
+              << " / " << imgSize / bytePerPacket << std::endl;
+}
+
+void Picture::takePicture() {
+    fileName = fileName + std::to_string(++nbrSentImg);
+    // Take a picture with the raspicam
+    std::string command("raspistill -o " + fileName + ".jpg -hf -vf -w " +
+                        std::to_string(width) + " -h " +
+                        std::to_string(heigth));
+    system(command.c_str());
+    std::cout << "New picture taken - " << fileName << ".jpg" << std::endl;
+    pictureIsSending = true;
+
+    // Store all bytes of the image
+    std::ifstream fileIn(fileName + ".jpg", std::ios::in);
+
+    while (!fileIn.eof()) {
+        uint8_t byte;
+        fileIn >> byte;
+        image.push_back(byte);
+    }
+    imgSize = image.size(); // entire division
+}
+
+void Picture::buildImage() {
+    std::ofstream fileOut(fileName + ".jpg", std::ios::out | std::ios::app);
+
+    for (size_t i(0); i < imgSize; ++i) {
+        fileOut << image[i];
+    }
+    std::cout << "New received picture is available as " << fileName << ".jpg"
               << std::endl;
 }

@@ -14,10 +14,10 @@
 #include <Packet.h>
 
 class XBee {
+public:
     void send(Packet &packet);
     bool receive(Packet &packet);
     //int getRSSI();
-public:
     virtual ~XBee();
 
 private:

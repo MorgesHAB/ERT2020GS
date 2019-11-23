@@ -10,19 +10,28 @@
 #ifndef Picture_H
 #define Picture_H
 
+#define DEF_PICTURE_NAME        "picture"
+#define DEF_PICTURE_HEIGHT      300
+#define DEF_PICTURE_WIDTH       300
+
 #include <string>
 #include <vector>
 #include <Data.h>
 
 class Picture : public Data {
 public:
-    Picture(uint8_t bytePerPacket, const std::string &fileName = "picture",
-          uint16_t width = 300, uint16_t heigth = 300);
+    explicit Picture(uint8_t bytePerPacket,
+                     const std::string &fileName = DEF_PICTURE_NAME,
+                     uint16_t width = DEF_PICTURE_WIDTH,
+                     uint16_t heigth = DEF_PICTURE_HEIGHT);
 
     void write(Packet &packet) override;
     void parse(Packet &packet) override;
     void update() override;
     void print() const override;
+
+    void takePicture();
+    void buildImage();
 
 private:
     uint8_t bytePerPacket;
@@ -31,6 +40,9 @@ private:
     bool pictureIsSending;
     int nbrSentImg;
     uint16_t packetNbr;
+    size_t imgSize;
+
+    std::vector<uint8_t> image;
 };
 
 
