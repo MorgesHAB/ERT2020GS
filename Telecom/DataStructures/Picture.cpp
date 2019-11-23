@@ -30,12 +30,13 @@ void Picture::parse(Packet &packet) {
     if (packetNbr == 1) {
         packet.parse(imgSize);
         image.resize(imgSize);
+        RxPacket.resize(imgSize / bytePerPacket + 1);
     }
-
+    RxPacket[packetNbr] = true;
     for (size_t i((packetNbr - 1) * bytePerPacket); i < packetNbr * bytePerPacket && i < imgSize; ++i) {
         packet.parse(image[i]);
     }
-    // build image V1 condition not good
+    // build image V1 condition not good // if last packet
     if (packetNbr == imgSize / bytePerPacket + 1) buildImage();
 }
 
@@ -61,19 +62,27 @@ void Picture::takePicture() {
     // Store all bytes of the image
     std::ifstream fileIn(fileName + ".jpg", std::ios::in | std::ios::binary);
 
-    while (!fileIn.eof()) {
-        image.push_back(fileIn.get());
-    }
-    imgSize = image.size(); // entire division
+    if (fileIn) {
+        while (!fileIn.eof()) image.push_back(fileIn.get());
+
+        imgSize = image.size(); // entire division
+    } else
+        std::cerr << "Impossible to read the image file" << std::endl;
 }
 
 void Picture::buildImage() {
+    for(size_t i(1); i < imgSize / bytePerPacket + 1; ++i)
+        if (!RxPacket[i])
+            std::cout << "packet " << RxPacket[i] << " not received" << std::endl;
+
     std::ofstream fileOut(fileName + ".jpg", std::ios::out | std::ios::binary);
 
-    for (size_t i(0); i < imgSize; ++i) {
-        fileOut.put(image[i]);
-    }
-    std::cout << "New received picture is available as " << fileName << ".jpg"
-              << std::endl;
-    exit(0); // tmp
+    if (fileOut) {
+        for (size_t i(0); i < imgSize; ++i) fileOut.put(image[i]);
+
+        std::cout << "*** New received picture is available as " << fileName << ".jpg"
+                  << std::endl;
+        fileOut.close();
+    } else
+        std::cerr << "Impossible to save the image file" << std::endl;
 }

@@ -43,7 +43,7 @@ int main(int argc, char** argv) {
        // loRa.send(dataHandler.getPacket(PAYLOAD));
         dataHandler.update(IMAGE);
         loRa.send(dataHandler.getPacket(IMAGE));
-        usleep(500000);
+        usleep(100000);
     }
 
     return 0;

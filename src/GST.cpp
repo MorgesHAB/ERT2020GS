@@ -32,7 +32,7 @@ int main() {
         if (loRa.receive(dataHandler)) {
             dataHandler.printLastRxPacket();
         }
-        usleep(10); //microseconds
+        usleep(1); //microseconds
     }
     return 0;
 }

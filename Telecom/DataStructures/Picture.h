@@ -43,6 +43,7 @@ private:
     size_t imgSize;
 
     std::vector<uint8_t> image;
+    std::vector<bool> RxPacket;
 };
 
 
