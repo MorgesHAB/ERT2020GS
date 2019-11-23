@@ -41,7 +41,6 @@ int main(int argc, char** argv) {
     while (true) {
       //  dataHandler.update(PAYLOAD);
        // loRa.send(dataHandler.getPacket(PAYLOAD));
-
         dataHandler.update(IMAGE);
         loRa.send(dataHandler.getPacket(IMAGE));
         usleep(500000);
