@@ -25,6 +25,8 @@ public:
                      uint16_t width = DEF_PICTURE_WIDTH,
                      uint16_t heigth = DEF_PICTURE_HEIGHT);
 
+    virtual ~Picture();
+
     void write(Packet &packet) override;
     void parse(Packet &packet) override;
     void update() override;
@@ -32,6 +34,7 @@ public:
 
     void takePicture();
     void buildImage();
+    void sendMissingPacket(Packet &packet);
 
 private:
     uint8_t bytePerPacket;
@@ -42,8 +45,7 @@ private:
     uint16_t packetNbr;
     size_t imgSize;
 
-    std::vector<uint8_t> image;
-    std::vector<bool> RxPacket;
+    std::vector<uint8_t*> image;
 };
 
 
