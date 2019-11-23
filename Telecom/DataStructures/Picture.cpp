@@ -20,7 +20,7 @@ void Picture::write(Packet &packet) {
     packet.write(++packetNbr);
     if (packetNbr == 1) packet.write(imgSize);
 
-    for (size_t i(packetNbr - 1 * bytePerPacket); i < imgSize / (packetNbr* bytePerPacket); ++i) {
+    for (size_t i((packetNbr - 1) * bytePerPacket); i < packetNbr * bytePerPacket && i < imgSize; ++i) {
         packet.write(image[i]);
     }
 }
@@ -32,11 +32,11 @@ void Picture::parse(Packet &packet) {
         image.resize(imgSize);
     }
 
-    for (size_t i(packetNbr - 1 * bytePerPacket); i < imgSize / (packetNbr * bytePerPacket); ++i) {
+    for (size_t i((packetNbr - 1) * bytePerPacket); i < packetNbr * bytePerPacket && i < imgSize; ++i) {
         packet.parse(image[i]);
     }
     // build image V1 condition not good
-    if (packetNbr == imgSize / bytePerPacket) buildImage();
+    if (packetNbr == imgSize / bytePerPacket + 1) buildImage();
 }
 
 void Picture::update() {
@@ -45,7 +45,7 @@ void Picture::update() {
 
 void Picture::print() const {
     std::cout << "Picture Data " << fileName << ".jpg  -- Packet n° " << packetNbr
-              << " / " << imgSize / bytePerPacket << std::endl;
+              << " / " << imgSize / bytePerPacket + 1 << std::endl;
 }
 
 void Picture::takePicture() {
