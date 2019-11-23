@@ -30,23 +30,21 @@ void Picture::write(Packet &packet) {
 }
 
 void Picture::parse(Packet &packet) {
-    if (pictureIsSending) {
-        packet.parse(packetNbr);
-        if (packetNbr == 1) {
-            packet.parse(imgSize);
-            image.resize(imgSize);
-            RxPacket.resize(imgSize / bytePerPacket + 1);
-        }
-        RxPacket[packetNbr] = true;
-        for (size_t i((packetNbr - 1) * bytePerPacket);
-             i < packetNbr * bytePerPacket && i < imgSize; ++i) {
-            packet.parse(image[i]);
-        }
-        // build image V1 condition not good // if last packet
-        if (packetNbr == imgSize / bytePerPacket + 1) {
-            pictureIsSending = false;
-            buildImage();
-        }
+    packet.parse(packetNbr);
+    if (packetNbr == 1) {
+        packet.parse(imgSize);
+        image.resize(imgSize);
+        RxPacket.resize(imgSize / bytePerPacket + 1);
+    }
+    RxPacket[packetNbr] = true;
+    for (size_t i((packetNbr - 1) * bytePerPacket);
+         i < packetNbr * bytePerPacket && i < imgSize; ++i) {
+        packet.parse(image[i]);
+    }
+    // build image V1 condition not good // if last packet
+    if (packetNbr == imgSize / bytePerPacket + 1) {
+        pictureIsSending = false;
+        buildImage();
     }
 }
 

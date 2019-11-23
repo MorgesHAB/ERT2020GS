@@ -42,7 +42,6 @@ DataHandler::DataHandler() : dataHandler(NBR_OF_TYPE, nullptr), lastRxID(GPSID) 
 
     //// Packet Type n°5
     dataHandler[IMAGE]->add(new Picture(230, "pictureZ", 500, 500));
-    //dataHandler[IMAGE]->add(new Picture(100));
 }
 
 DataHandler::~DataHandler() {
