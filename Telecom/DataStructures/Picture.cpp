@@ -51,7 +51,11 @@ void Picture::parse(Packet &packet) {
 }
 
 void Picture::update() {
-    if (!pictureIsSending) takePicture();
+    static bool first(true);
+    if (first) {
+        takePicture();
+        first = false;
+    }
 }
 
 void Picture::print() const {
