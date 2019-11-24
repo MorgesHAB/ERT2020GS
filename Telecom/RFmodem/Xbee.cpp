@@ -35,6 +35,6 @@ Xbee::~Xbee() {
     serialPort.close();
 }
 
-Xbee::Xbee() {
+Xbee::Xbee() : serialPort("/dev/ttyUSB0") {
     //serialPort.setPort("/dev/ttyUSB0");
 }
