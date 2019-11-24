@@ -5,7 +5,7 @@ project(ERT2020GS)
 # Set the build varialble to ON or OFF on your need
 set(USE_GUI OFF)
 set(USE_LORA ON)
-set(USE_XBEE OFF)
+set(USE_XBEE ON)
 ###############################################################
 set(CMAKE_CXX_STANDARD 11)
 

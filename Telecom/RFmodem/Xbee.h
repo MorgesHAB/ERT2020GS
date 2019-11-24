@@ -13,12 +13,14 @@
 #include <serial/serial.h>
 #include <Packet.h>
 
-class XBee {
+class Xbee {
 public:
-    void send(Packet &packet);
-    bool receive(Packet &packet);
+    Xbee();
+
+    void send();
+    bool receive();
     //int getRSSI();
-    virtual ~XBee();
+    virtual ~Xbee();
 
 private:
     serial::Serial serialPort;

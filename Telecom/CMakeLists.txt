@@ -7,7 +7,7 @@ if (USE_LORA)
 endif (USE_LORA)
 if (USE_XBEE)
     add_subdirectory(RFmodem/lib/serial)
-    file(GLOB SOURCES_RF RFmodem/XBee.cpp)
+    file(GLOB SOURCES_RF RFmodem/Xbee.cpp)
 endif (USE_XBEE)
 
 file(GLOB SOURCES DataStructures/*.cpp Serializer/*.cpp DataHandler/*.cpp)
