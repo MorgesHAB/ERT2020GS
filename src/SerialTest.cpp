@@ -17,8 +17,6 @@
 #define Tx      true
 
 #include <Xbee.h>
-#include <DataHandler.h>
-#include <Header.h>
 #include <unistd.h>
 
 

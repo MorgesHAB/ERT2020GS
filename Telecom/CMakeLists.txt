@@ -7,12 +7,12 @@ if (USE_LORA)
 endif (USE_LORA)
 if (USE_XBEE)
     add_subdirectory(RFmodem/lib/serial)
-    file(GLOB SOURCES_RF RFmodem/Xbee.cpp)
+    file(GLOB SOURCES_RF2 RFmodem/Xbee.cpp)
 endif (USE_XBEE)
 
 file(GLOB SOURCES DataStructures/*.cpp Serializer/*.cpp DataHandler/*.cpp)
 
-add_library(${PROJECT_NAME} ${SOURCES} ${SOURCES_RF})
+add_library(${PROJECT_NAME} ${SOURCES} ${SOURCES_RF} ${SOURCES_RF2})
 
 target_include_directories(${PROJECT_NAME} PUBLIC DataStructures)
 target_include_directories(${PROJECT_NAME} PUBLIC RFmodem)
@@ -23,7 +23,7 @@ target_include_directories(${PROJECT_NAME} PUBLIC DataHandler)
 target_link_libraries(${PROJECT_NAME} gps) # GPS
 
 if (USE_LORA)
-target_link_libraries(${PROJECT_NAME} RadioHead) # LoRa
+    target_link_libraries(${PROJECT_NAME} RadioHead) # LoRa
 endif (USE_LORA)
 
 # Xbee serial
