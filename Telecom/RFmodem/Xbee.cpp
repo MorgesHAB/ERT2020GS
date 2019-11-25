@@ -9,10 +9,14 @@
 
 #include "Xbee.h"
 
+uint8_t xBeeCommand[] = {0x7E, 0x00, 0x1B, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF,
+                         0xFE, 0x00, 0x43, 0x55, 0x55, 0x55, 0x55, 0x14, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                         0x00, 0x14, 0x35};
+
 void Xbee::send() {
     if (serialPort.isOpen()) {
-        uint8_t tab[] = "Hello";
-        serialPort.write(tab, 5);
+
+        serialPort.write(xBeeCommand, sizeof(xBeeCommand));
         std::cout << "Packet have been sent" << std::endl;
     }
 }
@@ -20,7 +24,7 @@ void Xbee::send() {
 bool Xbee::receive() {
     try {
         if (serialPort.available()) {
-            std::cout << "Byte available !! '" << serialPort.read(5) << "'" << std::endl;
+            std::cout << "Byte available !! '" << serialPort.read(sizeof(xBeeCommand)) << "'" << std::endl;
             return true;
         }
     } catch (const serial::IOException &e) {
