@@ -19,7 +19,7 @@ void Xbee::send() {
 
 bool Xbee::receive() {
     try {
-        std::cout << "Byte available !! " << serialPort.read(5) << std::endl;
+        std::cout << "Byte available !! '" << serialPort.read(5) << "'" << std::endl;
         return true;
     } catch (const serial::IOException &e) {
         std::cerr << "IOException while reading serial port " << std::endl;
@@ -35,6 +35,4 @@ Xbee::~Xbee() {
     serialPort.close();
 }
 
-Xbee::Xbee() : serialPort("/dev/ttyUSB0") {
-    //serialPort.setPort("/dev/ttyUSB0");
-}
+Xbee::Xbee() : serialPort("/dev/ttyUSB0") {}

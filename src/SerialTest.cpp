@@ -14,21 +14,27 @@
  * \date        04.11.2019
  */
 
-#define Tx      true
-
 #include <Xbee.h>
+#include <DataHandler.h>
 #include <unistd.h>
+#include <string>
 
 
 int main(int argc, char** argv) {
     // Your RF modem
     Xbee xbee;
     // RF packet handler
+    DataHandler dataHandler;
 
     while (true) {
-        if(Tx) xbee.send();
-        else xbee.receive();
-        usleep(500000);
+        if (argc == 2 && std::string(argv[1]) == "Tx") {
+            xbee.send();
+            usleep(500000);
+        }
+        else {
+            xbee.receive();
+            usleep(1);
+        }
     }
 
     return 0;
