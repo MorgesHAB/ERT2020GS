@@ -45,6 +45,8 @@ void Header::print() const {
             break;
         case IMAGE: std::cout << "Image";
             break;
+        case XBEE_TEST: std::cout << "Xbee frame";
+            break;
         default: std::cout << "Unknown";
     }
     std::cout << "\t packet nbr: " << packetNbr << "\t time: "

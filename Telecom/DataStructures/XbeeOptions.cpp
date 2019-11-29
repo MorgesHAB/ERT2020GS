@@ -24,13 +24,13 @@ XbeeOptions::XbeeOptions() :
             0x00,           // Broadcast radius (0 = max)
             0x43}          // Transmit options (disable ACK and Route discovery)
 
-            , data("Hello Nils c'est Lionel")
+            , data("First sentence transmit via XBee !!")
 {}
 
 
 void XbeeOptions::write(Packet &packet) {
     packet.write((uint8_t)XBEE_START);
-    uint16_t size = XBEE_FRAME_OPTIONS_SIZE + data.size() + 1 + 9; // tmp !!
+    uint16_t size = XBEE_FRAME_OPTIONS_SIZE + data.size() + 1 + 9 + 9; // tmp !!
     packet.write(size);
 
     for (uint8_t& part : XBEE_FRAME_OPTIONS) packet.write(part);

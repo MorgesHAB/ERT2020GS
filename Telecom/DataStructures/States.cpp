@@ -33,7 +33,7 @@ void States::update() {
 }
 
 void States::print() const {
-    std::cout << "Sate vector : [ ";
+    std::cout << "States vector : [ ";
     for (uint8_t i(0); i < states.size() - 1; ++i) std::cout << states[i] << " , ";
     std::cout << states.back() << " ] " << std::endl;
 }
