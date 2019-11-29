@@ -14,6 +14,7 @@
 #include <States.h>
 #include <Picture.h>
 #include <XbeeOptions.h>
+#include <CRC.h>
 #include "DataHandler.h"
 
 
@@ -25,6 +26,10 @@ DataHandler::DataHandler() : dataHandler(NBR_OF_TYPE, nullptr), lastRxID(GPSID) 
         if (id != XBEE_TEST) dataHandler[id]->add(new Header(id));
     }
     dataHandler[XBEE_TEST]->add(new XbeeOptions);
+    dataHandler[XBEE_TEST]->add(new PressureData);
+    dataHandler[XBEE_TEST]->add(new PressureData);
+    dataHandler[XBEE_TEST]->add(new States({1, 0, 1, 1, 0, 0, 1, 0}));
+    dataHandler[XBEE_TEST]->add(new CRC);
 
     //// Packet Type n° 1 GPS
     //dataHandler[GPSID]->add(new GPS);
