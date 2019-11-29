@@ -30,20 +30,20 @@ XBEE_FRAME_OPTIONS{
             0x00,           // Broadcast radius (0 = max)
             0x43}          // Transmit options (disable ACK and Route discovery)
 
-            , data(123456)
+            , data("Hello Nils c'est Lionel"), nbr(102314455)
 {}
 
 
 void XbeeOptions::write(Packet &packet) {
     //for (uint8_t& part : msg) packet.write(part);
     packet.write((uint8_t)XBEE_START);
-    uint16_t size = XBEE_FRAME_OPTIONS_SIZE + 4;
+    uint16_t size = XBEE_FRAME_OPTIONS_SIZE + sizeof(nbr) + data.size();
     packet.write(size);
 
-    //for (uint8_t part : XBEE_FRAME_OPTIONS) packet.write(part);
-    for (size_t i(0); i < XBEE_FRAME_OPTIONS_SIZE; ++i) packet.write(XBEE_FRAME_OPTIONS[i]);
+    for (uint8_t part : XBEE_FRAME_OPTIONS) packet.write(part);
 
     packet.write(data);
+    packet.write(nbr);
 
     // calculate CRC
     uint8_t CRC(0);
@@ -61,17 +61,16 @@ void XbeeOptions::parse(Packet &packet) {
     uint16_t size;
     packet.parse(size);
 
-    //for (uint8_t& part : XBEE_FRAME_OPTIONS) packet.parse(part);
-    for (size_t i(0); i < XBEE_FRAME_OPTIONS_SIZE; ++i) packet.parse(XBEE_FRAME_OPTIONS[i]);
+    for (uint8_t& part : XBEE_FRAME_OPTIONS) packet.parse(part);
 
     packet.parse(data);
-    for (uint8_t& part : msg) {
+    packet.parse(nbr);
+ /*   for (uint8_t& part : msg) {
         part = 0;
         packet.parse(part);
         std::cout << +part << " ";
     }
-    std::cout << std::endl;
-
+    std::cout << std::endl;*/
 }
 
 void XbeeOptions::update() {
@@ -80,5 +79,5 @@ void XbeeOptions::update() {
 
 void XbeeOptions::print() const {
     //for (uint8_t part : msg) std::cout << +part;
-    std::cout << "Data : " << data << std::endl;
+    std::cout << "Data : " << data  << "  nbr: " << nbr << std::endl;
 }

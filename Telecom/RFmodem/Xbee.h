@@ -19,8 +19,6 @@ public:
 
     void send(Packet &packet);
     bool receive(Packet &packet);
-    void send();
-    bool receive();
     //int getRSSI();
     virtual ~Xbee();
 

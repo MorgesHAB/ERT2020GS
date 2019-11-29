@@ -29,7 +29,8 @@ public:
 private:
     uint8_t msg[MSG_SIZE];
     uint8_t XBEE_FRAME_OPTIONS[XBEE_FRAME_OPTIONS_SIZE];
-    int data;
+    std::string data;
+    int nbr;
 };
 
 
