@@ -36,6 +36,8 @@ XBEE_FRAME_OPTIONS{
 void XbeeOptions::write(Packet &packet) {
     //for (uint8_t& part : msg) packet.write(part);
     packet.write((uint8_t)XBEE_START);
+    uint16_t size = XBEE_FRAME_OPTIONS_SIZE + 4;
+    packet.write(size);
 
     for (uint8_t& part : XBEE_FRAME_OPTIONS) packet.write(part);
 
@@ -53,6 +55,8 @@ void XbeeOptions::parse(Packet &packet) {
     //for (uint8_t& part : msg) packet.parse(part);
     uint8_t tmp;
     packet.parse(tmp);
+    uint16_t size;
+    packet.parse(size);
 
     for (uint8_t& part : XBEE_FRAME_OPTIONS) packet.parse(part);
 
