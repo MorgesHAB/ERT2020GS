@@ -43,6 +43,7 @@ void XbeeOptions::write(Packet &packet) {
 
     packet.write(data);
 
+    // calculate CRC
     uint8_t CRC(0);
     for (size_t i(3); i < packet.getSize(); ++i) {
         CRC += packet.getPacket()[i];
@@ -53,14 +54,21 @@ void XbeeOptions::write(Packet &packet) {
 
 void XbeeOptions::parse(Packet &packet) {
     //for (uint8_t& part : msg) packet.parse(part);
-    uint8_t tmp;
+   /* uint8_t tmp;
     packet.parse(tmp);
     uint16_t size;
     packet.parse(size);
 
     for (uint8_t& part : XBEE_FRAME_OPTIONS) packet.parse(part);
 
-    packet.parse(data);
+    packet.parse(data);*/
+    for (uint8_t& part : msg) {
+        part = 0;
+        packet.parse(part);
+        std::cout << +part << " ";
+    }
+    std::cout << std::endl;
+
 }
 
 void XbeeOptions::update() {
