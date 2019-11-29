@@ -44,7 +44,7 @@ void XbeeOptions::write(Packet &packet) {
     packet.write(data);
 
     uint8_t CRC(0);
-    for (size_t i(0); i < packet.getSize(); ++i) {
+    for (size_t i(3); i < packet.getSize(); ++i) {
         CRC += packet.getPacket()[i];
     }
     CRC = 0xff - CRC;
