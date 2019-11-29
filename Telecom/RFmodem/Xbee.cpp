@@ -23,11 +23,10 @@ void Xbee::send(Packet &packet) {
 }
 
 bool Xbee::receive(Packet &packet) {
-    size_t bytesAvailable = 0;
     try {
-        if ((bytesAvailable = serialPort.available()) == 0) {
+        if (serialPort.available()) {
             packet.restart();
-            serialPort.read(packet.getPacket(), bytesAvailable);
+            serialPort.read(packet.getPacket(), XBEE_PACKET_MAX_SIZE);
             std::cout << "\n\nPacket Received" << std::endl;
             return true;
         }
