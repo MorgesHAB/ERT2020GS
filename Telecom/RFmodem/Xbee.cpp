@@ -9,13 +9,36 @@
 
 #include "Xbee.h"
 
-uint8_t msg1[] = {0x7E, 0x00, 0x1B, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF,
-                         0xFE, 0x00, 0x43, 0x55, 0x55, 0x55, 0x55, 0x14, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                         0x00, 0x14, 0x35};
+#define XBEE_PACKET_MAX_SIZE       256
 
-uint8_t msg2[] = {0x7E, 0x00, 0x1B, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF,
-                         0xFE, 0x00, 0x43, 0x55, 0x55, 0x55, 0x55, 0x22, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                         0x00, 0x22, 0x19};
+uint8_t msg1[] = {0x7E, 0x00, 0x1B, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF,
+                  0xFE, 0x00, 0x43, 0x55, 0x55, 0x55, 0x55, 0x14, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                  0x00, 0x14, 0x35};
+
+void Xbee::send(Packet &packet) {
+    if (serialPort.isOpen()) {
+        serialPort.write(packet.getPacket(), packet.getSize());
+        std::cout << "Packet have been sent" << std::endl;
+    }
+}
+
+bool Xbee::receive(Packet &packet) {
+    try {
+        if (serialPort.available()) {
+            packet.restart();
+            serialPort.read(packet.getPacket(), XBEE_PACKET_MAX_SIZE);
+            std::cout << "\n\nPacket Received" << std::endl;
+            return true;
+        }
+    } catch (const serial::IOException &e) {
+        std::cerr << "IOException while reading serial port " << std::endl;
+        return false;
+    } catch (const serial::SerialException &e) {
+        std::cerr << "SerialException while reading serial port" << std::endl;
+        return false;
+    }
+    return false;
+}
 
 void Xbee::send() {
     if (serialPort.isOpen()) {
@@ -37,6 +60,7 @@ bool Xbee::receive() {
         std::cerr << "SerialException while reading serial port" << std::endl;
         return false;
     }
+    return false;
 }
 
 Xbee::~Xbee() {

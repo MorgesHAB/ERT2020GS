@@ -28,11 +28,17 @@ int main(int argc, char** argv) {
 
     while (true) {
         if (argc == 2 && std::string(argv[1]) == "Tx") {
-            xbee.send();
+            dataHandler.update(XBEE_TEST);
+            xbee.send(dataHandler.getPacket(XBEE_TEST));
+            //xbee.send();
             usleep(500000);
         }
         else {
-            xbee.receive();
+            if (xbee.receive(dataHandler.getPacket(XBEE_TEST))) {
+                dataHandler.parse(XBEE_TEST);
+                dataHandler.print(XBEE_TEST);
+            }
+            //xbee.receive();
             usleep(1);
         }
     }
