@@ -15,6 +15,7 @@
 #define XBEE_TX_FRAME_TYPE 0x10 // Transmit request frame
 #define XBEE_FRAME_BEGINNING_SIZE 3 // Start delimiter (0x7E) + uint16_t length of the frame
 #define XBEE_CHECKSUM_SIZE 1 // checksum size of the XBee packet
+#define XBEE_API_RX_INDICATOR 12 // xbee option size in Rx side
 
 
 XbeeOptions::XbeeOptions() : msg{0x7E, 0x00, 0x1B, 0x10, 0x00, 0x00, 0x00, 0x00,
@@ -40,7 +41,7 @@ void XbeeOptions::write(Packet &packet) {
     uint16_t size = XBEE_FRAME_OPTIONS_SIZE + sizeof(nbr) + data.size();
     packet.write(size);
 
-    for (uint8_t part : XBEE_FRAME_OPTIONS) packet.write(part);
+    for (uint8_t& part : XBEE_FRAME_OPTIONS) packet.write(part);
 
     packet.write(data);
     packet.write(nbr);
@@ -61,7 +62,7 @@ void XbeeOptions::parse(Packet &packet) {
     uint16_t size;
     packet.parse(size);
 
-    for (uint8_t& part : XBEE_FRAME_OPTIONS) packet.parse(part);
+    for (size_t i(0); i < XBEE_API_RX_INDICATOR; ++i) packet.parse(XBEE_FRAME_OPTIONS[i]);
 
     packet.parse(data);
     packet.parse(nbr);
