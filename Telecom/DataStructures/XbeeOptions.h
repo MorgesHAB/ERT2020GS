@@ -16,15 +16,15 @@
 
 class XbeeOptions : public Data {
 public:
+    XbeeOptions();
+
     void write(Packet& packet) override;
     void parse(Packet& packet) override;
     void update() override;
     void print() const override;
 
 private:
-    uint8_t msg[MSG_SIZE] = {0x7E, 0x00, 0x1B, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF,
-                             0xFE, 0x00, 0x43, 0x55, 0x55, 0x55, 0x55, 0x14, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                             0x00, 0x14, 0x35};
+    uint8_t msg[MSG_SIZE];
 /*    uint8_t XBEE_FRAME_OPTIONS[XBEE_FRAME_OPTIONS_SIZE] = {
             XBEE_TX_FRAME_TYPE,  // Frame type
             0x00,           // Frame ID
