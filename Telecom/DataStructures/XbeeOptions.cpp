@@ -9,19 +9,54 @@
 
 #include "XbeeOptions.h"
 
+// XBee API mode
+#define XBEE_START 0x7e
+#define XBEE_ESCAPE 0x7d
+#define XBEE_TX_FRAME_TYPE 0x10 // Transmit request frame
+#define XBEE_FRAME_BEGINNING_SIZE 3 // Start delimiter (0x7E) + uint16_t length of the frame
+#define XBEE_CHECKSUM_SIZE 1 // checksum size of the XBee packet
+
+
 XbeeOptions::XbeeOptions() : msg{0x7E, 0x00, 0x1B, 0x10, 0x00, 0x00, 0x00, 0x00,
                                  0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF,
                                  0xFE, 0x00, 0x43, 0x55, 0x55, 0x55, 0x55, 0x14, 0x00,
                                  0x00, 0x00, 0x00, 0x00, 0x00,
-                                 0x00, 0x14, 0x35} {}
+                                 0x00, 0x14, 0x35},
+XBEE_FRAME_OPTIONS{
+            XBEE_TX_FRAME_TYPE,  // Frame type
+            0x00,           // Frame ID
+            0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff,     // 64 bit dest address
+            0xff, 0xfe,           // 16 bits dest address (0xff fe = broadcast)
+            0x00,           // Broadcast radius (0 = max)
+            0x43}          // Transmit options (disable ACK and Route discovery)
+            , data(123456)
+{}
 
 
 void XbeeOptions::write(Packet &packet) {
-    for (uint8_t& part : msg) packet.write(part);
+    //for (uint8_t& part : msg) packet.write(part);
+    packet.write((uint8_t)XBEE_START);
+
+    for (uint8_t& part : XBEE_FRAME_OPTIONS) packet.write(part);
+
+    packet.write(data);
+
+    uint8_t CRC(0);
+    for (size_t i(0); i < packet.getSize(); ++i) {
+        CRC += packet.getPacket()[i];
+    }
+    CRC = 0xff - CRC;
+    packet.write(CRC);
 }
 
 void XbeeOptions::parse(Packet &packet) {
-    for (uint8_t& part : msg) packet.parse(part);
+    //for (uint8_t& part : msg) packet.parse(part);
+    uint8_t tmp;
+    packet.parse(tmp);
+
+    for (uint8_t& part : XBEE_FRAME_OPTIONS) packet.parse(part);
+
+    packet.parse(data);
 }
 
 void XbeeOptions::update() {
@@ -29,6 +64,6 @@ void XbeeOptions::update() {
 }
 
 void XbeeOptions::print() const {
-    for (uint8_t part : msg) std::cout << +part << std::endl;
-    std::cout << std::endl;
+    //for (uint8_t part : msg) std::cout << +part;
+    std::cout << "Data : " << data << std::endl;
 }

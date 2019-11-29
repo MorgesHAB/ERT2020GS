@@ -10,9 +10,12 @@
 #ifndef XbeeOptions_H
 #define XbeeOptions_H
 
-
 #include "Data.h"
-#define MSG_SIZE         31
+
+#define XBEE_PAYLOAD_MAX_SIZE       130
+#define MSG_SIZE                    31
+#define XBEE_FRAME_OPTIONS_SIZE     14
+
 
 class XbeeOptions : public Data {
 public:
@@ -25,14 +28,8 @@ public:
 
 private:
     uint8_t msg[MSG_SIZE];
-/*    uint8_t XBEE_FRAME_OPTIONS[XBEE_FRAME_OPTIONS_SIZE] = {
-            XBEE_TX_FRAME_TYPE,  // Frame type
-            0x00,           // Frame ID
-            0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff,     // 64 bit dest address
-            0xff, 0xfe,           // 16 bits dest address (0xff fe = broadcast)
-            0x00,           // Broadcast radius (0 = max)
-            0x43 };          // Transmit options (disable ACK and Route discovery)
-*/
+    uint8_t XBEE_FRAME_OPTIONS[XBEE_FRAME_OPTIONS_SIZE];
+    int data;
 };
 
 

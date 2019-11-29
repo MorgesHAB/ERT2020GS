@@ -20,11 +20,10 @@
 DataHandler::DataHandler() : dataHandler(NBR_OF_TYPE, nullptr), lastRxID(GPSID) {
     // Create your RF Packet Datagram here
     // default protocol header ex: packet Type, packet nbr, timestamp
-    for (uint8_t id(0); id < NBR_OF_TYPE - 1; ++id) { ///CHANGE !!!!!!!!!!!!! -1
+    for (uint8_t id(0); id < NBR_OF_TYPE; ++id) {
         dataHandler[id] = new Datagram;
-        dataHandler[id]->add(new Header(id));
+        if (id != XBEE_TEST) dataHandler[id]->add(new Header(id));
     }
-    dataHandler[XBEE_TEST] = new Datagram;
     dataHandler[XBEE_TEST]->add(new XbeeOptions);
 
     //// Packet Type n° 1 GPS
