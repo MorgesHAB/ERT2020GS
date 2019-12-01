@@ -25,7 +25,7 @@ public:
 private:
     std::array<std::atomic_uint64_t, UintData::count> uints_;
     std::array<std::atomic_bool, BoolData::count> bools_;
-    std::array<std::atomic_double, DoubleData> doubles_;
+    std::array<std::atomic_double, DoubleData::count> doubles_;
 };
 
 
