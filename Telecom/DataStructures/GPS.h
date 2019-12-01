@@ -12,7 +12,7 @@
 
 #include <ctime>
 #include <Data.h>
-#include <libgpsmm.h>
+//#include <libgpsmm.h>
 
 
 class GPS : public Data {
@@ -35,7 +35,7 @@ public:
     const GPSData &getGpsData() const;
 
 private:
-    gpsmm gpsd;
+   // gpsmm gpsd;
     float latitude;
     float longitude;
     float altitude;

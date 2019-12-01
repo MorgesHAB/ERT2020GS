@@ -20,7 +20,9 @@ target_include_directories(${PROJECT_NAME} PUBLIC RFmodem/lib/RadioHead)
 target_include_directories(${PROJECT_NAME} PUBLIC Serializer)
 target_include_directories(${PROJECT_NAME} PUBLIC DataHandler)
 
-target_link_libraries(${PROJECT_NAME} gps) # GPS
+if (USE_GPS)
+    target_link_libraries(${PROJECT_NAME} gps) # GPS
+endif (USE_GPS)
 
 if (USE_LORA)
     target_link_libraries(${PROJECT_NAME} RadioHead) # LoRa

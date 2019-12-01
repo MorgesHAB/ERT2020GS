@@ -6,6 +6,7 @@ project(ERT2020GS)
 set(USE_GUI OFF)
 set(USE_LORA ON)
 set(USE_XBEE ON)
+set(USE_GPS OFF)
 ###############################################################
 set(CMAKE_CXX_STANDARD 11)
 

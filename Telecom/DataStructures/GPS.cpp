@@ -10,13 +10,13 @@
 #include <iomanip>
 #include "GPS.h"
 
-GPS::GPS() : gpsData{0, 0, 0, 0, std::time(nullptr)},
-             gpsd("localhost", DEFAULT_GPSD_PORT) {
+GPS::GPS() : gpsData{0, 0, 0, 0, std::time(nullptr)}/*,
+             gpsd("localhost", DEFAULT_GPSD_PORT) */{
 
-    if (gpsd.stream(WATCH_ENABLE|WATCH_JSON) == NULL) {
+   /* if (gpsd.stream(WATCH_ENABLE|WATCH_JSON) == NULL) {
         std::cerr << "No GPSD running" << std::endl;
         exit(0);
-    }
+    }*/
 }
 
 void GPS::write(Packet& packet) {
@@ -47,7 +47,7 @@ void GPS::print() const {
 }
 
 void GPS::update() {
-    struct gps_data_t* newData;
+  /*  struct gps_data_t* newData;
 
     if (!gpsd.waiting(5000000)) return;
 
@@ -61,7 +61,7 @@ void GPS::update() {
             gpsData.latitude = newData->fix.latitude;
             gpsData.longitude = newData->fix.longitude;
         }
-    }
+    }*/
 }
 
 const GPS::GPSData &GPS::getGpsData() const {
