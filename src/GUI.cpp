@@ -19,8 +19,8 @@
 #include <Xbee.h>
 #include <memory>
 #include <thread>
-#include <connector.h>
-#include <gpswindow.h>
+#include "../UI/connector.h"
+#include "../UI/gpswindow.h"
 
 int main(int argc, char** argv) {
     // Your RF modem
