@@ -12,6 +12,7 @@
 
 #include <serial/serial.h>
 #include <Packet.h>
+#include <DataHandler.h>
 
 class Xbee {
 public:
@@ -19,6 +20,7 @@ public:
 
     void send(Packet &packet);
     bool receive(Packet &packet);
+    void mainRoutine(DataHandler& dataHandler);
     //int getRSSI();
     virtual ~Xbee();
 

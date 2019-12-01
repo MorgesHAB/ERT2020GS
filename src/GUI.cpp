@@ -18,6 +18,7 @@
 #include <DataHandler.h>
 #include <Xbee.h>
 #include <memory>
+#include <thread>
 #include "connector.h"
 #include "gpswindow.h"
 
@@ -33,10 +34,13 @@ int main(int argc, char** argv) {
 
     GPSWindow w(500, std::shared_ptr<Connector>(&c));
     //run all threads
-
-
+    std::thread t1(&Xbee::receive, &xbee, dataHandler);
     //end the program
     w.show();
 
-    return app.exec();
+    app.exec();
+
+    t1.join();
+
+    return 0;
 }
