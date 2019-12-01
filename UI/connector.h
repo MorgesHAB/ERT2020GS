@@ -3,11 +3,13 @@
 #include <atomic>
 #include <array>
 
-namespace Connector {
+namespace data_types {
     enum UintData { ALTITUDE = 0, count };
     enum BoolData { SOLENOID_CLICKED = 0, count };
     enum DoubleData { PRESSURE = 0, count };  
 }
+
+using namespace data_types;
 
 class Connector
 {
