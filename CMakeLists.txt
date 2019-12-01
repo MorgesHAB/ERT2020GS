@@ -13,7 +13,7 @@ set(CMAKE_CXX_STANDARD 11)
 add_subdirectory(Telecom)
 if (USE_GUI)
     add_subdirectory(UI)
-    add_executable(${PROJECT_NAME} UI/main.cc)
+    add_executable(${PROJECT_NAME} src/GUI.cpp)
 endif (USE_GUI)
 
 if (USE_LORA)
