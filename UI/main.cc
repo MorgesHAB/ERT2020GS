@@ -8,7 +8,7 @@
 
 class A{
 public:
-void f1(std::shared_ptr<Connector> c){
+void f1(std::shared_ptr<Connector> c, int b){
     unsigned a(0);
     while(true){
         c->set_data(Connector::DataType::ALTITUDE,a);
@@ -27,7 +27,7 @@ int main(int argc, char **argv) {
 
     GPSWindow w(500, std::shared_ptr<Connector>(&c));
     //run all threads
-    std::thread receiver_thread(&A::f1, a, std::shared_ptr<Connector>(&c));
+    std::thread receiver_thread(&A::f1, a, std::shared_ptr<Connector>(&c) , 6);
 
 
     //end the program

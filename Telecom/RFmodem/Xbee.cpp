@@ -44,11 +44,11 @@ Xbee::~Xbee() {
 
 Xbee::Xbee() : serialPort("/dev/ttyUSB0", 115200) {}
 
-void Xbee::mainRoutine(DataHandler& dataHandler) {
-    while (true) {
+void Xbee::mainRoutine() {
+    /*while (true) {
         if (receive(dataHandler.getPacket(XBEE_TEST))) {
             dataHandler.parse(XBEE_TEST);
             dataHandler.print(XBEE_TEST);
         }
-    }
+    }*/
 }

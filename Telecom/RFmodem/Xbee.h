@@ -17,10 +17,10 @@
 class Xbee {
 public:
     Xbee();
-
+    Xbee(const Xbee&) = default;
     void send(Packet &packet);
     bool receive(Packet &packet);
-    void mainRoutine(DataHandler& dataHandler);
+    void mainRoutine();
     //int getRSSI();
     virtual ~Xbee();
 

@@ -8,7 +8,7 @@ set(USE_LORA OFF)
 set(USE_XBEE ON)
 set(USE_GPS OFF)
 ###############################################################
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 14)
 
 add_subdirectory(Telecom)
 if (USE_GUI)
