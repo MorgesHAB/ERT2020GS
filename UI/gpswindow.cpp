@@ -1,9 +1,10 @@
 #include "gpswindow.h"
 #include <iostream>
 #include <QString>
-#include <GPS.h>
 
-GPSWindow::GPSWindow(uint32_t refresh_rate) : timer_(new QTimer(this))
+GPSWindow::GPSWindow(unsigned refresh_rate, std::shared_ptr<Connector> connector) :
+    timer_(new QTimer(this)),
+    data_(connector)
 {
     Ui_Form::setupUi(this);
     connect(timer_, SIGNAL (timeout()), this , SLOT (push_data()));
@@ -15,17 +16,11 @@ void GPSWindow::update() {
     this->QWidget::update();
 }
 
-void GPSWindow::push_data() {
-
-    if (loRa.receive(dataHandler.getPacket(GPSID))) {
-        dataHandler.parse(GPSID);
-        dataHandler.print(GPSID);
-        // Test V.0 - Dirty
-        GPS* gps(dynamic_cast<GPS*>(dataHandler.getDatagram(GPSID)[1]));
-        this->altitude_lcd->display(gps->getGpsData().altitude);
-        this->speed_lcd->display(gps->getGpsData().speed);
-        this->latitude_panel->setText(QString::number(gps->getGpsData().latitude) + "<sup>o</sup>");
-        this->longitude_panel->setText(QString::number(gps->getGpsData().longitude) + "<sup>o</sup>");
-        this->rssi_panel->setText(QString::number(loRa.getRSSI()) + " dBm");
+void GPSWindow::push_data() {    
+        this->altitude_lcd->display(0);
+        this->speed_lcd->display(0);
+        this->latitude_panel->setText(QString::number(0) + "<sup>o</sup>");
+        this->longitude_panel->setText(QString::number(0) + "<sup>o</sup>");
+        this->rssi_panel->setText(QString::number(0) + " dBm");
     }
-}
+
