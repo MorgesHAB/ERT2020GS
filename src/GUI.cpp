@@ -34,13 +34,13 @@ int main(int argc, char** argv) {
 
     GPSWindow w(500, std::shared_ptr<Connector>(&c));
     //run all threads
-    std::thread t1(&Xbee::receive, &xbee, dataHandler);
+    //std::thread t1(&Xbee::receive, &xbee, dataHandler);
     //end the program
     w.show();
 
     app.exec();
 
-    t1.join();
+    //t1.join();
 
     return 0;
 }
