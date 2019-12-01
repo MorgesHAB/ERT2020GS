@@ -136,3 +136,7 @@ void Picture::sendMissingPacket(Packet &packet) {
         if (!image[i]) packet.write(i);
     }
 }
+
+void Picture::writeConnector(std::shared_ptr<Connector> connector) {
+
+}

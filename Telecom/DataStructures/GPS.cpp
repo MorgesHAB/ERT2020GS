@@ -67,3 +67,7 @@ void GPS::update() {
 const GPS::GPSData &GPS::getGpsData() const {
     return gpsData;
 }
+
+void GPS::writeConnector(std::shared_ptr<Connector> connector) {
+
+}

@@ -24,3 +24,7 @@ void String::update() {}
 void String::print() const {
     std::cout << "Sentence : " << sentence << std::endl;
 }
+
+void String::writeConnector(std::shared_ptr<Connector> connector) {
+
+}

@@ -34,3 +34,7 @@ void PressureData::print() const {
 float PressureData::getPressure() const {
     return pressure;
 }
+
+void PressureData::writeConnector(std::shared_ptr<Connector> connector) {
+    connector->set_data(Connector::ALTITUDE, pressure);
+}

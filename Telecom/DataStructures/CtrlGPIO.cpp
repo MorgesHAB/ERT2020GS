@@ -31,3 +31,7 @@ void CtrlGPIO::print() const {
  //   std::cout << "GPIO : " << " is currently at state : "
    //           << (digitalRead(pin) ? "HIGH" : "LOW") << std::endl;
 }
+
+void CtrlGPIO::writeConnector(std::shared_ptr<Connector> connector) {
+
+}

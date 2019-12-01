@@ -28,7 +28,7 @@ XbeeOptions::XbeeOptions() :
 
 void XbeeOptions::write(Packet &packet) {
     packet.write((uint8_t)XBEE_START);
-    uint16_t size = XBEE_FRAME_OPTIONS_SIZE + 35 + + 1 + 9 + 9; // tmp !!
+    uint16_t size = XBEE_FRAME_OPTIONS_SIZE + 4; // tmp !!
     packet.write(size);
 
     for (uint8_t& part : XBEE_FRAME_OPTIONS) packet.write(part);
@@ -47,4 +47,8 @@ void XbeeOptions::update() {}
 
 void XbeeOptions::print() const {
     // Don't print Xbee options
+}
+
+void XbeeOptions::writeConnector(std::shared_ptr<Connector> connector) {
+
 }

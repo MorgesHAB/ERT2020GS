@@ -28,11 +28,12 @@ DataHandler::DataHandler() : dataHandler(NBR_OF_TYPE, nullptr), lastRxID(GPSID) 
     }
 
     dataHandler[XBEE_TEST]->add(new XbeeOptions);
-    dataHandler[XBEE_TEST]->add(new Header(XBEE_TEST));
     dataHandler[XBEE_TEST]->add(new PressureData);
-    dataHandler[XBEE_TEST]->add(new String("First sentence transmit via XBee !!"));
-    dataHandler[XBEE_TEST]->add(new PressureData);
-    dataHandler[XBEE_TEST]->add(new States({1, 0, 1, 1, 0, 0, 1, 0}));
+    /* dataHandler[XBEE_TEST]->add(new Header(XBEE_TEST));
+     dataHandler[XBEE_TEST]->add(new PressureData);
+     dataHandler[XBEE_TEST]->add(new String("First sentence transmit via XBee !!"));
+     dataHandler[XBEE_TEST]->add(new PressureData);
+     dataHandler[XBEE_TEST]->add(new States({1, 0, 1, 1, 0, 0, 1, 0}));*/
     dataHandler[XBEE_TEST]->add(new CRC);
 
     //// Packet Type n° 1 GPS
@@ -91,4 +92,9 @@ const std::vector<Data *> &DataHandler::getDatagram(PacketID type) {
 
 PacketID DataHandler::getLastRxID() const {
     return lastRxID;
+}
+
+void
+DataHandler::writeConnector(PacketID type, std::shared_ptr<Connector> connector) {
+    dataHandler[type]->writeConnector(connector);
 }

@@ -11,6 +11,8 @@
 #define Data_H
 
 #include <Packet.h>
+#include <memory>
+#include "../../UI/connector.h"
 
 // Abstract SuperClass
 // Requirements methods for communicate a data via the protocol
@@ -20,6 +22,7 @@ public:
     virtual void parse(Packet& packet) = 0;
     virtual void update() = 0;
     virtual void print() const = 0;
+    virtual void writeConnector(std::shared_ptr<Connector> connector) = 0;
     virtual ~Data() = default;
 };
 

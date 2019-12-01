@@ -30,7 +30,9 @@ public:
     void write(Packet& packet) override;
     void parse(Packet& packet) override;
     void update() override;
-    void print() const override ;
+    void print() const override;
+    void writeConnector(std::shared_ptr<Connector> connector) override ;
+
 
     const GPSData &getGpsData() const;
 

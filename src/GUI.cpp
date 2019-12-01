@@ -32,6 +32,7 @@ public:
         	  	  if (xbee.receive(dataHandler.getPacket(XBEE_TEST))) {
         	  	      dataHandler.parse(XBEE_TEST);
         	  	      dataHandler.print(XBEE_TEST);
+        	  	      dataHandler.writeConnector(XBEE_TEST, c);
         	  	  }
 		}
 	}	

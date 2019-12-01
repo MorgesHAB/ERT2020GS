@@ -52,3 +52,7 @@ void Header::print() const {
     std::cout << "\t packet nbr: " << packetNbr << "\t time: "
               << std::asctime(std::localtime(&timestamp)) << std::endl;
 }
+
+void Header::writeConnector(std::shared_ptr<Connector> connector) {
+
+}

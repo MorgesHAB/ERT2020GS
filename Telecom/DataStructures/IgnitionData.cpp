@@ -24,3 +24,7 @@ void IgnitionData::update() {
 void IgnitionData::print() const {
     std::cout << "Ignition Data : " << ignition << std::endl;
 }
+
+void IgnitionData::writeConnector(std::shared_ptr<Connector> connector) {
+
+}

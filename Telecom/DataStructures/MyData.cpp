@@ -26,3 +26,7 @@ void MyData::update() {
 void MyData::print() const {
     std::cout << "nbr: " << nbr << "  x: " << x << std::endl;
 }
+
+void MyData::writeConnector(std::shared_ptr<Connector> connector) {
+
+}

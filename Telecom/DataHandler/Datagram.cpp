@@ -40,3 +40,7 @@ Datagram::~Datagram() {
 const std::vector<Data *> &Datagram::getDatagram() const {
     return datagram;
 }
+
+void Datagram::writeConnector(std::shared_ptr<Connector> connector) {
+    for (auto &data : datagram) data->writeConnector(connector);
+}

@@ -34,3 +34,7 @@ void CRC::print() const {
     // don't care about CRC value
     //std::cout << "CheckSum Value (CRC): " << CRC << std::endl;
 }
+
+void CRC::writeConnector(std::shared_ptr<Connector> connector) {
+
+}
