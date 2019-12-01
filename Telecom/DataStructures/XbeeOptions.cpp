@@ -23,19 +23,15 @@ XbeeOptions::XbeeOptions() :
             0xff, 0xfe,           // 16 bits dest address (0xff fe = broadcast)
             0x00,           // Broadcast radius (0 = max)
             0x43}          // Transmit options (disable ACK and Route discovery)
-
-            , data("First sentence transmit via XBee !!")
-{}
+            {}
 
 
 void XbeeOptions::write(Packet &packet) {
     packet.write((uint8_t)XBEE_START);
-    uint16_t size = XBEE_FRAME_OPTIONS_SIZE + data.size() + 1 + 9 + 9; // tmp !!
+    uint16_t size = XBEE_FRAME_OPTIONS_SIZE + 35 + + 1 + 9 + 9; // tmp !!
     packet.write(size);
 
     for (uint8_t& part : XBEE_FRAME_OPTIONS) packet.write(part);
-
-    packet.write(data);
 }
 
 void XbeeOptions::parse(Packet &packet) {
@@ -45,19 +41,10 @@ void XbeeOptions::parse(Packet &packet) {
     packet.parse(size);
 
     for (size_t i(0); i < XBEE_API_RX_INDICATOR; ++i) packet.parse(XBEE_FRAME_OPTIONS[i]);
-
-    packet.parse(data);
- /*   for (uint8_t& part : msg) {
-        part = 0;
-        packet.parse(part);
-        std::cout << +part << " ";
-    }
-    std::cout << std::endl;*/
 }
 
 void XbeeOptions::update() {}
 
 void XbeeOptions::print() const {
-    //for (uint8_t part : msg) std::cout << +part;
-    std::cout << "Data : " << data << std::endl;
+    // Don't print Xbee options
 }

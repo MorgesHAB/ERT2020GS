@@ -26,7 +26,6 @@ public:
 
 private:
     uint8_t XBEE_FRAME_OPTIONS[XBEE_FRAME_OPTIONS_SIZE];
-    std::string data;
 };
 
 

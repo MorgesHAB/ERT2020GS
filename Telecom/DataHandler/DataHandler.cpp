@@ -15,6 +15,7 @@
 #include <Picture.h>
 #include <XbeeOptions.h>
 #include <CRC.h>
+#include <String.h>
 #include "DataHandler.h"
 
 
@@ -25,9 +26,11 @@ DataHandler::DataHandler() : dataHandler(NBR_OF_TYPE, nullptr), lastRxID(GPSID) 
         dataHandler[id] = new Datagram;
         if (id != XBEE_TEST) dataHandler[id]->add(new Header(id));
     }
+
     dataHandler[XBEE_TEST]->add(new XbeeOptions);
     dataHandler[XBEE_TEST]->add(new Header(XBEE_TEST));
     dataHandler[XBEE_TEST]->add(new PressureData);
+    dataHandler[XBEE_TEST]->add(new String("First sentence transmit via XBee !!"));
     dataHandler[XBEE_TEST]->add(new PressureData);
     dataHandler[XBEE_TEST]->add(new States({1, 0, 1, 1, 0, 0, 1, 0}));
     dataHandler[XBEE_TEST]->add(new CRC);

@@ -6,7 +6,7 @@
  *     | |____| | \ \  | |      | |__| |____) |    / /_| |_| / /_| |_| |
  *     |______|_|  \_\ |_|       \_____|_____/    |____|\___/____|\___/
  *
- * \file GSE.cpp
+ * \file XbeeTest.cpp
  *
  * \brief Ground Support Equipment Transceiver
  *
@@ -30,7 +30,6 @@ int main(int argc, char** argv) {
         if (argc == 2 && std::string(argv[1]) == "Tx") {
             dataHandler.update(XBEE_TEST);
             xbee.send(dataHandler.getPacket(XBEE_TEST));
-            //xbee.send();
             usleep(500000);
         }
         else {
@@ -38,7 +37,6 @@ int main(int argc, char** argv) {
                 dataHandler.parse(XBEE_TEST);
                 dataHandler.print(XBEE_TEST);
             }
-            //xbee.receive();
             usleep(1);
         }
     }

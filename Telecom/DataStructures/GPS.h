@@ -36,6 +36,11 @@ public:
 
 private:
     gpsmm gpsd;
+    float latitude;
+    float longitude;
+    float altitude;
+    float speed;
+    std::time_t time;
 };
 
 
