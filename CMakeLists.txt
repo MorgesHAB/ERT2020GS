@@ -3,7 +3,7 @@ project(ERT2020GS)
 
 ###############################################################
 # Set the build varialble to ON or OFF on your need
-set(USE_GUI OFF)
+set(USE_GUI ON)
 set(USE_LORA OFF)
 set(USE_XBEE ON)
 set(USE_GPS OFF)
