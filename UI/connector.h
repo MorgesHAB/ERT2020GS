@@ -3,14 +3,16 @@
 #include <atomic>
 #include <array>
 
-
+namespace Connector {
+    enum UintData { ALTITUDE = 0, count };
+    enum BoolData { SOLENOID_CLICKED = 0, count };
+    enum DoubleData { PRESSURE = 0, count };  
+}
 
 class Connector
 {
 public:
-    enum UintData { ALTITUDE = 0, count };
-    enum BoolData { SOLENOID_CLICKED = 0, count },
-    enum DoubleData { PRESSURE =0, count }
+    
     Connector();
     
     void set_data(UintData type, uint64_t data);
