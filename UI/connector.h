@@ -17,6 +17,10 @@ public:
     
     Connector();
     
+    /**
+    *   Usage of templates are possible here. But to avoid type conflict when storing atomics
+    *   we create three different getter-setter and eaters.
+    */
     void set_data(UintData type, uint64_t data);
     uint64_t get_data(UintData type);
 
