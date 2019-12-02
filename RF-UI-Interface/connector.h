@@ -30,6 +30,7 @@ public:
     void set_data(DoubleData type, double data);
     double get_data(DoubleData type);*/
 
+   uint64_t getData(DataType type);
     template<typename T>
     void setData(DataType type, T t);
 

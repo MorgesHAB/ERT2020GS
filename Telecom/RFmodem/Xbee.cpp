@@ -22,7 +22,11 @@ void Xbee::send(Packet &packet) {
 bool Xbee::receive(Packet &packet) {
     try {
         if (serialPort.available()) {
+
+
             packet.restart();
+
+
             serialPort.read(packet.getPacket(), XBEE_PACKET_MAX_SIZE);
             std::cout << "\n\nPacket Received" << std::endl;
             return true;
@@ -42,7 +46,8 @@ Xbee::~Xbee() {
     serialPort.close();
 }
 
-Xbee::Xbee() : serialPort("/dev/ttyUSB0", 115200) {}
+//Xbee::Xbee() : serialPort("/dev/ttyUSB0", 115200) {}
+Xbee::Xbee() : serialPort("/dev/ttyS3", 115200) {}
 
 void Xbee::mainRoutine() {
     /*while (true) {

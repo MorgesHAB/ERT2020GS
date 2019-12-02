@@ -38,6 +38,7 @@ int main(int argc, char** argv) {
                 dataHandler.print(XBEE_TEST);
             }
             usleep(1);
+            //gay
         }
     }
 

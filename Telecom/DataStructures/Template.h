@@ -1,10 +1,14 @@
 /*!
- * \file MyData.h
+ * \file Template.h
  *
  * \brief MyData module interface
  *
  * \author      ISOZ Lionel - EPFL EL BA3
- * \date        20.11.2019	
+ * \date        20.11.2019
+ *
+ *  Thus you must define your own Data Structures in order
+ *  to put them in your own Datagram
+ *
  */
 
 #ifndef MyData_H

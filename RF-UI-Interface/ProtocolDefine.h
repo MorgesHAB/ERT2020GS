@@ -11,6 +11,7 @@
  * \brief User Interface - RF Telecom interface protocol definition
  *
  * \author      ISOZ Lionel - EPFL EL BA3
+ * \author      KESKE Cem - EPFL EL BA3
  * \date        02.12.2019
  */
 

@@ -10,7 +10,7 @@ if (USE_XBEE)
     file(GLOB SOURCES_RF2 RFmodem/Xbee.cpp)
 endif (USE_XBEE)
 
-file(GLOB SOURCES DataStructures/*.cpp Serializer/*.cpp DataHandler/*.cpp)
+file(GLOB_RECURSE SOURCES DataStructures/*.cpp Serializer/*.cpp DataHandler/*.cpp)
 
 add_library(${PROJECT_NAME} ${SOURCES} ${SOURCES_RF} ${SOURCES_RF2})
 

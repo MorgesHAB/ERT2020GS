@@ -1,5 +1,5 @@
 /*!
- * \file MyData.cpp
+ * \file Template.cpp
  *
  * \brief MyData module implementation
  *
@@ -7,7 +7,7 @@
  * \date        20.11.2019	
  */
 
-#include "MyData.h"
+#include "Template.h"
 
 void MyData::write(Packet &packet) {
     packet.write(nbr);

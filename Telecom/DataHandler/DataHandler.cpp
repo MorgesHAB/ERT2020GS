@@ -7,15 +7,15 @@
  * \date        18.11.2019	
  */
 
-#include <Header.h>
-#include <GPS.h>
-#include <PressureData.h>
-#include <IgnitionData.h>
-#include <States.h>
-#include <Picture.h>
-#include <XbeeOptions.h>
-#include <CRC.h>
-#include <String.h>
+#include <FrameInfo/Header.h>
+#include <Avionics/GPS.h>
+#include <Test/PressureData.h>
+#include <Avionics/IgnitionData.h>
+#include <Test/States.h>
+#include <Test/Picture.h>
+#include <FrameInfo/XbeeOptions.h>
+#include <FrameInfo/CRC.h>
+#include <Test/String.h>
 #include "DataHandler.h"
 
 
