@@ -1,11 +1,16 @@
 #include "connector.h"
 
-/*
-void Connector::set_data(DataType type, uint64_t data)
-{
-    std::atomic_store(&(data_[type]), data);
+template<typename T>
+T Connector::get_data(ui_interface::DataType type) {
+    return std::move(std::atomic_load<T>(&data_[type]));
 }
-*/
-uint64_t Connector::getData(DataType type){
-    return std::atomic_load(&dataCollection[type]);
+
+template<typename T>
+void Connector::set_data(ui_interface::DataType type, T t) {
+    std::atomic_store(&(data_[type]), reinterpret_cast<uint64_t>(t));
+}
+
+template<typename T>
+T Connector::eat_data(ui_interface::DataType type) {
+    return std::move(std::atomic_exchange<T>(&(data_[type]), 0));
 }

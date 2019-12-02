@@ -18,9 +18,10 @@
 #ifndef ProtocolDefine_H
 #define ProtocolDefine_H
 
+namespace ui_interface{
 enum DataType {
     // Qt input informations
-    QT_LAUNCH_BUTTON,
+    QT_LAUNCH_BUTTON = 0,
 
 
     // Header
@@ -36,8 +37,7 @@ enum DataType {
 
     // !!! THIS MUST BE THE LAST LINE !!!
     // At the end the vector size
-    VECTOR_SIZE
+    count
 };
-
-
+}
 #endif //ProtocolDefine_H
