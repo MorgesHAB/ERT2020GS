@@ -37,6 +37,7 @@ Datagram::~Datagram() {
     for (auto &data : datagram) delete data;
 }
 
+// Useless tmp
 const std::vector<Data *> &Datagram::getDatagram() const {
     return datagram;
 }

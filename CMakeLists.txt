@@ -36,5 +36,7 @@ if (USE_XBEE)
 endif (USE_XBEE)
 
 if (USE_GUI)
+    include_directories(${CMAKE_BINARY_DIR}/serial-src/include/)
     target_link_libraries(${PROJECT_NAME} GUI)
+    target_include_directories(${PROJECT_NAME} PUBLIC UI)
 endif (USE_GUI)

@@ -14,30 +14,30 @@
  * \date        04.11.2019
  */
 
-#include <QApplication>
-#include <DataHandler.h>
-#include "../Telecom/RFmodem/Xbee.h"
 #include <memory>
 #include <thread>
+#include <QApplication>
+#include <DataHandler.h>
+#include <Xbee.h>
 #include <connector.h>
-#include "../UI/gpswindow.h"
+#include <gpswindow.h>
 
-class A{
+class A {
 public:
-	void f1(std::shared_ptr<Connector> c){
-	    Xbee xbee;
-   		DataHandler dataHandler;
+    void f1(std::shared_ptr<Connector> c) {
+        Xbee xbee;
+        DataHandler dataHandler;
 
-   		 while (true) {
-        	  	  if (xbee.receive(dataHandler.getPacket(XBEE_TEST))) {
-        	  	  //if (true) {
-        	  	      dataHandler.parse(XBEE_TEST);
-        	  	      dataHandler.print(XBEE_TEST);
-        	  	      //dataHandler.update(XBEE_TEST);
-        	  	      dataHandler.writeConnector(XBEE_TEST, c);
-        	  	  }
-		}
-	}	
+        while (true) {
+            if (xbee.receive(dataHandler.getPacket(XBEE_TEST))) {
+                //if (true) {
+                dataHandler.parse(XBEE_TEST);
+                dataHandler.print(XBEE_TEST);
+                //dataHandler.update(XBEE_TEST);
+                dataHandler.writeConnector(XBEE_TEST, c);
+            }
+        }
+    }
 };
 
 int main(int argc, char** argv) {
@@ -56,8 +56,6 @@ int main(int argc, char** argv) {
     //std::thread t1(&Xbee::mainRoutine, xbee);
     std::thread t1(&A::f1, a, std::shared_ptr<Connector>(&c));
 
-    
-//end the program
     w.show();
 
     app.exec();
