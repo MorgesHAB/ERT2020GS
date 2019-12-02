@@ -10,8 +10,10 @@ class Connector {
 public:
     template<typename T>
     void setData(ui_interface::DataType type, T t);
+
     template<typename T>
-    void getData(ui_interface::DataType type, T &t);
+    T getData(ui_interface::DataType type);
+
     template<typename T>
     void eatData(ui_interface::DataType type, T &t, uint64_t val);
 
@@ -27,15 +29,15 @@ void Connector::setData(ui_interface::DataType type, T t) {
 }
 
 template<typename T>
-void Connector::getData(ui_interface::DataType type, T &t) {
-    uint64_t tmp(std::atomic_load(&dataCollection[type]));
-    t = *reinterpret_cast<T*> (&tmp);
+void Connector::eatData(ui_interface::DataType type, T &t, uint64_t val) {
+    //getData(type, t);
+    //setData(type, val);
 }
 
 template<typename T>
-void Connector::eatData(ui_interface::DataType type, T &t, uint64_t val) {
-    getData(type, t);
-    setData(type, val);
+T Connector::getData(ui_interface::DataType type) {
+    uint64_t tmp(std::atomic_load(&dataCollection[type]));
+    return *reinterpret_cast<T*> (&tmp);
 }
 
 
