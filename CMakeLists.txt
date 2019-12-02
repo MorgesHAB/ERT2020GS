@@ -3,7 +3,7 @@ project(ERT2020GS)
 
 ###############################################################
 # Set the build varialble to ON or OFF on your need
-set(USE_GUI ON)
+set(USE_GUI OFF)
 set(USE_LORA OFF)
 set(USE_XBEE ON)
 set(USE_GPS OFF)
@@ -11,6 +11,8 @@ set(USE_GPS OFF)
 set(CMAKE_CXX_STANDARD 14)
 
 add_subdirectory(Telecom)
+add_subdirectory(RF-UI-Interface)
+
 if (USE_GUI)
     add_subdirectory(UI)
     add_executable(${PROJECT_NAME} src/GUI.cpp)

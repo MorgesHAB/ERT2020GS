@@ -10,7 +10,6 @@
 #ifndef PressureData_H
 #define PressureData_H
 
-#include "../../UI/connector.h"
 #include <Data.h>
 
 class PressureData : public Data {

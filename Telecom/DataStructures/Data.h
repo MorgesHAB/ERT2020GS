@@ -12,7 +12,7 @@
 
 #include <Packet.h>
 #include <memory>
-#include "../../UI/connector.h"
+#include <connector.h>
 
 // Abstract SuperClass
 // Requirements methods for communicate a data via the protocol
