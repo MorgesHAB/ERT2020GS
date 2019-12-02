@@ -3,15 +3,16 @@
 #include <thread>
 #include <iostream>
 #include <chrono>
-#include "connector.h"
+#include "../RF-UI-Interface/connector.h"
+#include "../RF-UI-Interface/ProtocolDefine.h"
 #include "gpswindow.h"
 
 class A{
 public:
-void f1(std::shared_ptr<Connector> c, int b){
+void f1(std::shared_ptr<Connector> c){
     unsigned a(0);
     while(true){
-        c->set_data(Connector::DataType::ALTITUDE,a);
+        c->set_data<unsigned>(ui_interface::ALTITUDE,a);
         std::cout << "Data set to : " << a << std::endl;
         a++;
         std::this_thread::sleep_for(std::chrono::milliseconds(1));
@@ -27,7 +28,8 @@ int main(int argc, char **argv) {
 
     GPSWindow w(500, std::shared_ptr<Connector>(&c));
     //run all threads
-    std::thread receiver_thread(&A::f1, a, std::shared_ptr<Connector>(&c) , 6);
+    std::thread receiver_thread(&A::f1, a, std::shared_ptr<Connector>(&c));
+
 
 
     //end the program

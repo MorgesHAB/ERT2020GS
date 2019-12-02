@@ -2,7 +2,7 @@
 #include <iostream>
 #include <QString>
 
-GPSWindow::GPSWindow(unsigned refresh_rate, std::shared_ptr<Connector> connector) :
+GPSWindow::GPSWindow(int refresh_rate, std::shared_ptr<Connector> connector) :
     timer_(new QTimer(this)),
     data_(connector)
 {
@@ -17,7 +17,7 @@ void GPSWindow::update() {
 }
 
 void GPSWindow::push_data() {    
-        this->altitude_lcd->display(QString::number(data_->getData(DataType ::PRESSURE_DATA)));
+        this->altitude_lcd->display(QString::number(data_->get_data<uint64_t>(ui_interface::PRESSURE_DATA)));
         this->speed_lcd->display(0);
         this->latitude_panel->setText(QString::number(0) + "<sup>o</sup>");
         this->longitude_panel->setText(QString::number(0) + "<sup>o</sup>");

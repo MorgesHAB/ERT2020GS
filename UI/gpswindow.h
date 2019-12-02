@@ -3,14 +3,15 @@
 #include "ui_form.h"
 #include <QTimer>
 #include <memory>
-#include "connector.h"
+#include "../RF-UI-Interface/connector.h"
+#include "../RF-UI-Interface/ProtocolDefine.h"
 
 
 
 class GPSWindow : public QWidget, public Ui_Form {
     Q_OBJECT
 public:
-    GPSWindow(unsigned refresh_rate, std::shared_ptr<Connector> connector);
+    GPSWindow(int refresh_rate, std::shared_ptr<Connector> connector);
     QTimer* timer_;
     void update();
 

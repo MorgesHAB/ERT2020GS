@@ -10,7 +10,7 @@
  *
  * \brief Ground Support Equipment Transceiver
  *
- * \author      ISOZ Lionel - EPFL EL BA3
+ * \author      ISOZ Lionel, KESKE Cem - EPFL EL BA3
  * \date        04.11.2019
  */
 
