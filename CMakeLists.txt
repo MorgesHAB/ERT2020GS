@@ -19,9 +19,7 @@ if (USE_GUI)
 endif (USE_GUI)
 
 if (USE_LORA)
-    add_executable(GSE src/GSE.cpp)
-    add_executable(GST src/GST.cpp)
-    add_executable(TxRx src/TxRx.cpp)
+    add_executable(LoRaTest src/LoRaTest.cpp)
 endif (USE_LORA)
 
 if (USE_XBEE)
@@ -29,9 +27,7 @@ if (USE_XBEE)
 endif (USE_XBEE)
 
 if (USE_LORA)
-    target_link_libraries(GSE Telecom)
-    target_link_libraries(GST Telecom)
-    target_link_libraries(TxRx Telecom)
+    target_link_libraries(LoRaTest Telecom)
 endif (USE_LORA)
 
 if (USE_XBEE)

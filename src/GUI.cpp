@@ -29,11 +29,11 @@ public:
    		DataHandler dataHandler;
 
    		 while (true) {
-        	  	  //if (xbee.receive(dataHandler.getPacket(XBEE_TEST))) {
-        	  	  if (true) {
-        	  	      //dataHandler.parse(XBEE_TEST);
-        	  	      //dataHandler.print(XBEE_TEST);
-        	  	      dataHandler.update(XBEE_TEST);
+        	  	  if (xbee.receive(dataHandler.getPacket(XBEE_TEST))) {
+        	  	  //if (true) {
+        	  	      dataHandler.parse(XBEE_TEST);
+        	  	      dataHandler.print(XBEE_TEST);
+        	  	      //dataHandler.update(XBEE_TEST);
         	  	      dataHandler.writeConnector(XBEE_TEST, c);
         	  	  }
 		}
@@ -53,7 +53,7 @@ int main(int argc, char** argv) {
 
     GPSWindow w(500, std::shared_ptr<Connector>(&c));
     //run all threads
-
+    //std::thread t1(&Xbee::mainRoutine, xbee);
     std::thread t1(&A::f1, a, std::shared_ptr<Connector>(&c));
 
     

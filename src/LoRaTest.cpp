@@ -6,7 +6,7 @@
  *     | |____| | \ \  | |      | |__| |____) |    / /_| |_| / /_| |_| |
  *     |______|_|  \_\ |_|       \_____|_____/    |____|\___/____|\___/
  *
- * \file XbeeTest.cpp
+ * \file LoRaTest.cpp
  *
  * \brief Ground Support Equipment Transceiver
  *
@@ -14,7 +14,7 @@
  * \date        04.11.2019
  */
 
-#include <Xbee.h>
+#include <LoRa.h>
 #include <DataHandler.h>
 #include <unistd.h>
 #include <string>
@@ -22,20 +22,20 @@
 
 int main(int argc, char** argv) {
     // Your RF modem
-    Xbee xbee;
+    LoRa loRa;
     // RF packet handler
     DataHandler dataHandler;
 
     while (true) {
-        // ./XbeeTest Tx            // Transmitter Part
+        // ./LoRaTest Tx            // Transmitter Part
         if (argc == 2 && std::string(argv[1]) == "Tx") {
             dataHandler.update(XBEE_TEST);
-            xbee.send(dataHandler.getPacket(XBEE_TEST));
+            loRa.send(dataHandler.getPacket(XBEE_TEST));
             usleep(50000);
         }
-        // ./XbeeTest               // Receiver Part
+        // ./LoRaTest               // Receiver Part
         else {
-            if (xbee.receive(dataHandler.getPacket(XBEE_TEST))) {
+            if (loRa.receive(dataHandler.getPacket(XBEE_TEST))) {
                 dataHandler.parse(XBEE_TEST);
                 dataHandler.print(XBEE_TEST);
             }
