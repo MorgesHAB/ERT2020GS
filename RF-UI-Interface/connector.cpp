@@ -1,5 +1,5 @@
 #include "connector.h"
-
+/*
 template<typename T>
 T Connector::get_data(ui_interface::DataType type) {
     return std::move(std::atomic_load<T>(&data_[type]));
@@ -14,3 +14,4 @@ template<typename T>
 T Connector::eat_data(ui_interface::DataType type) {
     return std::move(std::atomic_exchange<T>(&(data_[type]), 0));
 }
+*/
