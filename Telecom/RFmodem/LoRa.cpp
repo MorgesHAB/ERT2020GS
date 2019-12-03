@@ -52,7 +52,7 @@ bool LoRa::receive(Packet &packet) {
 
 bool LoRa::receive(DataHandler &dataHandler) {
     if (rf95.available()) {
-        Packet* packet = new Packet; // should be new to avoid copy !!
+        Packet* packet = new Packet;
         uint8_t length(RH_RF95_MAX_MESSAGE_LEN);
         if (rf95.recv(packet->getPacket(), &length)) {
             std::cout << "\n\nNew Packet Received" << std::endl;

@@ -30,7 +30,6 @@ public:
     void writeConnector(PacketID type, std::shared_ptr<Connector> connector);
 
     Packet &getPacket(PacketID type);
-    const std::vector<Data*> &getDatagram(PacketID type);
     void setPacket(Packet* packet);
 
     void printLastRxPacket() const;

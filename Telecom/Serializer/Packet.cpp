@@ -10,7 +10,8 @@
 #include "Packet.h"
 
 
-Packet::Packet() : packet(new uint8_t[PACKET_SIZE]), packetPosition(packet) {}
+Packet::Packet(size_t size) : packet(new uint8_t[size]), packetPosition(packet),
+                              size(size) {}
 
 Packet::~Packet() {
     delete[] packet;
@@ -18,7 +19,7 @@ Packet::~Packet() {
 
 void Packet::restart() {
     delete[] packet;
-    packet = new uint8_t[PACKET_SIZE];
+    packet = new uint8_t[size];
     packetPosition = packet;
 }
 
@@ -29,9 +30,9 @@ void Packet::write(std::string& msg)  {
 
 void Packet::parse(std::string& msg)  {
     msg.clear();
-    uint8_t size(0);
-    parse(size);
-    for (int i(0); i < size; ++i) {
+    uint8_t stringSize(0);
+    parse(stringSize);
+    for (int i(0); i < stringSize; ++i) {
         char c;
         parse(c);
         msg += c;
@@ -44,12 +45,4 @@ uint8_t *Packet::getPacket() {
 
 uint8_t Packet::getSize() const {
     return packetPosition - packet;
-}
-
-uint8_t Packet::getType() {
-    // Required that the type is the first byte to read in tha datagram
-    uint8_t type;
-    parse(type);
-    packetPosition = packet;
-    return type;
 }

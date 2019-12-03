@@ -4,7 +4,7 @@
  * \brief DataHandler module implementation
  *
  * \author      ISOZ Lionel - EPFL EL BA3
- * \date        18.11.2019	
+ * \date        18.11.2019
  */
 
 #include <FrameInfo/Header.h>
@@ -24,17 +24,15 @@ DataHandler::DataHandler() : dataHandler(NBR_OF_TYPE, nullptr), lastRxID(GPSID) 
     // default protocol header ex: packet Type, packet nbr, timestamp
     for (uint8_t id(0); id < NBR_OF_TYPE; ++id) {
         dataHandler[id] = new Datagram;
-        if (id != XBEE_TEST) dataHandler[id]->add(new Header(id));
+        dataHandler[id]->add(new XbeeOptions);
+        dataHandler[id]->add(new Header(id));
     }
 
-    dataHandler[XBEE_TEST]->add(new XbeeOptions);
+    //// Packet Type  XBEE
     dataHandler[XBEE_TEST]->add(new PressureData);
-    /* dataHandler[XBEE_TEST]->add(new Header(XBEE_TEST));
-     dataHandler[XBEE_TEST]->add(new PressureData);
-     dataHandler[XBEE_TEST]->add(new String("First sentence transmit via XBee !!"));
-     dataHandler[XBEE_TEST]->add(new PressureData);
-     dataHandler[XBEE_TEST]->add(new States({1, 0, 1, 1, 0, 0, 1, 0}));*/
-    dataHandler[XBEE_TEST]->add(new CRC);
+    dataHandler[XBEE_TEST]->add(new String("First sentence transmit via XBee !!"));
+    dataHandler[XBEE_TEST]->add(new PressureData);
+    dataHandler[XBEE_TEST]->add(new States({1, 0, 1, 1, 0, 0, 1, 0}));
 
     //// Packet Type n° 1 GPS
     //dataHandler[GPSID]->add(new GPS);
@@ -53,7 +51,17 @@ DataHandler::DataHandler() : dataHandler(NBR_OF_TYPE, nullptr), lastRxID(GPSID) 
     dataHandler[PROPULSION]->add(new PressureData);
 
     //// Packet Type n°5
-    dataHandler[IMAGE]->add(new Picture(230, "pictureZ", 50, 50));
+    dataHandler[IMAGE]->add(new PressureData);
+    dataHandler[IMAGE]->add(new String("Image coming soon"));
+    dataHandler[IMAGE]->add(new IgnitionData);
+
+    //dataHandler[IMAGE]->add(new Picture(230, "pictureZ", 50, 50));
+
+
+    // END of protocol add CRC
+    for (uint8_t id(0); id < NBR_OF_TYPE; ++id) {
+        dataHandler[id]->add(new CRC);
+    }
 }
 
 DataHandler::~DataHandler() {
@@ -77,17 +85,16 @@ Packet &DataHandler::getPacket(PacketID type) {
 }
 
 void DataHandler::setPacket(Packet* packet) {
-    lastRxID = (PacketID) (packet->getType() % NBR_OF_TYPE); // tmp avoid seg fault
-    dataHandler[lastRxID]->getDataPacket() = *packet;
-    dataHandler[lastRxID]->parse();
+    lastRxID = (PacketID) (packet->getPacket()[12]); // TODO PROTOCOL define !!!
+    if (lastRxID < NBR_OF_TYPE) {
+        dataHandler[lastRxID]->getDataPacket().~Packet();
+        dataHandler[lastRxID]->getDataPacket() = *packet;
+        dataHandler[lastRxID]->parse();
+    }
 }
 
 void DataHandler::printLastRxPacket() const {
     dataHandler[lastRxID]->print();
-}
-
-const std::vector<Data *> &DataHandler::getDatagram(PacketID type) {
-    return dataHandler[type]->getDatagram();
 }
 
 PacketID DataHandler::getLastRxID() const {

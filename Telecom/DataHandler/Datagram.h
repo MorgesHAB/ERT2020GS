@@ -23,9 +23,7 @@ public:
     void writeConnector(std::shared_ptr<Connector> connector);
 
     void add(Data* data);
-    Packet &getDataPacket();
-
-    const std::vector<Data*> &getDatagram() const;
+    Packet& getDataPacket();
 
     virtual ~Datagram();
 private:

@@ -29,17 +29,21 @@ int main(int argc, char** argv) {
     while (true) {
         // ./XbeeTest Tx            // Transmitter Part
         if (argc == 2 && std::string(argv[1]) == "Tx") {
-            dataHandler.update(XBEE_TEST);
-            xbee.send(dataHandler.getPacket(XBEE_TEST));
-            usleep(50000);
+            PacketID ID = static_cast<PacketID> (rand() % NBR_OF_TYPE);
+            dataHandler.update(ID);
+            xbee.send(dataHandler.getPacket(ID));
+            usleep(1000);
         }
         // ./XbeeTest               // Receiver Part
         else {
-            if (xbee.receive(dataHandler.getPacket(XBEE_TEST))) {
+            /*if (xbee.receive(dataHandler.getPacket(XBEE_TEST))) {
                 dataHandler.parse(XBEE_TEST);
                 dataHandler.print(XBEE_TEST);
+            }*/
+            if (xbee.receive(dataHandler)) {
+                dataHandler.printLastRxPacket();
             }
-            usleep(1);
+            usleep(100);
         }
     }
 

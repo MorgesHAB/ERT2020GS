@@ -28,7 +28,7 @@ XbeeOptions::XbeeOptions() :
 
 void XbeeOptions::write(Packet &packet) {
     packet.write((uint8_t)XBEE_START);
-    uint16_t size = XBEE_FRAME_OPTIONS_SIZE + 4; // tmp !!
+    uint16_t size = XBEE_FRAME_OPTIONS_SIZE; //!!! will be set later in CRC
     packet.write(size);
 
     for (uint8_t& part : XBEE_FRAME_OPTIONS) packet.write(part);
@@ -36,9 +36,9 @@ void XbeeOptions::write(Packet &packet) {
 
 void XbeeOptions::parse(Packet &packet) {
     uint8_t tmp;
-    packet.parse(tmp);
+    //packet.parse(tmp);
     uint16_t size;
-    packet.parse(size);
+    //packet.parse(size);
 
     for (size_t i(0); i < XBEE_API_RX_INDICATOR; ++i) packet.parse(XBEE_FRAME_OPTIONS[i]);
 }

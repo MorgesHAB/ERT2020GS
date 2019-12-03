@@ -18,7 +18,7 @@ void IgnitionData::parse(Packet &packet) {
 }
 
 void IgnitionData::update() {
-    ignition = "NMNu{Yh£97Xm_R$0{BP3l/zKxL4QKs3P]W){8YQ5AU]N9mkA3OH}73+/)4Xkz2iTO,hdco65}_i8We4+Q3£19tj£$A.5Z0qw7xcxQZ#L]?m€€2mT67?03d3Dnyi_TuurlGFuWnP6n9d-0rO1µG4{Q}1C<W082K[41%7(05%0";
+    ignition = "NMNu{Yh£97Xm_R$0{BP3l/zKxL4QKs3P]W){8YQ5AU]N9mkA3OH}73+/)4Xkz2iTO";
 }
 
 void IgnitionData::print() const {

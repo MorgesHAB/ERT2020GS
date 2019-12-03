@@ -20,7 +20,8 @@ public:
     Xbee(const Xbee&) = default;
     void send(Packet &packet);
     bool receive(Packet &packet);
-    void mainRoutine();
+    bool receive(DataHandler &dataHandler);
+    void mainRoutine(DataHandler &dataHandler);
     //int getRSSI();
     virtual ~Xbee();
 

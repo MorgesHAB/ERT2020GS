@@ -25,7 +25,7 @@ void Datagram::print() const {
     for (auto &data : datagram) data->print();
 }
 
-Packet &Datagram::getDataPacket() {
+Packet& Datagram::getDataPacket() {
     return dataPacket;
 }
 
@@ -35,11 +35,6 @@ void Datagram::add(Data *data) {
 
 Datagram::~Datagram() {
     for (auto &data : datagram) delete data;
-}
-
-// Useless tmp
-const std::vector<Data *> &Datagram::getDatagram() const {
-    return datagram;
 }
 
 void Datagram::writeConnector(std::shared_ptr<Connector> connector) {

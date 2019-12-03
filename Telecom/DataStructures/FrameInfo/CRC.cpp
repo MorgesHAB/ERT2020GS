@@ -14,7 +14,7 @@
 
 void CRC::write(Packet &packet) {
     // Set length of packet because we know that CRC is the last byte
-    //packet.getPacket()[2] = packet.getSize() - XBEE_FRAME_BEGINNING_SIZE;
+    packet.getPacket()[2] = packet.getSize() - XBEE_FRAME_BEGINNING_SIZE;
 
     CRC = 0;
     for (size_t i(XBEE_FRAME_BEGINNING_SIZE); i < packet.getSize(); ++i) {
