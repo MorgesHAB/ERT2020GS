@@ -33,7 +33,7 @@ void GPSWindow::xbee_clicked(){
 }
 void GPSWindow::xbee_stop_clicked(){
     std::cout << "XBee STOP button clicked!" << std::endl;
-    data_->setData(ui_interface::ACTIVE_XBEE, false);
+    data_->setData(ui_interface::RUNNING, false);
 }
 
 void GPSWindow::ignite_clicked()
