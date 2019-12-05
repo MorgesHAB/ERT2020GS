@@ -36,7 +36,7 @@ void XbeeOptions::write(Packet &packet) {
 
 void XbeeOptions::parse(Packet &packet) {
     uint8_t tmp;
-    //packet.parse(tmp);
+    //packet.parse(tmp); // TODO
     uint16_t size;
     //packet.parse(size);
 

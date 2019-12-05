@@ -26,7 +26,7 @@
 
 class Packet {
 public:
-    Packet(size_t size = PACKET_SIZE_ALLOC_TX_PART);
+    explicit Packet(size_t size = PACKET_SIZE_ALLOC_TX_PART);
     virtual ~Packet();
     void restart();
     void write(std::string& msg);
@@ -39,6 +39,7 @@ public:
 
     uint8_t *getPacket();
     uint8_t getSize() const;
+    void printDebug() const;
 private:
     template<typename R, typename T>
     void writeY(T t);
@@ -80,7 +81,7 @@ void Packet::parse(T &t) {
 
 template<typename R, typename T>
 void Packet::writeY(T t)  {
-    R r = *reinterpret_cast<R *> (&t);
+    R r = reinterpret_cast<R&> (t);
 
     for (int i = sizeof(t) - 1; i >= 0; --i)
         *(packetPosition++) = r >> (8 * i);
@@ -92,7 +93,7 @@ void Packet::parseY(T &t) {
     for (int i = sizeof(t) - 1; i >= 0; --i)
         r |= (*(packetPosition++) << (8 * i));
 
-    t = *reinterpret_cast<T *> (&r);
+    t = reinterpret_cast<T&> (r);
 }
 
 

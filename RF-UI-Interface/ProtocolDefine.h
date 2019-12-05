@@ -37,7 +37,7 @@ enum DataType {
 
 
     // !!! THIS MUST BE THE LAST LINE !!!
-    // At the end the vector size
+    // At the end the array size
     ARRAY_SIZE
 };
 

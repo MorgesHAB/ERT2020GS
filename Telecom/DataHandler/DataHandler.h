@@ -29,12 +29,10 @@ public:
     void print(PacketID type) const;
     void writeConnector(PacketID type, std::shared_ptr<Connector> connector);
 
-    Packet &getPacket(PacketID type);
+    Packet* getPacket(PacketID type);
     void setPacket(Packet* packet);
 
     void printLastRxPacket() const;
-
-    PacketID getLastRxID() const;
 
 private:
     std::vector<Datagram*> dataHandler;

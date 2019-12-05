@@ -15,7 +15,7 @@ public:
     T getData(ui_interface::DataType type);
 
     template<typename T>
-    void eatData(ui_interface::DataType type, T &t, uint64_t val);
+    T eatData(ui_interface::DataType type, uint64_t val);
 
 private:
     std::array<std::atomic_uint64_t, ui_interface::DataType::ARRAY_SIZE> dataCollection;
@@ -25,19 +25,19 @@ private:
  // Definitions here because reference conflicts
 template<typename T>
 void Connector::setData(ui_interface::DataType type, T t) {
-    std::atomic_store(&(dataCollection[type]), *(reinterpret_cast<uint64_t*> (&t)));
-}
-
-template<typename T>
-void Connector::eatData(ui_interface::DataType type, T &t, uint64_t val) {
-    //getData(type, t);
-    //setData(type, val);
+    std::atomic_store(&(dataCollection[type]), reinterpret_cast<uint64_t&> (t));
 }
 
 template<typename T>
 T Connector::getData(ui_interface::DataType type) {
     uint64_t tmp(std::atomic_load(&dataCollection[type]));
-    return *reinterpret_cast<T*> (&tmp);
+    return std::move(reinterpret_cast<T&> (tmp));
+}
+
+template<typename T>
+T Connector::eatData(ui_interface::DataType type, uint64_t val) {
+    uint64_t tmp(std::atomic_exchange(&dataCollection[type], val));
+    return std::move(reinterpret_cast<T&> (tmp));
 }
 
 

@@ -10,22 +10,22 @@
 #include "Datagram.h"
 
 void Datagram::update() {
-    dataPacket.restart();
+    dataPacket->restart();
     for (auto &data : datagram) {
         data->update();
-        data->write(dataPacket);
+        data->write(*dataPacket);
     }
 }
 
 void Datagram::parse() {
-    for (auto &data : datagram) data->parse(dataPacket);
+    for (auto &data : datagram) data->parse(*dataPacket);
 }
 
 void Datagram::print() const {
     for (auto &data : datagram) data->print();
 }
 
-Packet& Datagram::getDataPacket() {
+Packet* Datagram::getDataPacket() {
     return dataPacket;
 }
 
@@ -40,3 +40,9 @@ Datagram::~Datagram() {
 void Datagram::writeConnector(std::shared_ptr<Connector> connector) {
     for (auto &data : datagram) data->writeConnector(connector);
 }
+
+void Datagram::setPacket(Packet *packet) {
+    dataPacket = packet;
+}
+
+Datagram::Datagram() : dataPacket(new Packet) {} // TODO delete later

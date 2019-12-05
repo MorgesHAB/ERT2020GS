@@ -32,18 +32,22 @@ int main(int argc, char** argv) {
             PacketID ID = static_cast<PacketID> (rand() % NBR_OF_TYPE);
             dataHandler.update(ID);
             xbee.send(dataHandler.getPacket(ID));
+
+            /*dataHandler.update(XBEE_TEST);
+            xbee.send(dataHandler.getPacket(XBEE_TEST));*/
+           // return 0;
             usleep(1000);
         }
         // ./XbeeTest               // Receiver Part
         else {
-            /*if (xbee.receive(dataHandler.getPacket(XBEE_TEST))) {
+           /* if (xbee.receive(dataHandler.getPacket(XBEE_TEST))) {
                 dataHandler.parse(XBEE_TEST);
                 dataHandler.print(XBEE_TEST);
             }*/
             if (xbee.receive(dataHandler)) {
                 dataHandler.printLastRxPacket();
             }
-            usleep(100);
+            usleep(100); //  TODO std::this_thread::sleep_for(chrono::milliseconds(7));
         }
     }
 

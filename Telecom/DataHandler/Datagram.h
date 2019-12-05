@@ -17,18 +17,21 @@
 
 class Datagram {
 public:
+    Datagram();
+
     void update();
     void parse();
     void print() const;
     void writeConnector(std::shared_ptr<Connector> connector);
 
     void add(Data* data);
-    Packet& getDataPacket();
+    Packet* getDataPacket();
+    void setPacket(Packet * packet);
 
     virtual ~Datagram();
 private:
     std::vector<Data*> datagram;
-    Packet dataPacket;
+    Packet* dataPacket;
 };
 
 

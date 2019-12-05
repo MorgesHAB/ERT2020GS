@@ -80,25 +80,33 @@ void DataHandler::print(PacketID type) const {
     dataHandler[type]->print();
 }
 
-Packet &DataHandler::getPacket(PacketID type) {
+Packet* DataHandler::getPacket(PacketID type) {
     return dataHandler[type]->getDataPacket();
 }
 
 void DataHandler::setPacket(Packet* packet) {
-    lastRxID = (PacketID) (packet->getPacket()[12]); // TODO PROTOCOL define !!!
-    if (lastRxID < NBR_OF_TYPE) {
-        dataHandler[lastRxID]->getDataPacket().~Packet();
-        dataHandler[lastRxID]->getDataPacket() = *packet;
+    auto ID = (PacketID) (packet->getPacket()[12]); // TODO PROTOCOL define !!!
+    if (ID < NBR_OF_TYPE) {
+        lastRxID = ID;
+        packet->printDebug();
+        //dataHandler[lastRxID]->getDataPacket()->~Packet(); // TODO
+        delete dataHandler[lastRxID]->getDataPacket();
+        dataHandler[lastRxID]->setPacket(packet);
         dataHandler[lastRxID]->parse();
+        std::cout << "lastRxID " << lastRxID << std::endl;
+        //dataHandler[lastRxID]->print();
+    }
+    else {
+        std::cout << "!!!!!!!!!!!!!! RXID > NBR_OF_TYPE  " << ID << std::endl;
+        packet->printDebug();
+        exit(0);
     }
 }
 
 void DataHandler::printLastRxPacket() const {
+    static int i(0);
+    std::cout << "loop " << ++i << std::endl;
     dataHandler[lastRxID]->print();
-}
-
-PacketID DataHandler::getLastRxID() const {
-    return lastRxID;
 }
 
 void

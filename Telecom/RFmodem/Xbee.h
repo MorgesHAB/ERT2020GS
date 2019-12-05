@@ -17,13 +17,13 @@
 class Xbee {
 public:
     Xbee();
-    Xbee(const Xbee&) = default;
-    void send(Packet &packet);
-    bool receive(Packet &packet);
+    virtual ~Xbee();
+
+    void send(Packet *packet);
+    bool receive(Packet *packet);
     bool receive(DataHandler &dataHandler);
     void mainRoutine(DataHandler &dataHandler);
     //int getRSSI();
-    virtual ~Xbee();
 
 private:
     serial::Serial serialPort;
