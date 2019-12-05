@@ -21,6 +21,9 @@
 namespace ui_interface {
 
 enum DataType {
+    //General
+    RUNNING = 0,
+
     // Qt input informations
     QT_LAUNCH_BUTTON,
 

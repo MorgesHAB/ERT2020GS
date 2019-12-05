@@ -7,7 +7,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 SOURCES += \
     ../RF-UI-Interface/connector.cpp \
-    main.cc \
+    gui_test.cc \
     gpswindow.cpp
 
 HEADERS += \

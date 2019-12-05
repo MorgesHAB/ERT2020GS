@@ -3,7 +3,7 @@
 
 #include <atomic>
 #include <array>
-#include <ProtocolDefine.h>
+#include "ProtocolDefine.h"
 
 
 class Connector {
@@ -18,7 +18,7 @@ public:
     T eatData(ui_interface::DataType type, uint64_t val);
 
 private:
-    std::array<std::atomic_uint64_t, ui_interface::DataType::ARRAY_SIZE> dataCollection;
+    std::array<std::atomic_uint64_t, ui_interface::ARRAY_SIZE> dataCollection;
 };
 
 
