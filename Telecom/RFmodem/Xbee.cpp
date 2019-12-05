@@ -12,7 +12,8 @@
 #define XBEE_SERIAL_PORT            "/dev/ttyS6"
 
 
-Xbee::Xbee() : serialPort(XBEE_SERIAL_PORT, 115200) {}
+Xbee::Xbee() /*: serialPort(XBEE_SERIAL_PORT, 115200)*/ {
+}
 
 void Xbee::send(Packet *packet) {
     if (serialPort.isOpen()) {
@@ -93,4 +94,9 @@ bool Xbee::receive(DataHandler &dataHandler) {
         return false;
     }
     return false;
+}
+
+void Xbee::initSerialPort() {
+    serialPort.setPort(XBEE_SERIAL_PORT);
+    serialPort.setBaudrate(115200);
 }

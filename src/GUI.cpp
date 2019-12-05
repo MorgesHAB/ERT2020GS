@@ -21,6 +21,7 @@
 #include <Xbee.h>
 #include <connector.h>
 #include <gpswindow.h>
+#include <Worker.h>
 
 class A {
 public:
@@ -55,6 +56,8 @@ int main(int argc, char** argv) {
     //run all threads
     //std::thread t1(&Xbee::mainRoutine, xbee);
     std::thread t1(&A::f1, a, std::shared_ptr<Connector>(&c));
+
+    std::thread t2(&Worker::mainRoutine, Worker(std::shared_ptr<Connector> (&c)));
 
     w.show();
 

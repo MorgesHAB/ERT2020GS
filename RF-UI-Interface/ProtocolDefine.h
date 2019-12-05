@@ -25,6 +25,7 @@ enum DataType {
     RUNNING = 0,
 
     // Qt input informations
+    ACTIVE_XBEE,
     QT_LAUNCH_BUTTON,
 
 
