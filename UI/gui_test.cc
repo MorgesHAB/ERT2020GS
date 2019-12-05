@@ -17,12 +17,16 @@ void f1(std::shared_ptr<Connector> c){
         a++;
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
     }
+    std::cout << "Ending receiver thread!" << std::endl;
+
 }
 };
 
 int main(int argc, char **argv) {
     //set up everything
     Connector c;
+
+    std::shared_ptr<Connector> the_pointer(&c);
     A a;
     QApplication app(argc, argv);
 
@@ -36,5 +40,6 @@ int main(int argc, char **argv) {
     w.show();
     app.exec();
     receiver_thread.join();
+    std::cout << "Ending receiver thread!" << std::endl;
     return 0;
 }

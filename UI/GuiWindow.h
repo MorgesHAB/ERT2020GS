@@ -21,9 +21,11 @@ public slots:
     void xbee_clicked();
     void xbee_stop_clicked();
     void ignite_clicked();
+    void theme_change_clicked();
 
 private:
     std::shared_ptr<Connector> data_;
+    bool white_theme_;
 };
 
 #endif // GUIWINDOW_H

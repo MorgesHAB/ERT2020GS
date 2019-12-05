@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'press_altTT7481.ui'
+** Form generated from reading UI file 'press_altbZ3313.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.9.5
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef PRESS_ALTTT7481_H
-#define PRESS_ALTTT7481_H
+#ifndef PRESS_ALTBZ3313_H
+#define PRESS_ALTBZ3313_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QAction>
@@ -44,6 +44,7 @@ public:
     QPushButton *ignition_button;
     QPushButton *xbee_button;
     QPushButton *stop_xbee;
+    QPushButton *change_theme;
 
     void setupUi(QWidget *Form)
     {
@@ -133,6 +134,11 @@ public:
 
         verticalLayout->addWidget(stop_xbee);
 
+        change_theme = new QPushButton(widget_2);
+        change_theme->setObjectName(QStringLiteral("change_theme"));
+
+        verticalLayout->addWidget(change_theme);
+
 
         gridLayout->addWidget(widget_2, 1, 0, 1, 1);
 
@@ -156,6 +162,7 @@ public:
         ignition_button->setText(QApplication::translate("Form", "Ignition", Q_NULLPTR));
         xbee_button->setText(QApplication::translate("Form", "Activate XBee", Q_NULLPTR));
         stop_xbee->setText(QApplication::translate("Form", "Stop XBee", Q_NULLPTR));
+        change_theme->setText(QApplication::translate("Form", "Change Color Theme", Q_NULLPTR));
     } // retranslateUi
 
 };
@@ -166,4 +173,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // PRESS_ALTTT7481_H
+#endif // PRESS_ALTBZ3313_H
