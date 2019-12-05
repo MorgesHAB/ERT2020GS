@@ -18,7 +18,7 @@ void GPSWindow::update() {
 
 void GPSWindow::push_data() {    
         this->altitude_lcd->display(QString::number(data_->getData<float>(ui_interface::PRESSURE_DATA)));
-        this->speed_lcd->display(0);
+
         this->latitude_panel->setText(QString::number(0) + "<sup>o</sup>");
         this->longitude_panel->setText(QString::number(0) + "<sup>o</sup>");
         this->rssi_panel->setText(QString::number(0) + " dBm");
