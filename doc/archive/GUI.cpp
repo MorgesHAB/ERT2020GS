@@ -20,7 +20,7 @@
 #include <DataHandler.h>
 #include <Xbee.h>
 #include <connector.h>
-#include <gpswindow.h>
+#include <GuiWindow.h>
 #include <Worker.h>
 
 class A {

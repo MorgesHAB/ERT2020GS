@@ -17,7 +17,7 @@
 #include <memory>
 #include <thread>
 #include <QApplication>
-#include <gpswindow.h>
+#include <GuiWindow.h>
 #include <connector.h>
 #include <Worker.h>
 
@@ -28,12 +28,12 @@ int main(int argc, char **argv) {
 
     QApplication app(argc, argv);
 
-    GPSWindow window(500, std::shared_ptr<Connector>(&connector));
+    GuiWindow guiWindow(500, std::shared_ptr<Connector>(&connector));
 
     //run all threads
     std::thread t1(&Worker::mainRoutine, Worker(std::shared_ptr<Connector>(&connector)));
 
-    window.show();
+    guiWindow.show();
 
     app.exec();
 

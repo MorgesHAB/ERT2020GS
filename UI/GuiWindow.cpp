@@ -1,8 +1,8 @@
-#include "gpswindow.h"
+#include "GuiWindow.h"
 #include <iostream>
 #include <QString>
 
-GPSWindow::GPSWindow(int refresh_rate, std::shared_ptr<Connector> connector) :
+GuiWindow::GuiWindow(int refresh_rate, std::shared_ptr<Connector> connector) :
         timer_(new QTimer(this)),
         data_(connector) {
     Ui_Form::setupUi(this);
@@ -13,12 +13,12 @@ GPSWindow::GPSWindow(int refresh_rate, std::shared_ptr<Connector> connector) :
     timer_->start(refresh_rate);
 }
 
-void GPSWindow::update() {
+void GuiWindow::update() {
     this->push_data();
     this->QWidget::update();
 }
 
-void GPSWindow::push_data() {
+void GuiWindow::push_data() {
     this->altitude_lcd->display(data_->getData<float>(ui_interface::PRESSURE_DATA));
 
     this->latitude_panel->setText(QString::number(0) + "<sup>o</sup>");
@@ -26,17 +26,17 @@ void GPSWindow::push_data() {
     this->rssi_panel->setText(QString::number(0) + " dBm");
 }
 
-void GPSWindow::xbee_clicked() {
+void GuiWindow::xbee_clicked() {
     std::cout << "XBee ON button clicked!" << std::endl;
     data_->setData(ui_interface::ACTIVE_XBEE, true);
 }
 
-void GPSWindow::xbee_stop_clicked() {
+void GuiWindow::xbee_stop_clicked() {
     std::cout << "XBee STOP button clicked!" << std::endl;
     data_->setData(ui_interface::RUNNING, false);
 }
 
-void GPSWindow::ignite_clicked() {
+void GuiWindow::ignite_clicked() {
     std::cout << "Ignition button clicked!" << std::endl;
     data_->setData(ui_interface::IGNITION_CLICKED, false);
 }

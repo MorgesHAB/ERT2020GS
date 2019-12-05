@@ -5,7 +5,7 @@
 #include <chrono>
 #include "../RF-UI-Interface/connector.h"
 #include "../RF-UI-Interface/ProtocolDefine.h"
-#include "gpswindow.h"
+#include "GuiWindow.h"
 
 class A{
 public:
@@ -26,7 +26,7 @@ int main(int argc, char **argv) {
     A a;
     QApplication app(argc, argv);
 
-    GPSWindow w(500, std::shared_ptr<Connector>(&c));
+    GuiWindow w(500, std::shared_ptr<Connector>(&c));
     //run all threads
     std::thread receiver_thread(&A::f1, a, std::shared_ptr<Connector>(&c));
 

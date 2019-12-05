@@ -1,5 +1,5 @@
-#ifndef GPSWINDOW_H
-#define GPSWINDOW_H
+#ifndef GUIWINDOW_H
+#define GUIWINDOW_H
 #include "ui_form.h"
 #include <QTimer>
 #include <memory>
@@ -8,11 +8,11 @@
 
 
 
-class GPSWindow : public QWidget, public Ui_Form {
+class GuiWindow : public QWidget, public Ui_Form {
     Q_OBJECT
 public:
-    GPSWindow(int refresh_rate, std::shared_ptr<Connector> connector);
-    virtual ~GPSWindow(){data_->setData(ui_interface::RUNNING, 0);}
+    GuiWindow(int refresh_rate, std::shared_ptr<Connector> connector);
+    virtual ~GuiWindow(){data_->setData(ui_interface::RUNNING, 0);}
     QTimer* timer_;
     void update();
 
@@ -26,4 +26,4 @@ private:
     std::shared_ptr<Connector> data_;
 };
 
-#endif // GPSWINDOW_H
+#endif // GUIWINDOW_H
