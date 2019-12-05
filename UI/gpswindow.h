@@ -19,6 +19,8 @@ public:
 public slots:
     void push_data();
     void xbee_clicked();
+    void xbee_stop_clicked();
+    void ignite_clicked();
 
 private:
     std::shared_ptr<Connector> data_;

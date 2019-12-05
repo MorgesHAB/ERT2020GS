@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'press_altKx2191.ui'
+** Form generated from reading UI file 'press_altTT7481.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.9.5
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef PRESS_ALTKX2191_H
-#define PRESS_ALTKX2191_H
+#ifndef PRESS_ALTTT7481_H
+#define PRESS_ALTTT7481_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QAction>
@@ -43,7 +43,7 @@ public:
     QVBoxLayout *verticalLayout;
     QPushButton *ignition_button;
     QPushButton *xbee_button;
-    QPushButton *button_send_3;
+    QPushButton *stop_xbee;
 
     void setupUi(QWidget *Form)
     {
@@ -128,10 +128,10 @@ public:
 
         verticalLayout->addWidget(xbee_button);
 
-        button_send_3 = new QPushButton(widget_2);
-        button_send_3->setObjectName(QStringLiteral("button_send_3"));
+        stop_xbee = new QPushButton(widget_2);
+        stop_xbee->setObjectName(QStringLiteral("stop_xbee"));
 
-        verticalLayout->addWidget(button_send_3);
+        verticalLayout->addWidget(stop_xbee);
 
 
         gridLayout->addWidget(widget_2, 1, 0, 1, 1);
@@ -155,7 +155,7 @@ public:
         rssi_panel->setText(QString());
         ignition_button->setText(QApplication::translate("Form", "Ignition", Q_NULLPTR));
         xbee_button->setText(QApplication::translate("Form", "Activate XBee", Q_NULLPTR));
-        button_send_3->setText(QApplication::translate("Form", "Func. 2 Button", Q_NULLPTR));
+        stop_xbee->setText(QApplication::translate("Form", "Stop XBee", Q_NULLPTR));
     } // retranslateUi
 
 };
@@ -166,4 +166,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // PRESS_ALTKX2191_H
+#endif // PRESS_ALTTT7481_H
