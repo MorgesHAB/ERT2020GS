@@ -27,6 +27,7 @@ enum DataType {
     // Qt input informations
     ACTIVE_XBEE,
     QT_LAUNCH_BUTTON,
+    IGNITION_CLICKED,
 
 
     // Header
