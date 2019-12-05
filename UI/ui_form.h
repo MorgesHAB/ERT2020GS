@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'press_altSm2119.ui'
+** Form generated from reading UI file 'press_altLh2191.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.9.5
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef PRESS_ALTSM2119_H
-#define PRESS_ALTSM2119_H
+#ifndef PRESS_ALTLH2191_H
+#define PRESS_ALTLH2191_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QAction>
@@ -42,7 +42,7 @@ public:
     QWidget *widget_2;
     QVBoxLayout *verticalLayout;
     QPushButton *ignition_button;
-    QPushButton *button_send_2;
+    QPushButton *xbee_button;
     QPushButton *button_send_3;
 
     void setupUi(QWidget *Form)
@@ -123,10 +123,10 @@ public:
 
         verticalLayout->addWidget(ignition_button);
 
-        button_send_2 = new QPushButton(widget_2);
-        button_send_2->setObjectName(QStringLiteral("button_send_2"));
+        xbee_button = new QPushButton(widget_2);
+        xbee_button->setObjectName(QStringLiteral("xbee_button"));
 
-        verticalLayout->addWidget(button_send_2);
+        verticalLayout->addWidget(xbee_button);
 
         button_send_3 = new QPushButton(widget_2);
         button_send_3->setObjectName(QStringLiteral("button_send_3"));
@@ -154,7 +154,7 @@ public:
         rssi_label->setText(QApplication::translate("Form", "RSSI", Q_NULLPTR));
         rssi_panel->setText(QString());
         ignition_button->setText(QApplication::translate("Form", "Ignition", Q_NULLPTR));
-        button_send_2->setText(QApplication::translate("Form", "Func. 1 Button", Q_NULLPTR));
+        xbee_button->setText(QApplication::translate("Form", "Activate XBee", Q_NULLPTR));
         button_send_3->setText(QApplication::translate("Form", "Func. 2 Button", Q_NULLPTR));
     } // retranslateUi
 
@@ -166,4 +166,5 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // PRESS_ALTSM2119_H
+#endif // PRESS_ALTLH2191_H
+
