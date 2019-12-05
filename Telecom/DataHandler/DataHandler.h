@@ -14,6 +14,7 @@
 #include <vector>
 #include "Datagram.h"
 
+// TODO namespace
 enum PacketID {
     GPSID, PAYLOAD, AVIONICS, PROPULSION, IMAGE, XBEE_TEST,       // <-- add new type here
     NBR_OF_TYPE  // <-- size of the vector
