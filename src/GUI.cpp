@@ -17,49 +17,23 @@
 #include <memory>
 #include <thread>
 #include <QApplication>
-#include <DataHandler.h>
-#include <Xbee.h>
-#include <connector.h>
 #include <gpswindow.h>
+#include <connector.h>
 #include <Worker.h>
 
-class A {
-public:
-    void f1(std::shared_ptr<Connector> c) {
-        Xbee xbee;
-        DataHandler dataHandler;
 
-        while (true) {
-            if (xbee.receive(dataHandler.getPacket(XBEE_TEST))) {
-                //if (true) {
-                dataHandler.parse(XBEE_TEST);
-                dataHandler.print(XBEE_TEST);
-                //dataHandler.update(XBEE_TEST);
-                dataHandler.writeConnector(XBEE_TEST, c);
-            }
-        }
-    }
-};
-
-int main(int argc, char** argv) {
-    // Your RF modem
-    Xbee xbee;
+int main(int argc, char **argv) {
     //set up everything
-    Connector c;
+    Connector connector;
 
-    // RF packet handler
-    DataHandler dataHandler;
-    A a;
     QApplication app(argc, argv);
 
-    GPSWindow w(500, std::shared_ptr<Connector>(&c));
+    GPSWindow window(500, std::shared_ptr<Connector>(&connector));
+
     //run all threads
-    //std::thread t1(&Xbee::mainRoutine, xbee);
-    std::thread t1(&A::f1, a, std::shared_ptr<Connector>(&c));
+    std::thread t1(&Worker::mainRoutine, Worker(std::shared_ptr<Connector>(&connector)));
 
-    std::thread t2(&Worker::mainRoutine, Worker(std::shared_ptr<Connector> (&c)));
-
-    w.show();
+    window.show();
 
     app.exec();
 
