@@ -16,15 +16,15 @@
 
 class Xbee {
 public:
-    Xbee();
+    Xbee(std::string port);
     virtual ~Xbee();
 
     void send(Packet *packet);
     bool receive(Packet *packet);
     bool receive(DataHandler &dataHandler);
-    void mainRoutine(DataHandler &dataHandler);
+
     //int getRSSI();
-    void initSerialPort();
+    void initSerialPort(std::string port);
 
 private:
     serial::Serial serialPort;

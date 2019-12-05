@@ -12,7 +12,11 @@
 #define XBEE_SERIAL_PORT            "/dev/ttyS6"
 
 
-Xbee::Xbee() /*: serialPort(XBEE_SERIAL_PORT, 115200)*/ {
+Xbee::Xbee(std::string port) : serialPort(port, 115200) {}
+
+void Xbee::initSerialPort(std::string port) {
+    serialPort.setPort(port);
+    serialPort.setBaudrate(115200);
 }
 
 void Xbee::send(Packet *packet) {
@@ -25,15 +29,6 @@ void Xbee::send(Packet *packet) {
 Xbee::~Xbee() {
     std::cout << "Closing radio receiver" << std::endl;
     serialPort.close();
-}
-
-void Xbee::mainRoutine(DataHandler &dataHandler) {
-    while (true) { //TODO thread enable
-        if (receive(dataHandler.getPacket(XBEE_TEST))) {
-            dataHandler.parse(XBEE_TEST);
-            dataHandler.print(XBEE_TEST);
-        }
-    }
 }
 
 bool Xbee::receive(Packet *packet) {
@@ -94,9 +89,4 @@ bool Xbee::receive(DataHandler &dataHandler) {
         return false;
     }
     return false;
-}
-
-void Xbee::initSerialPort() {
-    serialPort.setPort(XBEE_SERIAL_PORT);
-    serialPort.setBaudrate(115200);
 }

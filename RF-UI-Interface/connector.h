@@ -8,7 +8,6 @@
 
 class Connector {
 public:
-
     Connector();
 
     template<typename T>
