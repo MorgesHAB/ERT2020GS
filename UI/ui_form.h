@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'press_altLh2191.ui'
+** Form generated from reading UI file 'press_altKx2191.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.9.5
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef PRESS_ALTLH2191_H
-#define PRESS_ALTLH2191_H
+#ifndef PRESS_ALTKX2191_H
+#define PRESS_ALTKX2191_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QAction>
@@ -166,5 +166,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // PRESS_ALTLH2191_H
-
+#endif // PRESS_ALTKX2191_H

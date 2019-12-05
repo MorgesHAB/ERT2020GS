@@ -12,12 +12,13 @@ class GPSWindow : public QWidget, public Ui_Form {
     Q_OBJECT
 public:
     GPSWindow(int refresh_rate, std::shared_ptr<Connector> connector);
-    virtual ~GPSWindow(){data_->setData(ui_interface::RUNNING,0);}
+    virtual ~GPSWindow(){data_->setData(ui_interface::RUNNING, 0);}
     QTimer* timer_;
     void update();
 
 public slots:
     void push_data();
+    void xbee_clicked();
 
 private:
     std::shared_ptr<Connector> data_;

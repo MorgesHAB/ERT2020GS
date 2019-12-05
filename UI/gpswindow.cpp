@@ -8,6 +8,7 @@ GPSWindow::GPSWindow(int refresh_rate, std::shared_ptr<Connector> connector) :
 {
     Ui_Form::setupUi(this);
     connect(timer_, SIGNAL (timeout()), this , SLOT (push_data()));
+    connect(xbee_button, SIGNAL (pressed()), this, SLOT (xbee_clicked()));
     timer_->start(refresh_rate);
 }
 
@@ -24,3 +25,6 @@ void GPSWindow::push_data() {
         this->rssi_panel->setText(QString::number(0) + " dBm");
     }
 
+void GPSWindow::xbee_clicked(){
+    data_->setData(ui_interface::ACTIVE_XBEE, true);
+}
