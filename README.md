@@ -38,6 +38,10 @@ Now we need to install cmake to compile the code
 ```console
 sudo apt install cmake
 ```
+Install git to be able to clone this git repository
+```console
+sudo apt-get install git
+```
 Then we need to install wiringpi to interact with the Raspberry Pi GPIO
 ```console
 sudo apt-get install wiringpi
@@ -50,10 +54,6 @@ git clone https://github.com/WiringPi/WiringPi.git
 cd WiringPi && ./build
 ```
 (You can delete the WiringPi folder after a correct building)  
-Finally install git to be able to clone this git repository
-```console
-sudo apt-get install git
-```
 
 ### Install & configure your Pi to run a GPS (optional)
 

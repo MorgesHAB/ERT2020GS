@@ -52,3 +52,9 @@ void Header::updateTx(std::shared_ptr<Connector> connector) {
     ++packetNbr;
     timestamp = std::time(nullptr);
 }
+
+void Header::updateRx(std::shared_ptr<Connector> connector) {
+    connector->setData(ui_interface::PACKET_ID, packetID);
+    connector->setData(ui_interface::PACKET_NBR, packetNbr);
+    connector->setData(ui_interface::TIMESTAMP, timestamp);
+}

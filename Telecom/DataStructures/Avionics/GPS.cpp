@@ -13,11 +13,12 @@
 GPS::GPS() : latitude(0), longitude(0), altitude(0), speed(0),
              time(std::time(nullptr))/*,
              gpsd("localhost", DEFAULT_GPSD_PORT) */{
+    srand(std::time(nullptr)); // for simulation random
 
-   /* if (gpsd.stream(WATCH_ENABLE|WATCH_JSON) == NULL) {
-        std::cerr << "No GPSD running" << std::endl;
-        exit(0);
-    }*/
+    /* if (gpsd.stream(WATCH_ENABLE|WATCH_JSON) == NULL) {
+         std::cerr << "No GPSD running" << std::endl;
+         exit(0);
+     }*/
 }
 
 void GPS::write(Packet& packet) {
@@ -63,5 +64,18 @@ void GPS::updateTx(std::shared_ptr<Connector> connector) {
               longitude = newData->fix.longitude;
           }
       }*/
+    latitude =  42 + ((float) rand()/ RAND_MAX) * 6;
+    longitude =  11 + ((float) rand()/ RAND_MAX) * 6;
+    altitude =  500 + ((float) rand()/ RAND_MAX) * 1000;
+    speed = ((float) rand()/ RAND_MAX) * 100;
+    time = std::time(nullptr);
+}
+
+void GPS::updateRx(std::shared_ptr<Connector> connector) {
+    connector->setData(ui_interface::LATITUDE, latitude);
+    connector->setData(ui_interface::LONGITUDE, longitude);
+    connector->setData(ui_interface::ALTITUDE, altitude);
+    connector->setData(ui_interface::SPEED, speed);
+    connector->setData(ui_interface::TIME, time);
 }
 

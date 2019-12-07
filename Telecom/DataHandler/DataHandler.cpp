@@ -38,14 +38,7 @@ DataHandler::DataHandler(std::shared_ptr<Connector> connector)
     dataHandler[XBEE_TEST]->add(new States({1, 0, 1, 1, 0, 0, 1, 0}));
 
     //// Packet Type n° 1 GPS
-    //dataHandler[GPSID]->add(new GPS);
-    dataHandler[GPSID]->add(new PressureData);
-    dataHandler[GPSID]->add(new PressureData);
-    dataHandler[GPSID]->add(new PressureData);
-    dataHandler[GPSID]->add(new PressureData);
-    dataHandler[GPSID]->add(new PressureData);
-    dataHandler[GPSID]->add(new PressureData);
-    dataHandler[GPSID]->add(new PressureData);
+    dataHandler[GPSID]->add(new GPS);
     dataHandler[GPSID]->add(new PressureData);
 
     //// Packet Type n°2
@@ -98,19 +91,20 @@ void DataHandler::printLastRxPacket() const {
 }
 
 void DataHandler::updateTx(PacketID type) {
-    dataHandler[lastRxID]->updateTx(connector);
+    dataHandler[type]->updateTx(connector);
 }
 
 void DataHandler::updateRx(Packet *packet) {
     auto ID = (PacketID) (packet->getPacket()[12]); // TODO PROTOCOL define !!!
     if (ID < NBR_OF_TYPE) {
         lastRxID = ID;
-        packet->printDebug();
-        std::cout << "lastRxID " << lastRxID << std::endl;
+        //packet->printDebug();
+        //std::cout << "lastRxID " << lastRxID << std::endl;
 
         dataHandler[lastRxID]->updateRx(packet, connector);
     }
     else {
+        printLastRxPacket();
         std::cout << "!!!!!!!!!!!!!! RXID > NBR_OF_TYPE  " << ID << std::endl;
         packet->printDebug();
         exit(0);

@@ -23,6 +23,7 @@ public:
     void print() const override;
 
     void updateTx(std::shared_ptr<Connector> connector) override;
+    void updateRx(std::shared_ptr<Connector> connector) override;
 
 private:
     float latitude;
