@@ -14,7 +14,7 @@ Worker::Worker(std::shared_ptr<Connector> connector) : connector(connector) {}
 
 void Worker::mainRoutine() {
     // RF packet handler
-    DataHandler dataHandler;
+    DataHandler dataHandler(connector);
 
     while (!connector->getData<bool>(ui_interface::ACTIVE_XBEE));
     // Your RF modem    // Can use eg:      LoRa loRa;

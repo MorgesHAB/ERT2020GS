@@ -14,6 +14,9 @@
  * \date        04.11.2019
  */
 
+#include <chrono>
+#include <thread>
+
 #include <Xbee.h>
 #include <DataHandler.h>
 #include <unistd.h>
@@ -22,21 +25,22 @@
 
 int main(int argc, char** argv) {
     // Your RF modem
-    Xbee xbee("/dev/ttyS6");
+    Xbee xbee("/dev/ttyS3");
     // RF packet handler
     DataHandler dataHandler;
-
+    //usleep(10000000);
     while (true) {
         // ./XbeeTest Tx            // Transmitter Part
         if (argc == 2 && std::string(argv[1]) == "Tx") {
-            /*PacketID ID = static_cast<PacketID> (rand() % NBR_OF_TYPE);
+            PacketID ID = static_cast<PacketID> (rand() % NBR_OF_TYPE);
             dataHandler.update(ID);
-            xbee.send(dataHandler.getPacket(ID));*/
+            xbee.send(dataHandler.getPacket(ID));
 
-            dataHandler.update(XBEE_TEST);
-            xbee.send(dataHandler.getPacket(XBEE_TEST));
+            //dataHandler.update(XBEE_TEST);
+            //xbee.send(dataHandler.getPacket(XBEE_TEST));
            // return 0;
             usleep(1000);
+            //std::this_thread::sleep_for(std::chrono::microseconds(1000));
         }
         // ./XbeeTest               // Receiver Part
         else {
@@ -47,7 +51,9 @@ int main(int argc, char** argv) {
             if (xbee.receive(dataHandler)) {
                 dataHandler.printLastRxPacket();
             }
-            usleep(100); //  TODO std::this_thread::sleep_for(chrono::milliseconds(7));
+            usleep(100); //  TODO
+            //std::this_thread::sleep_for(std::chrono::milliseconds(7));
+            //std::this_thread::sleep_for(std::chrono::microseconds(100));
         }
     }
 

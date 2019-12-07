@@ -19,7 +19,9 @@
 #include "DataHandler.h"
 
 
-DataHandler::DataHandler() : dataHandler(NBR_OF_TYPE, nullptr), lastRxID(GPSID) {
+DataHandler::DataHandler(std::shared_ptr<Connector> connector)
+        : connector(connector), dataHandler(NBR_OF_TYPE, nullptr), lastRxID(GPSID) {
+
     // Create your RF Packet Datagram here
     // default protocol header ex: packet Type, packet nbr, timestamp
     for (uint8_t id(0); id < NBR_OF_TYPE; ++id) {
@@ -31,11 +33,19 @@ DataHandler::DataHandler() : dataHandler(NBR_OF_TYPE, nullptr), lastRxID(GPSID) 
     //// Packet Type  XBEE
     dataHandler[XBEE_TEST]->add(new PressureData);
     dataHandler[XBEE_TEST]->add(new String("First sentence transmit via XBee !!"));
+    dataHandler[XBEE_TEST]->add(new String("First sentence transmit via XBee !!"));
     dataHandler[XBEE_TEST]->add(new PressureData);
     dataHandler[XBEE_TEST]->add(new States({1, 0, 1, 1, 0, 0, 1, 0}));
 
     //// Packet Type n° 1 GPS
     //dataHandler[GPSID]->add(new GPS);
+    dataHandler[GPSID]->add(new PressureData);
+    dataHandler[GPSID]->add(new PressureData);
+    dataHandler[GPSID]->add(new PressureData);
+    dataHandler[GPSID]->add(new PressureData);
+    dataHandler[GPSID]->add(new PressureData);
+    dataHandler[GPSID]->add(new PressureData);
+    dataHandler[GPSID]->add(new PressureData);
     dataHandler[GPSID]->add(new PressureData);
 
     //// Packet Type n°2
@@ -43,8 +53,11 @@ DataHandler::DataHandler() : dataHandler(NBR_OF_TYPE, nullptr), lastRxID(GPSID) 
     dataHandler[PAYLOAD]->add(new IgnitionData);
     dataHandler[PAYLOAD]->add(new States({1, 0, 1, 1, 0, 0, 1, 0}));
 
-    //// Packet Type n°3
+    //// Packet Type n°3    // Test packet without changing values =>  no 0x7E ???
     dataHandler[AVIONICS]->add(new States({1, 1, 1, 1, 0, 0, 1, 0}));
+    dataHandler[AVIONICS]->add(new String("First sentence transmit via XBee !!"));
+    dataHandler[AVIONICS]->add(new String("First sentence transmit via XBee !!"));
+    dataHandler[AVIONICS]->add(new String("First sentence transmit via XBee !!"));
 
     //// Packet Type n°4
     dataHandler[PROPULSION]->add(new PressureData);
@@ -70,6 +83,7 @@ DataHandler::~DataHandler() {
 
 void DataHandler::update(PacketID type) {
     dataHandler[type]->update();
+    dataHandler[type]->readConnector(connector);
 }
 
 void DataHandler::parse(PacketID type) {
@@ -92,9 +106,10 @@ void DataHandler::setPacket(Packet* packet) {
         //dataHandler[lastRxID]->getDataPacket()->~Packet(); // TODO
         delete dataHandler[lastRxID]->getDataPacket();
         dataHandler[lastRxID]->setPacket(packet);
+        
         dataHandler[lastRxID]->parse();
+        dataHandler[lastRxID]->writeConnector(connector);
         std::cout << "lastRxID " << lastRxID << std::endl;
-        //dataHandler[lastRxID]->print();
     }
     else {
         std::cout << "!!!!!!!!!!!!!! RXID > NBR_OF_TYPE  " << ID << std::endl;

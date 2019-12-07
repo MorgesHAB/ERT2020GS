@@ -9,6 +9,8 @@
 
 #include "Datagram.h"
 
+Datagram::Datagram() : dataPacket(new Packet) {}
+
 void Datagram::update() {
     dataPacket->restart();
     for (auto &data : datagram) {
@@ -29,6 +31,10 @@ Packet* Datagram::getDataPacket() {
     return dataPacket;
 }
 
+void Datagram::setPacket(Packet *packet) {
+    dataPacket = packet;
+}
+
 void Datagram::add(Data *data) {
     datagram.push_back(data);
 }
@@ -41,8 +47,6 @@ void Datagram::writeConnector(std::shared_ptr<Connector> connector) {
     for (auto &data : datagram) data->writeConnector(connector);
 }
 
-void Datagram::setPacket(Packet *packet) {
-    dataPacket = packet;
+void Datagram::readConnector(std::shared_ptr<Connector> connector) {
+    for (auto &data : datagram) data->readConnector(connector);
 }
-
-Datagram::Datagram() : dataPacket(new Packet) {} // TODO delete later

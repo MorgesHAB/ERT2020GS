@@ -2,6 +2,8 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Telecom/RFmodem/lib/serial" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Telecom/RFmodem/lib/serial/serial-src" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/build/serial-src" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/cmake-build-debug/serial-src" vcs="Git" />
   </component>

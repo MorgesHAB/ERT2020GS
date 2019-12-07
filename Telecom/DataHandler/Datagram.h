@@ -23,6 +23,7 @@ public:
     void parse();
     void print() const;
     void writeConnector(std::shared_ptr<Connector> connector);
+    void readConnector(std::shared_ptr<Connector> connector);
 
     void add(Data* data);
     Packet* getDataPacket();

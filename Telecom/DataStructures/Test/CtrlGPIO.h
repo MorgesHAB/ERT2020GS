@@ -20,11 +20,12 @@ public:
     void parse(Packet& packet) override;
     void update() override;
     void print() const override;
-    void writeConnector(std::shared_ptr<Connector> connector) override ;
-
+    void writeConnector(std::shared_ptr<Connector> connector) override;
+    void readConnector(std::shared_ptr<Connector> connector) override;
 
 private:
     int pin;
+    bool pinState;
 };
 
 

@@ -22,7 +22,7 @@ enum PacketID {
 
 class DataHandler {
 public:
-    DataHandler();
+    DataHandler(std::shared_ptr<Connector> connector = nullptr);
     virtual ~DataHandler();
 
     void update(PacketID type);
@@ -36,6 +36,8 @@ public:
     void printLastRxPacket() const;
 
 private:
+    std::shared_ptr<Connector> connector;
+
     std::vector<Datagram*> dataHandler;
     PacketID lastRxID;
 };

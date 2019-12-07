@@ -37,7 +37,3 @@ void States::print() const {
     for (uint8_t i(0); i < states.size() - 1; ++i) std::cout << states[i] << " , ";
     std::cout << states.back() << " ] " << std::endl;
 }
-
-void States::writeConnector(std::shared_ptr<Connector> connector) {
-
-}

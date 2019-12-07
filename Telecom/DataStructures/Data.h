@@ -22,7 +22,9 @@ public:
     virtual void parse(Packet& packet) = 0;
     virtual void update() = 0;
     virtual void print() const = 0;
-    virtual void writeConnector(std::shared_ptr<Connector> connector) = 0;
+    virtual void writeConnector(std::shared_ptr<Connector> connector) {};
+    virtual void readConnector(std::shared_ptr<Connector> connector) {}
+
     virtual ~Data() = default;
 };
 

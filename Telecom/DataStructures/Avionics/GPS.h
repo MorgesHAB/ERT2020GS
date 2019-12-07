@@ -16,15 +16,6 @@
 
 
 class GPS : public Data {
-private:
-    struct GPSData {
-        float latitude;
-        float longitude;
-        float altitude;
-        float speed;
-        std::time_t time;
-    } gpsData;
-
 public:
     GPS();
     void write(Packet& packet) override;
@@ -33,16 +24,14 @@ public:
     void print() const override;
     void writeConnector(std::shared_ptr<Connector> connector) override ;
 
-
-    const GPSData &getGpsData() const;
-
 private:
-   // gpsmm gpsd;
     float latitude;
     float longitude;
     float altitude;
     float speed;
     std::time_t time;
+
+    // gpsmm gpsd;
 };
 
 
