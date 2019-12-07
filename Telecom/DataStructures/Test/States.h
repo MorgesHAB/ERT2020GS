@@ -21,7 +21,6 @@ public:
 
     void write(Packet& packet) override;
     void parse(Packet& packet) override;
-    void update() override;
     void print() const override;
 
 private:

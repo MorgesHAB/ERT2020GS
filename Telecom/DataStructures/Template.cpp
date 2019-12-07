@@ -19,14 +19,14 @@ void MyData::parse(Packet &packet) {
     packet.parse(x);
 }
 
-void MyData::update() {
-
-}
-
 void MyData::print() const {
     std::cout << "nbr: " << nbr << "  x: " << x << std::endl;
 }
 
-void MyData::writeConnector(std::shared_ptr<Connector> connector) {
+void MyData::updateTx(std::shared_ptr<Connector> connector) {
+    Data::updateTx(connector);
+}
 
+void MyData::updateRx(std::shared_ptr<Connector> connector) {
+    Data::updateRx(connector);
 }

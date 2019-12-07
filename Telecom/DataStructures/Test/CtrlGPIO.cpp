@@ -7,12 +7,12 @@
  * \date        01.12.2019	
  */
 
-//#include <wiringPi.h>
+#include <wiringPi.h>
 #include "CtrlGPIO.h"
 
 CtrlGPIO::CtrlGPIO(int pin) : pin(pin), pinState(false) {
- //   wiringPiSetupGpio();
-   // pinMode(pin, OUTPUT);		// Configure GPIO pin as an output
+    wiringPiSetupGpio();
+    pinMode(pin, OUTPUT);		// Configure GPIO pin as an output
 }
 
 void CtrlGPIO::write(Packet &packet) {
@@ -21,20 +21,17 @@ void CtrlGPIO::write(Packet &packet) {
 
 void CtrlGPIO::parse(Packet &packet) {
     packet.parse(pinState);
-    //digitalWrite(pin, pinState);
 }
-
-void CtrlGPIO::update() {}
 
 void CtrlGPIO::print() const {
     std::cout << "GPIO : " << pin << " is currently at state : "
               << ((pinState) ? "HIGH" : "LOW") << std::endl;
 }
 
-void CtrlGPIO::writeConnector(std::shared_ptr<Connector> connector) {
-
+void CtrlGPIO::updateTx(std::shared_ptr<Connector> connector) {
+    pinState = connector->getData<bool>(ui_interface::IGNITION_CLICKED);
 }
 
-void CtrlGPIO::readConnector(std::shared_ptr<Connector> connector) {
-    pinState = connector->getData<bool>(ui_interface::IGNITION_CLICKED);
+void CtrlGPIO::updateRx(std::shared_ptr<Connector> connector) {
+    digitalWrite(pin, pinState);
 }

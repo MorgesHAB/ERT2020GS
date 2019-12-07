@@ -19,8 +19,10 @@ public:
 
     void write(Packet& packet) override;
     void parse(Packet& packet) override;
-    void update() override;
     void print() const override;
+
+    void updateTx(std::shared_ptr<Connector> connector) override;
+    void updateRx(std::shared_ptr<Connector> connector) override;
 
 private:
     int gpio1, gpio2, gpio3, gpio4;

@@ -43,12 +43,6 @@ void XbeeOptions::parse(Packet &packet) {
     for (size_t i(0); i < XBEE_API_RX_INDICATOR; ++i) packet.parse(XBEE_FRAME_OPTIONS[i]);
 }
 
-void XbeeOptions::update() {}
-
 void XbeeOptions::print() const {
     // Don't print Xbee options
-}
-
-void XbeeOptions::writeConnector(std::shared_ptr<Connector> connector) {
-
 }

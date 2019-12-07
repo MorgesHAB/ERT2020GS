@@ -18,18 +18,16 @@
 class Datagram {
 public:
     Datagram();
+    virtual ~Datagram();
 
-    void update();
-    void parse();
     void print() const;
-    void writeConnector(std::shared_ptr<Connector> connector);
-    void readConnector(std::shared_ptr<Connector> connector);
+
+    void updateTx(std::shared_ptr<Connector> connector);
+    void updateRx(Packet *packet, std::shared_ptr<Connector> connector);
 
     void add(Data* data);
     Packet* getDataPacket();
-    void setPacket(Packet * packet);
 
-    virtual ~Datagram();
 private:
     std::vector<Data*> datagram;
     Packet* dataPacket;

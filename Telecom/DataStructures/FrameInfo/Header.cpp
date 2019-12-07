@@ -27,11 +27,6 @@ void Header::parse(Packet &packet) {
     packet.parse(timestamp);
 }
 
-void Header::update() {
-    ++packetNbr;
-    timestamp = std::time(nullptr);
-}
-
 void Header::print() const {
     std::cout << "*** Packet Type : ";
     switch (packetID) {
@@ -53,6 +48,7 @@ void Header::print() const {
               << std::asctime(std::localtime(&timestamp)) << std::endl;
 }
 
-void Header::writeConnector(std::shared_ptr<Connector> connector) {
-
+void Header::updateTx(std::shared_ptr<Connector> connector) {
+    ++packetNbr;
+    timestamp = std::time(nullptr);
 }

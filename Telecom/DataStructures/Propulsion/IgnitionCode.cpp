@@ -37,13 +37,6 @@ void IgnitionCode::parse(Packet &packet) {
     }
 }
 
-void IgnitionCode::update() {
-    states[0] = digitalRead(gpio1);
-    states[1] = digitalRead(gpio2);
-    states[2] = digitalRead(gpio3);
-    states[3] = digitalRead(gpio4);
-}
-
 void IgnitionCode::print() const {
     std::cout << "States vector : [ ";
     for (uint8_t i(0); i < states.size() - 1; ++i) std::cout << states[i] << " , ";
@@ -51,9 +44,18 @@ void IgnitionCode::print() const {
 
     std::cout << "=> Ignition code : [ " << states[0] << " " << states[1] << " "
               << states[2] << " " << states[3] << " ]" << std::endl;
+}
 
+void IgnitionCode::updateTx(std::shared_ptr<Connector> connector) {
+    states[0] = digitalRead(gpio1);
+    states[1] = digitalRead(gpio2);
+    states[2] = digitalRead(gpio3);
+    states[3] = digitalRead(gpio4);
+}
+
+void IgnitionCode::updateRx(std::shared_ptr<Connector> connector) {
     std::vector<int> codeRx = {digitalRead(gpio1), digitalRead(gpio2),
-                                digitalRead(gpio3), digitalRead(gpio4)};
+                               digitalRead(gpio3), digitalRead(gpio4)};
 
     std::cout << "Code read on the Rx RPi" << std::endl;
     std::cout << "=> Ignition code Rx: [ " << codeRx[0] << " " << codeRx[1] << " "

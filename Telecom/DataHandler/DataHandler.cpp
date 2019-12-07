@@ -79,43 +79,16 @@ DataHandler::DataHandler(std::shared_ptr<Connector> connector)
 
 DataHandler::~DataHandler() {
     for (auto& datagram : dataHandler) delete datagram;
-}
-
-void DataHandler::update(PacketID type) {
-    dataHandler[type]->update();
-    dataHandler[type]->readConnector(connector);
-}
-
-void DataHandler::parse(PacketID type) {
-    dataHandler[type]->parse();
+    std::cout << "DataHandler deleted - memory released" << std::endl;
 }
 
 void DataHandler::print(PacketID type) const {
     dataHandler[type]->print();
 }
 
+// give data pointer to send
 Packet* DataHandler::getPacket(PacketID type) {
     return dataHandler[type]->getDataPacket();
-}
-
-void DataHandler::setPacket(Packet* packet) {
-    auto ID = (PacketID) (packet->getPacket()[12]); // TODO PROTOCOL define !!!
-    if (ID < NBR_OF_TYPE) {
-        lastRxID = ID;
-        packet->printDebug();
-        //dataHandler[lastRxID]->getDataPacket()->~Packet(); // TODO
-        delete dataHandler[lastRxID]->getDataPacket();
-        dataHandler[lastRxID]->setPacket(packet);
-        
-        dataHandler[lastRxID]->parse();
-        dataHandler[lastRxID]->writeConnector(connector);
-        std::cout << "lastRxID " << lastRxID << std::endl;
-    }
-    else {
-        std::cout << "!!!!!!!!!!!!!! RXID > NBR_OF_TYPE  " << ID << std::endl;
-        packet->printDebug();
-        exit(0);
-    }
 }
 
 void DataHandler::printLastRxPacket() const {
@@ -124,7 +97,22 @@ void DataHandler::printLastRxPacket() const {
     dataHandler[lastRxID]->print();
 }
 
-void
-DataHandler::writeConnector(PacketID type, std::shared_ptr<Connector> connector) {
-    dataHandler[type]->writeConnector(connector);
+void DataHandler::updateTx(PacketID type) {
+    dataHandler[lastRxID]->updateTx(connector);
+}
+
+void DataHandler::updateRx(Packet *packet) {
+    auto ID = (PacketID) (packet->getPacket()[12]); // TODO PROTOCOL define !!!
+    if (ID < NBR_OF_TYPE) {
+        lastRxID = ID;
+        packet->printDebug();
+        std::cout << "lastRxID " << lastRxID << std::endl;
+
+        dataHandler[lastRxID]->updateRx(packet, connector);
+    }
+    else {
+        std::cout << "!!!!!!!!!!!!!! RXID > NBR_OF_TYPE  " << ID << std::endl;
+        packet->printDebug();
+        exit(0);
+    }
 }

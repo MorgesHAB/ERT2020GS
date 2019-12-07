@@ -78,7 +78,7 @@ bool Xbee::receive(DataHandler &dataHandler) {
             std::cout << "Size : " << size << std::endl;
             Packet* packet = new Packet(size);
             serialPort.read(packet->getPacket(), size);
-            dataHandler.setPacket(packet);
+            dataHandler.updateRx(packet);
             return true;
         }
     } catch (const serial::IOException &e) {

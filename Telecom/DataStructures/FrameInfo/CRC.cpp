@@ -28,13 +28,7 @@ void CRC::parse(Packet &packet) {
     packet.parse(CRC);
 }
 
-void CRC::update() {}
-
 void CRC::print() const {
     // don't care about CRC value
     //std::cout << "CheckSum Value (CRC): " << CRC << std::endl;
-}
-
-void CRC::writeConnector(std::shared_ptr<Connector> connector) {
-
 }

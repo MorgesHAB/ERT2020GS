@@ -11,42 +11,37 @@
 
 Datagram::Datagram() : dataPacket(new Packet) {}
 
-void Datagram::update() {
-    dataPacket->restart();
-    for (auto &data : datagram) {
-        data->update();
-        data->write(*dataPacket);
-    }
-}
-
-void Datagram::parse() {
-    for (auto &data : datagram) data->parse(*dataPacket);
-}
-
-void Datagram::print() const {
-    for (auto &data : datagram) data->print();
+Datagram::~Datagram() {
+    for (auto &data : datagram) delete data;
 }
 
 Packet* Datagram::getDataPacket() {
     return dataPacket;
 }
 
-void Datagram::setPacket(Packet *packet) {
-    dataPacket = packet;
-}
-
 void Datagram::add(Data *data) {
     datagram.push_back(data);
 }
 
-Datagram::~Datagram() {
-    for (auto &data : datagram) delete data;
+void Datagram::print() const {
+    for (auto &data : datagram) data->print();
 }
 
-void Datagram::writeConnector(std::shared_ptr<Connector> connector) {
-    for (auto &data : datagram) data->writeConnector(connector);
+void Datagram::updateTx(std::shared_ptr<Connector> connector) {
+    dataPacket->restart();
+
+    for (auto &data : datagram) {
+        data->updateTx(connector);
+        data->write(*dataPacket);
+    }
 }
 
-void Datagram::readConnector(std::shared_ptr<Connector> connector) {
-    for (auto &data : datagram) data->readConnector(connector);
+void Datagram::updateRx(Packet *packet, std::shared_ptr<Connector> connector) {
+    delete dataPacket;
+    dataPacket = packet;
+
+    for (auto &data : datagram) {
+        data->parse(*dataPacket);
+        data->updateRx(connector);
+    }
 }

@@ -32,7 +32,7 @@ Picture::~Picture() {
 
 /////////////////// Transmitter Part ///////////////////
 
-void Picture::update() {
+void Picture::updateTx(std::shared_ptr<Connector> connector) {
     // manage send img - missing packet request - etc
     static bool first(true);
     if (first) {
@@ -135,8 +135,4 @@ void Picture::sendMissingPacket(Packet &packet) {
     for(size_t i(1); i <= image.size(); ++i) {
         if (!image[i]) packet.write(i);
     }
-}
-
-void Picture::writeConnector(std::shared_ptr<Connector> connector) {
-
 }

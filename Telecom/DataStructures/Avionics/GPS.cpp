@@ -47,24 +47,21 @@ void GPS::print() const {
               << "time : " << std::asctime(std::localtime(&time)) << std::endl;
 }
 
-void GPS::update() {
-  /*  struct gps_data_t* newData;
+void GPS::updateTx(std::shared_ptr<Connector> connector) {
+    /*  struct gps_data_t* newData;
 
-    if (!gpsd.waiting(5000000)) return;
+      if (!gpsd.waiting(5000000)) return;
 
-    if ((newData = gpsd.read()) == NULL) {
-        std::cerr << "Read error" << std::endl;
-    } else {
-        if (newData->set & ALTITUDE_SET) altitude = newData->fix.altitude;
-        if (newData->set & SPEED_SET) speed = newData->fix.speed;
-        if (newData->set & TIME_SET) time = newData->fix.time;
-        if (newData->set & LATLON_SET) {
-            latitude = newData->fix.latitude;
-            longitude = newData->fix.longitude;
-        }
-    }*/
+      if ((newData = gpsd.read()) == NULL) {
+          std::cerr << "Read error" << std::endl;
+      } else {
+          if (newData->set & ALTITUDE_SET) altitude = newData->fix.altitude;
+          if (newData->set & SPEED_SET) speed = newData->fix.speed;
+          if (newData->set & TIME_SET) time = newData->fix.time;
+          if (newData->set & LATLON_SET) {
+              latitude = newData->fix.latitude;
+              longitude = newData->fix.longitude;
+          }
+      }*/
 }
 
-void GPS::writeConnector(std::shared_ptr<Connector> connector) {
-
-}
