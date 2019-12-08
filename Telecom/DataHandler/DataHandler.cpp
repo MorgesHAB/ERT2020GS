@@ -16,11 +16,13 @@
 #include <FrameInfo/XbeeOptions.h>
 #include <FrameInfo/CRC.h>
 #include <Test/String.h>
+#include <Propulsion/IgnitionCode.h>
 #include "DataHandler.h"
 
 
 DataHandler::DataHandler(std::shared_ptr<Connector> connector)
-        : connector(connector), dataHandler(NBR_OF_TYPE, nullptr), lastRxID(GPSID) {
+        : connector(connector), dataHandler(NBR_OF_TYPE, nullptr), lastRxID(GPSID),
+          packetRxNbr(0) {
 
     // Create your RF Packet Datagram here
     // default protocol header ex: packet Type, packet nbr, timestamp
@@ -60,8 +62,9 @@ DataHandler::DataHandler(std::shared_ptr<Connector> connector)
     dataHandler[IMAGE]->add(new PressureData);
     dataHandler[IMAGE]->add(new String("Image coming soon"));
     dataHandler[IMAGE]->add(new IgnitionData);
-
     //dataHandler[IMAGE]->add(new Picture(230, "pictureZ", 50, 50));
+
+    dataHandler[PROPULSION_TEST]->add(new IgnitionCode);
 
 
     // END of protocol add CRC
@@ -85,8 +88,6 @@ Packet* DataHandler::getPacket(PacketID type) {
 }
 
 void DataHandler::printLastRxPacket() const {
-    static int i(0);
-    std::cout << "loop " << ++i << std::endl;
     dataHandler[lastRxID]->print();
 }
 
@@ -95,6 +96,7 @@ void DataHandler::updateTx(PacketID type) {
 }
 
 void DataHandler::updateRx(Packet *packet) {
+    ++packetRxNbr;
     auto ID = (PacketID) packet->getPacket()[12]; // TODO PROTOCOL define !!!
     if (ID < NBR_OF_TYPE) {
         lastRxID = ID;
@@ -103,7 +105,7 @@ void DataHandler::updateRx(Packet *packet) {
     else {
         printLastRxPacket();
         std::cout << "!!!!!!!!!!!!!! RXID > NBR_OF_TYPE  " << ID << std::endl;
+        std::cout << "Packet Rx nbr : " << packetRxNbr << std::endl;
         packet->printDebug();
-        //exit(0);
     }
 }

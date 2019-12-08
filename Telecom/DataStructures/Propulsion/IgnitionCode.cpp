@@ -6,19 +6,34 @@
  * \author      ISOZ Lionel - EPFL EL BA3
  * \date        07.12.2019	
  */
+// Configuration of the GPIO pin of the Raspberry Pi 4
+//  /!\ it's the nbr in BCM format, not the pin number
+// GPIO which activates the relay which activates the igniter
+#define GPIO_OUT_IGNITION       21
+// GPIO on the RPi to read the ignition code via the switches
+#define GPIO_IN_CODE1           6
+#define GPIO_IN_CODE2           13
+#define GPIO_IN_CODE3           19
+#define GPIO_IN_CODE4           26
+//////////////////////////////////////
+// This data is composed of boolean states => 4 states for the ignition code
+// So to minimize the packet size, we combine all these states in a byte (8 bits)
+// Packet :  [ code 1 MSB | code 2 | code 3 | code 4 LSB | - | - | - | - ]
+
 
 #include <wiringPi.h>
 #include "IgnitionCode.h"
 
 
-IgnitionCode::IgnitionCode(int gpio1, int gpio2, int gpio3, int gpio4)
-        : gpio1(gpio1), gpio2(gpio2), gpio3(gpio3), gpio4(gpio4) {
+IgnitionCode::IgnitionCode() {
     wiringPiSetupGpio();
+    // Configure GPIO OUT for the igniter
+    pinMode(GPIO_OUT_IGNITION, OUTPUT);
     // Configure GPIO pins as an input
-    pinMode(gpio1, INPUT);
-    pinMode(gpio2, INPUT);
-    pinMode(gpio3, INPUT);
-    pinMode(gpio4, INPUT);
+    pinMode(GPIO_IN_CODE1, INPUT);
+    pinMode(GPIO_IN_CODE2, INPUT);
+    pinMode(GPIO_IN_CODE3, INPUT);
+    pinMode(GPIO_IN_CODE4, INPUT);
 }
 
 void IgnitionCode::write(Packet &packet) {
@@ -47,23 +62,29 @@ void IgnitionCode::print() const {
 }
 
 void IgnitionCode::updateTx(std::shared_ptr<Connector> connector) {
-    states[0] = digitalRead(gpio1);
-    states[1] = digitalRead(gpio2);
-    states[2] = digitalRead(gpio3);
-    states[3] = digitalRead(gpio4);
+    states[0] = digitalRead(GPIO_IN_CODE1);
+    states[1] = digitalRead(GPIO_IN_CODE2);
+    states[2] = digitalRead(GPIO_IN_CODE3);
+    states[3] = digitalRead(GPIO_IN_CODE4);
 }
 
 void IgnitionCode::updateRx(std::shared_ptr<Connector> connector) {
-    std::vector<int> codeRx = {digitalRead(gpio1), digitalRead(gpio2),
-                               digitalRead(gpio3), digitalRead(gpio4)};
+    std::vector<int> codeRx = {digitalRead(GPIO_IN_CODE1),
+                               digitalRead(GPIO_IN_CODE2),
+                               digitalRead(GPIO_IN_CODE3),
+                               digitalRead(GPIO_IN_CODE4)};
 
     std::cout << "Code read on the Rx RPi" << std::endl;
-    std::cout << "=> Ignition code Rx: [ " << codeRx[0] << " " << codeRx[1] << " "
-              << codeRx[2] << " " << codeRx[3] << " ]" << std::endl;
+    std::cout << "=> Ignition code on Rx side : [ " << codeRx[0] << " " << codeRx[1]
+              << " " << codeRx[2] << " " << codeRx[3] << " ]" << std::endl;
 
-    if (codeRx[0] == states[0] && codeRx[1] == states[1] && codeRx[2] == states[2] &&
+    // The code "0000" is not allowed (avoid the case if at initialization all is 0)
+    if (!(codeRx[0] == 0 && codeRx[1] == 0 && codeRx[2] == 0 && codeRx[3] == 0) &&
+        codeRx[0] == states[0] && codeRx[1] == states[1] && codeRx[2] == states[2] &&
         codeRx[3] == states[3]) {
-        std::cout << "Code are identical => GPIO ignition HIGH !!" << std::endl;
+        std::cout << "Code Rx & Tx are identical => GPIO ignition HIGH !!" << std::endl;
+        digitalWrite(GPIO_OUT_IGNITION, HIGH);
+
     } else {
         std::cout << "Code aren't identical : ignition aborted" << std::endl;
     }

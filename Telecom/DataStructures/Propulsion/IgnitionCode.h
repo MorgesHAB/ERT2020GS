@@ -7,6 +7,9 @@
  * \date        07.12.2019	
  */
 
+// DATA INFO :  PROPULSION TEST mid-December 2019
+// if the code is identical on the TX & Rx side the igniter is activated
+
 #ifndef IgnitionCode_H
 #define IgnitionCode_H
 
@@ -15,7 +18,7 @@
 
 class IgnitionCode : public Data {
 public:
-    IgnitionCode(int gpio1, int gpio2, int gpio3, int gpio4);
+    IgnitionCode();
 
     void write(Packet& packet) override;
     void parse(Packet& packet) override;
@@ -25,7 +28,6 @@ public:
     void updateRx(std::shared_ptr<Connector> connector) override;
 
 private:
-    int gpio1, gpio2, gpio3, gpio4;
     std::vector<bool> states;
 };
 

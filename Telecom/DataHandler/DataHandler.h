@@ -16,8 +16,10 @@
 
 // TODO namespace
 enum PacketID {
-    GPSID, PAYLOAD, AVIONICS, PROPULSION, IMAGE, XBEE_TEST,       // <-- add new type here
-    NBR_OF_TYPE  // <-- size of the vector
+    GPSID, PAYLOAD, AVIONICS, PROPULSION, IMAGE, XBEE_TEST,
+    PROPULSION_TEST,                 // <-- add new type here
+
+    NBR_OF_TYPE  // <-- size of the array - keep at the end
 };
 
 class DataHandler {
@@ -39,6 +41,7 @@ private:
 
     std::vector<Datagram*> dataHandler;
     PacketID lastRxID;
+    size_t packetRxNbr;
 };
 
 
