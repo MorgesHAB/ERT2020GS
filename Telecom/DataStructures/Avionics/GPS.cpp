@@ -41,10 +41,10 @@ void GPS::parse(Packet& packet) {
 void GPS::print() const {
     std::cout << std::setprecision(10);
     std::cout << "----- GPS DATA --------------" << std::endl;
-    std::cout << "latitude : " << latitude << std::endl
-              << "longitude : " << longitude << std::endl
-              << "altitude : " << altitude << std::endl
-              << "speed : " << speed << std::endl
+    std::cout << "latitude : " << latitude << "°" << std::endl
+              << "longitude : " << longitude << "°" << std::endl
+              << "altitude : " << altitude << " m" << std::endl
+              << "speed : " << speed << " km/h" << std::endl
               << "time : " << std::asctime(std::localtime(&time)) << std::endl;
 }
 

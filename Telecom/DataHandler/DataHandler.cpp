@@ -53,7 +53,7 @@ DataHandler::DataHandler(std::shared_ptr<Connector> connector)
     dataHandler[AVIONICS]->add(new String("First sentence transmit via XBee !!"));
 
     //// Packet Type n°4
-    dataHandler[PROPULSION]->add(new PressureData);
+    dataHandler[PROPULSION]->add(new String("~~~~~~~~~~~~~~~~~"));
     dataHandler[PROPULSION]->add(new PressureData);
 
     //// Packet Type n°5
@@ -95,18 +95,15 @@ void DataHandler::updateTx(PacketID type) {
 }
 
 void DataHandler::updateRx(Packet *packet) {
-    auto ID = (PacketID) (packet->getPacket()[12]); // TODO PROTOCOL define !!!
+    auto ID = (PacketID) packet->getPacket()[12]; // TODO PROTOCOL define !!!
     if (ID < NBR_OF_TYPE) {
         lastRxID = ID;
-        //packet->printDebug();
-        //std::cout << "lastRxID " << lastRxID << std::endl;
-
         dataHandler[lastRxID]->updateRx(packet, connector);
     }
     else {
         printLastRxPacket();
         std::cout << "!!!!!!!!!!!!!! RXID > NBR_OF_TYPE  " << ID << std::endl;
         packet->printDebug();
-        exit(0);
+        //exit(0);
     }
 }

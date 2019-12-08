@@ -24,7 +24,6 @@ public:
     bool receive(DataHandler &dataHandler);
 
     //int getRSSI();
-    void initSerialPort(std::string port);
 
 private:
     serial::Serial serialPort;
