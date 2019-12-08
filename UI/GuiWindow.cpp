@@ -60,6 +60,7 @@ void GuiWindow::closeEvent (QCloseEvent *event)
         } else {
             event->accept();
             data_->setData(ui_interface::RUNNING, false);
+		std::cout << "running set to false" << std::endl;
         }
 }
 
