@@ -5,6 +5,7 @@
 #include <memory>
 #include "../RF-UI-Interface/connector.h"
 #include "../RF-UI-Interface/ProtocolDefine.h"
+#include "QCloseEvent"
 
 
 
@@ -12,11 +13,11 @@ class GuiWindow : public QWidget, public Ui_Form {
     Q_OBJECT
 public:
     GuiWindow(int refresh_rate, std::shared_ptr<Connector> connector);
-    virtual ~GuiWindow(){data_->setData(ui_interface::RUNNING, 0);}
     QTimer* timer_;
     void update();
 
 public slots:
+
     void push_data();
     void xbee_clicked();
     void xbee_stop_clicked();
@@ -24,6 +25,7 @@ public slots:
     void theme_change_clicked();
 
 private:
+    void closeEvent (QCloseEvent *event) override;
     std::shared_ptr<Connector> data_;
     bool white_theme_;
 };

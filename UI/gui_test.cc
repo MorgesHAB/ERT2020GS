@@ -18,21 +18,21 @@ void f1(std::shared_ptr<Connector> c){
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
     }
     std::cout << "Ending receiver thread!" << std::endl;
-
 }
 };
 
 int main(int argc, char **argv) {
     //set up everything
-    Connector c;
 
-    std::shared_ptr<Connector> the_pointer(&c);
+    std::shared_ptr<Connector> c(std::make_shared<Connector>());
+
+
     A a;
     QApplication app(argc, argv);
 
-    GuiWindow w(500, std::shared_ptr<Connector>(&c));
+    GuiWindow w(500, std::shared_ptr<Connector>(c));
     //run all threads
-    std::thread receiver_thread(&A::f1, a, std::shared_ptr<Connector>(&c));
+    std::thread receiver_thread(&A::f1, a, std::shared_ptr<Connector>(c));
 
 
 
@@ -40,6 +40,5 @@ int main(int argc, char **argv) {
     w.show();
     app.exec();
     receiver_thread.join();
-    std::cout << "Ending receiver thread!" << std::endl;
     return 0;
 }

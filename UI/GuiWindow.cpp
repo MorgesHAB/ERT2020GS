@@ -1,6 +1,7 @@
 #include "GuiWindow.h"
 #include <iostream>
 #include <QString>
+#include <QMessageBox>
 
 GuiWindow::GuiWindow(int refresh_rate, std::shared_ptr<Connector> connector) :
         timer_(new QTimer(this)),
@@ -51,3 +52,18 @@ void GuiWindow::theme_change_clicked()
     }
     white_theme_ = !white_theme_;
 }
+
+void GuiWindow::closeEvent (QCloseEvent *event)
+{
+        QMessageBox::StandardButton resBtn = QMessageBox::question( this, "BELLA LUI 2020",
+                                                                    tr("Ending mission Bella Lui 2020.\nAre you sure?\n"),
+                                                                    QMessageBox::Cancel | QMessageBox::No | QMessageBox::Yes,
+                                                                    QMessageBox::Yes);
+        if (resBtn != QMessageBox::Yes) {
+            event->ignore();
+        } else {
+            event->accept();
+            data_->setData(ui_interface::RUNNING, false);
+        }
+}
+
