@@ -95,7 +95,7 @@ bool Xbee::receive(DataHandler &dataHandler) {
             Packet* packet = new Packet(length);
             size_t byteRead(serialPort.read(packet->getPacket(), length));
             //std::cout << "byte read : " << byteRead << std::endl;
-            if (byteRead + 3 != byteAvail) std::cout << "PROBLEM !!!!!! " << byteRead << " vs " << byteAvail << std::endl;
+            //if (byteRead + 3 != byteAvail) std::cout << "PROBLEM !!!!!! " << byteRead << " vs " << byteAvail << std::endl;
             //std::cout << "Xbee options : " << +packet->getPacket()[11] << std::endl;
             dataHandler.updateRx(packet);
             return true;

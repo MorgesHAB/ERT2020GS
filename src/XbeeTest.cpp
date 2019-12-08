@@ -48,7 +48,7 @@ int main(int argc, char** argv) {
     while (keep_running) {
         // ./XbeeTest Tx            // Transmitter Part
         if (modeTx) {
-            PacketID ID = static_cast<PacketID> (rand() % NBR_OF_TYPE);
+            PacketID ID = static_cast<PacketID> (rand() % (NBR_OF_TYPE-1));
             dataHandler.updateTx(ID);
             xbee2.send(dataHandler.getPacket(ID));
 
@@ -60,7 +60,7 @@ int main(int argc, char** argv) {
         // ./XbeeTest               // Receiver Part
         else {
             if (xbee1.receive(dataHandler)) {
-                //dataHandler.printLastRxPacket();
+                dataHandler.printLastRxPacket();
             }
             std::this_thread::sleep_for(std::chrono::milliseconds(7));
         }
