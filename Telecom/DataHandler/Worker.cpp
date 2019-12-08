@@ -14,19 +14,17 @@ Worker::Worker(std::shared_ptr<Connector> connector) : connector(connector) {}
 
 void Worker::mainRoutine() {
     // RF packet handler
-    DataHandler dataHandler;
+    DataHandler dataHandler(connector);
 
+    // Wait that we clicked on Active Xbee
     while (!connector->getData<bool>(ui_interface::ACTIVE_XBEE));
     // Your RF modem    // Can use eg:      LoRa loRa;
     Xbee xbee("/dev/ttyS3");
     std::cout << "Xbee init now" << std::endl;
 
     while (connector->getData<bool>(ui_interface::RUNNING)) {
-        if (xbee.receive(dataHandler.getPacket(XBEE_TEST))) {
-            dataHandler.parse(XBEE_TEST);
-            dataHandler.print(XBEE_TEST);
-            //dataHandler.update(XBEE_TEST); Tx part
-            dataHandler.writeConnector(XBEE_TEST, connector);
+        if (xbee.receive(dataHandler)) {
+            dataHandler.printLastRxPacket();
         }
     }
 }

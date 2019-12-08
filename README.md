@@ -38,14 +38,22 @@ Now we need to install cmake to compile the code
 ```console
 sudo apt install cmake
 ```
+Install git to be able to clone this git repository
+```console
+sudo apt-get install git
+```
 Then we need to install wiringpi to interact with the Raspberry Pi GPIO
 ```console
 sudo apt-get install wiringpi
 ```
-Finally install git to be able to clone this git repository
+If you aren't working on the RPi, do this to be able to build on Linux :
 ```console
-sudo apt-get install git
+git clone https://github.com/WiringPi/WiringPi.git
 ```
+```console
+cd WiringPi && ./build
+```
+(You can delete the WiringPi folder after a correct building)  
 
 ### Install & configure your Pi to run a GPS (optional)
 
@@ -76,13 +84,14 @@ sudo apt-get install build-essential
 Now you can refer to this tutorial:
 Tutorial source : https://vitux.com/compiling-your-first-qt-program-in-ubuntu/
 
-Or simply enter the following commands:
-
-```console
-sudo apt-get install qtcreator
-```
+Or simply enter the following commands:  
+To compile some Qt software
 ```console
 sudo apt install qt5-default
+```
+Optional
+```console
+sudo apt-get install qtcreator
 ```
 ```console
 sudo apt-get install qt5-doc qtbase5-examples qtbase5-doc-html
@@ -93,7 +102,7 @@ sudo apt-get install qt5-doc qtbase5-examples qtbase5-doc-html
 
 First clone this GitHub repository in a folder using:
 ```console
-git clone https://github.com/MorgesHAB/ERT2020GS.git
+git clone https:you//github.com/MorgesHAB/ERT2020GS.git
 ```
 Move to the root folder of the project and run the bash to build the executable file:
 ```console

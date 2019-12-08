@@ -28,16 +28,8 @@ void States::parse(Packet &packet) {
     }
 }
 
-void States::update() {
-    //for (auto& state : states) ;
-}
-
 void States::print() const {
     std::cout << "States vector : [ ";
     for (uint8_t i(0); i < states.size() - 1; ++i) std::cout << states[i] << " , ";
     std::cout << states.back() << " ] " << std::endl;
-}
-
-void States::writeConnector(std::shared_ptr<Connector> connector) {
-
 }

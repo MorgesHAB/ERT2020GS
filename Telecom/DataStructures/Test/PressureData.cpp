@@ -23,18 +23,14 @@ void PressureData::parse(Packet &packet) {
     packet.parse(pressure);
 }
 
-void PressureData::update() {
-    pressure = 850 + ((float) rand()/ RAND_MAX) * 300;
-}
-
 void PressureData::print() const {
     std::cout << "Pressure Data : " << pressure << " hPa" << std::endl;
 }
 
-float PressureData::getPressure() const {
-    return pressure;
+void PressureData::updateTx(std::shared_ptr<Connector> connector) {
+    pressure = 850 + ((float) rand()/ RAND_MAX) * 300;
 }
 
-void PressureData::writeConnector(std::shared_ptr<Connector> connector) {
+void PressureData::updateRx(std::shared_ptr<Connector> connector) {
     connector->setData(ui_interface::DataType ::PRESSURE_DATA, pressure);
 }

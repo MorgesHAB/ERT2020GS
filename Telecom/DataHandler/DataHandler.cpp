@@ -19,7 +19,9 @@
 #include "DataHandler.h"
 
 
-DataHandler::DataHandler() : dataHandler(NBR_OF_TYPE, nullptr), lastRxID(GPSID) {
+DataHandler::DataHandler(std::shared_ptr<Connector> connector)
+        : connector(connector), dataHandler(NBR_OF_TYPE, nullptr), lastRxID(GPSID) {
+
     // Create your RF Packet Datagram here
     // default protocol header ex: packet Type, packet nbr, timestamp
     for (uint8_t id(0); id < NBR_OF_TYPE; ++id) {
@@ -31,11 +33,12 @@ DataHandler::DataHandler() : dataHandler(NBR_OF_TYPE, nullptr), lastRxID(GPSID) 
     //// Packet Type  XBEE
     dataHandler[XBEE_TEST]->add(new PressureData);
     dataHandler[XBEE_TEST]->add(new String("First sentence transmit via XBee !!"));
+    dataHandler[XBEE_TEST]->add(new String("First sentence transmit via XBee !!"));
     dataHandler[XBEE_TEST]->add(new PressureData);
     dataHandler[XBEE_TEST]->add(new States({1, 0, 1, 1, 0, 0, 1, 0}));
 
     //// Packet Type n° 1 GPS
-    //dataHandler[GPSID]->add(new GPS);
+    dataHandler[GPSID]->add(new GPS);
     dataHandler[GPSID]->add(new PressureData);
 
     //// Packet Type n°2
@@ -43,8 +46,11 @@ DataHandler::DataHandler() : dataHandler(NBR_OF_TYPE, nullptr), lastRxID(GPSID) 
     dataHandler[PAYLOAD]->add(new IgnitionData);
     dataHandler[PAYLOAD]->add(new States({1, 0, 1, 1, 0, 0, 1, 0}));
 
-    //// Packet Type n°3
+    //// Packet Type n°3    // Test packet without changing values =>  no 0x7E ???
     dataHandler[AVIONICS]->add(new States({1, 1, 1, 1, 0, 0, 1, 0}));
+    dataHandler[AVIONICS]->add(new String("First sentence transmit via XBee !!"));
+    dataHandler[AVIONICS]->add(new String("First sentence transmit via XBee !!"));
+    dataHandler[AVIONICS]->add(new String("First sentence transmit via XBee !!"));
 
     //// Packet Type n°4
     dataHandler[PROPULSION]->add(new PressureData);
@@ -66,41 +72,16 @@ DataHandler::DataHandler() : dataHandler(NBR_OF_TYPE, nullptr), lastRxID(GPSID) 
 
 DataHandler::~DataHandler() {
     for (auto& datagram : dataHandler) delete datagram;
-}
-
-void DataHandler::update(PacketID type) {
-    dataHandler[type]->update();
-}
-
-void DataHandler::parse(PacketID type) {
-    dataHandler[type]->parse();
+    std::cout << "DataHandler deleted - memory released" << std::endl;
 }
 
 void DataHandler::print(PacketID type) const {
     dataHandler[type]->print();
 }
 
+// give data pointer to send
 Packet* DataHandler::getPacket(PacketID type) {
     return dataHandler[type]->getDataPacket();
-}
-
-void DataHandler::setPacket(Packet* packet) {
-    auto ID = (PacketID) (packet->getPacket()[12]); // TODO PROTOCOL define !!!
-    if (ID < NBR_OF_TYPE) {
-        lastRxID = ID;
-        packet->printDebug();
-        //dataHandler[lastRxID]->getDataPacket()->~Packet(); // TODO
-        delete dataHandler[lastRxID]->getDataPacket();
-        dataHandler[lastRxID]->setPacket(packet);
-        dataHandler[lastRxID]->parse();
-        std::cout << "lastRxID " << lastRxID << std::endl;
-        //dataHandler[lastRxID]->print();
-    }
-    else {
-        std::cout << "!!!!!!!!!!!!!! RXID > NBR_OF_TYPE  " << ID << std::endl;
-        packet->printDebug();
-        exit(0);
-    }
 }
 
 void DataHandler::printLastRxPacket() const {
@@ -109,7 +90,23 @@ void DataHandler::printLastRxPacket() const {
     dataHandler[lastRxID]->print();
 }
 
-void
-DataHandler::writeConnector(PacketID type, std::shared_ptr<Connector> connector) {
-    dataHandler[type]->writeConnector(connector);
+void DataHandler::updateTx(PacketID type) {
+    dataHandler[type]->updateTx(connector);
+}
+
+void DataHandler::updateRx(Packet *packet) {
+    auto ID = (PacketID) (packet->getPacket()[12]); // TODO PROTOCOL define !!!
+    if (ID < NBR_OF_TYPE) {
+        lastRxID = ID;
+        //packet->printDebug();
+        //std::cout << "lastRxID " << lastRxID << std::endl;
+
+        dataHandler[lastRxID]->updateRx(packet, connector);
+    }
+    else {
+        printLastRxPacket();
+        std::cout << "!!!!!!!!!!!!!! RXID > NBR_OF_TYPE  " << ID << std::endl;
+        packet->printDebug();
+        exit(0);
+    }
 }

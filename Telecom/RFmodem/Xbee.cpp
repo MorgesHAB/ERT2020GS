@@ -70,15 +70,15 @@ bool Xbee::receive(DataHandler &dataHandler) {
             uint16_t length(((buffer[1] << 8)| buffer[2]) + 1);
             if (buffer.begin() + 3 < buffer.back()) ;
             //Packet* packet = new Packet(length);*/
-            std::cout << "\n\nPacket Received" << std::endl;
-            std::cout << "****************" << serialPort.available() << std::endl;
+            //std::cout << "\n\nPacket Received" << std::endl;
+            //std::cout << "****************" << serialPort.available() << std::endl;
             uint8_t info[3];
             serialPort.read(info, 3);
             uint16_t size(((info[1] << 8)| info[2]) + 1);
-            std::cout << "Size : " << size << std::endl;
+            //std::cout << "Size : " << size << std::endl;
             Packet* packet = new Packet(size);
             serialPort.read(packet->getPacket(), size);
-            dataHandler.setPacket(packet);
+            dataHandler.updateRx(packet);
             return true;
         }
     } catch (const serial::IOException &e) {

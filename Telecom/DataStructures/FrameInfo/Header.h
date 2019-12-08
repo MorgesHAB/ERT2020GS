@@ -21,10 +21,10 @@ public:
 
     void write(Packet& packet) override;
     void parse(Packet& packet) override;
-    void update() override;
     void print() const override;
-    void writeConnector(std::shared_ptr<Connector> connector) override ;
 
+    void updateTx(std::shared_ptr<Connector> connector) override;
+    void updateRx(std::shared_ptr<Connector> connector) override;
 
 private:
     uint8_t packetID;

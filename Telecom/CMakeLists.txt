@@ -23,6 +23,8 @@ target_include_directories(${PROJECT_NAME} PUBLIC DataHandler)
 target_include_directories(${PROJECT_NAME} PUBLIC ../RF-UI-Interface)
 target_link_libraries(${PROJECT_NAME} RF-UI-Interface)
 
+target_link_libraries(${PROJECT_NAME} wiringPi) # control GPIO of RPi
+
 if (USE_GPS)
     target_link_libraries(${PROJECT_NAME} gps) # GPS
 endif (USE_GPS)
@@ -33,8 +35,6 @@ endif (USE_LORA)
 
 # Xbee serial
 if (USE_XBEE)
-    include_directories(${CMAKE_BINARY_DIR}/serial-src/include/)
+    include_directories(RFmodem/lib/serial/include/)
     target_link_libraries(${PROJECT_NAME} serial)
 endif (USE_XBEE)
-
-
