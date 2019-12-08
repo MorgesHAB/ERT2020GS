@@ -9,15 +9,8 @@
 
 #include "Xbee.h"
 
-#define XBEE_SERIAL_PORT            "/dev/ttyS6"
-
 
 Xbee::Xbee(std::string port) : serialPort(port, 115200) {}
-
-void Xbee::initSerialPort(std::string port) {
-    serialPort.setPort(port);
-    serialPort.setBaudrate(115200);
-}
 
 void Xbee::send(Packet *packet) {
     if (serialPort.isOpen()) {
@@ -70,14 +63,40 @@ bool Xbee::receive(DataHandler &dataHandler) {
             uint16_t length(((buffer[1] << 8)| buffer[2]) + 1);
             if (buffer.begin() + 3 < buffer.back()) ;
             //Packet* packet = new Packet(length);*/
+            /*size_t byteAvailable(serialPort.available());
+            std::cout << "Byte available : " << byteAvailable << std::endl;
+            //std::vector<uint8_t> buf(byteAvailable);
+            uint8_t buf[byteAvailable];
+            std::cout << "byte read : " << serialPort.read(buf, byteAvailable) << std::endl;
+            std::cout << "Print packet Debug byte per byte :" << std::endl;
+            for (auto& e : buf) std::cout << +e << " ";
+            std::cout << std::endl;
+
+            for (size_t i(0); i < byteAvailable; ++i) {
+                if (buf[i] == 0x7E) {
+                    uint16_t length(((buf[i + 1] << 8) | buf[i + 2]) + 1);
+                    std::cout << "length : " << length << std::endl;
+                    if (i + length + 2 > byteAvailable) continue;
+                    Packet *packet = new Packet(length);
+                    for (size_t j(i); j < length; ++j) {
+                        packet->getPacket()[j] = buf[j];
+                    }
+                    dataHandler.updateRx(packet);
+                    i += length + 2;
+                }
+            }*/
             //std::cout << "\n\nPacket Received" << std::endl;
-            //std::cout << "****************" << serialPort.available() << std::endl;
+            size_t byteAvail(serialPort.available());
+            //std::cout << "byte avail " << byteAvail << std::endl;
             uint8_t info[3];
             serialPort.read(info, 3);
-            uint16_t size(((info[1] << 8)| info[2]) + 1);
-            //std::cout << "Size : " << size << std::endl;
-            Packet* packet = new Packet(size);
-            serialPort.read(packet->getPacket(), size);
+            uint16_t length(((info[1] << 8)| info[2]) + 1);
+            //std::cout << "length : " << length << std::endl;
+            Packet* packet = new Packet(length);
+            size_t byteRead(serialPort.read(packet->getPacket(), length));
+            //std::cout << "byte read : " << byteRead << std::endl;
+            if (byteRead + 3 != byteAvail) std::cout << "PROBLEM !!!!!! " << byteRead << " vs " << byteAvail << std::endl;
+            //std::cout << "Xbee options : " << +packet->getPacket()[11] << std::endl;
             dataHandler.updateRx(packet);
             return true;
         }

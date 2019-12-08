@@ -40,7 +40,8 @@ int main(int argc, char** argv) {
     std::shared_ptr<Connector> cptr(&connector);
 
     // Your RF modem
-    Xbee xbee("/dev/ttyS6");
+    Xbee xbee1("/dev/ttyS3");
+    Xbee xbee2("/dev/ttyS6");
     // RF packet handler
     DataHandler dataHandler(cptr);
 
@@ -49,20 +50,19 @@ int main(int argc, char** argv) {
         if (modeTx) {
             PacketID ID = static_cast<PacketID> (rand() % NBR_OF_TYPE);
             dataHandler.updateTx(ID);
-            xbee.send(dataHandler.getPacket(ID));
+            xbee2.send(dataHandler.getPacket(ID));
 
-            //dataHandler.updateTx(XBEE_TEST);
-            //xbee.send(dataHandler.getPacket(XBEE_TEST));
+            //dataHandler.updateTx(PROPULSION);
+            //xbee.send(dataHandler.getPacket(PROPULSION));
            // return 0;
             std::this_thread::sleep_for(std::chrono::milliseconds(14));
         }
         // ./XbeeTest               // Receiver Part
         else {
-            if (xbee.receive(dataHandler)) {
+            if (xbee1.receive(dataHandler)) {
                 //dataHandler.printLastRxPacket();
             }
             std::this_thread::sleep_for(std::chrono::milliseconds(7));
-            //std::this_thread::sleep_for(std::chrono::microseconds(100));
         }
     }
 
