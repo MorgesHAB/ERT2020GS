@@ -24,14 +24,15 @@
 
 int main(int argc, char **argv) {
     //set up everything
-    Connector connector;
+    
+    std::shared_ptr<Connector> connector(std::make_shared<Connector>());
 
     QApplication app(argc, argv);
 
-    GuiWindow guiWindow(500, std::shared_ptr<Connector>(&connector));
+    GuiWindow guiWindow(500, std::shared_ptr<Connector>(connector));
 
     //run all threads
-    std::thread t1(&Worker::mainRoutine, Worker(std::shared_ptr<Connector>(&connector)));
+    std::thread t1(&Worker::mainRoutine, Worker(std::shared_ptr<Connector>(connector)));
 
     guiWindow.show();
 
