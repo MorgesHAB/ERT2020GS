@@ -17,11 +17,11 @@ Worker::Worker(std::shared_ptr<Connector> connector) : connector(connector) {}
 using namespace std::chrono_literals;
 
 void Worker::mainRoutine() {
-    // RF packet handler
-    DataHandler dataHandler(connector);
+    
 
     while(connector->getData<bool>(ui_interface::RUNNING)){
-    
+    	// RF packet handler
+        DataHandler dataHandler(connector);
     	// Wait that we clicked on Active Xbee or we close the Window
     	while (!connector->getData<bool>(ui_interface::ACTIVE_XBEE)){
 		std::this_thread::sleep_for(2s);
