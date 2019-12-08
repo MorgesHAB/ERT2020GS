@@ -33,10 +33,12 @@ endif (USE_LORA)
 if (USE_XBEE)
     include_directories(Telecom/RFmodem/lib/serial/include/)
     target_link_libraries(XbeeTest Telecom)
+    target_link_libraries(XbeeTest wiringPi) # control GPIO of RPi
 endif (USE_XBEE)
 
 if (USE_GUI)
     include_directories(Telecom/RFmodem/lib/serial/include/)
     target_link_libraries(${PROJECT_NAME} GUI)
+    target_include_directories(${PROJECT_NAME} PUBLIC /usr/local/include)
     target_include_directories(${PROJECT_NAME} PUBLIC UI)
 endif (USE_GUI)
