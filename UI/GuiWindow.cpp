@@ -8,7 +8,7 @@ GuiWindow::GuiWindow(int refresh_rate, std::shared_ptr<Connector> connector) :
         data_(connector),
         white_theme_(false){
     Ui_Form::setupUi(this);
-    connect(timer_, SIGNAL (timeout()), this, SLOT (push_data()));
+    connect(timer_, SIGNAL (timeout()), this, SLOT (refresh_data()));
     connect(xbee_button, SIGNAL (pressed()), this, SLOT (xbee_clicked()));
     connect(stop_xbee, SIGNAL (pressed()), this, SLOT (xbee_stop_clicked()));
     connect(ignition_button, SIGNAL (pressed()), this, SLOT (ignite_clicked()));
@@ -16,12 +16,8 @@ GuiWindow::GuiWindow(int refresh_rate, std::shared_ptr<Connector> connector) :
     timer_->start(refresh_rate);
 }
 
-void GuiWindow::update() {
-    this->push_data();
-    this->QWidget::update();
-}
-
-void GuiWindow::push_data() {
+void GuiWindow::refresh_data() {
+    //std::cout << "Data stored reads : " << data_->getData<float>(ui_interface::PRESSURE_DATA) <<std::endl;
     this->altitude_lcd->display(data_->getData<float>(ui_interface::PRESSURE_DATA));
     this->rssi_panel->setText(QString::number(0)  + "<sup>o</sup>");
 }
@@ -33,12 +29,12 @@ void GuiWindow::xbee_clicked() {
 
 void GuiWindow::xbee_stop_clicked() {
     std::cout << "XBee STOP button clicked!" << std::endl;
-    data_->setData(ui_interface::RUNNING, false);
+    data_->setData(ui_interface::ACTIVE_XBEE, false);
 }
 
 void GuiWindow::ignite_clicked() {
     std::cout << "Ignition button clicked!" << std::endl;
-    data_->setData(ui_interface::IGNITION_CLICKED, false);
+    data_->setData(ui_interface::IGNITION_CLICKED, true);
 }
 
 void GuiWindow::theme_change_clicked()

@@ -17,8 +17,7 @@ public:
     void update();
 
 public slots:
-
-    void push_data();
+    void refresh_data();
     void xbee_clicked();
     void xbee_stop_clicked();
     void ignite_clicked();
