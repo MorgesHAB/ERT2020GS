@@ -1,5 +1,6 @@
 #include "GuiWindow.h"
 #include <iostream>
+#include <ctime>
 #include <QString>
 #include <QMessageBox>
 #include <QPixmap>
@@ -11,6 +12,12 @@ using namespace ui_interface;
 inline QString degree_representation(double value){
     return QString::number(value)  + "<sup>o</sup>";
 }
+
+inline QString qstr(double value){
+    return QString::number(value);
+}
+
+
 
 GuiWindow::GuiWindow(int refresh_rate, std::shared_ptr<Connector> connector) :
         timer_(new QTimer(this)),
@@ -30,11 +37,16 @@ void GuiWindow::refresh_data() {
     float tmp(data_->getData<float>(LATITUDE));
     latitude_panel->setText(degree_representation(tmp));
     tmp = data_->getData<float>(LONGITUDE);
-    latitude_panel->setText(degree_representation(tmp));
+    longitude_panel->setText(degree_representation(tmp));
     tmp = data_->getData<float>(ALTITUDE);
     this->altitude_lcd->display(tmp);
-
-    this->rssi_panel->setText(QString::number(data_->getData<float>(PRESSURE_DATA))  + "<sup>o</sup>");
+    this->last_packet_number_panel->setText(qstr(data_->getData<uint64_t>(PACKET_NBR)));
+    time_t timestamp(data_->getData<time_t>(TIMESTAMP));
+    char tbuffer[16];
+    struct tm* tptr = std::localtime(&timestamp);
+    std::strftime(tbuffer, 16, "%r", tptr);
+    this->last_refresh_panel->setText(tbuffer);
+    this->rssi_panel->setText("NOT YET IMPLEMENTED");
 }
 
 void GuiWindow::xbee_clicked() {
