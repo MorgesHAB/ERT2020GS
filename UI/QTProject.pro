@@ -17,3 +17,6 @@ HEADERS += \
     GuiWindow.h
 
 FORMS +=
+
+RESOURCES += \
+    logo.qrc

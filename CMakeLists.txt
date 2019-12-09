@@ -14,8 +14,10 @@ add_subdirectory(Telecom)
 add_subdirectory(RF-UI-Interface)
 
 if (USE_GUI)
+    find_package(Qt5 COMPONENTS Widgets REQUIRED)
+    qt5_add_resources(RCC_SOURCES UI/logo.qrc)
     add_subdirectory(UI)
-    add_executable(${PROJECT_NAME} src/GUI.cpp)
+    add_executable(${PROJECT_NAME} ${RCC_SOURCES} src/GUI.cpp)
 endif (USE_GUI)
 
 if (USE_LORA)

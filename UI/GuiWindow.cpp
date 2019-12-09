@@ -2,12 +2,15 @@
 #include <iostream>
 #include <QString>
 #include <QMessageBox>
+#include <QPixmap>
 
 GuiWindow::GuiWindow(int refresh_rate, std::shared_ptr<Connector> connector) :
         timer_(new QTimer(this)),
         data_(connector),
         white_theme_(false){
+    QPixmap pic(":/image.png");
     Ui_Form::setupUi(this);
+    logo->setPixmap(pic);
     connect(timer_, SIGNAL (timeout()), this, SLOT (refresh_data()));
     connect(xbee_button, SIGNAL (pressed()), this, SLOT (xbee_clicked()));
     connect(stop_xbee, SIGNAL (pressed()), this, SLOT (xbee_stop_clicked()));
