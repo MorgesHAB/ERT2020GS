@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'press_altM12091.ui'
+** Form generated from reading UI file 'press_altWy6260.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.9.5
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef PRESS_ALTM12091_H
-#define PRESS_ALTM12091_H
+#ifndef PRESS_ALTWY6260_H
+#define PRESS_ALTWY6260_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QAction>
@@ -208,7 +208,7 @@ public:
 
         logo = new QLabel(Form);
         logo->setObjectName(QStringLiteral("logo"));
-        logo->setStyleSheet(QStringLiteral("image: url(:/img/image.png);"));
+        logo->setStyleSheet(QStringLiteral("image: url(:/image.png);"));
 
         gridLayout->addWidget(logo, 1, 3, 1, 1);
 
@@ -253,5 +253,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // PRESS_ALTM12091_H
-
+#endif // PRESS_ALTWY6260_H
