@@ -29,6 +29,7 @@ IgnitionCode::IgnitionCode() : states(4, false) {
     wiringPiSetupGpio();
     // Configure GPIO OUT for the igniter
     pinMode(GPIO_OUT_IGNITION, OUTPUT);
+    digitalWrite(GPIO_OUT_IGNITION, LOW);
     // Configure GPIO pins as an input
     pinMode(GPIO_IN_CODE1, INPUT);
     pinMode(GPIO_IN_CODE2, INPUT);
