@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'press_altWy6260.ui'
+** Form generated from reading UI file 'press_altcS6260.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.9.5
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef PRESS_ALTWY6260_H
-#define PRESS_ALTWY6260_H
+#ifndef PRESS_ALTCS6260_H
+#define PRESS_ALTCS6260_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QAction>
@@ -50,8 +50,7 @@ public:
     QGridLayout *gridLayout_4;
     QLabel *last_packet_nbr_label;
     QLabel *packets_second_label;
-    QLabel *packets_second_panel;
-    QProgressBar *progressBar;
+    QProgressBar *packets_second_bar;
     QLabel *last_packet_number_panel;
     QLabel *rssi_label;
     QLabel *rssi_panel;
@@ -174,24 +173,19 @@ public:
 
         gridLayout_4->addWidget(packets_second_label, 2, 0, 1, 1);
 
-        packets_second_panel = new QLabel(com_box);
-        packets_second_panel->setObjectName(QStringLiteral("packets_second_panel"));
+        packets_second_bar = new QProgressBar(com_box);
+        packets_second_bar->setObjectName(QStringLiteral("packets_second_bar"));
+        packets_second_bar->setStyleSheet(QStringLiteral(""));
+        packets_second_bar->setMaximum(70);
+        packets_second_bar->setValue(60);
+        packets_second_bar->setInvertedAppearance(false);
 
-        gridLayout_4->addWidget(packets_second_panel, 2, 1, 1, 1);
-
-        progressBar = new QProgressBar(com_box);
-        progressBar->setObjectName(QStringLiteral("progressBar"));
-        progressBar->setStyleSheet(QStringLiteral(""));
-        progressBar->setMaximum(70);
-        progressBar->setValue(60);
-        progressBar->setInvertedAppearance(false);
-
-        gridLayout_4->addWidget(progressBar, 2, 2, 1, 1);
+        gridLayout_4->addWidget(packets_second_bar, 2, 1, 1, 1);
 
         last_packet_number_panel = new QLabel(com_box);
         last_packet_number_panel->setObjectName(QStringLiteral("last_packet_number_panel"));
 
-        gridLayout_4->addWidget(last_packet_number_panel, 0, 2, 1, 1);
+        gridLayout_4->addWidget(last_packet_number_panel, 0, 1, 1, 1);
 
         rssi_label = new QLabel(com_box);
         rssi_label->setObjectName(QStringLiteral("rssi_label"));
@@ -201,7 +195,7 @@ public:
         rssi_panel = new QLabel(com_box);
         rssi_panel->setObjectName(QStringLiteral("rssi_panel"));
 
-        gridLayout_4->addWidget(rssi_panel, 1, 2, 1, 1);
+        gridLayout_4->addWidget(rssi_panel, 1, 1, 1, 1);
 
 
         gridLayout->addWidget(com_box, 0, 2, 1, 2);
@@ -237,8 +231,7 @@ public:
         com_box->setTitle(QApplication::translate("Form", "COM", Q_NULLPTR));
         last_packet_nbr_label->setText(QApplication::translate("Form", "Last Packet Number", Q_NULLPTR));
         packets_second_label->setText(QApplication::translate("Form", "Packets/second", Q_NULLPTR));
-        packets_second_panel->setText(QString());
-        progressBar->setFormat(QApplication::translate("Form", "%v", Q_NULLPTR));
+        packets_second_bar->setFormat(QApplication::translate("Form", "%v", Q_NULLPTR));
         last_packet_number_panel->setText(QString());
         rssi_label->setText(QApplication::translate("Form", "RSSI", Q_NULLPTR));
         rssi_panel->setText(QString());
@@ -253,4 +246,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // PRESS_ALTWY6260_H
+#endif // PRESS_ALTCS6260_H

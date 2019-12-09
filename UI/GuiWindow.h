@@ -26,7 +26,7 @@ public slots:
 private:
     void closeEvent (QCloseEvent *event) override;
     std::shared_ptr<Connector> data_;
-    bool white_theme_;
+    uint8_t white_theme_;
 };
 
 #endif // GUIWINDOW_H

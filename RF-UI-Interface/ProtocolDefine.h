@@ -21,33 +21,50 @@
 namespace ui_interface {
 
 enum DataType {
-    //General
-    RUNNING = 0,
+    ///General
 
-    // Qt input informations
-    ACTIVE_XBEE,
-    IGNITION_CLICKED,
+    RUNNING = 0, //bool             **Every thread listens this boolean and stop executing when it is false.
 
-    // PacketNbr
-    PACKET_RX_COUNTER,
+    /// Qt input informations
 
-
-    // Header
-    PACKET_ID, PACKET_NBR, TIMESTAMP,
-
-    // GPS Data Structure (float et time_t)
-    ALTITUDE, LONGITUDE, LATITUDE, SPEED, TIME,
-
-    // Pressure Data
-    PRESSURE_DATA,
-
-    // Tx ignition code
-    TX_IGNITION_CODE, // type = 1 byte
+    ACTIVE_XBEE, //bool             **This is set to true-false by the Activate-Xbee button.
+    IGNITION_CLICKED, //bool        **This is set to true when ignition button is clicked.
+                      //            @attention !!! Listener should eat this boolean to be able to detect further clicks !!!
 
 
+    /// PacketNbr
 
-    // !!! THIS MUST BE THE LAST LINE !!!
-    // At the end the array size
+    PACKET_RX_COUNTER, //uint64_t   **This is incremented on each packet received.
+
+
+    /// Header
+
+    PACKET_ID, //uint64_t           **The ID of the last packet received
+    PACKET_NBR,//uint64_t           **The Number of the last packet received - defined by TX
+    TIMESTAMP, //_time64            **The Time of the last packet received
+
+    /// GPS Data Structure (float et time_t)
+
+    ALTITUDE,//float                **The last altitude reading
+    LONGITUDE,//float               **The last longitude reading
+    LATITUDE,//float                **The last latitude reading
+    SPEED,//float                   **The last speed reading
+    TIME,//_time64                  **The time of the last GPS packed received
+
+
+    /// Pressure Data
+
+    PRESSURE_DATA,//float           **Last pressure reading
+
+    /// Tx ignition code
+
+    TX_IGNITION_CODE, //uint8_t     **Extract first 4 lsb for the code.
+
+
+
+    /// !!! THIS MUST BE THE LAST LINE !!!
+    /// At the end the array size
+
     ARRAY_SIZE
 };
 
