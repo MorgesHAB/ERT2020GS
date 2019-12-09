@@ -53,8 +53,8 @@ void GuiWindow::refresh_data() {
     this->last_refresh_panel->setText(tbuffer);
     this->rssi_panel->setText("NOT YET IMPLEMENTED");
     uint64_t packets(data_->eatData<uint64_t>(PACKET_RX_COUNTER, 0));
-    packets_second_bar->setValue(packets/timer_->interval());
-
+    packets_second_bar->setValue((int)(packets*(1000.0/(timer_->interval()))));
+    std::cout << "interval : " << timer_->interval() << std::endl;
 }
 
 void GuiWindow::xbee_clicked() {

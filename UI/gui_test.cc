@@ -13,9 +13,14 @@ public:
 void f1(std::shared_ptr<Connector> c){
     float a(0);
     while(c->getData<bool>(ui_interface::RUNNING)){
+        c->incrementData(ui_interface::PACKET_RX_COUNTER);
+        c->incrementData(ui_interface::PACKET_RX_COUNTER);
+        c->incrementData(ui_interface::PACKET_RX_COUNTER);
+
+
         c->setData(ui_interface::PRESSURE_DATA,a);
         c->setData(ui_interface::TIMESTAMP, std::time(nullptr));
-        std::cout << "Data set to : " << a << std::endl;
+        std::cout << "Data set to : " << c->getData<uint64_t>(ui_interface::PACKET_RX_COUNTER) << std::endl;
         a++;
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
     }

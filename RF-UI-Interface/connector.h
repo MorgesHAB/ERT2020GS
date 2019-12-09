@@ -13,6 +13,8 @@ public:
     template<typename T>
     void setData(ui_interface::DataType type, T t);
 
+    void incrementData(ui_interface::DataType type);
+
     template<typename T>
     T getData(ui_interface::DataType type);
 
