@@ -20,8 +20,11 @@ void f1(std::shared_ptr<Connector> c){
 
         c->setData(ui_interface::PRESSURE_DATA,a);
         c->setData(ui_interface::TIMESTAMP, std::time(nullptr));
-        std::cout << "Data set to : " << c->getData<uint64_t>(ui_interface::PACKET_RX_COUNTER) << std::endl;
+        std::cout << "Data set to : " << a << std::endl;
         a++;
+        if((int)a==200){
+            c->setData(ui_interface::IGNITION_STATUS, true);
+        }
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
     }
     std::cout << "Ending receiver thread!" << std::endl;

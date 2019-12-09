@@ -54,6 +54,9 @@ void GuiWindow::refresh_data() {
     this->rssi_panel->setText("NOT YET IMPLEMENTED");
     uint64_t packets(data_->eatData<uint64_t>(PACKET_RX_COUNTER, 0));
     packets_second_bar->setValue((int)(packets*(1000.0/(timer_->interval()))));
+    if(data_->eatData<bool>(IGNITION_STATUS, false)){
+        QMessageBox::warning(this, "Ignition", "BOOM!");
+    }
 }
 
 void GuiWindow::xbee_clicked() {
