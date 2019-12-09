@@ -89,6 +89,7 @@ Packet* DataHandler::getPacket(PacketID type) {
 }
 
 void DataHandler::printLastRxPacket() const {
+    std::cout << "\n\nPrinting Last Packet Received..." << std::endl;
     dataHandler[lastRxID]->print();
 }
 
@@ -103,6 +104,8 @@ void DataHandler::updateRx(Packet *packet) {
     if (ID < NBR_OF_TYPE) {
         lastRxID = ID;
         dataHandler[lastRxID]->updateRx(packet, connector);
+        if (lastRxID == IGNITION_ANSWER)
+            connector->setData(ui_interface::IGNITION_STATUS, true);
     }
     else {
         printLastRxPacket();
