@@ -82,9 +82,11 @@ void IgnitionCode::updateRx(std::shared_ptr<Connector> connector) {
         codeRx[3] == states[3]) {
         std::cout << "Code Rx & Tx are identical => GPIO ignition HIGH !!" << std::endl;
         digitalWrite(GPIO_OUT_IGNITION, HIGH);
+        connector->setData(ui_interface::IGNITION_STATUS, true);
 
     } else {
         std::cout << "Code aren't identical : ignition aborted" << std::endl;
         digitalWrite(GPIO_OUT_IGNITION, LOW);
+        connector->setData(ui_interface::IGNITION_STATUS, false);
     }
 }

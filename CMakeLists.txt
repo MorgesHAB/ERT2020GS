@@ -26,6 +26,7 @@ endif (USE_LORA)
 
 if (USE_XBEE)
     add_executable(XbeeTest src/XbeeTest.cpp)
+    add_executable(IgniterRPi src/IgniterRPi.cpp)
 endif (USE_XBEE)
 
 if (USE_LORA)
@@ -35,7 +36,9 @@ endif (USE_LORA)
 if (USE_XBEE)
     include_directories(Telecom/RFmodem/lib/serial/include/)
     target_link_libraries(XbeeTest Telecom)
+    target_link_libraries(IgniterRPi Telecom)
     target_link_libraries(XbeeTest wiringPi) # control GPIO of RPi
+    target_link_libraries(IgniterRPi wiringPi) # control GPIO of RPi
 endif (USE_XBEE)
 
 if (USE_GUI)

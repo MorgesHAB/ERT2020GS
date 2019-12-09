@@ -44,6 +44,8 @@ void Header::print() const {
             break;
         case PROPULSION_TEST: std::cout << "Propulsion Ignition Order !";
             break;
+        case IGNITION_ANSWER: std::cout << "Ignition Response";
+            break;
         default: std::cout << "Unknown";
     }
     std::cout << "\t packet nbr: " << packetNbr << "\t time: "

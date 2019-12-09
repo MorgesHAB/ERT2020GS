@@ -31,6 +31,7 @@ enum DataType {
     IGNITION_CLICKED, //bool        **This is set to true when ignition button is clicked.
                       //            @attention !!! Listener should eat this boolean to be able to detect further clicks !!!
 
+    IGNITION_STATUS, // bool FIRE / ABORTED
 
     /// PacketNbr
 
@@ -39,9 +40,9 @@ enum DataType {
 
     /// Header
 
-    PACKET_ID, //uint64_t           **The ID of the last packet received
-    PACKET_NBR,//uint64_t           **The Number of the last packet received - defined by TX
-    TIMESTAMP, //_time64            **The Time of the last packet received
+    PACKET_ID, //uint8_t           **The ID of the last packet received
+    PACKET_NBR,//uint32_t          **The Number of the last packet received - defined by TX
+    TIMESTAMP, //time_t 32         **The Time of the last packet received
 
     /// GPS Data Structure (float et time_t)
 
@@ -49,7 +50,7 @@ enum DataType {
     LONGITUDE,//float               **The last longitude reading
     LATITUDE,//float                **The last latitude reading
     SPEED,//float                   **The last speed reading
-    TIME,//_time64                  **The time of the last GPS packed received
+    TIME,//time_t 32                **The time of the last GPS packed received
 
 
     /// Pressure Data

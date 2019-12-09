@@ -15,9 +15,9 @@
 #include "Datagram.h"
 
 // TODO namespace
-enum PacketID {
+enum PacketID {   // Don't forget to modify header::print() when adding new packet type
     GPSID, PAYLOAD, AVIONICS, PROPULSION, IMAGE, XBEE_TEST,
-    PROPULSION_TEST,                 // <-- add new type here
+    PROPULSION_TEST, IGNITION_ANSWER,        // <-- add new type here
 
     NBR_OF_TYPE  // <-- size of the array - keep at the end
 };

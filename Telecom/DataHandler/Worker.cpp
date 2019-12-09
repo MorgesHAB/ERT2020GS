@@ -26,7 +26,7 @@ void Worker::mainRoutine() {
         }
 
         // Your RF modem    // Can use eg:      LoRa loRa;
-        Xbee xbee("/dev/ttyS3");
+        Xbee xbee("/dev/ttyUSB0");
         std::cout << "Xbee init now" << std::endl;
 
         while (connector->getData<bool>(ui_interface::ACTIVE_XBEE) &&

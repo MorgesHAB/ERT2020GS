@@ -34,36 +34,26 @@ int main(int argc, char** argv) {
 
     signal(SIGINT, sig_handler);
 
-    bool modeTx(argc == 2 && std::string(argv[1]) == "Tx");
-
     Connector connector;
     std::shared_ptr<Connector> cptr(&connector);
 
     // Your RF modem
-    Xbee xbee1("/dev/ttyS3");
-    Xbee xbee2("/dev/ttyS6");
+    Xbee xbee("/dev/ttyUSB0");
     // RF packet handler
     DataHandler dataHandler(cptr);
 
     while (keep_running) {
-        // ./XbeeTest Tx            // Transmitter Part
-        if (modeTx) {
-            PacketID ID = static_cast<PacketID> (rand() % (NBR_OF_TYPE-2));
-            dataHandler.updateTx(ID);
-            xbee1.send(dataHandler.getPacket(ID));
-
-            //dataHandler.updateTx(PROPULSION);
-            //xbee.send(dataHandler.getPacket(PROPULSION));
-           // return 0;
-            std::this_thread::sleep_for(std::chrono::milliseconds(14));
+        PacketID ID = static_cast<PacketID> (rand() % (NBR_OF_TYPE-2));
+        dataHandler.updateTx(ID);
+        xbee.send(dataHandler.getPacket(ID));
+        if (xbee.receive(dataHandler)) {
+            dataHandler.printLastRxPacket();
         }
-        // ./XbeeTest               // Receiver Part
-        else {
-            if (xbee2.receive(dataHandler)) {
-                dataHandler.printLastRxPacket();
-            }
-            std::this_thread::sleep_for(std::chrono::milliseconds(7));
+        if (connector.eatData<bool>(ui_interface::IGNITION_STATUS, false)) {
+            dataHandler.updateTx(IGNITION_ANSWER);
+            xbee.send(dataHandler.getPacket(IGNITION_ANSWER));
         }
+        std::this_thread::sleep_for(std::chrono::milliseconds(7));
     }
 
     return 0;
