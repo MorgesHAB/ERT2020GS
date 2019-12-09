@@ -64,7 +64,7 @@ DataHandler::DataHandler(std::shared_ptr<Connector> connector)
     dataHandler[IMAGE]->add(new IgnitionData);
     //dataHandler[IMAGE]->add(new Picture(230, "pictureZ", 50, 50));
 
-    //dataHandler[PROPULSION_TEST]->add(new IgnitionCode);
+    dataHandler[PROPULSION_TEST]->add(new IgnitionCode);
 
 
     // END of protocol add CRC
@@ -97,6 +97,7 @@ void DataHandler::updateTx(PacketID type) {
 
 void DataHandler::updateRx(Packet *packet) {
     ++packetRxNbr;
+    connector->setData(ui_interface::PACKET_ID, packetRxNbr);
     auto ID = (PacketID) packet->getPacket()[12]; // TODO PROTOCOL define !!!
     if (ID < NBR_OF_TYPE) {
         lastRxID = ID;

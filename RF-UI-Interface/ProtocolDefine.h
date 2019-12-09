@@ -26,18 +26,23 @@ enum DataType {
 
     // Qt input informations
     ACTIVE_XBEE,
-    QT_LAUNCH_BUTTON,
     IGNITION_CLICKED,
+
+    // PacketNbr
+    PACKET_RX_COUNTER,
 
 
     // Header
     PACKET_ID, PACKET_NBR, TIMESTAMP,
 
-    // GPS Data Structure
+    // GPS Data Structure (float et time_t)
     ALTITUDE, LONGITUDE, LATITUDE, SPEED, TIME,
 
     // Pressure Data
     PRESSURE_DATA,
+
+    // Tx ignition code
+    TX_IGNITION_CODE, // type = 1 byte
 
 
 

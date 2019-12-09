@@ -42,6 +42,8 @@ void Header::print() const {
             break;
         case XBEE_TEST: std::cout << "Xbee frame";
             break;
+        case PROPULSION_TEST: std::cout << "Propulsion Ignition Order !";
+            break;
         default: std::cout << "Unknown";
     }
     std::cout << "\t packet nbr: " << packetNbr << "\t time: "

@@ -9,7 +9,7 @@
 // Configuration of the GPIO pin of the Raspberry Pi 4
 //  /!\ it's the nbr in BCM format, not the pin number
 // GPIO which activates the relay which activates the igniter
-#define GPIO_OUT_IGNITION       21
+#define GPIO_OUT_IGNITION       20
 // GPIO on the RPi to read the ignition code via the switches
 #define GPIO_IN_CODE1           6
 #define GPIO_IN_CODE2           13
@@ -25,7 +25,7 @@
 #include "IgnitionCode.h"
 
 
-IgnitionCode::IgnitionCode() {
+IgnitionCode::IgnitionCode() : states(4, false) {
     wiringPiSetupGpio();
     // Configure GPIO OUT for the igniter
     pinMode(GPIO_OUT_IGNITION, OUTPUT);
@@ -53,11 +53,7 @@ void IgnitionCode::parse(Packet &packet) {
 }
 
 void IgnitionCode::print() const {
-    std::cout << "States vector : [ ";
-    for (uint8_t i(0); i < states.size() - 1; ++i) std::cout << states[i] << " , ";
-    std::cout << states.back() << " ] " << std::endl;
-
-    std::cout << "=> Ignition code : [ " << states[0] << " " << states[1] << " "
+    std::cout << "Tx Ignition code : [ " << states[0] << " " << states[1] << " "
               << states[2] << " " << states[3] << " ]" << std::endl;
 }
 
@@ -66,6 +62,8 @@ void IgnitionCode::updateTx(std::shared_ptr<Connector> connector) {
     states[1] = digitalRead(GPIO_IN_CODE2);
     states[2] = digitalRead(GPIO_IN_CODE3);
     states[3] = digitalRead(GPIO_IN_CODE4);
+    uint8_t code(states[3] << 3 | states[2] << 2 | states[1] << 1 | states[0]);
+    connector->setData(ui_interface::TX_IGNITION_CODE, code);
 }
 
 void IgnitionCode::updateRx(std::shared_ptr<Connector> connector) {
@@ -87,5 +85,6 @@ void IgnitionCode::updateRx(std::shared_ptr<Connector> connector) {
 
     } else {
         std::cout << "Code aren't identical : ignition aborted" << std::endl;
+        digitalWrite(GPIO_OUT_IGNITION, LOW);
     }
 }

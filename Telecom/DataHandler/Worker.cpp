@@ -35,6 +35,7 @@ void Worker::mainRoutine() {
                 dataHandler.printLastRxPacket();
             }
             if (connector->eatData<bool>(ui_interface::IGNITION_CLICKED, false)) {
+                dataHandler.updateTx(PROPULSION_TEST);
                 xbee.send(dataHandler.getPacket(PROPULSION_TEST));
             }
             std::this_thread::sleep_for(std::chrono::milliseconds(7));
