@@ -16,6 +16,10 @@ inline QString degree_representation(double value){
 inline QString qstr(double value){
     return QString::number(value);
 }
+inline QString qstr(uint64_t value){
+    return QString::number(value);
+}
+
 
 
 
@@ -41,12 +45,16 @@ void GuiWindow::refresh_data() {
     tmp = data_->getData<float>(ALTITUDE);
     this->altitude_lcd->display(tmp);
     this->last_packet_number_panel->setText(qstr(data_->getData<uint64_t>(PACKET_NBR)));
+    this->speed_lcd->display(data_->getData<float>(SPEED));
     time_t timestamp(data_->getData<time_t>(TIMESTAMP));
     char tbuffer[16];
     struct tm* tptr = std::localtime(&timestamp);
-    std::strftime(tbuffer, 16, "%r", tptr);
+    std::strftime(tbuffer, 16, "%T", tptr);
     this->last_refresh_panel->setText(tbuffer);
     this->rssi_panel->setText("NOT YET IMPLEMENTED");
+    uint64_t packets(data_->eatData<uint64_t>(PACKET_RX_COUNTER, 0));
+    packets_second_bar->setValue(packets/timer_->interval());
+
 }
 
 void GuiWindow::xbee_clicked() {
