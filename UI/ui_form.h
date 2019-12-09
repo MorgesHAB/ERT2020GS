@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'press_altcS6260.ui'
+** Form generated from reading UI file 'press_altkh6260.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.9.5
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef PRESS_ALTCS6260_H
-#define PRESS_ALTCS6260_H
+#ifndef PRESS_ALTKH6260_H
+#define PRESS_ALTKH6260_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QAction>
@@ -32,9 +32,9 @@ public:
     QGridLayout *gridLayout_3;
     QLabel *last_refresh_label;
     QLabel *altitude_label;
-    QLabel *presure_label;
+    QLabel *speed_label;
     QLabel *latitude_label;
-    QLCDNumber *pressure_lcd;
+    QLCDNumber *speed_lcd;
     QLabel *latitude_panel;
     QLabel *last_refresh_panel;
     QLabel *longitude_label;
@@ -87,20 +87,20 @@ public:
 
         gridLayout_3->addWidget(altitude_label, 1, 0, 1, 1);
 
-        presure_label = new QLabel(telemetry_box);
-        presure_label->setObjectName(QStringLiteral("presure_label"));
+        speed_label = new QLabel(telemetry_box);
+        speed_label->setObjectName(QStringLiteral("speed_label"));
 
-        gridLayout_3->addWidget(presure_label, 8, 0, 1, 1);
+        gridLayout_3->addWidget(speed_label, 8, 0, 1, 1);
 
         latitude_label = new QLabel(telemetry_box);
         latitude_label->setObjectName(QStringLiteral("latitude_label"));
 
         gridLayout_3->addWidget(latitude_label, 3, 0, 1, 1);
 
-        pressure_lcd = new QLCDNumber(telemetry_box);
-        pressure_lcd->setObjectName(QStringLiteral("pressure_lcd"));
+        speed_lcd = new QLCDNumber(telemetry_box);
+        speed_lcd->setObjectName(QStringLiteral("speed_lcd"));
 
-        gridLayout_3->addWidget(pressure_lcd, 8, 1, 1, 1);
+        gridLayout_3->addWidget(speed_lcd, 8, 1, 1, 1);
 
         latitude_panel = new QLabel(telemetry_box);
         latitude_panel->setObjectName(QStringLiteral("latitude_panel"));
@@ -218,7 +218,7 @@ public:
         telemetry_box->setTitle(QApplication::translate("Form", "Telemetry", Q_NULLPTR));
         last_refresh_label->setText(QApplication::translate("Form", "Last Refresh", Q_NULLPTR));
         altitude_label->setText(QApplication::translate("Form", "ALTITUDE", Q_NULLPTR));
-        presure_label->setText(QApplication::translate("Form", "SPEED", Q_NULLPTR));
+        speed_label->setText(QApplication::translate("Form", "SPEED", Q_NULLPTR));
         latitude_label->setText(QApplication::translate("Form", "LATITUDE", Q_NULLPTR));
         latitude_panel->setText(QString());
         last_refresh_panel->setText(QString());
@@ -246,4 +246,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // PRESS_ALTCS6260_H
+#endif // PRESS_ALTKH6260_H
