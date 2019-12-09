@@ -99,7 +99,7 @@ void DataHandler::updateTx(PacketID type) {
 
 void DataHandler::updateRx(Packet *packet) {
     ++packetRxNbr;
-    connector->setData(ui_interface::PACKET_ID, packetRxNbr);
+    connector->setData(ui_interface::PACKET_RX_COUNTER, packetRxNbr);
     auto ID = (PacketID) packet->getPacket()[12]; // TODO PROTOCOL define !!!
     if (ID < NBR_OF_TYPE) {
         lastRxID = ID;
