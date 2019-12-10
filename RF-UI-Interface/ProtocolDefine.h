@@ -35,8 +35,9 @@ enum DataType {
 
     /// PacketNbr
 
-    PACKET_RX_COUNTER, //uint32_t   **This is incremented on each packet received.
-    IGNORE_PACKET_RX_COUNTER, //uint32_t   **This is incremented on each packet received but wrong parsed
+    PACKET_RX_RATE_CTR, //uint32_t  **This is incremented on each packet received, eated by guito find the packet rate.
+    RX_PACKET_CTR,//uint32_t        **This is the count of the received packets from the beginning of the program
+    TX_PACKET_NR,//uint32_t         **This is the last packet's number.
 
 
     /// Header
