@@ -35,7 +35,8 @@ enum DataType {
 
     /// PacketNbr
 
-    PACKET_RX_COUNTER, //uint64_t   **This is incremented on each packet received.
+    PACKET_RX_COUNTER, //uint32_t   **This is incremented on each packet received.
+    IGNORE_PACKET_RX_COUNTER, //uint32_t   **This is incremented on each packet received but wrong parsed
 
 
     /// Header
