@@ -52,7 +52,7 @@ void GuiWindow::refresh_data() {
     std::strftime(tbuffer, 16, "%T", tptr);
     this->last_refresh_panel->setText(tbuffer);
     this->rssi_panel->setText("NOT YET IMPLEMENTED");
-    uint64_t packets(data_->eatData<uint64_t>(PACKET_RX_COUNTER, 0));
+    uint64_t packets(data_->eatData<uint64_t>(PACKET_RX_RATE_CTR, 0));
     packets_second_bar->setValue((int)(packets*(1000.0/(timer_->interval()))));
     if(data_->eatData<bool>(IGNITION_STATUS, false)){
         QMessageBox::warning(this, "Ignition", "BOOM!");
