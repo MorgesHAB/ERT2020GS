@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'press_altkh6260.ui'
+** Form generated from reading UI file 'press_altj20666.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.9.5
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef PRESS_ALTKH6260_H
-#define PRESS_ALTKH6260_H
+#ifndef PRESS_ALTJ20666_H
+#define PRESS_ALTJ20666_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QAction>
@@ -68,7 +68,7 @@ public:
         Form->setSizePolicy(sizePolicy);
         Form->setMinimumSize(QSize(0, 0));
         Form->setMaximumSize(QSize(1024, 720));
-        Form->setStyleSheet(QLatin1String("background-color: rgb(10, 10, 10);\n"
+        Form->setStyleSheet(QLatin1String("background-color: rgb(30, 30, 30);\n"
 "color: rgb(255, 255, 255);"));
         gridLayout = new QGridLayout(Form);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
@@ -246,4 +246,5 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // PRESS_ALTKH6260_H
+#endif // PRESS_ALTJ20666_H
+

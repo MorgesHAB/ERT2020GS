@@ -53,8 +53,10 @@ void GuiWindow::refresh_data() {
     this->last_refresh_panel->setText(tbuffer);
     this->rssi_panel->setText("NOT YET IMPLEMENTED");
     uint64_t packets(data_->eatData<uint64_t>(PACKET_RX_COUNTER, 0));
-    packets_second_bar->setValue(packets/timer_->interval());
-
+    packets_second_bar->setValue((int)(packets*(1000.0/(timer_->interval()))));
+    if(data_->eatData<bool>(IGNITION_STATUS, false)){
+        QMessageBox::warning(this, "Ignition", "BOOM!");
+    }
 }
 
 void GuiWindow::xbee_clicked() {
@@ -75,15 +77,17 @@ void GuiWindow::ignite_clicked() {
 void GuiWindow::theme_change_clicked()
 {
     if(white_theme_%THEME_NUMBER == 0){
-        setStyleSheet(QLatin1String("background-color: rgb(10, 10, 10);\n"
+        setStyleSheet(QLatin1String("background-color: rgb(30, 30, 30);\n"
         "color: rgb(0, 255, 0);"));
-        this->packets_second_bar->setStyleSheet(QLatin1String("color: rgb(255, 255, 255);"));
+        packets_second_bar->setStyleSheet(QLatin1String("color: rgb(255, 255, 255);"));
     }else if(white_theme_%THEME_NUMBER == 1){
         setStyleSheet(QLatin1String("background-color: rgb(255, 255, 255);\n"
         "color: rgb(0, 0, 0);"));
+        packets_second_bar->setStyleSheet(QLatin1String("color: rgb(0,0,0);"));
     }else if(white_theme_%THEME_NUMBER == 2){
-        setStyleSheet(QLatin1String("background-color: rgb(0, 0, 0);\n"
+        setStyleSheet(QLatin1String("background-color: rgb(30, 30, 30);\n"
         "color: rgb(255, 255, 255);"));
+        packets_second_bar->setStyleSheet(QLatin1String("color: rgb(255, 255, 255);"));
     }
     ++white_theme_;
 }

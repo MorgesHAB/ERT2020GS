@@ -13,10 +13,18 @@ public:
 void f1(std::shared_ptr<Connector> c){
     float a(0);
     while(c->getData<bool>(ui_interface::RUNNING)){
+        c->incrementData(ui_interface::PACKET_RX_COUNTER);
+        c->incrementData(ui_interface::PACKET_RX_COUNTER);
+        c->incrementData(ui_interface::PACKET_RX_COUNTER);
+
+
         c->setData(ui_interface::PRESSURE_DATA,a);
         c->setData(ui_interface::TIMESTAMP, std::time(nullptr));
         std::cout << "Data set to : " << a << std::endl;
         a++;
+        if((int)a==200){
+            c->setData(ui_interface::IGNITION_STATUS, true);
+        }
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
     }
     std::cout << "Ending receiver thread!" << std::endl;
