@@ -98,10 +98,10 @@ void DataHandler::updateTx(PacketID type) {
 }
 
 void DataHandler::updateRx(Packet *packet) {
-    connector->incrementData(ui_interface::PACKET_RX_COUNTER);
+    connector->incrementData(ui_interface::PACKET_RX_RATE_CTR);
     auto ID = (PacketID) packet->getPacket()[12]; // TODO PROTOCOL define !!!
     if (ID < NBR_OF_TYPE) {
-        connector->setData(ui_interface::PACKET_RX_COUNTER, ++packetRxCounter);
+        //connector->setData(ui_interface::PACKET_RX_COUNTER, ++packetRxCounter);
         lastRxID = ID;
         dataHandler[lastRxID]->updateRx(packet, connector);
         if (lastRxID == IGNITION_ANSWER)
