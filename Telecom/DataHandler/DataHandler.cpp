@@ -22,7 +22,7 @@
 
 DataHandler::DataHandler(std::shared_ptr<Connector> connector)
         : connector(connector), dataHandler(NBR_OF_TYPE, nullptr), lastRxID(GPSID),
-          packetRxNbr(0) {
+          packetRxCounter(0), ignorePacketRxCounter(0)  {
 
     // Create your RF Packet Datagram here
     // default protocol header ex: packet Type, packet nbr, timestamp
@@ -66,7 +66,7 @@ DataHandler::DataHandler(std::shared_ptr<Connector> connector)
 
     dataHandler[PROPULSION_TEST]->add(new IgnitionCode);
 
-    dataHandler[IGNITION_ANSWER]->add(new String("IGNITION FIRED !!!!"));
+    dataHandler[IGNITION_ANSWER]->add(new String("/!\\/!\\IGNITION FIRED !!!!"));
 
     // END of protocol add CRC
     for (uint8_t id(0); id < NBR_OF_TYPE; ++id) {
@@ -98,19 +98,24 @@ void DataHandler::updateTx(PacketID type) {
 }
 
 void DataHandler::updateRx(Packet *packet) {
+<<<<<<< HEAD
     ++packetRxNbr;
     connector->incrementData(ui_interface::PACKET_RX_COUNTER);
+=======
+>>>>>>> e3f92dc65c7cf121c366ddee0dc4d60628075366
     auto ID = (PacketID) packet->getPacket()[12]; // TODO PROTOCOL define !!!
     if (ID < NBR_OF_TYPE) {
+        connector->setData(ui_interface::PACKET_RX_COUNTER, ++packetRxCounter);
         lastRxID = ID;
         dataHandler[lastRxID]->updateRx(packet, connector);
         if (lastRxID == IGNITION_ANSWER)
             connector->setData(ui_interface::IGNITION_STATUS, true);
     }
     else {
+        connector->setData(ui_interface::IGNORE_PACKET_RX_COUNTER, ++ignorePacketRxCounter);
         printLastRxPacket();
         std::cout << "!!!!!!!!!!!!!! RXID > NBR_OF_TYPE  " << ID << std::endl;
-        std::cout << "Packet Rx nbr : " << packetRxNbr << std::endl;
+        std::cout << "Packet Rx nbr : " << packetRxCounter<< std::endl;
         packet->printDebug();
     }
 }

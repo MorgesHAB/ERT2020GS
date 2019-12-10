@@ -48,7 +48,6 @@ bool Xbee::receive(Packet *packet) {
 
 bool Xbee::receive(DataHandler &dataHandler) {
     try {
-        //std::cout << "byte avail " << serialPort.available() << std::endl;
         if (serialPort.available()) {
             /*uint8_t buffer[4096];
             for (auto& e: buffer) {
