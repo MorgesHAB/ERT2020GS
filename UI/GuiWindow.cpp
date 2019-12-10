@@ -16,10 +16,12 @@ inline QString degree_representation(double value){
 inline QString qstr(double value){
     return QString::number(value);
 }
+inline QString qstr(uint32_t value){
+    return QString::number(value);
+}
 inline QString qstr(uint64_t value){
     return QString::number(value);
 }
-
 
 
 
@@ -44,7 +46,7 @@ void GuiWindow::refresh_data() {
     longitude_panel->setText(degree_representation(tmp));
     tmp = data_->getData<float>(ALTITUDE);
     this->altitude_lcd->display(tmp);
-    this->last_packet_number_panel->setText(qstr(data_->getData<uint64_t>(PACKET_NBR)));
+    this->last_packet_number_panel->setText(qstr(data_->getData<uint32_t>(PACKET_NBR)));
     this->speed_lcd->display(data_->getData<float>(SPEED));
     time_t timestamp(data_->getData<time_t>(TIMESTAMP));
     char tbuffer[16];

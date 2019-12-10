@@ -38,7 +38,7 @@ void Worker::mainRoutine() {
                 dataHandler.updateTx(PROPULSION_TEST);
                 xbee.send(dataHandler.getPacket(PROPULSION_TEST));
             }
-            std::this_thread::sleep_for(std::chrono::milliseconds(7));
+            std::this_thread::sleep_for(std::chrono::milliseconds(1));
         }
     }
 }
