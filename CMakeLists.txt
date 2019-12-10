@@ -15,7 +15,7 @@ add_subdirectory(RF-UI-Interface)
 
 if (USE_GUI)
     find_package(Qt5 COMPONENTS Widgets REQUIRED)
-    qt5_add_resources(RCC_SOURCES UI/logo.qrc)
+    qt5_add_resources(RCC_SOURCES UI/logo.qrc)      # add image to Gui
     add_subdirectory(UI)
     add_executable(${PROJECT_NAME} ${RCC_SOURCES} src/GUI.cpp)
 endif (USE_GUI)

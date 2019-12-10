@@ -40,8 +40,8 @@ int main(int argc, char** argv) {
     std::shared_ptr<Connector> cptr(&connector);
 
     // Your RF modem
-    Xbee xbee1("/dev/ttyS3");
-    Xbee xbee2("/dev/ttyS6");
+    Xbee xbee1("/dev/ttyS6");
+    //Xbee xbee2("/dev/ttyS3");
     // RF packet handler
     DataHandler dataHandler(cptr);
 
@@ -59,7 +59,7 @@ int main(int argc, char** argv) {
         }
         // ./XbeeTest               // Receiver Part
         else {
-            if (xbee2.receive(dataHandler)) {
+            if (xbee1.receive(dataHandler)) {
                 dataHandler.printLastRxPacket();
             }
             std::this_thread::sleep_for(std::chrono::milliseconds(7));
