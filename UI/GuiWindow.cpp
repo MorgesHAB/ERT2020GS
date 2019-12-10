@@ -39,8 +39,9 @@ GuiWindow::GuiWindow(int refresh_rate, std::shared_ptr<Connector> connector) :
 }
 //TODO This function is very bad structured, must fix
 void GuiWindow::refresh_data() {
-    //std::cout << "Data stored reads : " << data_->getData<float>(ui_interface::PRESSURE_DATA) <<std::endl;
-    float tmp(data_->getData<float>(LATITUDE));
+    //std::cout << "Data stored reads : " << data_->getData<float>(ui_interface::PRESSURE_DATA)  //<<std::endl;
+    
+float tmp(data_->getData<float>(LATITUDE));
     latitude_panel->setText(degree_representation(tmp));
     tmp = data_->getData<float>(LONGITUDE);
     longitude_panel->setText(degree_representation(tmp));
