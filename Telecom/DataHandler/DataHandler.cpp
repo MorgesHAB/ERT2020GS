@@ -98,9 +98,9 @@ void DataHandler::updateTx(PacketID type) {
 }
 
 void DataHandler::updateRx(Packet *packet) {
-    connector->incrementData(ui_interface::PACKET_RX_RATE_CTR);
     auto ID = (PacketID) packet->getPacket()[12]; // TODO PROTOCOL define !!!
     if (ID < NBR_OF_TYPE) {
+        connector->incrementData(ui_interface::PACKET_RX_RATE_CTR);
         //connector->setData(ui_interface::PACKET_RX_COUNTER, ++packetRxCounter);
         lastRxID = ID;
         dataHandler[lastRxID]->updateRx(packet, connector);
@@ -108,7 +108,7 @@ void DataHandler::updateRx(Packet *packet) {
             connector->setData(ui_interface::IGNITION_STATUS, true);
     }
     else {
-        connector->setData(ui_interface::IGNORE_PACKET_RX_COUNTER, ++ignorePacketRxCounter);
+        ++ignorePacketRxCounter;
         printLastRxPacket();
         std::cout << "!!!!!!!!!!!!!! RXID > NBR_OF_TYPE  " << ID << std::endl;
         std::cout << "Packet Rx nbr : " << packetRxCounter<< std::endl;
