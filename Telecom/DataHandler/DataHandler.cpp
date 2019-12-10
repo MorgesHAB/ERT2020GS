@@ -64,7 +64,7 @@ DataHandler::DataHandler(std::shared_ptr<Connector> connector)
     dataHandler[IMAGE]->add(new IgnitionData);
     //dataHandler[IMAGE]->add(new Picture(230, "pictureZ", 50, 50));
 
-    dataHandler[PROPULSION_TEST]->add(new IgnitionCode);
+    //dataHandler[PROPULSION_TEST]->add(new IgnitionCode);
 
     dataHandler[IGNITION_ANSWER]->add(new String("/!\\/!\\IGNITION FIRED !!!!"));
 
@@ -98,7 +98,6 @@ void DataHandler::updateTx(PacketID type) {
 }
 
 void DataHandler::updateRx(Packet *packet) {
-    ++packetRxNbr;
     connector->incrementData(ui_interface::PACKET_RX_COUNTER);
     auto ID = (PacketID) packet->getPacket()[12]; // TODO PROTOCOL define !!!
     if (ID < NBR_OF_TYPE) {
