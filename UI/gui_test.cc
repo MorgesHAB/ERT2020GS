@@ -25,7 +25,6 @@ void f1(std::shared_ptr<Connector> c){
 	//if(((int)a )%10==0){
  	c->incrementData(ui_interface::TX_PACKET_NR);
 	c->incrementData(ui_interface::TX_PACKET_NR);
-
 	c->incrementData(ui_interface::TX_PACKET_NR);
 
 	c->incrementData(ui_interface::TX_PACKET_NR);
@@ -33,16 +32,16 @@ void f1(std::shared_ptr<Connector> c){
 	c->incrementData(ui_interface::TX_PACKET_NR);
 //}
 
-        c->setData(ui_interface::PRESSURE_DATA,a);
+    c->setData(ui_interface::PRESSURE_DATA,a);
 	c->setData(ui_interface::ALTITUDE, a);
-c->setData(ui_interface::LONGITUDE, a);
+    c->setData(ui_interface::LONGITUDE, a);
         c->setData(ui_interface::TIMESTAMP, std::time(nullptr));
         std::cout << "Data set to : " << a << std::endl;
         a++;
         if((int)a==200){
             c->setData(ui_interface::IGNITION_STATUS, true);
         }
-       std::this_thread::sleep_for(std::chrono::milliseconds(100));
+       std::this_thread::sleep_for(std::chrono::milliseconds(1000));
     }
     std::cout << "Ending receiver thread!" << std::endl;
 }

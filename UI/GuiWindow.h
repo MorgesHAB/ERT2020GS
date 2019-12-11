@@ -23,7 +23,7 @@ public slots:
     void theme_change_clicked();
 
 private:
-    uint16_t calculate_misses_in_last_5();
+    uint16_t calculate_misses_in_last_2();
     void closeEvent (QCloseEvent *event) override;
     void refresh_misses();
     std::shared_ptr<Connector> data_;

@@ -4,6 +4,7 @@
 #include <QString>
 #include <QMessageBox>
 #include <QPixmap>
+#include <array>
 
 constexpr uint8_t THEME_NUMBER(3);
 
@@ -46,7 +47,7 @@ void GuiWindow::refresh_data() {
     //std::cout << "Data stored reads : " << data_->getData<float>(ui_interface::PRESSURE_DATA)  //<<std::endl;
 
 	refresh_misses();
-    miss_panel->setText(qstr(calculate_misses_in_last_5()));
+    miss_panel->setText(qstr(calculate_misses_in_last_2()));
     float tmp(data_->getData<float>(LATITUDE));
     latitude_panel->setText(degree_representation(tmp));
     tmp = data_->getData<float>(LONGITUDE);
@@ -114,14 +115,13 @@ void GuiWindow::theme_change_clicked()
     ++white_theme_;
 }
 
-uint16_t GuiWindow::calculate_misses_in_last_5()
+uint16_t GuiWindow::calculate_misses_in_last_2()
 {
-    static uint32_t before(0);
-    static uint16_t tmp(0);
-    if(tick_counter_ % 10 == 0){
-        tmp = (missed_count_ - before);
-        before = missed_count_;
-    }
+    static std::array<uint32_t, 4> before{0};
+
+    uint64_t current(tick_counter_%4);
+    uint64_t tmp(missed_count_ - before[current]);
+    before[current] = missed_count_;
     return tmp;
 }
 
