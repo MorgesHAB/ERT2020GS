@@ -7,7 +7,7 @@ set(CMAKE_AUTORCC ON)
 set(AUTORCC ON)
 #set(CMAKE_AUTOUIC ON)
 
-find_package(Qt5Widgets)
+#find_package(Qt5Widgets)
 
 file(GLOB SOURCES "*.cpp")
 
