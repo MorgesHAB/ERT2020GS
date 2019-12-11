@@ -37,13 +37,10 @@ enum DataType {
 
     PACKET_RX_RATE_CTR, //uint32_t  **This is incremented on each packet received, eated by guito find the packet rate.
     RX_PACKET_CTR,//uint32_t        **This is the count of the received packets from the beginning of the program
-    TX_PACKET_NR,//uint32_t         **This is the last packet's number.
-
 
     /// Header
-
     PACKET_ID, //uint8_t            **The ID of the last packet received
-    PACKET_NBR,//uint32_t           **The Number of the last packet received - defined by TX
+    TX_PACKET_NR,//uint32_t         **This is the last packet's number.
     TIMESTAMP, //time_t             **The Time of the last packet received
 
     /// GPS Data Structure (float et time_t)
