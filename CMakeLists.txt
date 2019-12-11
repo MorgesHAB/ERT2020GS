@@ -27,6 +27,7 @@ endif (USE_LORA)
 if (USE_XBEE)
     add_executable(XbeeTest src/XbeeTest.cpp)
     add_executable(IgniterRPi src/IgniterRPi.cpp)
+    target_link_libraries(IgniterRPi ${INDI_DRIVER_LIBRARIES} ${WIRING_PI_LIBRARIES} crypt)
 endif (USE_XBEE)
 
 if (USE_LORA)

@@ -36,7 +36,7 @@ sudo apt-get upgrade
 ```
 Now we need to install cmake to compile the code
 ```console
-sudo apt install cmake
+sudo apt-get install cmake
 ```
 Install git to be able to clone this git repository
 ```console
@@ -102,7 +102,7 @@ sudo apt-get install qt5-doc qtbase5-examples qtbase5-doc-html
 
 First clone this GitHub repository in a folder using:
 ```console
-git clone https:you//github.com/MorgesHAB/ERT2020GS.git
+git clone https://github.com/MorgesHAB/ERT2020GS.git
 ```
 Move to the root folder of the project and run the bash to build the executable file:
 ```console
