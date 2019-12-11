@@ -64,7 +64,7 @@ DataHandler::DataHandler(std::shared_ptr<Connector> connector)
     dataHandler[IMAGE]->add(new IgnitionData);
     //dataHandler[IMAGE]->add(new Picture(230, "pictureZ", 50, 50));
 
-    //dataHandler[PROPULSION_TEST]->add(new IgnitionCode);
+    dataHandler[PROPULSION_TEST]->add(new IgnitionCode);
 
     dataHandler[IGNITION_ANSWER]->add(new String("/!\\/!\\IGNITION FIRED !!!!"));
 
@@ -111,7 +111,7 @@ void DataHandler::updateRx(Packet *packet) {
     else {
         ++ignorePacketRxCounter;
         printLastRxPacket();
-        std::cout << "!!!!!!!!!!!!!! RXID > NBR_OF_TYPE  " << ID << std::endl;
+        std::cout << "\n!!!!!!!!!!!!!! RXID > NBR_OF_TYPE  " << ID << std::endl;
         std::cout << "Packet Rx nbr : " << packetRxCounter<< std::endl;
         packet->printDebug();
     }
