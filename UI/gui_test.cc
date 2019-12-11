@@ -13,9 +13,9 @@ public:
 void f1(std::shared_ptr<Connector> c){
     float a(0);
     while(c->getData<bool>(ui_interface::RUNNING)){
-        c->incrementData(ui_interface::PACKET_RX_COUNTER);
-        c->incrementData(ui_interface::PACKET_RX_COUNTER);
-        c->incrementData(ui_interface::PACKET_RX_COUNTER);
+        c->incrementData(ui_interface::PACKET_RX_RATE_CTR);
+        c->incrementData(ui_interface::PACKET_RX_RATE_CTR);
+        c->incrementData(ui_interface::PACKET_RX_RATE_CTR);
 
 
         c->setData(ui_interface::PRESSURE_DATA,a);

@@ -39,6 +39,7 @@ if (USE_XBEE)
     target_link_libraries(IgniterRPi Telecom)
     target_link_libraries(XbeeTest wiringPi) # control GPIO of RPi
     target_link_libraries(IgniterRPi wiringPi) # control GPIO of RPi
+    
 endif (USE_XBEE)
 
 if (USE_GUI)

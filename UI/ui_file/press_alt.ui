@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>469</width>
-    <height>360</height>
+    <width>408</width>
+    <height>493</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -36,7 +36,7 @@
 color: rgb(255, 255, 255);</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="1" column="1" colspan="2">
+   <item row="2" column="0" colspan="2">
     <widget class="QGroupBox" name="telemetry_box">
      <property name="minimumSize">
       <size>
@@ -48,13 +48,6 @@ color: rgb(255, 255, 255);</string>
       <string>Telemetry</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_3">
-      <item row="0" column="0">
-       <widget class="QLabel" name="last_refresh_label">
-        <property name="text">
-         <string>Last Refresh</string>
-        </property>
-       </widget>
-      </item>
       <item row="1" column="0">
        <widget class="QLabel" name="altitude_label">
         <property name="text">
@@ -92,13 +85,6 @@ color: rgb(255, 255, 255);</string>
         </property>
        </widget>
       </item>
-      <item row="0" column="1">
-       <widget class="QLabel" name="last_refresh_panel">
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
       <item row="2" column="0">
        <widget class="QLabel" name="longitude_label">
         <property name="text">
@@ -123,31 +109,10 @@ color: rgb(255, 255, 255);</string>
      </layout>
     </widget>
    </item>
-   <item row="0" column="1">
+   <item row="1" column="0">
     <widget class="QWidget" name="button_widget" native="true">
      <layout class="QGridLayout" name="gridLayout_2">
       <item row="1" column="0">
-       <widget class="QPushButton" name="xbee_button">
-        <property name="text">
-         <string>Activate XBee</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0">
-       <widget class="QPushButton" name="stop_xbee">
-        <property name="text">
-         <string>Stop XBee</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="0">
-       <widget class="QPushButton" name="change_theme">
-        <property name="text">
-         <string>Change Color Theme</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0">
        <widget class="QPushButton" name="ignition_button">
         <property name="text">
          <string>Ignition</string>
@@ -157,28 +122,47 @@ color: rgb(255, 255, 255);</string>
      </layout>
     </widget>
    </item>
-   <item row="0" column="2" colspan="2">
+   <item row="1" column="1" colspan="2">
     <widget class="QGroupBox" name="com_box">
      <property name="title">
       <string>COM</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_4">
-      <item row="0" column="0">
+      <item row="7" column="0">
+       <widget class="QLabel" name="last_refresh_label">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Last packet's timestamp&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="text">
+         <string>Last Refresh</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
        <widget class="QLabel" name="last_packet_nbr_label">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The last received packet's number (defined by TX)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
         <property name="text">
          <string>Last Packet Number</string>
         </property>
        </widget>
       </item>
-      <item row="2" column="0">
+      <item row="4" column="0">
        <widget class="QLabel" name="packets_second_label">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The number of packets received in last second&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
         <property name="text">
          <string>Packets/second</string>
         </property>
        </widget>
       </item>
-      <item row="2" column="1">
+      <item row="4" column="1">
        <widget class="QProgressBar" name="packets_second_bar">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The number of packets received in last second&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
         <property name="styleSheet">
          <string notr="true"/>
         </property>
@@ -196,22 +180,75 @@ color: rgb(255, 255, 255);</string>
         </property>
        </widget>
       </item>
-      <item row="0" column="1">
+      <item row="2" column="1">
        <widget class="QLabel" name="last_packet_number_panel">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The last received packet's number (defined by TX)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
         <property name="text">
          <string/>
         </property>
        </widget>
       </item>
-      <item row="1" column="0">
+      <item row="3" column="0">
        <widget class="QLabel" name="rssi_label">
         <property name="text">
          <string>RSSI</string>
         </property>
        </widget>
       </item>
-      <item row="1" column="1">
+      <item row="3" column="1">
        <widget class="QLabel" name="rssi_panel">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="received_pack_cnt_label">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The count of the received packets from the start of the program&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="text">
+         <string>Received Packet Count</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="1">
+       <widget class="QLabel" name="last_refresh_panel">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Last packet's timestamp&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLabel" name="received_pack_cnt_label_2">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The count of the received packets from the start of the program&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QLabel" name="miss_label">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Lost packets in last 5 seconds&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="text">
+         <string>Misses</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="1">
+       <widget class="QLabel" name="miss_panel">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Lost packets in last 5 seconds&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
         <property name="text">
          <string/>
         </property>
@@ -220,14 +257,56 @@ color: rgb(255, 255, 255);</string>
      </layout>
     </widget>
    </item>
-   <item row="1" column="3">
+   <item row="2" column="2">
     <widget class="QLabel" name="logo">
+     <property name="toolTip">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Project Bella Lui 2020&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
      <property name="styleSheet">
       <string notr="true">image: url(:/image.png);</string>
      </property>
      <property name="text">
       <string/>
      </property>
+    </widget>
+   </item>
+   <item row="0" column="0" colspan="3">
+    <widget class="QWidget" name="widget" native="true">
+     <layout class="QGridLayout" name="gridLayout_5">
+      <item row="0" column="2">
+       <widget class="QGroupBox" name="time_box">
+        <property name="title">
+         <string>Current time:</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_6">
+         <item row="0" column="0">
+          <widget class="QLabel" name="time_panel">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QPushButton" name="xbee_button">
+        <property name="text">
+         <string>START XBee</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QPushButton" name="change_theme">
+        <property name="text">
+         <string>Change Color Theme</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </widget>
    </item>
   </layout>
