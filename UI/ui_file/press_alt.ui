@@ -273,23 +273,17 @@ color: rgb(255, 255, 255);</string>
    <item row="0" column="0" colspan="3">
     <widget class="QWidget" name="widget" native="true">
      <layout class="QGridLayout" name="gridLayout_5">
-      <item row="0" column="2">
-       <widget class="QGroupBox" name="time_box">
-        <property name="title">
-         <string>Current time:</string>
+      <item row="0" column="3">
+       <widget class="QLabel" name="time_panel">
+        <property name="styleSheet">
+         <string notr="true"/>
         </property>
-        <layout class="QGridLayout" name="gridLayout_6">
-         <item row="0" column="0">
-          <widget class="QLabel" name="time_panel">
-           <property name="text">
-            <string/>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-           </property>
-          </widget>
-         </item>
-        </layout>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
        </widget>
       </item>
       <item row="0" column="0">
@@ -303,6 +297,16 @@ color: rgb(255, 255, 255);</string>
        <widget class="QPushButton" name="change_theme">
         <property name="text">
          <string>Change Color Theme</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <widget class="QLabel" name="current_time_label">
+        <property name="text">
+         <string>Current Time:</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
        </widget>
       </item>

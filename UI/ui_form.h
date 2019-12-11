@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'press_altuX7568.ui'
+** Form generated from reading UI file 'press_altsc3051.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.9.5
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef PRESS_ALTUX7568_H
-#define PRESS_ALTUX7568_H
+#ifndef PRESS_ALTSC3051_H
+#define PRESS_ALTSC3051_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QAction>
@@ -58,11 +58,10 @@ public:
     QLabel *logo;
     QWidget *widget;
     QGridLayout *gridLayout_5;
-    QGroupBox *time_box;
-    QGridLayout *gridLayout_6;
     QLabel *time_panel;
     QPushButton *xbee_button;
     QPushButton *change_theme;
+    QLabel *current_time_label;
 
     void setupUi(QWidget *Form)
     {
@@ -223,18 +222,12 @@ public:
         widget->setObjectName(QStringLiteral("widget"));
         gridLayout_5 = new QGridLayout(widget);
         gridLayout_5->setObjectName(QStringLiteral("gridLayout_5"));
-        time_box = new QGroupBox(widget);
-        time_box->setObjectName(QStringLiteral("time_box"));
-        gridLayout_6 = new QGridLayout(time_box);
-        gridLayout_6->setObjectName(QStringLiteral("gridLayout_6"));
-        time_panel = new QLabel(time_box);
+        time_panel = new QLabel(widget);
         time_panel->setObjectName(QStringLiteral("time_panel"));
+        time_panel->setStyleSheet(QStringLiteral(""));
         time_panel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
-        gridLayout_6->addWidget(time_panel, 0, 0, 1, 1);
-
-
-        gridLayout_5->addWidget(time_box, 0, 2, 1, 1);
+        gridLayout_5->addWidget(time_panel, 0, 3, 1, 1);
 
         xbee_button = new QPushButton(widget);
         xbee_button->setObjectName(QStringLiteral("xbee_button"));
@@ -245,6 +238,12 @@ public:
         change_theme->setObjectName(QStringLiteral("change_theme"));
 
         gridLayout_5->addWidget(change_theme, 0, 1, 1, 1);
+
+        current_time_label = new QLabel(widget);
+        current_time_label->setObjectName(QStringLiteral("current_time_label"));
+        current_time_label->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+
+        gridLayout_5->addWidget(current_time_label, 0, 2, 1, 1);
 
 
         gridLayout->addWidget(widget, 0, 0, 1, 3);
@@ -313,10 +312,10 @@ public:
         logo->setToolTip(QApplication::translate("Form", "<html><head/><body><p>Project Bella Lui 2020</p></body></html>", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
         logo->setText(QString());
-        time_box->setTitle(QApplication::translate("Form", "Current time:", Q_NULLPTR));
         time_panel->setText(QString());
         xbee_button->setText(QApplication::translate("Form", "START XBee", Q_NULLPTR));
         change_theme->setText(QApplication::translate("Form", "Change Color Theme", Q_NULLPTR));
+        current_time_label->setText(QApplication::translate("Form", "Current Time:", Q_NULLPTR));
     } // retranslateUi
 
 };
@@ -327,4 +326,5 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // PRESS_ALTUX7568_H
+#endif // PRESS_ALTSC3051_H
+
