@@ -1,1 +1,0 @@
-/usr/bin/c++  -g   CMakeFiles/gui.dir/gui_autogen/mocs_compilation.cpp.o CMakeFiles/gui.dir/gui_test.cc.o  -o gui 
