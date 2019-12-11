@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'press_altsc3051.ui'
+** Form generated from reading UI file 'press_altrc3051.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.9.5
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef PRESS_ALTSC3051_H
-#define PRESS_ALTSC3051_H
+#ifndef PRESS_ALTRC3051_H
+#define PRESS_ALTRC3051_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QAction>
@@ -52,7 +52,7 @@ public:
     QLabel *rssi_panel;
     QLabel *received_pack_cnt_label;
     QLabel *last_refresh_panel;
-    QLabel *received_pack_cnt_label_2;
+    QLabel *received_pack_cnt_panel;
     QLabel *miss_label;
     QLabel *miss_panel;
     QLabel *logo;
@@ -194,10 +194,10 @@ public:
 
         gridLayout_4->addWidget(last_refresh_panel, 7, 1, 1, 1);
 
-        received_pack_cnt_label_2 = new QLabel(com_box);
-        received_pack_cnt_label_2->setObjectName(QStringLiteral("received_pack_cnt_label_2"));
+        received_pack_cnt_panel = new QLabel(com_box);
+        received_pack_cnt_panel->setObjectName(QStringLiteral("received_pack_cnt_panel"));
 
-        gridLayout_4->addWidget(received_pack_cnt_label_2, 1, 1, 1, 1);
+        gridLayout_4->addWidget(received_pack_cnt_panel, 1, 1, 1, 1);
 
         miss_label = new QLabel(com_box);
         miss_label->setObjectName(QStringLiteral("miss_label"));
@@ -231,6 +231,7 @@ public:
 
         xbee_button = new QPushButton(widget);
         xbee_button->setObjectName(QStringLiteral("xbee_button"));
+        xbee_button->setMinimumSize(QSize(95, 0));
 
         gridLayout_5->addWidget(xbee_button, 0, 0, 1, 1);
 
@@ -297,9 +298,9 @@ public:
 #endif // QT_NO_TOOLTIP
         last_refresh_panel->setText(QString());
 #ifndef QT_NO_TOOLTIP
-        received_pack_cnt_label_2->setToolTip(QApplication::translate("Form", "<html><head/><body><p>The count of the received packets from the start of the program</p></body></html>", Q_NULLPTR));
+        received_pack_cnt_panel->setToolTip(QApplication::translate("Form", "<html><head/><body><p>The count of the received packets from the start of the program</p></body></html>", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
-        received_pack_cnt_label_2->setText(QString());
+        received_pack_cnt_panel->setText(QString());
 #ifndef QT_NO_TOOLTIP
         miss_label->setToolTip(QApplication::translate("Form", "<html><head/><body><p>Lost packets in last 5 seconds</p></body></html>", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
@@ -326,5 +327,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // PRESS_ALTSC3051_H
-
+#endif // PRESS_ALTRC3051_H

@@ -45,7 +45,7 @@ GuiWindow::GuiWindow(int refresh_rate, std::shared_ptr<Connector> connector) :
 void GuiWindow::refresh_data() {
     //std::cout << "Data stored reads : " << data_->getData<float>(ui_interface::PRESSURE_DATA)  //<<std::endl;
 
-
+	refresh_misses();
     miss_panel->setText(qstr(calculate_misses_in_last_5()));
     float tmp(data_->getData<float>(LATITUDE));
     latitude_panel->setText(degree_representation(tmp));
@@ -53,7 +53,8 @@ void GuiWindow::refresh_data() {
     longitude_panel->setText(degree_representation(tmp));
     tmp = data_->getData<float>(ALTITUDE);
     this->altitude_lcd->display(tmp);
-    this->last_packet_number_panel->setText(qstr(data_->getData<uint32_t>(PACKET_NBR)));
+    this->last_packet_number_panel->setText(qstr(data_->getData<uint32_t>(TX_PACKET_NR)));
+    received_pack_cnt_panel->setText(qstr(data_->getData<uint32_t>(RX_PACKET_CTR)));
     this->speed_lcd->display(data_->getData<float>(SPEED));
     time_t timestamp(data_->getData<time_t>(TIMESTAMP));
     char tbuffer[32];
@@ -116,7 +117,7 @@ void GuiWindow::theme_change_clicked()
 uint16_t GuiWindow::calculate_misses_in_last_5()
 {
     static uint32_t before(0);
-    uint16_t tmp(0);
+    static uint16_t tmp(0);
     if(tick_counter_ % 10 == 0){
         tmp = (missed_count_ - before);
         before = missed_count_;
