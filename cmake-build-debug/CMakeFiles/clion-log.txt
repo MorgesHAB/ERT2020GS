@@ -1,0 +1,4 @@
+/opt/clion-2019.3/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/cem/git/ERT2020GS
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/cem/git/ERT2020GS/cmake-build-debug

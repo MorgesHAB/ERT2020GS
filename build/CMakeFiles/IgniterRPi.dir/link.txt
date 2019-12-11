@@ -1,0 +1,1 @@
+/usr/bin/c++     CMakeFiles/IgniterRPi.dir/src/IgniterRPi.cpp.o  -o IgniterRPi Telecom/libTelecom.a -lwiringPi RF-UI-Interface/libRF-UI-Interface.a Telecom/RFmodem/lib/serial/libserial.a -lrt -lpthread 

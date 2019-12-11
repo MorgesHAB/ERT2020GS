@@ -1,0 +1,1 @@
+/usr/bin/c++     CMakeFiles/XbeeTest.dir/src/XbeeTest.cpp.o  -o XbeeTest Telecom/libTelecom.a -lwiringPi RF-UI-Interface/libRF-UI-Interface.a Telecom/RFmodem/lib/serial/libserial.a -lrt -lpthread 

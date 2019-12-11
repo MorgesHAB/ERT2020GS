@@ -1,0 +1,4 @@
+# Hashes of file build rules.
+3ac579a7898910255d864fb12a5b66e8 UI/CMakeFiles/GUI_autogen
+68c241608672a2c874923c306174eaff UI/CMakeFiles/gui_autogen
+67e865162da41dc69ac9a38e44d5aab0 qrc_logo.cpp
