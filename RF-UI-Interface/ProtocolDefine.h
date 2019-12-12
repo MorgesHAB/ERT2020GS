@@ -34,7 +34,7 @@ enum DataType {
     IGNITION_STATUS, // bool        ** true :  FIRE,  false : ABORTED
     IGNITION_KEY_ACTIVATED, //bool
     IGNITION_RED_BUTTON_PUSHED, //bool
-    SEND_IGNITION_PACKET, // bool /!\
+    IGNITION_PACKET_SENT_RECENTLY, // bool   true when packet sent   put to false 2 sec later via Gui thread
 
     /// PacketNbr
 

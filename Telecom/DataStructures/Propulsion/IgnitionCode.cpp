@@ -78,11 +78,6 @@ void IgnitionCode::updateTx(std::shared_ptr<Connector> connector) {
     states[3] = digitalRead(GPIO_IN_CODE4);
     uint8_t code(states[3] << 3 | states[2] << 2 | states[1] << 1 | states[0]);
     connector->setData(ui_interface::TX_IGNITION_CODE, code);
-
-    if (connector->getData<bool>(ui_interface::IGNITION_KEY_ACTIVATED) &&
-        connector->getData<bool>(ui_interface::IGNITION_RED_BUTTON_PUSHED)) {
-        connector->setData(ui_interface::SEND_IGNITION_PACKET, true);
-    }
 }
 
 void IgnitionCode::updateRx(std::shared_ptr<Connector> connector) {

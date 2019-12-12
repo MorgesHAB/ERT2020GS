@@ -40,10 +40,15 @@ void Worker::mainRoutine() {
                 xbee.send(dataHandler.getPacket(PROPULSION_TEST));
             }*/
             // If ignition from key & button etc
-            dataHandler.updateTx(PROPULSION_TEST);
-            if (connector->eatData<bool>(ui_interface::SEND_IGNITION_PACKET, false))
-                xbee.send(dataHandler.getPacket(PROPULSION_TEST));
+            if (!connector->getData<bool>(ui_interface::IGNITION_PACKET_SENT_RECENTLY)) {
+                dataHandler.updateTx(PROPULSION_TEST);
+                if (connector->getData<bool>(ui_interface::IGNITION_KEY_ACTIVATED) &&
+                    connector->getData<bool>(ui_interface::IGNITION_RED_BUTTON_PUSHED)) {
 
+                    xbee.send(dataHandler.getPacket(PROPULSION_TEST));
+                    connector->setData(ui_interface::IGNITION_PACKET_SENT_RECENTLY, true);
+                }
+            }
             std::this_thread::sleep_for(std::chrono::milliseconds(1));
         }
     }
