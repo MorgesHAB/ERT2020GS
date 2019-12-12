@@ -34,10 +34,16 @@ void Worker::mainRoutine() {
             if (xbee.receive(dataHandler)) {
                 dataHandler.printLastRxPacket();
             }
-            if (connector->eatData<bool>(ui_interface::IGNITION_CLICKED, false)) {
+            /* If ignition from Gui
+             * if (connector->eatData<bool>(ui_interface::IGNITION_CLICKED, false)) {
                 dataHandler.updateTx(PROPULSION_TEST);
                 xbee.send(dataHandler.getPacket(PROPULSION_TEST));
-            }
+            }*/
+            // If ignition from key & button etc
+            dataHandler.updateTx(PROPULSION_TEST);
+            if (connector->eatData<bool>(ui_interface::SEND_IGNITION_PACKET, false))
+                xbee.send(dataHandler.getPacket(PROPULSION_TEST));
+
             std::this_thread::sleep_for(std::chrono::milliseconds(1));
         }
     }

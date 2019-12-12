@@ -32,6 +32,9 @@ enum DataType {
                       //            @attention !!! Listener should eat this boolean to be able to detect further clicks !!!
 
     IGNITION_STATUS, // bool        ** true :  FIRE,  false : ABORTED
+    IGNITION_KEY_ACTIVATED, //bool
+    IGNITION_RED_BUTTON_PUSHED, //bool
+    SEND_IGNITION_PACKET, // bool /!\
 
     /// PacketNbr
 

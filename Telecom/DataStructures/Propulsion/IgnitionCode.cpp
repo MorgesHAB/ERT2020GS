@@ -10,6 +10,9 @@
 //  /!\ it's the nbr in BCM format, not the pin number
 // GPIO which activates the relay which activates the igniter
 #define GPIO_OUT_IGNITION       20
+// GPIO input on the Ground Station
+#define GPIO_IN_KEY             0
+#define GPIO_IN_RED_BUTTON      5
 // GPIO on the RPi to read the ignition code via the switches
 #define GPIO_IN_CODE1           6
 #define GPIO_IN_CODE2           13
@@ -31,6 +34,9 @@ IgnitionCode::IgnitionCode() : states(4, false) {
     pinMode(GPIO_OUT_IGNITION, OUTPUT);
     digitalWrite(GPIO_OUT_IGNITION, LOW);
     // Configure GPIO pins as an input
+    pinMode(GPIO_IN_KEY, INPUT);
+    pinMode(GPIO_IN_RED_BUTTON, INPUT);
+
     pinMode(GPIO_IN_CODE1, INPUT);
     pinMode(GPIO_IN_CODE2, INPUT);
     pinMode(GPIO_IN_CODE3, INPUT);
@@ -59,23 +65,35 @@ void IgnitionCode::print() const {
 }
 
 void IgnitionCode::updateTx(std::shared_ptr<Connector> connector) {
+    // run on GST
+    // Read Data to print on Gui for visual confirmation of component operation
+    connector->setData(ui_interface::IGNITION_KEY_ACTIVATED,
+                       digitalRead(GPIO_IN_KEY));
+    connector->setData(ui_interface::IGNITION_RED_BUTTON_PUSHED,
+                       digitalRead(GPIO_IN_RED_BUTTON));
+
     states[0] = digitalRead(GPIO_IN_CODE1);
     states[1] = digitalRead(GPIO_IN_CODE2);
     states[2] = digitalRead(GPIO_IN_CODE3);
     states[3] = digitalRead(GPIO_IN_CODE4);
     uint8_t code(states[3] << 3 | states[2] << 2 | states[1] << 1 | states[0]);
     connector->setData(ui_interface::TX_IGNITION_CODE, code);
+
+    if (connector->getData<bool>(ui_interface::IGNITION_KEY_ACTIVATED) &&
+        connector->getData<bool>(ui_interface::IGNITION_RED_BUTTON_PUSHED)) {
+        connector->setData(ui_interface::SEND_IGNITION_PACKET, true);
+    }
 }
 
 void IgnitionCode::updateRx(std::shared_ptr<Connector> connector) {
+    // run on GSE
     std::vector<int> codeRx = {digitalRead(GPIO_IN_CODE1),
                                digitalRead(GPIO_IN_CODE2),
                                digitalRead(GPIO_IN_CODE3),
                                digitalRead(GPIO_IN_CODE4)};
 
-    std::cout << "Code read on the Rx RPi" << std::endl;
-    std::cout << "=> Ignition code on Rx side : [ " << codeRx[0] << " " << codeRx[1]
-              << " " << codeRx[2] << " " << codeRx[3] << " ]" << std::endl;
+    std::cout << "=> Ignition code read on Rx side : [ " << codeRx[0] << " "
+              << codeRx[1] << " " << codeRx[2] << " " << codeRx[3] << " ]" << std::endl;
 
     // The code "0000" is not allowed (avoid the case if at initialization all is 0)
     if (!(codeRx[0] == 0 && codeRx[1] == 0 && codeRx[2] == 0 && codeRx[3] == 0) &&
