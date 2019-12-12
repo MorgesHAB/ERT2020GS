@@ -35,7 +35,7 @@ void f1(std::shared_ptr<Connector> c){
     c->setData(ui_interface::PRESSURE_DATA,a);
 	c->setData(ui_interface::ALTITUDE, a);
     c->setData(ui_interface::LONGITUDE, a);
-        c->setData(ui_interface::TIMESTAMP, std::time(nullptr));
+        //c->setData(ui_interface::TIMESTAMP, std::time(nullptr));
         std::cout << "Data set to : " << a << std::endl;
         a++;
         if((int)a==200){

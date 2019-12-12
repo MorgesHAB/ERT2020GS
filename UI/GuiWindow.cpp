@@ -1,4 +1,5 @@
 #include "GuiWindow.h"
+#include <chrono>
 #include <iostream>
 #include <ctime>
 #include <QStyleFactory>
@@ -63,11 +64,13 @@ void GuiWindow::refresh_data() {
     received_pack_cnt_panel->setText(qstr(data_->getData<uint32_t>(RX_PACKET_CTR)));
     this->speed_lcd->display(data_->getData<float>(SPEED));
     time_t timestamp(data_->getData<time_t>(TIMESTAMP));
+
     char tbuffer[32];
     struct tm* tptr = std::localtime(&timestamp);
     std::strftime(tbuffer, 32, "%T", tptr);
     this->last_refresh_panel->setText(tbuffer);
-    timestamp = std::time(nullptr);
+    timestamp = std::time(0);
+    tptr = std::localtime(&timestamp);
     std::strftime(tbuffer, 32, "%H:%M:%S", tptr);
     time_panel->setText(tbuffer);
     this->rssi_panel->setText("NOT YET IMPLEMENTED");
