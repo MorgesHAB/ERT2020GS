@@ -43,7 +43,7 @@ int main(int argc, char** argv) {
     DataHandler dataHandler(cptr);
 
     while (keep_running) {
-        PacketID ID = static_cast<PacketID> (rand() % (NBR_OF_TYPE-2));
+        PacketID ID = static_cast<PacketID> (rand() % (TX_TYPE_NBR));
         dataHandler.updateTx(ID);
         xbee.send(dataHandler.getPacket(ID));
         if (xbee.receive(dataHandler)) {
@@ -53,7 +53,7 @@ int main(int argc, char** argv) {
             dataHandler.updateTx(IGNITION_ANSWER);
             xbee.send(dataHandler.getPacket(IGNITION_ANSWER));
         }
-        std::this_thread::sleep_for(std::chrono::milliseconds(50));
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
     }
 
     return 0;

@@ -48,7 +48,7 @@ int main(int argc, char** argv) {
     while (keep_running) {
         // ./XbeeTest Tx            // Transmitter Part
         if (modeTx) {
-            PacketID ID = static_cast<PacketID> (rand() % (NBR_OF_TYPE-2));
+            PacketID ID = static_cast<PacketID> (rand() % (TX_TYPE_NBR));
             dataHandler.updateTx(ID);
             xbee1.send(dataHandler.getPacket(ID));
 

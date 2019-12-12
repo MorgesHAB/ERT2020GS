@@ -21,12 +21,12 @@
 
 
 DataHandler::DataHandler(std::shared_ptr<Connector> connector)
-        : connector(connector), dataHandler(NBR_OF_TYPE, nullptr), lastRxID(GPSID),
-          packetRxCounter(0), ignorePacketRxCounter(0)  {
+        : connector(connector), dataHandler(TOTAL_NBR_OF_TYPES, nullptr),
+          lastRxID(GPSID), packetRxCounter(0), ignorePacketRxCounter(0)  {
 
     // Create your RF Packet Datagram here
     // default protocol header ex: packet Type, packet nbr, timestamp
-    for (uint8_t id(0); id < NBR_OF_TYPE; ++id) {
+    for (uint8_t id(0); id < TOTAL_NBR_OF_TYPES; ++id) {
         dataHandler[id] = new Datagram;
         dataHandler[id]->add(new XbeeOptions);
         dataHandler[id]->add(new Header(id));
@@ -69,7 +69,7 @@ DataHandler::DataHandler(std::shared_ptr<Connector> connector)
     dataHandler[IGNITION_ANSWER]->add(new String("/!\\/!\\IGNITION FIRED !!!!"));
 
     // END of protocol add CRC
-    for (uint8_t id(0); id < NBR_OF_TYPE; ++id) {
+    for (uint8_t id(0); id < TOTAL_NBR_OF_TYPES; ++id) {
         dataHandler[id]->add(new CRC);
     }
 }
@@ -99,7 +99,7 @@ void DataHandler::updateTx(PacketID type) {
 
 void DataHandler::updateRx(Packet *packet) {
     auto ID = (PacketID) packet->getPacket()[12]; // TODO PROTOCOL define !!!
-    if (ID < NBR_OF_TYPE) {
+    if (ID < TOTAL_NBR_OF_TYPES) {
         ++packetRxCounter;
         connector->incrementData(ui_interface::PACKET_RX_RATE_CTR);
         connector->incrementData(ui_interface::RX_PACKET_CTR);
@@ -111,8 +111,9 @@ void DataHandler::updateRx(Packet *packet) {
     else {
         ++ignorePacketRxCounter;
         printLastRxPacket();
-        std::cout << "\n!!!!!!!!!!!!!! RXID > NBR_OF_TYPE  " << ID << std::endl;
-        std::cout << "Packet Rx nbr : " << packetRxCounter<< std::endl;
+        std::cout << "\n!!!!!!!!!!!!!! RXID > TOTAL_NBR_OF_TYPES  " << ID << std::endl;
+        std::cout << "Packet Rx nbr : " << packetRxCounter << std::endl;
+        std::cout << "Packet Rx ignore nbr : " << ignorePacketRxCounter << std::endl;
         packet->printDebug();
     }
 }

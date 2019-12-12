@@ -17,9 +17,12 @@
 // TODO namespace
 enum PacketID {   // Don't forget to modify header::print() when adding new packet type
     GPSID, PAYLOAD, AVIONICS, PROPULSION, IMAGE, XBEE_TEST,
+
+    TX_TYPE_NBR,
+
     PROPULSION_TEST, IGNITION_ANSWER,        // <-- add new type here
 
-    NBR_OF_TYPE  // <-- size of the array - keep at the end
+    TOTAL_NBR_OF_TYPES  // <-- size of the array - keep at the end
 };
 
 class DataHandler {
