@@ -20,6 +20,7 @@ public:
     Worker(std::shared_ptr<Connector> connector);
 
     void mainRoutine();
+    void manageIgnitionTx(DataHandler& dataHandler, Xbee& xbee);
 
 private:
     // Connector Pointer

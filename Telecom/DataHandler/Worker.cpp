@@ -34,22 +34,26 @@ void Worker::mainRoutine() {
             if (xbee.receive(dataHandler)) {
                 dataHandler.printLastRxPacket();
             }
-            /* If ignition from Gui
+            manageIgnitionTx(dataHandler, xbee);
+            std::this_thread::sleep_for(std::chrono::milliseconds(1));
+        }
+    }
+}
+
+void Worker::manageIgnitionTx(DataHandler& dataHandler, Xbee& xbee) {
+    /* If ignition from Gui
              * if (connector->eatData<bool>(ui_interface::IGNITION_CLICKED, false)) {
                 dataHandler.updateTx(PROPULSION_TEST);
                 xbee.send(dataHandler.getPacket(PROPULSION_TEST));
             }*/
-            // If ignition from key & button etc
-            if (!connector->getData<bool>(ui_interface::IGNITION_PACKET_SENT_RECENTLY)) {
-                dataHandler.updateTx(PROPULSION_TEST);
-                if (connector->getData<bool>(ui_interface::IGNITION_KEY_ACTIVATED) &&
-                    connector->getData<bool>(ui_interface::IGNITION_RED_BUTTON_PUSHED)) {
+    // If ignition from key & button etc
+    if (!connector->getData<bool>(ui_interface::IGNITION_PACKET_SENT_RECENTLY)) {
+        dataHandler.updateTx(PROPULSION_TEST);
+        if (connector->getData<bool>(ui_interface::IGNITION_KEY_ACTIVATED) &&
+            connector->getData<bool>(ui_interface::IGNITION_RED_BUTTON_PUSHED)) {
 
-                    xbee.send(dataHandler.getPacket(PROPULSION_TEST));
-                    connector->setData(ui_interface::IGNITION_PACKET_SENT_RECENTLY, true);
-                }
-            }
-            std::this_thread::sleep_for(std::chrono::milliseconds(1));
+            xbee.send(dataHandler.getPacket(PROPULSION_TEST));
+            connector->setData(ui_interface::IGNITION_PACKET_SENT_RECENTLY, true);
         }
     }
 }
