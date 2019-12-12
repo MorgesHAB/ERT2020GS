@@ -9,6 +9,7 @@
 
 constexpr uint8_t THEME_NUMBER(3);
 
+
 using namespace ui_interface;
 
 inline QString degree_representation(double value){
