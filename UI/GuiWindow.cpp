@@ -30,7 +30,9 @@ inline QString degree_representation(double value) {
 inline QString qstr(double value) {
     return QString::number(value);
 }
-
+inline QString qstr(uint8_t value) {
+    return QString::number(value);
+}
 inline QString qstr(uint16_t value) {
     return QString::number(value);
 }
@@ -41,6 +43,11 @@ inline QString qstr(uint32_t value) {
 
 inline QString qstr(uint64_t value) {
     return QString::number(value);
+}
+
+inline bool get_bit(unsigned char byte, int position) // position in range 0-7
+{
+    return (byte >> position) & 0x1;
 }
 
 
@@ -90,7 +97,7 @@ void GuiWindow::refresh_data() {
     if (data_->eatData<bool>(IGNITION_STATUS, false)) {
         QMessageBox::warning(this, "Ignition", "BOOM!");
     }
-
+    refresh_ignition_code();
     ++tick_counter_;
 }
 
@@ -156,6 +163,15 @@ void GuiWindow::closeEvent(QCloseEvent *event) {
 
 void GuiWindow::refresh_misses() {
     missed_count_ = data_->getData<uint32_t>(TX_PACKET_NR) -
-                    data_->getData<uint32_t>(RX_PACKET_CTR);
+            data_->getData<uint32_t>(RX_PACKET_CTR);
+}
+
+void GuiWindow::refresh_ignition_code()
+{
+    uint8_t tmp(data_->getData<uint8_t>(ui_interface::TX_IGNITION_CODE));
+    code_0->setText(QString::number(get_bit(tmp,0)));
+    code_1->setText(QString::number(get_bit(tmp,1)));
+    code_2->setText(QString::number(get_bit(tmp,2)));
+    code_3->setText(QString::number(get_bit(tmp,3)));
 }
 

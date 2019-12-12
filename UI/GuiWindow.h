@@ -36,6 +36,7 @@ private:
     uint16_t calculate_misses_in_last_2();
     void closeEvent(QCloseEvent *event) override;
     void refresh_misses();
+    void refresh_ignition_code();
 
     std::shared_ptr<Connector> data_;
     uint64_t tick_counter_;
