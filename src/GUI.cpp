@@ -28,7 +28,7 @@ int main(int argc, char **argv) {
     std::shared_ptr<Connector> connector(std::make_shared<Connector>());
 
     QApplication app(argc, argv);
-
+    
     GuiWindow guiWindow(500, connector);
 
     //run all threads
