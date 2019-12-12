@@ -1,6 +1,7 @@
 #include "GuiWindow.h"
 #include <iostream>
 #include <ctime>
+#include <QStyleFactory>
 #include <QString>
 #include <QMessageBox>
 #include <QPixmap>
