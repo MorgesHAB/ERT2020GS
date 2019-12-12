@@ -38,7 +38,7 @@ GuiWindow::GuiWindow(int refresh_rate, std::shared_ptr<Connector> connector) :
         white_theme_(0),
         xbee_acvite_(false){
     QCoreApplication::setAttribute(Qt::AA_UseStyleSheetPropagationInWidgetStyles);
-    QApplication::setStyle(QStyleFactory::create("Fusion"));
+    QApplication::setStyle(QStyleFactory::create("cleanlooks"));
     Ui_Form::setupUi(this);
     connect(timer_, SIGNAL (timeout()), this, SLOT (refresh_data()));
     connect(xbee_button, SIGNAL (pressed()), this, SLOT (xbee_clicked()));
