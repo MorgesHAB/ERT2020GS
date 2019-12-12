@@ -64,7 +64,7 @@ DataHandler::DataHandler(std::shared_ptr<Connector> connector)
     dataHandler[IMAGE]->add(new IgnitionData);
     //dataHandler[IMAGE]->add(new Picture(230, "pictureZ", 50, 50));
 
-    dataHandler[PROPULSION_TEST]->add(new IgnitionCode);
+    //dataHandler[PROPULSION_TEST]->add(new IgnitionCode);
 
     dataHandler[IGNITION_ANSWER]->add(new String("/!\\/!\\IGNITION FIRED !!!!"));
 
