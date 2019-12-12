@@ -4,6 +4,7 @@
 #include <QString>
 #include <QMessageBox>
 #include <QPixmap>
+#include <QCoreApplication>
 #include <array>
 
 constexpr uint8_t THEME_NUMBER(3);
@@ -35,6 +36,7 @@ GuiWindow::GuiWindow(int refresh_rate, std::shared_ptr<Connector> connector) :
         missed_count_(0),
         white_theme_(0),
         xbee_acvite_(false){
+    QCoreApplication::setAttribute(Qt::AA_UseStyleSheetPropagationInWidgetStyles);
     Ui_Form::setupUi(this);
     connect(timer_, SIGNAL (timeout()), this, SLOT (refresh_data()));
     connect(xbee_button, SIGNAL (pressed()), this, SLOT (xbee_clicked()));
