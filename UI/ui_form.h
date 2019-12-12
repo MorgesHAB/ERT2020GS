@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'press_altiG4410.ui'
+** Form generated from reading UI file 'press_altbZ9997.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.9.5
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef PRESS_ALTIG4410_H
-#define PRESS_ALTIG4410_H
+#ifndef PRESS_ALTBZ9997_H
+#define PRESS_ALTBZ9997_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QAction>
@@ -222,7 +222,7 @@ public:
         gridLayout_5->setObjectName(QStringLiteral("gridLayout_5"));
         time_panel = new QLabel(widget);
         time_panel->setObjectName(QStringLiteral("time_panel"));
-        time_panel->setMinimumSize(QSize(60, 0));
+        time_panel->setMinimumSize(QSize(70, 0));
         time_panel->setMaximumSize(QSize(60, 16777215));
         time_panel->setStyleSheet(QStringLiteral(""));
         time_panel->setAlignment(Qt::AlignCenter);
@@ -364,7 +364,7 @@ public:
         logo->setToolTip(QApplication::translate("Form", "<html><head/><body><p>Project Bella Lui 2020</p></body></html>", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
         logo->setText(QString());
-        time_panel->setText(QApplication::translate("Form", "22:22:22", Q_NULLPTR));
+        time_panel->setText(QApplication::translate("Form", "44:44:44", Q_NULLPTR));
         xbee_button->setText(QApplication::translate("Form", "START XBee", Q_NULLPTR));
         change_theme->setText(QApplication::translate("Form", "Change Color Theme", Q_NULLPTR));
         current_time_label->setText(QApplication::translate("Form", "Current Time:", Q_NULLPTR));
@@ -383,4 +383,5 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // PRESS_ALTIG4410_H
+#endif // PRESS_ALTBZ9997_H
+

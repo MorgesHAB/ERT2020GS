@@ -271,7 +271,7 @@ color: rgb(255, 255, 255);</string>
        <widget class="QLabel" name="time_panel">
         <property name="minimumSize">
          <size>
-          <width>60</width>
+          <width>70</width>
           <height>0</height>
          </size>
         </property>
@@ -285,7 +285,7 @@ color: rgb(255, 255, 255);</string>
          <string notr="true"/>
         </property>
         <property name="text">
-         <string>22:22:22</string>
+         <string>44:44:44</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
