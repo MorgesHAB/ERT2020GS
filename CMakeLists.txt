@@ -24,7 +24,6 @@ if (USE_XBEE)
 
     if (USE_GUI)
         find_package(Qt5Widgets)
-	find_package(Qt5 COMPONENTS Core Quick QuickControls2 REQUIRED)
         qt5_add_resources(RCC_SOURCES UI/logo.qrc)      # add image to Gui
         add_subdirectory(UI)
         add_executable(${PROJECT_NAME} ${RCC_SOURCES} src/GUI.cpp)
@@ -43,7 +42,6 @@ if (USE_XBEE)
     target_link_libraries(IgniterRPi Telecom)
 
     if (USE_GUI)
-	target_link_libraries(${PROJECT_NAME} PRIVATE Qt5::Core Qt5::Quick Qt5::QuickControls2)
         target_link_libraries(${PROJECT_NAME} GUI)
         target_include_directories(${PROJECT_NAME} PUBLIC UI)
     endif (USE_GUI)
