@@ -117,6 +117,7 @@ void GuiWindow::xbee_clicked() {
 void GuiWindow::ignite_clicked() {
     std::cout << "Ignition button clicked!" << std::endl;
     data_->setData(ui_interface::IGNITION_CLICKED, true);
+
 }
 
 void GuiWindow::theme_change_clicked() {
