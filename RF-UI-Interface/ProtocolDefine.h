@@ -20,56 +20,58 @@
 
 namespace ui_interface {
 
-enum DataType {
-    ///General
+    enum DataType {
+        ///General
 
-    RUNNING = 0, //bool             **Every thread listens this boolean and stop executing when it is false.
+        RUNNING = 0, //bool             **Every thread listens this boolean and stop executing when it is false.
 
-    /// Qt input informations
+        /// Qt input informations
 
-    ACTIVE_XBEE, //bool             **This is set to true-false by the Activate-Xbee button.
-    IGNITION_CLICKED, //bool        **This is set to true when ignition button is clicked.
-                      //            @attention !!! Listener should eat this boolean to be able to detect further clicks !!!
+        ACTIVE_XBEE, //bool             **This is set to true-false by the Activate-Xbee button.
+        IGNITION_CLICKED, //bool        **This is set to true when ignition button is clicked.
+        //            @attention !!! Listener should eat this boolean to be able to detect further clicks !!!
 
-    IGNITION_STATUS, // bool        ** true :  FIRE,  false : ABORTED
-    IGNITION_KEY_ACTIVATED, //bool
-    IGNITION_RED_BUTTON_PUSHED, //bool
-    IGNITION_PACKET_SENT_RECENTLY, // bool   true when packet sent   put to false 2 sec later via Gui thread
+        //Ignition
+                IGNITION_STATUS, // bool        ** true :  FIRE,  false : ABORTED
+        IGNITION_KEY_1_ACTIVATED, //bool
+        IGNITION_KEY_2_ACTIVATED, //bool
+        IGNITION_RED_BUTTON_PUSHED, //bool
+        IGNITION_PACKET_SENT_RECENTLY, // bool   true when packet sent   put to false 2 sec later via Gui thread
 
-    /// PacketNbr
+        /// PacketNbr
 
-    PACKET_RX_RATE_CTR, //uint32_t  **This is incremented on each packet received, eated by guito find the packet rate.
-    RX_PACKET_CTR,//uint32_t        **This is the count of the received packets from the beginning of the program
+        PACKET_RX_RATE_CTR, //uint32_t  **This is incremented on each packet received, eated by guito find the packet rate.
+        RX_PACKET_CTR,//uint32_t        **This is the count of the received packets from the beginning of the program
 
-    /// Header
-    PACKET_ID, //uint8_t            **The ID of the last packet received
-    TX_PACKET_NR,//uint32_t         **This is the last packet's number.
-    TIMESTAMP, //time_t             **The Time of the last packet received
+        /// Header
+                PACKET_ID, //uint8_t            **The ID of the last packet received
+        TX_PACKET_NR,//uint32_t         **This is the last packet's number.
+        TIMESTAMP, //time_t             **The Time of the last packet received
 
-    /// GPS Data Structure (float et time_t)
+        /// GPS Data Structure (float et time_t)
 
-    ALTITUDE,//float                **The last altitude reading
-    LONGITUDE,//float               **The last longitude reading
-    LATITUDE,//float                **The last latitude reading
-    SPEED,//float                   **The last speed reading
-    TIME,//time_t 32                **The time of the last GPS packed received
-
-
-    /// Pressure Data
-
-    PRESSURE_DATA,//float           **Last pressure reading
-
-    /// Tx ignition code
-
-    TX_IGNITION_CODE, //uint8_t     **Extract first 4 lsb for the code.
+        ALTITUDE,//float                **The last altitude reading
+        LONGITUDE,//float               **The last longitude reading
+        LATITUDE,//float                **The last latitude reading
+        SPEED,//float                   **The last speed reading
+        TIME,//time_t 32                **The time of the last GPS packed received
 
 
+        /// Pressure Data
 
-    /// !!! THIS MUST BE THE LAST LINE !!!
-    /// At the end the array size
+        PRESSURE_DATA,//float           **Last pressure reading
 
-    ARRAY_SIZE
-};
+        /// Tx ignition code
+
+        TX_IGNITION_CODE, //uint8_t     **Extract first 4 lsb for the code.
+
+
+
+        /// !!! THIS MUST BE THE LAST LINE !!!
+        /// At the end the array size
+
+        ARRAY_SIZE
+    };
 
 }
 #endif //ProtocolDefine_H

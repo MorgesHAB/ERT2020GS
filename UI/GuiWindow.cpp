@@ -150,8 +150,8 @@ uint16_t GuiWindow::calculate_misses_in_last_2() {
 
 void GuiWindow::closeEvent(QCloseEvent *event) {
     QMessageBox::StandardButton resBtn = QMessageBox::question(this, "BELLA LUI 2020",
-                tr("Ending mission Bella Lui 2020.\nAre you sure?\n"),
-                QMessageBox::Cancel | QMessageBox::No | QMessageBox::Yes, QMessageBox::Yes);
+          tr("Ending mission Bella Lui 2020.\nAre you sure?\n"),
+          QMessageBox::Cancel | QMessageBox::No | QMessageBox::Yes, QMessageBox::Yes);
 
     if (resBtn != QMessageBox::Yes) {
         event->ignore();
@@ -167,12 +167,11 @@ void GuiWindow::refresh_misses() {
             data_->getData<uint32_t>(RX_PACKET_CTR);
 }
 
-void GuiWindow::refresh_ignition_code()
-{
+void GuiWindow::refresh_ignition_code() {
     uint8_t tmp(data_->getData<uint8_t>(ui_interface::TX_IGNITION_CODE));
-    code_0->setText(QString::number(get_bit(tmp,0)));
-    code_1->setText(QString::number(get_bit(tmp,1)));
-    code_2->setText(QString::number(get_bit(tmp,2)));
-    code_3->setText(QString::number(get_bit(tmp,3)));
+    code_0->setText(QString::number(get_bit(tmp, 0)));
+    code_1->setText(QString::number(get_bit(tmp, 1)));
+    code_2->setText(QString::number(get_bit(tmp, 2)));
+    code_3->setText(QString::number(get_bit(tmp, 3)));
 }
 

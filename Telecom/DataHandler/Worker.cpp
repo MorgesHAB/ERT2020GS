@@ -47,13 +47,14 @@ void Worker::manageIgnitionTx(DataHandler& dataHandler, Xbee& xbee) {
                 xbee.send(dataHandler.getPacket(PROPULSION_TEST));
             }*/
     // If ignition from key & button etc
-    if (!connector->getData<bool>(ui_interface::IGNITION_PACKET_SENT_RECENTLY)) {
-        dataHandler.updateTx(PROPULSION_TEST);
-        if (connector->getData<bool>(ui_interface::IGNITION_KEY_ACTIVATED) &&
-            connector->getData<bool>(ui_interface::IGNITION_RED_BUTTON_PUSHED)) {
+    // if (!connector->getData<bool>(ui_interface::IGNITION_PACKET_SENT_RECENTLY)) {
+    dataHandler.updateTx(PROPULSION_TEST);
+    if (connector->getData<bool>(ui_interface::IGNITION_KEY_1_ACTIVATED) &&
+        connector->getData<bool>(ui_interface::IGNITION_KEY_2_ACTIVATED) &&
+        connector->getData<bool>(ui_interface::IGNITION_RED_BUTTON_PUSHED)) {
 
-            xbee.send(dataHandler.getPacket(PROPULSION_TEST));
-            connector->setData(ui_interface::IGNITION_PACKET_SENT_RECENTLY, true);
-        }
+        xbee.send(dataHandler.getPacket(PROPULSION_TEST));
+        //connector->setData(ui_interface::IGNITION_PACKET_SENT_RECENTLY, true);
     }
+    //}
 }
