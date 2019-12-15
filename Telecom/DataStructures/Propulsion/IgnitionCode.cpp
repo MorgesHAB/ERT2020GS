@@ -15,7 +15,7 @@
 #define GPIO_IN_KEY_2           10
 #define GPIO_IN_RED_BUTTON      9
 // GPIO on the RPi to read the ignition code via the switches
-// Packet :  [ - | - | - | - | code 3 | code 2 | code 1 | code 0 LSB  ]
+// Code order on the dipswitch from left to right : code 3 | code 2 | code 1 | code 0
 #define GPIO_IN_CODE0           25
 #define GPIO_IN_CODE1           24
 #define GPIO_IN_CODE2           27
@@ -63,8 +63,8 @@ void IgnitionCode::parse(Packet &packet) {
 }
 
 void IgnitionCode::print() const {
-    std::cout << "Tx Ignition code : [ " << states[0] << " " << states[1] << " "
-              << states[2] << " " << states[3] << " ]" << std::endl;
+    std::cout << "Tx Ignition code : [ " << states[3] << " " << states[2] << " "
+              << states[1] << " " << states[0] << " ]" << std::endl;
 }
 
 void IgnitionCode::updateTx(std::shared_ptr<Connector> connector) {
@@ -92,8 +92,8 @@ void IgnitionCode::updateRx(std::shared_ptr<Connector> connector) {
                                digitalRead(GPIO_IN_CODE2),
                                digitalRead(GPIO_IN_CODE3)};
 
-    std::cout << "=> Ignition code read on Rx side : [ " << codeRx[0] << " "
-              << codeRx[1] << " " << codeRx[2] << " " << codeRx[3] << " ]" << std::endl;
+    std::cout << "=> Ignition code read on Rx side : [ " << codeRx[3] << " "
+              << codeRx[2] << " " << codeRx[1] << " " << codeRx[0] << " ]" << std::endl;
 
     // The code "0000" is not allowed (avoid the case if at initialization all is 0)
     if (!(codeRx[0] == 0 && codeRx[1] == 0 && codeRx[2] == 0 && codeRx[3] == 0) &&
