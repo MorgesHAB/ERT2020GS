@@ -30,21 +30,21 @@ void Header::parse(Packet &packet) {
 void Header::print() const {
     std::cout << "*** Packet Type : ";
     switch (packetID) {
-        case GPSID: std::cout << "GPS";
+        case packetType::GPSID: std::cout << "GPS";
             break;
-        case PAYLOAD: std::cout << "Payload";
+        case packetType::PAYLOAD: std::cout << "Payload";
             break;
-        case AVIONICS: std::cout << "Avionics";
+        case packetType::AVIONICS: std::cout << "Avionics";
             break;
-        case PROPULSION: std::cout << "Propulsion";
+        case packetType::PROPULSION: std::cout << "Propulsion";
             break;
-        case IMAGE: std::cout << "Image";
+        case packetType::IMAGE: std::cout << "Image";
             break;
-        case XBEE_TEST: std::cout << "Xbee frame";
+        case packetType::XBEE_TEST: std::cout << "Xbee frame";
             break;
-        case PROPULSION_TEST: std::cout << "Propulsion Ignition Order !";
+        case packetType::IGNITION_REQUEST: std::cout << "Propulsion Ignition Order !";
             break;
-        case IGNITION_ANSWER: std::cout << "Ignition Response";
+        case packetType::IGNITION_ANSWER: std::cout << "Ignition Response";
             break;
         default: std::cout << "Unknown";
     }

@@ -21,9 +21,9 @@
 
 
 DataHandler::DataHandler(std::shared_ptr<Connector> connector)
-        : connector(connector), dataHandler(TOTAL_NBR_OF_TYPES, nullptr),
-          lastRxID(GPSID), packetRxCounter(0), ignorePacketRxCounter(0)  {
-
+        : connector(connector), dataHandler(packetType::TOTAL_NBR_OF_TYPES, nullptr),
+          lastRxID(packetType::GPSID), packetRxCounter(0), ignorePacketRxCounter(0)  {
+    using namespace packetType;
     // Create your RF Packet Datagram here
     // default protocol header ex: packet Type, packet nbr, timestamp
     for (uint8_t id(0); id < TOTAL_NBR_OF_TYPES; ++id) {
@@ -34,7 +34,6 @@ DataHandler::DataHandler(std::shared_ptr<Connector> connector)
 
     //// Packet Type  XBEE
     dataHandler[XBEE_TEST]->add(new PressureData);
-    dataHandler[XBEE_TEST]->add(new String("First sentence transmit via XBee !!"));
     dataHandler[XBEE_TEST]->add(new String("First sentence transmit via XBee !!"));
     dataHandler[XBEE_TEST]->add(new PressureData);
     dataHandler[XBEE_TEST]->add(new States({1, 0, 1, 1, 0, 0, 1, 0}));
@@ -64,7 +63,7 @@ DataHandler::DataHandler(std::shared_ptr<Connector> connector)
     dataHandler[IMAGE]->add(new IgnitionData);
     //dataHandler[IMAGE]->add(new Picture(230, "pictureZ", 50, 50));
 
-    dataHandler[PROPULSION_TEST]->add(new IgnitionCode);
+    dataHandler[IGNITION_REQUEST]->add(new IgnitionCode);
 
     dataHandler[IGNITION_ANSWER]->add(new String("/!\\/!\\IGNITION FIRED !!!!"));
 
@@ -79,12 +78,12 @@ DataHandler::~DataHandler() {
     std::cout << "DataHandler deleted - memory released" << std::endl;
 }
 
-void DataHandler::print(PacketID type) const {
+void DataHandler::print(packetType::PacketID type) const {
     dataHandler[type]->print();
 }
 
 // give data pointer to send
-Packet* DataHandler::getPacket(PacketID type) {
+Packet* DataHandler::getPacket(packetType::PacketID type) {
     return dataHandler[type]->getDataPacket();
 }
 
@@ -93,19 +92,19 @@ void DataHandler::printLastRxPacket() const {
     dataHandler[lastRxID]->print();
 }
 
-void DataHandler::updateTx(PacketID type) {
+void DataHandler::updateTx(packetType::PacketID type) {
     dataHandler[type]->updateTx(connector);
 }
 
 void DataHandler::updateRx(Packet *packet) {
-    auto ID = (PacketID) packet->getPacket()[12]; // TODO PROTOCOL define !!!
-    if (ID < TOTAL_NBR_OF_TYPES) {
+    auto ID = (packetType::PacketID) packet->getPacket()[12]; // TODO PROTOCOL define !!!
+    if (ID < packetType::TOTAL_NBR_OF_TYPES) {
         ++packetRxCounter;
         connector->incrementData(ui_interface::PACKET_RX_RATE_CTR);
         connector->incrementData(ui_interface::RX_PACKET_CTR);
         lastRxID = ID;
         dataHandler[lastRxID]->updateRx(packet, connector);
-        if (lastRxID == IGNITION_ANSWER)
+        if (lastRxID == packetType::IGNITION_ANSWER)
             connector->setData(ui_interface::IGNITION_STATUS, true);
     }
     else {
