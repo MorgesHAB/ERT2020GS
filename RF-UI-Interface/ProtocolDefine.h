@@ -32,19 +32,17 @@ namespace ui_interface {
         //            @attention !!! Listener should eat this boolean to be able to detect further clicks !!!
 
         //Ignition
-                IGNITION_STATUS, // bool        ** true :  FIRE,  false : ABORTED
+        IGNITION_STATUS, // bool        ** true :  FIRE,  false : ABORTED
         IGNITION_KEY_1_ACTIVATED, //bool
         IGNITION_KEY_2_ACTIVATED, //bool
         IGNITION_RED_BUTTON_PUSHED, //bool
-        IGNITION_PACKET_SENT_RECENTLY, // bool   true when packet sent   put to false 2 sec later via Gui thread
 
         /// PacketNbr
-
         PACKET_RX_RATE_CTR, //uint32_t  **This is incremented on each packet received, eated by guito find the packet rate.
         RX_PACKET_CTR,//uint32_t        **This is the count of the received packets from the beginning of the program
 
         /// Header
-                PACKET_ID, //uint8_t            **The ID of the last packet received
+        PACKET_ID, //uint8_t            **The ID of the last packet received
         TX_PACKET_NR,//uint32_t         **This is the last packet's number.
         TIMESTAMP, //time_t             **The Time of the last packet received
 
