@@ -22,7 +22,7 @@
 
 #include <iostream>
 
-#define PACKET_SIZE_ALLOC_TX_PART       200
+#define PACKET_SIZE_ALLOC_TX_PART       250
 
 class Packet {
 public:
