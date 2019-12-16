@@ -45,7 +45,8 @@ public:
                 c->setData(ui_interface::IGNITION_STATUS, true);
             }
             c->setData(ui_interface::TX_IGNITION_CODE, (uint8_t) a);
-            std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+            
+	    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
         }
         std::cout << "Ending receiver thread!" << std::endl;
     } // f1
@@ -61,7 +62,6 @@ main(int argc, char ** argv)
     std::thread receiver_thread(&A::f1, a, c);
 
     QApplication app(argc, argv);
-
     GuiWindow w(500, c);
     // run all threads
 
