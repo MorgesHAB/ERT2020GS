@@ -100,7 +100,7 @@ void GuiWindow::xbee_clicked()
 void GuiWindow::ignite_clicked()
 {
     std::cout << "Ignition button clicked!" << std::endl;
-
+    ready_ignition_ = data_->getData<bool>(IGNITION_CLICKED);
     ready_ignition_ = !ready_ignition_;
     data_->setData(ui_interface::IGNITION_CLICKED, ready_ignition_);
     show_ok_X(ready_ignition_panel, ready_ignition_);
