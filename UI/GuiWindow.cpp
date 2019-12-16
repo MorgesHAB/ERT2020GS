@@ -234,7 +234,7 @@ void GuiWindow::check_and_show()
     if (data_->eatData<bool>(IGNITION_STATUS, false)) {
         QMessageBox::warning(this, "Ignition", "BOOM!");
     }
-    show_ok_X(ready_ignition_panel, data_->getData<bool>(IGNITION_STATUS));
+    show_ok_X(ready_ignition_panel, data_->getData<bool>(IGNITION_CLICKED));
 }
 
 void GuiWindow::refresh_time()
