@@ -9,12 +9,12 @@
 
 /* Image stock diagram
     image[packetNbr]            values : uint8_t*               #comment
-    image[0]                    nullptr                         start to count at 1
-    image[1]                    uint8_t[bytePerPacket] = [10101101 | 10100011 | .... ]
+    image[0]                    uint8_t[bytePerPacket] = [10101101 | 10100011 | .... ]
+    image[1]                    uint8_t[bytePerPacket] = [11101101 | 0000011 | .... ]
     ...
     image[packetNbrMissing]     nullptr                         not received
     ...
-    image[nbrTotPacket / bytePerPacket + 1]                          last index
+    image[nbrTotPacket]         ....                            last index
 */
 
 #include <cstdlib>
@@ -75,14 +75,11 @@ void Picture::write(Packet &packet) {
         packet.write(packetNbr);
         if (packetNbr == 0) packet.write(nbrTotPacket);
 
-        for (size_t i(0); i < bytePerPacket /*&& i < nbrTotPacket % bytePerPacket*/; ++i) {
+        for (size_t i(0); i < bytePerPacket; ++i) {
             packet.write(image[packetNbr][i]);
         }
         ++packetNbr;
-        if (packetNbr == nbrTotPacket/* / bytePerPacket + 1*/) {
-            std::cout << "last packet " << packetNbr << " == " << nbrTotPacket/* / bytePerPacket + 1 */<< std::endl;
-            pictureIsSending = false;
-        }
+        if (packetNbr == nbrTotPacket) pictureIsSending = false;
     }
 }
 
@@ -99,7 +96,7 @@ void Picture::parse(Packet &packet) {
         packet.parse(nbrTotPacket);
         image.resize(nbrTotPacket, nullptr);
     }
-    if (packetNbr < nbrTotPacket /*/ bytePerPacket + 1*/) {
+    if (packetNbr < nbrTotPacket) {
         image[packetNbr] = new uint8_t[bytePerPacket];
         for (size_t i(0); i < bytePerPacket; ++i) {
             packet.parse(image[packetNbr][i]);
@@ -125,8 +122,7 @@ void Picture::buildImage() {
                     fileOut.put(image[i][j]);
                 } else {
                     fileOut.put(0); // black ?
-                    std::cout << "!!! packet nbr " << i << " not received"
-                              << std::endl;
+                    std::cout << "!!! packet nbr " << i << " not received" << std::endl;
                 }
             }
         }

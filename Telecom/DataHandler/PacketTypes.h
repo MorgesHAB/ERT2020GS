@@ -17,10 +17,11 @@ namespace packetType {
 
     // Don't forget to modify header::print() when adding new packet type
     enum PacketID {
-        GPSID, PAYLOAD, AVIONICS, PROPULSION, IMAGE, XBEE_TEST,
+        GPSID, PAYLOAD, AVIONICS, PROPULSION, XBEE_TEST,
 
         TX_TYPE_NBR,    // tmp use for random packet type send
 
+        IMAGE,
         IGNITION_REQUEST,
         IGNITION_ANSWER,
                             // <-- add new type here
