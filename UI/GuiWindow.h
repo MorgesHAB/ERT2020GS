@@ -33,6 +33,15 @@ public slots:
     void theme_change_clicked();
 
 private:
+    enum Theme { GREEN_ON_BLACK = 0, WHITE_ON_BLACK, BLACK_ON_WHITE, theme_count};
+
+    void initialize_slots_signals();
+    void initialize_style();
+    void refresh_telemetry();
+    void refresh_com();
+    void check_and_show();
+    void show_ok(QLabel* label);
+    void set_style(Theme theme);
     uint16_t calculate_misses_in_last_2();
     void closeEvent(QCloseEvent *event) override;
     void refresh_misses();
@@ -41,8 +50,8 @@ private:
     std::shared_ptr<Connector> data_;
     uint64_t tick_counter_;
     uint64_t missed_count_;
-    uint8_t white_theme_;
-    bool xbee_acvite_;
+    Theme current_theme_;
+    bool xbee_active_;
 };
 
 #endif // GUIWINDOW_H
