@@ -19,12 +19,12 @@
 
 
 class GuiWindow : public QWidget, public Ui_Form {
-Q_OBJECT
+    Q_OBJECT
 public:
     GuiWindow(int refresh_rate, std::shared_ptr<Connector> connector);
     void update();
 
-    QTimer *timer_;
+    QTimer * timer_;
 
 public slots:
     void refresh_data();
@@ -33,8 +33,19 @@ public slots:
     void theme_change_clicked();
 
 private:
+
+    enum Theme { GREEN_ON_BLACK = 0, WHITE_ON_BLACK, BLACK_ON_WHITE, theme_count };
+
+    void initialize_slots_signals();
+    void initialize_style();
+    void refresh_telemetry();
+    void refresh_com();
+    void check_and_show();
+    void refresh_time();
+
+
     uint16_t calculate_misses_in_last_2();
-    void closeEvent(QCloseEvent *event) override;
+    void closeEvent(QCloseEvent * event) override;
     void refresh_misses();
     void refresh_ignition_code();
 
