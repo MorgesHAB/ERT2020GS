@@ -224,7 +224,7 @@ void GuiWindow::refresh_com()
     std::strftime(tbuffer, 32, "%T", tptr);
     miss_panel->setText(qstr(calculate_misses_in_last_2()));
     this->last_refresh_panel->setText(tbuffer);
-    this->rssi_panel->setText("NOT YET IMPLEMENTED");
+    this->rssi_panel->setText("--");
     uint32_t packets(data_->eatData<uint32_t>(PACKET_RX_RATE_CTR, 0));
     packets_second_bar->setValue((int) (packets * (1000.0 / (timer_->interval()))));
 }
