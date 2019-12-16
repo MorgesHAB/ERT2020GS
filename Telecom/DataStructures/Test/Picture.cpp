@@ -9,12 +9,12 @@
 
 /* Image stock diagram
     image[packetNbr]            values : uint8_t*               #comment
-    image[0]                    nullptr                         start to count at 1
-    image[1]                    uint8_t[bytePerPacket] = [10101101 | 10100011 | .... ]
+    image[0]                    uint8_t[bytePerPacket] = [10101101 | 10100011 | .... ]
+    image[1]                    uint8_t[bytePerPacket] = [11101101 | 0000011 | .... ]
     ...
     image[packetNbrMissing]     nullptr                         not received
     ...
-    image[imgSize / bytePerPacket + 1]                          last index
+    image[nbrTotPacket]         ....                            last index
 */
 
 #include <cstdlib>
@@ -24,10 +24,11 @@
 Picture::Picture(uint8_t bytePerPacket, const std::string &fileName, uint16_t width,
                  uint16_t heigth) : bytePerPacket(bytePerPacket), fileName(fileName),
                                 width(width), heigth(heigth), pictureIsSending(false),
-                                nbrSentImg(0), packetNbr(0), imgSize(0) {}
+                                nbrSentImg(0), packetNbr(0), nbrTotPacket(0) {}
 
 Picture::~Picture() {
     for (auto& part : image) delete[] part;
+    image.clear();
 }
 
 /////////////////// Transmitter Part ///////////////////
@@ -42,21 +43,20 @@ void Picture::updateTx(std::shared_ptr<Connector> connector) {
 }
 
 void Picture::takePicture() {
-    fileName = fileName + std::to_string(++nbrSentImg);
+    //fileName = fileName + std::to_string(++nbrSentImg);
     // Take a picture with the raspicam
     std::string command("raspistill -o " + fileName + ".jpg -hf -vf -w " +
                         std::to_string(width) + " -h " +
                         std::to_string(heigth));
-    system(command.c_str());
+    //system(command.c_str()); // execute command on RPi terminal
     std::cout << "New picture taken - " << fileName << ".jpg" << std::endl;
     pictureIsSending = true;
 
     // Store all bytes of the image
-    std::ifstream fileIn(fileName + ".jpg", std::ios::in | std::ios::binary);
+    std::ifstream fileIn(fileName + ".png", std::ios::in | std::ios::binary);
 
     if (fileIn) {
-        image.push_back(nullptr); // don't use first index
-        size_t nbr(1);
+        size_t nbr(0);
         while (!fileIn.eof()) {
             image.push_back(new uint8_t[bytePerPacket]);
             for (size_t i(0); i < bytePerPacket && !fileIn.eof(); ++i) {
@@ -65,21 +65,21 @@ void Picture::takePicture() {
             ++nbr;
         }
 
-        imgSize = image.size() * bytePerPacket;
+        nbrTotPacket = image.size();
     } else
         std::cerr << "Impossible to read the image file" << std::endl;
 }
 
 void Picture::write(Packet &packet) {
     if (pictureIsSending) {
-        packet.write(++packetNbr);
-        if (packetNbr == 1) packet.write(imgSize);
+        packet.write(packetNbr);
+        if (packetNbr == 0) packet.write(nbrTotPacket);
 
-        image[packetNbr] = new uint8_t[bytePerPacket];
-        for (size_t i(0); i < bytePerPacket && i < imgSize; ++i) {
+        for (size_t i(0); i < bytePerPacket; ++i) {
             packet.write(image[packetNbr][i]);
         }
-        if (packetNbr == imgSize / bytePerPacket + 1) pictureIsSending = false;
+        ++packetNbr;
+        if (packetNbr == nbrTotPacket) pictureIsSending = false;
     }
 }
 
@@ -87,39 +87,42 @@ void Picture::write(Packet &packet) {
 
 void Picture::print() const {
     std::cout << "Picture Data " << fileName << ".jpg  -- Packet n° " << packetNbr
-              << " / " << imgSize / bytePerPacket + 1 << std::endl;
+              << " / " << nbrTotPacket - 1 << std::endl;
 }
 
 void Picture::parse(Packet &packet) {
     packet.parse(packetNbr);
-    if (packetNbr == 1) {
-        packet.parse(imgSize);
-        image.resize(imgSize / bytePerPacket + 1, nullptr);
+    if (packetNbr == 0) {
+        packet.parse(nbrTotPacket);
+        image.resize(nbrTotPacket, nullptr);
     }
+    if (packetNbr < nbrTotPacket) {
+        image[packetNbr] = new uint8_t[bytePerPacket];
+        for (size_t i(0); i < bytePerPacket; ++i) {
+            packet.parse(image[packetNbr][i]);
+        }
+    }
+}
 
-    image[packetNbr] = new uint8_t[bytePerPacket];
-    for (size_t i(0); i < bytePerPacket && i < imgSize; ++i) {
-        packet.parse(image[packetNbr][i]);
-    }
+void Picture::updateRx(std::shared_ptr<Connector> connector) {
     // build image V1 condition not good <=> if last packet
-    if (packetNbr == imgSize / bytePerPacket + 1) {
+    if (packetNbr == nbrTotPacket - 1/*/ bytePerPacket + 1*/) {
         pictureIsSending = false;
         buildImage();
     }
 }
 
 void Picture::buildImage() {
-    std::ofstream fileOut(fileName + ".jpg", std::ios::out | std::ios::binary);
+    std::ofstream fileOut(fileName + "Rx.png", std::ios::out | std::ios::binary);
 
     if (fileOut) {
-        for(size_t i(1); i <= image.size(); ++i) {
-            for (size_t j(0); j< bytePerPacket; ++j) {
+        for(size_t i(0); i < nbrTotPacket; ++i) {
+            for (size_t j(0); j < bytePerPacket; ++j) {
                 if (image[i]) { // if received packet else nullptr
                     fileOut.put(image[i][j]);
                 } else {
                     fileOut.put(0); // black ?
-                    std::cout << "!!! packet nbr " << i << " not received"
-                              << std::endl;
+                    std::cout << "!!! packet nbr " << i << " not received" << std::endl;
                 }
             }
         }

@@ -10,6 +10,7 @@
 #ifndef Picture_H
 #define Picture_H
 
+// Default values
 #define DEF_PICTURE_NAME        "picture"
 #define DEF_PICTURE_HEIGHT      300
 #define DEF_PICTURE_WIDTH       300
@@ -29,9 +30,10 @@ public:
 
     void write(Packet &packet) override;
     void parse(Packet &packet) override;
-    void updateTx(std::shared_ptr<Connector> connector) override;
     void print() const override;
 
+    void updateTx(std::shared_ptr<Connector> connector) override;
+    void updateRx(std::shared_ptr<Connector> connector) override;
 
     void takePicture();
     void buildImage();
@@ -44,7 +46,7 @@ private:
     bool pictureIsSending;
     int nbrSentImg;
     uint16_t packetNbr;
-    size_t imgSize;
+    size_t nbrTotPacket;
 
     std::vector<uint8_t*> image;
 };
