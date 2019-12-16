@@ -20,7 +20,6 @@
 #include <Xbee.h>
 #include <DataHandler.h>
 #include <connector.h>
-#include <string>
 #include <csignal>
 
 static volatile sig_atomic_t keep_running = 1;
@@ -41,9 +40,10 @@ int main(int argc, char** argv) {
 
     // Your RF modem
     Xbee xbee1("/dev/ttyS6");
-    //Xbee xbee2("/dev/ttyS3");
+    Xbee xbee2("/dev/ttyS3");
     // RF packet handler
     DataHandler dataHandler(cptr);
+    using namespace packetType;
 
     while (keep_running) {
         // ./XbeeTest Tx            // Transmitter Part
@@ -59,7 +59,7 @@ int main(int argc, char** argv) {
         }
         // ./XbeeTest               // Receiver Part
         else {
-            if (xbee1.receive(dataHandler)) {
+            if (xbee2.receive(dataHandler)) {
                 dataHandler.printLastRxPacket();
             }
             std::this_thread::sleep_for(std::chrono::milliseconds(7));

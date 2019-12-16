@@ -41,19 +41,13 @@ void Worker::mainRoutine() {
 }
 
 void Worker::manageIgnitionTx(DataHandler& dataHandler, Xbee& xbee) {
-    /* If ignition from Gui
-             * if (connector->eatData<bool>(ui_interface::IGNITION_CLICKED, false)) {
-                dataHandler.updateTx(PROPULSION_TEST);
-                xbee.send(dataHandler.getPacket(PROPULSION_TEST));
-            }*/
-    // If ignition from key & button etc
-    if (!connector->getData<bool>(ui_interface::IGNITION_PACKET_SENT_RECENTLY)) {
-        dataHandler.updateTx(PROPULSION_TEST);
-        if (connector->getData<bool>(ui_interface::IGNITION_KEY_ACTIVATED) &&
-            connector->getData<bool>(ui_interface::IGNITION_RED_BUTTON_PUSHED)) {
-
-            xbee.send(dataHandler.getPacket(PROPULSION_TEST));
-            connector->setData(ui_interface::IGNITION_PACKET_SENT_RECENTLY, true);
-        }
+    // If ignition from Gui & keys & red button
+    dataHandler.updateTx(packetType::IGNITION_REQUEST);
+    if (connector->getData<bool>(ui_interface::IGNITION_KEY_1_ACTIVATED) &&
+        connector->getData<bool>(ui_interface::IGNITION_KEY_2_ACTIVATED) &&
+        connector->getData<bool>(ui_interface::IGNITION_RED_BUTTON_PUSHED) &&
+        connector->eatData<bool>(ui_interface::IGNITION_CLICKED, false)) {
+        // /!\ Critical point /!\.
+        xbee.send(dataHandler.getPacket(packetType::IGNITION_REQUEST));
     }
 }

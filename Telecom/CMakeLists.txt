@@ -10,7 +10,8 @@ if (USE_XBEE)
     file(GLOB SOURCES_RF2 RFmodem/Xbee.cpp)
 endif (USE_XBEE)
 
-file(GLOB_RECURSE SOURCES DataStructures/*.cpp Serializer/*.cpp DataHandler/*.cpp)
+file(GLOB_RECURSE SOURCES DataStructures/* Serializer/*.cpp DataHandler/*.cpp
+                          Worker/*.cpp)
 
 add_library(${PROJECT_NAME} ${SOURCES} ${SOURCES_RF} ${SOURCES_RF2})
 
@@ -19,6 +20,7 @@ target_include_directories(${PROJECT_NAME} PUBLIC RFmodem)
 target_include_directories(${PROJECT_NAME} PUBLIC RFmodem/lib/RadioHead)
 target_include_directories(${PROJECT_NAME} PUBLIC Serializer)
 target_include_directories(${PROJECT_NAME} PUBLIC DataHandler)
+target_include_directories(${PROJECT_NAME} PUBLIC Worker)
 
 target_include_directories(${PROJECT_NAME} PUBLIC ../RF-UI-Interface)
 target_link_libraries(${PROJECT_NAME} RF-UI-Interface)

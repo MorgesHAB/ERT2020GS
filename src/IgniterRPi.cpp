@@ -41,6 +41,7 @@ int main(int argc, char** argv) {
     Xbee xbee("/dev/ttyUSB0");
     // RF packet handler
     DataHandler dataHandler(cptr);
+    using namespace packetType;
 
     while (keep_running) {
         PacketID ID = static_cast<PacketID> (rand() % (TX_TYPE_NBR));

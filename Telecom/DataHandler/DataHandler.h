@@ -12,30 +12,20 @@
 
 
 #include <vector>
+#include <PacketTypes.h>
 #include <Datagram.h>
-
-// TODO namespace
-enum PacketID {   // Don't forget to modify header::print() when adding new packet type
-    GPSID, PAYLOAD, AVIONICS, PROPULSION, IMAGE, XBEE_TEST,
-
-    TX_TYPE_NBR,
-
-    PROPULSION_TEST, IGNITION_ANSWER,        // <-- add new type here
-
-    TOTAL_NBR_OF_TYPES  // <-- size of the array - keep at the end
-};
 
 class DataHandler {
 public:
     DataHandler(std::shared_ptr<Connector> connector);
     virtual ~DataHandler();
 
-    void updateTx(PacketID type);
+    void updateTx(packetType::PacketID type);
     void updateRx(Packet* packet);
 
-    void print(PacketID type) const;
+    void print(packetType::PacketID type) const;
 
-    Packet* getPacket(PacketID type);
+    Packet* getPacket(packetType::PacketID type);
 
     void printLastRxPacket() const;
 
@@ -43,7 +33,7 @@ private:
     std::shared_ptr<Connector> connector;
 
     std::vector<Datagram*> dataHandler;
-    PacketID lastRxID;
+    packetType::PacketID lastRxID;
     size_t packetRxCounter;
     size_t ignorePacketRxCounter;
 };
