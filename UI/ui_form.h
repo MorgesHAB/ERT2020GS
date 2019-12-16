@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'press_altbZ9997.ui'
+** Form generated from reading UI file 'press_altA14522.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.9.5
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef PRESS_ALTBZ9997_H
-#define PRESS_ALTBZ9997_H
+#ifndef PRESS_ALTA14522_H
+#define PRESS_ALTA14522_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QAction>
@@ -63,19 +63,26 @@ public:
     QLabel *current_time_label;
     QWidget *button_widget;
     QGridLayout *gridLayout_2;
+    QLabel *key_2_label;
+    QPushButton *ignition_button;
+    QLabel *ready_ignition_panel;
+    QLabel *key_1_label;
+    QLabel *key_2_panel;
+    QLabel *key_1_panel;
+    QLabel *red_button_label;
+    QLabel *red_button_panel;
     QFrame *frame;
     QHBoxLayout *horizontalLayout;
     QLabel *code_3;
     QLabel *code_2;
     QLabel *code_1;
     QLabel *code_0;
-    QPushButton *ignition_button;
 
     void setupUi(QWidget *Form)
     {
         if (Form->objectName().isEmpty())
             Form->setObjectName(QStringLiteral("Form"));
-        Form->resize(457, 457);
+        Form->resize(483, 457);
         QSizePolicy sizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -253,6 +260,53 @@ public:
         button_widget->setObjectName(QStringLiteral("button_widget"));
         gridLayout_2 = new QGridLayout(button_widget);
         gridLayout_2->setObjectName(QStringLiteral("gridLayout_2"));
+        key_2_label = new QLabel(button_widget);
+        key_2_label->setObjectName(QStringLiteral("key_2_label"));
+
+        gridLayout_2->addWidget(key_2_label, 2, 0, 1, 1);
+
+        ignition_button = new QPushButton(button_widget);
+        ignition_button->setObjectName(QStringLiteral("ignition_button"));
+        ignition_button->setStyleSheet(QStringLiteral(""));
+
+        gridLayout_2->addWidget(ignition_button, 0, 0, 1, 1);
+
+        ready_ignition_panel = new QLabel(button_widget);
+        ready_ignition_panel->setObjectName(QStringLiteral("ready_ignition_panel"));
+        ready_ignition_panel->setMinimumSize(QSize(23, 0));
+        ready_ignition_panel->setMaximumSize(QSize(23, 16777215));
+        ready_ignition_panel->setStyleSheet(QStringLiteral("color: rgb(255, 0, 0);"));
+
+        gridLayout_2->addWidget(ready_ignition_panel, 0, 1, 1, 1);
+
+        key_1_label = new QLabel(button_widget);
+        key_1_label->setObjectName(QStringLiteral("key_1_label"));
+
+        gridLayout_2->addWidget(key_1_label, 1, 0, 1, 1);
+
+        key_2_panel = new QLabel(button_widget);
+        key_2_panel->setObjectName(QStringLiteral("key_2_panel"));
+        key_2_panel->setStyleSheet(QStringLiteral("color: rgb(255, 0, 0);"));
+
+        gridLayout_2->addWidget(key_2_panel, 2, 1, 1, 1);
+
+        key_1_panel = new QLabel(button_widget);
+        key_1_panel->setObjectName(QStringLiteral("key_1_panel"));
+        key_1_panel->setStyleSheet(QStringLiteral("color: rgb(255, 0, 0);"));
+
+        gridLayout_2->addWidget(key_1_panel, 1, 1, 1, 1);
+
+        red_button_label = new QLabel(button_widget);
+        red_button_label->setObjectName(QStringLiteral("red_button_label"));
+
+        gridLayout_2->addWidget(red_button_label, 3, 0, 1, 1);
+
+        red_button_panel = new QLabel(button_widget);
+        red_button_panel->setObjectName(QStringLiteral("red_button_panel"));
+        red_button_panel->setStyleSheet(QStringLiteral("color: rgb(255, 0, 0);"));
+
+        gridLayout_2->addWidget(red_button_panel, 3, 1, 1, 1);
+
         frame = new QFrame(button_widget);
         frame->setObjectName(QStringLiteral("frame"));
         frame->setMaximumSize(QSize(16777215, 35));
@@ -291,12 +345,7 @@ public:
         horizontalLayout->addWidget(code_0);
 
 
-        gridLayout_2->addWidget(frame, 1, 0, 1, 1);
-
-        ignition_button = new QPushButton(button_widget);
-        ignition_button->setObjectName(QStringLiteral("ignition_button"));
-
-        gridLayout_2->addWidget(ignition_button, 0, 0, 1, 1);
+        gridLayout_2->addWidget(frame, 4, 0, 1, 2);
 
 
         gridLayout->addWidget(button_widget, 1, 0, 1, 1);
@@ -368,11 +417,18 @@ public:
         xbee_button->setText(QApplication::translate("Form", "START XBee", Q_NULLPTR));
         change_theme->setText(QApplication::translate("Form", "Change Color Theme", Q_NULLPTR));
         current_time_label->setText(QApplication::translate("Form", "Current Time:", Q_NULLPTR));
+        key_2_label->setText(QApplication::translate("Form", "KEY 2", Q_NULLPTR));
+        ignition_button->setText(QApplication::translate("Form", "Ready For Ignition", Q_NULLPTR));
+        ready_ignition_panel->setText(QApplication::translate("Form", "X", Q_NULLPTR));
+        key_1_label->setText(QApplication::translate("Form", "KEY 1", Q_NULLPTR));
+        key_2_panel->setText(QApplication::translate("Form", "X", Q_NULLPTR));
+        key_1_panel->setText(QApplication::translate("Form", "X", Q_NULLPTR));
+        red_button_label->setText(QApplication::translate("Form", "Red Button", Q_NULLPTR));
+        red_button_panel->setText(QApplication::translate("Form", "X", Q_NULLPTR));
         code_3->setText(QString());
         code_2->setText(QString());
         code_1->setText(QString());
         code_0->setText(QString());
-        ignition_button->setText(QApplication::translate("Form", "Ignition", Q_NULLPTR));
     } // retranslateUi
 
 };
@@ -383,5 +439,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // PRESS_ALTBZ9997_H
-
+#endif // PRESS_ALTA14522_H

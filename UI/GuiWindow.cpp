@@ -63,21 +63,23 @@ GuiWindow::GuiWindow(int refresh_rate, std::shared_ptr<Connector> connector) :
     data_(connector),
     missed_count_(0),
     white_theme_(0),
+    current_theme_(0),
+    ready_ignition_(false),
     xbee_acvite_(false)
 {
     initialize_style();
     initialize_slots_signals();
     timer_->start(refresh_rate);
+
 }
 
-// TODO This function is very bad structured, must fix
 void GuiWindow::refresh_data()
 {
     refresh_com();
     refresh_telemetry();
     refresh_time();
     check_and_show();
-    refresh_ignition_code();
+    refresh_ignition_frame();
     ++tick_counter_;
 }
 
@@ -98,27 +100,39 @@ void GuiWindow::xbee_clicked()
 void GuiWindow::ignite_clicked()
 {
     std::cout << "Ignition button clicked!" << std::endl;
-    data_->setData(ui_interface::IGNITION_CLICKED, true);
+
+    ready_ignition_ = !ready_ignition_;
+    data_->setData(ui_interface::IGNITION_CLICKED, ready_ignition_);
+    show_ok_X(ready_ignition_panel, ready_ignition_);
+
+
 }
 
 void GuiWindow::theme_change_clicked()
 {
-    if (white_theme_ % THEME_NUMBER == 0) {
+    if(current_theme_ == BLACK_ON_WHITE)
+        current_theme_ = start;
+
+
+    current_theme_ = (Theme)((int)current_theme_+1);
+
+
+
+    if (current_theme_ == GREEN_ON_BLACK) {
         setStyleSheet(QLatin1String("background-color: rgb(30, 30, 30);\n"
           "color: rgb(0, 255, 0);"));
         packets_second_bar->setStyleSheet(
             QLatin1String("color: rgb(255, 255, 255);"));
-    } else if (white_theme_ % THEME_NUMBER == 1) {
+    } else if (current_theme_ == WHITE_ON_BLACK) {
         setStyleSheet(QLatin1String("background-color: rgb(255, 255, 255);\n"
           "color: rgb(0, 0, 0);"));
         packets_second_bar->setStyleSheet(QLatin1String("color: rgb(0,0,0);"));
-    } else if (white_theme_ % THEME_NUMBER == 2) {
+    } else if (current_theme_ == BLACK_ON_WHITE) {
         setStyleSheet(QLatin1String("background-color: rgb(30, 30, 30);\n"
           "color: rgb(255, 255, 255);"));
         packets_second_bar->setStyleSheet(
             QLatin1String("color: rgb(255, 255, 255);"));
     }
-    ++white_theme_;
 }
 
 uint16_t GuiWindow::calculate_misses_in_last_2()
@@ -168,6 +182,14 @@ void GuiWindow::initialize_style()
     QCoreApplication::setAttribute(Qt::AA_UseStyleSheetPropagationInWidgetStyles);
     QApplication::setStyle(QStyleFactory::create("cleanlooks"));
     Ui_Form::setupUi(this);
+}
+
+void GuiWindow::refresh_ignition_frame()
+{
+    refresh_ignition_code();
+    show_ok_X(key_1_panel, data_->getData<bool>(IGNITION_KEY_1_ACTIVATED));
+    show_ok_X(key_2_panel, data_->getData<bool>(IGNITION_KEY_2_ACTIVATED));
+    show_ok_X(red_button_panel, data_->getData<bool>(IGNITION_RED_BUTTON_PUSHED));
 }
 
 void GuiWindow::initialize_slots_signals()
@@ -221,5 +243,26 @@ void GuiWindow::refresh_time()
     struct tm * tptr = std::localtime(&timestamp);
     std::strftime(tbuffer, 32, "%H:%M:%S", tptr);
     time_panel->setText(tbuffer);
+}
+
+void GuiWindow::show_ok_X(QLabel * label, bool ok)
+{
+    if(ok)
+        show_ok(label);
+    else
+        show_X(label);
+}
+
+void GuiWindow::show_ok(QLabel * label)
+{
+    label->setStyleSheet(QLatin1String("color: rgb(0, 255, 0);"));
+    label->setText("OK");
+
+}
+
+void GuiWindow::show_X(QLabel * label)
+{
+    label->setStyleSheet(QLatin1String("color: rgb(255, 0, 0);"));
+    label->setText("X");
 }
 

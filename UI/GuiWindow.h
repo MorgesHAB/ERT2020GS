@@ -34,25 +34,33 @@ public slots:
 
 private:
 
-    enum Theme { GREEN_ON_BLACK = 0, WHITE_ON_BLACK, BLACK_ON_WHITE, theme_count };
+    enum Theme { start=0, WHITE_ON_BLACK, GREEN_ON_BLACK, BLACK_ON_WHITE};
 
     void initialize_slots_signals();
     void initialize_style();
+
+    void refresh_ignition_frame();
     void refresh_telemetry();
     void refresh_com();
     void check_and_show();
     void refresh_time();
 
+    void show_ok_X(QLabel*, bool);
+    void show_ok(QLabel*);
+    void show_X(QLabel*);
 
     uint16_t calculate_misses_in_last_2();
     void closeEvent(QCloseEvent * event) override;
     void refresh_misses();
     void refresh_ignition_code();
 
+
     std::shared_ptr<Connector> data_;
     uint64_t tick_counter_;
     uint64_t missed_count_;
     uint8_t white_theme_;
+    uint8_t current_theme_;
+    bool ready_ignition_;
     bool xbee_acvite_;
 };
 
