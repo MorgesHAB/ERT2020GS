@@ -54,7 +54,7 @@ int main(int argc, char** argv) {
             //dataHandler.updateTx(PROPULSION);
             //xbee.send(dataHandler.getPacket(PROPULSION));
            // return 0;
-            std::this_thread::sleep_for(std::chrono::milliseconds(200));
+            std::this_thread::sleep_for(std::chrono::milliseconds(50));
         }
         // ./XbeeTest               // Receiver Part
         else {

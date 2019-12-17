@@ -14,6 +14,8 @@
 #define GPIO_IN_KEY_1           11
 #define GPIO_IN_KEY_2           10
 #define GPIO_IN_RED_BUTTON      9
+// GPIO output of the red button LED
+#define GPIO_OUT_LED_BUTTON     23
 // GPIO on the RPi to read the ignition code via the switches
 // Code order on the dipswitch from left to right : code 3 | code 2 | code 1 | code 0
 #define GPIO_IN_CODE0           25
@@ -35,6 +37,9 @@ IgnitionCode::IgnitionCode() : states(4, false) {
     // Configure GPIO OUT for the igniter
     pinMode(GPIO_OUT_IGNITION, OUTPUT);
     digitalWrite(GPIO_OUT_IGNITION, LOW);
+    // Configure the red button LED
+    pinMode(GPIO_OUT_LED_BUTTON, OUTPUT);
+    digitalWrite(GPIO_OUT_LED_BUTTON, LOW);
     // Configure GPIO pins as an input
     pinMode(GPIO_IN_KEY_1, INPUT);
     pinMode(GPIO_IN_KEY_2, INPUT);
@@ -70,10 +75,14 @@ void IgnitionCode::print() const {
 void IgnitionCode::updateTx(std::shared_ptr<Connector> connector) {
     // run on GST
     // Read Data to print on Gui for visual confirmation of component operation
-    connector->setData(ui_interface::IGNITION_KEY_1_ACTIVATED,
-                       digitalRead(GPIO_IN_KEY_1));
-    connector->setData(ui_interface::IGNITION_KEY_2_ACTIVATED,
-                       digitalRead(GPIO_IN_KEY_2));
+    bool key1(digitalRead(GPIO_IN_KEY_1)), key2(digitalRead(GPIO_IN_KEY_2));
+    connector->setData(ui_interface::IGNITION_KEY_1_ACTIVATED, key1);
+    connector->setData(ui_interface::IGNITION_KEY_2_ACTIVATED, key2);
+    if (key1 && key2 && connector->getData<bool>(ui_interface::IGNITION_CLICKED)) {
+        digitalWrite(GPIO_OUT_LED_BUTTON, HIGH);
+    } else {
+        digitalWrite(GPIO_OUT_LED_BUTTON, LOW);
+    }
     connector->setData(ui_interface::IGNITION_RED_BUTTON_PUSHED,
                        digitalRead(GPIO_IN_RED_BUTTON));
 

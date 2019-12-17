@@ -53,7 +53,7 @@ void Picture::takePicture() {
     pictureIsSending = true;
 
     // Store all bytes of the image
-    std::ifstream fileIn(fileName + ".png", std::ios::in | std::ios::binary);
+    std::ifstream fileIn(fileName + ".jpg", std::ios::in | std::ios::binary);
 
     if (fileIn) {
         size_t nbr(0);
@@ -113,7 +113,7 @@ void Picture::updateRx(std::shared_ptr<Connector> connector) {
 }
 
 void Picture::buildImage() {
-    std::ofstream fileOut(fileName + "Rx.png", std::ios::out | std::ios::binary);
+    std::ofstream fileOut(fileName + "Rx.jpg", std::ios::out | std::ios::binary);
 
     if (fileOut) {
         for(size_t i(0); i < nbrTotPacket; ++i) {

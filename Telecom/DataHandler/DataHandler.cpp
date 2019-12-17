@@ -58,9 +58,9 @@ DataHandler::DataHandler(std::shared_ptr<Connector> connector)
     dataHandler[PROPULSION]->add(new PressureData);
 
     //// Packet Type n°5
-    dataHandler[IMAGE]->add(new Picture(200, "Lio", 100, 100));
+    dataHandler[IMAGE]->add(new Picture(200, "d3", 100, 100));
 
-    //dataHandler[IGNITION_REQUEST]->add(new IgnitionCode);
+    dataHandler[IGNITION_REQUEST]->add(new IgnitionCode);
 
     dataHandler[IGNITION_ANSWER]->add(new String("/!\\/!\\IGNITION FIRED !!!!"));
 
