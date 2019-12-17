@@ -65,10 +65,12 @@ GuiWindow::GuiWindow(int refresh_rate, std::shared_ptr<Connector> connector) :
     white_theme_(0),
     current_theme_(0),
     ready_ignition_(false),
-    xbee_acvite_(false)
+    xbee_acvite_(false),
+    fullscreen_(false)
 {
     initialize_style();
     initialize_slots_signals();
+    grabKeyboard();
     timer_->start(refresh_rate);
 
 }
@@ -272,3 +274,14 @@ void GuiWindow::show_X(QLabel * label)
     label->setText("X");
 }
 
+void GuiWindow::keyPressEvent(QKeyEvent *ckey)
+{
+    if(ckey->key() == Qt::Key_F11){
+        fullscreen_ = !fullscreen_;
+    }
+    if(fullscreen_)
+        showFullScreen();
+    else
+        showNormal();
+
+}

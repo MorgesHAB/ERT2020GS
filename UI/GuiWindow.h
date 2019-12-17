@@ -16,6 +16,7 @@
 #include "../RF-UI-Interface/connector.h"
 #include "../RF-UI-Interface/ProtocolDefine.h"
 #include "QCloseEvent"
+#include "QKeyEvent"
 
 
 class GuiWindow : public QWidget, public Ui_Form {
@@ -26,11 +27,15 @@ public:
 
     QTimer * timer_;
 
+
 public slots:
     void refresh_data();
     void xbee_clicked();
     void ignite_clicked();
     void theme_change_clicked();
+
+
+
 
 private:
 
@@ -51,6 +56,7 @@ private:
 
     uint16_t calculate_misses_in_last_2();
     void closeEvent(QCloseEvent * event) override;
+    void keyPressEvent(QKeyEvent *event) override;
     void refresh_misses();
     void refresh_ignition_code();
 
@@ -62,6 +68,7 @@ private:
     uint8_t current_theme_;
     bool ready_ignition_;
     bool xbee_acvite_;
+    bool fullscreen_;
 };
 
 #endif // GUIWINDOW_H

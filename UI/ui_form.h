@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'press_altwZ8032.ui'
+** Form generated from reading UI file 'press_altUV3184.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.9.5
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef PRESS_ALTWZ8032_H
-#define PRESS_ALTWZ8032_H
+#ifndef PRESS_ALTUV3184_H
+#define PRESS_ALTUV3184_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QAction>
@@ -40,6 +40,13 @@ public:
     QLabel *longitude_label;
     QLabel *longitude_panel;
     QLCDNumber *altitude_lcd;
+    QLabel *logo;
+    QWidget *widget;
+    QGridLayout *gridLayout_5;
+    QLabel *time_panel;
+    QPushButton *xbee_button;
+    QPushButton *change_theme;
+    QLabel *current_time_label;
     QGroupBox *com_box;
     QGridLayout *gridLayout_4;
     QLabel *last_refresh_label;
@@ -56,14 +63,7 @@ public:
     QLabel *miss_panel;
     QLabel *corrupted_label;
     QLabel *corrupted_panel;
-    QLabel *logo;
-    QWidget *widget;
-    QGridLayout *gridLayout_5;
-    QLabel *time_panel;
-    QPushButton *xbee_button;
-    QPushButton *change_theme;
-    QLabel *current_time_label;
-    QWidget *button_widget;
+    QGroupBox *ignition_box;
     QGridLayout *gridLayout_2;
     QLabel *key_2_label;
     QPushButton *ignition_button;
@@ -84,14 +84,10 @@ public:
     {
         if (Form->objectName().isEmpty())
             Form->setObjectName(QStringLiteral("Form"));
-        Form->resize(483, 457);
-        QSizePolicy sizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding);
-        sizePolicy.setHorizontalStretch(0);
-        sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(Form->sizePolicy().hasHeightForWidth());
-        Form->setSizePolicy(sizePolicy);
+        Form->resize(489, 480);
         Form->setMinimumSize(QSize(0, 0));
-        Form->setMaximumSize(QSize(1024, 720));
+        Form->setMaximumSize(QSize(9999, 9999));
+        Form->setMouseTracking(false);
         Form->setStyleSheet(QLatin1String("background-color: rgb(30, 30, 30);\n"
 "color: rgb(255, 255, 255);"));
         gridLayout = new QGridLayout(Form);
@@ -146,7 +142,46 @@ public:
         gridLayout_3->addWidget(altitude_lcd, 1, 1, 1, 1);
 
 
-        gridLayout->addWidget(telemetry_box, 2, 0, 1, 2);
+        gridLayout->addWidget(telemetry_box, 4, 0, 1, 2);
+
+        logo = new QLabel(Form);
+        logo->setObjectName(QStringLiteral("logo"));
+        logo->setStyleSheet(QStringLiteral("image: url(:/image.png);"));
+
+        gridLayout->addWidget(logo, 4, 2, 1, 1);
+
+        widget = new QWidget(Form);
+        widget->setObjectName(QStringLiteral("widget"));
+        gridLayout_5 = new QGridLayout(widget);
+        gridLayout_5->setObjectName(QStringLiteral("gridLayout_5"));
+        time_panel = new QLabel(widget);
+        time_panel->setObjectName(QStringLiteral("time_panel"));
+        time_panel->setMinimumSize(QSize(70, 0));
+        time_panel->setMaximumSize(QSize(60, 16777215));
+        time_panel->setStyleSheet(QStringLiteral(""));
+        time_panel->setAlignment(Qt::AlignCenter);
+
+        gridLayout_5->addWidget(time_panel, 0, 3, 1, 1);
+
+        xbee_button = new QPushButton(widget);
+        xbee_button->setObjectName(QStringLiteral("xbee_button"));
+        xbee_button->setMinimumSize(QSize(100, 0));
+
+        gridLayout_5->addWidget(xbee_button, 0, 0, 1, 1);
+
+        change_theme = new QPushButton(widget);
+        change_theme->setObjectName(QStringLiteral("change_theme"));
+
+        gridLayout_5->addWidget(change_theme, 0, 1, 1, 1);
+
+        current_time_label = new QLabel(widget);
+        current_time_label->setObjectName(QStringLiteral("current_time_label"));
+        current_time_label->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+
+        gridLayout_5->addWidget(current_time_label, 0, 2, 1, 1);
+
+
+        gridLayout->addWidget(widget, 0, 0, 1, 3);
 
         com_box = new QGroupBox(Form);
         com_box->setObjectName(QStringLiteral("com_box"));
@@ -227,63 +262,24 @@ public:
         gridLayout_4->addWidget(corrupted_panel, 8, 1, 1, 1);
 
 
-        gridLayout->addWidget(com_box, 1, 1, 1, 2);
+        gridLayout->addWidget(com_box, 2, 1, 1, 2);
 
-        logo = new QLabel(Form);
-        logo->setObjectName(QStringLiteral("logo"));
-        logo->setStyleSheet(QStringLiteral("image: url(:/image.png);"));
-
-        gridLayout->addWidget(logo, 2, 2, 1, 1);
-
-        widget = new QWidget(Form);
-        widget->setObjectName(QStringLiteral("widget"));
-        gridLayout_5 = new QGridLayout(widget);
-        gridLayout_5->setObjectName(QStringLiteral("gridLayout_5"));
-        time_panel = new QLabel(widget);
-        time_panel->setObjectName(QStringLiteral("time_panel"));
-        time_panel->setMinimumSize(QSize(70, 0));
-        time_panel->setMaximumSize(QSize(60, 16777215));
-        time_panel->setStyleSheet(QStringLiteral(""));
-        time_panel->setAlignment(Qt::AlignCenter);
-
-        gridLayout_5->addWidget(time_panel, 0, 3, 1, 1);
-
-        xbee_button = new QPushButton(widget);
-        xbee_button->setObjectName(QStringLiteral("xbee_button"));
-        xbee_button->setMinimumSize(QSize(100, 0));
-
-        gridLayout_5->addWidget(xbee_button, 0, 0, 1, 1);
-
-        change_theme = new QPushButton(widget);
-        change_theme->setObjectName(QStringLiteral("change_theme"));
-
-        gridLayout_5->addWidget(change_theme, 0, 1, 1, 1);
-
-        current_time_label = new QLabel(widget);
-        current_time_label->setObjectName(QStringLiteral("current_time_label"));
-        current_time_label->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
-
-        gridLayout_5->addWidget(current_time_label, 0, 2, 1, 1);
-
-
-        gridLayout->addWidget(widget, 0, 0, 1, 3);
-
-        button_widget = new QWidget(Form);
-        button_widget->setObjectName(QStringLiteral("button_widget"));
-        gridLayout_2 = new QGridLayout(button_widget);
+        ignition_box = new QGroupBox(Form);
+        ignition_box->setObjectName(QStringLiteral("ignition_box"));
+        gridLayout_2 = new QGridLayout(ignition_box);
         gridLayout_2->setObjectName(QStringLiteral("gridLayout_2"));
-        key_2_label = new QLabel(button_widget);
+        key_2_label = new QLabel(ignition_box);
         key_2_label->setObjectName(QStringLiteral("key_2_label"));
 
         gridLayout_2->addWidget(key_2_label, 2, 0, 1, 1);
 
-        ignition_button = new QPushButton(button_widget);
+        ignition_button = new QPushButton(ignition_box);
         ignition_button->setObjectName(QStringLiteral("ignition_button"));
         ignition_button->setStyleSheet(QStringLiteral(""));
 
         gridLayout_2->addWidget(ignition_button, 0, 0, 1, 1);
 
-        ready_ignition_panel = new QLabel(button_widget);
+        ready_ignition_panel = new QLabel(ignition_box);
         ready_ignition_panel->setObjectName(QStringLiteral("ready_ignition_panel"));
         ready_ignition_panel->setMinimumSize(QSize(23, 0));
         ready_ignition_panel->setMaximumSize(QSize(23, 16777215));
@@ -291,36 +287,37 @@ public:
 
         gridLayout_2->addWidget(ready_ignition_panel, 0, 1, 1, 1);
 
-        key_1_label = new QLabel(button_widget);
+        key_1_label = new QLabel(ignition_box);
         key_1_label->setObjectName(QStringLiteral("key_1_label"));
 
         gridLayout_2->addWidget(key_1_label, 1, 0, 1, 1);
 
-        key_2_panel = new QLabel(button_widget);
+        key_2_panel = new QLabel(ignition_box);
         key_2_panel->setObjectName(QStringLiteral("key_2_panel"));
         key_2_panel->setStyleSheet(QStringLiteral("color: rgb(255, 0, 0);"));
 
         gridLayout_2->addWidget(key_2_panel, 2, 1, 1, 1);
 
-        key_1_panel = new QLabel(button_widget);
+        key_1_panel = new QLabel(ignition_box);
         key_1_panel->setObjectName(QStringLiteral("key_1_panel"));
         key_1_panel->setStyleSheet(QStringLiteral("color: rgb(255, 0, 0);"));
 
         gridLayout_2->addWidget(key_1_panel, 1, 1, 1, 1);
 
-        red_button_label = new QLabel(button_widget);
+        red_button_label = new QLabel(ignition_box);
         red_button_label->setObjectName(QStringLiteral("red_button_label"));
 
         gridLayout_2->addWidget(red_button_label, 3, 0, 1, 1);
 
-        red_button_panel = new QLabel(button_widget);
+        red_button_panel = new QLabel(ignition_box);
         red_button_panel->setObjectName(QStringLiteral("red_button_panel"));
         red_button_panel->setStyleSheet(QStringLiteral("color: rgb(255, 0, 0);"));
 
         gridLayout_2->addWidget(red_button_panel, 3, 1, 1, 1);
 
-        frame = new QFrame(button_widget);
+        frame = new QFrame(ignition_box);
         frame->setObjectName(QStringLiteral("frame"));
+        frame->setMinimumSize(QSize(0, 40));
         frame->setMaximumSize(QSize(16777215, 35));
         frame->setStyleSheet(QLatin1String("border-color: rgb(255, 0, 0);\n"
 "gridline-color: rgb(255, 0, 0);"));
@@ -330,28 +327,28 @@ public:
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         code_3 = new QLabel(frame);
         code_3->setObjectName(QStringLiteral("code_3"));
-        code_3->setMinimumSize(QSize(21, 0));
+        code_3->setMinimumSize(QSize(21, 21));
         code_3->setAlignment(Qt::AlignCenter);
 
         horizontalLayout->addWidget(code_3);
 
         code_2 = new QLabel(frame);
         code_2->setObjectName(QStringLiteral("code_2"));
-        code_2->setMinimumSize(QSize(21, 0));
+        code_2->setMinimumSize(QSize(21, 21));
         code_2->setAlignment(Qt::AlignCenter);
 
         horizontalLayout->addWidget(code_2);
 
         code_1 = new QLabel(frame);
         code_1->setObjectName(QStringLiteral("code_1"));
-        code_1->setMinimumSize(QSize(21, 0));
+        code_1->setMinimumSize(QSize(21, 21));
         code_1->setAlignment(Qt::AlignCenter);
 
         horizontalLayout->addWidget(code_1);
 
         code_0 = new QLabel(frame);
         code_0->setObjectName(QStringLiteral("code_0"));
-        code_0->setMinimumSize(QSize(21, 0));
+        code_0->setMinimumSize(QSize(21, 21));
         code_0->setAlignment(Qt::AlignCenter);
 
         horizontalLayout->addWidget(code_0);
@@ -360,7 +357,7 @@ public:
         gridLayout_2->addWidget(frame, 4, 0, 1, 2);
 
 
-        gridLayout->addWidget(button_widget, 1, 0, 1, 1);
+        gridLayout->addWidget(ignition_box, 2, 0, 1, 1);
 
 
         retranslateUi(Form);
@@ -378,6 +375,14 @@ public:
         latitude_panel->setText(QString());
         longitude_label->setText(QApplication::translate("Form", "LONGITUDE", Q_NULLPTR));
         longitude_panel->setText(QString());
+#ifndef QT_NO_TOOLTIP
+        logo->setToolTip(QApplication::translate("Form", "<html><head/><body><p>Project Bella Lui 2020</p></body></html>", Q_NULLPTR));
+#endif // QT_NO_TOOLTIP
+        logo->setText(QString());
+        time_panel->setText(QApplication::translate("Form", "44:44:44", Q_NULLPTR));
+        xbee_button->setText(QApplication::translate("Form", "START XBee", Q_NULLPTR));
+        change_theme->setText(QApplication::translate("Form", "Change Color Theme", Q_NULLPTR));
+        current_time_label->setText(QApplication::translate("Form", "Current Time:", Q_NULLPTR));
         com_box->setTitle(QApplication::translate("Form", "COM", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
         last_refresh_label->setToolTip(QApplication::translate("Form", "<html><head/><body><p>Last packet's timestamp</p></body></html>", Q_NULLPTR));
@@ -423,14 +428,7 @@ public:
         miss_panel->setText(QString());
         corrupted_label->setText(QApplication::translate("Form", "Corrupted Packets", Q_NULLPTR));
         corrupted_panel->setText(QString());
-#ifndef QT_NO_TOOLTIP
-        logo->setToolTip(QApplication::translate("Form", "<html><head/><body><p>Project Bella Lui 2020</p></body></html>", Q_NULLPTR));
-#endif // QT_NO_TOOLTIP
-        logo->setText(QString());
-        time_panel->setText(QApplication::translate("Form", "44:44:44", Q_NULLPTR));
-        xbee_button->setText(QApplication::translate("Form", "START XBee", Q_NULLPTR));
-        change_theme->setText(QApplication::translate("Form", "Change Color Theme", Q_NULLPTR));
-        current_time_label->setText(QApplication::translate("Form", "Current Time:", Q_NULLPTR));
+        ignition_box->setTitle(QApplication::translate("Form", "Ignition", Q_NULLPTR));
         key_2_label->setText(QApplication::translate("Form", "KEY 2", Q_NULLPTR));
         ignition_button->setText(QApplication::translate("Form", "Ready For Ignition", Q_NULLPTR));
         ready_ignition_panel->setText(QApplication::translate("Form", "X", Q_NULLPTR));
@@ -453,4 +451,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // PRESS_ALTWZ8032_H
+#endif // PRESS_ALTUV3184_H
