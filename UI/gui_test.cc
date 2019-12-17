@@ -16,6 +16,7 @@ public:
         float a(0);
 
         while (c->getData<bool>(ui_interface::RUNNING)) {
+            c->incrementData(ui_interface::CORRUPTED_PACKET_CTR);
             c->incrementData(ui_interface::PACKET_RX_RATE_CTR);
             c->incrementData(ui_interface::PACKET_RX_RATE_CTR);
             c->incrementData(ui_interface::PACKET_RX_RATE_CTR);

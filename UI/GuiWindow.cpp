@@ -227,6 +227,7 @@ void GuiWindow::refresh_com()
     this->rssi_panel->setText("--");
     uint32_t packets(data_->eatData<uint32_t>(PACKET_RX_RATE_CTR, 0));
     packets_second_bar->setValue((int) (packets * (1000.0 / (timer_->interval()))));
+    corrupted_panel->setText(qstr(data_->getData<uint64_t>(CORRUPTED_PACKET_CTR)));
 }
 
 void GuiWindow::check_and_show()

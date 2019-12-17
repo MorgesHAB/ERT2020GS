@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'press_altA14522.ui'
+** Form generated from reading UI file 'press_altwZ8032.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.9.5
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef PRESS_ALTA14522_H
-#define PRESS_ALTA14522_H
+#ifndef PRESS_ALTWZ8032_H
+#define PRESS_ALTWZ8032_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QAction>
@@ -54,6 +54,8 @@ public:
     QLabel *received_pack_cnt_panel;
     QLabel *miss_label;
     QLabel *miss_panel;
+    QLabel *corrupted_label;
+    QLabel *corrupted_panel;
     QLabel *logo;
     QWidget *widget;
     QGridLayout *gridLayout_5;
@@ -213,6 +215,16 @@ public:
         miss_panel->setObjectName(QStringLiteral("miss_panel"));
 
         gridLayout_4->addWidget(miss_panel, 6, 1, 1, 1);
+
+        corrupted_label = new QLabel(com_box);
+        corrupted_label->setObjectName(QStringLiteral("corrupted_label"));
+
+        gridLayout_4->addWidget(corrupted_label, 8, 0, 1, 1);
+
+        corrupted_panel = new QLabel(com_box);
+        corrupted_panel->setObjectName(QStringLiteral("corrupted_panel"));
+
+        gridLayout_4->addWidget(corrupted_panel, 8, 1, 1, 1);
 
 
         gridLayout->addWidget(com_box, 1, 1, 1, 2);
@@ -409,6 +421,8 @@ public:
         miss_panel->setToolTip(QApplication::translate("Form", "<html><head/><body><p>Lost packets in last 2 seconds</p></body></html>", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
         miss_panel->setText(QString());
+        corrupted_label->setText(QApplication::translate("Form", "Corrupted Packets", Q_NULLPTR));
+        corrupted_panel->setText(QString());
 #ifndef QT_NO_TOOLTIP
         logo->setToolTip(QApplication::translate("Form", "<html><head/><body><p>Project Bella Lui 2020</p></body></html>", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
@@ -439,4 +453,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // PRESS_ALTA14522_H
+#endif // PRESS_ALTWZ8032_H
