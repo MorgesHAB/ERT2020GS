@@ -1,3 +1,5 @@
+#define SOUND_ON
+
 #include <QApplication>
 #include <memory>
 #include <thread>
@@ -62,6 +64,7 @@ main(int argc, char ** argv)
     A a;
     std::thread receiver_thread(&A::f1, a, c);
 
+    {
     QApplication app(argc, argv);
     GuiWindow w(500, c);
     // run all threads
@@ -71,6 +74,7 @@ main(int argc, char ** argv)
     // end the program
     w.show();
     app.exec();
+    }
     receiver_thread.join();
     return 0;
 }

@@ -60,7 +60,9 @@ inline bool get_bit(unsigned char byte, int position) // position in range 0-7
 
 GuiWindow::GuiWindow(int refresh_rate, std::shared_ptr<Connector> connector) :
     timer_(new QTimer(this)),
+    #ifdef SOUND_ON
     alarm_(new QSound(":/alarm.wav", this)),
+    #endif
     data_(connector),
     missed_count_(0),
     white_theme_(0),
@@ -170,6 +172,9 @@ void GuiWindow::refresh_misses()
 
 void GuiWindow::refresh_ignition_code()
 {
+#ifdef SOUND_ON
+    SDFASDSDF
+        #endif
     uint8_t tmp(data_->getData<uint8_t>(ui_interface::TX_IGNITION_CODE));
 
     code_0->setText(QString::number(get_bit(tmp, 0)));
@@ -236,10 +241,16 @@ void GuiWindow::check_and_show()
 
 
     if (data_->eatData<bool>(IGNITION_STATUS, false)) {
+        #ifdef SOUND_ON
         alarm_->play();
+        #endif
+        //QSound::play(":/alarm.wav");
         QMessageBox::warning(this, "Ignition", "BOOM!");
+        #ifdef SOUND_ON
         alarm_->stop();
+        #endif
     }
+
 
         //show_ok_X(ready_ignition_panel, data_->getData<bool>(IGNITION_CLICKED));
 

@@ -17,7 +17,9 @@
 #include "../RF-UI-Interface/ProtocolDefine.h"
 #include "QCloseEvent"
 #include "QKeyEvent"
+#ifdef SOUND_ON
 #include <QSound>
+#endif
 
 
 
@@ -63,7 +65,9 @@ private:
     void refresh_ignition_code();
 
     QTimer * timer_;
+    #ifdef SOUND_ON
     QSound * alarm_;
+    #endif
     std::shared_ptr<Connector> data_;
     uint64_t tick_counter_;
     uint64_t missed_count_;

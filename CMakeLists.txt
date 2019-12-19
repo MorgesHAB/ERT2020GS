@@ -7,6 +7,7 @@ set(USE_GUI ON)
 set(USE_XBEE ON)
 set(USE_LORA OFF)
 set(USE_GPS OFF)
+add_definitions(-DSOUND_ON)
 ###############################################################
 set(CMAKE_CXX_STANDARD 14)
 
@@ -19,6 +20,7 @@ endif (USE_LORA)
 
 if (USE_XBEE)
     include_directories(Telecom/RFmodem/lib/serial/include/)
+
     add_executable(XbeeTest src/XbeeTest.cpp)
     add_executable(IgniterRPi src/IgniterRPi.cpp)
 
