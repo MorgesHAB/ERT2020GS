@@ -24,6 +24,8 @@ if (USE_XBEE)
 
     if (USE_GUI)
         find_package(Qt5Widgets)
+	find_package(Qt5Multimedia REQUIRED)
+	set(QT_USE_QMULTIMEDIA TRUE)
         qt5_add_resources(RCC_SOURCES UI/logo.qrc)      # add image to Gui
         add_subdirectory(UI)
         add_executable(${PROJECT_NAME} ${RCC_SOURCES} src/GUI.cpp)

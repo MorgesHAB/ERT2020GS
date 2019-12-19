@@ -17,6 +17,8 @@
 #include "../RF-UI-Interface/ProtocolDefine.h"
 #include "QCloseEvent"
 #include "QKeyEvent"
+#include <QSound>
+
 
 
 class GuiWindow : public QWidget, public Ui_Form {
@@ -25,7 +27,7 @@ public:
     GuiWindow(int refresh_rate, std::shared_ptr<Connector> connector);
     void update();
 
-    QTimer * timer_;
+
 
 
 public slots:
@@ -60,7 +62,8 @@ private:
     void refresh_misses();
     void refresh_ignition_code();
 
-
+    QTimer * timer_;
+    QSound * alarm_;
     std::shared_ptr<Connector> data_;
     uint64_t tick_counter_;
     uint64_t missed_count_;

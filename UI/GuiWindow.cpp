@@ -60,6 +60,7 @@ inline bool get_bit(unsigned char byte, int position) // position in range 0-7
 
 GuiWindow::GuiWindow(int refresh_rate, std::shared_ptr<Connector> connector) :
     timer_(new QTimer(this)),
+    alarm_(new QSound(":/alarm.wav", this)),
     data_(connector),
     missed_count_(0),
     white_theme_(0),
@@ -117,8 +118,6 @@ void GuiWindow::theme_change_clicked()
 
 
     current_theme_ = (Theme)((int)current_theme_+1);
-
-
 
     if (current_theme_ == GREEN_ON_BLACK) {
         setStyleSheet(QLatin1String("background-color: rgb(30, 30, 30);\n"
@@ -234,12 +233,15 @@ void GuiWindow::refresh_com()
 
 void GuiWindow::check_and_show()
 {
-    if (data_->eatData<bool>(IGNITION_STATUS, false)) {
 
+
+    if (data_->eatData<bool>(IGNITION_STATUS, false)) {
+        alarm_->play();
         QMessageBox::warning(this, "Ignition", "BOOM!");
+        alarm_->stop();
     }
 
-        show_ok_X(ready_ignition_panel, data_->getData<bool>(IGNITION_CLICKED));
+        //show_ok_X(ready_ignition_panel, data_->getData<bool>(IGNITION_CLICKED));
 
 
 }
@@ -276,7 +278,7 @@ void GuiWindow::show_X(QLabel * label)
 
 void GuiWindow::keyPressEvent(QKeyEvent *ckey)
 {
-    if(ckey->key() == Qt::Key_F11){
+    if(ckey->key() == Qt::Key_F11 || ckey->key() == Qt::Key_F){
         fullscreen_ = !fullscreen_;
     }
     if(fullscreen_)

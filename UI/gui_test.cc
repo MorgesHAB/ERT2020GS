@@ -42,7 +42,7 @@ public:
             // c->setData(ui_interface::TIMESTAMP, std::time(nullptr));
             std::cout << "Data set to : " << a << std::endl;
             a++;
-            if ((int) a == 200) {
+            if ((int) a == 3) {
                 c->setData(ui_interface::IGNITION_STATUS, true);
             }
             c->setData(ui_interface::TX_IGNITION_CODE, (uint8_t) a);

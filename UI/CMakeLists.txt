@@ -14,6 +14,7 @@ file(GLOB SOURCES "*.cpp")
 add_library(${PROJECT_NAME} ${SOURCES})
 
 target_link_libraries(${PROJECT_NAME} Qt5::Widgets)
+target_link_libraries(${PROJECT_NAME} Qt5::Multimedia)
 target_link_libraries(${PROJECT_NAME} Telecom)
 target_link_libraries(${PROJECT_NAME} wiringPi) # control GPIO of RPi
 target_link_libraries(${PROJECT_NAME} crypt) # link crypt
