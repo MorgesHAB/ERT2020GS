@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.16"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Bella Lui 2020 - Ground Segment: C:/Users/disoz/Documents/GitHub/ERT2020GS/Telecom/DataStructures/GPS.cpp Source File</title>
+<title>Bella Lui 2020 - Ground Segment: C:/Users/disoz/Documents/GitHub/ERT2020GS/Telecom/DataStructures/Avionics/GPS.cpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -91,83 +91,94 @@ $(document).ready(function(){initNavTree('_g_p_s_8cpp_source.html','');});
 </div><!--header-->
 <div class="contents">
 <a href="_g_p_s_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;iomanip&gt;</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_g_p_s_8h.html">GPS.h</a>&quot;</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="class_g_p_s.html#a0c347a188512d0d5cf7ed5c91b145fc4">   13</a></span>&#160;<a class="code" href="class_g_p_s.html#a0c347a188512d0d5cf7ed5c91b145fc4">GPS::GPS</a>() : gpsData{0, 0, 0, 0, std::time(<span class="keyword">nullptr</span>)},</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;             gpsd(<span class="stringliteral">&quot;localhost&quot;</span>, DEFAULT_GPSD_PORT) {</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordflow">if</span> (gpsd.stream(WATCH_ENABLE|WATCH_JSON) == NULL) {</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        std::cerr &lt;&lt; <span class="stringliteral">&quot;No GPSD running&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        exit(0);</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    }</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;}</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="class_g_p_s.html#a32e876e0ad0387d33fcc7ae04e8bd6a8">   22</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_g_p_s.html#a32e876e0ad0387d33fcc7ae04e8bd6a8">GPS::write</a>(<a class="code" href="class_packet.html">Packet</a>&amp; packet) {</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    packet.<a class="code" href="class_packet.html#a7ae864e00d852062e614149ad1c38f2b">write</a>(gpsData.latitude);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    packet.<a class="code" href="class_packet.html#a7ae864e00d852062e614149ad1c38f2b">write</a>(gpsData.longitude);</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    packet.<a class="code" href="class_packet.html#a7ae864e00d852062e614149ad1c38f2b">write</a>(gpsData.altitude);</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    packet.<a class="code" href="class_packet.html#a7ae864e00d852062e614149ad1c38f2b">write</a>(gpsData.speed);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    packet.<a class="code" href="class_packet.html#a7ae864e00d852062e614149ad1c38f2b">write</a>(gpsData.time);</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;}</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="class_g_p_s.html#a795f8d50269bad4258e86985c4617037">   31</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_g_p_s.html#a795f8d50269bad4258e86985c4617037">GPS::parse</a>(<a class="code" href="class_packet.html">Packet</a>&amp; packet) {</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    packet.<a class="code" href="class_packet.html#a1880fd8b1b5d54e3a341ec7fe2a43305">parse</a>(gpsData.latitude);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    packet.<a class="code" href="class_packet.html#a1880fd8b1b5d54e3a341ec7fe2a43305">parse</a>(gpsData.longitude);</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    packet.<a class="code" href="class_packet.html#a1880fd8b1b5d54e3a341ec7fe2a43305">parse</a>(gpsData.altitude);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    packet.<a class="code" href="class_packet.html#a1880fd8b1b5d54e3a341ec7fe2a43305">parse</a>(gpsData.speed);</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    packet.<a class="code" href="class_packet.html#a1880fd8b1b5d54e3a341ec7fe2a43305">parse</a>(gpsData.time);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;}</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="class_g_p_s.html#a7a62d679f74922e0706ed2cc6f9cf28b">   39</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_g_p_s.html#a7a62d679f74922e0706ed2cc6f9cf28b">GPS::print</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    std::cout &lt;&lt; std::setprecision(10);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;----- GPS DATA --------------&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;latitude : &quot;</span> &lt;&lt; gpsData.latitude &lt;&lt; std::endl</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;              &lt;&lt; <span class="stringliteral">&quot;longitude : &quot;</span> &lt;&lt; gpsData.longitude &lt;&lt; std::endl</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;              &lt;&lt; <span class="stringliteral">&quot;altitude : &quot;</span> &lt;&lt; gpsData.altitude &lt;&lt; std::endl</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;              &lt;&lt; <span class="stringliteral">&quot;speed : &quot;</span> &lt;&lt; gpsData.speed &lt;&lt; std::endl</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;              &lt;&lt; <span class="stringliteral">&quot;time : &quot;</span> &lt;&lt; std::asctime(std::localtime(&amp;gpsData.time)) &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;}</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="class_g_p_s.html#a5f3e2a4e925216e9d9cf1c07cf7b2dbd">   49</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_g_p_s.html#a5f3e2a4e925216e9d9cf1c07cf7b2dbd">GPS::update</a>() {</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keyword">struct </span>gps_data_t* newData;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordflow">if</span> (!gpsd.waiting(5000000)) <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordflow">if</span> ((newData = gpsd.read()) == NULL) {</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        std::cerr &lt;&lt; <span class="stringliteral">&quot;Read error&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keywordflow">if</span> (newData-&gt;set &amp; ALTITUDE_SET) gpsData.altitude = newData-&gt;fix.altitude;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keywordflow">if</span> (newData-&gt;set &amp; SPEED_SET) gpsData.speed = newData-&gt;fix.speed;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keywordflow">if</span> (newData-&gt;set &amp; TIME_SET) gpsData.time = newData-&gt;fix.time;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordflow">if</span> (newData-&gt;set &amp; LATLON_SET) {</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            gpsData.latitude = newData-&gt;fix.latitude;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            gpsData.longitude = newData-&gt;fix.longitude;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        }</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    }</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;}</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
-<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="class_g_p_s.html#a482c21f6adb29646712682a112c3a2c1">   67</a></span>&#160;<span class="keyword">const</span> GPS::GPSData &amp;<a class="code" href="class_g_p_s.html#a482c21f6adb29646712682a112c3a2c1">GPS::getGpsData</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordflow">return</span> gpsData;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;}</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="class_g_p_s.html#a0c347a188512d0d5cf7ed5c91b145fc4">   13</a></span>&#160;<a class="code" href="class_g_p_s.html#a0c347a188512d0d5cf7ed5c91b145fc4">GPS::GPS</a>() : latitude(0), longitude(0), altitude(0), speed(0),</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;             time(std::time(nullptr))<span class="comment">/*,</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">             gpsd(&quot;localhost&quot;, DEFAULT_GPSD_PORT) */</span>{</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    srand(std::time(<span class="keyword">nullptr</span>)); <span class="comment">// for simulation random</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="comment">/* if (gpsd.stream(WATCH_ENABLE|WATCH_JSON) == NULL) {</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">         std::cerr &lt;&lt; &quot;No GPSD running&quot; &lt;&lt; std::endl;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">         exit(0);</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">     }*/</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;}</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="class_g_p_s.html#a32e876e0ad0387d33fcc7ae04e8bd6a8">   24</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_g_p_s.html#a32e876e0ad0387d33fcc7ae04e8bd6a8">GPS::write</a>(<a class="code" href="class_packet.html">Packet</a>&amp; packet) {</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    packet.<a class="code" href="class_packet.html#a7ae864e00d852062e614149ad1c38f2b">write</a>(latitude);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    packet.<a class="code" href="class_packet.html#a7ae864e00d852062e614149ad1c38f2b">write</a>(longitude);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    packet.<a class="code" href="class_packet.html#a7ae864e00d852062e614149ad1c38f2b">write</a>(altitude);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    packet.<a class="code" href="class_packet.html#a7ae864e00d852062e614149ad1c38f2b">write</a>(speed);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    packet.<a class="code" href="class_packet.html#a7ae864e00d852062e614149ad1c38f2b">write</a>(time);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;}</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="class_g_p_s.html#a795f8d50269bad4258e86985c4617037">   33</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_g_p_s.html#a795f8d50269bad4258e86985c4617037">GPS::parse</a>(<a class="code" href="class_packet.html">Packet</a>&amp; packet) {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    packet.<a class="code" href="class_packet.html#a1880fd8b1b5d54e3a341ec7fe2a43305">parse</a>(latitude);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    packet.<a class="code" href="class_packet.html#a1880fd8b1b5d54e3a341ec7fe2a43305">parse</a>(longitude);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    packet.<a class="code" href="class_packet.html#a1880fd8b1b5d54e3a341ec7fe2a43305">parse</a>(altitude);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    packet.<a class="code" href="class_packet.html#a1880fd8b1b5d54e3a341ec7fe2a43305">parse</a>(speed);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    packet.<a class="code" href="class_packet.html#a1880fd8b1b5d54e3a341ec7fe2a43305">parse</a>(time);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;}</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="class_g_p_s.html#a7a62d679f74922e0706ed2cc6f9cf28b">   41</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_g_p_s.html#a7a62d679f74922e0706ed2cc6f9cf28b">GPS::print</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    std::cout &lt;&lt; std::setprecision(10);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;----- GPS DATA --------------&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;latitude : &quot;</span> &lt;&lt; latitude &lt;&lt; <span class="stringliteral">&quot;°&quot;</span> &lt;&lt; std::endl</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;              &lt;&lt; <span class="stringliteral">&quot;longitude : &quot;</span> &lt;&lt; longitude &lt;&lt; <span class="stringliteral">&quot;°&quot;</span> &lt;&lt; std::endl</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;              &lt;&lt; <span class="stringliteral">&quot;altitude : &quot;</span> &lt;&lt; altitude &lt;&lt; <span class="stringliteral">&quot; m&quot;</span> &lt;&lt; std::endl</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;              &lt;&lt; <span class="stringliteral">&quot;speed : &quot;</span> &lt;&lt; speed &lt;&lt; <span class="stringliteral">&quot; km/h&quot;</span> &lt;&lt; std::endl</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;              &lt;&lt; <span class="stringliteral">&quot;time : &quot;</span> &lt;&lt; std::asctime(std::localtime(&amp;time)) &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;}</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="class_g_p_s.html#ace9c77abdc3b37a4d64127658d52d1d3">   51</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_g_p_s.html#ace9c77abdc3b37a4d64127658d52d1d3">GPS::updateTx</a>(std::shared_ptr&lt;Connector&gt; connector) {</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="comment">/*  struct gps_data_t* newData;</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">      if (!gpsd.waiting(5000000)) return;</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">      if ((newData = gpsd.read()) == NULL) {</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment">          std::cerr &lt;&lt; &quot;Read error&quot; &lt;&lt; std::endl;</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment">      } else {</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment">          if (newData-&gt;set &amp; ALTITUDE_SET) altitude = newData-&gt;fix.altitude;</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment">          if (newData-&gt;set &amp; SPEED_SET) speed = newData-&gt;fix.speed;</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment">          if (newData-&gt;set &amp; TIME_SET) time = newData-&gt;fix.time;</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment">          if (newData-&gt;set &amp; LATLON_SET) {</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment">              latitude = newData-&gt;fix.latitude;</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment">              longitude = newData-&gt;fix.longitude;</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment">          }</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment">      }*/</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    latitude =  42 + ((float) rand()/ RAND_MAX) * 6;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    longitude =  11 + ((float) rand()/ RAND_MAX) * 6;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    altitude =  500 + ((float) rand()/ RAND_MAX) * 1000;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    speed = ((float) rand()/ RAND_MAX) * 100;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    time = std::time(<span class="keyword">nullptr</span>);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;}</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="class_g_p_s.html#ada62487070bfe66c3357b086cb348a21">   74</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_g_p_s.html#ada62487070bfe66c3357b086cb348a21">GPS::updateRx</a>(std::shared_ptr&lt;Connector&gt; connector) {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    connector-&gt;setData(ui_interface::LATITUDE, latitude);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    connector-&gt;setData(ui_interface::LONGITUDE, longitude);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    connector-&gt;setData(ui_interface::ALTITUDE, altitude);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    connector-&gt;setData(ui_interface::SPEED, speed);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    connector-&gt;setData(ui_interface::TIME, time);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;}</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclass_g_p_s_html_a5f3e2a4e925216e9d9cf1c07cf7b2dbd"><div class="ttname"><a href="class_g_p_s.html#a5f3e2a4e925216e9d9cf1c07cf7b2dbd">GPS::update</a></div><div class="ttdeci">void update() override</div><div class="ttdef"><b>Definition:</b> <a href="_g_p_s_8cpp_source.html#l00049">GPS.cpp:49</a></div></div>
-<div class="ttc" id="aclass_g_p_s_html_a32e876e0ad0387d33fcc7ae04e8bd6a8"><div class="ttname"><a href="class_g_p_s.html#a32e876e0ad0387d33fcc7ae04e8bd6a8">GPS::write</a></div><div class="ttdeci">void write(Packet &amp;packet) override</div><div class="ttdef"><b>Definition:</b> <a href="_g_p_s_8cpp_source.html#l00022">GPS.cpp:22</a></div></div>
-<div class="ttc" id="aclass_g_p_s_html_a482c21f6adb29646712682a112c3a2c1"><div class="ttname"><a href="class_g_p_s.html#a482c21f6adb29646712682a112c3a2c1">GPS::getGpsData</a></div><div class="ttdeci">const GPSData &amp; getGpsData() const</div><div class="ttdef"><b>Definition:</b> <a href="_g_p_s_8cpp_source.html#l00067">GPS.cpp:67</a></div></div>
-<div class="ttc" id="aclass_g_p_s_html_a7a62d679f74922e0706ed2cc6f9cf28b"><div class="ttname"><a href="class_g_p_s.html#a7a62d679f74922e0706ed2cc6f9cf28b">GPS::print</a></div><div class="ttdeci">void print() const override</div><div class="ttdef"><b>Definition:</b> <a href="_g_p_s_8cpp_source.html#l00039">GPS.cpp:39</a></div></div>
+<div class="ttc" id="aclass_g_p_s_html_a32e876e0ad0387d33fcc7ae04e8bd6a8"><div class="ttname"><a href="class_g_p_s.html#a32e876e0ad0387d33fcc7ae04e8bd6a8">GPS::write</a></div><div class="ttdeci">void write(Packet &amp;packet) override</div><div class="ttdef"><b>Definition:</b> <a href="_g_p_s_8cpp_source.html#l00024">GPS.cpp:24</a></div></div>
+<div class="ttc" id="aclass_g_p_s_html_a7a62d679f74922e0706ed2cc6f9cf28b"><div class="ttname"><a href="class_g_p_s.html#a7a62d679f74922e0706ed2cc6f9cf28b">GPS::print</a></div><div class="ttdeci">void print() const override</div><div class="ttdef"><b>Definition:</b> <a href="_g_p_s_8cpp_source.html#l00041">GPS.cpp:41</a></div></div>
+<div class="ttc" id="aclass_g_p_s_html_ada62487070bfe66c3357b086cb348a21"><div class="ttname"><a href="class_g_p_s.html#ada62487070bfe66c3357b086cb348a21">GPS::updateRx</a></div><div class="ttdeci">void updateRx(std::shared_ptr&lt; Connector &gt; connector) override</div><div class="ttdef"><b>Definition:</b> <a href="_g_p_s_8cpp_source.html#l00074">GPS.cpp:74</a></div></div>
 <div class="ttc" id="aclass_g_p_s_html_a0c347a188512d0d5cf7ed5c91b145fc4"><div class="ttname"><a href="class_g_p_s.html#a0c347a188512d0d5cf7ed5c91b145fc4">GPS::GPS</a></div><div class="ttdeci">GPS()</div><div class="ttdef"><b>Definition:</b> <a href="_g_p_s_8cpp_source.html#l00013">GPS.cpp:13</a></div></div>
-<div class="ttc" id="aclass_packet_html_a7ae864e00d852062e614149ad1c38f2b"><div class="ttname"><a href="class_packet.html#a7ae864e00d852062e614149ad1c38f2b">Packet::write</a></div><div class="ttdeci">void write(std::string &amp;msg)</div><div class="ttdef"><b>Definition:</b> <a href="_packet_8cpp_source.html#l00025">Packet.cpp:25</a></div></div>
-<div class="ttc" id="aclass_g_p_s_html_a795f8d50269bad4258e86985c4617037"><div class="ttname"><a href="class_g_p_s.html#a795f8d50269bad4258e86985c4617037">GPS::parse</a></div><div class="ttdeci">void parse(Packet &amp;packet) override</div><div class="ttdef"><b>Definition:</b> <a href="_g_p_s_8cpp_source.html#l00031">GPS.cpp:31</a></div></div>
+<div class="ttc" id="aclass_packet_html_a7ae864e00d852062e614149ad1c38f2b"><div class="ttname"><a href="class_packet.html#a7ae864e00d852062e614149ad1c38f2b">Packet::write</a></div><div class="ttdeci">void write(std::string &amp;msg)</div><div class="ttdef"><b>Definition:</b> <a href="_packet_8cpp_source.html#l00026">Packet.cpp:26</a></div></div>
+<div class="ttc" id="aclass_g_p_s_html_a795f8d50269bad4258e86985c4617037"><div class="ttname"><a href="class_g_p_s.html#a795f8d50269bad4258e86985c4617037">GPS::parse</a></div><div class="ttdeci">void parse(Packet &amp;packet) override</div><div class="ttdef"><b>Definition:</b> <a href="_g_p_s_8cpp_source.html#l00033">GPS.cpp:33</a></div></div>
+<div class="ttc" id="aclass_g_p_s_html_ace9c77abdc3b37a4d64127658d52d1d3"><div class="ttname"><a href="class_g_p_s.html#ace9c77abdc3b37a4d64127658d52d1d3">GPS::updateTx</a></div><div class="ttdeci">void updateTx(std::shared_ptr&lt; Connector &gt; connector) override</div><div class="ttdef"><b>Definition:</b> <a href="_g_p_s_8cpp_source.html#l00051">GPS.cpp:51</a></div></div>
 <div class="ttc" id="a_g_p_s_8h_html"><div class="ttname"><a href="_g_p_s_8h.html">GPS.h</a></div><div class="ttdoc">GPS module interface.</div></div>
-<div class="ttc" id="aclass_packet_html_a1880fd8b1b5d54e3a341ec7fe2a43305"><div class="ttname"><a href="class_packet.html#a1880fd8b1b5d54e3a341ec7fe2a43305">Packet::parse</a></div><div class="ttdeci">void parse(std::string &amp;msg)</div><div class="ttdef"><b>Definition:</b> <a href="_packet_8cpp_source.html#l00030">Packet.cpp:30</a></div></div>
+<div class="ttc" id="aclass_packet_html_a1880fd8b1b5d54e3a341ec7fe2a43305"><div class="ttname"><a href="class_packet.html#a1880fd8b1b5d54e3a341ec7fe2a43305">Packet::parse</a></div><div class="ttdeci">void parse(std::string &amp;msg)</div><div class="ttdef"><b>Definition:</b> <a href="_packet_8cpp_source.html#l00031">Packet.cpp:31</a></div></div>
 <div class="ttc" id="aclass_packet_html"><div class="ttname"><a href="class_packet.html">Packet</a></div><div class="ttdef"><b>Definition:</b> <a href="_packet_8h_source.html#l00027">Packet.h:27</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_adfb712067b68fccd5628b02a92e173f.html">Telecom</a></li><li class="navelem"><a class="el" href="dir_02d2c86cd241969923768d6461021ed8.html">DataStructures</a></li><li class="navelem"><a class="el" href="_g_p_s_8cpp.html">GPS.cpp</a></li>
+    <li class="navelem"><a class="el" href="dir_adfb712067b68fccd5628b02a92e173f.html">Telecom</a></li><li class="navelem"><a class="el" href="dir_02d2c86cd241969923768d6461021ed8.html">DataStructures</a></li><li class="navelem"><a class="el" href="dir_5ce1108c4fd1d2f08dc1b49cdb1d43fe.html">Avionics</a></li><li class="navelem"><a class="el" href="_g_p_s_8cpp.html">GPS.cpp</a></li>
     <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.16 </li>

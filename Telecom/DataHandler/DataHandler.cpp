@@ -12,7 +12,7 @@
 #include <Test/PressureData.h>
 #include <Avionics/IgnitionData.h>
 #include <Test/States.h>
-#include <Test/Picture.h>
+#include <File/File.h>
 #include <FrameInfo/XbeeOptions.h>
 #include <FrameInfo/CRC.h>
 #include <Test/String.h>
@@ -22,7 +22,7 @@
 
 DataHandler::DataHandler(std::shared_ptr<Connector> connector)
         : connector(connector), dataHandler(packetType::TOTAL_NBR_OF_TYPES, nullptr),
-          lastRxID(packetType::GPSID), packetRxCounter(0), ignorePacketRxCounter(0)  {
+          lastRxID(packetType::GPSID) {
     using namespace packetType;
     // Create your RF Packet Datagram here
     // default protocol header ex: packet Type, packet nbr, timestamp
@@ -58,10 +58,11 @@ DataHandler::DataHandler(std::shared_ptr<Connector> connector)
     dataHandler[PROPULSION]->add(new PressureData);
 
     //// Packet Type n°5
-    dataHandler[IMAGE]->add(new Picture(200, "d3", 100, 100));
+    dataHandler[IMAGE]->add(new File("ERT.jpg", 200));
 
+    #ifdef RUNNING_ON_RPI
     dataHandler[IGNITION_REQUEST]->add(new IgnitionCode);
-
+    #endif
     dataHandler[IGNITION_ANSWER]->add(new String("/!\\/!\\IGNITION FIRED !!!!"));
 
     // END of protocol add CRC
@@ -96,7 +97,6 @@ void DataHandler::updateTx(packetType::PacketID type) {
 void DataHandler::updateRx(Packet *packet) {
     auto ID = (packetType::PacketID) packet->getPacket()[12]; // TODO PROTOCOL define !!!
     if (ID < packetType::TOTAL_NBR_OF_TYPES) {
-        ++packetRxCounter;
         connector->incrementData(ui_interface::PACKET_RX_RATE_CTR);
         connector->incrementData(ui_interface::RX_PACKET_CTR);
         lastRxID = ID;
@@ -105,11 +105,9 @@ void DataHandler::updateRx(Packet *packet) {
             connector->setData(ui_interface::IGNITION_STATUS, true);
     }
     else {
-        ++ignorePacketRxCounter;
-        printLastRxPacket();
-        std::cout << "\n!!!!!!!!!!!!!! RXID > TOTAL_NBR_OF_TYPES  " << ID << std::endl;
-        std::cout << "Packet Rx nbr : " << packetRxCounter << std::endl;
-        std::cout << "Packet Rx ignore nbr : " << ignorePacketRxCounter << std::endl;
+        connector->incrementData(ui_interface::CORRUPTED_PACKET_CTR);
+        //printLastRxPacket();
+        std::cerr << "\n!!!!!!!!!!!!!! RXID > TOTAL_NBR_OF_TYPES  " << ID << std::endl;
         packet->printDebug();
     }
 }

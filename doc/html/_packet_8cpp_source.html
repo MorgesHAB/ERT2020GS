@@ -94,59 +94,58 @@ $(document).ready(function(){initNavTree('_packet_8cpp_source.html','');});
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_packet_8h.html">Packet.h</a>&quot;</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="class_packet.html#aabcfb963c0d5bc0fa554668f92989622">   13</a></span>&#160;<a class="code" href="class_packet.html#aabcfb963c0d5bc0fa554668f92989622">Packet::Packet</a>() : packet(new uint8_t[<a class="code" href="_packet_8h.html#aebdc7d8ca8e25ed8efc90bb88ef7ef5b">PACKET_SIZE</a>]), packetPosition(packet) {}</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="class_packet.html#a48938391fb7e07460bb0e01198ae5ede">   15</a></span>&#160;<a class="code" href="class_packet.html#a48938391fb7e07460bb0e01198ae5ede">Packet::~Packet</a>() {</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keyword">delete</span>[] packet;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;}</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="class_packet.html#af6f5fc43c3b9027d09f32835a1d74ad0">   19</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_packet.html#af6f5fc43c3b9027d09f32835a1d74ad0">Packet::restart</a>() {</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keyword">delete</span>[] packet;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    packet = <span class="keyword">new</span> uint8_t[<a class="code" href="_packet_8h.html#aebdc7d8ca8e25ed8efc90bb88ef7ef5b">PACKET_SIZE</a>];</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    packetPosition = packet;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;}</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="class_packet.html#a7ae864e00d852062e614149ad1c38f2b">   25</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_packet.html#a7ae864e00d852062e614149ad1c38f2b">Packet::write</a>(std::string&amp; msg)  {</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <a class="code" href="class_packet.html#a7ae864e00d852062e614149ad1c38f2b">write</a>(uint8_t (msg.size()));</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; character : msg) <a class="code" href="class_packet.html#a7ae864e00d852062e614149ad1c38f2b">write</a>(character);</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;}</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="class_packet.html#a1880fd8b1b5d54e3a341ec7fe2a43305">   30</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_packet.html#a1880fd8b1b5d54e3a341ec7fe2a43305">Packet::parse</a>(std::string&amp; msg)  {</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    msg.clear();</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    uint8_t size(0);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <a class="code" href="class_packet.html#a1880fd8b1b5d54e3a341ec7fe2a43305">parse</a>(size);</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i(0); i &lt; size; ++i) {</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keywordtype">char</span> c;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <a class="code" href="class_packet.html#a1880fd8b1b5d54e3a341ec7fe2a43305">parse</a>(c);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        msg += c;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    }</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;}</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="class_packet.html#a18e22ca27c4fdfe87d711a18e6444dad">   41</a></span>&#160;uint8_t *<a class="code" href="class_packet.html#a18e22ca27c4fdfe87d711a18e6444dad">Packet::getPacket</a>() {</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordflow">return</span> packet;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;}</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="class_packet.html#a54c558beaf45424689ce47795470ef3b">   45</a></span>&#160;uint8_t <a class="code" href="class_packet.html#a54c558beaf45424689ce47795470ef3b">Packet::getSize</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordflow">return</span> packetPosition - packet;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;}</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="class_packet.html#adb0f0ba264c79fd68bfba89b0d23c0e9">   49</a></span>&#160;uint8_t <a class="code" href="class_packet.html#adb0f0ba264c79fd68bfba89b0d23c0e9">Packet::getType</a>() {</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    uint8_t type;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <a class="code" href="class_packet.html#a1880fd8b1b5d54e3a341ec7fe2a43305">parse</a>(type);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    packetPosition = packet;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordflow">return</span> type;</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="class_packet.html#ae8ab031d774dcf128d5d749b4b5f18f3">   13</a></span>&#160;<a class="code" href="class_packet.html#ae8ab031d774dcf128d5d749b4b5f18f3">Packet::Packet</a>(<span class="keywordtype">size_t</span> size) : packet(new uint8_t[size]), packetPosition(packet),</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;                              size(size) {}</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="class_packet.html#a48938391fb7e07460bb0e01198ae5ede">   16</a></span>&#160;<a class="code" href="class_packet.html#a48938391fb7e07460bb0e01198ae5ede">Packet::~Packet</a>() {</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keyword">delete</span>[] packet;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;}</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_packet.html#af6f5fc43c3b9027d09f32835a1d74ad0">   20</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_packet.html#af6f5fc43c3b9027d09f32835a1d74ad0">Packet::restart</a>() {</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keyword">delete</span>[] packet;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    packet = <span class="keyword">new</span> uint8_t[size];</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    packetPosition = packet;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;}</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="class_packet.html#a7ae864e00d852062e614149ad1c38f2b">   26</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_packet.html#a7ae864e00d852062e614149ad1c38f2b">Packet::write</a>(std::string&amp; msg)  {</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="class_packet.html#a7ae864e00d852062e614149ad1c38f2b">write</a>(uint8_t (msg.size()));</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; character : msg) <a class="code" href="class_packet.html#a7ae864e00d852062e614149ad1c38f2b">write</a>(character);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;}</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="class_packet.html#a1880fd8b1b5d54e3a341ec7fe2a43305">   31</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_packet.html#a1880fd8b1b5d54e3a341ec7fe2a43305">Packet::parse</a>(std::string&amp; msg)  {</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    msg.clear();</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    uint8_t stringSize(0);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <a class="code" href="class_packet.html#a1880fd8b1b5d54e3a341ec7fe2a43305">parse</a>(stringSize);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i(0); i &lt; stringSize; ++i) {</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keywordtype">char</span> c;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <a class="code" href="class_packet.html#a1880fd8b1b5d54e3a341ec7fe2a43305">parse</a>(c);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        msg += c;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    }</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;}</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="class_packet.html#a18e22ca27c4fdfe87d711a18e6444dad">   42</a></span>&#160;uint8_t *<a class="code" href="class_packet.html#a18e22ca27c4fdfe87d711a18e6444dad">Packet::getPacket</a>() {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordflow">return</span> packet;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;}</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="class_packet.html#a54c558beaf45424689ce47795470ef3b">   46</a></span>&#160;uint8_t <a class="code" href="class_packet.html#a54c558beaf45424689ce47795470ef3b">Packet::getSize</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordflow">return</span> packetPosition - packet;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;}</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="class_packet.html#ab679ad2bad217892c3972b67250cb922">   50</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_packet.html#ab679ad2bad217892c3972b67250cb922">Packet::printDebug</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;Print packet Debug byte per byte :&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordflow">for</span> (uint8_t i(0); i &lt; size; ++i) std::cout &lt;&lt; +packet[i] &lt;&lt; <span class="stringliteral">&quot; &quot;</span>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    std::cout &lt;&lt; std::endl;</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclass_packet_html_a48938391fb7e07460bb0e01198ae5ede"><div class="ttname"><a href="class_packet.html#a48938391fb7e07460bb0e01198ae5ede">Packet::~Packet</a></div><div class="ttdeci">virtual ~Packet()</div><div class="ttdef"><b>Definition:</b> <a href="_packet_8cpp_source.html#l00015">Packet.cpp:15</a></div></div>
-<div class="ttc" id="aclass_packet_html_adb0f0ba264c79fd68bfba89b0d23c0e9"><div class="ttname"><a href="class_packet.html#adb0f0ba264c79fd68bfba89b0d23c0e9">Packet::getType</a></div><div class="ttdeci">uint8_t getType()</div><div class="ttdef"><b>Definition:</b> <a href="_packet_8cpp_source.html#l00049">Packet.cpp:49</a></div></div>
-<div class="ttc" id="aclass_packet_html_a54c558beaf45424689ce47795470ef3b"><div class="ttname"><a href="class_packet.html#a54c558beaf45424689ce47795470ef3b">Packet::getSize</a></div><div class="ttdeci">uint8_t getSize() const</div><div class="ttdef"><b>Definition:</b> <a href="_packet_8cpp_source.html#l00045">Packet.cpp:45</a></div></div>
-<div class="ttc" id="a_packet_8h_html_aebdc7d8ca8e25ed8efc90bb88ef7ef5b"><div class="ttname"><a href="_packet_8h.html#aebdc7d8ca8e25ed8efc90bb88ef7ef5b">PACKET_SIZE</a></div><div class="ttdeci">#define PACKET_SIZE</div><div class="ttdef"><b>Definition:</b> <a href="_packet_8h_source.html#l00025">Packet.h:25</a></div></div>
-<div class="ttc" id="aclass_packet_html_a7ae864e00d852062e614149ad1c38f2b"><div class="ttname"><a href="class_packet.html#a7ae864e00d852062e614149ad1c38f2b">Packet::write</a></div><div class="ttdeci">void write(std::string &amp;msg)</div><div class="ttdef"><b>Definition:</b> <a href="_packet_8cpp_source.html#l00025">Packet.cpp:25</a></div></div>
-<div class="ttc" id="aclass_packet_html_af6f5fc43c3b9027d09f32835a1d74ad0"><div class="ttname"><a href="class_packet.html#af6f5fc43c3b9027d09f32835a1d74ad0">Packet::restart</a></div><div class="ttdeci">void restart()</div><div class="ttdef"><b>Definition:</b> <a href="_packet_8cpp_source.html#l00019">Packet.cpp:19</a></div></div>
-<div class="ttc" id="aclass_packet_html_aabcfb963c0d5bc0fa554668f92989622"><div class="ttname"><a href="class_packet.html#aabcfb963c0d5bc0fa554668f92989622">Packet::Packet</a></div><div class="ttdeci">Packet()</div><div class="ttdef"><b>Definition:</b> <a href="_packet_8cpp_source.html#l00013">Packet.cpp:13</a></div></div>
-<div class="ttc" id="aclass_packet_html_a1880fd8b1b5d54e3a341ec7fe2a43305"><div class="ttname"><a href="class_packet.html#a1880fd8b1b5d54e3a341ec7fe2a43305">Packet::parse</a></div><div class="ttdeci">void parse(std::string &amp;msg)</div><div class="ttdef"><b>Definition:</b> <a href="_packet_8cpp_source.html#l00030">Packet.cpp:30</a></div></div>
-<div class="ttc" id="aclass_packet_html_a18e22ca27c4fdfe87d711a18e6444dad"><div class="ttname"><a href="class_packet.html#a18e22ca27c4fdfe87d711a18e6444dad">Packet::getPacket</a></div><div class="ttdeci">uint8_t * getPacket()</div><div class="ttdef"><b>Definition:</b> <a href="_packet_8cpp_source.html#l00041">Packet.cpp:41</a></div></div>
+<div class="ttc" id="aclass_packet_html_ae8ab031d774dcf128d5d749b4b5f18f3"><div class="ttname"><a href="class_packet.html#ae8ab031d774dcf128d5d749b4b5f18f3">Packet::Packet</a></div><div class="ttdeci">Packet(size_t size=PACKET_SIZE_ALLOC_TX_PART)</div><div class="ttdef"><b>Definition:</b> <a href="_packet_8cpp_source.html#l00013">Packet.cpp:13</a></div></div>
+<div class="ttc" id="aclass_packet_html_a48938391fb7e07460bb0e01198ae5ede"><div class="ttname"><a href="class_packet.html#a48938391fb7e07460bb0e01198ae5ede">Packet::~Packet</a></div><div class="ttdeci">virtual ~Packet()</div><div class="ttdef"><b>Definition:</b> <a href="_packet_8cpp_source.html#l00016">Packet.cpp:16</a></div></div>
+<div class="ttc" id="aclass_packet_html_a54c558beaf45424689ce47795470ef3b"><div class="ttname"><a href="class_packet.html#a54c558beaf45424689ce47795470ef3b">Packet::getSize</a></div><div class="ttdeci">uint8_t getSize() const</div><div class="ttdef"><b>Definition:</b> <a href="_packet_8cpp_source.html#l00046">Packet.cpp:46</a></div></div>
+<div class="ttc" id="aclass_packet_html_a7ae864e00d852062e614149ad1c38f2b"><div class="ttname"><a href="class_packet.html#a7ae864e00d852062e614149ad1c38f2b">Packet::write</a></div><div class="ttdeci">void write(std::string &amp;msg)</div><div class="ttdef"><b>Definition:</b> <a href="_packet_8cpp_source.html#l00026">Packet.cpp:26</a></div></div>
+<div class="ttc" id="aclass_packet_html_ab679ad2bad217892c3972b67250cb922"><div class="ttname"><a href="class_packet.html#ab679ad2bad217892c3972b67250cb922">Packet::printDebug</a></div><div class="ttdeci">void printDebug() const</div><div class="ttdef"><b>Definition:</b> <a href="_packet_8cpp_source.html#l00050">Packet.cpp:50</a></div></div>
+<div class="ttc" id="aclass_packet_html_af6f5fc43c3b9027d09f32835a1d74ad0"><div class="ttname"><a href="class_packet.html#af6f5fc43c3b9027d09f32835a1d74ad0">Packet::restart</a></div><div class="ttdeci">void restart()</div><div class="ttdef"><b>Definition:</b> <a href="_packet_8cpp_source.html#l00020">Packet.cpp:20</a></div></div>
+<div class="ttc" id="aclass_packet_html_a1880fd8b1b5d54e3a341ec7fe2a43305"><div class="ttname"><a href="class_packet.html#a1880fd8b1b5d54e3a341ec7fe2a43305">Packet::parse</a></div><div class="ttdeci">void parse(std::string &amp;msg)</div><div class="ttdef"><b>Definition:</b> <a href="_packet_8cpp_source.html#l00031">Packet.cpp:31</a></div></div>
+<div class="ttc" id="aclass_packet_html_a18e22ca27c4fdfe87d711a18e6444dad"><div class="ttname"><a href="class_packet.html#a18e22ca27c4fdfe87d711a18e6444dad">Packet::getPacket</a></div><div class="ttdeci">uint8_t * getPacket()</div><div class="ttdef"><b>Definition:</b> <a href="_packet_8cpp_source.html#l00042">Packet.cpp:42</a></div></div>
 <div class="ttc" id="a_packet_8h_html"><div class="ttname"><a href="_packet_8h.html">Packet.h</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

@@ -1,20 +1,15 @@
 var searchData=
 [
-  ['getdatagram_13',['getDatagram',['../class_datagram.html#aeb1c0233891a5e56acc37aa2876c1d7a',1,'Datagram::getDatagram()'],['../class_data_handler.html#a67f6f7bdb742e4b43a9cab626aadc2f0',1,'DataHandler::getDatagram()']]],
-  ['getdatapacket_14',['getDataPacket',['../class_datagram.html#a73c8669aba36249a91311a468192dc6a',1,'Datagram']]],
-  ['getgpsdata_15',['getGpsData',['../class_g_p_s.html#a482c21f6adb29646712682a112c3a2c1',1,'GPS']]],
-  ['getpacket_16',['getPacket',['../class_data_handler.html#ae318d2e644c345fa6bcacc7a714181e9',1,'DataHandler::getPacket()'],['../class_packet.html#a18e22ca27c4fdfe87d711a18e6444dad',1,'Packet::getPacket()']]],
-  ['getpressure_17',['getPressure',['../class_pressure_data.html#a32105eecb7bf7187bda7352ce55ccb47',1,'PressureData']]],
-  ['getsize_18',['getSize',['../class_packet.html#a54c558beaf45424689ce47795470ef3b',1,'Packet']]],
-  ['gettype_19',['getType',['../class_packet.html#adb0f0ba264c79fd68bfba89b0d23c0e9',1,'Packet']]],
-  ['gps_20',['GPS',['../class_g_p_s.html',1,'GPS'],['../class_g_p_s.html#a0c347a188512d0d5cf7ed5c91b145fc4',1,'GPS::GPS()']]],
-  ['gps_2ecpp_21',['GPS.cpp',['../_g_p_s_8cpp.html',1,'']]],
-  ['gps_2eh_22',['GPS.h',['../_g_p_s_8h.html',1,'']]],
-  ['gpsid_23',['GPSID',['../_data_handler_8h.html#a43644715df1b4f0b0a936a1eb1ac4824ac40a4c8052ce182e52303f1ba44ec2ef',1,'DataHandler.h']]],
-  ['gpswindow_24',['GPSWindow',['../class_g_p_s_window.html',1,'GPSWindow'],['../class_g_p_s_window.html#a577007725262de70706f7acb3cca7df7',1,'GPSWindow::GPSWindow()']]],
-  ['gpswindow_2ecpp_25',['gpswindow.cpp',['../gpswindow_8cpp.html',1,'']]],
-  ['gpswindow_2eh_26',['gpswindow.h',['../gpswindow_8h.html',1,'']]],
-  ['gridlayout_27',['gridLayout',['../class_ui___form.html#aae98d1b7c9973f749fe480cf5eb2f7fc',1,'Ui_Form']]],
-  ['gse_2ecpp_28',['GSE.cpp',['../_g_s_e_8cpp.html',1,'']]],
-  ['gst_2ecpp_29',['GST.cpp',['../_g_s_t_8cpp.html',1,'']]]
+  ['data_21',['Data',['../class_data.html',1,'']]],
+  ['data_2eh_22',['Data.h',['../_data_8h.html',1,'']]],
+  ['datagram_23',['Datagram',['../class_datagram.html',1,'Datagram'],['../class_datagram.html#a0935aec339a27b847c87dc6120613594',1,'Datagram::Datagram()']]],
+  ['datagram_2ecpp_24',['Datagram.cpp',['../_datagram_8cpp.html',1,'']]],
+  ['datagram_2eh_25',['Datagram.h',['../_datagram_8h.html',1,'']]],
+  ['datahandler_26',['DataHandler',['../class_data_handler.html',1,'DataHandler'],['../class_data_handler.html#a6fe3e0b43402725675921ecddc8f75a0',1,'DataHandler::DataHandler()']]],
+  ['datahandler_2ecpp_27',['DataHandler.cpp',['../_data_handler_8cpp.html',1,'']]],
+  ['datahandler_2eh_28',['DataHandler.h',['../_data_handler_8h.html',1,'']]],
+  ['def_5fpicture_5fheight_29',['DEF_PICTURE_HEIGHT',['../_picture_8h.html#a404aa7ab606993231f9d14d32701001d',1,'Picture.h']]],
+  ['def_5fpicture_5fname_30',['DEF_PICTURE_NAME',['../_picture_8h.html#a4dc6d0b229f2d6399363b7292173435b',1,'Picture.h']]],
+  ['def_5fpicture_5fwidth_31',['DEF_PICTURE_WIDTH',['../_picture_8h.html#a0d29f21c0192a57ff8b8fb5f58b56c4d',1,'Picture.h']]],
+  ['degree_5frepresentation_32',['degree_representation',['../_gui_window_8cpp.html#ab8b447332d828b52124f0b8bafbe2134',1,'GuiWindow.cpp']]]
 ];

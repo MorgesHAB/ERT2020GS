@@ -7,10 +7,12 @@ set(USE_GUI ON)
 set(USE_XBEE ON)
 set(USE_LORA OFF)
 set(USE_GPS OFF)
-add_definitions(-DSOUND_ON)
+set(RUNNING_ON_RPI ON)
+set(USE_SOUND OFF)
 ###############################################################
 set(CMAKE_CXX_STANDARD 14)
 
+add_subdirectory(Logger)
 add_subdirectory(Telecom)
 add_subdirectory(RF-UI-Interface)
 
@@ -26,8 +28,6 @@ if (USE_XBEE)
 
     if (USE_GUI)
         find_package(Qt5Widgets)
-	find_package(Qt5Multimedia REQUIRED)
-	set(QT_USE_QMULTIMEDIA TRUE)
         qt5_add_resources(RCC_SOURCES UI/logo.qrc)      # add image to Gui
         add_subdirectory(UI)
         add_executable(${PROJECT_NAME} ${RCC_SOURCES} src/GUI.cpp)
@@ -36,6 +36,8 @@ if (USE_XBEE)
 endif (USE_XBEE)
 
 ############# link librarie to targets #######################
+
+target_link_libraries(${PROJECT_NAME} LogLib)
 
 if (USE_LORA)
     target_link_libraries(LoRaTest Telecom)

@@ -172,9 +172,6 @@ void GuiWindow::refresh_misses()
 
 void GuiWindow::refresh_ignition_code()
 {
-#ifdef SOUND_ON
-    SDFASDSDF
-        #endif
     uint8_t tmp(data_->getData<uint8_t>(ui_interface::TX_IGNITION_CODE));
 
     code_0->setText(QString::number(get_bit(tmp, 0)));

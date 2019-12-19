@@ -7,14 +7,21 @@ set(CMAKE_AUTORCC ON)
 set(AUTORCC ON)
 #set(CMAKE_AUTOUIC ON)
 
-#find_package(Qt5Widgets)
+if (USE_SOUND)
+    add_definitions(-DSOUND_ON)
+    set(QT_USE_QMULTIMEDIA TRUE)
+    find_package(Qt5Multimedia REQUIRED)
+endif (USE_SOUND)
+#find_package(Qt5Widgets) # in the main CmakeLists else compilation error
 
 file(GLOB SOURCES "*.cpp")
 
 add_library(${PROJECT_NAME} ${SOURCES})
 
 target_link_libraries(${PROJECT_NAME} Qt5::Widgets)
-target_link_libraries(${PROJECT_NAME} Qt5::Multimedia)
+if (USE_SOUND)
+    target_link_libraries(${PROJECT_NAME} Qt5::Multimedia)
+endif (USE_SOUND)
 target_link_libraries(${PROJECT_NAME} Telecom)
 target_link_libraries(${PROJECT_NAME} wiringPi) # control GPIO of RPi
 target_link_libraries(${PROJECT_NAME} crypt) # link crypt

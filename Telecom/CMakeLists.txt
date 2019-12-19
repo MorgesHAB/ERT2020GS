@@ -1,6 +1,11 @@
 cmake_minimum_required(VERSION 3.6.2)
 project(Telecom)
 
+if (RUNNING_ON_RPI)
+    add_definitions(-DRUNNING_ON_RPI)
+endif (RUNNING_ON_RPI)
+
+
 if (USE_LORA)
     add_subdirectory(RFmodem/lib/RadioHead)
     file(GLOB SOURCES_RF RFmodem/LoRa.cpp)

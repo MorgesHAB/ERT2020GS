@@ -37,6 +37,10 @@ namespace ui_interface {
         IGNITION_KEY_2_ACTIVATED, //bool
         IGNITION_RED_BUTTON_PUSHED, //bool
 
+        // GST Request to Payload
+        SEND_FILE_REQUEST, // true if button on the gui is clicked // bool eat by Telecom code
+
+
         /// PacketNbr
         PACKET_RX_RATE_CTR, //uint32_t  **This is incremented on each packet received, eated by guito find the packet rate.
         RX_PACKET_CTR,//uint32_t        **This is the count of the received packets from the beginning of the program

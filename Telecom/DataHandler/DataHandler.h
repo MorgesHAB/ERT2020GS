@@ -34,8 +34,6 @@ private:
 
     std::vector<Datagram*> dataHandler;
     packetType::PacketID lastRxID;
-    size_t packetRxCounter;
-    size_t ignorePacketRxCounter;
 };
 
 
