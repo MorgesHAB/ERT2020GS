@@ -87,7 +87,7 @@ Tutorial source : https://vitux.com/compiling-your-first-qt-program-in-ubuntu/
 Or simply enter the following commands:  
 To compile some Qt software
 ```console
-sudo apt install qt5-default
+sudo apt-get install qt5-default
 
 sudo apt-get install qtmultimedia5-dev
 ```
