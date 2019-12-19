@@ -36,6 +36,7 @@ protected:
 
     enum State {
         SLEEP, SENDING_FILE, SENDING_MISSING_PACKET, SENDING_MISSING_PACKET_FIRST,
+        ALL_RECEIVED,
         READY_TO_SEND_NEW_FILE
     } state;
 

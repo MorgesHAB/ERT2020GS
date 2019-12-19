@@ -10,7 +10,7 @@
 #include "File.h"
 
 File::File(const std::string &fileName, uint16_t bytePerPacket)
-        : fileName(fileName), bytePerPacket(bytePerPacket), state(READY_TO_SEND_NEW_FILE),
+        : fileName(fileName), bytePerPacket(bytePerPacket), state(READY_TO_SEND_NEW_FILE), // TODO init with SLEEP
           packetNbr(0), nbrTotPacket(0), missingNbrIterator(0), nbrSentFile(0) {}
 
 File::~File() {
@@ -59,7 +59,7 @@ void File::exportFile() {
 }
 
 void File::print() const {
-    std::cout << "File Data " << fileName << ".jpg  -- Packet n° " << packetNbr
+    std::cout << "File Data " << fileName << " -- Packet n° " << packetNbr
               << " / " << nbrTotPacket - 1 << std::endl;
 }
 
@@ -77,6 +77,7 @@ void File::write(Packet &packet) {
             if (packetNbr == nbrTotPacket) state = SLEEP;
             break;
         case SENDING_MISSING_PACKET_FIRST:
+            sendMissingPacket(packet);
             state = SENDING_MISSING_PACKET;
         case SENDING_MISSING_PACKET:
             packet.write(missingPacketNbr[missingNbrIterator++]); // packet Nbr
@@ -122,8 +123,13 @@ void File::parse(Packet &packet) {
 }
 
 void File::updateTx(std::shared_ptr<Connector> connector) {
-    // TODO ... protocol FSM
-    if (state == READY_TO_SEND_NEW_FILE) importFile();
+    if (state == READY_TO_SEND_NEW_FILE) {
+        connector->setData(ui_interface::SEND_DATA, true);
+        importFile();
+    }
+    else if (state == SLEEP) {
+        connector->setData(ui_interface::SEND_DATA, false);
+    }
 }
 
 void File::updateRx(std::shared_ptr<Connector> connector) {
@@ -132,8 +138,13 @@ void File::updateRx(std::shared_ptr<Connector> connector) {
         std::cout << "nothing lol" << std::endl;
     // build image V1 condition not good <=> if last packet
     if (packetNbr == nbrTotPacket - 1 && state == SENDING_FILE) {
-        state = SLEEP;
         //state = SENDING_MISSING_PACKET_FIRST;
+        state = SLEEP;
+        exportFile();
+    }
+    if (state == ALL_RECEIVED) {
+        std::cout << "ACK : Every Packet have been received correctly" << std::endl;
+        state = SLEEP;
         exportFile();
     }
 }
@@ -145,4 +156,5 @@ void File::sendMissingPacket(Packet &packet) {
         if (!file[i]) missingPacketNbr.push_back(i);
     }
     state = SENDING_MISSING_PACKET_FIRST;
+    if (missingPacketNbr.empty()) state = ALL_RECEIVED;
 }

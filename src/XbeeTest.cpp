@@ -49,7 +49,8 @@ int main(int argc, char** argv) {
         if (modeTx) {
             //PacketID ID = static_cast<PacketID> (rand() % (TX_TYPE_NBR));
             dataHandler.updateTx(IMAGE);
-            xbee.send(dataHandler.getPacket(IMAGE));
+            if (connector.getData<bool>(ui_interface::SEND_DATA))
+                xbee.send(dataHandler.getPacket(IMAGE));
 
             //dataHandler.updateTx(PROPULSION);
             //xbee.send(dataHandler.getPacket(PROPULSION));

@@ -68,6 +68,8 @@ namespace ui_interface {
 
         TX_IGNITION_CODE, //uint8_t     **Extract first 4 lsb for the code.
 
+        // communication of a File / image
+        SEND_DATA,   // bool for Tx to know if need to transmit Data
 
 
         /// !!! THIS MUST BE THE LAST LINE !!!
