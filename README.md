@@ -88,8 +88,7 @@ Or simply enter the following commands:
 To compile some Qt software
 ```console
 sudo apt install qt5-default
-```
-```console
+
 sudo apt-get install qtmultimedia5-dev
 ```
 
