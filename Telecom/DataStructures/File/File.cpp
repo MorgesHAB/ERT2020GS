@@ -22,20 +22,21 @@ File::~File() {
 
 void File::print() const {
     std::cout << "File Data " << fileName << " -- Packet n° " << packetNbr
-              << " / " << nbrTotPacket - 1 << std::endl;
+              << " / " << nbrTotPacket - 1 <<  "  State : " << state <<std::endl;
 }
 
 void File::updateTx(std::shared_ptr<Connector> connector) {
+    // On the GST
     if (state == READY_TO_SEND_NEW_FILE &&
         connector->eatData<bool>(ui_interface::SEND_FILE_REQUEST, false)) {
         state = SEND_FILE_REQUEST_TO_TX;
         connector->setData(ui_interface::SENDING_DATA, true);
+    }
+    // On the Igniter
+    else if (state == SEND_FILE_REQUEST_TO_TX) {
+        connector->setData(ui_interface::SENDING_DATA, true);
         importFile();
     }
-    /*if (state == READY_TO_SEND_NEW_FILE) {
-        connector->setData(ui_interface::SENDING_DATA, true);
-                importFile();
-    }*/
     else if (state == SLEEP) {
         connector->setData(ui_interface::SENDING_DATA, false);
     }
@@ -92,9 +93,6 @@ void File::parse(Packet &packet) {
     state = (State) statetmp;
 
     switch (state) {
-        case SEND_FILE_REQUEST_TO_TX:
-            state = SENDING_FILE;
-            break;
         case SENDING_MISSING_PACKET_FIRST:
             uint16_t missingPacketTotNbr;
             packet.parse(missingPacketTotNbr);
