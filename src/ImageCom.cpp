@@ -33,13 +33,11 @@ int main(int argc, char** argv) {
 
     signal(SIGINT, sig_handler);
 
-    bool modeTx(argc == 2 && std::string(argv[1]) == "Tx");
-
     Connector connector;
     std::shared_ptr<Connector> cptr(&connector);
 
     // Your RF modem
-    Xbee xbee("/dev/ttyS6");
+    Xbee xbee("/dev/ttyS3");
     // RF packet handler
     DataHandler dataHandler(cptr);
     using namespace packetType;
