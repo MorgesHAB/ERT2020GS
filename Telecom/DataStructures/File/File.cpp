@@ -26,32 +26,18 @@ void File::print() const {
 }
 
 void File::updateTx(std::shared_ptr<Connector> connector) {
-    if (state == READY_TO_SEND_NEW_FILE) {
-        connector->setData(ui_interface::SENDING_DATA, true);
-        importFile();
-    }
-    else if (state == SLEEP) {
-        connector->setData(ui_interface::SENDING_DATA, false);
-    }
-}
-
-void File::updateRx(std::shared_ptr<Connector> connector) {
     if (state == READY_TO_SEND_NEW_FILE &&
         connector->eatData<bool>(ui_interface::SEND_FILE_REQUEST, false)) {
         state = SEND_FILE_REQUEST_TO_TX;
         connector->setData(ui_interface::SENDING_DATA, true);
+        importFile();
     }
-        std::cout << "nothing lol" << std::endl;
-    // build image V1 condition not good <=> if last packet
-    if (packetNbr == lastPacketNbr && state == SENDING_FILE) {
-        //state = SENDING_MISSING_PACKET_FIRST;
-        state = SLEEP;
-        exportFile();
-    }
-    if (state == ALL_RECEIVED) {
-        std::cout << "ACK : Every Packet have been received correctly" << std::endl;
-        state = SLEEP;
-        exportFile();
+    /*if (state == READY_TO_SEND_NEW_FILE) {
+        connector->setData(ui_interface::SENDING_DATA, true);
+                importFile();
+    }*/
+    else if (state == SLEEP) {
+        connector->setData(ui_interface::SENDING_DATA, false);
     }
 }
 
@@ -86,12 +72,29 @@ void File::write(Packet &packet) {
     }
 }
 
+void File::updateRx(std::shared_ptr<Connector> connector) {
+    // build image V1 condition not good <=> if last packet
+    if (packetNbr == lastPacketNbr && state == SENDING_FILE) { //TODO version debug V.0
+        //state = SENDING_MISSING_PACKET_FIRST;
+        state = SLEEP;
+        exportFile();
+    }
+    if (state == ALL_RECEIVED) {
+        std::cout << "ACK : Every Packet have been received correctly" << std::endl;
+        state = SLEEP;
+        exportFile();
+    }
+}
+
 void File::parse(Packet &packet) {
     uint8_t statetmp;
     packet.parse(statetmp);
     state = (State) statetmp;
 
     switch (state) {
+        case SEND_FILE_REQUEST_TO_TX:
+            state = SENDING_FILE;
+            break;
         case SENDING_MISSING_PACKET_FIRST:
             uint16_t missingPacketTotNbr;
             packet.parse(missingPacketTotNbr);

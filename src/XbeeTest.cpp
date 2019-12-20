@@ -49,8 +49,6 @@ int main(int argc, char** argv) {
         // ./XbeeTest Tx            // Transmitter Part
         if (modeTx) {
             //PacketID ID = static_cast<PacketID> (rand() % (TX_TYPE_NBR));
-            if (xbee.receive(dataHandler)) dataHandler.printLastRxPacket();
-            dataHandler.updateTx(IMAGE);
             if (connector.getData<bool>(ui_interface::SENDING_DATA))
                 xbee.send(dataHandler.getPacket(IMAGE));
 
@@ -64,9 +62,6 @@ int main(int argc, char** argv) {
             if (xbee.receive(dataHandler)) {
                 dataHandler.printLastRxPacket();
             }
-            dataHandler.updateTx(IMAGE);
-            if (connector.getData<bool>(ui_interface::SENDING_DATA))
-                xbee.send(dataHandler.getPacket(IMAGE));
             std::this_thread::sleep_for(std::chrono::milliseconds(7));
         }
     }
