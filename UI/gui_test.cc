@@ -1,4 +1,4 @@
-#define SOUND_ON
+
 
 #include <QApplication>
 #include <memory>

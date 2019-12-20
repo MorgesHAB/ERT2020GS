@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'press_altUV3184.ui'
+** Form generated from reading UI file 'press_altjd2729.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.9.5
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef PRESS_ALTUV3184_H
-#define PRESS_ALTUV3184_H
+#ifndef PRESS_ALTJD2729_H
+#define PRESS_ALTJD2729_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QAction>
@@ -47,6 +47,7 @@ public:
     QPushButton *xbee_button;
     QPushButton *change_theme;
     QLabel *current_time_label;
+    QPushButton *file_transmission_button;
     QGroupBox *com_box;
     QGridLayout *gridLayout_4;
     QLabel *last_refresh_label;
@@ -84,7 +85,7 @@ public:
     {
         if (Form->objectName().isEmpty())
             Form->setObjectName(QStringLiteral("Form"));
-        Form->resize(489, 480);
+        Form->resize(634, 495);
         Form->setMinimumSize(QSize(0, 0));
         Form->setMaximumSize(QSize(9999, 9999));
         Form->setMouseTracking(false);
@@ -161,24 +162,29 @@ public:
         time_panel->setStyleSheet(QStringLiteral(""));
         time_panel->setAlignment(Qt::AlignCenter);
 
-        gridLayout_5->addWidget(time_panel, 0, 3, 1, 1);
+        gridLayout_5->addWidget(time_panel, 0, 4, 1, 1);
 
         xbee_button = new QPushButton(widget);
         xbee_button->setObjectName(QStringLiteral("xbee_button"));
         xbee_button->setMinimumSize(QSize(100, 0));
 
-        gridLayout_5->addWidget(xbee_button, 0, 0, 1, 1);
+        gridLayout_5->addWidget(xbee_button, 0, 1, 1, 1);
 
         change_theme = new QPushButton(widget);
         change_theme->setObjectName(QStringLiteral("change_theme"));
 
-        gridLayout_5->addWidget(change_theme, 0, 1, 1, 1);
+        gridLayout_5->addWidget(change_theme, 0, 2, 1, 1);
 
         current_time_label = new QLabel(widget);
         current_time_label->setObjectName(QStringLiteral("current_time_label"));
         current_time_label->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
-        gridLayout_5->addWidget(current_time_label, 0, 2, 1, 1);
+        gridLayout_5->addWidget(current_time_label, 0, 3, 1, 1);
+
+        file_transmission_button = new QPushButton(widget);
+        file_transmission_button->setObjectName(QStringLiteral("file_transmission_button"));
+
+        gridLayout_5->addWidget(file_transmission_button, 0, 0, 1, 1);
 
 
         gridLayout->addWidget(widget, 0, 0, 1, 3);
@@ -383,6 +389,7 @@ public:
         xbee_button->setText(QApplication::translate("Form", "START XBee", Q_NULLPTR));
         change_theme->setText(QApplication::translate("Form", "Change Color Theme", Q_NULLPTR));
         current_time_label->setText(QApplication::translate("Form", "Current Time:", Q_NULLPTR));
+        file_transmission_button->setText(QApplication::translate("Form", "Start File Transmission", Q_NULLPTR));
         com_box->setTitle(QApplication::translate("Form", "COM", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
         last_refresh_label->setToolTip(QApplication::translate("Form", "<html><head/><body><p>Last packet's timestamp</p></body></html>", Q_NULLPTR));
@@ -451,4 +458,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // PRESS_ALTUV3184_H
+#endif // PRESS_ALTJD2729_H
