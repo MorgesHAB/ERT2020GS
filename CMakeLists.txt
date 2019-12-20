@@ -8,7 +8,7 @@ set(USE_XBEE ON)
 set(USE_LORA OFF)
 set(USE_GPS OFF)
 set(RUNNING_ON_RPI OFF)
-set(USE_SOUND OFF)
+set(USE_SOUND ON)
 ###############################################################
 set(CMAKE_CXX_STANDARD 14)
 

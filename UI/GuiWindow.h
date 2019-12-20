@@ -7,8 +7,6 @@
  * \date        02.12.2019
  */
 
-#define SOUND_ON
-
 #ifndef GUIWINDOW_H
 #define GUIWINDOW_H
 
