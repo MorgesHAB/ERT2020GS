@@ -138,6 +138,11 @@ void GuiWindow::theme_change_clicked()
     }
 }
 
+void GuiWindow::file_transmission_pressed()
+{
+    data_->setData(ui_interface::SEND_FILE_REQUEST, true);
+}
+
 uint16_t GuiWindow::calculate_misses_in_last_2()
 {
     static std::array<uint32_t, 4> before{ 0 };
@@ -201,6 +206,7 @@ void GuiWindow::initialize_slots_signals()
     connect(xbee_button, SIGNAL(pressed()), this, SLOT(xbee_clicked()));
     connect(ignition_button, SIGNAL(pressed()), this, SLOT(ignite_clicked()));
     connect(change_theme, SIGNAL(pressed()), this, SLOT(theme_change_clicked()));
+    connect(file_transmission_button, SIGNAL(pressed()), this, SLOT(file_transmission_pressed()));
 }
 
 void GuiWindow::refresh_telemetry()
@@ -246,6 +252,9 @@ void GuiWindow::check_and_show()
         #ifdef SOUND_ON
         alarm_->stop();
         #endif
+    }
+    if(data_->getData<uint32_t>(FILE_TRANSMISSION_STATE) == 3){
+        QMessageBox::warning(this, "File", "File transmission finished.");
     }
 
 

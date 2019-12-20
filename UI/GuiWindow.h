@@ -7,6 +7,8 @@
  * \date        02.12.2019
  */
 
+#define SOUND_ON
+
 #ifndef GUIWINDOW_H
 #define GUIWINDOW_H
 
@@ -37,6 +39,7 @@ public slots:
     void xbee_clicked();
     void ignite_clicked();
     void theme_change_clicked();
+    void file_transmission_pressed();
 
 
 
