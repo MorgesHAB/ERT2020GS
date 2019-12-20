@@ -36,11 +36,11 @@ void Worker::mainRoutine() {
             }
             manageIgnitionTx(dataHandler, xbee);
 
-            if (connector->eatData<bool>(ui_interface::SEND_FILE_REQUEST, false)) {
-                dataHandler.updateTx(packetType::IMAGE);
+            dataHandler.updateTx(packetType::IMAGE);
+            if (connector->eatData<bool>(ui_interface::SENDING_DATA, false)) {
                 xbee.send(dataHandler.getPacket(packetType::IMAGE));
             }
-            
+
             std::this_thread::sleep_for(std::chrono::milliseconds(1));
         }
     }
