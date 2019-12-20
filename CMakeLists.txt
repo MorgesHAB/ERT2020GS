@@ -25,6 +25,7 @@ if (USE_XBEE)
 
     add_executable(XbeeTest src/XbeeTest.cpp)
     add_executable(IgniterRPi src/IgniterRPi.cpp)
+    add_executable(ImageCom src/ImageCom.cpp)
 
     if (USE_GUI)
         find_package(Qt5Widgets)
@@ -46,6 +47,7 @@ endif (USE_LORA)
 if (USE_XBEE)
     target_link_libraries(XbeeTest Telecom)
     target_link_libraries(IgniterRPi Telecom)
+    target_link_libraries(ImageCom Telecom)
 
     if (USE_GUI)
         target_link_libraries(${PROJECT_NAME} GUI)

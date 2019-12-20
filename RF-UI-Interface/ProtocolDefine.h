@@ -37,10 +37,6 @@ namespace ui_interface {
         IGNITION_KEY_2_ACTIVATED, //bool
         IGNITION_RED_BUTTON_PUSHED, //bool
 
-        // GST Request to Payload
-        SEND_FILE_REQUEST, // true if button on the gui is clicked // bool eat by Telecom code
-
-
         /// PacketNbr
         PACKET_RX_RATE_CTR, //uint32_t  **This is incremented on each packet received, eated by guito find the packet rate.
         RX_PACKET_CTR,//uint32_t        **This is the count of the received packets from the beginning of the program
@@ -69,8 +65,11 @@ namespace ui_interface {
         TX_IGNITION_CODE, //uint8_t     **Extract first 4 lsb for the code.
 
         // communication of a File / image
-        SEND_DATA,   // bool for Tx to know if need to transmit Data
-
+        // GST Request to Payload
+        SEND_FILE_REQUEST, // true if button on the gui is clicked // bool eat by Telecom code
+        // File transmitting States
+        FILE_TRANSMISSION_STATE, // int enum
+        SENDING_DATA, // bool data sending
 
         /// !!! THIS MUST BE THE LAST LINE !!!
         /// At the end the array size

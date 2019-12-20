@@ -35,7 +35,9 @@ protected:
     std::string fileName;
 
     enum State {
-        SLEEP, SENDING_FILE, SENDING_MISSING_PACKET, SENDING_MISSING_PACKET_FIRST,
+        SLEEP, SEND_FILE_REQUEST_TO_TX,
+        SENDING_FILE,
+        SENDING_MISSING_PACKET, SENDING_MISSING_PACKET_FIRST,
         ALL_RECEIVED,
         READY_TO_SEND_NEW_FILE
     } state;
@@ -45,8 +47,10 @@ private:
 
     uint16_t packetNbr;
     size_t nbrTotPacket;
+    size_t lastPacketNbr;
     uint16_t missingNbrIterator;
 
+    uint8_t nbrByteInLastPacket;
     size_t nbrSentFile;
 
     std::vector<uint8_t*> file;
