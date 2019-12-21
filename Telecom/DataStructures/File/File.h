@@ -26,30 +26,29 @@ public:
     void updateTx(std::shared_ptr<Connector> connector) override;
     void updateRx(std::shared_ptr<Connector> connector) override;
 
-    void importFile();
+    virtual void importFile();
     void exportFile();
 
-    void sendMissingPacket(Packet &packet);
+    void sendMissingPacketRequest(Packet &packet);
+    void manageRxMissingPacketRequest(Packet &packet);
 
 protected:
     std::string fileName;
 
+private:
     enum State {
         // Rx State
         SLEEP,
         SEND_FILE_REQUEST_TO_TX,
         WAITING_PACKET,
         SEND_MISSING_PACKET_REQUEST,
-        SEND_ACK, // useless ?
         ALL_RECEIVED,
         // Tx State
-        READY_TO_SEND_NEW_FILE,
         SENDING_PACKET,
         WAITING_MISSING_PACKET_REQUEST,
         SENDING_MISSING_PACKET
     } myState, receivedState;
 
-private:
     uint16_t bytePerPacket;
 
     uint16_t packetNbr;

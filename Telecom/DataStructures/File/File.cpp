@@ -38,14 +38,12 @@ void File::updateTx(std::shared_ptr<Connector> connector) {
         case SEND_MISSING_PACKET_REQUEST:
             myState = WAITING_PACKET;
             break;
-        case ALL_RECEIVED:
-            std::cout << "ACK : Every Packet have been received correctly" << std::endl;
-            exportFile();
-            break;
         default:
             break;
     }
-    /////// On the File Transmitter
+    /////// On the File Transmitter : update FSM state only at Reception
+    if (myState == WAITING_MISSING_PACKET_REQUEST)
+        connector->setData(ui_interface::SENDING_DATA, false);
 }
 
 void File::write(Packet &packet) {
@@ -53,6 +51,14 @@ void File::write(Packet &packet) {
     packet.write((uint8_t) myState);
     // After writing state processing
     switch (myState) {
+        /////// On the File Receiver
+        case SEND_MISSING_PACKET_REQUEST:
+            sendMissingPacketRequest(packet);
+            break;
+        /////// On the File Transmitter
+        case SENDING_MISSING_PACKET:
+            packetNbr = missingPacketNbr[missingNbrIterator];
+            // no break
         case SENDING_PACKET:
             packet.write(packetNbr);
             if (packetNbr == 0) packet.write(nbrTotPacket);
@@ -61,67 +67,29 @@ void File::write(Packet &packet) {
             for (size_t i(0); i < bytePerPacket; ++i) {
                 packet.write(file[packetNbr][i]);
             }
+            if (packetNbr == lastPacketNbr) myState = WAITING_MISSING_PACKET_REQUEST;
+
             ++packetNbr;
-            if (packetNbr == nbrTotPacket) myState = WAITING_MISSING_PACKET_REQUEST;
-            break;
-        case SEND_MISSING_PACKET_REQUEST:
-            sendMissingPacket(packet);
-            packet.write(lastPacketNbr);
-        case SENDING_MISSING_PACKET:
-            packet.write(missingPacketNbr[missingNbrIterator++]); // packet Nbr
-            packet.write((uint16_t) missingPacketNbr.size());
-            for (size_t i(0); i < bytePerPacket; ++i) {
-                packet.write(file[missingPacketNbr[missingNbrIterator]][i]);
-            }
-            break;
-        default:
-            break;
-    }
-    /////// On the File Transmitter
-
-}
-
-void File::updateRx(std::shared_ptr<Connector> connector) {
-
-    // build image V1 condition not good <=> if last packet
-   /* if (packetNbr == lastPacketNbr && receivedState == SENDING_PACKET) { //TODO version debug V.0
-        //state = SENDING_MISSING_PACKET_FIRST;
-        state = SLEEP;
-        exportFile();
-    }*/
-    switch (receivedState) {
-        /////// On the File Receiver
-        case SEND_MISSING_PACKET_REQUEST:
-            myState = SENDING_MISSING_PACKET;
-            break;
-        /////// On the File Transmitter
-        case SEND_FILE_REQUEST_TO_TX:
-            importFile(); // TODO Manage error open file
-            myState = SENDING_PACKET;
-        case SENDING_MISSING_PACKET:
-            connector->setData(ui_interface::SENDING_DATA, true);
-            break;
-        case ALL_RECEIVED:
-            connector->setData(ui_interface::SENDING_DATA, false);
-            myState = READY_TO_SEND_NEW_FILE;
+            ++missingNbrIterator; // not use before missing process
             break;
         default:
             break;
     }
 }
 
+// Order : parse then updateRx
 void File::parse(Packet &packet) {
     uint8_t statetmp;
     packet.parse(statetmp);
     receivedState = (State) statetmp;
 
     switch (receivedState) {
-        case SENDING_MISSING_PACKET_FIRST:
-            uint16_t missingPacketTotNbr;
-            packet.parse(missingPacketTotNbr);
-            missingPacketNbr.resize(missingPacketTotNbr, 0);
+        /////// On the File Transmitter
+        case SEND_MISSING_PACKET_REQUEST:
+            manageRxMissingPacketRequest(packet);
+            break;
+        /////// On the File Receiver
         case SENDING_MISSING_PACKET:
-            packet.parse(lastPacketNbr);
         case SENDING_PACKET:
             packet.parse(packetNbr);
             if (packetNbr == 0) { // TODO while not received packet 0
@@ -136,23 +104,80 @@ void File::parse(Packet &packet) {
                 for (size_t i(0); i < bytePerPacket; ++i) {
                     packet.parse(file[packetNbr][i]);
                 }
+                if (packetNbr == lastPacketNbr) { // max Nbr or last of missing
+                    myState = SEND_MISSING_PACKET_REQUEST;
+                }
             }
             break;
-
         default:
             break;
     }
 }
 
-void File::sendMissingPacket(Packet &packet) {
+void File::updateRx(std::shared_ptr<Connector> connector) {
+    switch (myState) {
+        /////// On the File Receiver
+        case ALL_RECEIVED:
+            std::cout << "ACK : Every Packet have been received correctly"
+                      << std::endl;
+            exportFile();
+            myState = SLEEP;
+            break;
+        case SEND_MISSING_PACKET_REQUEST:
+            connector->setData(ui_interface::SEND_FILE_REQUEST, true);
+            break;
+        default:
+            break;
+    }
+    switch (receivedState) {
+        /////// On the File Receiver
+        case SEND_MISSING_PACKET_REQUEST:
+            myState = SENDING_MISSING_PACKET;
+            break;
+        /////// On the File Transmitter
+        case SEND_FILE_REQUEST_TO_TX:
+            if (myState == SLEEP) {
+                importFile(); // TODO Manage error open file
+                myState = SENDING_PACKET;
+                connector->setData(ui_interface::SENDING_DATA, true);
+            }
+        case SENDING_MISSING_PACKET:
+            connector->setData(ui_interface::SENDING_DATA, true);
+            break;
+        case ALL_RECEIVED:
+            connector->setData(ui_interface::SENDING_DATA, false);
+            myState = SLEEP;
+            break;
+        default:
+            break;
+    }
+}
+
+
+void File::sendMissingPacketRequest(Packet &packet) {
+    bool allReceived(true);
+    // Assuming totpacketNbr < 2^16
+    for(uint16_t i(0); i < bytePerPacket / 2 || i < nbrTotPacket; ++i) {
+        if (!file[i]) {
+            packet.write(i);
+            allReceived = false;
+            lastPacketNbr = i;
+        }
+    }
+    packet.write(lastPacketNbr);
+    myState = SEND_MISSING_PACKET_REQUEST;
+    if (allReceived) myState = ALL_RECEIVED;
+}
+
+void File::manageRxMissingPacketRequest(Packet &packet) {
     missingNbrIterator = 0;
     missingPacketNbr.clear();
-    for(uint16_t i(0); i < file.size(); ++i) {
-        if (!file[i]) missingPacketNbr.push_back(i);
+
+    for(uint16_t i(0); i < bytePerPacket / 2 || i < nbrTotPacket; ++i) {
+        packet.parse(i);
+        missingPacketNbr.push_back(i);
     }
-    myState = SENDING_MISSING_PACKET;
-    lastPacketNbr = missingPacketNbr.back();
-    if (missingPacketNbr.empty()) myState = ALL_RECEIVED;
+    packet.parse(lastPacketNbr);
 }
 
 

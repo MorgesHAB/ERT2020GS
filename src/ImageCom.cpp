@@ -45,11 +45,14 @@ int main(int argc, char** argv) {
     while (keep_running) {
         if (xbee.receive(dataHandler)) dataHandler.printLastRxPacket();
 
-        dataHandler.updateTx(IMAGE);
-        if (connector.getData<bool>(ui_interface::SENDING_DATA))
-            xbee.send(dataHandler.getPacket(IMAGE));
+        std::this_thread::sleep_for(std::chrono::milliseconds(25));
 
-        std::this_thread::sleep_for(std::chrono::milliseconds(50));
+        if (connector.getData<bool>(ui_interface::SENDING_DATA)) {
+            dataHandler.updateTx(IMAGE);
+            xbee.send(dataHandler.getPacket(IMAGE));
+        }
+
+        std::this_thread::sleep_for(std::chrono::milliseconds(25));
     }
 
     return 0;

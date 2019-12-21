@@ -20,9 +20,7 @@ public:
                      uint16_t width = 300,
                      uint16_t heigth = 300);
 
-    void updateTx(std::shared_ptr<Connector> connector) override;
-
-    void takePicture();
+    void importFile() override ;
 
 private:
     uint16_t width, heigth;

@@ -35,13 +35,14 @@ void Worker::mainRoutine() {
                 dataHandler.printLastRxPacket();
             }
             manageIgnitionTx(dataHandler, xbee);
+            std::this_thread::sleep_for(std::chrono::milliseconds(25));
 
             if (connector->eatData<bool>(ui_interface::SEND_FILE_REQUEST, false)) {
                 dataHandler.updateTx(packetType::IMAGE);
                 xbee.send(dataHandler.getPacket(packetType::IMAGE));
             }
 
-            std::this_thread::sleep_for(std::chrono::milliseconds(1));
+            std::this_thread::sleep_for(std::chrono::milliseconds(10));
         }
     }
 }
