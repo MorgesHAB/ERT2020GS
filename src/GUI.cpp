@@ -29,7 +29,7 @@ int main(int argc, char **argv) {
 
     QApplication app(argc, argv);
     
-    GuiWindow guiWindow(500, connector);
+    GuiWindow guiWindow(connector);
 
     //run all threads
     std::thread t1(&Worker::mainRoutine, Worker(connector));
