@@ -7,6 +7,7 @@
  * \date        02.12.2019
  */
 
+//#define SOUND_ON
 #ifndef GUIWINDOW_H
 #define GUIWINDOW_H
 
@@ -26,7 +27,7 @@
 class GuiWindow : public QWidget, public Ui_Form {
     Q_OBJECT
 public:
-    GuiWindow(int refresh_rate, std::shared_ptr<Connector> connector);
+    GuiWindow(std::shared_ptr<Connector> connector);
     void update();
 
 

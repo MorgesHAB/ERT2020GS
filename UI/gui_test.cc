@@ -66,7 +66,7 @@ main(int argc, char ** argv)
 
     {
     QApplication app(argc, argv);
-    GuiWindow w(500, c);
+    GuiWindow w(c);
     // run all threads
 
 

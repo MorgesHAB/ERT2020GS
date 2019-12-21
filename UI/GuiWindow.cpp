@@ -18,7 +18,8 @@
 #include <QCoreApplication>
 #include <array>
 
-constexpr uint8_t THEME_NUMBER(3);
+constexpr uint8_t THEME_COUNT(3);
+constexpr uint32_t REFRESH_RATE(500);
 
 
 using namespace ui_interface;
@@ -58,7 +59,7 @@ inline bool get_bit(unsigned char byte, int position) // position in range 0-7
     return (byte >> position) & 0x1;
 }
 
-GuiWindow::GuiWindow(int refresh_rate, std::shared_ptr<Connector> connector) :
+GuiWindow::GuiWindow(std::shared_ptr<Connector> connector) :
     timer_(new QTimer(this)),
     #ifdef SOUND_ON
     alarm_(new QSound(":/alarm.wav", this)),
@@ -74,8 +75,7 @@ GuiWindow::GuiWindow(int refresh_rate, std::shared_ptr<Connector> connector) :
     initialize_style();
     initialize_slots_signals();
     grabKeyboard();
-    timer_->start(refresh_rate);
-
+    timer_->start(REFRESH_RATE);
 }
 
 void GuiWindow::refresh_data()
@@ -109,8 +109,6 @@ void GuiWindow::ignite_clicked()
     ready_ignition_ = !ready_ignition_;
     data_->setData(ui_interface::IGNITION_CLICKED, ready_ignition_);
     show_ok_X(ready_ignition_panel, ready_ignition_);
-
-
 }
 
 void GuiWindow::theme_change_clicked()
@@ -145,9 +143,9 @@ void GuiWindow::file_transmission_pressed()
 
 uint16_t GuiWindow::calculate_misses_in_last_2()
 {
-    static std::array<uint32_t, 4> before{ 0 };
+    static std::array<uint32_t, 2000/REFRESH_RATE> before{ 0 };
 
-    uint64_t current(tick_counter_ % 4);
+    uint64_t current(tick_counter_ % REFRESH_RATE);
     uint64_t tmp(missed_count_ - before[current]);
 
     before[current] = missed_count_;
@@ -194,10 +192,12 @@ void GuiWindow::initialize_style()
 
 void GuiWindow::refresh_ignition_frame()
 {
+
     refresh_ignition_code();
     show_ok_X(key_1_panel, data_->getData<bool>(IGNITION_KEY_1_ACTIVATED));
     show_ok_X(key_2_panel, data_->getData<bool>(IGNITION_KEY_2_ACTIVATED));
     show_ok_X(red_button_panel, data_->getData<bool>(IGNITION_RED_BUTTON_PUSHED));
+    show_ok_X(ready_ignition_panel, data_->getData<bool>(IGNITION_CLICKED));
 }
 
 void GuiWindow::initialize_slots_signals()
