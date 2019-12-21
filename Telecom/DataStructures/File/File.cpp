@@ -10,7 +10,8 @@
 #include "File.h"
 
 File::File(const std::string &fileName, uint16_t bytePerPacket)
-        : fileName(fileName), bytePerPacket(bytePerPacket), state(READY_TO_SEND_NEW_FILE), // TODO init with SLEEP
+        : fileName(fileName), bytePerPacket(bytePerPacket),
+          myState(SLEEP), receivedState(SLEEP),
           packetNbr(0), nbrTotPacket(0), lastPacketNbr(0), missingNbrIterator(0),
           nbrByteInLastPacket(0), nbrSentFile(0) {}
 
@@ -22,30 +23,37 @@ File::~File() {
 
 void File::print() const {
     std::cout << "File Data " << fileName << " -- Packet n° " << packetNbr
-              << " / " << nbrTotPacket - 1 <<  "  State : " << state <<std::endl;
+              << " / " << nbrTotPacket - 1 << std::endl;
 }
 
 void File::updateTx(std::shared_ptr<Connector> connector) {
-    // On the GST
-    if (state == READY_TO_SEND_NEW_FILE &&
-        connector->eatData<bool>(ui_interface::SEND_FILE_REQUEST, false)) {
-        state = SEND_FILE_REQUEST_TO_TX;
-        connector->setData(ui_interface::SENDING_DATA, true);
+    switch (myState) {
+        /////// On the File Receiver // updated only if need to send request (connector order)
+        case SLEEP:
+            myState = SEND_FILE_REQUEST_TO_TX;
+            break;
+        case SEND_FILE_REQUEST_TO_TX: // Sent
+            myState = WAITING_PACKET;
+            break;
+        case SEND_MISSING_PACKET_REQUEST:
+            myState = WAITING_PACKET;
+            break;
+        case ALL_RECEIVED:
+            std::cout << "ACK : Every Packet have been received correctly" << std::endl;
+            exportFile();
+            break;
+        default:
+            break;
     }
-    // On the Igniter
-    else if (state == SEND_FILE_REQUEST_TO_TX) {
-        connector->setData(ui_interface::SENDING_DATA, true);
-        importFile();
-    }
-    else if (state == SLEEP) {
-        connector->setData(ui_interface::SENDING_DATA, false);
-    }
+    /////// On the File Transmitter
 }
 
 void File::write(Packet &packet) {
-    packet.write((uint8_t) state);
-    switch (state) {
-        case SENDING_FILE:
+    /////// On the File Receiver
+    packet.write((uint8_t) myState);
+    // After writing state processing
+    switch (myState) {
+        case SENDING_PACKET:
             packet.write(packetNbr);
             if (packetNbr == 0) packet.write(nbrTotPacket);
             if (packetNbr == nbrTotPacket - 1) packet.write(nbrByteInLastPacket);
@@ -54,11 +62,10 @@ void File::write(Packet &packet) {
                 packet.write(file[packetNbr][i]);
             }
             ++packetNbr;
-            if (packetNbr == nbrTotPacket) state = SLEEP; // TODO wait TCP request or ACK
+            if (packetNbr == nbrTotPacket) myState = WAITING_MISSING_PACKET_REQUEST;
             break;
-        case SENDING_MISSING_PACKET_FIRST:
+        case SEND_MISSING_PACKET_REQUEST:
             sendMissingPacket(packet);
-            state = SENDING_MISSING_PACKET;
             packet.write(lastPacketNbr);
         case SENDING_MISSING_PACKET:
             packet.write(missingPacketNbr[missingNbrIterator++]); // packet Nbr
@@ -67,39 +74,55 @@ void File::write(Packet &packet) {
                 packet.write(file[missingPacketNbr[missingNbrIterator]][i]);
             }
             break;
-
         default:
             break;
     }
+    /////// On the File Transmitter
+
 }
 
 void File::updateRx(std::shared_ptr<Connector> connector) {
+
     // build image V1 condition not good <=> if last packet
-    if (packetNbr == lastPacketNbr && state == SENDING_FILE) { //TODO version debug V.0
+   /* if (packetNbr == lastPacketNbr && receivedState == SENDING_PACKET) { //TODO version debug V.0
         //state = SENDING_MISSING_PACKET_FIRST;
         state = SLEEP;
         exportFile();
-    }
-    if (state == ALL_RECEIVED) {
-        std::cout << "ACK : Every Packet have been received correctly" << std::endl;
-        state = SLEEP;
-        exportFile();
+    }*/
+    switch (receivedState) {
+        /////// On the File Receiver
+        case SEND_MISSING_PACKET_REQUEST:
+            myState = SENDING_MISSING_PACKET;
+            break;
+        /////// On the File Transmitter
+        case SEND_FILE_REQUEST_TO_TX:
+            importFile(); // TODO Manage error open file
+            myState = SENDING_PACKET;
+        case SENDING_MISSING_PACKET:
+            connector->setData(ui_interface::SENDING_DATA, true);
+            break;
+        case ALL_RECEIVED:
+            connector->setData(ui_interface::SENDING_DATA, false);
+            myState = READY_TO_SEND_NEW_FILE;
+            break;
+        default:
+            break;
     }
 }
 
 void File::parse(Packet &packet) {
     uint8_t statetmp;
     packet.parse(statetmp);
-    state = (State) statetmp;
+    receivedState = (State) statetmp;
 
-    switch (state) {
+    switch (receivedState) {
         case SENDING_MISSING_PACKET_FIRST:
             uint16_t missingPacketTotNbr;
             packet.parse(missingPacketTotNbr);
             missingPacketNbr.resize(missingPacketTotNbr, 0);
         case SENDING_MISSING_PACKET:
             packet.parse(lastPacketNbr);
-        case SENDING_FILE:
+        case SENDING_PACKET:
             packet.parse(packetNbr);
             if (packetNbr == 0) { // TODO while not received packet 0
                 packet.parse(nbrTotPacket);
@@ -127,9 +150,9 @@ void File::sendMissingPacket(Packet &packet) {
     for(uint16_t i(0); i < file.size(); ++i) {
         if (!file[i]) missingPacketNbr.push_back(i);
     }
-    state = SENDING_MISSING_PACKET_FIRST;
+    myState = SENDING_MISSING_PACKET;
     lastPacketNbr = missingPacketNbr.back();
-    if (missingPacketNbr.empty()) state = ALL_RECEIVED;
+    if (missingPacketNbr.empty()) myState = ALL_RECEIVED;
 }
 
 
@@ -151,7 +174,6 @@ void File::importFile() {
         --nbrByteInLastPacket;
         nbrTotPacket = file.size();
         lastPacketNbr = nbrTotPacket - 1;
-        state = SENDING_FILE;
     } else
         std::cerr << "Impossible to read the file" << std::endl;
 }

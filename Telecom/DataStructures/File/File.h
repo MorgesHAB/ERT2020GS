@@ -35,12 +35,19 @@ protected:
     std::string fileName;
 
     enum State {
-        SLEEP, SEND_FILE_REQUEST_TO_TX,
-        SENDING_FILE,
-        SENDING_MISSING_PACKET, SENDING_MISSING_PACKET_FIRST,
+        // Rx State
+        SLEEP,
+        SEND_FILE_REQUEST_TO_TX,
+        WAITING_PACKET,
+        SEND_MISSING_PACKET_REQUEST,
+        SEND_ACK, // useless ?
         ALL_RECEIVED,
-        READY_TO_SEND_NEW_FILE
-    } state;
+        // Tx State
+        READY_TO_SEND_NEW_FILE,
+        SENDING_PACKET,
+        WAITING_MISSING_PACKET_REQUEST,
+        SENDING_MISSING_PACKET
+    } myState, receivedState;
 
 private:
     uint16_t bytePerPacket;
