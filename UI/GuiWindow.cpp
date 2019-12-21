@@ -145,8 +145,8 @@ uint16_t GuiWindow::calculate_misses_in_last_2()
 {
     static std::array<uint32_t, 2000/REFRESH_RATE> before{ 0 };
 
-    uint64_t current(tick_counter_ % REFRESH_RATE);
-    uint64_t tmp(missed_count_ - before[current]);
+    uint16_t current(tick_counter_ % 2000/REFRESH_RATE);
+    uint16_t tmp(missed_count_ - before[current]);
 
     before[current] = missed_count_;
     return tmp;
@@ -186,7 +186,7 @@ void GuiWindow::refresh_ignition_code()
 void GuiWindow::initialize_style()
 {
     QCoreApplication::setAttribute(Qt::AA_UseStyleSheetPropagationInWidgetStyles);
-    QApplication::setStyle(QStyleFactory::create("cleanlooks"));
+    //QApplication::setStyle(QStyleFactory::create("cleanlooks"));
     Ui_Form::setupUi(this);
 }
 
@@ -235,7 +235,7 @@ void GuiWindow::refresh_com()
     this->last_refresh_panel->setText(tbuffer);
     this->rssi_panel->setText("--");
     uint32_t packets(data_->eatData<uint32_t>(PACKET_RX_RATE_CTR, 0));
-    packets_second_bar->setValue((int) (packets * (1000.0 / (timer_->interval()))));
+    packets_second_bar->setValue((packets * (1000.0 / (REFRESH_RATE))));
     corrupted_panel->setText(qstr(data_->getData<uint64_t>(CORRUPTED_PACKET_CTR)));
 }
 
