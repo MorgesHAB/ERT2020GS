@@ -42,19 +42,15 @@ int main(int argc, char** argv) {
     DataHandler dataHandler(cptr);
     using namespace packetType;
 
-    dataHandler.updateTx(PROPULSION);
-    xbee.send(dataHandler.getPacket(PROPULSION));
     while (keep_running) {
         if (xbee.receive(dataHandler)) dataHandler.printLastRxPacket();
-
-        std::this_thread::sleep_for(std::chrono::milliseconds(100));
 
         if (connector.getData<bool>(ui_interface::SENDING_DATA)) {
             dataHandler.updateTx(IMAGE);
             xbee.send(dataHandler.getPacket(IMAGE));
         }
 
-        std::this_thread::sleep_for(std::chrono::milliseconds(200));
+        std::this_thread::sleep_for(std::chrono::milliseconds(50));
     }
 
     return 0;

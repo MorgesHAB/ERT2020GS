@@ -18,13 +18,15 @@ Header::Header(uint8_t packetID) : packetID(packetID),
 void Header::write(Packet &packet) {
     packet.write(packetID);
     packet.write(packetNbr);
-    packet.write(timestamp);
+    packet.write(static_cast<uint32_t>(timestamp));
 }
 
 void Header::parse(Packet &packet) {
     packet.parse(packetID);
     packet.parse(packetNbr);
-    packet.parse(timestamp);
+    uint32_t tmp;
+    packet.parse(tmp);
+    timestamp = static_cast<time_t> (tmp);
 }
 
 void Header::print() const {

@@ -39,8 +39,9 @@ void XbeeOptions::parse(Packet &packet) {
     //packet.parse(startDelimiter); // TODO already parsed
     uint16_t length;
     //packet.parse(length);
-
-    for (size_t i(0); i < XBEE_API_RX_INDICATOR; ++i) packet.parse(XBEE_FRAME_OPTIONS[i]);
+    uint8_t tmp[XBEE_API_RX_INDICATOR]; // TODO temporaire !!
+    for (size_t i(0); i < XBEE_API_RX_INDICATOR; ++i) packet.parse(tmp[i]);
+    //for (size_t i(0); i < XBEE_API_RX_INDICATOR; ++i) packet.parse(XBEE_FRAME_OPTIONS[i]);
 }
 
 void XbeeOptions::print() const {

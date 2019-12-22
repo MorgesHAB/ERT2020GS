@@ -28,10 +28,7 @@ public:
 
     virtual void importFile();
     void exportFile();
-
-    void sendMissingPacketRequest(Packet &packet);
-    void manageRxMissingPacketRequest(Packet &packet);
-
+    
 protected:
     std::string fileName;
 
