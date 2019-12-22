@@ -16,14 +16,15 @@
 class Picture : public File {
 public:
     explicit Picture(uint8_t bytePerPacket,
-                     const std::string &fileName = "picture",
-                     uint16_t width = 300,
-                     uint16_t heigth = 300);
+                     const std::string &fileName = "picture.jpg",
+                     uint16_t width = 500,
+                     uint16_t height = 500);
 
     void importFile() override ;
 
 private:
-    uint16_t width, heigth;
+    uint16_t width, height;
+    uint16_t imgCapturedNbr;
 };
 
 

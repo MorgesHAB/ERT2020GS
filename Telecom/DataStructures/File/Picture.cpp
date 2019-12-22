@@ -11,15 +11,17 @@
 #include "Picture.h"
 
 Picture::Picture(uint8_t bytePerPacket, const std::string &fileName, uint16_t width,
-                 uint16_t heigth) : File(fileName, bytePerPacket),
-                                    width(width), heigth(heigth) {}
+                 uint16_t height) : File(fileName, bytePerPacket),
+                                    width(width), height(height), imgCapturedNbr(0) {}
 
 
 void Picture::importFile() {
-    //fileName = fileName + std::to_string(++nbrSentImg);
+    // pictureName1.jpg , pictureName2.jpg , ... pictureNameN.jpg
+    fileName.replace(0, fileName.rfind('.'),
+            fileName.substr(0, fileName.rfind('.')) + std::to_string(++imgCapturedNbr)); // <--replace with
     // Take a picture with the raspicam
     std::string command("raspistill -o " + fileName + " -hf -vf -w " +
-                        std::to_string(width) + " -h " + std::to_string(heigth));
+                        std::to_string(width) + " -h " + std::to_string(height));
     system(command.c_str()); // execute command on RPi terminal
     std::cout << "New picture taken - " << fileName << std::endl;
     File::importFile();

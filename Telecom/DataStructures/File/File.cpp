@@ -13,7 +13,7 @@ File::File(const std::string &fileName, uint16_t bytePerPacket)
         : fileName(fileName), bytePerPacket(bytePerPacket),
           myState(SLEEP), receivedState(SLEEP),
           packetNbr(0), nbrTotPacket(0), lastPacketNbr(0), missingNbrIterator(0),
-          nbrByteInLastPacket(0), nbrSentFile(0) {}
+          nbrByteInLastPacket(0) {}
 
 File::~File() {
     for (auto& part : file) delete[] part;
@@ -34,8 +34,8 @@ void File::updateTx(std::shared_ptr<Connector> connector) {
             break;
         case SEND_MISSING_PACKET_REQUEST:
             missingPacketNbr.clear();
-            // Assuming totpacketNbr < 2^16
-            for (uint16_t i(0); i < bytePerPacket / 2 && i < nbrTotPacket; ++i) {
+            // Assuming total packet nbr < 2^16
+            for (uint16_t i(0); i < nbrTotPacket && missingPacketNbr.size() < bytePerPacket / 2; ++i) {
                 if (!file[i]) missingPacketNbr.push_back(i);
             }
             if (missingPacketNbr.empty()) myState = ALL_RECEIVED;
@@ -70,7 +70,10 @@ void File::write(Packet &packet) {
             // no break
         case SENDING_PACKET:
             packet.write(packetNbr);
-            if (packetNbr == 0) packet.write(nbrTotPacket);
+            if (packetNbr == 0) {
+                packet.write(fileName);
+                packet.write(nbrTotPacket);
+            }
             if (packetNbr == nbrTotPacket - 1) packet.write(nbrByteInLastPacket);
 
             for (uint32_t i(0); i < bytePerPacket; ++i) {
@@ -113,6 +116,7 @@ void File::parse(Packet &packet) {
         case SENDING_PACKET:
             packet.parse(packetNbr);
             if (packetNbr == 0) { // TODO while not received packet 0
+                packet.parse(fileName);
                 packet.parse(nbrTotPacket);
                 file.resize(nbrTotPacket, nullptr);
                 lastPacketNbr = nbrTotPacket - 1;
@@ -147,6 +151,7 @@ void File::updateRx(std::shared_ptr<Connector> connector) {
         /////// On the File Transmitter
         case SEND_MISSING_PACKET_REQUEST:
             myState = SENDING_MISSING_PACKET;
+            connector->setData(ui_interface::SENDING_DATA, true);
             break;
         case SEND_FILE_REQUEST_TO_TX:
             if (myState == SLEEP) {
@@ -154,14 +159,11 @@ void File::updateRx(std::shared_ptr<Connector> connector) {
                 myState = SENDING_PACKET;
                 connector->setData(ui_interface::SENDING_DATA, true);
             }
-        case SENDING_MISSING_PACKET:
-            connector->setData(ui_interface::SENDING_DATA, true);
             break;
         case ALL_RECEIVED:
             connector->setData(ui_interface::SENDING_DATA, false);
             myState = SLEEP;
             packetNbr = 0;
-            ++nbrSentFile;
             break;
         default:
             break;
@@ -192,8 +194,8 @@ void File::importFile() {
 }
 
 void File::exportFile() {
-    fileName.replace(0, fileName.find('.'),
-                     fileName.substr(0, fileName.find('.')) + "Rx"); // <--replace with
+    fileName.replace(0, fileName.rfind('.'),
+                     fileName.substr(0, fileName.rfind('.')) + "Rx"); // <--replace with
     std::ofstream fileOut(fileName, std::ios::out | std::ios::binary);
 
     if (fileOut) {

@@ -54,7 +54,6 @@ private:
     uint16_t missingNbrIterator;
 
     uint8_t nbrByteInLastPacket;
-    size_t nbrSentFile;
 
     std::vector<uint8_t*> file;
 
