@@ -15,7 +15,7 @@ Xbee::Xbee(std::string port) : serialPort(port, 115200) {}
 void Xbee::send(Packet *packet) {
     if (serialPort.isOpen()) {
         serialPort.write(packet->getPacket(), packet->getSize());
-        std::cout << "Packet have been sent" << std::endl;
+        std::cout << "Packet have been sent  size: " << +packet->getSize() << std::endl;
     }
 }
 

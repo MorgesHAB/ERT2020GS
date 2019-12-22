@@ -58,7 +58,7 @@ DataHandler::DataHandler(std::shared_ptr<Connector> connector)
     dataHandler[PROPULSION]->add(new PressureData);
 
     //// Packet Type n°5
-    dataHandler[IMAGE]->add(new File("Data.cpp", 200));
+    dataHandler[IMAGE]->add(new File("Data.cpp", 100));
 
     #ifdef RUNNING_ON_RPI
     dataHandler[IGNITION_REQUEST]->add(new IgnitionCode);
