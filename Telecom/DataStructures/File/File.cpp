@@ -73,7 +73,7 @@ void File::write(Packet &packet) {
             if (packetNbr == 0) packet.write(nbrTotPacket);
             if (packetNbr == nbrTotPacket - 1) packet.write(nbrByteInLastPacket);
 
-            for (size_t i(0); i < bytePerPacket; ++i) {
+            for (uint32_t i(0); i < bytePerPacket; ++i) {
                 packet.write(file[packetNbr][i]);
             }
             if (packetNbr == lastPacketNbr) myState = WAITING_MISSING_PACKET_REQUEST;
@@ -109,6 +109,7 @@ void File::parse(Packet &packet) {
             break;
         /////// On the File Receiver
         case SENDING_MISSING_PACKET:
+            std::cout << "!!!!!MISSING PACKET SENT AGAIN" << std::endl;
         case SENDING_PACKET:
             packet.parse(packetNbr);
             if (packetNbr == 0) { // TODO while not received packet 0
@@ -120,7 +121,7 @@ void File::parse(Packet &packet) {
                 file[packetNbr] = new uint8_t[bytePerPacket];
                 if (packetNbr == nbrTotPacket - 1) packet.parse(nbrByteInLastPacket);
 
-                for (size_t i(0); i < bytePerPacket; ++i) {
+                for (uint32_t i(0); i < bytePerPacket; ++i) {
                     packet.parse(file[packetNbr][i]);
                 }
                 if (packetNbr == lastPacketNbr) { // max Nbr or last of missing

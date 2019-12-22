@@ -28,7 +28,7 @@ public:
 
     virtual void importFile();
     void exportFile();
-    
+
 protected:
     std::string fileName;
 
@@ -49,8 +49,8 @@ private:
     uint16_t bytePerPacket;
 
     uint16_t packetNbr;
-    size_t nbrTotPacket;
-    size_t lastPacketNbr;
+    uint32_t nbrTotPacket;
+    uint32_t lastPacketNbr;
     uint16_t missingNbrIterator;
 
     uint8_t nbrByteInLastPacket;

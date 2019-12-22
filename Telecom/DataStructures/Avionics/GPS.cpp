@@ -26,7 +26,7 @@ void GPS::write(Packet& packet) {
     packet.write(longitude);
     packet.write(altitude);
     packet.write(speed);
-    packet.write(time);
+    packet.write(static_cast<uint32_t>(time));
 }
 
 
@@ -35,7 +35,9 @@ void GPS::parse(Packet& packet) {
     packet.parse(longitude);
     packet.parse(altitude);
     packet.parse(speed);
-    packet.parse(time);
+    uint32_t tmp;
+    packet.parse(tmp);
+    time = static_cast<time_t> (tmp);
 }
 
 void GPS::print() const {
