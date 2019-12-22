@@ -26,7 +26,7 @@ public:
     void updateTx(std::shared_ptr<Connector> connector) override;
     void updateRx(std::shared_ptr<Connector> connector) override;
 
-    virtual void importFile();
+    virtual bool importFile();
     void exportFile();
 
 protected:

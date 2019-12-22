@@ -20,7 +20,7 @@ public:
                      uint16_t width = 500,
                      uint16_t height = 500);
 
-    void importFile() override ;
+    bool importFile() override ;
 
 private:
     uint16_t width, height;

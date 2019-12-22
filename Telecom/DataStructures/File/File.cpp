@@ -155,9 +155,10 @@ void File::updateRx(std::shared_ptr<Connector> connector) {
             break;
         case SEND_FILE_REQUEST_TO_TX:
             if (myState == SLEEP) {
-                importFile(); // TODO Manage error open file
-                myState = SENDING_PACKET;
-                connector->setData(ui_interface::SENDING_DATA, true);
+                if (importFile()) {
+                    myState = SENDING_PACKET;
+                    connector->setData(ui_interface::SENDING_DATA, true);
+                }
             }
             break;
         case ALL_RECEIVED:
@@ -171,7 +172,7 @@ void File::updateRx(std::shared_ptr<Connector> connector) {
 }
 
 
-void File::importFile() {
+bool File::importFile() {
     // Store all bytes of the file
     std::ifstream fileIn(fileName, std::ios::in | std::ios::binary);
 
@@ -189,8 +190,11 @@ void File::importFile() {
         --nbrByteInLastPacket;
         nbrTotPacket = file.size();
         lastPacketNbr = nbrTotPacket - 1;
-    } else
+        return true;
+    } else {
         std::cerr << "Impossible to read the file" << std::endl;
+        return false;
+    }
 }
 
 void File::exportFile() {

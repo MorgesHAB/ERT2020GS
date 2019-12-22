@@ -15,7 +15,7 @@ Picture::Picture(uint8_t bytePerPacket, const std::string &fileName, uint16_t wi
                                     width(width), height(height), imgCapturedNbr(0) {}
 
 
-void Picture::importFile() {
+bool Picture::importFile() {
     // pictureName1.jpg , pictureName2.jpg , ... pictureNameN.jpg
     fileName.replace(0, fileName.rfind('.'),
             fileName.substr(0, fileName.rfind('.')) + std::to_string(++imgCapturedNbr)); // <--replace with
@@ -24,5 +24,5 @@ void Picture::importFile() {
                         std::to_string(width) + " -h " + std::to_string(height));
     system(command.c_str()); // execute command on RPi terminal
     std::cout << "New picture taken - " << fileName << std::endl;
-    File::importFile();
+    return File::importFile();
 }

@@ -17,6 +17,7 @@
 #include <FrameInfo/CRC.h>
 #include <Test/String.h>
 #include <Propulsion/IgnitionCode.h>
+#include <File/Picture.h>
 #include "DataHandler.h"
 
 
@@ -59,6 +60,7 @@ DataHandler::DataHandler(std::shared_ptr<Connector> connector)
 
     //// Packet Type n°5
     dataHandler[IMAGE]->add(new File("ERT.jpg", 200));
+    //dataHandler[IMAGE]->add(new Picture(200, "nul.jpg", 600, 600));
 
     #ifdef RUNNING_ON_RPI
     dataHandler[IGNITION_REQUEST]->add(new IgnitionCode);
