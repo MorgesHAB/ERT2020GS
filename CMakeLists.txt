@@ -37,9 +37,6 @@ if (USE_XBEE)
 endif (USE_XBEE)
 
 ############# link librarie to targets #######################
-
-target_link_libraries(${PROJECT_NAME} LogLib)
-
 if (USE_LORA)
     target_link_libraries(LoRaTest Telecom)
 endif (USE_LORA)
@@ -50,6 +47,7 @@ if (USE_XBEE)
     target_link_libraries(ImageCom Telecom)
 
     if (USE_GUI)
+        target_link_libraries(${PROJECT_NAME} LogLib)
         target_link_libraries(${PROJECT_NAME} GUI)
         target_include_directories(${PROJECT_NAME} PUBLIC UI)
     endif (USE_GUI)

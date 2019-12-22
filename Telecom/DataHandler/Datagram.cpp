@@ -28,7 +28,9 @@ void Datagram::print() const {
 }
 
 void Datagram::updateTx(std::shared_ptr<Connector> connector) {
-    dataPacket->restart();
+    delete dataPacket;
+    dataPacket = new Packet;
+    //dataPacket->restart();
 
     for (auto &data : datagram) {
         data->updateTx(connector);
