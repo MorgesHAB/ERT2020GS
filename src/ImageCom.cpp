@@ -37,7 +37,7 @@ int main(int argc, char** argv) {
     std::shared_ptr<Connector> cptr(&connector);
 
     // Your RF modem
-    Xbee xbee("/dev/ttyS3");
+    Xbee xbee("/dev/ttyS6");
     // RF packet handler
     DataHandler dataHandler(cptr);
     using namespace packetType;

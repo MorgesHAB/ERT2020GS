@@ -31,6 +31,9 @@ namespace ui_interface {
         IGNITION_CLICKED, //bool        **This is set to true when ignition button is clicked.
         //            @attention !!! Listener should eat this boolean to be able to detect further clicks !!!
 
+        // RF modem
+        LAST_RSSI, // uint8_t Reports the RSSI in -dBm of the last received RF data packet
+
         //Ignition
         IGNITION_STATUS, // bool        ** true :  FIRE,  false : ABORTED
         IGNITION_KEY_1_ACTIVATED, //bool
@@ -71,9 +74,10 @@ namespace ui_interface {
         FILE_TRANSMISSION_STATE, // int enum
         SENDING_DATA, // bool data sending
 
+
+
         /// !!! THIS MUST BE THE LAST LINE !!!
         /// At the end the array size
-
         ARRAY_SIZE
     };
 

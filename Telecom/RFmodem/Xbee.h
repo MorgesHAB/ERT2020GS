@@ -23,7 +23,7 @@ public:
     bool receive(Packet *packet);
     bool receive(DataHandler &dataHandler);
 
-    //int getRSSI();
+    void getRSSI();
 
 private:
     serial::Serial serialPort;

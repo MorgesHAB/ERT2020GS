@@ -32,6 +32,8 @@ DataHandler::DataHandler(std::shared_ptr<Connector> connector)
         dataHandler[id]->add(new XbeeOptions);
         dataHandler[id]->add(new Header(id));
     }
+    ///////////////////////////////////////////////////////////////////////////
+    ////////////////////////// Your Playground ////////////////////////////////
 
     //// Packet Type  XBEE
     dataHandler[XBEE_TEST]->add(new PressureData);
@@ -67,6 +69,7 @@ DataHandler::DataHandler(std::shared_ptr<Connector> connector)
     #endif
     dataHandler[IGNITION_ANSWER]->add(new String("/!\\/!\\IGNITION FIRED !!!!"));
 
+    ///////////////////////////////////////////////////////////////////////////
     // END of protocol add CRC
     for (uint8_t id(0); id < TOTAL_NBR_OF_TYPES; ++id) {
         dataHandler[id]->add(new CRC);
@@ -96,20 +99,30 @@ void DataHandler::updateTx(packetType::PacketID type) {
     dataHandler[type]->updateTx(connector);
 }
 
-void DataHandler::updateRx(Packet *packet) {
-    auto ID = (packetType::PacketID) packet->getPacket()[12]; // TODO PROTOCOL define !!!
-    if (ID < packetType::TOTAL_NBR_OF_TYPES) {
+bool DataHandler::updateRx(Packet *packet) {
+    // TODO  /!\ PROTOCOL define !!! /!\.
+    uint8_t frameType = packet->getPacket()[0];
+    std::string myDelimiter = {(char) packet->getPacket()[12],
+                               (char) packet->getPacket()[13],
+                               (char) packet->getPacket()[14],
+                               (char) packet->getPacket()[15]};
+    auto ID = (packetType::PacketID) packet->getPacket()[16];
+    if (frameType == 0x90 && myDelimiter == "EPFL"
+        && ID < packetType::TOTAL_NBR_OF_TYPES) {
         connector->incrementData(ui_interface::PACKET_RX_RATE_CTR);
         connector->incrementData(ui_interface::RX_PACKET_CTR);
         lastRxID = ID;
         dataHandler[lastRxID]->updateRx(packet, connector);
         if (lastRxID == packetType::IGNITION_ANSWER)
             connector->setData(ui_interface::IGNITION_STATUS, true);
+        return true;
+    }
+    else if (frameType == 0x88) { // command response
+        std::cout << "RSSI = -" << +packet->getPacket()[5] << " dBm" << std::endl;
+        connector->setData(ui_interface::LAST_RSSI, packet->getPacket()[5]);
     }
     else {
         connector->incrementData(ui_interface::CORRUPTED_PACKET_CTR);
-        //printLastRxPacket();
-        std::cerr << "\n!!!!!!!!!!!!!! RXID > TOTAL_NBR_OF_TYPES  " << ID << std::endl;
-        packet->printDebug();
     }
+    return false;
 }

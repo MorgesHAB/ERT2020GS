@@ -33,6 +33,7 @@ void Worker::mainRoutine() {
                connector->getData<bool>(ui_interface::RUNNING)) {
             if (xbee.receive(dataHandler)) {
                 dataHandler.printLastRxPacket();
+                xbee.getRSSI();
             }
             manageIgnitionTx(dataHandler, xbee);
 

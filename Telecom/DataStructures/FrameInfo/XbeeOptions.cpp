@@ -16,22 +16,22 @@
 
 
 XbeeOptions::XbeeOptions() :
-        XBEE_FRAME_OPTIONS{
-            XBEE_TX_FRAME_TYPE,  // Frame type
+        xbeeTransmitOptions {
+            XBEE_TX_FRAME_TYPE,  // Frame type // Transmit Request frame - 0x10
             0x00,           // Frame ID - Setting it to '0' will disable response frame.
             0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xff, 0xff,     // 64 bit dest address // broadcast
             0xff, 0xfe,           // 16 bits dest address (0xff fe = broadcast) unknown address
             0x00,           // Broadcast radius (0 = max) no hops
-            0x01}  //0x43}          // Transmit options (disable ACK and Route discovery)
+            0x43} // = 0100 0011‬    // Transmit options (disable ACK and Route discovery) see p.103/187 doc
             {}
 
 
 void XbeeOptions::write(Packet &packet) {
     packet.write((uint8_t)XBEE_START);
-    uint16_t size = XBEE_FRAME_OPTIONS_SIZE; //!!! will be set later in CRC
+    uint16_t size = XBEE_FRAME_OPTIONS_SIZE; //!!! will be set later in CRC class
     packet.write(size);
 
-    for (uint8_t& part : XBEE_FRAME_OPTIONS) packet.write(part);
+    for (uint8_t& part : xbeeTransmitOptions) packet.write(part);
 }
 
 void XbeeOptions::parse(Packet &packet) {
@@ -41,7 +41,7 @@ void XbeeOptions::parse(Packet &packet) {
     //packet.parse(length);
     uint8_t tmp[XBEE_API_RX_INDICATOR]; // TODO temporaire !!
     for (size_t i(0); i < XBEE_API_RX_INDICATOR; ++i) packet.parse(tmp[i]);
-    //for (size_t i(0); i < XBEE_API_RX_INDICATOR; ++i) packet.parse(XBEE_FRAME_OPTIONS[i]);
+    //for (size_t i(0); i < XBEE_API_RX_INDICATOR; ++i) packet.parse(xbeeTransmitOptions[i]);
 }
 
 void XbeeOptions::print() const {

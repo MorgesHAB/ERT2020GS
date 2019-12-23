@@ -21,7 +21,7 @@ public:
     virtual ~DataHandler();
 
     void updateTx(packetType::PacketID type);
-    void updateRx(Packet* packet);
+    bool updateRx(Packet* packet);
 
     void print(packetType::PacketID type) const;
 

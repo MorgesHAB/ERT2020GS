@@ -16,12 +16,14 @@ Header::Header(uint8_t packetID) : packetID(packetID),
                                    timestamp(std::time(nullptr)) {}
 
 void Header::write(Packet &packet) {
+    for (auto& e : myDelimiter) packet.write(e);
     packet.write(packetID);
     packet.write(packetNbr);
     packet.write(static_cast<uint32_t>(timestamp));
 }
 
 void Header::parse(Packet &packet) {
+    for (auto& e : myDelimiter) packet.parse(e);
     packet.parse(packetID);
     packet.parse(packetNbr);
     uint32_t tmp;

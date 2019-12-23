@@ -233,7 +233,7 @@ void GuiWindow::refresh_com()
     std::strftime(tbuffer, 32, "%T", tptr);
     miss_panel->setText(qstr(calculate_misses_in_last_2()));
     this->last_refresh_panel->setText(tbuffer);
-    this->rssi_panel->setText("--");
+    this->rssi_panel->setText("-" + qstr(data_->getData<uint8_t>(LAST_RSSI)) + " dBm");
     uint32_t packets(data_->eatData<uint32_t>(PACKET_RX_RATE_CTR, 0));
     packets_second_bar->setValue((packets * (1000.0 / (REFRESH_RATE))));
     corrupted_panel->setText(qstr(data_->getData<uint64_t>(CORRUPTED_PACKET_CTR)));
@@ -241,8 +241,6 @@ void GuiWindow::refresh_com()
 
 void GuiWindow::check_and_show()
 {
-
-
     if (data_->eatData<bool>(IGNITION_STATUS, false)) {
         #ifdef SOUND_ON
         alarm_->play();
@@ -257,10 +255,7 @@ void GuiWindow::check_and_show()
         QMessageBox::warning(this, "File", "File transmission finished.");
     }
 
-
         //show_ok_X(ready_ignition_panel, data_->getData<bool>(IGNITION_CLICKED));
-
-
 }
 
 void GuiWindow::refresh_time()

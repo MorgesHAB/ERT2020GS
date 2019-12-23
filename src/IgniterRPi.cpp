@@ -20,7 +20,6 @@
 #include <Xbee.h>
 #include <DataHandler.h>
 #include <connector.h>
-#include <string>
 #include <csignal>
 
 static volatile sig_atomic_t keep_running = 1;
@@ -38,7 +37,7 @@ int main(int argc, char** argv) {
     std::shared_ptr<Connector> cptr(&connector);
 
     // Your RF modem
-    Xbee xbee("/dev/ttyUSB0");
+    Xbee xbee("/dev/ttyS6");
     // RF packet handler
     DataHandler dataHandler(cptr);
     using namespace packetType;

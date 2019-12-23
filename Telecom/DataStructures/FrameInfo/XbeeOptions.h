@@ -24,7 +24,7 @@ public:
     void print() const override;
 
 private:
-    uint8_t XBEE_FRAME_OPTIONS[XBEE_FRAME_OPTIONS_SIZE];
+    uint8_t xbeeTransmitOptions[XBEE_FRAME_OPTIONS_SIZE];
 };
 
 

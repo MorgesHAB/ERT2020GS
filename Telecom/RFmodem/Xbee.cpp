@@ -96,8 +96,7 @@ bool Xbee::receive(DataHandler &dataHandler) {
             //std::cout << "byte read : " << byteRead << std::endl;
             //if (byteRead + 3 != byteAvail) std::cout << "PROBLEM !!!!!! " << byteRead << " vs " << byteAvail << std::endl;
             //std::cout << "Xbee options : " << +packet->getPacket()[11] << std::endl;
-            dataHandler.updateRx(packet);
-            return true;
+            return dataHandler.updateRx(packet);
         }
     } catch (const serial::IOException &e) {
         std::cerr << "IOException while reading serial port " << std::endl;
@@ -107,4 +106,19 @@ bool Xbee::receive(DataHandler &dataHandler) {
         return false;
     }
     return false;
+}
+
+void Xbee::getRSSI() {
+    /* AT Command (API 1)
+    Start delimiter: 7E
+    Length: 00 04 (4)
+    Frame type: 08 (AT Command)
+    Frame ID: 01 (1)
+    AT Command: 44 42 (DB)
+    Checksum: 70 */
+    uint8_t command[] = {0x7E, 0x00, 0x04, 0x08, 0x01, 0x44, 0x42, 0x70};
+    if (serialPort.isOpen()) {
+        serialPort.write(command, sizeof(command));
+        std::cout << "Diagnostic command have been sent - get RSSI" << std::endl;
+    }
 }

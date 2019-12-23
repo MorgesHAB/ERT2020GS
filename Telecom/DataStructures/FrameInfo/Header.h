@@ -27,6 +27,7 @@ public:
     void updateRx(std::shared_ptr<Connector> connector) override;
 
 private:
+    uint8_t myDelimiter[4] = {'E', 'P', 'F', 'L'};
     uint8_t packetID;
     static uint32_t packetNbr;  // common to all datagram
     std::time_t timestamp;
