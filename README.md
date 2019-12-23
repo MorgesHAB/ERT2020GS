@@ -11,6 +11,51 @@ For more informations : https://epflrocketteam.ch/fr/ :rocket:
 Code of the <b>Ground Segment system</b> which will run on a Raspberry Pi 4 with XBee RF modems.
 
 -----------------------------------------------------------------
+## Repository organization
+
+ * doc
+    * ...
+    * html
+        * ...
+        * index.html // open this file on a web browser 
+                after cloning the project, to read the doxygen documentation 
+        * ...
+  * Logger
+    * ... // under development
+  * src  // cpp file with a main() function
+    * Gui.cpp  //for the multitread program GUI + RF communication management
+    * Igniter.cpp  // for the ignition test simulate with a RPi
+    * GSE.cpp // Ground Support Equipment
+  * Telecom // Telecommunication Objects
+    * DataHandler
+      * DataHandler // contain Datagrams
+      * Datagram // contain Data & a Packet
+    * DataStructures // All kind of Data that will be transmit
+      * Avionic
+        * Avionic Data
+      * File
+        * Manage the transmission of all kind of file / image / picture with a TCP
+      * FrameInfo
+        * Header, Xbee options, etc
+      * Propulsion
+        * Ignition packet, Prop data, etc
+      * ...
+      * Template  // follow this when creating new Data structure
+    * RFmodem
+      * lib
+        * serial // library for XBee module
+        * RadioHead // library for LoRa module
+      * ... // Your RFmodem classes 
+    * Serializer
+    * Worker // main routine - contain a RFmodem & a data handler
+  * UI
+    * GuiWindow // management of the front end part
+    * ui_form.h  // the Gui description - auto generate by Qt
+    * ... // gui classes
+  * CmakeLists.txt // Main Compilation file
+  * autoBuild.sh // bash script to compile the software : `bash autoBuild.sh`
+
+-----------------------------------------------------------------
 ## Prerequisites
 
 - [x] Raspbian operating system installed
@@ -55,23 +100,6 @@ cd WiringPi && ./build
 ```
 (You can delete the WiringPi folder after a correct building)  
 
-### Install & configure your Pi to run a GPS (optional)
-
-First follow this tutorial to [configure GPSD on your Raspberry Pi](https://wiki.dragino.com/index.php?title=Getting_GPS_to_work_on_Raspberry_Pi_3_Model_B)
-
-Once this part achieved, install the library to use gpsd with c++
-```console
-sudo apt-get install libgps-dev
-```
-So at every boot you have to run this command to be 
-able to read GPS data via gpsd
-```console
- sudo gpsd /dev/ttyS0 -F /var/run/gpsd.sock
-```
-You can also add this command in the file ```/etc/rc.local```
-in order to let the Raspberry Pi run this command automatically on boot
-
-
 
 <img src="doc/img/Qt.png" width=120 align="right" >
 
@@ -99,6 +127,21 @@ sudo apt-get install qtcreator
 ```console
 sudo apt-get install qt5-doc qtbase5-examples qtbase5-doc-html 
 ```
+### Install & configure your Pi to run a GPS (optional)
+
+First follow this tutorial to [configure GPSD on your Raspberry Pi](https://wiki.dragino.com/index.php?title=Getting_GPS_to_work_on_Raspberry_Pi_3_Model_B)
+
+Once this part achieved, install the library to use gpsd with c++
+```console
+sudo apt-get install libgps-dev
+```
+So at every boot you have to run this command to be 
+able to read GPS data via gpsd
+```console
+ sudo gpsd /dev/ttyS0 -F /var/run/gpsd.sock
+```
+You can also add this command in the file ```/etc/rc.local```
+in order to let the Raspberry Pi run this command automatically on boot
 
 -----------------------------------------------------------------
 ## Building software
@@ -107,41 +150,34 @@ First clone this GitHub repository in a folder using:
 ```console
 git clone https://github.com/MorgesHAB/ERT2020GS.git
 ```
-Move to the root folder of the project and run the bash to build the executable file:
+Move to the root folder of the project and run the bash to compile and build the executable files:
 ```console
 sudo bash autoBuild.sh
 ```
 -----------------------------------------------------------------
 ## Run software
-After having run the autoBuild.sh script correctly (no errors), three executable should have been created:  
-Transmitter modem 
-```console
-./GSE
-```
-Receiver modem on terminal
-```console
-./GST
-```
-Receiver modem with Graphical User Interface
+After having run the autoBuild.sh script correctly (no errors), many executable should have been created in a "build" folder.  
+The main program calls "ERT2020GS" and is the one run on the Ground Station with a graphical user interface
 ```console
 ./ERT2020GS
 ```
 -----------------------------------------------------------------
 ## How to use the software
-Create a `main.cpp` file. Add a Packet instance and your Transceiver instance 
+Create a `main.cpp` file in the src directory. Add the executable in the main CmakeLists.txt  
+Add a Packet instance and your Transceiver instance 
 and fill data on your packet.
 The Packet::write(T t) method can take all the data that are 
 of a size 8, 16 or 32 bits. You can override this method and adapt it to for 
 example string or GPS data as it's already done. 
 This is the same thing for the Packet::parse(T t) method.
 
-This is an example for the transmitter part with LoRa as RF modem :
+This is an example for the transmitter part with Xbee as RF modem :
 ```cpp
 #include "Packet.h"
-#include "LoRa.h"
+#include "Xbee.h"
 
 int main() {
-    LoRa loRa;
+    Xbee xbee;
     Packet packet;
     
     // fill your packet with some data
@@ -151,13 +187,13 @@ int main() {
     packet.write("Hello World");
 
     // Finally send your packet by RF
-    loRa.send(packet);
+    xbee.send(packet);
 
     return 0;
 }
 ```
 
-If you want to develop some more complex data structure, you have to follow this template:
+If you want to develop some more complex data structure, you have to follow this template: in Telecom/DataStructures
 ```cpp
 // Pattern class
 #include <Data.h>
@@ -166,8 +202,10 @@ class MyData : public Data {         // must inherite of the super class Data
 public:
     void write(Packet& packet) override;
     void parse(Packet& packet) override;
-    void update() override;
     void print() const override;
+
+    void updateTx(std::shared_ptr<Connector> connector) override;
+    void updateRx(std::shared_ptr<Connector> connector) override;
 
 private:
     float nbr;
@@ -198,36 +236,6 @@ enum PacketID {
     GPSID, ..., MY_DATA_TYPE,
 };
 ```
-
------------------------------------------------------------------
-## Repository organization
-
- * doc
-    * ...
-    * html
-        * ...
-        * index.html // open this file on a web browser 
-                after cloning the project, to read the doxygen documentation 
-        * ...
-  * src
-    * GSE.cpp // main() for the transmitter
-    * GST.cpp // main() for the Receiver
-  * Telecom // Telecommunication Objects
-    * DataHandler
-    * DataStructures
-    * RFmodem
-      * lib
-        * serial // library for XBee module
-        * RadioHead // library for LoRa module
-      * ... // Your RFmodem classes 
-    * Serializer
-  * UI
-    * main.cc // Receiver with Qt Gui
-    * ... // gui classes
-  * CmakeLists.txt // Compilation
-  * autoBuild.sh // bash script to compile the software : `bash autoBuild.sh`
-
-
 -----------------------------------------------------------------
 ## Appendix
 ### Installation of Raspbian
