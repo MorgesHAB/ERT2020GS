@@ -9,9 +9,16 @@
 #include "../RF-UI-Interface/connector.h"
 #include "../RF-UI-Interface/ProtocolDefine.h"
 #include "GuiWindow.h"
+#include "../Logger/logger.h"
 
 class A {
 public:
+    void f2(std::shared_ptr<Connector> c){
+        while(c->getData<bool>(ui_interface::RUNNING)){
+        std::cout << "another looooop" << std::endl;
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        }
+    }
     void
     f1(std::shared_ptr<Connector> c)
     {
@@ -62,8 +69,9 @@ main(int argc, char ** argv)
 
     std::shared_ptr<Connector> c(std::make_shared<Connector>());
     A a;
+    Logger logger("test.txt", c);
     std::thread receiver_thread(&A::f1, a, c);
-
+    std::thread logger_thread(&Logger::routine, &logger);
     {
     QApplication app(argc, argv);
     GuiWindow w(c);
@@ -76,5 +84,6 @@ main(int argc, char ** argv)
     app.exec();
     }
     receiver_thread.join();
+    logger_thread.join();
     return 0;
 }

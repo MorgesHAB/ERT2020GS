@@ -29,12 +29,12 @@ namespace ui_interface {
 
         ACTIVE_XBEE, //bool             **This is set to true-false by the Activate-Xbee button.
         IGNITION_CLICKED, //bool        **This is set to true when ignition button is clicked.
-        //            @attention !!! Listener should eat this boolean to be able to detect further clicks !!!
+        //                              @attention !!! Listener should eat this boolean to be able to detect further clicks !!!
 
-        // RF modem
-        LAST_RSSI, // uint8_t Reports the RSSI in -dBm of the last received RF data packet
+        /// RF modem
+        LAST_RSSI, // uint8_t           **Reports the RSSI in -dBm of the last received RF data packet.
 
-        //Ignition
+        /// Ignition
         IGNITION_STATUS, // bool        ** true :  FIRE,  false : ABORTED
         IGNITION_KEY_1_ACTIVATED, //bool
         IGNITION_KEY_2_ACTIVATED, //bool
@@ -50,7 +50,7 @@ namespace ui_interface {
         TX_PACKET_NR,//uint32_t         **This is the last packet's number.
         TIMESTAMP, //time_t             **The Time of the last packet received
 
-        /// GPS Data Structure (float et time_t)
+        /// GPS Data Structure
 
         ALTITUDE,//float                **The last altitude reading
         LONGITUDE,//float               **The last longitude reading
@@ -67,17 +67,23 @@ namespace ui_interface {
 
         TX_IGNITION_CODE, //uint8_t     **Extract first 4 lsb for the code.
 
-        // communication of a File / image
+
+        /// File transmission
+
         // GST Request to Payload
-        SEND_FILE_REQUEST, // true if button on the gui is clicked // bool eat by Telecom code
+
+        SEND_FILE_REQUEST, //bool       **true if button on the gui is clicked, eated by Telecom thread
+
+
         // File transmitting States
-        FILE_TRANSMISSION_STATE, // int enum
-        SENDING_DATA, // bool data sending
+
+        FILE_TRANSMISSION_STATE, //int   **enum specified in ?? //TODO add "enum tate" in a file which is reachable by GUI
+        SENDING_DATA, //bool             **true when data sending
 
 
 
         /// !!! THIS MUST BE THE LAST LINE !!!
-        /// At the end the array size
+        /// The size of the connected data array
         ARRAY_SIZE
     };
 
