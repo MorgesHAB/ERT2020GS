@@ -11,6 +11,19 @@
 #include "GuiWindow.h"
 #include "../Logger/logger.h"
 
+class Data: public Loggable{
+public:
+    virtual ~Data(){}
+    Data(std::string dataname): dataname(dataname){}
+
+    virtual std::string log_description() override{
+        static int a = 0;
+        ++a;
+        return std::to_string(a);
+    }
+    std::string dataname;
+};
+
 class A {
 public:
     void f2(std::shared_ptr<Connector> c){
@@ -69,6 +82,7 @@ main(int argc, char ** argv)
 
     std::shared_ptr<Connector> c(std::make_shared<Connector>());
     A a;
+    Data data1("d1"), data2("d2"), data3("d3");
     Logger logger("test.txt", c);
     std::thread receiver_thread(&A::f1, a, c);
     std::thread logger_thread(&Logger::routine, &logger);
@@ -77,7 +91,12 @@ main(int argc, char ** argv)
     GuiWindow w(c);
     // run all threads
 
-
+    for(int i=0;i<1000;++i){
+    logger.log(std::make_shared<Data>(data1));
+    logger.log(std::make_shared<Data>(data1));
+    logger.log(std::make_shared<Data>(data1));
+    logger.log(std::make_shared<Data>(data1));
+    }
 
     // end the program
     w.show();

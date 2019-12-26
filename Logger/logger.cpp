@@ -38,7 +38,7 @@ void Logger::routine()
             buffer_[current_index_] = beautify(bridge_.pop_front());
             current_index_++;
             #ifdef DEBUG
-            std::cout << "Index is now : " < current_index_ << std::endl;
+            std::cout << "Index is now : " << std::to_string(current_index_) << std::endl;
             #endif
         }
         if (current_index_ > buffer_size_) {

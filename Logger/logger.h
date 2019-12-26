@@ -1,3 +1,5 @@
+#define DEBUG
+
 #ifndef LOGGER_H
 #define LOGGER_H
 #include "loggable.h"
