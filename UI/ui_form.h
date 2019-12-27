@@ -147,7 +147,7 @@ public:
 
         logo = new QLabel(Form);
         logo->setObjectName(QStringLiteral("logo"));
-        logo->setStyleSheet(QStringLiteral("image: url(:/image.png);"));
+        logo->setStyleSheet(QStringLiteral("image: url(:/assets/logo.png);"));
 
         gridLayout->addWidget(logo, 4, 2, 1, 1);
 

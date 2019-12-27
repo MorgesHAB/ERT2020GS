@@ -7,19 +7,32 @@
  * \date        02.12.2019
  */
 
-//#define SOUND_ON
 #ifndef GUIWINDOW_H
 #define GUIWINDOW_H
 
 #include "ui_form.h"
-#include <QTimer>
-#include <memory>
 #include "../RF-UI-Interface/connector.h"
 #include "../RF-UI-Interface/ProtocolDefine.h"
-#include "QCloseEvent"
-#include "QKeyEvent"
+
+#include <array>
+#include <chrono>
+#include <ctime>
+#include <iostream>
+#include <memory>
+
+#include <QCloseEvent>
+#include <QCoreApplication>
+#include <QKeyEvent>
+#include <QMediaContent>
+#include <QMessageBox>
+#include <QPixmap>
+#include <QString>
+#include <QStyleFactory>
+#include <QTimer>
+
+#define SOUND_ON
 #ifdef SOUND_ON
-#include <QSound>
+#include <QMediaPlayer>
 #endif
 
 
@@ -30,9 +43,6 @@ public:
     GuiWindow(std::shared_ptr<Connector> connector);
     void update();
 
-
-
-
 public slots:
     void refresh_data();
     void xbee_clicked();
@@ -40,12 +50,8 @@ public slots:
     void theme_change_clicked();
     void file_transmission_pressed();
 
-
-
-
 private:
-
-    enum Theme { start=0, WHITE_ON_BLACK, GREEN_ON_BLACK, BLACK_ON_WHITE};
+    enum Theme {WHITE_ON_BLACK, GREEN_ON_BLACK, BLACK_ON_WHITE, THEME_COUNT};
 
     void initialize_slots_signals();
     void initialize_style();
@@ -66,10 +72,14 @@ private:
     void refresh_misses();
     void refresh_ignition_code();
 
-    QTimer * timer_;
     #ifdef SOUND_ON
-    QSound * alarm_;
+    void playSound(const char * url);
+    QMediaPlayer* m_player;
+    const char * alarm;
+    const char * takeoff;
     #endif
+
+    QTimer * timer_;
     std::shared_ptr<Connector> data_;
     uint64_t tick_counter_;
     uint64_t missed_count_;

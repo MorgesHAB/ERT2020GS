@@ -8,19 +8,8 @@
  */
 
 #include "GuiWindow.h"
-#include <chrono>
-#include <iostream>
-#include <ctime>
-#include <QStyleFactory>
-#include <QString>
-#include <QMessageBox>
-#include <QPixmap>
-#include <QCoreApplication>
-#include <array>
 
-constexpr uint8_t THEME_COUNT(3);
 constexpr uint32_t REFRESH_RATE(500);
-
 
 using namespace ui_interface;
 
@@ -29,30 +18,10 @@ inline QString degree_representation(double value)
     return QString::number(value) + "<sup>o</sup>";
 }
 
-inline QString qstr(double value)
-{
+//Works for double, uint8_t, uint32_t, uint64_t
+template <typename T> inline QString qstr(T value) {
     return QString::number(value);
-}
-
-inline QString qstr(uint8_t value)
-{
-    return QString::number(value);
-}
-
-inline QString qstr(uint16_t value)
-{
-    return QString::number(value);
-}
-
-inline QString qstr(uint32_t value)
-{
-    return QString::number(value);
-}
-
-inline QString qstr(uint64_t value)
-{
-    return QString::number(value);
-}
+};
 
 inline bool get_bit(unsigned char byte, int position) // position in range 0-7
 {
@@ -61,9 +30,6 @@ inline bool get_bit(unsigned char byte, int position) // position in range 0-7
 
 GuiWindow::GuiWindow(std::shared_ptr<Connector> connector) :
     timer_(new QTimer(this)),
-    #ifdef SOUND_ON
-    alarm_(new QSound(":/alarm.wav", this)),
-    #endif
     data_(connector),
     missed_count_(0),
     white_theme_(0),
@@ -72,6 +38,13 @@ GuiWindow::GuiWindow(std::shared_ptr<Connector> connector) :
     xbee_acvite_(false),
     fullscreen_(false)
 {
+
+    #ifdef SOUND_ON
+    m_player = new QMediaPlayer();
+    alarm = "qrc:/assets/nuclear_alarm.mp3";
+    takeoff = "qrc:/assets/launch.mp3";
+    #endif
+
     initialize_style();
     initialize_slots_signals();
     grabKeyboard();
@@ -113,26 +86,25 @@ void GuiWindow::ignite_clicked()
 
 void GuiWindow::theme_change_clicked()
 {
-    if(current_theme_ == BLACK_ON_WHITE)
-        current_theme_ = start;
 
+    current_theme_ = ((current_theme_+1)%THEME_COUNT);
 
-    current_theme_ = (Theme)((int)current_theme_+1);
-
-    if (current_theme_ == GREEN_ON_BLACK) {
-        setStyleSheet(QLatin1String("background-color: rgb(30, 30, 30);\n"
-          "color: rgb(0, 255, 0);"));
-        packets_second_bar->setStyleSheet(
-            QLatin1String("color: rgb(255, 255, 255);"));
-    } else if (current_theme_ == WHITE_ON_BLACK) {
-        setStyleSheet(QLatin1String("background-color: rgb(255, 255, 255);\n"
-          "color: rgb(0, 0, 0);"));
-        packets_second_bar->setStyleSheet(QLatin1String("color: rgb(0,0,0);"));
-    } else if (current_theme_ == BLACK_ON_WHITE) {
+    if (current_theme_ == WHITE_ON_BLACK) {
         setStyleSheet(QLatin1String("background-color: rgb(30, 30, 30);\n"
           "color: rgb(255, 255, 255);"));
         packets_second_bar->setStyleSheet(
             QLatin1String("color: rgb(255, 255, 255);"));
+    } else
+        if (current_theme_ == GREEN_ON_BLACK) {
+        setStyleSheet(QLatin1String("background-color: rgb(30, 30, 30);\n"
+          "color: rgb(0, 255, 0);"));
+        packets_second_bar->setStyleSheet(
+            QLatin1String("color: rgb(255, 255, 255);"));
+    } else
+        if (current_theme_ == BLACK_ON_WHITE) {
+        setStyleSheet(QLatin1String("background-color: rgb(255, 255, 255);\n"
+          "color: rgb(0, 0, 0);"));
+        packets_second_bar->setStyleSheet(QLatin1String("color: rgb(0,0,0);"));
     }
 }
 
@@ -192,12 +164,29 @@ void GuiWindow::initialize_style()
 
 void GuiWindow::refresh_ignition_frame()
 {
-
     refresh_ignition_code();
-    show_ok_X(key_1_panel, data_->getData<bool>(IGNITION_KEY_1_ACTIVATED));
-    show_ok_X(key_2_panel, data_->getData<bool>(IGNITION_KEY_2_ACTIVATED));
-    show_ok_X(red_button_panel, data_->getData<bool>(IGNITION_RED_BUTTON_PUSHED));
-    show_ok_X(ready_ignition_panel, data_->getData<bool>(IGNITION_CLICKED));
+
+    bool key1 = data_->getData<bool>(IGNITION_KEY_1_ACTIVATED);
+    bool key2 = data_->getData<bool>(IGNITION_KEY_2_ACTIVATED);
+    bool button = data_->getData<bool>(IGNITION_RED_BUTTON_PUSHED);
+    bool clicked = data_->getData<bool>(IGNITION_CLICKED);
+
+    show_ok_X(key_1_panel, key1);
+    show_ok_X(key_2_panel, key2);
+    show_ok_X(red_button_panel, button);
+    show_ok_X(ready_ignition_panel, clicked);
+
+    #ifdef SOUND_ON
+    if (key1 && key2 && clicked){
+        if (m_player->state()!=QMediaPlayer::PlayingState){
+            playSound(alarm);
+        }
+    } else {
+        if (m_player->media() == QMediaContent(QUrl(alarm))){
+            m_player -> stop();
+        }
+    }
+    #endif
 }
 
 void GuiWindow::initialize_slots_signals()
@@ -243,13 +232,10 @@ void GuiWindow::check_and_show()
 {
     if (data_->eatData<bool>(IGNITION_STATUS, false)) {
         #ifdef SOUND_ON
-        alarm_->play();
+        playSound(takeoff);
         #endif
-        //QSound::play(":/alarm.wav");
         QMessageBox::warning(this, "Ignition", "BOOM!");
-        #ifdef SOUND_ON
-        alarm_->stop();
-        #endif
+
     }
     if(data_->getData<uint32_t>(FILE_TRANSMISSION_STATE) == 3){
         QMessageBox::warning(this, "File", "File transmission finished.");
@@ -299,3 +285,11 @@ void GuiWindow::keyPressEvent(QKeyEvent *ckey)
         showNormal();
 
 }
+
+#ifdef SOUND_ON
+void GuiWindow::playSound(const char * url){
+    m_player->setMedia(QUrl(url));
+    m_player->setVolume(100);
+    m_player->play();
+}
+#endif
