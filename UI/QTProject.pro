@@ -1,7 +1,7 @@
 TEMPLATE = app
 TARGET = QTProject
 
-QT = core gui
+QT = core gui multimedia multimediawidgets
 Qt += multimedia
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets multimedia
@@ -25,4 +25,4 @@ HEADERS += \
 FORMS +=
 
 RESOURCES += \
-    asstes.qrc
+    assets.qrc

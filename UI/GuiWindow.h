@@ -14,23 +14,14 @@
 #include "../RF-UI-Interface/connector.h"
 #include "../RF-UI-Interface/ProtocolDefine.h"
 
-#include <array>
-#include <chrono>
-#include <ctime>
-#include <iostream>
 #include <memory>
 
-#include <QCloseEvent>
-#include <QCoreApplication>
-#include <QKeyEvent>
-#include <QMediaContent>
-#include <QMessageBox>
-#include <QPixmap>
-#include <QString>
-#include <QStyleFactory>
 #include <QTimer>
+#include <QCloseEvent>
+#include <QKeyEvent>
 
-#define SOUND_ON
+
+
 #ifdef SOUND_ON
 #include <QMediaPlayer>
 #endif
@@ -51,7 +42,7 @@ public slots:
     void file_transmission_pressed();
 
 private:
-    enum Theme {WHITE_ON_BLACK, GREEN_ON_BLACK, BLACK_ON_WHITE, THEME_COUNT};
+    enum Theme {WHITE_ON_BLACK = 0, GREEN_ON_BLACK, BLACK_ON_WHITE, THEME_COUNT};
 
     void initialize_slots_signals();
     void initialize_style();
@@ -83,7 +74,6 @@ private:
     std::shared_ptr<Connector> data_;
     uint64_t tick_counter_;
     uint64_t missed_count_;
-    uint8_t white_theme_;
     uint8_t current_theme_;
     bool ready_ignition_;
     bool xbee_acvite_;

@@ -8,6 +8,23 @@
  */
 
 #include "GuiWindow.h"
+/// see reference for #include's
+/// https://stackoverflow.com/questions/3943352/where-to-put-include-statements-header-or-source
+/// https://stackoverflow.com/questions/2297567/where-should-include-be-put-in-c
+/// and many others
+
+#include <chrono>
+#include <iostream>
+#include <ctime>
+#include <array>
+
+#include <QStyleFactory>
+#include <QString>
+#include <QMessageBox>
+#include <QPixmap>
+#include <QCoreApplication>
+
+
 
 constexpr uint32_t REFRESH_RATE(500);
 
@@ -32,7 +49,6 @@ GuiWindow::GuiWindow(std::shared_ptr<Connector> connector) :
     timer_(new QTimer(this)),
     data_(connector),
     missed_count_(0),
-    white_theme_(0),
     current_theme_(0),
     ready_ignition_(false),
     xbee_acvite_(false),
@@ -43,6 +59,7 @@ GuiWindow::GuiWindow(std::shared_ptr<Connector> connector) :
     m_player = new QMediaPlayer();
     alarm = "qrc:/assets/nuclear_alarm.mp3";
     takeoff = "qrc:/assets/launch.mp3";
+    playSound(takeoff);
     #endif
 
     initialize_style();
@@ -77,6 +94,7 @@ void GuiWindow::xbee_clicked()
 
 void GuiWindow::ignite_clicked()
 {
+
     std::cout << "Ignition button clicked!" << std::endl;
     ready_ignition_ = data_->getData<bool>(IGNITION_CLICKED);
     ready_ignition_ = !ready_ignition_;
@@ -87,7 +105,7 @@ void GuiWindow::ignite_clicked()
 void GuiWindow::theme_change_clicked()
 {
 
-    current_theme_ = ((current_theme_+1)%THEME_COUNT);
+    current_theme_ = ((current_theme_+1) % THEME_COUNT);
 
     if (current_theme_ == WHITE_ON_BLACK) {
         setStyleSheet(QLatin1String("background-color: rgb(30, 30, 30);\n"
@@ -118,7 +136,7 @@ uint16_t GuiWindow::calculate_misses_in_last_2()
     static std::array<uint32_t, 2000/REFRESH_RATE> before{ 0 };
 
     uint16_t current(tick_counter_ % 2000/REFRESH_RATE);
-    uint16_t tmp(missed_count_ - before[current]);
+    uint16_t tmp(missed_count_ - before[current]); //change
 
     before[current] = missed_count_;
     return tmp;

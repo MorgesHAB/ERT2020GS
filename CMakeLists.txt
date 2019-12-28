@@ -8,7 +8,7 @@ set(USE_XBEE ON)
 set(USE_LORA OFF)
 set(USE_GPS OFF)
 set(RUNNING_ON_RPI OFF)
-set(USE_SOUND OFF)
+set(USE_SOUND ON)
 ###############################################################
 set(CMAKE_CXX_STANDARD 14)
 
@@ -29,7 +29,7 @@ if (USE_XBEE)
 
     if (USE_GUI)
         find_package(Qt5Widgets)
-        qt5_add_resources(RCC_SOURCES UI/logo.qrc)      # add image to Gui
+        qt5_add_resources(RCC_SOURCES UI/assets.qrc)      # add resources to Gui
         add_subdirectory(UI)
         add_executable(${PROJECT_NAME} ${RCC_SOURCES} src/GUI.cpp)
     endif (USE_GUI)

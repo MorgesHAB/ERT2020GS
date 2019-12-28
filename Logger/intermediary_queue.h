@@ -6,13 +6,14 @@
 #include <string>
 
 //This queue implementation may contain unnecessary locks, but still we think it's the safest way
+//TODO think about a lock-free implementation? 2 writers - 1 reader queue
 
 class Intermediary_Queue
 {
 public:
     void push(const std::string& value);
 
-    std::string front(); //consumer must ask for the size before this
+    std::string front(); //consumer has to ask for the size before
 
     std::string pop_front();
 
@@ -22,7 +23,7 @@ public:
 
 
 private:
-    std::queue<std::string> m_queque;
+    std::queue<std::string> m_queue;
     mutable std::mutex m_mutex;
 };
 #endif // INTERMEDIARY_QUEUE_H
