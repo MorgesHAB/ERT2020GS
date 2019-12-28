@@ -124,6 +124,10 @@ sudo apt-get install qt5-default
 
 sudo apt-get install qtmultimedia5-dev
 ```
+To be able to play sounds
+```console
+sudo apt-get install libqt5multimedia5-plugins
+```
 
 Optional
 ```console
