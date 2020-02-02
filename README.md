@@ -58,7 +58,7 @@ Code of the <b>Ground Segment system</b> which will run on a Raspberry Pi 4 with
 -----------------------------------------------------------------
 ## Software organization
 
-<img src="doc/img/Threads.png" width=600>
+<img src="doc/img/2020_GS_GST_System_Diagram.svg">
   
 -----------------------------------------------------------------
 ## Prerequisites
