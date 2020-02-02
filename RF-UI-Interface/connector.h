@@ -23,7 +23,6 @@ public:
 
 private:
     std::array<std::atomic<std::uint64_t>, ui_interface::ARRAY_SIZE> dataCollection;
-    bool Activate;
 };
 
 

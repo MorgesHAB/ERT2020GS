@@ -31,15 +31,15 @@ LoRa::LoRa(double frequency, double TxPower, int mode) {
     }
 }
 
-void LoRa::send(Packet &packet) {
-    rf95.send(packet.getPacket(), packet.getSize());
+void LoRa::send(Packet *packet) {
+    rf95.send(packet->getPacket(), packet->getSize());
     rf95.waitPacketSent();
     std::cout << "Packet have been sent" << std::endl;
 }
 
-bool LoRa::receive(Packet &packet) {
+bool LoRa::receive(Packet *packet) {
     if (rf95.available()) {
-        packet.restart();
+        packet->restart();
         uint8_t length(RH_RF95_MAX_MESSAGE_LEN);
         if (rf95.recv(packet.getPacket(), &length)) {
             std::cout << "\n\nPacket Received" << std::endl;

@@ -12,6 +12,7 @@
  *
  * \author      ISOZ Lionel, KESKE Cem - EPFL EL BA3
  * \date        04.11.2019
+ *   <img src="bellalui.png" width=600>
  */
 
 #include <memory>

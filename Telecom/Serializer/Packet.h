@@ -57,7 +57,7 @@ template<typename T>
 void Packet::write(T t) {
     uint8_t size(sizeof(t));
     if (getSize() + size > PACKET_SIZE_ALLOC_TX_PART) {
-        std::cout << "Error : Packet is full - bigger than " << PACKET_SIZE_ALLOC_TX_PART
+        std::cerr << "Error : Packet is full - bigger than " << PACKET_SIZE_ALLOC_TX_PART
                   << "\nA packet reorganization is required." << std::endl;
         exit(0);
     }

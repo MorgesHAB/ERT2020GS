@@ -2,6 +2,7 @@ var annotated_dup =
 [
     [ "Ui", "namespace_ui.html", "namespace_ui" ],
     [ "A", "class_a.html", "class_a" ],
+    [ "Connector", "class_connector.html", "class_connector" ],
     [ "CRC", "class_c_r_c.html", "class_c_r_c" ],
     [ "CtrlGPIO", "class_ctrl_g_p_i_o.html", "class_ctrl_g_p_i_o" ],
     [ "Data", "class_data.html", "class_data" ],
@@ -13,12 +14,17 @@ var annotated_dup =
     [ "Header", "class_header.html", "class_header" ],
     [ "IgnitionCode", "class_ignition_code.html", "class_ignition_code" ],
     [ "IgnitionData", "class_ignition_data.html", "class_ignition_data" ],
+    [ "Loggable", "class_loggable.html", null ],
+    [ "LoRa", "class_lo_ra.html", "class_lo_ra" ],
     [ "MyData", "class_my_data.html", "class_my_data" ],
     [ "Packet", "class_packet.html", "class_packet" ],
     [ "Picture", "class_picture.html", "class_picture" ],
     [ "PressureData", "class_pressure_data.html", "class_pressure_data" ],
+    [ "RFmodem", "class_r_fmodem.html", "class_r_fmodem" ],
     [ "States", "class_states.html", "class_states" ],
     [ "String", "class_string.html", "class_string" ],
     [ "Ui_Form", "class_ui___form.html", "class_ui___form" ],
+    [ "Worker", "class_worker.html", "class_worker" ],
+    [ "Xbee", "class_xbee.html", "class_xbee" ],
     [ "XbeeOptions", "class_xbee_options.html", "class_xbee_options" ]
 ];

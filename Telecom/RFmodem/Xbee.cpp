@@ -49,20 +49,14 @@ bool Xbee::receive(Packet *packet) {
 bool Xbee::receive(DataHandler &dataHandler) {
     try {
         if (serialPort.available()) {
-            /*uint8_t buffer[4096];
-            for (auto& e: buffer) {
-                std::cout << +e << " ";
-            }
-            std::cout << std::endl;
-            return false;*/
             /*size_t byteavailable = serialPort.available();
             std::vector<uint8_t> buffer(byteavailable);
             //uint8_t buffer[4096];
             serialPort.read(buffer, byteavailable);
             uint16_t length(((buffer[1] << 8)| buffer[2]) + 1);
             if (buffer.begin() + 3 < buffer.back()) ;
-            //Packet* packet = new Packet(length);*/
-            /*size_t byteAvailable(serialPort.available());
+            //Packet* packet = new Packet(length);
+            size_t byteAvailable(serialPort.available());
             std::cout << "Byte available : " << byteAvailable << std::endl;
             //std::vector<uint8_t> buf(byteAvailable);
             uint8_t buf[byteAvailable];

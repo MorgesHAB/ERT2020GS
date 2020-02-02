@@ -14,34 +14,53 @@
  * \date        04.11.2019
  */
 
-#include <LoRa.h>
-#include <DataHandler.h>
-#include <unistd.h>
-#include <string>
+#include <chrono>
+#include <thread>
 
+#include <DataHandler.h>
+#include <connector.h>
+#include <csignal>
+#include <LoRa.h>
+
+static volatile sig_atomic_t keep_running = 1;
+
+static void sig_handler(int _) {
+    (void)_;
+    keep_running = 0;
+}
 
 int main(int argc, char** argv) {
+
+    signal(SIGINT, sig_handler);
+
+    bool modeTx(argc == 2 && std::string(argv[1]) == "Tx");
+
+    Connector connector;
+    std::shared_ptr<Connector> cptr(&connector);
+
     // Your RF modem
     LoRa loRa;
+    connector.setData(ui_interface::SEND_FILE_REQUEST, modeTx);
     // RF packet handler
-    DataHandler dataHandler;
+    DataHandler dataHandler(cptr);
+    using namespace packetType;
 
-    while (true) {
-        // ./LoRaTest Tx            // Transmitter Part
-        if (argc == 2 && std::string(argv[1]) == "Tx") {
-            dataHandler.update(XBEE_TEST);
-            loRa.send(dataHandler.getPacket(XBEE_TEST));
-            usleep(50000);
+    while (keep_running) {
+        // ./XbeeTest Tx            // Transmitter Part
+        if (modeTx) {
+            PacketID ID = static_cast<PacketID> (rand() % (TX_TYPE_NBR));
+            dataHandler.updateTx(ID);
+            loRa.send(dataHandler.getPacket(ID));
+
+            std::this_thread::sleep_for(std::chrono::milliseconds(1000));
         }
-        // ./LoRaTest               // Receiver Part
+            // ./XbeeTest               // Receiver Part
         else {
-            if (loRa.receive(dataHandler.getPacket(XBEE_TEST))) {
-                dataHandler.parse(XBEE_TEST);
-                dataHandler.print(XBEE_TEST);
+            if (loRa.receive(dataHandler)) {
+                dataHandler.printLastRxPacket();
             }
-            usleep(1);
+            std::this_thread::sleep_for(std::chrono::milliseconds(100));
         }
     }
-
     return 0;
 }

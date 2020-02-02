@@ -21,11 +21,12 @@ void Worker::mainRoutine() {
         DataHandler dataHandler(connector);
         // Wait that we clicked on Active Xbee or we close the Window
         while (!connector->getData<bool>(ui_interface::ACTIVE_XBEE)) {
-            std::this_thread::sleep_for(std::chrono::seconds(2));
+            std::this_thread::sleep_for(std::chrono::seconds(1));
             if (!connector->getData<bool>(ui_interface::RUNNING)) return;
         }
 
         // Your RF modem    // Can use eg:      LoRa loRa;
+        //RFmodem* rfmodem = new Xbee("/dev/ttyS3");
         Xbee xbee("/dev/ttyS3");
         std::cout << "Xbee init now" << std::endl;
 

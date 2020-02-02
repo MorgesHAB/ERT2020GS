@@ -11,17 +11,17 @@
 #define XBee_H
 
 #include <serial/serial.h>
-#include <Packet.h>
-#include <DataHandler.h>
+#include <RFmodem.h>
 
-class Xbee {
+
+class Xbee : public RFmodem {
 public:
     Xbee(std::string port);
     virtual ~Xbee();
 
-    void send(Packet *packet);
+    void send(Packet *packet) override ;
     bool receive(Packet *packet);
-    bool receive(DataHandler &dataHandler);
+    bool receive(DataHandler &dataHandler) override;
 
     void getRSSI();
 

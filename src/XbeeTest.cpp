@@ -48,13 +48,10 @@ int main(int argc, char** argv) {
     while (keep_running) {
         // ./XbeeTest Tx            // Transmitter Part
         if (modeTx) {
-            //PacketID ID = static_cast<PacketID> (rand() % (TX_TYPE_NBR));
-            if (connector.getData<bool>(ui_interface::SENDING_DATA))
-                xbee.send(dataHandler.getPacket(IMAGE));
+            PacketID ID = static_cast<PacketID> (rand() % (TX_TYPE_NBR));
+            dataHandler.updateTx(ID);
+            xbee.send(dataHandler.getPacket(ID));
 
-            //dataHandler.updateTx(PROPULSION);
-            //xbee.send(dataHandler.getPacket(PROPULSION));
-           // return 0;
             std::this_thread::sleep_for(std::chrono::milliseconds(50));
         }
         // ./XbeeTest               // Receiver Part
@@ -65,6 +62,5 @@ int main(int argc, char** argv) {
             std::this_thread::sleep_for(std::chrono::milliseconds(7));
         }
     }
-
     return 0;
 }

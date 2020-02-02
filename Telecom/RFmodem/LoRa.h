@@ -11,15 +11,15 @@
 #define LoRa_H
 
 #include <RH_RF95.h>
-#include <Packet.h>
-#include <DataHandler.h>
+#include <RFmodem.h>
 
-class LoRa {
+
+class LoRa : public RFmodem {
 public:
     explicit LoRa(double frequency = 868.0, double TxPower = 23, int mode = 1);
-    void send(Packet &packet);
-    bool receive(Packet &packet);
-    bool receive(DataHandler &dataHandler);
+    void send(Packet *packet) override;
+    bool receive(Packet *packet);
+    bool receive(DataHandler &dataHandler) override;
     int getRSSI();
 
 private:
