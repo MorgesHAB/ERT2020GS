@@ -27,7 +27,7 @@ void Worker::mainRoutine() {
 
         // Your RF modem    // Can use eg:      LoRa loRa;
         //RFmodem* rfmodem = new Xbee("/dev/ttyS3");
-        Xbee xbee("/dev/ttyS3");
+        Xbee xbee("/dev/ttyS6");
         std::cout << "Xbee init now" << std::endl;
 
         while (connector->getData<bool>(ui_interface::ACTIVE_XBEE) &&
@@ -38,6 +38,7 @@ void Worker::mainRoutine() {
             }
             manageIgnitionTx(dataHandler, xbee);
 
+            // Image communication
             if (connector->eatData<bool>(ui_interface::SEND_FILE_REQUEST, false)) {
                 dataHandler.updateTx(packetType::IMAGE);
                 xbee.send(dataHandler.getPacket(packetType::IMAGE));
