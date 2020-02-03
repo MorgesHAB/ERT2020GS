@@ -30,7 +30,7 @@ public:
     }
 
     void updateTx(std::shared_ptr<Connector> connector) {
-        data = rand();      // just for Test - only use at reception
+        data = (double) rand();      // just for Test - only use at reception
     }
 
     void updateRx(std::shared_ptr<Connector> connector) override {
