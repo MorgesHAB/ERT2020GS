@@ -62,6 +62,7 @@ namespace ui_interface {
         /// Pressure Data
 
         PRESSURE_DATA,//float           **Last pressure reading
+        TEST_SENSOR_DATA,       // print just for test it's a generic DataType
 
         /// Tx ignition code
 

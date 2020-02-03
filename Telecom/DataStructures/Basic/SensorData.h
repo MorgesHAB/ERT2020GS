@@ -15,6 +15,7 @@
 template<typename Tdata>
 class SensorData : public Data {
 public:
+    SensorData(ui_interface::DataType name) : name(name) {}
 
     void write(Packet& packet) override {
         packet.write(data);
@@ -25,15 +26,20 @@ public:
     }
 
     void print() const override {
-        std::cout << "Generic Data received - value  " << data << std::endl;
+        std::cout << "Generic Data received - value : " << data << std::endl;
+    }
+
+    void updateTx(std::shared_ptr<Connector> connector) {
+        data = rand();      // just for Test - only use at reception
     }
 
     void updateRx(std::shared_ptr<Connector> connector) override {
-        Data::updateRx(connector);
+        connector->setData(name, data);
     }
 
 private:
     Tdata data;
+    ui_interface::DataType name;
 };
 
 

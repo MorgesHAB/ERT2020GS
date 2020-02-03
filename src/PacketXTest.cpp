@@ -52,8 +52,7 @@ int main(int argc, char** argv) {
             modeTx = std::string(argv[1]) == "Tx";
             break;
         default:
-            std::cout << "Invalid arguments" << std::endl;
-            exit(0);
+            std::cout << "Mode Rx" << std::endl;
     }
 
     Connector connector;

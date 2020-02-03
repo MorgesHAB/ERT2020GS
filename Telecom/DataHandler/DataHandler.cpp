@@ -10,9 +10,9 @@
 #include <FrameInfo/Header.h>
 #include <Avionics/GPS.h>
 #include <Test/PressureData.h>
-#include <Basic//States.h>
+#include <Basic/States.h>
 #include <File/File.h>
-#include <FrameInfo/XbeeOptions.h>
+#include <FrameInfo/XbeeOptions.h>+
 #include <FrameInfo/CRC.h>
 #include <Basic/String.h>
 #include <Basic/SensorData.h>
@@ -26,6 +26,7 @@ DataHandler::DataHandler(std::shared_ptr<Connector> connector)
         : connector(connector), dataHandler(packetType::TOTAL_NBR_OF_TYPES, nullptr),
           lastRxID(packetType::GPSID) {
     using namespace packetType;
+    using namespace ui_interface;
     // Create your RF Packet Datagram here
     // default protocol header ex: packet Type, packet nbr, timestamp
     for (uint8_t id(0); id < TOTAL_NBR_OF_TYPES; ++id) {
@@ -45,7 +46,9 @@ DataHandler::DataHandler(std::shared_ptr<Connector> connector)
     //// Packet Type n° 1 GPS
     dataHandler[GPSID]->add(new GPS);
     dataHandler[GPSID]->add(new PressureData);
-    dataHandler[GPSID]->add(new SensorData<float>);
+    dataHandler[GPSID]->add(new SensorData<float>(DataType::TEST_SENSOR_DATA));
+    dataHandler[GPSID]->add(new SensorData<char>(DataType::TEST_SENSOR_DATA));
+    dataHandler[GPSID]->add(new SensorData<uint16_t>(DataType::TEST_SENSOR_DATA));
 
     //// Packet Type n°2
     dataHandler[PAYLOAD]->add(new PressureData);
