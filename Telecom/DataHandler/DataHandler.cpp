@@ -10,14 +10,15 @@
 #include <FrameInfo/Header.h>
 #include <Avionics/GPS.h>
 #include <Test/PressureData.h>
-#include <Avionics/IgnitionData.h>
-#include <Test/States.h>
+#include <Basic//States.h>
 #include <File/File.h>
 #include <FrameInfo/XbeeOptions.h>
 #include <FrameInfo/CRC.h>
-#include <Test/String.h>
+#include <Basic/String.h>
+#include <Basic/SensorData.h>
 #include <Propulsion/IgnitionCode.h>
 #include <File/Picture.h>
+
 #include "DataHandler.h"
 
 
@@ -44,17 +45,16 @@ DataHandler::DataHandler(std::shared_ptr<Connector> connector)
     //// Packet Type n° 1 GPS
     dataHandler[GPSID]->add(new GPS);
     dataHandler[GPSID]->add(new PressureData);
+    dataHandler[GPSID]->add(new SensorData<float>);
 
     //// Packet Type n°2
     dataHandler[PAYLOAD]->add(new PressureData);
-    dataHandler[PAYLOAD]->add(new IgnitionData);
     dataHandler[PAYLOAD]->add(new States({1, 0, 1, 1, 0, 0, 1, 0}));
 
     //// Packet Type n°3    // Test packet without changing values =>  no 0x7E ???
     dataHandler[AVIONICS]->add(new States({1, 1, 1, 1, 0, 0, 1, 0}));
     dataHandler[AVIONICS]->add(new String("First sentence transmit via XBee !!"));
-    dataHandler[AVIONICS]->add(new String("First sentence transmit via XBee !!"));
-    dataHandler[AVIONICS]->add(new String("First sentence transmit via XBee !!"));
+    dataHandler[AVIONICS]->add(new String("Avionics stuff are coming"));
 
     //// Packet Type n°4
     dataHandler[PROPULSION]->add(new String("~~~~~~~~~~~~~~~~~"));

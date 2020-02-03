@@ -11,7 +11,7 @@
 #define Worker_H
 
 #include <DataHandler.h>
-#include <Xbee.h>
+#include <RFmodem.h>
 #include <connector.h>
 
 
@@ -20,7 +20,7 @@ public:
     Worker(std::shared_ptr<Connector> connector);
 
     void mainRoutine();
-    void manageIgnitionTx(DataHandler& dataHandler, Xbee& xbee);
+    void manageIgnitionTx(DataHandler& dataHandler, RFmodem* rFmodem);
 
 private:
     // Connector Pointer

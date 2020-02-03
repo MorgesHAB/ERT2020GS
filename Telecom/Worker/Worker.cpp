@@ -9,6 +9,7 @@
 
 #include <thread>
 #include <chrono>
+#include <Xbee.h>
 #include "Worker.h"
 
 Worker::Worker(std::shared_ptr<Connector> connector) : connector(connector) {}
@@ -25,14 +26,13 @@ void Worker::mainRoutine() {
             if (!connector->getData<bool>(ui_interface::RUNNING)) return;
         }
 
-        // Your RF modem    // Can use eg:      LoRa loRa;
-        //RFmodem* rfmodem = new Xbee("/dev/ttyS3");
-        Xbee xbee("/dev/ttyS6");
-        std::cout << "Xbee init now" << std::endl;
+        // Your RF modem
+        RFmodem* xbee = new Xbee("/dev/ttyS6");
+        //RFmodem* loRa = new LoRa;   // another example
 
         while (connector->getData<bool>(ui_interface::ACTIVE_XBEE) &&
                connector->getData<bool>(ui_interface::RUNNING)) {
-            if (xbee.receive(dataHandler)) {
+            if (xbee->receive(dataHandler)) {
                 dataHandler.printLastRxPacket();
                 //xbee.getRSSI();
             }
@@ -41,7 +41,7 @@ void Worker::mainRoutine() {
             // Image communication
             if (connector->eatData<bool>(ui_interface::SEND_FILE_REQUEST, false)) {
                 dataHandler.updateTx(packetType::IMAGE);
-                xbee.send(dataHandler.getPacket(packetType::IMAGE));
+                xbee->send(dataHandler.getPacket(packetType::IMAGE));
             }
 
             std::this_thread::sleep_for(std::chrono::milliseconds(50));
@@ -49,7 +49,8 @@ void Worker::mainRoutine() {
     }
 }
 
-void Worker::manageIgnitionTx(DataHandler& dataHandler, Xbee& xbee) {
+
+void Worker::manageIgnitionTx(DataHandler& dataHandler, RFmodem* rfmodem) {
     // If ignition from Gui & keys & red button
     dataHandler.updateTx(packetType::IGNITION_REQUEST);
     if (connector->getData<bool>(ui_interface::IGNITION_KEY_1_ACTIVATED) &&
@@ -57,6 +58,6 @@ void Worker::manageIgnitionTx(DataHandler& dataHandler, Xbee& xbee) {
         connector->getData<bool>(ui_interface::IGNITION_RED_BUTTON_PUSHED) &&
         connector->eatData<bool>(ui_interface::IGNITION_CLICKED, false)) {
         // /!\ Critical point /!\.
-        xbee.send(dataHandler.getPacket(packetType::IGNITION_REQUEST));
+        rfmodem->send(dataHandler.getPacket(packetType::IGNITION_REQUEST));
     }
 }

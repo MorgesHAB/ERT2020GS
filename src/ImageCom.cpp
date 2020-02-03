@@ -8,7 +8,8 @@
  *
  * \file ImageCom.cpp
  *
- * \brief Ignition Test Rpi
+ * \brief Image communication main for the Transmitter
+ * Send an image / Picture if a request is received
  *
  * \author      ISOZ Lionel - EPFL EL BA3
  * \date        04.11.2019
