@@ -22,8 +22,26 @@ File::~File() {
 
 
 void File::print() const {
-    std::cout << "File Data " << fileName << " -- Packet n° " << packetNbr
-              << " / " << nbrTotPacket - 1 << std::endl;
+    switch (receivedState) {
+        case SEND_FILE_REQUEST_TO_TX:
+            std::cout << "A File transmission request have been received" << std::endl;
+            break;
+        case SEND_MISSING_PACKET_REQUEST:
+            std::cout << "A missing packet request have been received" << std::endl;
+            break;
+        case ALL_RECEIVED:
+            std::cout << "ACK : Every Packet have been received correctly" << std::endl;
+            std::cout << "SLEEP mode activated - waiting for another request" << std::endl;
+            break;
+        case SENDING_MISSING_PACKET:
+            std::cout << "!!!!!MISSING PACKET SENT AGAIN" << std::endl;
+        case SENDING_PACKET:
+            std::cout << "Received File Data " << fileName << " -- Packet n° " << packetNbr
+                      << " / " << nbrTotPacket - 1 << std::endl;
+            break;
+        default:
+            break;
+    }
 }
 
 void File::updateTx(std::shared_ptr<Connector> connector) {
@@ -112,7 +130,6 @@ void File::parse(Packet &packet) {
             break;
         /////// On the File Receiver
         case SENDING_MISSING_PACKET:
-            std::cout << "!!!!!MISSING PACKET SENT AGAIN" << std::endl;
         case SENDING_PACKET:
             packet.parse(packetNbr);
             if (packetNbr == 0) { // TODO while not received packet 0
