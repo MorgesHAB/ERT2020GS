@@ -15,6 +15,7 @@
 #include "../RF-UI-Interface/ProtocolDefine.h"
 
 #include <memory>
+#include <string>
 
 #include <QTimer>
 #include <QCloseEvent>
@@ -66,8 +67,8 @@ private:
     #ifdef SOUND_ON
     void playSound(const char * url);
     QMediaPlayer* m_player;
-    const char * alarm;
-    const char * takeoff;
+    std::string alarm;
+    std::string takeoff;
     #endif
 
     QTimer * timer_;

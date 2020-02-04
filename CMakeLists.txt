@@ -5,10 +5,10 @@ project(ERT2020GS)
 # Set the build varialble to ON or OFF on your need
 set(USE_GUI ON)
 set(USE_XBEE ON)
+set(RUNNING_ON_RPI OFF) # <-- if not ON, the Ignition hardware won't wrork
+set(USE_SOUND ON)
 set(USE_LORA OFF)
 set(USE_GPS OFF)
-set(RUNNING_ON_RPI OFF)
-set(USE_SOUND ON)
 ###############################################################
 set(CMAKE_CXX_STANDARD 14)
 

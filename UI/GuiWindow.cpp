@@ -38,7 +38,7 @@ inline QString degree_representation(double value)
 //Works for double, uint8_t, uint32_t, uint64_t
 template <typename T> inline QString qstr(T value) {
     return QString::number(value);
-};
+}
 
 inline bool get_bit(unsigned char byte, int position) // position in range 0-7
 {
@@ -55,12 +55,12 @@ GuiWindow::GuiWindow(std::shared_ptr<Connector> connector) :
     fullscreen_(false)
 {
 
-    #ifdef SOUND_ON
+#ifdef SOUND_ON
     m_player = new QMediaPlayer();
     alarm = "qrc:/assets/nuclear_alarm.mp3";
     takeoff = "qrc:/assets/launch.mp3";
-    playSound(takeoff);
-    #endif
+    playSound(takeoff.c_str());
+#endif
 
     initialize_style();
     initialize_slots_signals();
@@ -194,17 +194,17 @@ void GuiWindow::refresh_ignition_frame()
     show_ok_X(red_button_panel, button);
     show_ok_X(ready_ignition_panel, clicked);
 
-    #ifdef SOUND_ON
-    if (key1 && key2 && clicked){
-        if (m_player->state()!=QMediaPlayer::PlayingState){
-            playSound(alarm);
+#ifdef SOUND_ON
+    if (key1 && key2 && clicked) {
+        if (m_player->state() != QMediaPlayer::PlayingState) {
+            playSound(alarm.c_str());
         }
     } else {
-        if (m_player->media() == QMediaContent(QUrl(alarm))){
-            m_player -> stop();
+        if (m_player->media() == QMediaContent(QUrl(alarm.c_str()))) {
+            m_player->stop();
         }
     }
-    #endif
+#endif
 }
 
 void GuiWindow::initialize_slots_signals()
@@ -250,7 +250,7 @@ void GuiWindow::check_and_show()
 {
     if (data_->eatData<bool>(IGNITION_STATUS, false)) {
         #ifdef SOUND_ON
-        playSound(takeoff);
+        playSound(takeoff.c_str());
         #endif
         QMessageBox::warning(this, "Ignition", "BOOM!");
 
@@ -273,6 +273,7 @@ void GuiWindow::refresh_time()
 
 void GuiWindow::show_ok_X(QLabel * label, bool ok)
 {
+    // Lionel's suggestion : (ok) ? show_ok(label) : show_X(label);
     if(ok)
         show_ok(label);
     else

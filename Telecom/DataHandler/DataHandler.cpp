@@ -64,8 +64,8 @@ DataHandler::DataHandler(std::shared_ptr<Connector> connector)
     dataHandler[PROPULSION]->add(new PressureData);
 
     //// Packet Type n°5
-    //dataHandler[IMAGE]->add(new File("ERT.jpg", 200));
-    dataHandler[IMAGE]->add(new Picture(200, "nul.jpg", 600, 600));
+    dataHandler[IMAGE]->add(new File("earth5k.jpg", 200));
+    //dataHandler[IMAGE]->add(new Picture(200, "nul.jpg", 600, 600));
 
     #ifdef RUNNING_ON_RPI
     dataHandler[IGNITION_REQUEST]->add(new IgnitionCode);
