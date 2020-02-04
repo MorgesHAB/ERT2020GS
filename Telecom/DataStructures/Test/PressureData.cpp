@@ -28,7 +28,7 @@ void PressureData::print() const {
 }
 
 void PressureData::updateTx(std::shared_ptr<Connector> connector) {
-    pressure = 850 + ((float) rand()/ RAND_MAX) * 300;
+    pressure = 850 + ((float) rand() / RAND_MAX) * 300;
 }
 
 void PressureData::updateRx(std::shared_ptr<Connector> connector) {

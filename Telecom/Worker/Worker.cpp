@@ -46,6 +46,7 @@ void Worker::mainRoutine() {
 
             std::this_thread::sleep_for(std::chrono::milliseconds(50));
         }
+        delete xbee;
     }
 }
 

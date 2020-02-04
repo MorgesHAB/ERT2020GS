@@ -3,6 +3,9 @@
  *
  * \brief SensorData module interface
  *
+ * Generic class to transmit some data
+ * eg: float, int, uint32-16-8, char etc
+ *
  * \author      ISOZ Lionel - EPFL EL BA3
  * \date        03.02.2020	
  */
@@ -29,12 +32,13 @@ public:
         std::cout << "Generic Data received - value : " << data << std::endl;
     }
 
-    void updateTx(std::shared_ptr<Connector> connector) {
-        data = (double) rand();      // just for Test - only use at reception
-    }
-
     void updateRx(std::shared_ptr<Connector> connector) override {
         connector->setData(name, data);
+    }
+
+    void updateTx(std::shared_ptr<Connector> connector) {
+        // just for Test - this class is only use at reception
+        data = ((double) rand()/ RAND_MAX) * 1000;
     }
 
 private:

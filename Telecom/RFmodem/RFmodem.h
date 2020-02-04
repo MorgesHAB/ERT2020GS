@@ -21,8 +21,7 @@ public:
     virtual void send(Packet *packet) = 0;
     virtual bool receive(DataHandler &dataHandler) = 0;
 
-private:
-
+    virtual ~RFmodem() = default;
 };
 
 
