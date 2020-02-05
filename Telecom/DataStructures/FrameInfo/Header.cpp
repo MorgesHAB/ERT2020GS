@@ -56,6 +56,12 @@ void Header::print() const {
               << std::asctime(std::localtime(&timestamp)) << std::endl;
 }
 
+std::string Header::log() const {
+    return std::move(
+            std::to_string(packetID) + SEPARATOR +
+            std::to_string(timestamp) + SEPARATOR);
+}
+
 void Header::updateTx(std::shared_ptr<Connector> connector) {
     ++packetNbr;
     timestamp = std::time(nullptr);

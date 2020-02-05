@@ -1,4 +1,13 @@
-#include "logger.h"
+/*!
+ * \file Logger.cpp
+ *
+ * \brief Logger module implementation
+ *
+ * \author      KESKE Cem - EPFL EL BA3
+ * \date        20.12.2019
+ */
+
+#include "Logger.h"
 #include <chrono>
 
 const uint64_t Logger::SLEEP_TIME(2); // in milliseconds

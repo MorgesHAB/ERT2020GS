@@ -30,6 +30,9 @@ target_include_directories(${PROJECT_NAME} PUBLIC Worker)
 target_include_directories(${PROJECT_NAME} PUBLIC ../RF-UI-Interface)
 target_link_libraries(${PROJECT_NAME} RF-UI-Interface)
 
+target_include_directories(${PROJECT_NAME} PUBLIC ../Logger)
+target_link_libraries(${PROJECT_NAME} LogLib)
+
 target_link_libraries(${PROJECT_NAME} wiringPi) # control GPIO of RPi
 target_link_libraries(${PROJECT_NAME} crypt) # link crypt
 

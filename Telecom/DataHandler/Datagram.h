@@ -14,13 +14,16 @@
 #include <vector>
 #include <Data.h>
 #include <Packet.h>
+#include <Loggable.h>
 
-class Datagram {
+
+class Datagram : public Loggable {
 public:
     Datagram();
     virtual ~Datagram();
 
     void print() const;
+    std::string log_description() const override;
 
     void updateTx(std::shared_ptr<Connector> connector);
     void updateRx(Packet *packet, std::shared_ptr<Connector> connector);

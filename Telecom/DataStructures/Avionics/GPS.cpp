@@ -8,6 +8,7 @@
  */
 
 #include <iomanip>
+#include <Loggable.h>
 #include "GPS.h"
 
 GPS::GPS() : latitude(0), longitude(0), altitude(0), speed(0),
@@ -81,3 +82,11 @@ void GPS::updateRx(std::shared_ptr<Connector> connector) {
     connector->setData(ui_interface::TIME, time);
 }
 
+std::string GPS::log() const {
+    return std::move(
+            std::to_string(latitude) + SEPARATOR +
+            std::to_string(longitude) + SEPARATOR +
+            std::to_string(altitude) + SEPARATOR +
+            std::to_string(speed) + SEPARATOR +
+            std::to_string(time) + SEPARATOR);
+}

@@ -1,8 +1,17 @@
+/*!
+ * \file Logger.h
+ *
+ * \brief Logger module interface
+ *
+ * \author      KESKE Cem - EPFL EL BA3
+ * \date        20.12.2019
+ */
+
 #define DEBUG
 
 #ifndef LOGGER_H
 #define LOGGER_H
-#include "loggable.h"
+#include "Loggable.h"
 #include "intermediary_queue.h"
 #include "../RF-UI-Interface/connector.h"
 #include "../RF-UI-Interface/ProtocolDefine.h"

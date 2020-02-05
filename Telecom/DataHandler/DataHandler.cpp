@@ -64,7 +64,7 @@ DataHandler::DataHandler(std::shared_ptr<Connector> connector)
     dataHandler[PROPULSION]->add(new PressureData);
 
     //// Packet Type n°5
-    dataHandler[IMAGE]->add(new File("earth5k.jpg", 200));
+    dataHandler[IMAGE]->add(new File("earth5k.jpg", 100));
     //dataHandler[IMAGE]->add(new Picture(200, "nul.jpg", 600, 600));
 
     #ifdef RUNNING_ON_RPI
@@ -96,6 +96,12 @@ Packet* DataHandler::getPacket(packetType::PacketID type) {
 void DataHandler::printLastRxPacket() const {
     std::cout << "\n\nPrinting Last Packet Received..." << std::endl;
     dataHandler[lastRxID]->print();
+}
+
+void DataHandler::logLastRxPacket() const {
+    //Logger::log(dataHandler[lastRxID]); ???
+    // tmp debug
+    std::cout << dataHandler[lastRxID]->log_description();
 }
 
 void DataHandler::updateTx(packetType::PacketID type) {

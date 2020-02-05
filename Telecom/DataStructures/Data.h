@@ -20,7 +20,9 @@ class Data {
 public:
     virtual void write(Packet& packet) = 0;
     virtual void parse(Packet& packet) = 0;
+
     virtual void print() const = 0;
+    virtual std::string log() const { return ""; }
 
     virtual void updateTx(std::shared_ptr<Connector> connector) {}
     virtual void updateRx(std::shared_ptr<Connector> connector) {}

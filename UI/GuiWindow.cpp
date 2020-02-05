@@ -59,7 +59,7 @@ GuiWindow::GuiWindow(std::shared_ptr<Connector> connector) :
     m_player = new QMediaPlayer();
     alarm = "qrc:/assets/nuclear_alarm.mp3";
     takeoff = "qrc:/assets/launch.mp3";
-    playSound(takeoff.c_str());
+    playSound(takeoff);
 #endif
 
     initialize_style();
@@ -197,10 +197,10 @@ void GuiWindow::refresh_ignition_frame()
 #ifdef SOUND_ON
     if (key1 && key2 && clicked) {
         if (m_player->state() != QMediaPlayer::PlayingState) {
-            playSound(alarm.c_str());
+            playSound(alarm);
         }
     } else {
-        if (m_player->media() == QMediaContent(QUrl(alarm.c_str()))) {
+        if (m_player->media() == QMediaContent(QUrl(alarm))) {
             m_player->stop();
         }
     }
@@ -250,7 +250,7 @@ void GuiWindow::check_and_show()
 {
     if (data_->eatData<bool>(IGNITION_STATUS, false)) {
         #ifdef SOUND_ON
-        playSound(takeoff.c_str());
+        playSound(takeoff);
         #endif
         QMessageBox::warning(this, "Ignition", "BOOM!");
 

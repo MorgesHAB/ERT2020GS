@@ -28,6 +28,7 @@ public:
     Packet* getPacket(packetType::PacketID type);
 
     void printLastRxPacket() const;
+    void logLastRxPacket() const;
 
 private:
     std::shared_ptr<Connector> connector;

@@ -27,8 +27,14 @@ void Datagram::print() const {
     for (auto &data : datagram) data->print();
 }
 
+std::string Datagram::log_description() const {
+    std::string datagramLog;
+    for (auto &data : datagram) datagramLog += data->log();
+    return std::move(datagramLog);
+}
+
 void Datagram::updateTx(std::shared_ptr<Connector> connector) {
-    delete dataPacket;
+    delete dataPacket;  // Data should have been logged
     dataPacket = new Packet;
     //dataPacket->restart();
 

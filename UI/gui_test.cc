@@ -9,7 +9,7 @@
 #include "../RF-UI-Interface/connector.h"
 #include "../RF-UI-Interface/ProtocolDefine.h"
 #include "GuiWindow.h"
-#include "../Logger/logger.h"
+#include "../Logger/Logger.h"
 
 class Data: public Loggable{
 public:
