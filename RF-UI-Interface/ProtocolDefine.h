@@ -80,6 +80,7 @@ namespace ui_interface {
 
         FILE_TRANSMISSION_MY_STATE, // enum in DataStructures/File
         FILE_TRANSMISSION_RECEIVED_STATE,
+        FILE_TRANSMISSION_ALL_RECEIVED, // bool to EAT - for activation of warning window
         SENDING_DATA, //bool      **true when data sending (for Lionel - not print on Gui)
 
 

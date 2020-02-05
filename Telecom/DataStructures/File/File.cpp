@@ -60,7 +60,15 @@ void File::updateTx(std::shared_ptr<Connector> connector) {
                 if (!file[i]) missingPacketNbr.push_back(i);
             }
             if (missingPacketNbr.empty()) myState = ALL_RECEIVED;
-            else lastPacketNbr = missingPacketNbr.back();
+            else {
+                lastPacketNbr = missingPacketNbr.back();
+                break;
+            }
+        case ALL_RECEIVED:
+            std::cout << "ACK : Every Packet have been received correctly" << std::endl;
+            exportFile();
+            connector->setData(ui_interface::FILE_TRANSMISSION_ALL_RECEIVED, true);
+            break;
         default:
             break;
     }
@@ -68,6 +76,8 @@ void File::updateTx(std::shared_ptr<Connector> connector) {
     if (myState == WAITING_MISSING_PACKET_REQUEST)
         connector->setData(ui_interface::SENDING_DATA, false);
 
+    connector->setData(ui_interface::FILE_TRANSMISSION_MY_STATE, myState);
+    connector->setData(ui_interface::FILE_TRANSMISSION_RECEIVED_STATE, receivedState);
     std::cout << "MyState : " << getStateName(myState) << "\t ReceivedState : "
               << getStateName(receivedState) << std::endl;
 }
@@ -78,15 +88,13 @@ void File::write(Packet &packet) {
     // After writing state processing
     switch (myState) {
         /////// On the File Receiver
+        case ALL_RECEIVED:
+            myState = SLEEP;
+            break;
         case SEND_MISSING_PACKET_REQUEST:
             packet.write(lastPacketNbr);
             for (auto& nbr : missingPacketNbr) packet.write(nbr);
             myState = WAITING_PACKET;
-            break;
-        case ALL_RECEIVED:
-            std::cout << "ACK : Every Packet have been received correctly" << std::endl;
-            exportFile();
-            myState = SLEEP;
             break;
         /////// On the File Transmitter
         case SENDING_MISSING_PACKET:
@@ -198,6 +206,8 @@ void File::updateRx(std::shared_ptr<Connector> connector) {
             break;
     }
 
+    connector->setData(ui_interface::FILE_TRANSMISSION_MY_STATE, myState);
+    connector->setData(ui_interface::FILE_TRANSMISSION_RECEIVED_STATE, receivedState);
     std::cout << "MyState : " << getStateName(myState) << "\t ReceivedState : "
               << getStateName(receivedState) << std::endl;
 }

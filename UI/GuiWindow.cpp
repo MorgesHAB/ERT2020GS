@@ -256,7 +256,7 @@ void GuiWindow::check_and_show()
         QMessageBox::warning(this, "Ignition", "BOOM!");
 
     }
-    if(data_->getData<uint32_t>(FILE_TRANSMISSION_MY_STATE) == ALL_RECEIVED) {
+    if(data_->eatData<bool>(FILE_TRANSMISSION_ALL_RECEIVED, false)) {
         QMessageBox::warning(this, "File", "File transmission finished - All received");
     }
 
