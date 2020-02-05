@@ -30,6 +30,21 @@ namespace packetType {
         TOTAL_NBR_OF_TYPES  // <-- size of the array - keep at the end
     };
 
+
+    static std::string getPacketIDName(int packetID) {
+        switch (packetID) {
+            case GPSID: return "GPS";
+            case PAYLOAD: return "Payload";
+            case AVIONICS: return "Avionics";
+            case PROPULSION: return "Propulsion";
+            case IMAGE: return "Image";
+            case XBEE_TEST: return "Xbee frame";
+            case IGNITION_REQUEST: return "Propulsion Ignition Order !";
+            case IGNITION_ANSWER: return "Ignition Response";
+            default: return "Unknown";
+        }
+    }
+
 } // namespace
 
 #endif //PacketTypes_H

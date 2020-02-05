@@ -11,8 +11,10 @@
 #define File_H
 
 #include <Data.h>
+#include <File/FileTransmissionStates.h>
 #include <vector>
 #include <fstream>
+
 
 class File : public Data {
 public:
@@ -33,18 +35,7 @@ protected:
     std::string fileName;
 
 private:
-    enum State {
-        // Rx State
-        SLEEP,
-        SEND_FILE_REQUEST_TO_TX,
-        WAITING_PACKET,
-        SEND_MISSING_PACKET_REQUEST,
-        ALL_RECEIVED,
-        // Tx State
-        SENDING_PACKET,
-        WAITING_MISSING_PACKET_REQUEST,
-        SENDING_MISSING_PACKET
-    } myState, receivedState;
+    FileTransmissionStates myState, receivedState;
 
     uint16_t bytePerPacket;
 

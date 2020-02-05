@@ -7,7 +7,6 @@
  * \date        22.11.2019	
  */
 
-#include <DataHandler.h>    // for PacketID
 #include "Header.h"
 
 uint32_t Header::packetNbr = 0;     // init static variable
@@ -33,25 +32,7 @@ void Header::parse(Packet &packet) {
 
 void Header::print() const {
     std::cout << "*** Packet Type : ";
-    switch (packetID) {
-        case packetType::GPSID: std::cout << "GPS";
-            break;
-        case packetType::PAYLOAD: std::cout << "Payload";
-            break;
-        case packetType::AVIONICS: std::cout << "Avionics";
-            break;
-        case packetType::PROPULSION: std::cout << "Propulsion";
-            break;
-        case packetType::IMAGE: std::cout << "Image";
-            break;
-        case packetType::XBEE_TEST: std::cout << "Xbee frame";
-            break;
-        case packetType::IGNITION_REQUEST: std::cout << "Propulsion Ignition Order !";
-            break;
-        case packetType::IGNITION_ANSWER: std::cout << "Ignition Response";
-            break;
-        default: std::cout << "Unknown";
-    }
+
     std::cout << "\t packet nbr: " << packetNbr << "\t time: "
               << std::asctime(std::localtime(&timestamp)) << std::endl;
 }

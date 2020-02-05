@@ -78,8 +78,9 @@ namespace ui_interface {
 
         // File transmitting States
 
-        FILE_TRANSMISSION_STATE, //int   **enum specified in ?? //TODO add "enum tate" in a file which is reachable by GUI
-        SENDING_DATA, //bool             **true when data sending
+        FILE_TRANSMISSION_MY_STATE, // enum in DataStructures/File
+        FILE_TRANSMISSION_RECEIVED_STATE,
+        SENDING_DATA, //bool      **true when data sending (for Lionel - not print on Gui)
 
 
 

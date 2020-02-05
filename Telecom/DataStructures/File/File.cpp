@@ -33,6 +33,9 @@ void File::print() const {
             std::cout << "ACK : Every Packet have been received correctly" << std::endl;
             std::cout << "SLEEP mode activated - waiting for another request" << std::endl;
             break;
+        case ABORT:
+            std::cout << "Tx sent an Aborted state => Transmission stop - SLEEP mode" << std::endl;
+            break;
         case SENDING_MISSING_PACKET:
             std::cout << "!!!!!MISSING PACKET SENT AGAIN" << std::endl;
         case SENDING_PACKET:
@@ -64,6 +67,9 @@ void File::updateTx(std::shared_ptr<Connector> connector) {
     /////// On the File Transmitter : update FSM state only at Reception
     if (myState == WAITING_MISSING_PACKET_REQUEST)
         connector->setData(ui_interface::SENDING_DATA, false);
+
+    std::cout << "MyState : " << getStateName(myState) << "\t ReceivedState : "
+              << getStateName(receivedState) << std::endl;
 }
 
 void File::write(Packet &packet) {
@@ -114,7 +120,7 @@ void File::write(Packet &packet) {
 void File::parse(Packet &packet) {
     uint8_t statetmp;
     packet.parse(statetmp);
-    receivedState = (State) statetmp;
+    receivedState = (FileTransmissionStates) statetmp;
 
     switch (receivedState) {
         /////// On the File Transmitter
@@ -175,6 +181,8 @@ void File::updateRx(std::shared_ptr<Connector> connector) {
                 if (importFile()) {
                     myState = SENDING_PACKET;
                     connector->setData(ui_interface::SENDING_DATA, true);
+                } else {
+                    myState = ABORT;
                 }
             }
             break;
@@ -183,16 +191,22 @@ void File::updateRx(std::shared_ptr<Connector> connector) {
             myState = SLEEP;
             packetNbr = 0;
             break;
+        case ABORT:
+            myState = SLEEP;
+            break;
         default:
             break;
     }
+
+    std::cout << "MyState : " << getStateName(myState) << "\t ReceivedState : "
+              << getStateName(receivedState) << std::endl;
 }
 
 
 bool File::importFile() {
     // Store all bytes of the file
     std::ifstream fileIn(fileName, std::ios::in | std::ios::binary);
-
+    file.clear();
     if (fileIn) {
         size_t nbr(0);
         while (!fileIn.eof()) {

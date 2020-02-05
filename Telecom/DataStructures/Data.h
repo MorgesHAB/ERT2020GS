@@ -13,6 +13,7 @@
 #include <Packet.h>
 #include <memory>
 #include <connector.h>
+#include <Loggable.h>
 
 // Abstract SuperClass
 // Requirements methods for communicate a data via the protocol

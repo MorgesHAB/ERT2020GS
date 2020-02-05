@@ -17,6 +17,7 @@
 #include <iostream>
 #include <ctime>
 #include <array>
+#include <File/FileTransmissionStates.h>
 
 #include <QStyleFactory>
 #include <QString>
@@ -255,8 +256,8 @@ void GuiWindow::check_and_show()
         QMessageBox::warning(this, "Ignition", "BOOM!");
 
     }
-    if(data_->getData<uint32_t>(FILE_TRANSMISSION_STATE) == 3){
-        QMessageBox::warning(this, "File", "File transmission finished.");
+    if(data_->getData<uint32_t>(FILE_TRANSMISSION_MY_STATE) == ALL_RECEIVED) {
+        QMessageBox::warning(this, "File", "File transmission finished - All received");
     }
 
         //show_ok_X(ready_ignition_panel, data_->getData<bool>(IGNITION_CLICKED));
