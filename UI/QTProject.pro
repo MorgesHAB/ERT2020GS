@@ -19,6 +19,7 @@ HEADERS += \
     ../Logger/logger.h \
     ../RF-UI-Interface/ProtocolDefine.h \
     ../RF-UI-Interface/connector.h \
+    ../Telecom/DataStructures/File/FileTransmissionStates.h \
     ui_form.h \
     GuiWindow.h
 
