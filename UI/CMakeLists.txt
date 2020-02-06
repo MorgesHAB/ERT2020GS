@@ -8,7 +8,7 @@ set(AUTORCC ON)
 #set(CMAKE_AUTOUIC ON)
 
 if (USE_SOUND)
-    add_definitions(-DSOUND_ON)
+    add_definitions(-D SOUND_ON)
     set(QT_USE_QMULTIMEDIA TRUE)
     find_package(Qt5Multimedia REQUIRED)
 endif (USE_SOUND)

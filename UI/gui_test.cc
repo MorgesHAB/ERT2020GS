@@ -15,11 +15,11 @@ class Data: public Loggable{
 public:
     Data(std::string dataname): dataname(dataname){}
     virtual ~Data() override{}
-    virtual std::string log_description() override;
+    std::string log_description() const override;
     std::string dataname;
 };
 
-std::string Data::log_description(){
+std::string Data::log_description() const {
     static int a = 0;
     ++a;
     return std::to_string(a);

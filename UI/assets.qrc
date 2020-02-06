@@ -3,5 +3,6 @@
     <file>assets/logo.png</file>
     <file>assets/nuclear_alarm.mp3</file>
     <file>assets/launch.mp3</file>
+    <file>assets/hymne.mp3</file>
   </qresource>
 </RCC>

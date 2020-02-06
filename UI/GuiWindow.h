@@ -20,6 +20,7 @@
 #include <QCloseEvent>
 #include <QKeyEvent>
 
+#define SOUND_ON
 
 
 #ifdef SOUND_ON
@@ -68,6 +69,7 @@ private:
     QMediaPlayer* m_player;
     const char* alarm;
     const char* takeoff;
+    const char* hymne;
     #endif
 
     QTimer * timer_;

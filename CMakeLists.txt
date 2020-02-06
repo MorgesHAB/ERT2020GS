@@ -10,6 +10,10 @@ set(USE_SOUND ON)
 set(USE_LORA OFF)
 set(USE_GPS OFF)
 ###############################################################
+if (NOT RUNNING_ON_RPI)
+    message("/!\\ Ignition Circuit not activated !")
+endif ()
+
 set(CMAKE_CXX_STANDARD 14)
 
 add_subdirectory(Logger)

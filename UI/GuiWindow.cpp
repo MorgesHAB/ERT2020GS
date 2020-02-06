@@ -17,14 +17,13 @@
 #include <iostream>
 #include <ctime>
 #include <array>
-#include <File/FileTransmissionStates.h>
+#include "../Telecom/DataStructures/File/FileTransmissionStates.h"
 
 #include <QStyleFactory>
 #include <QString>
 #include <QMessageBox>
 #include <QPixmap>
 #include <QCoreApplication>
-
 
 
 constexpr uint32_t REFRESH_RATE(500);
@@ -60,7 +59,8 @@ GuiWindow::GuiWindow(std::shared_ptr<Connector> connector) :
     m_player = new QMediaPlayer();
     alarm = "qrc:/assets/nuclear_alarm.mp3";
     takeoff = "qrc:/assets/launch.mp3";
-    playSound(takeoff);
+    hymne = "qrc:/assets/hymne.mp3";
+    playSound(hymne);
 #endif
 
     initialize_style();
@@ -251,7 +251,7 @@ void GuiWindow::check_and_show()
 {
     if (data_->eatData<bool>(IGNITION_STATUS, false)) {
         #ifdef SOUND_ON
-        playSound(takeoff);
+        //playSound(takeoff);
         #endif
         QMessageBox::warning(this, "Ignition", "BOOM!");
 
