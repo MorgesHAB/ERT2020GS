@@ -61,5 +61,6 @@ void Worker::manageIgnitionTx(DataHandler& dataHandler, RFmodem* rfmodem) {
         connector->eatData<bool>(ui_interface::IGNITION_CLICKED, false)) {
         // /!\ Critical point /!\.
         rfmodem->send(dataHandler.getPacket(packetType::IGNITION_REQUEST));
+        connector->setData(ui_interface::IGNITION_SENT, true);
     }
 }

@@ -205,6 +205,7 @@ void GuiWindow::refresh_ignition_frame()
             m_player->stop();
         }
     }
+    if (data_->eatData<bool>(IGNITION_SENT, false)) playSound(takeoff);
 #endif
 }
 
@@ -274,11 +275,7 @@ void GuiWindow::refresh_time()
 
 void GuiWindow::show_ok_X(QLabel * label, bool ok)
 {
-    // Lionel's suggestion : (ok) ? show_ok(label) : show_X(label);
-    if(ok)
-        show_ok(label);
-    else
-        show_X(label);
+    (ok) ? show_ok(label) : show_X(label);
 }
 
 void GuiWindow::show_ok(QLabel * label)
@@ -299,15 +296,12 @@ void GuiWindow::keyPressEvent(QKeyEvent *ckey)
     if(ckey->key() == Qt::Key_F11 || ckey->key() == Qt::Key_F){
         fullscreen_ = !fullscreen_;
     }
-    if(fullscreen_)
-        showFullScreen();
-    else
-        showNormal();
-
+    (fullscreen_) ? showFullScreen() : showNormal();
 }
 
 #ifdef SOUND_ON
-void GuiWindow::playSound(const char * url){
+void GuiWindow::playSound(const char * url) {
+    m_player->stop();
     m_player->setMedia(QUrl(url));
     m_player->setVolume(100);
     m_player->play();

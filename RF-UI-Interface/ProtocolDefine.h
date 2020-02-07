@@ -39,6 +39,7 @@ namespace ui_interface {
         IGNITION_KEY_1_ACTIVATED, //bool
         IGNITION_KEY_2_ACTIVATED, //bool
         IGNITION_RED_BUTTON_PUSHED, //bool
+        IGNITION_SENT, // bool to eat
 
         /// PacketNbr
         PACKET_RX_RATE_CTR, //uint32_t  **This is incremented on each packet received, eated by guito find the packet rate.
@@ -58,6 +59,12 @@ namespace ui_interface {
         SPEED,//float                   **The last speed reading
         TIME,//time_t 32                **The time of the last GPS packed received
 
+        // Telemetry Avionic Data
+        T_ACCELEROMETER,  //float
+        T_EULER,  //float
+        T_TEMPERATURE,  //float
+        T_PRESSURE,  //float
+        T_SPEED,  //float
 
         /// Pressure Data
 
