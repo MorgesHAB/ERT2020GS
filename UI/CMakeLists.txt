@@ -10,6 +10,7 @@ set(AUTORCC ON)
 if (USE_SOUND)
     add_definitions(-D SOUND_ON)
     set(QT_USE_QMULTIMEDIA TRUE)
+    # sudo apt-get install gstreamer0.10-plugins-good
     find_package(Qt5Multimedia REQUIRED)
 endif (USE_SOUND)
 #find_package(Qt5Widgets) # in the main CmakeLists else compilation error

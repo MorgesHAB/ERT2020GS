@@ -176,7 +176,7 @@ void GuiWindow::refresh_ignition_code()
 
 void GuiWindow::initialize_style()
 {
-    QCoreApplication::setAttribute(Qt::AA_UseStyleSheetPropagationInWidgetStyles);
+    //QCoreApplication::setAttribute(Qt::AA_UseStyleSheetPropagationInWidgetStyles); // doesn't compile on RPi3 !!!!
     //QApplication::setStyle(QStyleFactory::create("cleanlooks"));
     Ui_Form::setupUi(this);
 }
