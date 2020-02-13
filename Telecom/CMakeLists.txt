@@ -18,7 +18,7 @@ endif (USE_XBEE)
 file(GLOB_RECURSE SOURCES DataStructures/* Serializer/*.cpp DataHandler/*.cpp
                           Worker/*.cpp RFmodem/RFmodem.h)
 
-add_library(${PROJECT_NAME} ${SOURCES} ${SOURCES_RF} ${SOURCES_RF2})
+add_library(${PROJECT_NAME} ${SOURCES} ${SOURCES_RF} ${SOURCES_RF2} DataStructures/Avionics/StatusAV.cpp DataStructures/Avionics/StatusAV.h DataStructures/Avionics/StateValues.h)
 
 target_include_directories(${PROJECT_NAME} PUBLIC DataStructures)
 target_include_directories(${PROJECT_NAME} PUBLIC RFmodem)

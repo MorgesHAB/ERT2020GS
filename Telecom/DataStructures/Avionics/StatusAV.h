@@ -1,23 +1,16 @@
-/*!
- * \file GPS.h
- *
- * \brief GPS module interface
- *
- * \author      ISOZ Lionel - EPFL EL BA3
- * \date        02.11.2019	
- */
+//
+// Created by stephanie on 13/02/20.
+//
 
-#ifndef GPS_H
-#define GPS_H
+#ifndef ERT2020GS_STATUSAV_H
+#define ERT2020GS_STATUSAV_H
 
 #include <ctime>
 #include <Data.h>
-//#include <libgpsmm.h>
+#include <Avionics/StateValues.h>
 
-
-class GPS : public Data {
+class StatusAV: public Data{
 public:
-    GPS();
     void write(Packet& packet) override;
     void parse(Packet& packet) override;
 
@@ -26,15 +19,10 @@ public:
 
     void updateTx(std::shared_ptr<Connector> connector) override;
     void updateRx(std::shared_ptr<Connector> connector) override;
-
 private:
-    float latitude;
-    float longitude;
-    float altitude;
-    float speed;
+    uint8_t id, status;
+    float value;
 
-    // gpsmm gpsd;
 };
 
-
-#endif //GPS_H
+#endif //ERT2020GS_STATUSAV_H

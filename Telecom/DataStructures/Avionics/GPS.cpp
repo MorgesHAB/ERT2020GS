@@ -11,8 +11,7 @@
 #include <Loggable.h>
 #include "GPS.h"
 
-GPS::GPS() : latitude(0), longitude(0), altitude(0), speed(0),
-             time(std::time(nullptr))/*,
+GPS::GPS() : latitude(0), longitude(0), altitude(0), speed(0)/*,
              gpsd("localhost", DEFAULT_GPSD_PORT) */{
     srand(std::time(nullptr)); // for simulation random
 
@@ -26,8 +25,6 @@ void GPS::write(Packet& packet) {
     packet.write(latitude);
     packet.write(longitude);
     packet.write(altitude);
-    packet.write(speed);
-    packet.write(static_cast<uint32_t>(time));
 }
 
 
@@ -35,10 +32,6 @@ void GPS::parse(Packet& packet) {
     packet.parse(latitude);
     packet.parse(longitude);
     packet.parse(altitude);
-    packet.parse(speed);
-    uint32_t tmp;
-    packet.parse(tmp);
-    time = static_cast<time_t> (tmp);
 }
 
 void GPS::print() const {
@@ -47,8 +40,6 @@ void GPS::print() const {
     std::cout << "latitude : " << latitude << "°" << std::endl
               << "longitude : " << longitude << "°" << std::endl
               << "altitude : " << altitude << " m" << std::endl
-              << "speed : " << speed << " km/h" << std::endl
-              << "time : " << std::asctime(std::localtime(&time)) << std::endl;
 }
 
 void GPS::updateTx(std::shared_ptr<Connector> connector) {
@@ -70,23 +61,17 @@ void GPS::updateTx(std::shared_ptr<Connector> connector) {
     latitude =  42 + ((float) rand()/ RAND_MAX) * 6;
     longitude =  11 + ((float) rand()/ RAND_MAX) * 6;
     altitude =  500 + ((float) rand()/ RAND_MAX) * 1000;
-    speed = ((float) rand()/ RAND_MAX) * 100;
-    time = std::time(nullptr);
 }
 
 void GPS::updateRx(std::shared_ptr<Connector> connector) {
-    connector->setData(ui_interface::LATITUDE, latitude);
-    connector->setData(ui_interface::LONGITUDE, longitude);
-    connector->setData(ui_interface::ALTITUDE, altitude);
-    connector->setData(ui_interface::SPEED, speed);
-    connector->setData(ui_interface::TIME, time);
+    connector->setData(ui_interface::GPS_ALTITUDE, latitude);
+    connector->setData(ui_interface::GPS_LONGITUDE, longitude);
+    connector->setData(ui_interface::GPS_ALTITUDE, altitude);
 }
 
 std::string GPS::log() const {
     return std::move(
             std::to_string(latitude) + SEPARATOR +
             std::to_string(longitude) + SEPARATOR +
-            std::to_string(altitude) + SEPARATOR +
-            std::to_string(speed) + SEPARATOR +
-            std::to_string(time) + SEPARATOR);
+            std::to_string(altitude) + SEPARATOR );
 }
