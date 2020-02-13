@@ -220,12 +220,12 @@ void GuiWindow::initialize_slots_signals()
 
 void GuiWindow::refresh_telemetry()
 {
-    float tmp(data_->getData<float>(LATITUDE));
+    float tmp(data_->getData<float>(GPS_LATITUDE));
 
     latitude_panel->setText(degree_representation(tmp));
-    tmp = data_->getData<float>(LONGITUDE);
+    tmp = data_->getData<float>(GPS_LONGITUDE);
     longitude_panel->setText(degree_representation(tmp));
-    tmp = data_->getData<float>(ALTITUDE);
+    tmp = data_->getData<float>(GPS_ALTITUDE);
     this->altitude_lcd->display(tmp);
 }
 
@@ -235,7 +235,7 @@ void GuiWindow::refresh_com()
     this->last_packet_number_panel->setText(
             qstr(data_->getData<uint32_t>(TX_PACKET_NR)));
     received_pack_cnt_panel->setText(qstr(data_->getData<uint32_t>(RX_PACKET_CTR)));
-    this->speed_lcd->display(data_->getData<float>(SPEED));
+    //this->speed_lcd->display(data_->getData<float>(SPEED)); no speed
     time_t timestamp(data_->getData<time_t>(TIMESTAMP));
     char tbuffer[32];
     struct tm *tptr = std::localtime(&timestamp);

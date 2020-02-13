@@ -9,6 +9,7 @@
 
 #include <FrameInfo/Header.h>
 #include <Avionics/GPS.h>
+#include <Avionics/Telemetry.h>
 #include <Propulsion/PPPressure.h>
 #include <Basic/States.h>
 #include <File/File.h>
@@ -24,7 +25,7 @@
 
 DataHandler::DataHandler(std::shared_ptr<Connector> connector)
         : connector(connector), dataHandler(DatagramType::TOTAL_NBR_OF_TYPES, nullptr),
-          lastRxID(DatagramType::GPSID) {
+          lastRxID(DatagramType::INIT) {
     using namespace DatagramType;
     using namespace ui_interface;
     // Create your RF Packet Datagram here
@@ -36,41 +37,46 @@ DataHandler::DataHandler(std::shared_ptr<Connector> connector)
     }
     ///////////////////////////////////////////////////////////////////////////
     ////////////////////////// Your Playground ////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////
 
-    //// Packet Type  XBEE
-    dataHandler[XBEE_TEST]->add(new PPPressure);
-    dataHandler[XBEE_TEST]->add(new String("First sentence transmit via XBee !!"));
-    dataHandler[XBEE_TEST]->add(new States({1, 0, 1, 1, 0, 0, 1, 0}));
+    //// Avionics Datagram
+    dataHandler[AV_GPS]->add(new GPS);
 
-    //// Packet Type n° 1 GPS
-    dataHandler[GPSID]->add(new GPS);
-    dataHandler[GPSID]->add(new PressureData);
-    dataHandler[GPSID]->add(new SensorData<float>(DataType::TEST_SENSOR_DATA));
-    dataHandler[GPSID]->add(new SensorData<char>(DataType::TEST_SENSOR_DATA));
-    dataHandler[GPSID]->add(new SensorData<uint16_t>(DataType::TEST_SENSOR_DATA));
+    //dataHandler[AV_STATUS]->add(new StatusAV);
 
-    //// Packet Type n°2
-    dataHandler[PAYLOAD]->add(new PressureData);
-    dataHandler[PAYLOAD]->add(new States({1, 0, 1, 1, 0, 0, 1, 0}));
+    dataHandler[AV_TELEMETRY]->add(new Telemetry);
 
-    //// Packet Type n°3    // Test packet without changing values =>  no 0x7E ???
-    dataHandler[AVIONICS]->add(new States({1, 1, 1, 1, 0, 0, 1, 0}));
-    dataHandler[AVIONICS]->add(new String("First sentence transmit via XBee !!"));
-    dataHandler[AVIONICS]->add(new String("Avionics stuff are coming"));
+    //// Propulsion Datagram
+    dataHandler[PROPULSION]->add(new PPPressure);
 
-    //// Packet Type n°4
-    dataHandler[PROPULSION]->add(new String("~~~~~~~~~~~~~~~~~"));
-    dataHandler[PROPULSION]->add(new PressureData);
+    //// Payload Datagram
+    dataHandler[PL_INFO]->add(new String("Not ready yet"));
+    dataHandler[PL_INFO]->add(new States({1, 0, 1, 1, 0, 0, 1, 0}));
 
-    //// Packet Type n°5
-    dataHandler[IMAGE]->add(new File("earth5k.jpg", 200));
-    //dataHandler[IMAGE]->add(new Picture(200, "nul.jpg", 600, 600));
+    dataHandler[PL_IMAGE]->add(new File("panda.jpg", 200));
+
+    //// GSE Datagram
+    dataHandler[GSE_ORDER]->add(new SensorData<float>(DataType::TEST_SENSOR_DATA));
+    dataHandler[GSE_ORDER]->add(new SensorData<char>(DataType::TEST_SENSOR_DATA));
+    dataHandler[GSE_ORDER]->add(new SensorData<uint16_t>(DataType::TEST_SENSOR_DATA));
 
     #ifdef RUNNING_ON_RPI
-    dataHandler[IGNITION_REQUEST]->add(new IgnitionCode);
+    dataHandler[GSE_IGNITION]->add(new IgnitionCode);
     #endif
+
+    //// TEST ----------- Datagram
+    dataHandler[TEST]->add(new String("First sentence transmit via XBee !!"));
+    dataHandler[TEST]->add(new States({1, 0, 1, 1, 0, 0, 1, 0}));
+
+    //// Packet Type n°5
+    dataHandler[IMAGE]->add(new File("panda.jpg", 100));
+    dataHandler[IMAGE]->add(new File("Yann.png", 100));
+    //dataHandler[IMAGE]->add(new Picture(200, "nul.jpg", 600, 600));
+
+
     dataHandler[IGNITION_ANSWER]->add(new String("/!\\/!\\IGNITION FIRED !!!!"));
 
+    ///////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////
     // END of protocol add CRC
     for (uint8_t id(0); id < TOTAL_NBR_OF_TYPES; ++id) {
