@@ -41,7 +41,7 @@ int main(int argc, char** argv) {
     Xbee xbee("/dev/" + std::string((argc == 2) ? argv[1] : "ttyUSB0"));
     // RF packet handler
     DataHandler dataHandler(cptr);
-    using namespace packetType;
+    using namespace DatagramType;
 
     while (keep_running) {
         if (xbee.receive(dataHandler)) dataHandler.printLastRxPacket();

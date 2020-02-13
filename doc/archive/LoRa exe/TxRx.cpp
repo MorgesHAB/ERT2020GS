@@ -18,8 +18,8 @@
  * Start the first LoRa with :     ./TxRx
  * On the 2nd one run :            ./TxRx 0        // start to send packet type 0
  * Now let the two modem communicate automatically. They will exchange some
- * datagram together. In fact if one received the packetID n it will send the n + 1
- * PacketID
+ * datagram together. In fact if one received the DatagramID n it will send the n + 1
+ * DatagramID
  *
  */
 
@@ -37,7 +37,7 @@ int main(int argc, char** argv) {
 
     // ./TxRx X        X = Packet Type nbr {1,2,3,4}
     if (argc == 2) {
-        PacketID type = (PacketID) atoi(argv[1]);
+        DatagramID type = (DatagramID) atoi(argv[1]);
         if (type >= TOTAL_NBR_OF_TYPES || type < 0) {
             std::cout << "Type invalid" << std::endl;
             return 0;
@@ -52,8 +52,8 @@ int main(int argc, char** argv) {
             dataHandler.printLastRxPacket();
             uint8_t id(dataHandler.getLastRxID());
             usleep(500000);
-            dataHandler.update((PacketID) ((++id) % NBR_OF_TYPE));
-            loRa.send(dataHandler.getPacket((PacketID) (id % NBR_OF_TYPE)));
+            dataHandler.update((DatagramID) ((++id) % NBR_OF_TYPE));
+            loRa.send(dataHandler.getPacket((DatagramID) (id % NBR_OF_TYPE)));
         }
         usleep(10); //microseconds
     }

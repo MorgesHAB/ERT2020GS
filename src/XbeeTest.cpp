@@ -43,12 +43,12 @@ int main(int argc, char** argv) {
     connector.setData(ui_interface::SEND_FILE_REQUEST, modeTx);
     // RF packet handler
     DataHandler dataHandler(cptr);
-    using namespace packetType;
+    using namespace DatagramType;
 
     while (keep_running) {
         // ./XbeeTest Tx            // Transmitter Part
         if (modeTx) {
-            PacketID ID = static_cast<PacketID> (rand() % (TX_TYPE_NBR));
+            DatagramID ID = static_cast<DatagramID> (rand() % (TX_TYPE_NBR));
             dataHandler.updateTx(ID);
             xbee.send(dataHandler.getPacket(ID));
 

@@ -12,7 +12,7 @@
 
 
 #include <vector>
-#include <PacketTypes.h>
+#include <DatagramTypes.h>
 #include <Datagram.h>
 
 class DataHandler {
@@ -20,12 +20,12 @@ public:
     DataHandler(std::shared_ptr<Connector> connector);
     virtual ~DataHandler();
 
-    void updateTx(packetType::PacketID type);
+    void updateTx(DatagramType::DatagramID type);
     bool updateRx(Packet* packet);
 
-    void print(packetType::PacketID type) const;
+    void print(DatagramType::DatagramID type) const;
 
-    Packet* getPacket(packetType::PacketID type);
+    Packet* getPacket(DatagramType::DatagramID type);
 
     void printLastRxPacket() const;
     void logLastRxPacket() const;
@@ -34,7 +34,7 @@ private:
     std::shared_ptr<Connector> connector;
 
     std::vector<Datagram*> dataHandler;
-    packetType::PacketID lastRxID;
+    DatagramType::DatagramID lastRxID;
 };
 
 

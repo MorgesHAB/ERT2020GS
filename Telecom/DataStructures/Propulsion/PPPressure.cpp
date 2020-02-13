@@ -8,29 +8,29 @@
  */
 
 #include <ctime>
-#include "PressureData.h"
+#include "PPPressure.h"
 
-PressureData::PressureData() : pressure(0) {
+PPPressure::PPPressure() : pressure(0) {
     srand(time(0)); // for simulation random
 }
 
 
-void PressureData::write(Packet &packet) {
+void PPPressure::write(Packet &packet) {
     packet.write(pressure);
 }
 
-void PressureData::parse(Packet &packet) {
+void PPPressure::parse(Packet &packet) {
     packet.parse(pressure);
 }
 
-void PressureData::print() const {
+void PPPressure::print() const {
     std::cout << "Pressure Data : " << pressure << " hPa" << std::endl;
 }
 
-void PressureData::updateTx(std::shared_ptr<Connector> connector) {
+void PPPressure::updateTx(std::shared_ptr<Connector> connector) {
     pressure = 850 + ((float) rand() / RAND_MAX) * 300;
 }
 
-void PressureData::updateRx(std::shared_ptr<Connector> connector) {
-    connector->setData(ui_interface::DataType ::PRESSURE_DATA, pressure);
+void PPPressure::updateRx(std::shared_ptr<Connector> connector) {
+    connector->setData(ui_interface::DataType ::PP_PRESSURE, pressure);
 }

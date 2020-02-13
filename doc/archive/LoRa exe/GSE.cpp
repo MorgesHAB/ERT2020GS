@@ -27,7 +27,7 @@ int main(int argc, char** argv) {
 
     // ./GSE X        X = Packet Type nbr {1,2,3,4}
     if (argc == 2) {
-        PacketID type = (PacketID) atoi(argv[1]);
+        DatagramID type = (DatagramID) atoi(argv[1]);
         if (type >= NBR_OF_TYPE || type < 0) {
             std::cout << "Type invalid" << std::endl;
             return 0;

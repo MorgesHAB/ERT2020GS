@@ -11,19 +11,19 @@
 
 uint32_t Header::packetNbr = 0;     // init static variable
 
-Header::Header(uint8_t packetID) : packetID(packetID),
+Header::Header(uint8_t DatagramID) : DatagramID(DatagramID),
                                    timestamp(std::time(nullptr)) {}
 
 void Header::write(Packet &packet) {
     for (auto& e : myDelimiter) packet.write(e);
-    packet.write(packetID);
+    packet.write(DatagramID);
     packet.write(packetNbr);
     packet.write(static_cast<uint32_t>(timestamp));
 }
 
 void Header::parse(Packet &packet) {
     for (auto& e : myDelimiter) packet.parse(e);
-    packet.parse(packetID);
+    packet.parse(DatagramID);
     packet.parse(packetNbr);
     uint32_t tmp;
     packet.parse(tmp);
@@ -39,7 +39,7 @@ void Header::print() const {
 
 std::string Header::log() const {
     return std::move(
-            std::to_string(packetID) + SEPARATOR +
+            std::to_string(DatagramID) + SEPARATOR +
             std::to_string(timestamp) + SEPARATOR);
 }
 
@@ -49,7 +49,7 @@ void Header::updateTx(std::shared_ptr<Connector> connector) {
 }
 
 void Header::updateRx(std::shared_ptr<Connector> connector) {
-    connector->setData(ui_interface::PACKET_ID, packetID);
+    connector->setData(ui_interface::PACKET_ID, DatagramID);
     connector->setData(ui_interface::TX_PACKET_NR, packetNbr);
     connector->setData(ui_interface::TIMESTAMP, timestamp);
 }

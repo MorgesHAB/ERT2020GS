@@ -1,5 +1,5 @@
 /*!
- * \file PacketTypes.h
+ * \file DatagramTypes.h
  *
  * \brief Packet Types definition
  *
@@ -7,16 +7,16 @@
  * \date        18.11.2019
  */
 
-#ifndef PacketTypes_H
-#define PacketTypes_H
+#ifndef DatagramTypes_H
+#define DatagramTypes_H
 
 
-namespace packetType {
+namespace DatagramType {
     // Definition of the content of the packets take place in the
     // DataHandler constructor
 
     // Don't forget to modify header::print() when adding new packet type
-    enum PacketID {
+    enum DatagramID {
         GPSID, PAYLOAD, AVIONICS, PROPULSION, XBEE_TEST,
 
         TX_TYPE_NBR,    // tmp use for random packet type send
@@ -31,8 +31,8 @@ namespace packetType {
     };
 
 
-    static std::string getPacketIDName(int packetID) {
-        switch (packetID) {
+    static std::string getDatagramIDName(int DatagramID) {
+        switch (DatagramID) {
             case GPSID: return "GPS";
             case PAYLOAD: return "Payload";
             case AVIONICS: return "Avionics";
@@ -47,4 +47,4 @@ namespace packetType {
 
 } // namespace
 
-#endif //PacketTypes_H
+#endif //DatagramTypes_H

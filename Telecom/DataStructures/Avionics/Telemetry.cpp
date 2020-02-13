@@ -10,35 +10,49 @@
 #include "Telemetry.h"
 
 void Telemetry::write(Packet &packet) {
-    packet.write(accelerometer);
-    packet.write(euler);
+    packet.write(accelerometer.x);
+    packet.write(accelerometer.y);
+    packet.write(accelerometer.z);
+    packet.write(euler.x);
+    packet.write(euler.y);
+    packet.write(euler.z);
     packet.write(temperature);
     packet.write(pressure);
     packet.write(speed);
 }
 
 void Telemetry::parse(Packet &packet) {
-    packet.parse(accelerometer);
-    packet.parse(euler);
+    packet.parse(accelerometer.x);
+    packet.parse(accelerometer.y);
+    packet.parse(accelerometer.z);
+    packet.parse(euler.x);
+    packet.parse(euler.y);
+    packet.parse(euler.z);
     packet.parse(temperature);
     packet.parse(pressure);
     packet.parse(speed);
 }
 
 void Telemetry::print() const {
-    std::cout << "Accelerometer: " << accelerometer << " Euler: " << euler
+    std::cout << "Accelerometer: (" << accelerometer.x << ", " << accelerometer.y
+              << ", " << accelerometer.z << ") Euler: (" << euler.x << ", " << euler.y
+              << ", " << euler.z
               << " Temperature: " << temperature << " Pressure: " << pressure
               << " Speed: " << speed << std::endl;
 }
 
 void Telemetry::updateTx(std::shared_ptr<Connector> connector) {
-    connector->setData(ui_interface::T_ACCELEROMETER, accelerometer);
-    connector->setData(ui_interface::T_EULER, euler);
-    connector->setData(ui_interface::T_TEMPERATURE, temperature);
-    connector->setData(ui_interface::T_PRESSURE, pressure);
-    connector->setData(ui_interface::T_SPEED, speed);
+
 }
 
 void Telemetry::updateRx(std::shared_ptr<Connector> connector) {
-    Data::updateRx(connector);
+    connector->setData(ui_interface::T_ACCELEROMETER_X, accelerometer.x);
+    connector->setData(ui_interface::T_ACCELEROMETER_Y, accelerometer.y);
+    connector->setData(ui_interface::T_ACCELEROMETER_Z, accelerometer.z);
+    connector->setData(ui_interface::T_EULER_X, euler.x);
+    connector->setData(ui_interface::T_EULER_Y, euler.y);
+    connector->setData(ui_interface::T_EULER_Z, euler.z);
+    connector->setData(ui_interface::T_TEMPERATURE, temperature);
+    connector->setData(ui_interface::T_PRESSURE, pressure);
+    connector->setData(ui_interface::T_SPEED, speed);
 }

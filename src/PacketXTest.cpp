@@ -12,7 +12,7 @@
  *
  * Test the transmission of a specified packet
  * Syntax :
- *              ./TestPacket [Mode Tx or Rx] [PacketID nbr] [Serial port]
+ *              ./TestPacket [Mode Tx or Rx] [DatagramID nbr] [Serial port]
  *  eg :        ./TestPacket Tx 3 ttyUSB0
  *
  * \author      ISOZ Lionel - EPFL EL BA3
@@ -35,19 +35,19 @@ static void sig_handler(int _) {
 }
 
 int main(int argc, char** argv) {
-    using namespace packetType;
+    using namespace DatagramType;
 
     signal(SIGINT, sig_handler);
 
     std::string port("/dev/ttyUSB0");
     bool modeTx(false);
-    PacketID ID(GPSID);
+    DatagramID ID(GPSID);
 
     switch (argc) {
         case 4:
             port = "/dev/" + std::string(argv[3]);
         case 3:
-            ID = (PacketID) atoi(argv[2]);
+            ID = (DatagramID) atoi(argv[2]);
         case 2:
             modeTx = std::string(argv[1]) == "Tx";
             break;
@@ -62,7 +62,7 @@ int main(int argc, char** argv) {
     Xbee xbee(port);
     // RF packet handler
     DataHandler dataHandler(cptr);
-    using namespace packetType;
+    using namespace DatagramType;
 
     while (keep_running) {
         // ./XbeeTest Tx            // Transmitter Part
@@ -70,7 +70,7 @@ int main(int argc, char** argv) {
             dataHandler.updateTx(ID);
             xbee.send(dataHandler.getPacket(ID));
 
-            std::this_thread::sleep_for(std::chrono::milliseconds(250));
+            std::this_thread::sleep_for(std::chrono::milliseconds(25));
         }
         // ./XbeeTest               // Receiver Part
         else {

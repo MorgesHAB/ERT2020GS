@@ -22,7 +22,10 @@ public:
     void updateRx(std::shared_ptr<Connector> connector) override;
 
 private:
-    float accelerometer, euler, temperature, pressure, speed, altitude;
+    struct Vector3D {
+        float x, y, z;
+    } accelerometer, euler;
+    float temperature, pressure, speed, altitude;
 };
 
 

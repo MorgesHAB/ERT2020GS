@@ -12,9 +12,9 @@
 
 #include <Data.h>
 
-class PressureData : public Data {
+class PPPressure : public Data {
 public:
-    PressureData();
+    PPPressure();
 
     void write(Packet& packet) override;
     void parse(Packet& packet) override;

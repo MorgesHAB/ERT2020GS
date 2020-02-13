@@ -17,7 +17,7 @@
 
 class Header : public Data {
 public:
-    explicit Header(uint8_t packetID);
+    explicit Header(uint8_t DatagramID);
 
     void write(Packet& packet) override;
     void parse(Packet& packet) override;
@@ -30,7 +30,7 @@ public:
 
 private:
     uint8_t myDelimiter[4] = {'E', 'P', 'F', 'L'};
-    uint8_t packetID;
+    uint8_t DatagramID;
     static uint32_t packetNbr;  // common to all datagram
     std::time_t timestamp;
 };

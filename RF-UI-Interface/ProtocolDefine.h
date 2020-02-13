@@ -52,39 +52,32 @@ namespace ui_interface {
         TIMESTAMP, //time_t             **The Time of the last packet received
 
         /// GPS Data Structure
-
-        ALTITUDE,//float                **The last altitude reading
-        LONGITUDE,//float               **The last longitude reading
-        LATITUDE,//float                **The last latitude reading
-        SPEED,//float                   **The last speed reading
-        TIME,//time_t 32                **The time of the last GPS packed received
+        GPS_ALTITUDE,//float                **The last altitude reading
+        GPS_LONGITUDE,//float               **The last longitude reading
+        GPS_LATITUDE,//float                **The last latitude reading
+        GPS_HDOP, // float
+        GPS_SAT_NBR, // uint8_t
 
         // Telemetry Avionic Data
-        T_ACCELEROMETER,  //float
-        T_EULER,  //float
+        T_ACCELEROMETER_X, T_ACCELEROMETER_Y, T_ACCELEROMETER_Z,  //float
+        T_EULER_X, T_EULER_Y, T_EULER_Z,  //float
         T_TEMPERATURE,  //float
         T_PRESSURE,  //float
         T_SPEED,  //float
 
         /// Pressure Data
+        PP_PRESSURE,//float           **Last pressure reading
 
-        PRESSURE_DATA,//float           **Last pressure reading
+        // TEST
         TEST_SENSOR_DATA,       // print just for test it's a generic DataType
 
         /// Tx ignition code
-
         TX_IGNITION_CODE, //uint8_t     **Extract first 4 lsb for the code.
 
 
         /// File transmission
-
-        // GST Request to Payload
-
         SEND_FILE_REQUEST, //bool       **true if button on the gui is clicked, eated by Telecom thread
-
-
         // File transmitting States
-
         FILE_TRANSMISSION_MY_STATE, // enum in DataStructures/File
         FILE_TRANSMISSION_RECEIVED_STATE,
         FILE_TRANSMISSION_ALL_RECEIVED, // bool to EAT - for activation of warning window
@@ -92,6 +85,8 @@ namespace ui_interface {
 
 
 
+
+        
         /// !!! THIS MUST BE THE LAST LINE !!!
         /// The size of the connected data array
         ARRAY_SIZE

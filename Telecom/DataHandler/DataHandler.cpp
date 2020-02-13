@@ -9,7 +9,7 @@
 
 #include <FrameInfo/Header.h>
 #include <Avionics/GPS.h>
-#include <Test/PressureData.h>
+#include <Propulsion/PPPressure.h>
 #include <Basic/States.h>
 #include <File/File.h>
 #include <FrameInfo/XbeeOptions.h>
@@ -23,9 +23,9 @@
 
 
 DataHandler::DataHandler(std::shared_ptr<Connector> connector)
-        : connector(connector), dataHandler(packetType::TOTAL_NBR_OF_TYPES, nullptr),
-          lastRxID(packetType::GPSID) {
-    using namespace packetType;
+        : connector(connector), dataHandler(DatagramType::TOTAL_NBR_OF_TYPES, nullptr),
+          lastRxID(DatagramType::GPSID) {
+    using namespace DatagramType;
     using namespace ui_interface;
     // Create your RF Packet Datagram here
     // default protocol header ex: packet Type, packet nbr, timestamp
@@ -38,9 +38,8 @@ DataHandler::DataHandler(std::shared_ptr<Connector> connector)
     ////////////////////////// Your Playground ////////////////////////////////
 
     //// Packet Type  XBEE
-    dataHandler[XBEE_TEST]->add(new PressureData);
+    dataHandler[XBEE_TEST]->add(new PPPressure);
     dataHandler[XBEE_TEST]->add(new String("First sentence transmit via XBee !!"));
-    dataHandler[XBEE_TEST]->add(new PressureData);
     dataHandler[XBEE_TEST]->add(new States({1, 0, 1, 1, 0, 0, 1, 0}));
 
     //// Packet Type n° 1 GPS
@@ -64,7 +63,7 @@ DataHandler::DataHandler(std::shared_ptr<Connector> connector)
     dataHandler[PROPULSION]->add(new PressureData);
 
     //// Packet Type n°5
-    dataHandler[IMAGE]->add(new File("Yann.png", 200));
+    dataHandler[IMAGE]->add(new File("earth5k.jpg", 200));
     //dataHandler[IMAGE]->add(new Picture(200, "nul.jpg", 600, 600));
 
     #ifdef RUNNING_ON_RPI
@@ -84,12 +83,12 @@ DataHandler::~DataHandler() {
     std::cout << "DataHandler deleted - memory released" << std::endl;
 }
 
-void DataHandler::print(packetType::PacketID type) const {
+void DataHandler::print(DatagramType::DatagramID type) const {
     dataHandler[type]->print();
 }
 
 // give data pointer to send
-Packet* DataHandler::getPacket(packetType::PacketID type) {
+Packet* DataHandler::getPacket(DatagramType::DatagramID type) {
     return dataHandler[type]->getDataPacket();
 }
 
@@ -104,7 +103,7 @@ void DataHandler::logLastRxPacket() const {
     std::cout << dataHandler[lastRxID]->log_description();
 }
 
-void DataHandler::updateTx(packetType::PacketID type) {
+void DataHandler::updateTx(DatagramType::DatagramID type) {
     dataHandler[type]->updateTx(connector);
 }
 
@@ -115,15 +114,15 @@ bool DataHandler::updateRx(Packet *packet) {
                                (char) packet->getPacket()[13],
                                (char) packet->getPacket()[14],
                                (char) packet->getPacket()[15]};
-    auto ID = (packetType::PacketID) packet->getPacket()[16];
+    auto ID = (DatagramType::DatagramID) packet->getPacket()[16];
 
     if (frameType == 0x90 && myDelimiter == "EPFL"
-        && ID < packetType::TOTAL_NBR_OF_TYPES) {
+        && ID < DatagramType::TOTAL_NBR_OF_TYPES) {
         connector->incrementData(ui_interface::PACKET_RX_RATE_CTR);
         connector->incrementData(ui_interface::RX_PACKET_CTR);
         lastRxID = ID;
         dataHandler[lastRxID]->updateRx(packet, connector);
-        if (lastRxID == packetType::IGNITION_ANSWER) //TODO: maybe delete, ugly
+        if (lastRxID == DatagramType::IGNITION_ANSWER) //TODO: maybe delete, ugly
             connector->setData(ui_interface::IGNITION_STATUS, true);
         return true;
     }

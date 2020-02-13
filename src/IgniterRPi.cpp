@@ -40,10 +40,10 @@ int main(int argc, char** argv) {
     Xbee xbee("/dev/ttyS6");
     // RF packet handler
     DataHandler dataHandler(cptr);
-    using namespace packetType;
+    using namespace DatagramType;
 
     while (keep_running) {
-        PacketID ID = static_cast<PacketID> (rand() % (TX_TYPE_NBR));
+        DatagramID ID = static_cast<DatagramID> (rand() % (TX_TYPE_NBR));
         dataHandler.updateTx(ID);
         xbee.send(dataHandler.getPacket(ID));
         if (xbee.receive(dataHandler)) {
