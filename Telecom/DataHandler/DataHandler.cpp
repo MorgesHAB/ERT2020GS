@@ -14,6 +14,7 @@
 #include <Basic/States.h>
 #include <File/File.h>
 #include <FrameInfo/XbeeOptions.h>
+#include <FrameInfo/ACKManager.h>
 #include <FrameInfo/CRC.h>
 #include <Basic/String.h>
 #include <Basic/SensorData.h>
@@ -49,6 +50,9 @@ DataHandler::DataHandler(std::shared_ptr<Connector> connector)
     //// Propulsion Datagram
     dataHandler[PROPULSION]->add(new PPPressure);
 
+    //// Air Brakes Datagram
+    dataHandler[AIR_BRAKES]->add(new SensorData<float>(DataType::AIR_BRAKES_ANGLE));
+
     //// Payload Datagram
     dataHandler[PL_INFO]->add(new String("Not ready yet"));
     dataHandler[PL_INFO]->add(new States({1, 0, 1, 1, 0, 0, 1, 0}));
@@ -59,6 +63,9 @@ DataHandler::DataHandler(std::shared_ptr<Connector> connector)
     dataHandler[GSE_ORDER]->add(new SensorData<float>(DataType::TEST_SENSOR_DATA));
     dataHandler[GSE_ORDER]->add(new SensorData<char>(DataType::TEST_SENSOR_DATA));
     dataHandler[GSE_ORDER]->add(new SensorData<uint16_t>(DataType::TEST_SENSOR_DATA));
+
+    // Acknowledge
+    dataHandler[ACK]->add(new ACKManager);
 
     #ifdef RUNNING_ON_RPI
     dataHandler[GSE_IGNITION]->add(new IgnitionCode);
@@ -116,11 +123,11 @@ void DataHandler::updateTx(DatagramType::DatagramID type) {
 bool DataHandler::updateRx(Packet *packet) {
     // TODO  /!\ PROTOCOL define !!! /!\.
     uint8_t frameType = packet->getPacket()[0];
-    std::string myDelimiter = {(char) packet->getPacket()[12],
-                               (char) packet->getPacket()[13],
+    auto ID = (DatagramType::DatagramID) packet->getPacket()[12];
+    std::string myDelimiter = {(char) packet->getPacket()[13],
                                (char) packet->getPacket()[14],
-                               (char) packet->getPacket()[15]};
-    auto ID = (DatagramType::DatagramID) packet->getPacket()[16];
+                               (char) packet->getPacket()[15],
+                               (char) packet->getPacket()[16]};
 
     if (frameType == 0x90 && myDelimiter == "EPFL"
         && ID < DatagramType::TOTAL_NBR_OF_TYPES) {

@@ -28,11 +28,13 @@ namespace DatagramType {
         AIR_BRAKES,
 
         GSE_ORDER,
+        GSE_STATUS,
         GSE_IGNITION,
 
         PL_INFO,
         PL_IMAGE,
 
+        ACK,
         // TEST PACKET
         IMAGE,
         IGNITION_REQUEST,

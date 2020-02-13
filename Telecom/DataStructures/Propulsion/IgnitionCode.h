@@ -28,6 +28,7 @@ public:
     void updateRx(std::shared_ptr<Connector> connector) override;
 
 private:
+    bool ACK;
     std::vector<bool> states;
 };
 

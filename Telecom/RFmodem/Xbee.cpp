@@ -29,16 +29,12 @@ Xbee::~Xbee() {
 bool Xbee::receive(DataHandler &dataHandler) {
     try {
         if (serialPort.available()) {
-            //size_t byteAvail(serialPort.available());
-            //std::cout << "byte avail " << byteAvail << std::endl;
             uint8_t info[3];
             serialPort.read(info, 3);
             // length of the packet is stored at a specific position in Xbee protocol
             uint16_t length(((info[1] << 8)| info[2]) + 1);
             Packet* packet = new Packet(length);
             serialPort.read(packet->getPacket(), length);
-            //std::cout << "byte read : " << byteRead << std::endl;
-            //if (byteRead + 3 != byteAvail) std::cout << "PROBLEM !!!!!! " << byteRead << " vs " << byteAvail << std::endl;
             return dataHandler.updateRx(packet);
         }
     } catch (const serial::IOException &e) {

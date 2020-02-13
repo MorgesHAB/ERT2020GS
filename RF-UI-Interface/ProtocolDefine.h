@@ -68,6 +68,8 @@ namespace ui_interface {
         /// Pressure Data
         PP_PRESSURE,//float           **Last pressure reading
 
+        AIR_BRAKES_ANGLE, // float
+
         // TEST
         TEST_SENSOR_DATA,       // print just for test it's a generic DataType
 

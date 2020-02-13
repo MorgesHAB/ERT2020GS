@@ -15,15 +15,15 @@ Header::Header(uint8_t DatagramID) : DatagramID(DatagramID),
                                    timestamp(std::time(nullptr)) {}
 
 void Header::write(Packet &packet) {
-    for (auto& e : myDelimiter) packet.write(e);
     packet.write(DatagramID);
+    for (auto& e : myDelimiter) packet.write(e);
     packet.write(packetNbr);
     packet.write(static_cast<uint32_t>(timestamp));
 }
 
 void Header::parse(Packet &packet) {
-    for (auto& e : myDelimiter) packet.parse(e);
     packet.parse(DatagramID);
+    for (auto& e : myDelimiter) packet.parse(e);
     packet.parse(packetNbr);
     uint32_t tmp;
     packet.parse(tmp);

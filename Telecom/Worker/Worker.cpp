@@ -32,18 +32,15 @@ void Worker::mainRoutine() {
 
         while (connector->getData<bool>(ui_interface::ACTIVE_XBEE) &&
                connector->getData<bool>(ui_interface::RUNNING)) {
+            // Manage Reception
             if (xbee->receive(dataHandler)) {
-                //dataHandler.printLastRxPacket();
+                dataHandler.printLastRxPacket();
                 //dataHandler.logLastRxPacket();
                 //xbee.getRSSI();
             }
+            // Manage Transmission
             manageIgnitionTx(dataHandler, xbee);
-
-            // Image communication
-            if (connector->eatData<bool>(ui_interface::SEND_FILE_REQUEST, false)) {
-                dataHandler.updateTx(DatagramType::IMAGE);
-                xbee->send(dataHandler.getPacket(DatagramType::IMAGE));
-            }
+            manageImageTransmission(dataHandler, xbee);
 
             std::this_thread::sleep_for(std::chrono::milliseconds(50));
         }
@@ -62,5 +59,13 @@ void Worker::manageIgnitionTx(DataHandler& dataHandler, RFmodem* rfmodem) {
         // /!\ Critical point /!\.
         rfmodem->send(dataHandler.getPacket(DatagramType::IGNITION_REQUEST));
         connector->setData(ui_interface::IGNITION_SENT, true);
+    }
+}
+
+void Worker::manageImageTransmission(DataHandler &dataHandler, RFmodem *rfmodem) {
+    // Image communication
+    if (connector->eatData<bool>(ui_interface::SEND_FILE_REQUEST, false)) {
+        dataHandler.updateTx(DatagramType::IMAGE);
+        rfmodem->send(dataHandler.getPacket(DatagramType::IMAGE));
     }
 }

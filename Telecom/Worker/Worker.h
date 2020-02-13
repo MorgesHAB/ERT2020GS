@@ -20,7 +20,9 @@ public:
     Worker(std::shared_ptr<Connector> connector);
 
     void mainRoutine();
+
     void manageIgnitionTx(DataHandler& dataHandler, RFmodem* rFmodem);
+    void manageImageTransmission(DataHandler& dataHandler, RFmodem* rfmodem);
 
 private:
     // Connector Pointer

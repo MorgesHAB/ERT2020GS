@@ -6,7 +6,7 @@
  *     | |____| | \ \  | |      | |__| |____) |    / /_| |_| / /_| |_| |
  *     |______|_|  \_\ |_|       \_____|_____/    |____|\___/____|\___/
  *
- * \file XbeeTest.cpp
+ * \file IgniterRPi.cpp
  *
  * \brief Ground Support Equipment Transceiver
  *
@@ -43,15 +43,15 @@ int main(int argc, char** argv) {
     using namespace DatagramType;
 
     while (keep_running) {
-        DatagramID ID = static_cast<DatagramID> (rand() % (TX_TYPE_NBR));
+        DatagramID ID = static_cast<DatagramID> (rand() % (AV_DEBUG));
         dataHandler.updateTx(ID);
         xbee.send(dataHandler.getPacket(ID));
         if (xbee.receive(dataHandler)) {
             dataHandler.printLastRxPacket();
         }
-        if (connector.eatData<bool>(ui_interface::IGNITION_STATUS, false)) {
-            dataHandler.updateTx(IGNITION_ANSWER);
-            xbee.send(dataHandler.getPacket(IGNITION_ANSWER));
+        if (connector.getData<bool>(ui_interface::IGNITION_STATUS)) {
+            dataHandler.updateTx(ACK);
+            xbee.send(dataHandler.getPacket(ACK));
         }
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
     }

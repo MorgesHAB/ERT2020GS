@@ -52,27 +52,6 @@ IgnitionCode::IgnitionCode() : states(4, false) {
     pinMode(GPIO_IN_CODE3, INPUT);
 }
 
-void IgnitionCode::write(Packet &packet) {
-    uint8_t statePacket(0);
-    for (uint8_t i(0); i < states.size(); ++i) {
-        statePacket |= states[i] << i;
-    }
-    packet.write(statePacket);
-}
-
-void IgnitionCode::parse(Packet &packet) {
-    uint8_t statePacket(0);
-    packet.parse(statePacket);
-    for (uint8_t i(0); i < states.size(); ++i) {
-        states[i] = statePacket & (1 << i);
-    }
-}
-
-void IgnitionCode::print() const {
-    std::cout << "Tx Ignition code : [ " << states[3] << " " << states[2] << " "
-              << states[1] << " " << states[0] << " ]" << std::endl;
-}
-
 void IgnitionCode::updateTx(std::shared_ptr<Connector> connector) {
     // run on GST
     // Read Data to print on Gui for visual confirmation of component operation
@@ -93,6 +72,24 @@ void IgnitionCode::updateTx(std::shared_ptr<Connector> connector) {
     states[3] = digitalRead(GPIO_IN_CODE3);
     uint8_t code(states[3] << 3 | states[2] << 2 | states[1] << 1 | states[0]);
     connector->setData(ui_interface::TX_IGNITION_CODE, code);
+}
+
+void IgnitionCode::write(Packet &packet) {
+    uint8_t statePacket(0);
+    for (uint8_t i(0); i < states.size(); ++i) {
+        statePacket |= states[i] << i;
+    }
+    packet.write(statePacket);
+}
+
+
+void IgnitionCode::parse(Packet &packet) {
+    bool ACK = packet[16];
+    uint8_t statePacket(0);
+    packet.parse(statePacket);
+    for (uint8_t i(0); i < states.size(); ++i) {
+        states[i] = statePacket & (1 << i);
+    }
 }
 
 void IgnitionCode::updateRx(std::shared_ptr<Connector> connector) {
@@ -119,4 +116,10 @@ void IgnitionCode::updateRx(std::shared_ptr<Connector> connector) {
         connector->setData(ui_interface::IGNITION_STATUS, false);
     }
 }
+
+void IgnitionCode::print() const {
+    std::cout << "Tx Ignition code : [ " << states[3] << " " << states[2] << " "
+              << states[1] << " " << states[0] << " ]" << std::endl;
+}
+
 #endif

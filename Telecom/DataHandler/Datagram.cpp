@@ -36,7 +36,6 @@ std::string Datagram::log_description() const {
 void Datagram::updateTx(std::shared_ptr<Connector> connector) {
     delete dataPacket;  // Data should have been logged
     dataPacket = new Packet;
-    //dataPacket->restart();
 
     for (auto &data : datagram) {
         data->updateTx(connector);
