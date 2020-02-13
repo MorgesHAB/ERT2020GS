@@ -27,8 +27,9 @@
 // So to minimize the packet size, we combine all these states in a byte (8 bits)
 // Packet :  [ - | - | - | - | code 3 | code 2 | code 1 | code 0 LSB  ]
 
-
+#ifdef RUNNING_ON_RPI
 #include <wiringPi.h>
+
 #include "IgnitionCode.h"
 
 
@@ -118,3 +119,4 @@ void IgnitionCode::updateRx(std::shared_ptr<Connector> connector) {
         connector->setData(ui_interface::IGNITION_STATUS, false);
     }
 }
+#endif

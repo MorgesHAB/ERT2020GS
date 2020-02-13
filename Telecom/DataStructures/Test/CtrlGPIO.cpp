@@ -6,7 +6,7 @@
  * \author      ISOZ Lionel - EPFL EL BA3
  * \date        01.12.2019	
  */
-
+#ifdef RUNNING_ON_RPI
 #include <wiringPi.h>
 #include "CtrlGPIO.h"
 
@@ -35,3 +35,4 @@ void CtrlGPIO::updateTx(std::shared_ptr<Connector> connector) {
 void CtrlGPIO::updateRx(std::shared_ptr<Connector> connector) {
     digitalWrite(pin, pinState);
 }
+#endif

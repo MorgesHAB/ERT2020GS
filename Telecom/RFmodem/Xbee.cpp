@@ -36,7 +36,7 @@ bool Xbee::receive(DataHandler &dataHandler) {
             // length of the packet is stored at a specific position in Xbee protocol
             uint16_t length(((info[1] << 8)| info[2]) + 1);
             Packet* packet = new Packet(length);
-            size_t byteRead(serialPort.read(packet->getPacket(), length));
+            serialPort.read(packet->getPacket(), length);
             //std::cout << "byte read : " << byteRead << std::endl;
             //if (byteRead + 3 != byteAvail) std::cout << "PROBLEM !!!!!! " << byteRead << " vs " << byteAvail << std::endl;
             return dataHandler.updateRx(packet);

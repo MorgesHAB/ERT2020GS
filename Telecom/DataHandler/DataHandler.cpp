@@ -64,7 +64,7 @@ DataHandler::DataHandler(std::shared_ptr<Connector> connector)
     dataHandler[PROPULSION]->add(new PressureData);
 
     //// Packet Type n°5
-    dataHandler[IMAGE]->add(new File("earth5k.jpg", 100));
+    dataHandler[IMAGE]->add(new File("Yann.png", 200));
     //dataHandler[IMAGE]->add(new Picture(200, "nul.jpg", 600, 600));
 
     #ifdef RUNNING_ON_RPI
@@ -123,7 +123,7 @@ bool DataHandler::updateRx(Packet *packet) {
         connector->incrementData(ui_interface::RX_PACKET_CTR);
         lastRxID = ID;
         dataHandler[lastRxID]->updateRx(packet, connector);
-        if (lastRxID == packetType::IGNITION_ANSWER)
+        if (lastRxID == packetType::IGNITION_ANSWER) //TODO: maybe delete, ugly
             connector->setData(ui_interface::IGNITION_STATUS, true);
         return true;
     }

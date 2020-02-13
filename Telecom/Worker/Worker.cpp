@@ -33,7 +33,7 @@ void Worker::mainRoutine() {
         while (connector->getData<bool>(ui_interface::ACTIVE_XBEE) &&
                connector->getData<bool>(ui_interface::RUNNING)) {
             if (xbee->receive(dataHandler)) {
-                dataHandler.printLastRxPacket();
+                //dataHandler.printLastRxPacket();
                 //dataHandler.logLastRxPacket();
                 //xbee.getRSSI();
             }

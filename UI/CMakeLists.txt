@@ -24,7 +24,10 @@ if (USE_SOUND)
     target_link_libraries(${PROJECT_NAME} Qt5::Multimedia)
 endif (USE_SOUND)
 target_link_libraries(${PROJECT_NAME} Telecom)
-target_link_libraries(${PROJECT_NAME} wiringPi) # control GPIO of RPi
-target_link_libraries(${PROJECT_NAME} crypt) # link crypt
+
+if (RUNNING_ON_RPI)
+    target_link_libraries(${PROJECT_NAME} wiringPi) # control GPIO of RPi
+    target_link_libraries(${PROJECT_NAME} crypt) # link crypt
+endif (RUNNING_ON_RPI)
 
 
