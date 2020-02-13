@@ -39,7 +39,7 @@ void GPS::print() const {
     std::cout << "----- GPS DATA --------------" << std::endl;
     std::cout << "latitude : " << latitude << "°" << std::endl
               << "longitude : " << longitude << "°" << std::endl
-              << "altitude : " << altitude << " m" << std::endl
+              << "altitude : " << altitude << " m" << std::endl;
 }
 
 void GPS::updateTx(std::shared_ptr<Connector> connector) {

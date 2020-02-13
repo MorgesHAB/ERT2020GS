@@ -83,8 +83,10 @@ namespace ui_interface {
         FILE_TRANSMISSION_ALL_RECEIVED, // bool to EAT - for activation of warning window
         SENDING_DATA, //bool      **true when data sending (for Lionel - not print on Gui)
 
-
-
+        /// Avionics status variables
+        STATUS_AV_ID,
+        STATUS_AV_VALUE,
+        STATUS_AV_STATE, // enum in DataStructures/Avionics/StateValues
 
         
         /// !!! THIS MUST BE THE LAST LINE !!!
