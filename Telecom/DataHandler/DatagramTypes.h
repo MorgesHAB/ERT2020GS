@@ -59,7 +59,7 @@ namespace DatagramType {
             case PL_IMAGE: return "PL IMAGE";
             case IMAGE: return "Image";
             case TEST: return "TEST";
-            case IGNITION_REQUEST: return "Propulsion Ignition Order !";
+            case IGNITION_REQUEST: return "Propulsion Ignition GSEOrder !";
             case IGNITION_ANSWER: return "Ignition Response";
             default: return "Unknown";
         }

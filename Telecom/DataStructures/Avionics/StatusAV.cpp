@@ -4,11 +4,12 @@
 
 #include <iomanip>
 #include "StatusAV.h"
+#include <Avionics/StateValues.h>
 
 void StatusAV::write(Packet &packet) {
     packet.write(id);
     packet.write(value);
-    packet.write(status);
+    packet.write((uint8_t) status);
 }
 
 void StatusAV::parse(Packet &packet) {
@@ -24,7 +25,7 @@ void StatusAV::print() const {
     std::cout << "----- AV STATUS DATA --------------" << std::endl;
     std::cout << "id: " << id << std::endl
               << "value: " << value  << std::endl
-              << "status enum: " <<  status << std::endl;
+              << "status: " <<  getStateName() << std::endl;
 }
 
 std::string StatusAV::log() const {

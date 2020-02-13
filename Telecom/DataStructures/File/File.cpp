@@ -124,7 +124,7 @@ void File::write(Packet &packet) {
     }
 }
 
-// Order : parse then updateRx
+// GSEOrder : parse then updateRx
 void File::parse(Packet &packet) {
     uint8_t statetmp;
     packet.parse(statetmp);

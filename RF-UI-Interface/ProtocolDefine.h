@@ -86,9 +86,18 @@ namespace ui_interface {
         /// Avionics status variables
         STATUS_AV_ID,
         STATUS_AV_VALUE,
-        STATUS_AV_STATE, // enum in DataStructures/Avionics/StateValues
+        STATUS_AV_STATE, // enum in DataStructures/Avionics/StateValues.h
 
-        
+        /// GSE orders
+        GSE_ORDER, //enum in DataStructures/GSE/GSEOrderValues.h
+
+        /// GSE sensors
+        GSE_HOSE_PRESSURE,
+        GSE_HOSE_TEMP,
+        GSE_HOSE_STATUS,
+        GSE_MOTOR_SPEED,
+        GSE_TANK_WEIGHT,
+
         /// !!! THIS MUST BE THE LAST LINE !!!
         /// The size of the connected data array
         ARRAY_SIZE
