@@ -41,7 +41,7 @@ void GSEOrder::print() const {
 }
 
 void GSEOrder::updateTx(std::shared_ptr<Connector> connector) {
-    order = connector->getData<uint8_t>(ui_interface::GSE_ORDER);
+    order = connector->getData<uint8_t>(ui_interface::GSE_ORDER_VALUE);
 }
 
 void GSEOrder::updateRx(std::shared_ptr<Connector> connector) {

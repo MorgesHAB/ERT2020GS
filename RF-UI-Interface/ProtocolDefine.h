@@ -91,7 +91,7 @@ namespace ui_interface {
         STATUS_AV_STATE, // enum in DataStructures/Avionics/StateValues.h
 
         /// GSE orders
-        GSE_ORDER, //enum in DataStructures/GSE/GSEOrderValues.h
+        GSE_ORDER_VALUE, //enum in DataStructures/GSE/GSEOrderValues.h
 
         /// GSE sensors
         GSE_HOSE_PRESSURE,

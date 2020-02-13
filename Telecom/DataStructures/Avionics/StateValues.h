@@ -2,12 +2,9 @@
 // Created by stephanie on 13/02/20.
 //
 
-#include <stdint-gcc.h>
-
 #ifndef ERT2020GS_STATEVALUES_H
 #define ERT2020GS_STATEVALUES_H
 
-#endif //ERT2020GS_STATEVALUES_H
 
 enum StateValues {
     CALIBRATION,
@@ -32,3 +29,4 @@ static std::string getStateName(uint8_t state) {
         default: return "Unknown";
     }
 }
+#endif //ERT2020GS_STATEVALUES_H

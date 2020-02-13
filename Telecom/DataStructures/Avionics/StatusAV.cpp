@@ -25,7 +25,7 @@ void StatusAV::print() const {
     std::cout << "----- AV STATUS DATA --------------" << std::endl;
     std::cout << "id: " << id << std::endl
               << "value: " << value  << std::endl
-              << "status: " <<  getStateName() << std::endl;
+              << "status: " <<  getStateName(status) << std::endl;
 }
 
 std::string StatusAV::log() const {

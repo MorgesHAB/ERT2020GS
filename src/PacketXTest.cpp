@@ -41,7 +41,7 @@ int main(int argc, char** argv) {
 
     std::string port("/dev/ttyUSB0");
     bool modeTx(false);
-    DatagramID ID(GPSID);
+    DatagramID ID(INIT);
 
     switch (argc) {
         case 4:

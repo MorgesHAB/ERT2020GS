@@ -7,9 +7,9 @@
 
 #include <ctime>
 #include <Data.h>
-#include <Avionics/StateValues.h>
 
-class StatusAV: public Data{
+
+class StatusAV: public Data {
 public:
     void write(Packet& packet) override;
     void parse(Packet& packet) override;
@@ -19,10 +19,10 @@ public:
 
     void updateTx(std::shared_ptr<Connector> connector) override;
     void updateRx(std::shared_ptr<Connector> connector) override;
+
 private:
     uint8_t id, status;
     float value;
-
 };
 
 #endif //ERT2020GS_STATUSAV_H

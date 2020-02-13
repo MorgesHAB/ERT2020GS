@@ -84,7 +84,6 @@ void IgnitionCode::write(Packet &packet) {
 
 
 void IgnitionCode::parse(Packet &packet) {
-    bool ACK = packet[16];
     uint8_t statePacket(0);
     packet.parse(statePacket);
     for (uint8_t i(0); i < states.size(); ++i) {
