@@ -48,9 +48,8 @@ int main(int argc, char** argv) {
     while (keep_running) {
         // ./XbeeTest Tx            // Transmitter Part
         if (modeTx) {
-            DatagramID ID = static_cast<DatagramID> (rand() % (TX_TYPE_NBR));
-            dataHandler.updateTx(ID);
-            loRa.send(dataHandler.getPacket(ID));
+            dataHandler.updateTx(AV_TELEMETRY);
+            loRa.send(dataHandler.getPacket(AV_TELEMETRY));
 
             std::this_thread::sleep_for(std::chrono::milliseconds(1000));
         }

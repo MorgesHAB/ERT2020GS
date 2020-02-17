@@ -28,10 +28,9 @@ public:
     void updateRx(std::shared_ptr<Connector> connector) override;
 
 private:
-    float latitude;
-    float longitude;
-    float altitude;
-    float speed;
+    uint8_t satelliteNbr;
+    float hdop;
+    float latitude, longitude, altitude;
 
     // gpsmm gpsd;
 };
