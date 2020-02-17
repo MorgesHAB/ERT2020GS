@@ -7,13 +7,13 @@
  * \date        20.12.2019
  */
 
+
 #define DEBUG
 
 #ifndef LOGGER_H
 # define LOGGER_H
 # include "Loggable.h"
 # include "Logger_buffer.h"
-# include "intermediary_queue.h"
 # include "../RF-UI-Interface/connector.h"
 # include "../RF-UI-Interface/ProtocolDefine.h"
 #include <stdlib.h>
@@ -21,7 +21,7 @@
 # include <iostream>
 # include <fstream>
 # include <memory>
-
+/*
 class Logger
 {
 public:
@@ -47,5 +47,9 @@ private:
 
     Logger(const std::string & log_file, std::shared_ptr<Connector> connector);
     ~Logger();
+    }
 
+*/
 #endif // LOGGER_H
+
+

@@ -6,7 +6,7 @@
  * \author      KESKE Cem - EPFL EL BA3
  * \date        20.12.2019
  */
-
+/*
 #include "Logger.h"
 #include <chrono>
 
@@ -26,6 +26,11 @@ inline std::string beautify(std::string log_string) // force copy !! this is ver
 Logger::~Logger()
 {
     output_file_.close();
+}
+
+Logger &Logger::logger()
+{
+
 }
 
 void Logger::log(std::shared_ptr<Loggable> data)
@@ -58,3 +63,4 @@ void Logger::routine()
         std::this_thread::sleep_for(std::chrono::milliseconds(SLEEP_TIME));
     }
 }
+*/
