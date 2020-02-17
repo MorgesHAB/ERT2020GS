@@ -20,6 +20,8 @@
 #include <Basic/SensorData.h>
 #include <Propulsion/IgnitionCode.h>
 #include <File/Picture.h>
+#include <GSE/GSEOrder.h>
+#include <GSE/GSESensors.h>
 
 #include "DataHandler.h"
 
@@ -60,6 +62,7 @@ DataHandler::DataHandler(std::shared_ptr<Connector> connector)
     dataHandler[PL_IMAGE]->add(new File("panda.jpg", 200));
 
     //// GSE Datagram
+    //dataHandler[GSE_ORDER]->add(new GSEOrder);
     dataHandler[GSE_ORDER]->add(new SensorData<float>(DataType::TEST_SENSOR_DATA));
     dataHandler[GSE_ORDER]->add(new SensorData<char>(DataType::TEST_SENSOR_DATA));
     dataHandler[GSE_ORDER]->add(new SensorData<uint16_t>(DataType::TEST_SENSOR_DATA));

@@ -64,6 +64,7 @@ namespace ui_interface {
         T_TEMPERATURE,  //float
         T_PRESSURE,  //float
         T_SPEED,  //float
+        T_ALTITUDE,  //float
 
         /// Pressure Data
         PP_PRESSURE,//float           **Last pressure reading
