@@ -56,6 +56,7 @@ namespace DatagramType {
             case PROPULSION: return "PROPULSION";
             case AIR_BRAKES: return "AIR BRAKES";
             case GSE_ORDER: return "GSE ORDER";
+            case GSE_STATUS: return "GSE STATUS";
             case GSE_IGNITION: return "GSE IGNITION";
             case PL_INFO: return "PL INFO";
             case PL_IMAGE: return "PL IMAGE";

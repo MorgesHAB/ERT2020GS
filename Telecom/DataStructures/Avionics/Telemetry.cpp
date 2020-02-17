@@ -19,6 +19,7 @@ void Telemetry::write(Packet &packet) {
     packet.write(temperature);
     packet.write(pressure);
     packet.write(speed);
+    packet.write(altitude);
 }
 
 void Telemetry::parse(Packet &packet) {
@@ -31,6 +32,7 @@ void Telemetry::parse(Packet &packet) {
     packet.parse(temperature);
     packet.parse(pressure);
     packet.parse(speed);
+    packet.parse(altitude);
 }
 
 void Telemetry::print() const {
@@ -38,11 +40,21 @@ void Telemetry::print() const {
               << ", " << accelerometer.z << ") Euler: (" << euler.x << ", " << euler.y
               << ", " << euler.z
               << " Temperature: " << temperature << " Pressure: " << pressure
-              << " Speed: " << speed << std::endl;
+              << " Speed: " << speed 
+              << " Altitude : " << altitude << std::endl;
 }
 
 void Telemetry::updateTx(std::shared_ptr<Connector> connector) {
-
+    accelerometer.x = -2 + ((float) rand()/ RAND_MAX) * 6;
+    accelerometer.y = -3 + ((float) rand()/ RAND_MAX) * 3;
+    accelerometer.z = -5 + ((float) rand()/ RAND_MAX) * 20;
+    euler.x = -5 + ((float) rand()/ RAND_MAX) * 6;
+    euler.y = -3 + ((float) rand()/ RAND_MAX) * 16;
+    euler.z = -1 + ((float) rand()/ RAND_MAX) * 5;
+    temperature =  12 + ((float) rand()/ RAND_MAX) * 20;
+    pressure =  100 + ((float) rand()/ RAND_MAX) * 50;
+    speed =  3 + ((float) rand()/ RAND_MAX) * 10;
+    altitude =  500 + ((float) rand()/ RAND_MAX) * 1000;
 }
 
 void Telemetry::updateRx(std::shared_ptr<Connector> connector) {
@@ -55,4 +67,5 @@ void Telemetry::updateRx(std::shared_ptr<Connector> connector) {
     connector->setData(ui_interface::T_TEMPERATURE, temperature);
     connector->setData(ui_interface::T_PRESSURE, pressure);
     connector->setData(ui_interface::T_SPEED, speed);
+    connector->setData(ui_interface::T_ALTITUDE, altitude);
 }

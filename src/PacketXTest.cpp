@@ -70,7 +70,7 @@ int main(int argc, char** argv) {
             dataHandler.updateTx(ID);
             xbee.send(dataHandler.getPacket(ID));
 
-            std::this_thread::sleep_for(std::chrono::milliseconds(25));
+            std::this_thread::sleep_for(std::chrono::milliseconds(200));
         }
         // ./XbeeTest               // Receiver Part
         else {
