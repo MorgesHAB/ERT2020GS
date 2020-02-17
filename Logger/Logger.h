@@ -16,12 +16,13 @@
 # include "Logger_buffer.h"
 # include "../RF-UI-Interface/connector.h"
 # include "../RF-UI-Interface/ProtocolDefine.h"
-#include <stdlib.h>
+# include <stdlib.h>
+# include <unordered_map>
 # include <array>
 # include <iostream>
 # include <fstream>
 # include <memory>
-/*
+
 class Logger
 {
 public:
@@ -46,10 +47,10 @@ public:
 private:
 
     Logger(const std::string & log_file, std::shared_ptr<Connector> connector);
+
     ~Logger();
     }
 
-*/
-#endif // LOGGER_H
 
+#endif // LOGGER_H
 

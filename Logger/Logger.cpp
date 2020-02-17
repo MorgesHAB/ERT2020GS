@@ -6,6 +6,16 @@
  * \author      KESKE Cem - EPFL EL BA3
  * \date        20.12.2019
  */
+#include "Logger.h"
+
+void Logger::log(std::shared_ptr<Loggable> data){
+    auto thread_id(std::this_thread::get_id());
+    //buffers_[thread_id].
+}
+
+
+
+
 /*
 #include "Logger.h"
 #include <chrono>
@@ -64,3 +74,8 @@ void Logger::routine()
     }
 }
 */
+
+void Logger::log(std::shared_ptr<Loggable> data)
+{
+
+}
