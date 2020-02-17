@@ -48,7 +48,7 @@ int main(int argc, char** argv) {
     while (keep_running) {
         // ./XbeeTest Tx            // Transmitter Part
         if (modeTx) {
-            DatagramID ID = static_cast<DatagramID> (rand() % (TX_TYPE_NBR));
+            DatagramID ID = AV_TELEMETRY;
             dataHandler.updateTx(ID);
             xbee.send(dataHandler.getPacket(ID));
 
