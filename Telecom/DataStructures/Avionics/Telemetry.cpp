@@ -40,7 +40,7 @@ void Telemetry::print() const {
               << ", " << accelerometer.z << ") Euler: (" << euler.x << ", " << euler.y
               << ", " << euler.z
               << " Temperature: " << temperature << " Pressure: " << pressure
-              << " Speed: " << speed 
+              << " Speed: " << speed
               << " Altitude : " << altitude << std::endl;
 }
 
@@ -68,4 +68,6 @@ void Telemetry::updateRx(std::shared_ptr<Connector> connector) {
     connector->setData(ui_interface::T_PRESSURE, pressure);
     connector->setData(ui_interface::T_SPEED, speed);
     connector->setData(ui_interface::T_ALTITUDE, altitude);
+    if (altitude > connector->getData<float>(ui_interface::ALTITUDE_MAX))
+        connector->setData(ui_interface::ALTITUDE_MAX, altitude);
 }
