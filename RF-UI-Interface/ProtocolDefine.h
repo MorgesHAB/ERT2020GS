@@ -66,6 +66,9 @@ namespace ui_interface {
         T_SPEED,  //float
         T_ALTITUDE,  //float
 
+        // MetaData
+        ALTITUDE_MAX,
+
         /// Pressure Data
         PP_PRESSURE,//float           **Last pressure reading
 

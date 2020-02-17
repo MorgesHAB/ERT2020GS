@@ -77,6 +77,8 @@ void GPS::updateRx(std::shared_ptr<Connector> connector) {
     connector->setData(ui_interface::GPS_ALTITUDE, altitude);
     connector->setData(ui_interface::GPS_HDOP, hdop);
     connector->setData(ui_interface::GPS_SAT_NBR, satelliteNbr);
+    if (altitude > connector->getData<float>(ui_interface::ALTITUDE_MAX))
+        connector->setData(ui_interface::ALTITUDE_MAX, altitude);
 }
 
 std::string GPS::log() const {
