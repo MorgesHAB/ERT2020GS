@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>634</width>
-    <height>495</height>
+    <height>480</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -532,7 +532,7 @@ gridline-color: rgb(255, 0, 0);</string>
   </layout>
  </widget>
  <resources>
-  <include location="../asstes.qrc"/>
+  <include location="../assets.qrc"/>
  </resources>
  <connections/>
 </ui>
