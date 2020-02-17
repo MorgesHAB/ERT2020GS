@@ -48,9 +48,11 @@ private:
 
     void refresh_ignition_frame();
     void refresh_telemetry();
+    void refresh_gps();
     void refresh_com();
     void check_and_show();
     void refresh_time();
+    void refresh_file_transmission_box();
 
     void show_ok_X(QLabel*, bool);
     void show_ok(QLabel*);

@@ -1,4 +1,4 @@
-/*
+
 
 #include <QApplication>
 #include <memory>
@@ -59,9 +59,9 @@ public:
             c->incrementData(ui_interface::TX_PACKET_NR);
             // }
 
-            c->setData(ui_interface::PRESSURE_DATA, a);
-            c->setData(ui_interface::ALTITUDE, a);
-            c->setData(ui_interface::LONGITUDE, a);
+            c->setData(ui_interface::T_PRESSURE, a);
+            c->setData(ui_interface::T_ALTITUDE, a);
+            c->setData(ui_interface::T_ACCELEROMETER_Y, a);
             // c->setData(ui_interface::TIMESTAMP, std::time(nullptr));
             std::cout << "Data set to : " << a << std::endl;
             a++;
@@ -88,28 +88,20 @@ main(int argc, char ** argv)
 
     std::shared_ptr<Connector> c(std::make_shared<Connector>());
     A a;
-    Data data1("d1"), data2("d2"), data3("d3");
-    Logger logger("test.txt", c);
     std::thread receiver_thread(&A::f1, a, c);
-    std::thread logger_thread(&Logger::routine, &logger);
+
     {
     QApplication app(argc, argv);
     GuiWindow w(c);
     // run all threads
 
-    for(int i=0;i<1000;++i){
-    logger.log(std::make_shared<Data>(data1));
-    logger.log(std::make_shared<Data>(data1));
-    logger.log(std::make_shared<Data>(data1));
-    logger.log(std::make_shared<Data>(data1));
-    }
+
 
     // end the program
     w.show();
     app.exec();
     }
     receiver_thread.join();
-    logger_thread.join();
     return 0;
 }
-*/
+

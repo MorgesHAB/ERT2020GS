@@ -76,6 +76,7 @@ void GuiWindow::refresh_data()
     refresh_time();
     check_and_show();
     refresh_ignition_frame();
+    refresh_gps();
     ++tick_counter_;
 }
 
@@ -220,14 +221,28 @@ void GuiWindow::initialize_slots_signals()
 
 void GuiWindow::refresh_telemetry()
 {
-    float tmp(data_->getData<float>(GPS_LATITUDE));
+    altitude_panel_telemetry->setText(qstr(data_->getData<float>(T_ALTITUDE)));
+    accel_x_panel->setText(qstr(data_->getData<float>(T_ACCELEROMETER_X)));
+    accel_y_panel->setText(qstr(data_->getData<float>(T_ACCELEROMETER_Y)));
+    accel_z_panel->setText(qstr(data_->getData<float>(T_ACCELEROMETER_Z)));
+    euler_x_panel->setText(qstr(data_->getData<float>(T_EULER_X)));
+    euler_y_panel->setText(qstr(data_->getData<float>(T_EULER_Y)));
+    euler_z_panel->setText(qstr(data_->getData<float>(T_EULER_Z)));
+    pressure_panel->setText(qstr(data_->getData<float>(T_PRESSURE)));
+    speed_panel->setText(qstr(data_->getData<float>(T_SPEED)));
+    temperature_panel->setText(qstr(data_->getData<float>(T_TEMPERATURE)));
 
-    latitude_panel->setText(degree_representation(tmp));
-    tmp = data_->getData<float>(GPS_LONGITUDE);
-    longitude_panel->setText(degree_representation(tmp));
-    tmp = data_->getData<float>(GPS_ALTITUDE);
-    this->altitude_lcd->display(tmp);
 }
+
+void GuiWindow::refresh_gps()
+{
+    altitude_lcd_gps->display(qstr(data_->getData<float>(GPS_ALTITUDE)));
+    longitude_panel->setText(qstr(data_->getData<float>(GPS_LONGITUDE)));
+    latitude_panel->setText(qstr(data_->getData<float>(GPS_LATITUDE)));
+    hdop_panel->setText(qstr(data_->getData<float>(GPS_HDOP)));
+    sat_nbr_panel->setText(qstr(data_->getData<float>(GPS_SAT_NBR)));
+}
+
 
 void GuiWindow::refresh_com()
 {
@@ -242,7 +257,6 @@ void GuiWindow::refresh_com()
     std::strftime(tbuffer, 32, "%T", tptr);
     miss_panel->setText(qstr(calculate_misses_in_last_2()));
     this->last_refresh_panel->setText(tbuffer);
-    this->rssi_panel->setText("-" + qstr(data_->getData<uint8_t>(LAST_RSSI)) + " dBm");
     uint32_t packets(data_->eatData<uint32_t>(PACKET_RX_RATE_CTR, 0));
     packets_second_bar->setValue((packets * (1000.0 / (REFRESH_RATE))));
     corrupted_panel->setText(qstr(data_->getData<uint64_t>(CORRUPTED_PACKET_CTR)));
@@ -271,6 +285,15 @@ void GuiWindow::refresh_time()
     struct tm * tptr = std::localtime(&timestamp);
     std::strftime(tbuffer, 32, "%H:%M:%S", tptr);
     time_panel->setText(tbuffer);
+}
+
+void GuiWindow::refresh_file_transmission_box()
+{
+    FileTransmissionStates state(data_->getData<FileTransmissionStates>(ui_interface::FILE_TRANSMISSION_RECEIVED_STATE));
+    transmitter_state_panel->setText(QString::fromStdString(getStateName(state)));
+    state = data_->getData<FileTransmissionStates>(ui_interface::FILE_TRANSMISSION_MY_STATE);
+    receiver_state_panel->setText(QString::fromStdString(getStateName(state)));
+
 }
 
 void GuiWindow::show_ok_X(QLabel * label, bool ok)
