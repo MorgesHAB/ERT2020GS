@@ -7,7 +7,13 @@
 #include <sstream>
 #include <iomanip>
 
-Double_buffer::Double_buffer(const std::string & filename) : output_file_(filename), current_buffer(0){ }
+static std::atomic<size_t> default_buffer_ctr(0);
+
+Double_buffer::Double_buffer(const std::string & filename) : output_file_(filename), current_buffer(0){
+}
+
+Double_buffer::Double_buffer() : Double_buffer("log-id-" + std::to_string(default_buffer_ctr++) + ".log")
+{}
 
 Double_buffer::~Double_buffer()
 {

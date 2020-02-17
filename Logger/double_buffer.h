@@ -18,6 +18,10 @@ public:
      */
     Double_buffer(const std::string & filename);
 
+    /**
+     * @brief Double_buffer Constructs a default-sized double buffer with filename = thread::id.
+     */
+    Double_buffer();
 
     ~Double_buffer();
 

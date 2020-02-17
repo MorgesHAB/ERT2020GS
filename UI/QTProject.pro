@@ -8,17 +8,15 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets multimedia
 
 SOURCES += \
     ../Logger/double_buffer.cpp \
-    ../Logger/intermediary_queue.cpp \
     ../Logger/Logger.cpp \
     ../Logger/Logger_buffer.cpp \
     ../RF-UI-Interface/connector.cpp \
     gui_test.cc \
     GuiWindow.cpp \
-    logger_tests.cpp
+    logger_tests.cc
 
 HEADERS += \
     ../Logger/double_buffer.h \
-    ../Logger/intermediary_queue.h \
     ../Logger/Loggable.h \
     ../Logger/Logger.h \
     ../Logger/Logger_buffer.h \
