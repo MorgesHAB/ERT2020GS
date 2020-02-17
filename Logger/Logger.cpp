@@ -6,7 +6,7 @@
  * \author      KESKE Cem - EPFL EL BA3
  * \date        20.12.2019
  */
-
+/*
 #include "Logger.h"
 #include <chrono>
 
@@ -18,18 +18,19 @@ inline std::string beautify(std::string log_string) // force copy !! this is ver
     return log_string;
 }
 
-Logger::Logger(const std::string & log_file, std::shared_ptr<Connector> connector) : output_file_(log_file), connector_(
-        connector), current_index_(0)
-{
-    if (!output_file_) {
-        std::cout << "Log file \"" << log_file
-                  << "\" can't be opened !! Data will be lost !!" << std::endl;
-    }
+
+
+
 }
 
 Logger::~Logger()
 {
     output_file_.close();
+}
+
+Logger &Logger::logger()
+{
+
 }
 
 void Logger::log(std::shared_ptr<Loggable> data)
@@ -62,3 +63,4 @@ void Logger::routine()
         std::this_thread::sleep_for(std::chrono::milliseconds(SLEEP_TIME));
     }
 }
+*/

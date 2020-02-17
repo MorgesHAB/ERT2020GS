@@ -7,42 +7,49 @@
  * \date        20.12.2019
  */
 
+
 #define DEBUG
 
 #ifndef LOGGER_H
-#define LOGGER_H
-#include "Loggable.h"
-#include "intermediary_queue.h"
-#include "../RF-UI-Interface/connector.h"
-#include "../RF-UI-Interface/ProtocolDefine.h"
-#include <array>
-#include <iostream>
-#include <fstream>
-#include <memory>
-
+# define LOGGER_H
+# include "Loggable.h"
+# include "Logger_buffer.h"
+# include "../RF-UI-Interface/connector.h"
+# include "../RF-UI-Interface/ProtocolDefine.h"
+#include <stdlib.h>
+# include <array>
+# include <iostream>
+# include <fstream>
+# include <memory>
+/*
 class Logger
 {
 public:
 
-    Logger(const std::string & log_file, std::shared_ptr<Connector> connector);
-    ~Logger();
-    void log(std::shared_ptr<Loggable>);
-    void routine();
+
+    static Logger& logger();
+
+
+    /**
+     * @brief log
+     * @param data
+     */
+    static void log(std::shared_ptr<Loggable> data);
+
+    /**
+     * @brief thread_index
+     * @return The index of the thread in the vector caller_threads_. Adds the thread
+     * in the list and creates its buffers if the thread is not in the list.
+     */
+    size_t thread_index(std::thread::id);
 
 private:
 
+    Logger(const std::string & log_file, std::shared_ptr<Connector> connector);
+    ~Logger();
+    }
 
-    static constexpr size_t buffer_size_ = 1000;
-    static constexpr size_t safety_margin_ = 10;
-    static const uint64_t SLEEP_TIME;
-
-
-    Intermediary_Queue bridge_;
-
-    std::array<std::string, buffer_size_ + safety_margin_> buffer_;
-    std::ofstream output_file_;
-    std::shared_ptr<Connector> connector_;
-    uint32_t current_index_;
-};
-
+*/
 #endif // LOGGER_H
+
+

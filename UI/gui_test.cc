@@ -1,4 +1,4 @@
-
+/*
 
 #include <QApplication>
 #include <memory>
@@ -76,9 +76,14 @@ public:
     } // f1
 };
 
+
 int
 main(int argc, char ** argv)
 {
+
+
+
+
     // set up everything
 
     std::shared_ptr<Connector> c(std::make_shared<Connector>());
@@ -107,3 +112,4 @@ main(int argc, char ** argv)
     logger_thread.join();
     return 0;
 }
+*/
