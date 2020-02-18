@@ -6,13 +6,13 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>489</width>
-    <height>578</height>
+    <width>600</width>
+    <height>609</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>0</width>
+    <width>600</width>
     <height>0</height>
    </size>
   </property>
@@ -33,101 +33,7 @@
 color: rgb(255, 255, 255);</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="3" column="0" rowspan="2" colspan="2">
-    <widget class="QGroupBox" name="gps_box">
-     <property name="minimumSize">
-      <size>
-       <width>0</width>
-       <height>200</height>
-      </size>
-     </property>
-     <property name="title">
-      <string>GPS</string>
-     </property>
-     <layout class="QGridLayout" name="gridLayout_3">
-      <item row="1" column="0">
-       <widget class="QLabel" name="altitude_label_gps">
-        <property name="text">
-         <string>ALTITUDE</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="0">
-       <widget class="QLabel" name="latitude_label">
-        <property name="text">
-         <string>LATITUDE</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="1">
-       <widget class="QLabel" name="latitude_panel">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="longitude_label">
-        <property name="text">
-         <string>LONGITUDE</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1">
-       <widget class="QLabel" name="longitude_panel">
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QLCDNumber" name="altitude_lcd_gps">
-        <property name="smallDecimalPoint">
-         <bool>false</bool>
-        </property>
-        <property name="segmentStyle">
-         <enum>QLCDNumber::Flat</enum>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="1">
-       <widget class="QLabel" name="hdop_panel">
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="0">
-       <widget class="QLabel" name="hdop_label">
-        <property name="text">
-         <string>HDOP</string>
-        </property>
-       </widget>
-      </item>
-      <item row="5" column="0">
-       <widget class="QLabel" name="sat_nbr_label">
-        <property name="text">
-         <string>SATELLITES</string>
-        </property>
-       </widget>
-      </item>
-      <item row="5" column="1">
-       <widget class="QLabel" name="sat_nbr_panel">
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item row="0" column="0" colspan="4">
+   <item row="0" column="0" colspan="5">
     <widget class="QWidget" name="widget" native="true">
      <layout class="QGridLayout" name="gridLayout_5">
       <item row="0" column="4">
@@ -194,7 +100,7 @@ color: rgb(255, 255, 255);</string>
      </layout>
     </widget>
    </item>
-   <item row="5" column="2">
+   <item row="5" column="3">
     <widget class="QGroupBox" name="euler_box">
      <property name="title">
       <string>Euler angles</string>
@@ -278,6 +184,12 @@ color: rgb(255, 255, 255);</string>
       </item>
       <item row="0" column="0">
        <widget class="QPushButton" name="ignition_button">
+        <property name="minimumSize">
+         <size>
+          <width>132</width>
+          <height>0</height>
+         </size>
+        </property>
         <property name="styleSheet">
          <string notr="true"/>
         </property>
@@ -447,7 +359,7 @@ gridline-color: rgb(255, 0, 0);</string>
      </layout>
     </widget>
    </item>
-   <item row="3" column="2" rowspan="2">
+   <item row="3" column="3" rowspan="2">
     <widget class="QGroupBox" name="avionics_box">
      <property name="title">
       <string>Avionics Data</string>
@@ -512,7 +424,7 @@ gridline-color: rgb(255, 0, 0);</string>
      </layout>
     </widget>
    </item>
-   <item row="5" column="3">
+   <item row="5" column="4">
     <widget class="QLabel" name="logo">
      <property name="toolTip">
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Project Bella Lui 2020&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -527,7 +439,7 @@ image: url(:/assets/logo.png);</string>
      </property>
     </widget>
    </item>
-   <item row="3" column="3" rowspan="2">
+   <item row="3" column="4" rowspan="2">
     <widget class="QGroupBox" name="accel_box">
      <property name="title">
       <string>Accelerometer</string>
@@ -596,75 +508,7 @@ image: url(:/assets/logo.png);</string>
      </layout>
     </widget>
    </item>
-   <item row="5" column="0" colspan="2">
-    <widget class="QGroupBox" name="groupBox">
-     <property name="title">
-      <string>File Transmission</string>
-     </property>
-     <layout class="QGridLayout" name="gridLayout_9">
-      <item row="1" column="0">
-       <widget class="QLabel" name="receiver_state_label">
-        <property name="minimumSize">
-         <size>
-          <width>140</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>212411</width>
-          <height>16777215</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>Receiver State</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="transmitter_state_label">
-        <property name="minimumSize">
-         <size>
-          <width>140</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>1241251</width>
-          <height>16777215</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>Transmitter State</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1">
-       <widget class="QLabel" name="transmitter_state_panel">
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0" colspan="2">
-       <widget class="QPushButton" name="file_transmission_button">
-        <property name="text">
-         <string>Start File Transmission</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QLabel" name="receiver_state_panel">
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item row="2" column="1" colspan="3">
+   <item row="2" column="1" colspan="4">
     <widget class="QGroupBox" name="com_box">
      <property name="title">
       <string>COM</string>
@@ -791,6 +635,178 @@ image: url(:/assets/logo.png);</string>
       </item>
       <item row="7" column="1">
        <widget class="QLabel" name="corrupted_panel">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="5" column="0" colspan="3">
+    <widget class="QGroupBox" name="groupBox">
+     <property name="title">
+      <string>File Transmission</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_9">
+      <item row="1" column="0">
+       <widget class="QLabel" name="receiver_state_label">
+        <property name="minimumSize">
+         <size>
+          <width>140</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>212411</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Receiver State</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="transmitter_state_label">
+        <property name="minimumSize">
+         <size>
+          <width>140</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>1241251</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Transmitter State</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLabel" name="transmitter_state_panel">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0" colspan="2">
+       <widget class="QPushButton" name="file_transmission_button">
+        <property name="text">
+         <string>Start File Transmission</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLabel" name="receiver_state_panel">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0" colspan="2">
+       <widget class="QProgressBar" name="file_transmission_progress_bar">
+        <property name="value">
+         <number>24</number>
+        </property>
+        <property name="format">
+         <string>%v / %m</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="3" column="0" rowspan="2" colspan="3">
+    <widget class="QGroupBox" name="gps_box">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>200</height>
+      </size>
+     </property>
+     <property name="title">
+      <string>GPS</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_3">
+      <item row="1" column="0">
+       <widget class="QLabel" name="altitude_label_gps">
+        <property name="text">
+         <string>ALTITUDE</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="latitude_label">
+        <property name="text">
+         <string>LATITUDE</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QLabel" name="latitude_panel">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="longitude_label">
+        <property name="text">
+         <string>LONGITUDE</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLabel" name="longitude_panel">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLCDNumber" name="altitude_lcd_gps">
+        <property name="smallDecimalPoint">
+         <bool>false</bool>
+        </property>
+        <property name="segmentStyle">
+         <enum>QLCDNumber::Flat</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QLabel" name="hdop_panel">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="hdop_label">
+        <property name="text">
+         <string>HDOP</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="sat_nbr_label">
+        <property name="text">
+         <string>SATELLITES</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <widget class="QLabel" name="sat_nbr_panel">
         <property name="text">
          <string/>
         </property>

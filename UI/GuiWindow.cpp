@@ -77,6 +77,7 @@ void GuiWindow::refresh_data()
     check_and_show();
     refresh_ignition_frame();
     refresh_gps();
+    refresh_file_transmission_box();
     ++tick_counter_;
 }
 
@@ -293,6 +294,8 @@ void GuiWindow::refresh_file_transmission_box()
     transmitter_state_panel->setText(QString::fromStdString(getStateName(state)));
     state = data_->getData<FileTransmissionStates>(ui_interface::FILE_TRANSMISSION_MY_STATE);
     receiver_state_panel->setText(QString::fromStdString(getStateName(state)));
+    file_transmission_progress_bar->setMaximum(data_->getData<uint64_t>(ui_interface::FILE_TRANSMISSION_TOTAL_PACKETS));
+    file_transmission_progress_bar->setValue(data_->getData<uint16_t>(ui_interface::FILE_TRANSMISSION_CURRENT_PACKET));
 
 }
 

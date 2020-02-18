@@ -170,6 +170,9 @@ void File::parse(Packet &packet) {
 }
 
 void File::updateRx(std::shared_ptr<Connector> connector) {
+    connector->setData(ui_interface::FILE_TRANSMISSION_TOTAL_PACKETS, nbrTotPacket);
+    connector->setData(ui_interface::FILE_TRANSMISSION_CURRENT_PACKET, packetNbr);
+
     switch (myState) {
         /////// On the File Receiver
         case SEND_MISSING_PACKET_REQUEST:

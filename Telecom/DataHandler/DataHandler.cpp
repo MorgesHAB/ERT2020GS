@@ -79,8 +79,8 @@ DataHandler::DataHandler(std::shared_ptr<Connector> connector)
     dataHandler[TEST]->add(new States({1, 0, 1, 1, 0, 0, 1, 0}));
 
     //// Packet Type n°5
-    dataHandler[IMAGE]->add(new File("panda.jpg", 80));
-    dataHandler[IMAGE]->add(new File("Yann.png", 100));
+    dataHandler[IMAGE]->add(new File("panda.jpg", 200));
+    //dataHandler[IMAGE]->add(new File("Yann.png", 100));
     //dataHandler[IMAGE]->add(new Picture(200, "nul.jpg", 600, 600));
 
 

@@ -84,6 +84,8 @@ namespace ui_interface {
         /// File transmission
         SEND_FILE_REQUEST, //bool       **true if button on the gui is clicked, eated by Telecom thread
         // File transmitting States
+        FILE_TRANSMISSION_TOTAL_PACKETS, //uint64_t
+        FILE_TRANSMISSION_CURRENT_PACKET, //uint64_t
         FILE_TRANSMISSION_MY_STATE, // enum in DataStructures/File
         FILE_TRANSMISSION_RECEIVED_STATE,
         FILE_TRANSMISSION_ALL_RECEIVED, // bool to EAT - for activation of warning window
