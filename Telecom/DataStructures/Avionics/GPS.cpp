@@ -82,7 +82,7 @@ void GPS::updateRx(std::shared_ptr<Connector> connector) {
 }
 
 std::string GPS::log() const {
-    return std::move(
+    return std::move( "GPS" +
             std::to_string(latitude) + SEPARATOR +
             std::to_string(longitude) + SEPARATOR +
             std::to_string(altitude) + SEPARATOR +

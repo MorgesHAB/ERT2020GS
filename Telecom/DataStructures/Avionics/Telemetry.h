@@ -16,7 +16,9 @@ class Telemetry : public Data {
 public:
     void write(Packet& packet) override;
     void parse(Packet& packet) override;
+
     void print() const override;
+    std::string log() const override;
 
     void updateTx(std::shared_ptr<Connector> connector) override;
     void updateRx(std::shared_ptr<Connector> connector) override;
@@ -25,6 +27,7 @@ private:
     struct Vector3D {
         float x, y, z;
     } accelerometer, euler;
+
     float temperature, pressure, speed, altitude;
 };
 

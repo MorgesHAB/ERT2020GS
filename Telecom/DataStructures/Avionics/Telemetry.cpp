@@ -71,3 +71,17 @@ void Telemetry::updateRx(std::shared_ptr<Connector> connector) {
     if (altitude > connector->getData<float>(ui_interface::ALTITUDE_MAX))
         connector->setData(ui_interface::ALTITUDE_MAX, altitude);
 }
+
+std::string Telemetry::log() const {
+    return std::move("Telemetry" +
+                     std::to_string(altitude) + SEPARATOR +
+                     std::to_string(speed) + SEPARATOR +
+                     std::to_string(temperature) + SEPARATOR +
+                     std::to_string(pressure) + SEPARATOR +
+                     std::to_string(accelerometer.x) + SEPARATOR +
+                     std::to_string(accelerometer.y) + SEPARATOR +
+                     std::to_string(accelerometer.z) + SEPARATOR +
+                     std::to_string(euler.x) + SEPARATOR +
+                     std::to_string(euler.y) + SEPARATOR +
+                     std::to_string(euler.z) + SEPARATOR);
+}
