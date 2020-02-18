@@ -38,7 +38,7 @@ void foo(size_t until){
     Logger lo(std::to_string(++a));
     for(size_t i(0); i < until; ++i){
         lo.log(Data(std::to_string(i)));
-        std::this_thread::sleep_for(std::chrono::microseconds(2));
+        std::this_thread::sleep_for(std::chrono::nanoseconds(1));
     }
 }
 
@@ -58,9 +58,9 @@ int
     }
 */
 
-    std::thread t1(foo, 100);
-    std::thread t2(foo, 1111);
-    std::thread t3(foo, 2991);
+    std::thread t1(foo, 3);
+    std::thread t2(foo, 5);
+    std::thread t3(foo, 9);
     std::thread t4(foo, 41251);
 
     std::this_thread::sleep_for(std::chrono::seconds(3));
