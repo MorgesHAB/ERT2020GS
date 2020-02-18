@@ -1,4 +1,4 @@
-
+#ifdef aa
 
 #include <QApplication>
 #include <memory>
@@ -105,3 +105,4 @@ main(int argc, char ** argv)
     return 0;
 }
 
+#endif

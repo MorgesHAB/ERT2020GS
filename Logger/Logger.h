@@ -11,32 +11,31 @@
 #define DEBUG
 
 #ifndef LOGGER_H
-# define LOGGER_H
-# include "Loggable.h"
-# include "Logger_buffer.h"
+#define LOGGER_H
+#include "Loggable.h"
+#include "Logger_buffer.h"
 #include "double_buffer.h"
-# include "../RF-UI-Interface/connector.h"
-# include "../RF-UI-Interface/ProtocolDefine.h"
-# include <stdlib.h>
-# include <unordered_map>
-# include <thread>
-# include <array>
-# include <iostream>
-# include <fstream>
-# include <memory>
+#include "../RF-UI-Interface/connector.h"
+#include "../RF-UI-Interface/ProtocolDefine.h"
+#include <stdlib.h>
+#include <unordered_map>
+#include <thread>
+#include <array>
+#include <iostream>
+#include <fstream>
+#include <memory>
 
-namespace Logger {
+class Logger {
 
-enum Source{RECEIVER, GUI, SOME_SOURCE, SOME_OTHER_SOURCE, size};
+public:
+    Logger(std::string filename = "");
 
-std::array<Double_buffer, Source::size> buffers;
+    void log(const Loggable & data);
 
-    void log(const Loggable & data, Source src){
-
-        buffers[src].add(data.log_description());
-    }
-}
+private:
+    std::string time_str();
+    Double_buffer buffer;
+};
 
 
 #endif // LOGGER_H
-

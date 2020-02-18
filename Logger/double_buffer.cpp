@@ -7,13 +7,9 @@
 #include <sstream>
 #include <iomanip>
 
-static std::atomic<size_t> default_buffer_ctr(0);
 
-Double_buffer::Double_buffer(const std::string & filename) : output_file_(filename), current_buffer(0){
-}
+Double_buffer::Double_buffer(const std::string & filename) : output_file_(filename), current_buffer(0){}
 
-Double_buffer::Double_buffer() : Double_buffer("log-id-" + std::to_string(default_buffer_ctr++) + ".log")
-{}
 
 Double_buffer::~Double_buffer()
 {
@@ -31,7 +27,7 @@ void Double_buffer::add(const std::string & str)
         std::cout << "The current buffer is not ready to fill, check algo." << std::endl;
 
     if(buffers_[current_buffer].is_full()){
-        std::cout << "The buffer got full, initializing thread \n";
+        //std::cout << "The buffer got full, initializing thread \n";
         std::thread (&Double_buffer::log_buffer, this,current_buffer).detach();
         current_buffer = ++current_buffer % buffers_.size();
     }
@@ -46,8 +42,8 @@ void Double_buffer::display() const
 }
 
 void Double_buffer::log_buffer(size_t index){
-    std::cout << "inside the thread";
-    std::cout << "Logging the buffer no: " + std::to_string(index) + "\n" << std::endl;
+    //std::cout << "inside the thread";
+    //std::cout << "Logging the buffer no: " + std::to_string(index) + "\n" << std::endl;
 
 
     if(!output_file_){
