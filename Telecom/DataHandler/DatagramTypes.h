@@ -37,7 +37,7 @@ namespace DatagramType {
         ACK,
         // TEST PACKET
         IMAGE,
-        IGNITION_REQUEST,
+        IGNITION_REQUEST, //TODO: delete !
         IGNITION_ANSWER,
         TEST,
                             // <-- add new type here
