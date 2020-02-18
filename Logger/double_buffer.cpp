@@ -24,11 +24,11 @@ void Double_buffer::add(const std::string & str)
     if(buffers_[current_buffer].is_ready_to_fill())
         buffers_[current_buffer].add(str);
     else
-        std::cout << "The current buffer is not ready to fill, check algo." << std::endl;
+        std::cerr << "The current buffer is not ready to fill." << std::endl;
 
     if(buffers_[current_buffer].is_full()){
         //std::cout << "The buffer got full, initializing thread \n";
-        std::thread (&Double_buffer::log_buffer, this,current_buffer).detach();
+        std::thread (&Double_buffer::log_buffer, this, current_buffer).detach();
         current_buffer = ++current_buffer % buffers_.size();
     }
 }
