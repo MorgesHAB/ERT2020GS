@@ -4,9 +4,9 @@ static std::atomic<size_t> logger_ctr(0);
 
 Logger::Logger(std::string filename) : buffer(filename + time_str() + "-ID" + std::to_string(++logger_ctr) +  ".log") {}
 
-void Logger::log(const Loggable &data)
+void Logger::log(Loggable* data)
 {
-    buffer.add(data.log_description());
+    buffer.add(data->log_description());
 }
 
 std::string Logger::time_str()

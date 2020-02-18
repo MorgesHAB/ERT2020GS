@@ -17,20 +17,18 @@
 #include "double_buffer.h"
 #include "../RF-UI-Interface/connector.h"
 #include "../RF-UI-Interface/ProtocolDefine.h"
-#include <stdlib.h>
 #include <unordered_map>
 #include <thread>
 #include <array>
 #include <iostream>
 #include <fstream>
-#include <memory>
+
 
 class Logger {
-
 public:
     Logger(std::string filename = "");
 
-    void log(const Loggable & data);
+    void log(Loggable* data);
 
 private:
     std::string time_str();

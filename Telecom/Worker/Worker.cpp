@@ -35,7 +35,7 @@ void Worker::mainRoutine() {
             // Manage Reception
             if (xbee->receive(dataHandler)) {
                 dataHandler.printLastRxPacket();
-                //dataHandler.logLastRxPacket();
+                dataHandler.logLastRxPacket();
                 //xbee.getRSSI();
             }
             // Manage Transmission

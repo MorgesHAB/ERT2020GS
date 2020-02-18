@@ -28,7 +28,7 @@
 
 DataHandler::DataHandler(std::shared_ptr<Connector> connector)
         : connector(connector), dataHandler(DatagramType::TOTAL_NBR_OF_TYPES, nullptr),
-          lastRxID(DatagramType::INIT) {
+          lastRxID(DatagramType::INIT), logger("RxData") {
     using namespace DatagramType;
     using namespace ui_interface;
     // Create your RF Packet Datagram here
@@ -79,7 +79,7 @@ DataHandler::DataHandler(std::shared_ptr<Connector> connector)
     dataHandler[TEST]->add(new States({1, 0, 1, 1, 0, 0, 1, 0}));
 
     //// Packet Type n°5
-    dataHandler[IMAGE]->add(new File("panda.jpg", 200));
+    dataHandler[IMAGE]->add(new File("Yann.png", 200));
     //dataHandler[IMAGE]->add(new File("Yann.png", 100));
     //dataHandler[IMAGE]->add(new Picture(200, "nul.jpg", 600, 600));
 
@@ -113,10 +113,9 @@ void DataHandler::printLastRxPacket() const {
     dataHandler[lastRxID]->print();
 }
 
-void DataHandler::logLastRxPacket() const {
-    //Logger::log(dataHandler[lastRxID]); ???
-    // tmp debug
-    std::cout << dataHandler[lastRxID]->log_description();
+void DataHandler::logLastRxPacket() {
+    logger.log(dataHandler[lastRxID]);
+    //std::cout << dataHandler[lastRxID]->log_description(); // debug
 }
 
 void DataHandler::updateTx(DatagramType::DatagramID type) {

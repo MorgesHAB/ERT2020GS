@@ -14,6 +14,8 @@
 #include <vector>
 #include <DatagramTypes.h>
 #include <Datagram.h>
+#include <Logger.h>
+
 
 class DataHandler {
 public:
@@ -28,13 +30,15 @@ public:
     Packet* getPacket(DatagramType::DatagramID type);
 
     void printLastRxPacket() const;
-    void logLastRxPacket() const;
+    void logLastRxPacket();
 
 private:
     std::shared_ptr<Connector> connector;
 
     std::vector<Datagram*> dataHandler;
     DatagramType::DatagramID lastRxID;
+
+    Logger logger;
 };
 
 
