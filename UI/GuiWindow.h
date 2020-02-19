@@ -34,6 +34,7 @@ public:
     void update();
 
 public slots:
+    void reset_button_pressed();
     void refresh_data();
     void xbee_clicked();
     void ignite_clicked();

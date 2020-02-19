@@ -97,6 +97,16 @@ color: rgb(255, 255, 255);</string>
         </property>
        </widget>
       </item>
+      <item row="0" column="0">
+       <widget class="QPushButton" name="reset_button">
+        <property name="toolTip">
+         <string>Resets saved data</string>
+        </property>
+        <property name="text">
+         <string>Reset</string>
+        </property>
+       </widget>
+      </item>
      </layout>
     </widget>
    </item>

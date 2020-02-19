@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'press_altQb3989.ui'
+** Form generated from reading UI file 'press_altth3337.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.9.5
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef PRESS_ALTQB3989_H
-#define PRESS_ALTQB3989_H
+#ifndef PRESS_ALTTH3337_H
+#define PRESS_ALTTH3337_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QAction>
@@ -36,6 +36,7 @@ public:
     QPushButton *xbee_button;
     QPushButton *change_theme;
     QLabel *current_time_label;
+    QPushButton *reset_button;
     QGroupBox *euler_box;
     QGridLayout *gridLayout_6;
     QLabel *euler_x_panel;
@@ -103,16 +104,18 @@ public:
     QProgressBar *file_transmission_progress_bar;
     QGroupBox *gps_box;
     QGridLayout *gridLayout_3;
-    QLabel *altitude_label_gps;
-    QLabel *latitude_label;
     QLabel *latitude_panel;
     QLabel *longitude_label;
-    QLabel *longitude_panel;
-    QLCDNumber *altitude_lcd_gps;
     QLabel *hdop_panel;
-    QLabel *hdop_label;
-    QLabel *sat_nbr_label;
+    QLabel *latitude_label;
     QLabel *sat_nbr_panel;
+    QLabel *altitude_label_gps;
+    QLabel *longitude_panel;
+    QLabel *sat_nbr_label;
+    QLCDNumber *altitude_lcd_gps;
+    QLabel *hdop_label;
+    QLabel *altitude_max_label;
+    QLCDNumber *altitude_max_lcd;
 
     void setupUi(QWidget *Form)
     {
@@ -156,6 +159,11 @@ public:
         current_time_label->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         gridLayout_5->addWidget(current_time_label, 0, 3, 1, 1);
+
+        reset_button = new QPushButton(widget);
+        reset_button->setObjectName(QStringLiteral("reset_button"));
+
+        gridLayout_5->addWidget(reset_button, 0, 0, 1, 1);
 
 
         gridLayout->addWidget(widget, 0, 0, 1, 5);
@@ -509,31 +517,46 @@ public:
         gps_box->setMinimumSize(QSize(0, 200));
         gridLayout_3 = new QGridLayout(gps_box);
         gridLayout_3->setObjectName(QStringLiteral("gridLayout_3"));
+        latitude_panel = new QLabel(gps_box);
+        latitude_panel->setObjectName(QStringLiteral("latitude_panel"));
+        latitude_panel->setMinimumSize(QSize(0, 0));
+
+        gridLayout_3->addWidget(latitude_panel, 5, 1, 1, 1);
+
+        longitude_label = new QLabel(gps_box);
+        longitude_label->setObjectName(QStringLiteral("longitude_label"));
+
+        gridLayout_3->addWidget(longitude_label, 3, 0, 1, 1);
+
+        hdop_panel = new QLabel(gps_box);
+        hdop_panel->setObjectName(QStringLiteral("hdop_panel"));
+
+        gridLayout_3->addWidget(hdop_panel, 6, 1, 1, 1);
+
+        latitude_label = new QLabel(gps_box);
+        latitude_label->setObjectName(QStringLiteral("latitude_label"));
+
+        gridLayout_3->addWidget(latitude_label, 5, 0, 1, 1);
+
+        sat_nbr_panel = new QLabel(gps_box);
+        sat_nbr_panel->setObjectName(QStringLiteral("sat_nbr_panel"));
+
+        gridLayout_3->addWidget(sat_nbr_panel, 7, 1, 1, 1);
+
         altitude_label_gps = new QLabel(gps_box);
         altitude_label_gps->setObjectName(QStringLiteral("altitude_label_gps"));
 
         gridLayout_3->addWidget(altitude_label_gps, 1, 0, 1, 1);
 
-        latitude_label = new QLabel(gps_box);
-        latitude_label->setObjectName(QStringLiteral("latitude_label"));
-
-        gridLayout_3->addWidget(latitude_label, 3, 0, 1, 1);
-
-        latitude_panel = new QLabel(gps_box);
-        latitude_panel->setObjectName(QStringLiteral("latitude_panel"));
-        latitude_panel->setMinimumSize(QSize(0, 0));
-
-        gridLayout_3->addWidget(latitude_panel, 3, 1, 1, 1);
-
-        longitude_label = new QLabel(gps_box);
-        longitude_label->setObjectName(QStringLiteral("longitude_label"));
-
-        gridLayout_3->addWidget(longitude_label, 2, 0, 1, 1);
-
         longitude_panel = new QLabel(gps_box);
         longitude_panel->setObjectName(QStringLiteral("longitude_panel"));
 
-        gridLayout_3->addWidget(longitude_panel, 2, 1, 1, 1);
+        gridLayout_3->addWidget(longitude_panel, 3, 1, 1, 1);
+
+        sat_nbr_label = new QLabel(gps_box);
+        sat_nbr_label->setObjectName(QStringLiteral("sat_nbr_label"));
+
+        gridLayout_3->addWidget(sat_nbr_label, 7, 0, 1, 1);
 
         altitude_lcd_gps = new QLCDNumber(gps_box);
         altitude_lcd_gps->setObjectName(QStringLiteral("altitude_lcd_gps"));
@@ -542,25 +565,20 @@ public:
 
         gridLayout_3->addWidget(altitude_lcd_gps, 1, 1, 1, 1);
 
-        hdop_panel = new QLabel(gps_box);
-        hdop_panel->setObjectName(QStringLiteral("hdop_panel"));
-
-        gridLayout_3->addWidget(hdop_panel, 4, 1, 1, 1);
-
         hdop_label = new QLabel(gps_box);
         hdop_label->setObjectName(QStringLiteral("hdop_label"));
 
-        gridLayout_3->addWidget(hdop_label, 4, 0, 1, 1);
+        gridLayout_3->addWidget(hdop_label, 6, 0, 1, 1);
 
-        sat_nbr_label = new QLabel(gps_box);
-        sat_nbr_label->setObjectName(QStringLiteral("sat_nbr_label"));
+        altitude_max_label = new QLabel(gps_box);
+        altitude_max_label->setObjectName(QStringLiteral("altitude_max_label"));
 
-        gridLayout_3->addWidget(sat_nbr_label, 5, 0, 1, 1);
+        gridLayout_3->addWidget(altitude_max_label, 2, 0, 1, 1);
 
-        sat_nbr_panel = new QLabel(gps_box);
-        sat_nbr_panel->setObjectName(QStringLiteral("sat_nbr_panel"));
+        altitude_max_lcd = new QLCDNumber(gps_box);
+        altitude_max_lcd->setObjectName(QStringLiteral("altitude_max_lcd"));
 
-        gridLayout_3->addWidget(sat_nbr_panel, 5, 1, 1, 1);
+        gridLayout_3->addWidget(altitude_max_lcd, 2, 1, 1, 1);
 
 
         gridLayout->addWidget(gps_box, 3, 0, 2, 3);
@@ -578,6 +596,10 @@ public:
         xbee_button->setText(QApplication::translate("Form", "START XBee", Q_NULLPTR));
         change_theme->setText(QApplication::translate("Form", "Change Color Theme", Q_NULLPTR));
         current_time_label->setText(QApplication::translate("Form", "Current Time:", Q_NULLPTR));
+#ifndef QT_NO_TOOLTIP
+        reset_button->setToolTip(QApplication::translate("Form", "Resets saved data", Q_NULLPTR));
+#endif // QT_NO_TOOLTIP
+        reset_button->setText(QApplication::translate("Form", "Reset", Q_NULLPTR));
         euler_box->setTitle(QApplication::translate("Form", "Euler angles", Q_NULLPTR));
         euler_x_panel->setText(QString());
         euler_y_panel->setText(QString());
@@ -669,15 +691,16 @@ public:
         receiver_state_panel->setText(QString());
         file_transmission_progress_bar->setFormat(QApplication::translate("Form", "%v / %m", Q_NULLPTR));
         gps_box->setTitle(QApplication::translate("Form", "GPS", Q_NULLPTR));
-        altitude_label_gps->setText(QApplication::translate("Form", "ALTITUDE", Q_NULLPTR));
-        latitude_label->setText(QApplication::translate("Form", "LATITUDE", Q_NULLPTR));
         latitude_panel->setText(QString());
         longitude_label->setText(QApplication::translate("Form", "LONGITUDE", Q_NULLPTR));
-        longitude_panel->setText(QString());
         hdop_panel->setText(QString());
-        hdop_label->setText(QApplication::translate("Form", "HDOP", Q_NULLPTR));
-        sat_nbr_label->setText(QApplication::translate("Form", "SATELLITES", Q_NULLPTR));
+        latitude_label->setText(QApplication::translate("Form", "LATITUDE", Q_NULLPTR));
         sat_nbr_panel->setText(QString());
+        altitude_label_gps->setText(QApplication::translate("Form", "ALTITUDE", Q_NULLPTR));
+        longitude_panel->setText(QString());
+        sat_nbr_label->setText(QApplication::translate("Form", "SATELLITES", Q_NULLPTR));
+        hdop_label->setText(QApplication::translate("Form", "HDOP", Q_NULLPTR));
+        altitude_max_label->setText(QApplication::translate("Form", "ALTITUDE MAX", Q_NULLPTR));
     } // retranslateUi
 
 };
@@ -688,4 +711,4 @@ class Form: public Ui_Form {};
 
 QT_END_NAMESPACE
 
-#endif // PRESS_ALTQB3989_H
+#endif // PRESS_ALTTH3337_H

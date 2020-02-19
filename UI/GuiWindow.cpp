@@ -69,6 +69,19 @@ GuiWindow::GuiWindow(std::shared_ptr<Connector> connector) :
     timer_->start(REFRESH_RATE);
 }
 
+void GuiWindow::reset_button_pressed()
+{
+    data_->setData(ui_interface::CORRUPTED_PACKET_CTR, 0);
+    data_->setData(ui_interface::FILE_TRANSMISSION_ALL_RECEIVED,  0);
+    data_->setData(ui_interface::GPS_ALTITUDE, 0 );
+    data_->setData(ui_interface::GPS_HDOP, 0);
+    data_->setData(ui_interface::GPS_LATITUDE, 0);
+    data_->setData(ui_interface::GPS_LONGITUDE, 0);
+    data_->setData(ui_interface::GPS_SAT_NBR, 0);
+    data_->setData(ui_interface::GSE_HOSE_PRESSURE, 0);
+    data_->setData(ui_interface::);
+}
+
 void GuiWindow::refresh_data()
 {
     refresh_com();
@@ -215,6 +228,7 @@ void GuiWindow::initialize_slots_signals()
 {
     connect(timer_, SIGNAL(timeout()), this, SLOT(refresh_data()));
     connect(xbee_button, SIGNAL(pressed()), this, SLOT(xbee_clicked()));
+    connect(reset_button, SIGNAL (pressed()), this, SLOT(reset_button_pressed()));
     connect(ignition_button, SIGNAL(pressed()), this, SLOT(ignite_clicked()));
     connect(change_theme, SIGNAL(pressed()), this, SLOT(theme_change_clicked()));
     connect(file_transmission_button, SIGNAL(pressed()), this, SLOT(file_transmission_pressed()));
@@ -238,6 +252,7 @@ void GuiWindow::refresh_telemetry()
 void GuiWindow::refresh_gps()
 {
     altitude_lcd_gps->display(qstr(data_->getData<float>(GPS_ALTITUDE)));
+    altitude_max_lcd->display(qstr(data_->getData<float>(ALTITUDE_MAX)));
     longitude_panel->setText(qstr(data_->getData<float>(GPS_LONGITUDE)));
     latitude_panel->setText(qstr(data_->getData<float>(GPS_LATITUDE)));
     hdop_panel->setText(qstr(data_->getData<float>(GPS_HDOP)));
