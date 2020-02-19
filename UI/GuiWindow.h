@@ -13,6 +13,7 @@
 #include "ui_form.h"
 #include "../RF-UI-Interface/connector.h"
 #include "../RF-UI-Interface/ProtocolDefine.h"
+#include "gui_logger.h"
 
 #include <memory>
 
@@ -69,9 +70,12 @@ private:
     void playSound(const char * url);
     QMediaPlayer* m_player;
     #endif
+
     const char* alarm;
     const char* takeoff;
     const char* hymne;
+
+    Gui_Logger logger;
 
     QTimer * timer_;
     std::shared_ptr<Connector> data_;

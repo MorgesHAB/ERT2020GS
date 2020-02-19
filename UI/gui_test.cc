@@ -9,6 +9,7 @@
 #include "../RF-UI-Interface/ProtocolDefine.h"
 #include "GuiWindow.h"
 #include "../Logger/Logger.h"
+#include "utilities.h"
 
 class Data: public Loggable{
 public:
@@ -95,7 +96,7 @@ main(int argc, char ** argv)
     // run all threads
 
 
-
+    std::cout << utilities::time_long() << std::endl;
     // end the program
     w.show();
     app.exec();

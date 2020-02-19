@@ -18,6 +18,7 @@
 #include <ctime>
 #include <array>
 #include "../Telecom/DataStructures/File/FileTransmissionStates.h"
+#include "gui_message.h"
 
 #include <QStyleFactory>
 #include <QString>
@@ -97,10 +98,12 @@ void GuiWindow::refresh_data()
 void GuiWindow::xbee_clicked()
 {
     if (!xbee_acvite_) {
+        logger.log(new Gui_Message("XBee ON button clicked!"));
         std::cout << "XBee ON button clicked!" << std::endl;
         data_->setData(ui_interface::ACTIVE_XBEE, true);
         xbee_button->setText("STOP XBee");
     } else {
+        logger.log(new Gui_Message("XBee STOP button clicked!"));
         std::cout << "XBee STOP button clicked!" << std::endl;
         data_->setData(ui_interface::ACTIVE_XBEE, false);
         xbee_button->setText("START XBee");
@@ -123,27 +126,37 @@ void GuiWindow::theme_change_clicked()
 
     current_theme_ = ((current_theme_+1) % THEME_COUNT);
 
-    if (current_theme_ == WHITE_ON_BLACK) {
-        setStyleSheet(QLatin1String("background-color: rgb(30, 30, 30);\n"
+    std::string str("Theme change button clicked. ");
+
+        if (current_theme_ == WHITE_ON_BLACK) {
+
+            str+= "Theme set to \"white on black.\"";
+
+                setStyleSheet(QLatin1String("background-color: rgb(30, 30, 30);\n"
           "color: rgb(255, 255, 255);"));
         packets_second_bar->setStyleSheet(
             QLatin1String("color: rgb(255, 255, 255);"));
     } else
         if (current_theme_ == GREEN_ON_BLACK) {
+        str+= "Theme set to \"green on black.\"";
         setStyleSheet(QLatin1String("background-color: rgb(30, 30, 30);\n"
           "color: rgb(0, 255, 0);"));
         packets_second_bar->setStyleSheet(
             QLatin1String("color: rgb(255, 255, 255);"));
     } else
         if (current_theme_ == BLACK_ON_WHITE) {
+        str+= "Theme set to \"black on white.\"";
         setStyleSheet(QLatin1String("background-color: rgb(255, 255, 255);\n"
           "color: rgb(0, 0, 0);"));
         packets_second_bar->setStyleSheet(QLatin1String("color: rgb(0,0,0);"));
     }
+    logger.log(new Gui_Message(str));
 }
 
 void GuiWindow::file_transmission_pressed()
 {
+
+    logger.log(new Gui_Message("File transmission button pressed. SEND_FILE_REQUEST set to true."));
     data_->setData(ui_interface::SEND_FILE_REQUEST, true);
 }
 
@@ -160,6 +173,7 @@ uint16_t GuiWindow::calculate_misses_in_last_2()
 
 void GuiWindow::closeEvent(QCloseEvent * event)
 {
+    logger.log(new Gui_Message("Window close clicked."));
     QMessageBox::StandardButton resBtn = QMessageBox::question(this, "BELLA LUI 2020",
         tr("Ending mission Bella Lui 2020.\nAre you sure?\n"),
         QMessageBox::Cancel | QMessageBox::No | QMessageBox::Yes, QMessageBox::Yes);

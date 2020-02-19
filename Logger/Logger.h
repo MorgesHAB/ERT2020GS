@@ -8,10 +8,10 @@
  */
 
 
-#define DEBUG
 
 #ifndef LOGGER_H
 #define LOGGER_H
+
 #include "Loggable.h"
 #include "Logger_buffer.h"
 #include "double_buffer.h"
@@ -28,10 +28,12 @@ class Logger {
 public:
     Logger(std::string filename = "");
 
-    void log(Loggable* data);
+    virtual void log(Loggable* data);
 
-private:
-    std::string time_str();
+    virtual ~Logger() = default;
+
+protected:
+
     Double_buffer buffer;
 };
 

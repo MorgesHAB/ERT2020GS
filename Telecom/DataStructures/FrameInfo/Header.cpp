@@ -16,18 +16,18 @@ Header::Header(uint8_t DatagramID) : DatagramID(DatagramID),
 
 void Header::write(Packet &packet) {
     packet.write(DatagramID);
-    for (auto& e : myDelimiter) packet.write(e);
-    //packet.write(packetNbr);
+    for (auto& e : myDelimiter) packet.write(e);    
     packet.write(static_cast<uint32_t>(timestamp));
+    packet.write(packetNbr);
 }
 
 void Header::parse(Packet &packet) {
     packet.parse(DatagramID);
     for (auto& e : myDelimiter) packet.parse(e);
-    //packet.parse(packetNbr);
     uint32_t tmp;
     packet.parse(tmp);
     timestamp = static_cast<time_t> (tmp);
+    packet.parse(packetNbr);
 }
 
 void Header::print() const {
