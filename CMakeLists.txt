@@ -59,3 +59,8 @@ if (USE_XBEE)
     endif (USE_GUI)
 
 endif (USE_XBEE)
+
+
+add_executable(TEST src/TestDebug.cpp)
+include_directories(RFmodem/lib/serial/include/)
+target_link_libraries(TEST serial)

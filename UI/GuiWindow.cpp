@@ -79,7 +79,7 @@ void GuiWindow::reset_button_pressed()
     data_->setData(ui_interface::GPS_LONGITUDE, 0);
     data_->setData(ui_interface::GPS_SAT_NBR, 0);
     data_->setData(ui_interface::GSE_HOSE_PRESSURE, 0);
-    data_->setData(ui_interface::);
+    //data_->setData(ui_interface::);
 }
 
 void GuiWindow::refresh_data()

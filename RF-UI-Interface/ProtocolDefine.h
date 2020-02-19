@@ -117,7 +117,7 @@ enum DataType {
 *   The values put here will be reset to 0 when the connector resets.
 *
 */
-std::array<int> TO_RESET({ IGNITION_STATUS,
+/*std::array<int, ARRAY_SIZE> TO_RESET({ IGNITION_STATUS,
                            IGNITION_KEY_1_ACTIVATED,
                            IGNITION_KEY_2_ACTIVATED,
                            IGNITION_RED_BUTTON_PUSHED,
@@ -186,6 +186,6 @@ std::array<int> TO_RESET({ IGNITION_STATUS,
                            GSE_HOSE_TEMP,
                            GSE_HOSE_STATUS,
                            GSE_MOTOR_SPEED,
-                           GSE_TANK_WEIGHT, });
+                           GSE_TANK_WEIGHT, });*/
 }
 #endif // ProtocolDefine_H

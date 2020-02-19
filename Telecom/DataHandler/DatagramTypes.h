@@ -37,7 +37,6 @@ namespace DatagramType {
         ACK,
         // TEST PACKET
         IMAGE,
-        IGNITION_REQUEST, //TODO: delete !
         IGNITION_ANSWER,
         TEST,
                             // <-- add new type here
@@ -62,7 +61,6 @@ namespace DatagramType {
             case PL_IMAGE: return "PL IMAGE";
             case IMAGE: return "Image";
             case TEST: return "TEST";
-            case IGNITION_REQUEST: return "Propulsion Ignition GSEOrder !";
             case IGNITION_ANSWER: return "Ignition Response";
             default: return "Unknown";
         }
