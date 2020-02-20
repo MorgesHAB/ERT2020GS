@@ -48,12 +48,10 @@ if (USE_LORA)
 endif (USE_LORA)
 
 if (USE_XBEE)
-    #target_link_libraries(XbeeTest LogLib)
     target_link_libraries(XbeeTest Telecom)
     target_link_libraries(IgniterRPi Telecom)
     target_link_libraries(ImageCom Telecom)
     target_link_libraries(TestPacket Telecom)
-    #target_link_libraries(${PROJECT_NAME} LogLib)
 
     if (USE_GUI)
         target_link_libraries(${PROJECT_NAME} GUI)

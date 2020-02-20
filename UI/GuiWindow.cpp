@@ -271,8 +271,13 @@ void GuiWindow::refresh_com()
 {
     refresh_misses();
     last_packet_number_panel->setText(
+<<<<<<< HEAD
         qstr(data_->getData<uint32_t>(TX_PACKET_NR)));
     std::string str(DatagramType::getDatagramIDName(data_->getData<DatagramType::DatagramID>(ui_interface::PACKET_ID)));
+=======
+            qstr(data_->getData<uint32_t>(TX_PACKET_NR)));
+    std::string str(DatagramType::getDatagramIDName(data_->getData<DatagramType::DatagramID>(ui_interface::DATAGRAM_ID)));
+>>>>>>> 2e2fa026a6f9e662c400f5217a31ce999b4d9c7b
     last_datagram_id_panel->setText(QString::fromStdString(str));
     received_pack_cnt_panel->setText(qstr(data_->getData<uint32_t>(RX_PACKET_CTR)));
     // this->speed_lcd->display(data_->getData<float>(SPEED)); no speed

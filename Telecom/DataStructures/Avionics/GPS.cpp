@@ -10,6 +10,7 @@
 #include <iomanip>
 #include <Loggable.h>
 #include "GPS.h"
+#include "../../../Logger/Loggable.h"
 
 GPS::GPS() /*,
              gpsd("localhost", DEFAULT_GPSD_PORT) */{
@@ -67,7 +68,7 @@ void GPS::updateTx(std::shared_ptr<Connector> connector) {
     latitude =  42 + ((float) rand()/ RAND_MAX) * 6;
     longitude =  11 + ((float) rand()/ RAND_MAX) * 6;
     altitude =  500 + ((float) rand()/ RAND_MAX) * 1000;
-    satelliteNbr = (rand()/ RAND_MAX) * 10;
+    satelliteNbr = rand() % 10;
     hdop =  100 + ((float) rand()/ RAND_MAX) * 100;
 }
 
@@ -82,7 +83,7 @@ void GPS::updateRx(std::shared_ptr<Connector> connector) {
 }
 
 std::string GPS::log() const {
-    return std::move( "GPS" +
+    return std::move( "GPS" + SEPARATOR +
             std::to_string(latitude) + SEPARATOR +
             std::to_string(longitude) + SEPARATOR +
             std::to_string(altitude) + SEPARATOR +
