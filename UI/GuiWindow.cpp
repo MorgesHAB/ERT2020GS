@@ -74,10 +74,8 @@ GuiWindow::GuiWindow(std::shared_ptr<Connector> connector) :
 
 void GuiWindow::reset_button_pressed()
 {
-
-    data_->setData(ui_interface::ALTITUDE_MAX, 0);
-
-    // data_->setData(ui_interface::);
+    constexpr uint64_t z(0);
+    for (auto& index : dataToReset) data_->setData(index, z);
 }
 
 void GuiWindow::refresh_data()

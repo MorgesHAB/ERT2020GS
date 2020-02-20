@@ -117,75 +117,79 @@ enum DataType {
 *   The values put here will be reset to 0 when the connector resets.
 *
 */
-/*std::array<int, ARRAY_SIZE> TO_RESET({ IGNITION_STATUS,
-                           IGNITION_KEY_1_ACTIVATED,
-                           IGNITION_KEY_2_ACTIVATED,
-                           IGNITION_RED_BUTTON_PUSHED,
-                           IGNITION_SENT,
+    constexpr DataType dataToReset[] = {
+                   IGNITION_STATUS,
+                   IGNITION_KEY_1_ACTIVATED,
+                   IGNITION_KEY_2_ACTIVATED,
+                   IGNITION_RED_BUTTON_PUSHED,
+                   IGNITION_SENT,
 
-                            /// PacketNbr
-                           PACKET_RX_RATE_CTR,
-                           RX_PACKET_CTR,
-                           CORRUPTED_PACKET_CTR,
+                   /// PacketNbr
+                   PACKET_RX_RATE_CTR,
+                   RX_PACKET_CTR,
+                   CORRUPTED_PACKET_CTR,
 
-                                      /// Header
-                           DATAGRAM_ID, // uint8_t
-                           TX_PACKET_NR,// uint32_t
-                           TIMESTAMP, // time_t
+                   /// Header
+                   DATAGRAM_ID, // uint8_t
+                   TX_PACKET_NR,// uint32_t
+                   TIMESTAMP, // time_t
 
-                           /// GPS Data Structure
-                           GPS_ALTITUDE,// float
-                           GPS_LONGITUDE,// float
-                           GPS_LATITUDE,// float
-                           GPS_HDOP,    // float
-                           GPS_SAT_NBR, // uint8_t
+                   /// GPS Data Structure
+                   GPS_ALTITUDE,// float
+                   GPS_LONGITUDE,// float
+                   GPS_LATITUDE,// float
+                   GPS_HDOP,    // float
+                   GPS_SAT_NBR, // uint8_t
 
-                           // Telemetry Avionic Data
-                           T_ACCELEROMETER_X, T_ACCELEROMETER_Y, T_ACCELEROMETER_Z,
-                           T_EULER_X, T_EULER_Y, T_EULER_Z,
-                           T_TEMPERATURE,
-                           T_PRESSURE,
-                           T_SPEED,
-                           T_ALTITUDE,
+                   // Telemetry Avionic Data
+                   T_ACCELEROMETER_X, T_ACCELEROMETER_Y,
+                   T_ACCELEROMETER_Z,
+                   T_EULER_X, T_EULER_Y, T_EULER_Z,
+                   T_TEMPERATURE,
+                   T_PRESSURE,
+                   T_SPEED,
+                   T_ALTITUDE,
 
-                             // MetaData
-                           ALTITUDE_MAX,
+                   // MetaData
+                   ALTITUDE_MAX,
 
-                           /// Pressure Data
-                           PP_PRESSURE,
+                   /// Pressure Data
+                   PP_PRESSURE,
 
-                           AIR_BRAKES_ANGLE,
+                   AIR_BRAKES_ANGLE,
 
-                            // TEST
-                           TEST_SENSOR_DATA,
+                   // TEST
+                   TEST_SENSOR_DATA,
 
-                           /// Tx ignition code
-                           TX_IGNITION_CODE,
+                   /// Tx ignition code
+                   TX_IGNITION_CODE,
 
 
-                            /// File transmission
-                           SEND_FILE_REQUEST,
-                           // File transmitting States
-                           FILE_TRANSMISSION_TOTAL_PACKETS,
-                           FILE_TRANSMISSION_CURRENT_PACKET,
-                           FILE_TRANSMISSION_MY_STATE,
-                           FILE_TRANSMISSION_RECEIVED_STATE,
-                           FILE_TRANSMISSION_ALL_RECEIVED,
-                           SENDING_DATA,
+                   /// File transmission
+                   SEND_FILE_REQUEST,
+                   // File transmitting States
+                   FILE_TRANSMISSION_TOTAL_PACKETS,
+                   FILE_TRANSMISSION_CURRENT_PACKET,
+                   FILE_TRANSMISSION_MY_STATE,
+                   FILE_TRANSMISSION_RECEIVED_STATE,
+                   FILE_TRANSMISSION_ALL_RECEIVED,
+                   SENDING_DATA,
 
-                            /// Avionics status variables
-                           STATUS_AV_ID,
-                           STATUS_AV_VALUE,
-                           STATUS_AV_STATE,
+                   /// Avionics status variables
+                   STATUS_AV_ID,
+                   STATUS_AV_VALUE,
+                   STATUS_AV_STATE,
 
-                             /// GSE orders
-                           GSE_ORDER_VALUE,
+                   /// GSE orders
+                   GSE_ORDER_VALUE,
 
-                           /// GSE sensors
-                           GSE_HOSE_PRESSURE,
-                           GSE_HOSE_TEMP,
-                           GSE_HOSE_STATUS,
-                           GSE_MOTOR_SPEED,
-                           GSE_TANK_WEIGHT, });*/
-}
+                   /// GSE sensors
+                   GSE_HOSE_PRESSURE,
+                   GSE_HOSE_TEMP,
+                   GSE_HOSE_STATUS,
+                   GSE_MOTOR_SPEED,
+                   GSE_TANK_WEIGHT
+};
+
+} // namespace
 #endif // ProtocolDefine_H
