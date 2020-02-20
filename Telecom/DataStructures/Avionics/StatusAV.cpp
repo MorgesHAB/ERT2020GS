@@ -9,15 +9,13 @@
 void StatusAV::write(Packet &packet) {
     packet.write(id);
     packet.write(value);
-    packet.write((uint8_t) status);
+    packet.write(status);
 }
 
 void StatusAV::parse(Packet &packet) {
     packet.parse(id);
     packet.parse(value);
-    uint8_t statusTmp;
-    packet.parse(statusTmp);
-    status = (StateValues) statusTmp;
+    packet.parse(status);
 }
 
 void StatusAV::print() const {
