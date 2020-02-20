@@ -32,8 +32,7 @@ void Header::parse(Packet &packet) {
 }
 
 void Header::print() const {
-    std::cout << "*** Packet Type : "
-            << DatagramType::getDatagramIDName((DatagramType::DatagramID) DatagramID);
+    std::cout << "*** Packet Type : " << DatagramType::getDatagramIDName(DatagramID);
     std::cout << "\t packet nbr: " << packetNbr << "\t time: "
               << std::asctime(std::localtime(&timestamp)) << std::endl;
 }

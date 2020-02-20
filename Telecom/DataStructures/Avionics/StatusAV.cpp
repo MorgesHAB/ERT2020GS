@@ -35,6 +35,7 @@ std::string StatusAV::log() const {
 }
 
 void StatusAV::updateTx(std::shared_ptr<Connector> connector) {
+    status = rand() % 8;
 }
 
 void StatusAV::updateRx(std::shared_ptr<Connector> connector) {

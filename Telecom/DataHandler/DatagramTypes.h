@@ -46,7 +46,7 @@ namespace DatagramType {
     };
 
 
-    static std::string getDatagramIDName(DatagramID DatagramID) {
+    static std::string getDatagramIDName(uint8_t DatagramID) {
         switch (DatagramID) {
             case AV_GPS: return "AV GPS";
             case AV_STATUS: return "AV STATUS";
