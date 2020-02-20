@@ -23,12 +23,12 @@ void StatusAV::print() const {
     std::cout << "----- AV STATUS DATA --------------" << std::endl;
     std::cout << "id: " << id << std::endl
               << "value: " << value  << std::endl
-              << "status: " <<  getAVStateName(status) << std::endl;
+              << "status: " <<  avionic::getAVStateName(status) << std::endl;
 }
 
 std::string StatusAV::log() const {
     return std::move("AVState" + SEPARATOR +
-                     getAVStateName(status) + SEPARATOR +
+                     avionic::getAVStateName(status) + SEPARATOR +
                      std::to_string(value) + SEPARATOR);
 }
 

@@ -197,13 +197,13 @@ void GuiWindow::refresh_ignition_code()
 
 void GuiWindow::refresh_av_state()
 {
-    std::string str(getAVStateName(data_->getData<uint8_t>(STATUS_AV_STATE)));
+    std::string str(avionic::getAVStateName(data_->getData<uint8_t>(STATUS_AV_STATE)));
     avionics_state_panel->setText(QString::fromStdString(str));
 }
 
 void GuiWindow::initialize_style()
 {
-    QCoreApplication::setAttribute(Qt::AA_UseStyleSheetPropagationInWidgetStyles); // doesn't compile on RPi3 !!!!
+    QCoreApplication::setAttribute(Qt::AA_UseStyleSheetPropagationInWidgetStyles);
     QApplication::setStyle(QStyleFactory::create("cleanlooks"));
     Ui_Form::setupUi(this);
 }
