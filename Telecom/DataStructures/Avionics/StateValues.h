@@ -5,6 +5,7 @@
 #ifndef ERT2020GS_STATEVALUES_H
 #define ERT2020GS_STATEVALUES_H
 
+// TODO namespace
 
 enum StateValues {
     CALIBRATION,

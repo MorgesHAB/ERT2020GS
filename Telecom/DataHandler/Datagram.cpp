@@ -55,12 +55,5 @@ void Datagram::updateRx(Packet *packet, std::shared_ptr<Connector> connector) {
 }
 
 void Datagram::log() {
-    using namespace DatagramType;
-    switch (ID){
-        case AV_TELEMETRY:
-        case AV_GPS:
-        case AV_STATUS:
-        logger.log(this);
-        break;
-    }
+    logger.log(this);
 }
