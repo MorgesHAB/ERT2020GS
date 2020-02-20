@@ -73,7 +73,7 @@ void GPS::updateTx(std::shared_ptr<Connector> connector) {
 }
 
 void GPS::updateRx(std::shared_ptr<Connector> connector) {
-    connector->setData(ui_interface::GPS_ALTITUDE, latitude);
+    connector->setData(ui_interface::GPS_LATITUDE, latitude);
     connector->setData(ui_interface::GPS_LONGITUDE, longitude);
     connector->setData(ui_interface::GPS_ALTITUDE, altitude);
     connector->setData(ui_interface::GPS_HDOP, hdop);
