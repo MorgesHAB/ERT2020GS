@@ -73,7 +73,7 @@ void Telemetry::updateRx(std::shared_ptr<Connector> connector) {
 }
 
 std::string Telemetry::log() const {
-    return std::move("Telemetry" +
+    return std::move("Telemetry" + SEPARATOR +
                      std::to_string(altitude) + SEPARATOR +
                      std::to_string(speed) + SEPARATOR +
                      std::to_string(temperature) + SEPARATOR +

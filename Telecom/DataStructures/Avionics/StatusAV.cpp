@@ -29,7 +29,9 @@ void StatusAV::print() const {
 }
 
 std::string StatusAV::log() const {
-    return Data::log();
+    return std::move("AVState" + SEPARATOR +
+                     getStateName(status) + SEPARATOR +
+                     std::to_string(value) + SEPARATOR);
 }
 
 void StatusAV::updateTx(std::shared_ptr<Connector> connector) {

@@ -40,7 +40,8 @@ void Header::print() const {
 std::string Header::log() const {
     return std::move(
             std::to_string(DatagramID) + SEPARATOR +
-            std::to_string(timestamp) + SEPARATOR);
+            std::to_string(timestamp) + SEPARATOR +
+            std::to_string(packetNbr) + SEPARATOR);
 }
 
 void Header::updateTx(std::shared_ptr<Connector> connector) {

@@ -9,6 +9,7 @@
 enum StateValues {
     CALIBRATION,
     IDLE,
+    FILLING,
     LIFTOFF,
     COAST,
     PRIMARY_EVENT,
@@ -21,6 +22,7 @@ static std::string getStateName(uint8_t state) {
     switch (state) {
         case CALIBRATION: return "CALIBRATION";
         case IDLE: return "IDLE";
+        case FILLING: return "FILLING";
         case LIFTOFF: return "LIFTOFF";
         case COAST: return "COAST";
         case PRIMARY_EVENT: return "PRIMARY EVENT";

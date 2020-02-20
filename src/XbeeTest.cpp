@@ -48,9 +48,10 @@ int main(int argc, char** argv) {
     while (keep_running) {
         // ./XbeeTest Tx            // Transmitter Part
         if (modeTx) {
-            DatagramID ID = AV_TELEMETRY;
-            dataHandler.updateTx(ID);
-            xbee.send(dataHandler.getPacket(ID));
+            dataHandler.updateTx(AV_TELEMETRY);
+            xbee.send(dataHandler.getPacket(AV_TELEMETRY));           
+            dataHandler.updateTx(AV_GPS);
+            xbee.send(dataHandler.getPacket(AV_GPS));
 
             std::this_thread::sleep_for(std::chrono::milliseconds(50));
         }

@@ -7,6 +7,7 @@ set(USE_GUI ON)
 set(USE_XBEE ON)
 set(RUNNING_ON_RPI OFF) # <-- if not ON, the Ignition hardware won't wrork
 set(USE_SOUND ON)
+####
 set(USE_LORA OFF)
 set(USE_GPS OFF)
 ###############################################################
@@ -47,13 +48,14 @@ if (USE_LORA)
 endif (USE_LORA)
 
 if (USE_XBEE)
+    #target_link_libraries(XbeeTest LogLib)
     target_link_libraries(XbeeTest Telecom)
     target_link_libraries(IgniterRPi Telecom)
     target_link_libraries(ImageCom Telecom)
     target_link_libraries(TestPacket Telecom)
+    #target_link_libraries(${PROJECT_NAME} LogLib)
 
     if (USE_GUI)
-        target_link_libraries(${PROJECT_NAME} LogLib)
         target_link_libraries(${PROJECT_NAME} GUI)
         target_include_directories(${PROJECT_NAME} PUBLIC UI)
     endif (USE_GUI)
