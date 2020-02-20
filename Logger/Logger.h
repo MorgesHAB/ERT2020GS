@@ -30,6 +30,8 @@ public:
 
     virtual void log(Loggable* data);
 
+    static size_t total_logger_count();
+
     virtual ~Logger() = default;
 
 protected:
