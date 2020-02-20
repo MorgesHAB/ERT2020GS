@@ -1,6 +1,6 @@
 #include "gui_logger.h"
 
-#include "utilities.h"
+#include "../Logger/utilities.h"
 
 
 void Gui_Logger::log(Loggable *data)
