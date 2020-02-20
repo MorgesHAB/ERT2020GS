@@ -17,6 +17,7 @@
 #include <iostream>
 #include <ctime>
 #include <array>
+#include "../Telecom/DataStructures/Avionics/StatusAV.h"
 #include "../Telecom/DataHandler/DatagramTypes.h"
 #include "../Telecom/DataStructures/File/FileTransmissionStates.h"
 #include "gui_message.h"
@@ -88,6 +89,7 @@ void GuiWindow::reset_button_pressed()
 void GuiWindow::refresh_data()
 {
     refresh_com();
+    refresh_av_state();
     refresh_telemetry();
     refresh_time();
     check_and_show();
@@ -197,6 +199,12 @@ void GuiWindow::refresh_ignition_code()
     code_1->setText(QString::number(get_bit(tmp, 1)));
     code_2->setText(QString::number(get_bit(tmp, 2)));
     code_3->setText(QString::number(get_bit(tmp, 3)));
+}
+
+void GuiWindow::refresh_av_state()
+{
+    std::string str(getAVStateName(data_->getData<uint8_t>(STATUS_AV_STATE)));
+    avionics_state_panel->setText(QString::fromStdString(str));
 }
 
 void GuiWindow::initialize_style()
