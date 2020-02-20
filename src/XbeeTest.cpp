@@ -46,10 +46,10 @@ int main(int argc, char** argv) {
     while (keep_running) {
         // ./XbeeTest Tx            // Transmitter Part
         if (modeTx) {
-            dataHandler.updateTx(AV_TELEMETRY);
+            /*dataHandler.updateTx(AV_TELEMETRY);
             xbee.send(dataHandler.getPacket(AV_TELEMETRY));           
             dataHandler.updateTx(AV_GPS);
-            xbee.send(dataHandler.getPacket(AV_GPS));
+            xbee.send(dataHandler.getPacket(AV_GPS));*/
             dataHandler.updateTx(AV_STATUS);
             xbee.send(dataHandler.getPacket(AV_STATUS));
 
