@@ -29,13 +29,13 @@
 
 DataHandler::DataHandler(std::shared_ptr<Connector> connector)
         : connector(connector), dataHandler(DatagramType::TOTAL_NBR_OF_TYPES, nullptr),
-          lastRxID(DatagramType::INIT), logger("RxData") {
+          lastRxID(DatagramType::INIT) {
     using namespace DatagramType;
     using namespace ui_interface;
     // Create your RF Packet Datagram here
     // default protocol header ex: packet Type, packet nbr, timestamp
     for (uint8_t id(0); id < TOTAL_NBR_OF_TYPES; ++id) {
-        dataHandler[id] = new Datagram;
+        dataHandler[id] = new Datagram((DatagramID) id);
         dataHandler[id]->add(new XbeeOptions);
         dataHandler[id]->add(new Header(id));
     }
@@ -115,7 +115,7 @@ void DataHandler::printLastRxPacket() const {
 }
 
 void DataHandler::logLastRxPacket() {
-    logger.log(dataHandler[lastRxID]);
+    dataHandler[lastRxID]->log();
     //std::cout << dataHandler[lastRxID]->log_description(); // debug
 }
 

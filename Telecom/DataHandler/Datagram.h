@@ -15,15 +15,18 @@
 #include <Data.h>
 #include <Packet.h>
 #include <Loggable.h>
+#include <Logger.h>
+#include <DatagramTypes.h>
 
 
 class Datagram : public Loggable {
 public:
-    Datagram();
+    Datagram(DatagramType::DatagramID ID);
     virtual ~Datagram();
 
     void print() const;
     std::string log_description() const override;
+    void log();
 
     void updateTx(std::shared_ptr<Connector> connector);
     void updateRx(Packet *packet, std::shared_ptr<Connector> connector);
@@ -32,8 +35,11 @@ public:
     Packet* getDataPacket();
 
 private:
+    DatagramType::DatagramID ID;
     std::vector<Data*> datagram;
     Packet* dataPacket;
+
+    Logger logger;
 };
 
 

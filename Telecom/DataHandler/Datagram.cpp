@@ -9,7 +9,8 @@
 
 #include "Datagram.h"
 
-Datagram::Datagram() : dataPacket(new Packet) {}
+Datagram::Datagram(DatagramType::DatagramID ID) : ID(ID), dataPacket(new Packet),
+                                        logger(DatagramType::getDatagramIDName(ID)) {}
 
 Datagram::~Datagram() {
     for (auto &data : datagram) delete data;
@@ -51,4 +52,8 @@ void Datagram::updateRx(Packet *packet, std::shared_ptr<Connector> connector) {
         data->parse(*dataPacket);
         data->updateRx(connector);
     }
+}
+
+void Datagram::log() {
+    logger.log(this);
 }

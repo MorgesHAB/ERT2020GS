@@ -14,7 +14,6 @@
 #include <vector>
 #include <DatagramTypes.h>
 #include <Datagram.h>
-#include <Logger.h>
 
 
 class DataHandler {
@@ -37,8 +36,6 @@ private:
 
     std::vector<Datagram*> dataHandler;
     DatagramType::DatagramID lastRxID;
-
-    Logger logger;
 };
 
 
