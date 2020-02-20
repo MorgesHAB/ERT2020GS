@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>600</width>
-    <height>609</height>
+    <width>944</width>
+    <height>801</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -396,13 +396,6 @@ gridline-color: rgb(255, 0, 0);</string>
         </property>
        </widget>
       </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="pressure_label">
-        <property name="text">
-         <string>PRESS.</string>
-        </property>
-       </widget>
-      </item>
       <item row="0" column="1">
        <widget class="QLabel" name="temperature_panel">
         <property name="text">
@@ -426,6 +419,61 @@ gridline-color: rgb(255, 0, 0);</string>
       </item>
       <item row="3" column="1">
        <widget class="QLabel" name="altitude_panel_telemetry">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2">
+       <widget class="QLabel" name="hpa_unit_label">
+        <property name="text">
+         <string>hPa</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <widget class="QLabel" name="celcius_label">
+        <property name="minimumSize">
+         <size>
+          <width>32</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; vertical-align:super;&quot;&gt;o&lt;/span&gt;C&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="2">
+       <widget class="QLabel" name="m_s_unit_label">
+        <property name="text">
+         <string>m/s</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="avionics_state_label">
+        <property name="text">
+         <string>AV. STATE</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="pressure_label">
+        <property name="text">
+         <string>PRESS.</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="2">
+       <widget class="QLabel" name="m_unit_label_3">
+        <property name="text">
+         <string>m</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1" colspan="2">
+       <widget class="QLabel" name="avionics_state_panel">
         <property name="text">
          <string/>
         </property>
@@ -524,7 +572,7 @@ image: url(:/assets/logo.png);</string>
       <string>COM</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_4">
-      <item row="6" column="0">
+      <item row="7" column="0">
        <widget class="QLabel" name="last_refresh_label">
         <property name="toolTip">
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Last packet's timestamp&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -544,7 +592,7 @@ image: url(:/assets/logo.png);</string>
         </property>
        </widget>
       </item>
-      <item row="3" column="0">
+      <item row="4" column="0">
        <widget class="QLabel" name="packets_second_label">
         <property name="toolTip">
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The number of packets received in last second&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -554,7 +602,7 @@ image: url(:/assets/logo.png);</string>
         </property>
        </widget>
       </item>
-      <item row="3" column="1">
+      <item row="4" column="1">
        <widget class="QProgressBar" name="packets_second_bar">
         <property name="toolTip">
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The number of packets received in last second&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -596,7 +644,7 @@ image: url(:/assets/logo.png);</string>
         </property>
        </widget>
       </item>
-      <item row="6" column="1">
+      <item row="7" column="1">
        <widget class="QLabel" name="last_refresh_panel">
         <property name="toolTip">
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Last packet's timestamp&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -616,7 +664,7 @@ image: url(:/assets/logo.png);</string>
         </property>
        </widget>
       </item>
-      <item row="5" column="0">
+      <item row="6" column="0">
        <widget class="QLabel" name="miss_label">
         <property name="toolTip">
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Lost packets in last 2 seconds&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -626,7 +674,7 @@ image: url(:/assets/logo.png);</string>
         </property>
        </widget>
       </item>
-      <item row="5" column="1">
+      <item row="6" column="1">
        <widget class="QLabel" name="miss_panel">
         <property name="toolTip">
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Lost packets in last 2 seconds&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -636,15 +684,29 @@ image: url(:/assets/logo.png);</string>
         </property>
        </widget>
       </item>
-      <item row="7" column="0">
+      <item row="8" column="0">
        <widget class="QLabel" name="corrupted_label">
         <property name="text">
          <string>Corrupted Packets</string>
         </property>
        </widget>
       </item>
-      <item row="7" column="1">
+      <item row="8" column="1">
        <widget class="QLabel" name="corrupted_panel">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="last_datagram_id">
+        <property name="text">
+         <string>Last Datagram ID</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QLabel" name="last_datagram_id_panel">
         <property name="text">
          <string/>
         </property>
@@ -743,30 +805,10 @@ image: url(:/assets/logo.png);</string>
       <string>GPS</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_3">
-      <item row="5" column="1">
-       <widget class="QLabel" name="latitude_panel">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
       <item row="3" column="0">
        <widget class="QLabel" name="longitude_label">
         <property name="text">
          <string>LONGITUDE</string>
-        </property>
-       </widget>
-      </item>
-      <item row="6" column="1">
-       <widget class="QLabel" name="hdop_panel">
-        <property name="text">
-         <string/>
         </property>
        </widget>
       </item>
@@ -777,13 +819,6 @@ image: url(:/assets/logo.png);</string>
         </property>
        </widget>
       </item>
-      <item row="7" column="1">
-       <widget class="QLabel" name="sat_nbr_panel">
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
       <item row="1" column="0">
        <widget class="QLabel" name="altitude_label_gps">
         <property name="text">
@@ -791,27 +826,10 @@ image: url(:/assets/logo.png);</string>
         </property>
        </widget>
       </item>
-      <item row="3" column="1">
-       <widget class="QLabel" name="longitude_panel">
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
       <item row="7" column="0">
        <widget class="QLabel" name="sat_nbr_label">
         <property name="text">
          <string>SATELLITES</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QLCDNumber" name="altitude_lcd_gps">
-        <property name="smallDecimalPoint">
-         <bool>false</bool>
-        </property>
-        <property name="segmentStyle">
-         <enum>QLCDNumber::Flat</enum>
         </property>
        </widget>
       </item>
@@ -829,8 +847,116 @@ image: url(:/assets/logo.png);</string>
         </property>
        </widget>
       </item>
+      <item row="3" column="1" colspan="4">
+       <widget class="QLabel" name="longitude_panel">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="4">
+       <widget class="QLabel" name="ft_unit_label_2">
+        <property name="maximumSize">
+         <size>
+          <width>20</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>ft</string>
+        </property>
+       </widget>
+      </item>
       <item row="2" column="1">
-       <widget class="QLCDNumber" name="altitude_max_lcd"/>
+       <widget class="QLCDNumber" name="altitude_max_lcd_m">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="segmentStyle">
+         <enum>QLCDNumber::Flat</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="3">
+       <widget class="QLCDNumber" name="altitude_lcd_gps_ft">
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <property name="segmentStyle">
+         <enum>QLCDNumber::Flat</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLCDNumber" name="altitude_lcd_gps">
+        <property name="smallDecimalPoint">
+         <bool>false</bool>
+        </property>
+        <property name="segmentStyle">
+         <enum>QLCDNumber::Flat</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2">
+       <widget class="QLabel" name="m_unit_label_2">
+        <property name="maximumSize">
+         <size>
+          <width>30</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>m</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="2">
+       <widget class="QLabel" name="m_unit_label">
+        <property name="text">
+         <string>m</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="3">
+       <widget class="QLCDNumber" name="altitude_max_lcd_ft">
+        <property name="segmentStyle">
+         <enum>QLCDNumber::Flat</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="4">
+       <widget class="QLabel" name="ft_unit_label">
+        <property name="text">
+         <string>ft</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1" colspan="4">
+       <widget class="QLabel" name="latitude_panel">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="1" colspan="4">
+       <widget class="QLabel" name="hdop_panel">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="1" colspan="4">
+       <widget class="QLabel" name="sat_nbr_panel">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>

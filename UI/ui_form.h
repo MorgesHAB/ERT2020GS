@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'press_altth3337.ui'
+** Form generated from reading UI file 'press_altEt2343.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.9.5
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef PRESS_ALTTH3337_H
-#define PRESS_ALTTH3337_H
+#ifndef PRESS_ALTET2343_H
+#define PRESS_ALTET2343_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QAction>
@@ -66,11 +66,17 @@ public:
     QLabel *altitude_label_telemetry;
     QLabel *speed_label;
     QLabel *temperature_label;
-    QLabel *pressure_label;
     QLabel *temperature_panel;
     QLabel *pressure_panel;
     QLabel *speed_panel;
     QLabel *altitude_panel_telemetry;
+    QLabel *hpa_unit_label;
+    QLabel *celcius_label;
+    QLabel *m_s_unit_label;
+    QLabel *avionics_state_label;
+    QLabel *pressure_label;
+    QLabel *m_unit_label_3;
+    QLabel *avionics_state_panel;
     QLabel *logo;
     QGroupBox *accel_box;
     QGridLayout *gridLayout_7;
@@ -94,6 +100,8 @@ public:
     QLabel *miss_panel;
     QLabel *corrupted_label;
     QLabel *corrupted_panel;
+    QLabel *last_datagram_id;
+    QLabel *last_datagram_id_panel;
     QGroupBox *groupBox;
     QGridLayout *gridLayout_9;
     QLabel *receiver_state_label;
@@ -104,24 +112,30 @@ public:
     QProgressBar *file_transmission_progress_bar;
     QGroupBox *gps_box;
     QGridLayout *gridLayout_3;
-    QLabel *latitude_panel;
     QLabel *longitude_label;
-    QLabel *hdop_panel;
     QLabel *latitude_label;
-    QLabel *sat_nbr_panel;
     QLabel *altitude_label_gps;
-    QLabel *longitude_panel;
     QLabel *sat_nbr_label;
-    QLCDNumber *altitude_lcd_gps;
     QLabel *hdop_label;
     QLabel *altitude_max_label;
-    QLCDNumber *altitude_max_lcd;
+    QLabel *longitude_panel;
+    QLabel *ft_unit_label_2;
+    QLCDNumber *altitude_max_lcd_m;
+    QLCDNumber *altitude_lcd_gps_ft;
+    QLCDNumber *altitude_lcd_gps;
+    QLabel *m_unit_label_2;
+    QLabel *m_unit_label;
+    QLCDNumber *altitude_max_lcd_ft;
+    QLabel *ft_unit_label;
+    QLabel *latitude_panel;
+    QLabel *hdop_panel;
+    QLabel *sat_nbr_panel;
 
     void setupUi(QWidget *Form)
     {
         if (Form->objectName().isEmpty())
             Form->setObjectName(QStringLiteral("Form"));
-        Form->resize(600, 609);
+        Form->resize(944, 801);
         Form->setMinimumSize(QSize(600, 0));
         Form->setMaximumSize(QSize(9999, 9999));
         Form->setMouseTracking(false);
@@ -323,11 +337,6 @@ public:
 
         gridLayout_8->addWidget(temperature_label, 0, 0, 1, 1);
 
-        pressure_label = new QLabel(avionics_box);
-        pressure_label->setObjectName(QStringLiteral("pressure_label"));
-
-        gridLayout_8->addWidget(pressure_label, 1, 0, 1, 1);
-
         temperature_panel = new QLabel(avionics_box);
         temperature_panel->setObjectName(QStringLiteral("temperature_panel"));
 
@@ -347,6 +356,42 @@ public:
         altitude_panel_telemetry->setObjectName(QStringLiteral("altitude_panel_telemetry"));
 
         gridLayout_8->addWidget(altitude_panel_telemetry, 3, 1, 1, 1);
+
+        hpa_unit_label = new QLabel(avionics_box);
+        hpa_unit_label->setObjectName(QStringLiteral("hpa_unit_label"));
+
+        gridLayout_8->addWidget(hpa_unit_label, 1, 2, 1, 1);
+
+        celcius_label = new QLabel(avionics_box);
+        celcius_label->setObjectName(QStringLiteral("celcius_label"));
+        celcius_label->setMinimumSize(QSize(32, 40));
+
+        gridLayout_8->addWidget(celcius_label, 0, 2, 1, 1);
+
+        m_s_unit_label = new QLabel(avionics_box);
+        m_s_unit_label->setObjectName(QStringLiteral("m_s_unit_label"));
+
+        gridLayout_8->addWidget(m_s_unit_label, 2, 2, 1, 1);
+
+        avionics_state_label = new QLabel(avionics_box);
+        avionics_state_label->setObjectName(QStringLiteral("avionics_state_label"));
+
+        gridLayout_8->addWidget(avionics_state_label, 4, 0, 1, 1);
+
+        pressure_label = new QLabel(avionics_box);
+        pressure_label->setObjectName(QStringLiteral("pressure_label"));
+
+        gridLayout_8->addWidget(pressure_label, 1, 0, 1, 1);
+
+        m_unit_label_3 = new QLabel(avionics_box);
+        m_unit_label_3->setObjectName(QStringLiteral("m_unit_label_3"));
+
+        gridLayout_8->addWidget(m_unit_label_3, 3, 2, 1, 1);
+
+        avionics_state_panel = new QLabel(avionics_box);
+        avionics_state_panel->setObjectName(QStringLiteral("avionics_state_panel"));
+
+        gridLayout_8->addWidget(avionics_state_panel, 4, 1, 1, 2);
 
 
         gridLayout->addWidget(avionics_box, 3, 3, 2, 1);
@@ -406,7 +451,7 @@ public:
         last_refresh_label = new QLabel(com_box);
         last_refresh_label->setObjectName(QStringLiteral("last_refresh_label"));
 
-        gridLayout_4->addWidget(last_refresh_label, 6, 0, 1, 1);
+        gridLayout_4->addWidget(last_refresh_label, 7, 0, 1, 1);
 
         last_packet_nbr_label = new QLabel(com_box);
         last_packet_nbr_label->setObjectName(QStringLiteral("last_packet_nbr_label"));
@@ -416,7 +461,7 @@ public:
         packets_second_label = new QLabel(com_box);
         packets_second_label->setObjectName(QStringLiteral("packets_second_label"));
 
-        gridLayout_4->addWidget(packets_second_label, 3, 0, 1, 1);
+        gridLayout_4->addWidget(packets_second_label, 4, 0, 1, 1);
 
         packets_second_bar = new QProgressBar(com_box);
         packets_second_bar->setObjectName(QStringLiteral("packets_second_bar"));
@@ -425,7 +470,7 @@ public:
         packets_second_bar->setValue(30);
         packets_second_bar->setInvertedAppearance(false);
 
-        gridLayout_4->addWidget(packets_second_bar, 3, 1, 1, 1);
+        gridLayout_4->addWidget(packets_second_bar, 4, 1, 1, 1);
 
         last_packet_number_panel = new QLabel(com_box);
         last_packet_number_panel->setObjectName(QStringLiteral("last_packet_number_panel"));
@@ -440,7 +485,7 @@ public:
         last_refresh_panel = new QLabel(com_box);
         last_refresh_panel->setObjectName(QStringLiteral("last_refresh_panel"));
 
-        gridLayout_4->addWidget(last_refresh_panel, 6, 1, 1, 1);
+        gridLayout_4->addWidget(last_refresh_panel, 7, 1, 1, 1);
 
         received_pack_cnt_panel = new QLabel(com_box);
         received_pack_cnt_panel->setObjectName(QStringLiteral("received_pack_cnt_panel"));
@@ -450,22 +495,32 @@ public:
         miss_label = new QLabel(com_box);
         miss_label->setObjectName(QStringLiteral("miss_label"));
 
-        gridLayout_4->addWidget(miss_label, 5, 0, 1, 1);
+        gridLayout_4->addWidget(miss_label, 6, 0, 1, 1);
 
         miss_panel = new QLabel(com_box);
         miss_panel->setObjectName(QStringLiteral("miss_panel"));
 
-        gridLayout_4->addWidget(miss_panel, 5, 1, 1, 1);
+        gridLayout_4->addWidget(miss_panel, 6, 1, 1, 1);
 
         corrupted_label = new QLabel(com_box);
         corrupted_label->setObjectName(QStringLiteral("corrupted_label"));
 
-        gridLayout_4->addWidget(corrupted_label, 7, 0, 1, 1);
+        gridLayout_4->addWidget(corrupted_label, 8, 0, 1, 1);
 
         corrupted_panel = new QLabel(com_box);
         corrupted_panel->setObjectName(QStringLiteral("corrupted_panel"));
 
-        gridLayout_4->addWidget(corrupted_panel, 7, 1, 1, 1);
+        gridLayout_4->addWidget(corrupted_panel, 8, 1, 1, 1);
+
+        last_datagram_id = new QLabel(com_box);
+        last_datagram_id->setObjectName(QStringLiteral("last_datagram_id"));
+
+        gridLayout_4->addWidget(last_datagram_id, 3, 0, 1, 1);
+
+        last_datagram_id_panel = new QLabel(com_box);
+        last_datagram_id_panel->setObjectName(QStringLiteral("last_datagram_id_panel"));
+
+        gridLayout_4->addWidget(last_datagram_id_panel, 3, 1, 1, 1);
 
 
         gridLayout->addWidget(com_box, 2, 1, 1, 4);
@@ -517,53 +572,25 @@ public:
         gps_box->setMinimumSize(QSize(0, 200));
         gridLayout_3 = new QGridLayout(gps_box);
         gridLayout_3->setObjectName(QStringLiteral("gridLayout_3"));
-        latitude_panel = new QLabel(gps_box);
-        latitude_panel->setObjectName(QStringLiteral("latitude_panel"));
-        latitude_panel->setMinimumSize(QSize(0, 0));
-
-        gridLayout_3->addWidget(latitude_panel, 5, 1, 1, 1);
-
         longitude_label = new QLabel(gps_box);
         longitude_label->setObjectName(QStringLiteral("longitude_label"));
 
         gridLayout_3->addWidget(longitude_label, 3, 0, 1, 1);
-
-        hdop_panel = new QLabel(gps_box);
-        hdop_panel->setObjectName(QStringLiteral("hdop_panel"));
-
-        gridLayout_3->addWidget(hdop_panel, 6, 1, 1, 1);
 
         latitude_label = new QLabel(gps_box);
         latitude_label->setObjectName(QStringLiteral("latitude_label"));
 
         gridLayout_3->addWidget(latitude_label, 5, 0, 1, 1);
 
-        sat_nbr_panel = new QLabel(gps_box);
-        sat_nbr_panel->setObjectName(QStringLiteral("sat_nbr_panel"));
-
-        gridLayout_3->addWidget(sat_nbr_panel, 7, 1, 1, 1);
-
         altitude_label_gps = new QLabel(gps_box);
         altitude_label_gps->setObjectName(QStringLiteral("altitude_label_gps"));
 
         gridLayout_3->addWidget(altitude_label_gps, 1, 0, 1, 1);
 
-        longitude_panel = new QLabel(gps_box);
-        longitude_panel->setObjectName(QStringLiteral("longitude_panel"));
-
-        gridLayout_3->addWidget(longitude_panel, 3, 1, 1, 1);
-
         sat_nbr_label = new QLabel(gps_box);
         sat_nbr_label->setObjectName(QStringLiteral("sat_nbr_label"));
 
         gridLayout_3->addWidget(sat_nbr_label, 7, 0, 1, 1);
-
-        altitude_lcd_gps = new QLCDNumber(gps_box);
-        altitude_lcd_gps->setObjectName(QStringLiteral("altitude_lcd_gps"));
-        altitude_lcd_gps->setSmallDecimalPoint(false);
-        altitude_lcd_gps->setSegmentStyle(QLCDNumber::Flat);
-
-        gridLayout_3->addWidget(altitude_lcd_gps, 1, 1, 1, 1);
 
         hdop_label = new QLabel(gps_box);
         hdop_label->setObjectName(QStringLiteral("hdop_label"));
@@ -575,10 +602,75 @@ public:
 
         gridLayout_3->addWidget(altitude_max_label, 2, 0, 1, 1);
 
-        altitude_max_lcd = new QLCDNumber(gps_box);
-        altitude_max_lcd->setObjectName(QStringLiteral("altitude_max_lcd"));
+        longitude_panel = new QLabel(gps_box);
+        longitude_panel->setObjectName(QStringLiteral("longitude_panel"));
 
-        gridLayout_3->addWidget(altitude_max_lcd, 2, 1, 1, 1);
+        gridLayout_3->addWidget(longitude_panel, 3, 1, 1, 4);
+
+        ft_unit_label_2 = new QLabel(gps_box);
+        ft_unit_label_2->setObjectName(QStringLiteral("ft_unit_label_2"));
+        ft_unit_label_2->setMaximumSize(QSize(20, 16777215));
+
+        gridLayout_3->addWidget(ft_unit_label_2, 1, 4, 1, 1);
+
+        altitude_max_lcd_m = new QLCDNumber(gps_box);
+        altitude_max_lcd_m->setObjectName(QStringLiteral("altitude_max_lcd_m"));
+        altitude_max_lcd_m->setEnabled(true);
+        altitude_max_lcd_m->setSegmentStyle(QLCDNumber::Flat);
+
+        gridLayout_3->addWidget(altitude_max_lcd_m, 2, 1, 1, 1);
+
+        altitude_lcd_gps_ft = new QLCDNumber(gps_box);
+        altitude_lcd_gps_ft->setObjectName(QStringLiteral("altitude_lcd_gps_ft"));
+        altitude_lcd_gps_ft->setFrameShadow(QFrame::Raised);
+        altitude_lcd_gps_ft->setSegmentStyle(QLCDNumber::Flat);
+
+        gridLayout_3->addWidget(altitude_lcd_gps_ft, 1, 3, 1, 1);
+
+        altitude_lcd_gps = new QLCDNumber(gps_box);
+        altitude_lcd_gps->setObjectName(QStringLiteral("altitude_lcd_gps"));
+        altitude_lcd_gps->setSmallDecimalPoint(false);
+        altitude_lcd_gps->setSegmentStyle(QLCDNumber::Flat);
+
+        gridLayout_3->addWidget(altitude_lcd_gps, 1, 1, 1, 1);
+
+        m_unit_label_2 = new QLabel(gps_box);
+        m_unit_label_2->setObjectName(QStringLiteral("m_unit_label_2"));
+        m_unit_label_2->setMaximumSize(QSize(30, 16777215));
+
+        gridLayout_3->addWidget(m_unit_label_2, 1, 2, 1, 1);
+
+        m_unit_label = new QLabel(gps_box);
+        m_unit_label->setObjectName(QStringLiteral("m_unit_label"));
+
+        gridLayout_3->addWidget(m_unit_label, 2, 2, 1, 1);
+
+        altitude_max_lcd_ft = new QLCDNumber(gps_box);
+        altitude_max_lcd_ft->setObjectName(QStringLiteral("altitude_max_lcd_ft"));
+        altitude_max_lcd_ft->setSegmentStyle(QLCDNumber::Flat);
+
+        gridLayout_3->addWidget(altitude_max_lcd_ft, 2, 3, 1, 1);
+
+        ft_unit_label = new QLabel(gps_box);
+        ft_unit_label->setObjectName(QStringLiteral("ft_unit_label"));
+
+        gridLayout_3->addWidget(ft_unit_label, 2, 4, 1, 1);
+
+        latitude_panel = new QLabel(gps_box);
+        latitude_panel->setObjectName(QStringLiteral("latitude_panel"));
+        latitude_panel->setMinimumSize(QSize(0, 0));
+
+        gridLayout_3->addWidget(latitude_panel, 5, 1, 1, 4);
+
+        hdop_panel = new QLabel(gps_box);
+        hdop_panel->setObjectName(QStringLiteral("hdop_panel"));
+
+        gridLayout_3->addWidget(hdop_panel, 6, 1, 1, 4);
+
+        sat_nbr_panel = new QLabel(gps_box);
+        sat_nbr_panel->setObjectName(QStringLiteral("sat_nbr_panel"));
+
+        gridLayout_3->addWidget(sat_nbr_panel, 7, 1, 1, 4);
 
 
         gridLayout->addWidget(gps_box, 3, 0, 2, 3);
@@ -624,11 +716,17 @@ public:
         altitude_label_telemetry->setText(QApplication::translate("Form", "ALT.", Q_NULLPTR));
         speed_label->setText(QApplication::translate("Form", "SPEED", Q_NULLPTR));
         temperature_label->setText(QApplication::translate("Form", "TEMP", Q_NULLPTR));
-        pressure_label->setText(QApplication::translate("Form", "PRESS.", Q_NULLPTR));
         temperature_panel->setText(QString());
         pressure_panel->setText(QString());
         speed_panel->setText(QString());
         altitude_panel_telemetry->setText(QString());
+        hpa_unit_label->setText(QApplication::translate("Form", "hPa", Q_NULLPTR));
+        celcius_label->setText(QApplication::translate("Form", "<html><head/><body><p><span style=\" vertical-align:super;\">o</span>C</p></body></html>", Q_NULLPTR));
+        m_s_unit_label->setText(QApplication::translate("Form", "m/s", Q_NULLPTR));
+        avionics_state_label->setText(QApplication::translate("Form", "AV. STATE", Q_NULLPTR));
+        pressure_label->setText(QApplication::translate("Form", "PRESS.", Q_NULLPTR));
+        m_unit_label_3->setText(QApplication::translate("Form", "m", Q_NULLPTR));
+        avionics_state_panel->setText(QString());
 #ifndef QT_NO_TOOLTIP
         logo->setToolTip(QApplication::translate("Form", "<html><head/><body><p>Project Bella Lui 2020</p></body></html>", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
@@ -683,6 +781,8 @@ public:
         miss_panel->setText(QString());
         corrupted_label->setText(QApplication::translate("Form", "Corrupted Packets", Q_NULLPTR));
         corrupted_panel->setText(QString());
+        last_datagram_id->setText(QApplication::translate("Form", "Last Datagram ID", Q_NULLPTR));
+        last_datagram_id_panel->setText(QString());
         groupBox->setTitle(QApplication::translate("Form", "File Transmission", Q_NULLPTR));
         receiver_state_label->setText(QApplication::translate("Form", "Receiver State", Q_NULLPTR));
         transmitter_state_label->setText(QApplication::translate("Form", "Transmitter State", Q_NULLPTR));
@@ -691,16 +791,20 @@ public:
         receiver_state_panel->setText(QString());
         file_transmission_progress_bar->setFormat(QApplication::translate("Form", "%v / %m", Q_NULLPTR));
         gps_box->setTitle(QApplication::translate("Form", "GPS", Q_NULLPTR));
-        latitude_panel->setText(QString());
         longitude_label->setText(QApplication::translate("Form", "LONGITUDE", Q_NULLPTR));
-        hdop_panel->setText(QString());
         latitude_label->setText(QApplication::translate("Form", "LATITUDE", Q_NULLPTR));
-        sat_nbr_panel->setText(QString());
         altitude_label_gps->setText(QApplication::translate("Form", "ALTITUDE", Q_NULLPTR));
-        longitude_panel->setText(QString());
         sat_nbr_label->setText(QApplication::translate("Form", "SATELLITES", Q_NULLPTR));
         hdop_label->setText(QApplication::translate("Form", "HDOP", Q_NULLPTR));
         altitude_max_label->setText(QApplication::translate("Form", "ALTITUDE MAX", Q_NULLPTR));
+        longitude_panel->setText(QString());
+        ft_unit_label_2->setText(QApplication::translate("Form", "ft", Q_NULLPTR));
+        m_unit_label_2->setText(QApplication::translate("Form", "m", Q_NULLPTR));
+        m_unit_label->setText(QApplication::translate("Form", "m", Q_NULLPTR));
+        ft_unit_label->setText(QApplication::translate("Form", "ft", Q_NULLPTR));
+        latitude_panel->setText(QString());
+        hdop_panel->setText(QString());
+        sat_nbr_panel->setText(QString());
     } // retranslateUi
 
 };
@@ -711,4 +815,4 @@ class Form: public Ui_Form {};
 
 QT_END_NAMESPACE
 
-#endif // PRESS_ALTTH3337_H
+#endif // PRESS_ALTET2343_H

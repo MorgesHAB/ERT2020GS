@@ -16,7 +16,7 @@ SOURCES += \
     gui_test.cc \
     GuiWindow.cpp \
     logger_tests.cc \
-    utilities.cpp
+    ../Logger/utilities.cpp
 
 HEADERS += \
     ../Logger/double_buffer.h \
@@ -25,12 +25,13 @@ HEADERS += \
     ../Logger/Logger_buffer.h \
     ../RF-UI-Interface/ProtocolDefine.h \
     ../RF-UI-Interface/connector.h \
+    ../Telecom/DataHandler/DatagramTypes.h \
     ../Telecom/DataStructures/File/FileTransmissionStates.h \
     gui_logger.h \
     gui_message.h \
     ui_form.h \
     GuiWindow.h \
-    utilities.h
+    ../Logger/utilities.h
 
 FORMS +=
 

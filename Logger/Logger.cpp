@@ -1,5 +1,5 @@
 #include "Logger.h"
-#include "../UI/utilities.h"
+#include "utilities.h"
 
 static std::atomic<size_t> logger_ctr(0);
 

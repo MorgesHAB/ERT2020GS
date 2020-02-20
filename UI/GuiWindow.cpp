@@ -17,6 +17,7 @@
 #include <iostream>
 #include <ctime>
 #include <array>
+#include "../Telecom/DataHandler/DatagramTypes.h"
 #include "../Telecom/DataStructures/File/FileTransmissionStates.h"
 #include "gui_message.h"
 
@@ -266,7 +267,7 @@ void GuiWindow::refresh_telemetry()
 void GuiWindow::refresh_gps()
 {
     altitude_lcd_gps->display(qstr(data_->getData<float>(GPS_ALTITUDE)));
-    altitude_max_lcd->display(qstr(data_->getData<float>(ALTITUDE_MAX)));
+    altitude_max_lcd_m->display(qstr(data_->getData<float>(ALTITUDE_MAX)));
     longitude_panel->setText(qstr(data_->getData<float>(GPS_LONGITUDE)));
     latitude_panel->setText(qstr(data_->getData<float>(GPS_LATITUDE)));
     hdop_panel->setText(qstr(data_->getData<float>(GPS_HDOP)));
@@ -277,8 +278,10 @@ void GuiWindow::refresh_gps()
 void GuiWindow::refresh_com()
 {
     refresh_misses();
-    this->last_packet_number_panel->setText(
+    last_packet_number_panel->setText(
             qstr(data_->getData<uint32_t>(TX_PACKET_NR)));
+    std::string str(DatagramType::getDatagramIDName(data_->getData<DatagramType::DatagramID>(ui_interface::PACKET_ID)));
+    last_datagram_id_panel->setText(QString::fromStdString(str));
     received_pack_cnt_panel->setText(qstr(data_->getData<uint32_t>(RX_PACKET_CTR)));
     //this->speed_lcd->display(data_->getData<float>(SPEED)); no speed
     time_t timestamp(data_->getData<time_t>(TIMESTAMP));
