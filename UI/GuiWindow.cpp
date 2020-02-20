@@ -280,7 +280,7 @@ void GuiWindow::refresh_com()
     refresh_misses();
     last_packet_number_panel->setText(
             qstr(data_->getData<uint32_t>(TX_PACKET_NR)));
-    std::string str(DatagramType::getDatagramIDName(data_->getData<DatagramType::DatagramID>(ui_interface::PACKET_ID)));
+    std::string str(DatagramType::getDatagramIDName(data_->getData<DatagramType::DatagramID>(ui_interface::DATAGRAM_ID)));
     last_datagram_id_panel->setText(QString::fromStdString(str));
     received_pack_cnt_panel->setText(qstr(data_->getData<uint32_t>(RX_PACKET_CTR)));
     //this->speed_lcd->display(data_->getData<float>(SPEED)); no speed

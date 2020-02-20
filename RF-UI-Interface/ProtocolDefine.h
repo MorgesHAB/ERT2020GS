@@ -48,7 +48,7 @@ enum DataType {
     CORRUPTED_PACKET_CTR,    // uint64_t **The count of the corrupted packets received. Incremented by RX.
 
     /// Header
-    PACKET_ID, // uint8_t            **The ID of the last packet received
+    DATAGRAM_ID, // uint8_t            **The ID of the last packet received
     TX_PACKET_NR,    // uint32_t         **This is the last packet's number.
     TIMESTAMP, // time_t             **The Time of the last packet received
 
@@ -129,7 +129,7 @@ enum DataType {
                            CORRUPTED_PACKET_CTR,
 
                                       /// Header
-                           PACKET_ID, // uint8_t
+                           DATAGRAM_ID, // uint8_t
                            TX_PACKET_NR,// uint32_t
                            TIMESTAMP, // time_t
 

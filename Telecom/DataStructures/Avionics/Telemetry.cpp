@@ -38,7 +38,7 @@ void Telemetry::parse(Packet &packet) {
 void Telemetry::print() const {
     std::cout << "Accelerometer: (" << accelerometer.x << ", " << accelerometer.y
               << ", " << accelerometer.z << ") Euler: (" << euler.x << ", " << euler.y
-              << ", " << euler.z
+              << ", " << euler.z << ") "
               << " Temperature: " << temperature << " Pressure: " << pressure
               << " Speed: " << speed
               << " Altitude : " << altitude << std::endl;

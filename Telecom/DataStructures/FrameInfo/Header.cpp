@@ -8,6 +8,7 @@
  */
 
 #include "Header.h"
+#include <DatagramTypes.h>
 
 uint32_t Header::packetNbr = 0;     // init static variable
 
@@ -31,14 +32,14 @@ void Header::parse(Packet &packet) {
 }
 
 void Header::print() const {
-    std::cout << "*** Packet Type : ";
-
+    std::cout << "*** Packet Type : "
+            << DatagramType::getDatagramIDName((DatagramType::DatagramID) DatagramID);
     std::cout << "\t packet nbr: " << packetNbr << "\t time: "
               << std::asctime(std::localtime(&timestamp)) << std::endl;
 }
 
 std::string Header::log() const {
-    return std::move(
+    return std::move("Header" + SEPARATOR +
             std::to_string(DatagramID) + SEPARATOR +
             std::to_string(timestamp) + SEPARATOR +
             std::to_string(packetNbr) + SEPARATOR);
@@ -50,7 +51,7 @@ void Header::updateTx(std::shared_ptr<Connector> connector) {
 }
 
 void Header::updateRx(std::shared_ptr<Connector> connector) {
-    connector->setData(ui_interface::PACKET_ID, DatagramID);
+    connector->setData(ui_interface::DATAGRAM_ID, DatagramID);
     connector->setData(ui_interface::TX_PACKET_NR, packetNbr);
     connector->setData(ui_interface::TIMESTAMP, timestamp);
 }
