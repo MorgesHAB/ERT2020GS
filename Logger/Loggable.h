@@ -12,7 +12,7 @@
 
 #include <string>
 
-static const std::string SEPARATOR = "\t";
+static const std::string SEPARATOR = ",\t";
 
 class Loggable {
 public:

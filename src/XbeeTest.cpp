@@ -47,11 +47,11 @@ int main(int argc, char** argv) {
         // ./XbeeTest Tx            // Transmitter Part
         if (modeTx) {
             /*dataHandler.updateTx(AV_TELEMETRY);
-            xbee.send(dataHandler.getPacket(AV_TELEMETRY));           
+            xbee.send(dataHandler.getPacket(AV_TELEMETRY));     */
             dataHandler.updateTx(AV_GPS);
-            xbee.send(dataHandler.getPacket(AV_GPS));*/
-            dataHandler.updateTx(AV_STATUS);
-            xbee.send(dataHandler.getPacket(AV_STATUS));
+            xbee.send(dataHandler.getPacket(AV_GPS));
+            //dataHandler.updateTx(AV_STATUS);
+            //xbee.send(dataHandler.getPacket(AV_STATUS));
 
             std::this_thread::sleep_for(std::chrono::milliseconds(50));
         }
