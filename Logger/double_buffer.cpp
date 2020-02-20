@@ -56,7 +56,7 @@ void Double_buffer::log_buffer(size_t index){
     for(size_t i(0); i < last_position; ++i){
         output_file_ << (buffers_[index])[i] << std::endl << std::endl;
     }
-    //output_file_.flush();
+    output_file_.flush();
     buffers_[index].make_ready_to_fill(); // last position is valid i.e ready to fill
 
 }
