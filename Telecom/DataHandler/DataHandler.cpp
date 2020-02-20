@@ -34,7 +34,7 @@ DataHandler::DataHandler(std::shared_ptr<Connector> connector)
     using namespace ui_interface;
     // Create your RF Packet Datagram here
     // default protocol header ex: packet Type, packet nbr, timestamp
-    for (uint8_t id(0); id < TOTAL_NBR_OF_TYPES; ++id) {
+    for (uint8_t id(1); id < TOTAL_NBR_OF_TYPES; ++id) {
         dataHandler[id] = new Datagram((DatagramID) id);
         dataHandler[id]->add(new XbeeOptions);
         dataHandler[id]->add(new Header(id));
@@ -90,7 +90,7 @@ DataHandler::DataHandler(std::shared_ptr<Connector> connector)
     ///////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////
     // END of protocol add CRC
-    for (uint8_t id(0); id < TOTAL_NBR_OF_TYPES; ++id) {
+    for (uint8_t id(1); id < TOTAL_NBR_OF_TYPES; ++id) {
         dataHandler[id]->add(new CRC);
     }
 }
