@@ -22,6 +22,7 @@
 #include <File/Picture.h>
 #include <GSE/GSEOrder.h>
 #include <GSE/GSESensors.h>
+#include <Avionics/StatusAV.h>
 
 #include "DataHandler.h"
 
@@ -45,7 +46,7 @@ DataHandler::DataHandler(std::shared_ptr<Connector> connector)
     //// Avionics Datagram
     dataHandler[AV_GPS]->add(new GPS);
 
-    //dataHandler[AV_STATUS]->add(new StatusAV);
+    dataHandler[AV_STATUS]->add(new StatusAV);
 
     dataHandler[AV_TELEMETRY]->add(new Telemetry);
 
@@ -132,7 +133,7 @@ bool DataHandler::updateRx(Packet *packet) {
                                (char) packet->getPacket()[16]};
 
     if (frameType == 0x90 && myDelimiter == "EPFL"
-        && ID < DatagramType::TOTAL_NBR_OF_TYPES) {
+        && ID > 0 && ID < DatagramType::TOTAL_NBR_OF_TYPES) {
         connector->incrementData(ui_interface::PACKET_RX_RATE_CTR);
         connector->incrementData(ui_interface::RX_PACKET_CTR);
         lastRxID = ID;
