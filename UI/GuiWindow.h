@@ -65,6 +65,7 @@ private:
     void keyPressEvent(QKeyEvent *event) override;
     void refresh_misses();
     void refresh_ignition_code();
+    void refresh_av_state();
 
     #ifdef SOUND_ON
     void playSound(const char * url);

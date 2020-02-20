@@ -474,8 +474,14 @@ gridline-color: rgb(255, 0, 0);</string>
       </item>
       <item row="4" column="1" colspan="2">
        <widget class="QLabel" name="avionics_state_panel">
+        <property name="frameShape">
+         <enum>QFrame::WinPanel</enum>
+        </property>
         <property name="text">
          <string/>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
         </property>
        </widget>
       </item>
@@ -544,6 +550,9 @@ image: url(:/assets/logo.png);</string>
       </item>
       <item row="0" column="1">
        <widget class="QLabel" name="accel_x_panel">
+        <property name="frameShape">
+         <enum>QFrame::NoFrame</enum>
+        </property>
         <property name="text">
          <string/>
         </property>
@@ -551,6 +560,9 @@ image: url(:/assets/logo.png);</string>
       </item>
       <item row="1" column="1">
        <widget class="QLabel" name="accel_y_panel">
+        <property name="frameShape">
+         <enum>QFrame::NoFrame</enum>
+        </property>
         <property name="text">
          <string/>
         </property>
@@ -558,6 +570,9 @@ image: url(:/assets/logo.png);</string>
       </item>
       <item row="2" column="1">
        <widget class="QLabel" name="accel_z_panel">
+        <property name="frameShape">
+         <enum>QFrame::NoFrame</enum>
+        </property>
         <property name="text">
          <string/>
         </property>
