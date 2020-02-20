@@ -1,4 +1,4 @@
-
+#ifdef aa
 #include <QApplication>
 #include <memory>
 #include <thread>
@@ -105,3 +105,4 @@ main(int argc, char ** argv)
     receiver_thread.join();
     return 0;
 }
+#endif

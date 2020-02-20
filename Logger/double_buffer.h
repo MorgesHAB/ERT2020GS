@@ -48,6 +48,7 @@ private:
 
     std::array<Logger_buffer, 2> buffers_;
     std::ofstream output_file_;
+    std::string filename_;
     size_t current_buffer;
     std::atomic<bool> ok;
 };
