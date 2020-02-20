@@ -74,15 +74,9 @@ GuiWindow::GuiWindow(std::shared_ptr<Connector> connector) :
 
 void GuiWindow::reset_button_pressed()
 {
-    // TODO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    data_->setData(ui_interface::CORRUPTED_PACKET_CTR, 0);
-    data_->setData(ui_interface::FILE_TRANSMISSION_ALL_RECEIVED, 0);
-    data_->setData(ui_interface::GPS_ALTITUDE, 0);
-    data_->setData(ui_interface::GPS_HDOP, 0);
-    data_->setData(ui_interface::GPS_LATITUDE, 0);
-    data_->setData(ui_interface::GPS_LONGITUDE, 0);
-    data_->setData(ui_interface::GPS_SAT_NBR, 0);
-    data_->setData(ui_interface::GSE_HOSE_PRESSURE, 0);
+
+    data_->setData(ui_interface::ALTITUDE_MAX, 0);
+
     // data_->setData(ui_interface::);
 }
 

@@ -27,7 +27,7 @@ void Worker::mainRoutine() {
         }
 
         // Your RF modem
-        RFmodem* xbee = new Xbee("/dev/ttyUSB0");
+        RFmodem* xbee = new Xbee("/dev/ttyUSB1");
         //RFmodem* loRa = new LoRa;   // another example
 
         while (connector->getData<bool>(ui_interface::ACTIVE_XBEE) &&
