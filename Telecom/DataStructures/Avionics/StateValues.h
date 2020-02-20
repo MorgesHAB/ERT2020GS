@@ -18,7 +18,7 @@ enum StateValues {
 };
 
 //For GUI
-static std::string getStateName(uint8_t state) {
+static std::string getAVStateName(uint8_t state) {
     switch (state) {
         case CALIBRATION: return "CALIBRATION";
         case IDLE: return "IDLE";
@@ -31,4 +31,6 @@ static std::string getStateName(uint8_t state) {
         default: return "Unknown";
     }
 }
+
+
 #endif //ERT2020GS_STATEVALUES_H

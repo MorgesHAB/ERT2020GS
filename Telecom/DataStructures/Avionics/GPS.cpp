@@ -45,7 +45,7 @@ void GPS::print() const {
     std::cout << "latitude : " << latitude << "°" << std::endl
               << "longitude : " << longitude << "°" << std::endl
               << "altitude : " << altitude << " m" << std::endl
-              << "Satellite Nbr : " << satelliteNbr << std::endl
+              << "Satellite Nbr : " << +satelliteNbr << std::endl
               << "hdop : " << hdop << std::endl;
 }
 
