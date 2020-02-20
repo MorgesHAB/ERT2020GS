@@ -75,7 +75,7 @@ private:
     const char* takeoff;
     const char* hymne;
 
-    Gui_Logger logger;
+    //Gui_Logger logger;
 
     QTimer * timer_;
     std::shared_ptr<Connector> data_;

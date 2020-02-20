@@ -73,6 +73,7 @@ GuiWindow::GuiWindow(std::shared_ptr<Connector> connector) :
 
 void GuiWindow::reset_button_pressed()
 {
+    // TODO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     data_->setData(ui_interface::CORRUPTED_PACKET_CTR, 0);
     data_->setData(ui_interface::FILE_TRANSMISSION_ALL_RECEIVED, 0);
     data_->setData(ui_interface::GPS_ALTITUDE, 0);
@@ -99,12 +100,12 @@ void GuiWindow::refresh_data()
 void GuiWindow::xbee_clicked()
 {
     if (!xbee_acvite_) {
-        logger.log(new Gui_Message("XBee ON button clicked!"));
+        //logger.log(new Gui_Message("XBee ON button clicked!"));
         std::cout << "XBee ON button clicked!" << std::endl;
         data_->setData(ui_interface::ACTIVE_XBEE, true);
         xbee_button->setText("STOP XBee");
     } else {
-        logger.log(new Gui_Message("XBee STOP button clicked!"));
+        //logger.log(new Gui_Message("XBee STOP button clicked!"));
         std::cout << "XBee STOP button clicked!" << std::endl;
         data_->setData(ui_interface::ACTIVE_XBEE, false);
         xbee_button->setText("START XBee");
@@ -146,12 +147,12 @@ void GuiWindow::theme_change_clicked()
           "color: rgb(0, 0, 0);"));
         packets_second_bar->setStyleSheet(QLatin1String("color: rgb(0,0,0);"));
     }
-    logger.log(new Gui_Message(str));
+    //logger.log(new Gui_Message(str));
 }
 
 void GuiWindow::file_transmission_pressed()
 {
-    logger.log(new Gui_Message("File transmission button pressed. SEND_FILE_REQUEST set to true."));
+    //logger.log(new Gui_Message("File transmission button pressed. SEND_FILE_REQUEST set to true."));
     data_->setData(ui_interface::SEND_FILE_REQUEST, true);
 }
 
@@ -168,7 +169,7 @@ uint16_t GuiWindow::calculate_misses_in_last_2()
 
 void GuiWindow::closeEvent(QCloseEvent * event)
 {
-    logger.log(new Gui_Message("Window close clicked."));
+    //logger.log(new Gui_Message("Window close clicked."));
     QMessageBox::StandardButton resBtn = QMessageBox::question(this, "BELLA LUI 2020",
         tr("Ending mission Bella Lui 2020.\nAre you sure?\n"),
         QMessageBox::Cancel | QMessageBox::No | QMessageBox::Yes, QMessageBox::Yes);
@@ -271,13 +272,8 @@ void GuiWindow::refresh_com()
 {
     refresh_misses();
     last_packet_number_panel->setText(
-<<<<<<< HEAD
-        qstr(data_->getData<uint32_t>(TX_PACKET_NR)));
-    std::string str(DatagramType::getDatagramIDName(data_->getData<DatagramType::DatagramID>(ui_interface::PACKET_ID)));
-=======
             qstr(data_->getData<uint32_t>(TX_PACKET_NR)));
     std::string str(DatagramType::getDatagramIDName(data_->getData<DatagramType::DatagramID>(ui_interface::DATAGRAM_ID)));
->>>>>>> 2e2fa026a6f9e662c400f5217a31ce999b4d9c7b
     last_datagram_id_panel->setText(QString::fromStdString(str));
     received_pack_cnt_panel->setText(qstr(data_->getData<uint32_t>(RX_PACKET_CTR)));
     // this->speed_lcd->display(data_->getData<float>(SPEED)); no speed

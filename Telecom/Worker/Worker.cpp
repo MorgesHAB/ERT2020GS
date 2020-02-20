@@ -34,8 +34,8 @@ void Worker::mainRoutine() {
                connector->getData<bool>(ui_interface::RUNNING)) {
             // Manage Reception
             if (xbee->receive(dataHandler)) {
-                dataHandler.printLastRxPacket();
                 dataHandler.logLastRxPacket();
+                dataHandler.printLastRxPacket();
                 //xbee.getRSSI();
             }
             // Manage Transmission
