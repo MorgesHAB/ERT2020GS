@@ -17,7 +17,7 @@
 #include <iostream>
 #include <ctime>
 #include <array>
-#include "../Telecom/DataStructures/Avionics/StatusAV.h"
+#include "../Telecom/DataStructures/Avionics/StateValues.h"
 #include "../Telecom/DataHandler/DatagramTypes.h"
 #include "../Telecom/DataStructures/File/FileTransmissionStates.h"
 #include "gui_message.h"

@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'press_altEt2343.ui'
+** Form generated from reading UI file 'press_altla2343.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.9.5
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef PRESS_ALTET2343_H
-#define PRESS_ALTET2343_H
+#ifndef PRESS_ALTLA2343_H
+#define PRESS_ALTLA2343_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QAction>
@@ -390,6 +390,8 @@ public:
 
         avionics_state_panel = new QLabel(avionics_box);
         avionics_state_panel->setObjectName(QStringLiteral("avionics_state_panel"));
+        avionics_state_panel->setFrameShape(QFrame::WinPanel);
+        avionics_state_panel->setAlignment(Qt::AlignCenter);
 
         gridLayout_8->addWidget(avionics_state_panel, 4, 1, 1, 2);
 
@@ -428,16 +430,19 @@ public:
 
         accel_x_panel = new QLabel(accel_box);
         accel_x_panel->setObjectName(QStringLiteral("accel_x_panel"));
+        accel_x_panel->setFrameShape(QFrame::NoFrame);
 
         gridLayout_7->addWidget(accel_x_panel, 0, 1, 1, 1);
 
         accel_y_panel = new QLabel(accel_box);
         accel_y_panel->setObjectName(QStringLiteral("accel_y_panel"));
+        accel_y_panel->setFrameShape(QFrame::NoFrame);
 
         gridLayout_7->addWidget(accel_y_panel, 1, 1, 1, 1);
 
         accel_z_panel = new QLabel(accel_box);
         accel_z_panel->setObjectName(QStringLiteral("accel_z_panel"));
+        accel_z_panel->setFrameShape(QFrame::NoFrame);
 
         gridLayout_7->addWidget(accel_z_panel, 2, 1, 1, 1);
 
@@ -815,4 +820,4 @@ class Form: public Ui_Form {};
 
 QT_END_NAMESPACE
 
-#endif // PRESS_ALTET2343_H
+#endif // PRESS_ALTLA2343_H
