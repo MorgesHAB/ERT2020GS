@@ -17,6 +17,7 @@
 
 #include <memory>
 #include <thread>
+#include <chrono>
 #include <QApplication>
 #include <GuiWindow.h>
 #include <connector.h>
@@ -35,11 +36,19 @@ int main(int argc, char **argv) {
     //run all threads
     std::thread t1(&Worker::mainRoutine, Worker(connector));
 
+    std::this_thread::sleep_for(std::chrono::milliseconds(300));
+
     guiWindow.show();
+
+    std::this_thread::sleep_for(std::chrono::milliseconds(300));
 
     app.exec();
 
+    std::this_thread::sleep_for(std::chrono::milliseconds(300));
+
     t1.join();
 
+    std::this_thread::sleep_for(std::chrono::milliseconds(300));
+    
     return 0;
 }

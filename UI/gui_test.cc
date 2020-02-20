@@ -9,7 +9,7 @@
 #include "../RF-UI-Interface/ProtocolDefine.h"
 #include "GuiWindow.h"
 #include "../Logger/Logger.h"
-#include "utilities.h"
+#include "../Logger/utilities.h"
 
 class Data: public Loggable{
 public:
@@ -39,6 +39,7 @@ public:
         float a(0);
 
         while (c->getData<bool>(ui_interface::RUNNING)) {
+            c->setData(ui_interface::GPS_ALTITUDE, (float)23.23);
             c->incrementData(ui_interface::CORRUPTED_PACKET_CTR);
             c->incrementData(ui_interface::PACKET_RX_RATE_CTR);
             c->incrementData(ui_interface::PACKET_RX_RATE_CTR);

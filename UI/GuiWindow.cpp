@@ -37,8 +37,9 @@ inline QString degree_representation(double value)
     return QString::number(value) + "<sup>o</sup>";
 }
 
-//Works for double, uint8_t, uint32_t, uint64_t
-template <typename T> inline QString qstr(T value) {
+// Works for double, uint8_t, uint32_t, uint64_t
+template <typename T> inline QString qstr(T value)
+{
     return QString::number(value);
 }
 
@@ -56,14 +57,13 @@ GuiWindow::GuiWindow(std::shared_ptr<Connector> connector) :
     xbee_acvite_(false),
     fullscreen_(false)
 {
-
-#ifdef SOUND_ON
+    #ifdef SOUND_ON
     m_player = new QMediaPlayer();
-    alarm = "qrc:/assets/nuclear_alarm.mp3";
-    takeoff = "qrc:/assets/launch.mp3";
-    hymne = "qrc:/assets/hymne.mp3";
+    alarm    = "qrc:/assets/nuclear_alarm.mp3";
+    takeoff  = "qrc:/assets/launch.mp3";
+    hymne    = "qrc:/assets/hymne.mp3";
     playSound(hymne);
-#endif
+    #endif
 
     initialize_style();
     initialize_slots_signals();
@@ -74,14 +74,14 @@ GuiWindow::GuiWindow(std::shared_ptr<Connector> connector) :
 void GuiWindow::reset_button_pressed()
 {
     data_->setData(ui_interface::CORRUPTED_PACKET_CTR, 0);
-    data_->setData(ui_interface::FILE_TRANSMISSION_ALL_RECEIVED,  0);
-    data_->setData(ui_interface::GPS_ALTITUDE, 0 );
+    data_->setData(ui_interface::FILE_TRANSMISSION_ALL_RECEIVED, 0);
+    data_->setData(ui_interface::GPS_ALTITUDE, 0);
     data_->setData(ui_interface::GPS_HDOP, 0);
     data_->setData(ui_interface::GPS_LATITUDE, 0);
     data_->setData(ui_interface::GPS_LONGITUDE, 0);
     data_->setData(ui_interface::GPS_SAT_NBR, 0);
     data_->setData(ui_interface::GSE_HOSE_PRESSURE, 0);
-    //data_->setData(ui_interface::);
+    // data_->setData(ui_interface::);
 }
 
 void GuiWindow::refresh_data()
@@ -114,7 +114,6 @@ void GuiWindow::xbee_clicked()
 
 void GuiWindow::ignite_clicked()
 {
-
     std::cout << "Ignition button clicked!" << std::endl;
     ready_ignition_ = data_->getData<bool>(IGNITION_CLICKED);
     ready_ignition_ = !ready_ignition_;
@@ -124,29 +123,25 @@ void GuiWindow::ignite_clicked()
 
 void GuiWindow::theme_change_clicked()
 {
-
-    current_theme_ = ((current_theme_+1) % THEME_COUNT);
+    current_theme_ = ((current_theme_ + 1) % THEME_COUNT);
 
     std::string str("Theme change button clicked. ");
 
-        if (current_theme_ == WHITE_ON_BLACK) {
+    if (current_theme_ == WHITE_ON_BLACK) {
+        str += "Theme set to \"white on black.\"";
 
-            str+= "Theme set to \"white on black.\"";
-
-                setStyleSheet(QLatin1String("background-color: rgb(30, 30, 30);\n"
+        setStyleSheet(QLatin1String("background-color: rgb(30, 30, 30);\n"
           "color: rgb(255, 255, 255);"));
         packets_second_bar->setStyleSheet(
             QLatin1String("color: rgb(255, 255, 255);"));
-    } else
-        if (current_theme_ == GREEN_ON_BLACK) {
-        str+= "Theme set to \"green on black.\"";
+    } else if (current_theme_ == GREEN_ON_BLACK)    {
+        str += "Theme set to \"green on black.\"";
         setStyleSheet(QLatin1String("background-color: rgb(30, 30, 30);\n"
           "color: rgb(0, 255, 0);"));
         packets_second_bar->setStyleSheet(
             QLatin1String("color: rgb(255, 255, 255);"));
-    } else
-        if (current_theme_ == BLACK_ON_WHITE) {
-        str+= "Theme set to \"black on white.\"";
+    } else if (current_theme_ == BLACK_ON_WHITE)    {
+        str += "Theme set to \"black on white.\"";
         setStyleSheet(QLatin1String("background-color: rgb(255, 255, 255);\n"
           "color: rgb(0, 0, 0);"));
         packets_second_bar->setStyleSheet(QLatin1String("color: rgb(0,0,0);"));
@@ -156,17 +151,16 @@ void GuiWindow::theme_change_clicked()
 
 void GuiWindow::file_transmission_pressed()
 {
-
     logger.log(new Gui_Message("File transmission button pressed. SEND_FILE_REQUEST set to true."));
     data_->setData(ui_interface::SEND_FILE_REQUEST, true);
 }
 
 uint16_t GuiWindow::calculate_misses_in_last_2()
 {
-    static std::array<uint32_t, 2000/REFRESH_RATE> before{ 0 };
+    static std::array<uint32_t, 2000 / REFRESH_RATE> before{ 0 };
 
-    uint16_t current(tick_counter_ % 2000/REFRESH_RATE);
-    uint16_t tmp(missed_count_ - before[current]); //change
+    uint16_t current(tick_counter_ % 2000 / REFRESH_RATE);
+    uint16_t tmp(missed_count_ - before[current]); // change
 
     before[current] = missed_count_;
     return tmp;
@@ -206,8 +200,8 @@ void GuiWindow::refresh_ignition_code()
 
 void GuiWindow::initialize_style()
 {
-    //QCoreApplication::setAttribute(Qt::AA_UseStyleSheetPropagationInWidgetStyles); // doesn't compile on RPi3 !!!!
-    //QApplication::setStyle(QStyleFactory::create("cleanlooks"));
+    QCoreApplication::setAttribute(Qt::AA_UseStyleSheetPropagationInWidgetStyles); // doesn't compile on RPi3 !!!!
+    QApplication::setStyle(QStyleFactory::create("cleanlooks"));
     Ui_Form::setupUi(this);
 }
 
@@ -215,9 +209,9 @@ void GuiWindow::refresh_ignition_frame()
 {
     refresh_ignition_code();
 
-    bool key1 = data_->getData<bool>(IGNITION_KEY_1_ACTIVATED);
-    bool key2 = data_->getData<bool>(IGNITION_KEY_2_ACTIVATED);
-    bool button = data_->getData<bool>(IGNITION_RED_BUTTON_PUSHED);
+    bool key1    = data_->getData<bool>(IGNITION_KEY_1_ACTIVATED);
+    bool key2    = data_->getData<bool>(IGNITION_KEY_2_ACTIVATED);
+    bool button  = data_->getData<bool>(IGNITION_RED_BUTTON_PUSHED);
     bool clicked = data_->getData<bool>(IGNITION_CLICKED);
 
     show_ok_X(key_1_panel, key1);
@@ -225,7 +219,7 @@ void GuiWindow::refresh_ignition_frame()
     show_ok_X(red_button_panel, button);
     show_ok_X(ready_ignition_panel, clicked);
 
-#ifdef SOUND_ON
+    #ifdef SOUND_ON
     if (key1 && key2 && clicked) {
         if (m_player->state() != QMediaPlayer::PlayingState) {
             playSound(alarm);
@@ -236,14 +230,14 @@ void GuiWindow::refresh_ignition_frame()
         }
     }
     if (data_->eatData<bool>(IGNITION_SENT, false)) playSound(takeoff);
-#endif
+    #endif // ifdef SOUND_ON
 }
 
 void GuiWindow::initialize_slots_signals()
 {
     connect(timer_, SIGNAL(timeout()), this, SLOT(refresh_data()));
     connect(xbee_button, SIGNAL(pressed()), this, SLOT(xbee_clicked()));
-    connect(reset_button, SIGNAL (pressed()), this, SLOT(reset_button_pressed()));
+    connect(reset_button, SIGNAL(pressed()), this, SLOT(reset_button_pressed()));
     connect(ignition_button, SIGNAL(pressed()), this, SLOT(ignite_clicked()));
     connect(change_theme, SIGNAL(pressed()), this, SLOT(theme_change_clicked()));
     connect(file_transmission_button, SIGNAL(pressed()), this, SLOT(file_transmission_pressed()));
@@ -261,7 +255,6 @@ void GuiWindow::refresh_telemetry()
     pressure_panel->setText(qstr(data_->getData<float>(T_PRESSURE)));
     speed_panel->setText(qstr(data_->getData<float>(T_SPEED)));
     temperature_panel->setText(qstr(data_->getData<float>(T_TEMPERATURE)));
-
 }
 
 void GuiWindow::refresh_gps()
@@ -271,22 +264,21 @@ void GuiWindow::refresh_gps()
     longitude_panel->setText(qstr(data_->getData<float>(GPS_LONGITUDE)));
     latitude_panel->setText(qstr(data_->getData<float>(GPS_LATITUDE)));
     hdop_panel->setText(qstr(data_->getData<float>(GPS_HDOP)));
-    sat_nbr_panel->setText(qstr(data_->getData<float>(GPS_SAT_NBR)));
+    sat_nbr_panel->setText(qstr(data_->getData<uint8_t>(GPS_SAT_NBR)));
 }
-
 
 void GuiWindow::refresh_com()
 {
     refresh_misses();
     last_packet_number_panel->setText(
-            qstr(data_->getData<uint32_t>(TX_PACKET_NR)));
+        qstr(data_->getData<uint32_t>(TX_PACKET_NR)));
     std::string str(DatagramType::getDatagramIDName(data_->getData<DatagramType::DatagramID>(ui_interface::PACKET_ID)));
     last_datagram_id_panel->setText(QString::fromStdString(str));
     received_pack_cnt_panel->setText(qstr(data_->getData<uint32_t>(RX_PACKET_CTR)));
-    //this->speed_lcd->display(data_->getData<float>(SPEED)); no speed
+    // this->speed_lcd->display(data_->getData<float>(SPEED)); no speed
     time_t timestamp(data_->getData<time_t>(TIMESTAMP));
     char tbuffer[32];
-    struct tm *tptr = std::localtime(&timestamp);
+    struct tm * tptr = std::localtime(&timestamp);
     std::strftime(tbuffer, 32, "%T", tptr);
     miss_panel->setText(qstr(calculate_misses_in_last_2()));
     this->last_refresh_panel->setText(tbuffer);
@@ -299,16 +291,15 @@ void GuiWindow::check_and_show()
 {
     if (data_->eatData<bool>(IGNITION_STATUS, false)) {
         #ifdef SOUND_ON
-        //playSound(takeoff);
+        // playSound(takeoff);
         #endif
         QMessageBox::warning(this, "Ignition", "BOOM!");
-
     }
-    if(data_->eatData<bool>(FILE_TRANSMISSION_ALL_RECEIVED, false)) {
+    if (data_->eatData<bool>(FILE_TRANSMISSION_ALL_RECEIVED, false)) {
         QMessageBox::warning(this, "File", "File transmission finished - All received");
     }
 
-        //show_ok_X(ready_ignition_panel, data_->getData<bool>(IGNITION_CLICKED));
+    // show_ok_X(ready_ignition_panel, data_->getData<bool>(IGNITION_CLICKED));
 }
 
 void GuiWindow::refresh_time()
@@ -316,6 +307,7 @@ void GuiWindow::refresh_time()
     time_t timestamp(std::time(nullptr));
     char tbuffer[32];
     struct tm * tptr = std::localtime(&timestamp);
+
     std::strftime(tbuffer, 32, "%H:%M:%S", tptr);
     time_panel->setText(tbuffer);
 }
@@ -323,12 +315,12 @@ void GuiWindow::refresh_time()
 void GuiWindow::refresh_file_transmission_box()
 {
     FileTransmissionStates state(data_->getData<FileTransmissionStates>(ui_interface::FILE_TRANSMISSION_RECEIVED_STATE));
+
     transmitter_state_panel->setText(QString::fromStdString(getStateName(state)));
     state = data_->getData<FileTransmissionStates>(ui_interface::FILE_TRANSMISSION_MY_STATE);
     receiver_state_panel->setText(QString::fromStdString(getStateName(state)));
     file_transmission_progress_bar->setMaximum(data_->getData<uint64_t>(ui_interface::FILE_TRANSMISSION_TOTAL_PACKETS));
     file_transmission_progress_bar->setValue(data_->getData<uint16_t>(ui_interface::FILE_TRANSMISSION_CURRENT_PACKET));
-
 }
 
 void GuiWindow::show_ok_X(QLabel * label, bool ok)
@@ -340,7 +332,6 @@ void GuiWindow::show_ok(QLabel * label)
 {
     label->setStyleSheet(QLatin1String("color: rgb(0, 255, 0);"));
     label->setText("OK");
-
 }
 
 void GuiWindow::show_X(QLabel * label)
@@ -349,19 +340,21 @@ void GuiWindow::show_X(QLabel * label)
     label->setText("X");
 }
 
-void GuiWindow::keyPressEvent(QKeyEvent *ckey)
+void GuiWindow::keyPressEvent(QKeyEvent * ckey)
 {
-    if(ckey->key() == Qt::Key_F11 || ckey->key() == Qt::Key_F){
+    if (ckey->key() == Qt::Key_F11 || ckey->key() == Qt::Key_F) {
         fullscreen_ = !fullscreen_;
     }
     (fullscreen_) ? showFullScreen() : showNormal();
 }
 
 #ifdef SOUND_ON
-void GuiWindow::playSound(const char * url) {
+void GuiWindow::playSound(const char * url)
+{
     m_player->stop();
     m_player->setMedia(QUrl(url));
     m_player->setVolume(100);
     m_player->play();
 }
+
 #endif
