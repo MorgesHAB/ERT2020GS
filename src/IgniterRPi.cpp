@@ -37,21 +37,21 @@ int main(int argc, char** argv) {
     std::shared_ptr<Connector> cptr(&connector);
 
     // Your RF modem
-    Xbee xbee("/dev/ttyS6");
+    Xbee xbee("/dev/ttyUSB0");
     // RF packet handler
     DataHandler dataHandler(cptr);
     using namespace DatagramType;
 
     while (keep_running) {
-        DatagramID ID = static_cast<DatagramID> (rand() % (AV_DEBUG));
+        DatagramID ID = AV_TELEMETRY;
         dataHandler.updateTx(ID);
         xbee.send(dataHandler.getPacket(ID));
         if (xbee.receive(dataHandler)) {
             dataHandler.printLastRxPacket();
         }
-        if (connector.getData<bool>(ui_interface::IGNITION_STATUS)) {
-            dataHandler.updateTx(ACK);
-            xbee.send(dataHandler.getPacket(ACK));
+        if (connector.eatData<bool>(ui_interface::IGNITION_STATUS, false)) {
+            dataHandler.updateTx(IGNITION_ANSWER);
+            xbee.send(dataHandler.getPacket(IGNITION_ANSWER));
         }
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
     }
