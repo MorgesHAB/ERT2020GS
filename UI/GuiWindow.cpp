@@ -20,6 +20,7 @@
 #include "../Telecom/DataStructures/Avionics/StateValues.h"
 #include "../Telecom/DataHandler/DatagramTypes.h"
 #include "../Telecom/DataStructures/File/FileTransmissionStates.h"
+#include "../Telecom/DataStructures/Propulsion/IgnitionStates.h"
 #include "gui_message.h"
 
 #include <QStyleFactory>
@@ -290,12 +291,24 @@ void GuiWindow::refresh_com()
 
 void GuiWindow::check_and_show()
 {
-    if (data_->eatData<bool>(IGNITION_STATUS, false)) {
-        #ifdef SOUND_ON
-        // playSound(takeoff);
-        #endif
-        QMessageBox::warning(this, "Ignition", "BOOM!");
+    using namespace ignit;
+    switch (data_->eatData<IgnitionState>(IGNITION_STATUS, ignit::SLEEP)) {
+        case WRONG_CODE_RECEIVED:
+            QMessageBox::warning(this, "GSE Info", "The GSE informs you that you are entering the wrong code - No Ignition - Permission denied");
+            break;
+        case ARMED:
+            QMessageBox::warning(this, "GSE Info", "GSE confirmation : Code is correct - ARMED - Ready for Ignition !");
+            break;
+        case IGNITION_ON:
+            #ifdef SOUND_ON
+            // playSound(takeoff);
+            #endif
+            QMessageBox::warning(this, "GSE Info", "Ignition circuit active ! Igniters should be burning!");
+            break;
+        default:
+            break;
     }
+
     if (data_->eatData<bool>(FILE_TRANSMISSION_ALL_RECEIVED, false)) {
         QMessageBox::warning(this, "File", "File transmission finished - All received");
     }

@@ -32,13 +32,14 @@ public:
         std::cout << "Generic Data received - value : " << data << std::endl;
     }
 
-    void updateRx(std::shared_ptr<Connector> connector) override {
-        connector->setData(name, data);
+    void updateTx(std::shared_ptr<Connector> connector) override {
+        // just for Test - this class is only use at reception
+        //data = ((double) rand()/ RAND_MAX) * 1000;
+        data = connector->getData<Tdata>(name);
     }
 
-    void updateTx(std::shared_ptr<Connector> connector) {
-        // just for Test - this class is only use at reception
-        data = ((double) rand()/ RAND_MAX) * 1000;
+    void updateRx(std::shared_ptr<Connector> connector) override {
+        connector->setData(name, data);
     }
 
 private:

@@ -15,6 +15,7 @@
 
 #include <vector>
 #include <Data.h>
+#include "IgnitionStates.h"
 
 class IgnitionCode : public Data {
 public:
@@ -28,8 +29,8 @@ public:
     void updateRx(std::shared_ptr<Connector> connector) override;
 
 private:
-    bool ACK;
     std::vector<bool> states;
+    ignit::IgnitionState ignitionState;
 };
 
 

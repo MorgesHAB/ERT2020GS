@@ -27,13 +27,13 @@
 // So to minimize the packet size, we combine all these states in a byte (8 bits)
 // Packet :  [ - | - | - | - | code 3 | code 2 | code 1 | code 0 LSB  ]
 
-#ifdef RUNNING_ON_RPI
+//#ifdef RUNNING_ON_RPI
 #include <wiringPi.h>
 
 #include "IgnitionCode.h"
 
 
-IgnitionCode::IgnitionCode() : states(4, false) {
+IgnitionCode::IgnitionCode() : states(4, false), ignitionState(ignit::SLEEP) {
     wiringPiSetupGpio();
     // Configure GPIO OUT for the igniter
     pinMode(GPIO_OUT_IGNITION, OUTPUT);
@@ -93,6 +93,7 @@ void IgnitionCode::parse(Packet &packet) {
 
 void IgnitionCode::updateRx(std::shared_ptr<Connector> connector) {
     // run on GSE
+    using namespace ignit;
     std::vector<int> codeRx = {digitalRead(GPIO_IN_CODE0),
                                digitalRead(GPIO_IN_CODE1),
                                digitalRead(GPIO_IN_CODE2),
@@ -105,14 +106,26 @@ void IgnitionCode::updateRx(std::shared_ptr<Connector> connector) {
     if (!(codeRx[0] == 0 && codeRx[1] == 0 && codeRx[2] == 0 && codeRx[3] == 0) &&
         codeRx[0] == states[0] && codeRx[1] == states[1] && codeRx[2] == states[2] &&
         codeRx[3] == states[3]) {
-        std::cout << "Code Rx & Tx are identical => GPIO ignition HIGH !!" << std::endl;
-        digitalWrite(GPIO_OUT_IGNITION, HIGH);
-        connector->setData(ui_interface::IGNITION_STATUS, true);
-
+        switch (ignitionState) {
+            case WRONG_CODE_RECEIVED:
+            case SLEEP:
+                ignitionState = ARMED;
+                digitalWrite(GPIO_OUT_IGNITION, LOW); // safe
+                break;
+            case ARMED:
+                std::cout << "Code Rx & Tx are identical => GPIO ignition HIGH !!" << std::endl;
+                ignitionState = IGNITION_ON;
+                connector->setData(ui_interface::IGNITION_STATUS, ignitionState);
+                digitalWrite(GPIO_OUT_IGNITION, HIGH); // /!\ Ignition !!!!!!!!
+                ignitionState = SLEEP;
+            default:
+                break;
+        }
     } else { //TODO: Send packet too!
         std::cout << "Code aren't identical : ignition aborted" << std::endl;
         digitalWrite(GPIO_OUT_IGNITION, LOW);
-        connector->setData(ui_interface::IGNITION_STATUS, false);
+        ignitionState = WRONG_CODE_RECEIVED;
+        connector->setData(ui_interface::IGNITION_STATUS, ignitionState);
     }
 }
 
@@ -121,4 +134,4 @@ void IgnitionCode::print() const {
               << states[1] << " " << states[0] << " ]" << std::endl;
 }
 
-#endif
+//#endif

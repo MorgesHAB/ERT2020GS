@@ -8,7 +8,6 @@
 #ifndef ERT2020GS_GSEORDERS_H
 #define ERT2020GS_GSEORDERS_H
 
-#endif //ERT2020GS_GSEORDERS_H
 
 enum GSEOrderValues {
     START_FILLING, //GSE opens fill valve
@@ -31,3 +30,5 @@ static std::string getOrderName(uint8_t order) {
         default: return "Unknown";
     }
 }
+
+#endif //ERT2020GS_GSEORDERS_H
