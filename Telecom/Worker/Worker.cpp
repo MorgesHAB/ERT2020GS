@@ -27,7 +27,7 @@ void Worker::mainRoutine() {
         }
 
         // Your RF modem
-        RFmodem* xbee = new Xbee("/dev/ttyS6");
+        RFmodem* xbee = new Xbee("/dev/ttyUSB0");
         //RFmodem* loRa = new LoRa;   // another example
 
         while (connector->getData<bool>(ui_interface::ACTIVE_XBEE) &&
@@ -52,9 +52,9 @@ void Worker::mainRoutine() {
 void Worker::manageIgnitionTx(DataHandler& dataHandler, RFmodem* rfmodem) {
     // If ignition from Gui & keys & red button
     dataHandler.updateTx(DatagramType::GSE_IGNITION);
-    if (connector->getData<bool>(ui_interface::IGNITION_KEY_1_ACTIVATED) &&
+    if (/*connector->getData<bool>(ui_interface::IGNITION_KEY_1_ACTIVATED) &&
         connector->getData<bool>(ui_interface::IGNITION_KEY_2_ACTIVATED) &&
-        connector->getData<bool>(ui_interface::IGNITION_RED_BUTTON_PUSHED) &&
+        connector->getData<bool>(ui_interface::IGNITION_RED_BUTTON_PUSHED) &&*/
         connector->eatData<bool>(ui_interface::IGNITION_CLICKED, false)) {
         // /!\ Critical point /!\.
         rfmodem->send(dataHandler.getPacket(DatagramType::GSE_IGNITION));

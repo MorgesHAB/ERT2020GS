@@ -66,7 +66,7 @@ void IgnitionCode::updateTx(std::shared_ptr<Connector> connector) {
     connector->setData(ui_interface::IGNITION_RED_BUTTON_PUSHED,
                        digitalRead(GPIO_IN_RED_BUTTON));
 
-    states[0] = digitalRead(GPIO_IN_CODE0);
+    states[0] = 1;//digitalRead(GPIO_IN_CODE0);
     states[1] = digitalRead(GPIO_IN_CODE1);
     states[2] = digitalRead(GPIO_IN_CODE2);
     states[3] = digitalRead(GPIO_IN_CODE3);

@@ -21,6 +21,7 @@
 #include <DataHandler.h>
 #include <connector.h>
 #include <csignal>
+#include <Propulsion/IgnitionStates.h>
 
 static volatile sig_atomic_t keep_running = 1;
 
@@ -49,7 +50,7 @@ int main(int argc, char** argv) {
         if (xbee.receive(dataHandler)) {
             dataHandler.printLastRxPacket();
         }
-        if (connector.getData<bool>(ui_interface::IGNITION_STATUS)) { // not 0 => not SLEEP
+        if (connector.eatData<bool>(ui_interface::IGNITION_STATUS, ignit::SLEEP)) { // not 0 => not SLEEP
             dataHandler.updateTx(IGNITION_ANSWER);
             xbee.send(dataHandler.getPacket(IGNITION_ANSWER));
         }
