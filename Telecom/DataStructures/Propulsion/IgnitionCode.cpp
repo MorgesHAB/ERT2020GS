@@ -27,7 +27,7 @@
 // So to minimize the packet size, we combine all these states in a byte (8 bits)
 // Packet :  [ - | - | - | - | code 3 | code 2 | code 1 | code 0 LSB  ]
 
-//#ifdef RUNNING_ON_RPI
+#ifdef RUNNING_ON_RPI
 #include <wiringPi.h>
 
 #include "IgnitionCode.h"
@@ -66,7 +66,7 @@ void IgnitionCode::updateTx(std::shared_ptr<Connector> connector) {
     connector->setData(ui_interface::IGNITION_RED_BUTTON_PUSHED,
                        digitalRead(GPIO_IN_RED_BUTTON));
 
-    states[0] = 1;//digitalRead(GPIO_IN_CODE0);
+    states[0] = digitalRead(GPIO_IN_CODE0);
     states[1] = digitalRead(GPIO_IN_CODE1);
     states[2] = digitalRead(GPIO_IN_CODE2);
     states[3] = digitalRead(GPIO_IN_CODE3);
@@ -134,4 +134,4 @@ void IgnitionCode::print() const {
               << states[1] << " " << states[0] << " ]" << std::endl;
 }
 
-//#endif
+#endif
