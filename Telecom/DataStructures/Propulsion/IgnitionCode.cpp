@@ -110,6 +110,7 @@ void IgnitionCode::updateRx(std::shared_ptr<Connector> connector) {
             case WRONG_CODE_RECEIVED:
             case SLEEP:
                 ignitionState = ARMED;
+                connector->setData(ui_interface::IGNITION_STATUS, ignitionState);
                 digitalWrite(GPIO_OUT_IGNITION, LOW); // safe
                 break;
             case ARMED:

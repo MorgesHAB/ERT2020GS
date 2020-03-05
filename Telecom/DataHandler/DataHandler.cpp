@@ -85,7 +85,7 @@ DataHandler::DataHandler(std::shared_ptr<Connector> connector)
     //dataHandler[IMAGE]->add(new Picture(200, "nul.jpg", 600, 600));
 
 
-    dataHandler[IGNITION_ANSWER]->add(new SensorData<bool>(DataType::IGNITION_STATUS));
+    dataHandler[IGNITION_ANSWER]->add(new SensorData<ignit::IgnitionState>(DataType::IGNITION_STATUS));
 
     ///////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////

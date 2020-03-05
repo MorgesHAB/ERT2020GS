@@ -50,7 +50,7 @@ int main(int argc, char** argv) {
         if (xbee.receive(dataHandler)) {
             dataHandler.printLastRxPacket();
         }
-        if (connector.eatData<bool>(ui_interface::IGNITION_STATUS, ignit::SLEEP)) { // not 0 => not SLEEP
+        if (connector.getData<ignit::IgnitionState>(ui_interface::IGNITION_STATUS)) { // not 0 => not SLEEP
             dataHandler.updateTx(IGNITION_ANSWER);
             xbee.send(dataHandler.getPacket(IGNITION_ANSWER));
         }
