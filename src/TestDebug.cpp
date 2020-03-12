@@ -18,7 +18,7 @@
 #include <iostream>
 
 int main() {
-    serial::Serial serialPort("/dev/ttyS6", 115200);
+    serial::Serial serialPort("/dev/ttyS3", 115200);
     uint8_t command[] = {0x7E,
                          0x00, 0x10, // length
                          0x10,  // Frame type // Transmit Request frame - 0x10
@@ -33,9 +33,25 @@ int main() {
                          0xb4 // CRC
     };
 
-    if (serialPort.isOpen()) {
+    /*if (serialPort.isOpen()) {
         serialPort.write(command, sizeof(command));
         std::cout << "Test packet have been sent" << std::endl;
+    }*/
+    while (true) {
+        try {
+            if (serialPort.available()) {
+                std::cout << serialPort.available() << std::endl;
+                uint8_t info[50];
+                serialPort.read(info, serialPort.available());
+                for (auto e : info) std::cout << " " << +e << std::endl;
+            }
+        } catch (const serial::IOException &e) {
+            std::cerr << "IOException while reading serial port " << std::endl;
+            return false;
+        } catch (const serial::SerialException &e) {
+            std::cerr << "SerialException while reading serial port" << std::endl;
+            return false;
+        }
     }
     return 0;
 }

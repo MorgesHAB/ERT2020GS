@@ -9,7 +9,7 @@
 #include <Data.h>
 #include <GSE/GSEOrderValues.h>
 
-class GSEOrder: Data {
+class GSEOrder: public Data {
 public:
     void write(Packet& packet) override;
     void parse(Packet& packet) override;

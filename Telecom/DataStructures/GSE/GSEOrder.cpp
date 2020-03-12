@@ -5,16 +5,15 @@
 #include "GSEOrder.h"
 
 void GSEOrder::write(Packet &packet) {
-    packet.write((uint8_t) order);
+    packet.write(order);
 }
 
 void GSEOrder::parse(Packet &packet) {
-    uint8_t orderTmp;
-    packet.parse(orderTmp);
-    order = (GSEOrderValues) orderTmp;
+    packet.parse(order);
 }
 
 void GSEOrder::print() const {
+    using namespace gse;
     switch (order) {
         case START_FILLING:
             std::cout << "Start filling order requested" << std::endl;
@@ -41,7 +40,8 @@ void GSEOrder::print() const {
 }
 
 void GSEOrder::updateTx(std::shared_ptr<Connector> connector) {
-    order = connector->getData<uint8_t>(ui_interface::GSE_ORDER_VALUE);
+    //order = connector->getData<uint8_t>(ui_interface::GSE_ORDER_VALUE);
+    order = gse::OPEN_PURGE_VALVE;
 }
 
 void GSEOrder::updateRx(std::shared_ptr<Connector> connector) {

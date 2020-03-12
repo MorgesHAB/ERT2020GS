@@ -8,7 +8,7 @@
 
 #include <Data.h>
 
-class GSESensors: Data {
+class GSESensors: public Data {
 public:
 
     void write(Packet &packet) override;

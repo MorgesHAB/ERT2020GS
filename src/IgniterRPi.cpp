@@ -50,8 +50,8 @@ int main(int argc, char** argv) {
         if (xbee.receive(dataHandler)) {
             dataHandler.printLastRxPacket();
         }
-        if (connector.getData<ignit::IgnitionState>(ui_interface::IGNITION_STATUS)) { // not 0 => not SLEEP
-            dataHandler.updateTx(IGNITION_ANSWER);
+        dataHandler.updateTx(IGNITION_ANSWER);
+        if (connector.eatData<ignit::IgnitionState>(ui_interface::IGNITION_STATUS, ignit::SLEEP)) { // not 0 => not SLEEP
             xbee.send(dataHandler.getPacket(IGNITION_ANSWER));
         }
         std::this_thread::sleep_for(std::chrono::milliseconds(100));

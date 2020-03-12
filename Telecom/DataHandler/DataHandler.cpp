@@ -63,10 +63,7 @@ DataHandler::DataHandler(std::shared_ptr<Connector> connector)
     dataHandler[PL_IMAGE]->add(new File("panda.jpg", 200));
 
     //// GSE Datagram
-    //dataHandler[GSE_ORDER]->add(new GSEOrder);
-    dataHandler[GSE_ORDER]->add(new SensorData<float>(DataType::TEST_SENSOR_DATA));
-    dataHandler[GSE_ORDER]->add(new SensorData<char>(DataType::TEST_SENSOR_DATA));
-    dataHandler[GSE_ORDER]->add(new SensorData<uint16_t>(DataType::TEST_SENSOR_DATA));
+    dataHandler[GSE_ORDER]->add(new GSEOrder);
 
     // Acknowledge
     dataHandler[ACK]->add(new ACKManager);
@@ -125,6 +122,8 @@ void DataHandler::updateTx(DatagramType::DatagramID type) {
 
 bool DataHandler::updateRx(Packet *packet) {
     // TODO  /!\ PROTOCOL define !!! /!\.
+    std::cout << "New Packet" << std::endl;
+    packet->printDebug();
     uint8_t frameType = packet->getPacket()[0];
     auto ID = (DatagramType::DatagramID) packet->getPacket()[12];
     std::string myDelimiter = {(char) packet->getPacket()[13],

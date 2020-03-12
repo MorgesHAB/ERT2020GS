@@ -49,6 +49,6 @@ uint8_t Packet::getSize() const {
 
 void Packet::printDebug() const {
     std::cout << "Print packet Debug byte per byte :" << std::endl;
-    for (uint8_t i(0); i < getSize(); ++i) std::cout << +packet[i] << " ";
+    for (uint8_t i(0); i < size; ++i) std::cout << +packet[i] << " ";
     std::cout << std::endl;
 }
