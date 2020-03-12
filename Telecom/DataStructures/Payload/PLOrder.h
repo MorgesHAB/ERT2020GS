@@ -21,6 +21,4 @@ private:
     uint8_t order;
 };
 
-};
-
 #endif //ERT2020GS_PLORDER_H

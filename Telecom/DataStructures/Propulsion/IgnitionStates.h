@@ -19,6 +19,17 @@ namespace ignit {
         IGNITION_ON
     };
 
+    //For GUI
+    static std::string getIgnitionState(uint8_t state) {
+        switch (state) {
+            case SLEEP: return "SLEEP";
+            case WRONG_CODE_RECEIVED: return "Wrong Code on GSE";
+            case ARMED: return "ARMED";
+            case IGNITION_ON: return "IGNITION ON !!";
+            default: return "Unknown";
+        }
+    }
+
 } // namespace
 
 

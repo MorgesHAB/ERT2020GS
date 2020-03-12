@@ -1,23 +1,20 @@
 /********************************************************************************
-** Form generated from reading UI file 'press_altla2343.ui'
+** Form generated from reading UI file 'press_altgStYDK.ui'
 **
-** Created by: Qt User Interface Compiler version 5.9.5
+** Created by: Qt User Interface Compiler version 5.11.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef PRESS_ALTLA2343_H
-#define PRESS_ALTLA2343_H
+#ifndef PRESS_ALTGSTYDK_H
+#define PRESS_ALTGSTYDK_H
 
 #include <QtCore/QVariant>
-#include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHBoxLayout>
-#include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLCDNumber>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QProgressBar>
@@ -47,20 +44,21 @@ public:
     QLabel *euler_z_panel;
     QGroupBox *ignition_box;
     QGridLayout *gridLayout_2;
-    QLabel *key_2_label;
-    QPushButton *ignition_button;
-    QLabel *ready_ignition_panel;
-    QLabel *key_1_label;
-    QLabel *key_2_panel;
-    QLabel *key_1_panel;
-    QLabel *red_button_label;
-    QLabel *red_button_panel;
     QFrame *frame;
     QHBoxLayout *horizontalLayout;
     QLabel *code_3;
     QLabel *code_2;
     QLabel *code_1;
     QLabel *code_0;
+    QLabel *ready_ignition_panel;
+    QLabel *key_2_label;
+    QLabel *key_1_label;
+    QPushButton *ignition_button;
+    QLabel *key_2_panel;
+    QLabel *key_1_panel;
+    QLabel *red_button_label;
+    QLabel *red_button_panel;
+    QLabel *ignition_status_label;
     QGroupBox *avionics_box;
     QGridLayout *gridLayout_8;
     QLabel *altitude_label_telemetry;
@@ -77,7 +75,6 @@ public:
     QLabel *pressure_label;
     QLabel *m_unit_label_3;
     QLabel *avionics_state_panel;
-    QLabel *logo;
     QGroupBox *accel_box;
     QGridLayout *gridLayout_7;
     QLabel *accel_x_label;
@@ -130,12 +127,13 @@ public:
     QLabel *latitude_panel;
     QLabel *hdop_panel;
     QLabel *sat_nbr_panel;
+    QLabel *logo;
 
     void setupUi(QWidget *Form)
     {
         if (Form->objectName().isEmpty())
             Form->setObjectName(QStringLiteral("Form"));
-        Form->resize(944, 801);
+        Form->resize(738, 801);
         Form->setMinimumSize(QSize(600, 0));
         Form->setMaximumSize(QSize(9999, 9999));
         Form->setMouseTracking(false);
@@ -226,54 +224,6 @@ public:
         ignition_box->setObjectName(QStringLiteral("ignition_box"));
         gridLayout_2 = new QGridLayout(ignition_box);
         gridLayout_2->setObjectName(QStringLiteral("gridLayout_2"));
-        key_2_label = new QLabel(ignition_box);
-        key_2_label->setObjectName(QStringLiteral("key_2_label"));
-
-        gridLayout_2->addWidget(key_2_label, 2, 0, 1, 1);
-
-        ignition_button = new QPushButton(ignition_box);
-        ignition_button->setObjectName(QStringLiteral("ignition_button"));
-        ignition_button->setMinimumSize(QSize(132, 0));
-        ignition_button->setStyleSheet(QStringLiteral(""));
-
-        gridLayout_2->addWidget(ignition_button, 0, 0, 1, 1);
-
-        ready_ignition_panel = new QLabel(ignition_box);
-        ready_ignition_panel->setObjectName(QStringLiteral("ready_ignition_panel"));
-        ready_ignition_panel->setMinimumSize(QSize(23, 0));
-        ready_ignition_panel->setMaximumSize(QSize(23, 16777215));
-        ready_ignition_panel->setStyleSheet(QStringLiteral("color: rgb(255, 0, 0);"));
-
-        gridLayout_2->addWidget(ready_ignition_panel, 0, 1, 1, 1);
-
-        key_1_label = new QLabel(ignition_box);
-        key_1_label->setObjectName(QStringLiteral("key_1_label"));
-
-        gridLayout_2->addWidget(key_1_label, 1, 0, 1, 1);
-
-        key_2_panel = new QLabel(ignition_box);
-        key_2_panel->setObjectName(QStringLiteral("key_2_panel"));
-        key_2_panel->setStyleSheet(QStringLiteral("color: rgb(255, 0, 0);"));
-
-        gridLayout_2->addWidget(key_2_panel, 2, 1, 1, 1);
-
-        key_1_panel = new QLabel(ignition_box);
-        key_1_panel->setObjectName(QStringLiteral("key_1_panel"));
-        key_1_panel->setStyleSheet(QStringLiteral("color: rgb(255, 0, 0);"));
-
-        gridLayout_2->addWidget(key_1_panel, 1, 1, 1, 1);
-
-        red_button_label = new QLabel(ignition_box);
-        red_button_label->setObjectName(QStringLiteral("red_button_label"));
-
-        gridLayout_2->addWidget(red_button_label, 3, 0, 1, 1);
-
-        red_button_panel = new QLabel(ignition_box);
-        red_button_panel->setObjectName(QStringLiteral("red_button_panel"));
-        red_button_panel->setStyleSheet(QStringLiteral("color: rgb(255, 0, 0);"));
-
-        gridLayout_2->addWidget(red_button_panel, 3, 1, 1, 1);
-
         frame = new QFrame(ignition_box);
         frame->setObjectName(QStringLiteral("frame"));
         frame->setMinimumSize(QSize(0, 40));
@@ -313,7 +263,68 @@ public:
         horizontalLayout->addWidget(code_0);
 
 
-        gridLayout_2->addWidget(frame, 4, 0, 1, 2);
+        gridLayout_2->addWidget(frame, 5, 0, 1, 2);
+
+        ready_ignition_panel = new QLabel(ignition_box);
+        ready_ignition_panel->setObjectName(QStringLiteral("ready_ignition_panel"));
+        ready_ignition_panel->setMinimumSize(QSize(23, 0));
+        ready_ignition_panel->setMaximumSize(QSize(23, 16777215));
+        ready_ignition_panel->setStyleSheet(QStringLiteral("color: rgb(255, 0, 0);"));
+
+        gridLayout_2->addWidget(ready_ignition_panel, 0, 1, 1, 1);
+
+        key_2_label = new QLabel(ignition_box);
+        key_2_label->setObjectName(QStringLiteral("key_2_label"));
+
+        gridLayout_2->addWidget(key_2_label, 2, 0, 1, 1);
+
+        key_1_label = new QLabel(ignition_box);
+        key_1_label->setObjectName(QStringLiteral("key_1_label"));
+
+        gridLayout_2->addWidget(key_1_label, 1, 0, 1, 1);
+
+        ignition_button = new QPushButton(ignition_box);
+        ignition_button->setObjectName(QStringLiteral("ignition_button"));
+        ignition_button->setMinimumSize(QSize(132, 0));
+        ignition_button->setStyleSheet(QStringLiteral(""));
+
+        gridLayout_2->addWidget(ignition_button, 0, 0, 1, 1);
+
+        key_2_panel = new QLabel(ignition_box);
+        key_2_panel->setObjectName(QStringLiteral("key_2_panel"));
+        key_2_panel->setStyleSheet(QStringLiteral("color: rgb(255, 0, 0);"));
+
+        gridLayout_2->addWidget(key_2_panel, 2, 1, 1, 1);
+
+        key_1_panel = new QLabel(ignition_box);
+        key_1_panel->setObjectName(QStringLiteral("key_1_panel"));
+        key_1_panel->setStyleSheet(QStringLiteral("color: rgb(255, 0, 0);"));
+
+        gridLayout_2->addWidget(key_1_panel, 1, 1, 1, 1);
+
+        red_button_label = new QLabel(ignition_box);
+        red_button_label->setObjectName(QStringLiteral("red_button_label"));
+
+        gridLayout_2->addWidget(red_button_label, 3, 0, 1, 1);
+
+        red_button_panel = new QLabel(ignition_box);
+        red_button_panel->setObjectName(QStringLiteral("red_button_panel"));
+        red_button_panel->setStyleSheet(QStringLiteral("color: rgb(255, 0, 0);"));
+
+        gridLayout_2->addWidget(red_button_panel, 3, 1, 1, 1);
+
+        ignition_status_label = new QLabel(ignition_box);
+        ignition_status_label->setObjectName(QStringLiteral("ignition_status_label"));
+        QFont font;
+        font.setFamily(QStringLiteral("Verdana"));
+        font.setBold(true);
+        font.setItalic(false);
+        font.setWeight(75);
+        ignition_status_label->setFont(font);
+        ignition_status_label->setAutoFillBackground(false);
+        ignition_status_label->setAlignment(Qt::AlignCenter);
+
+        gridLayout_2->addWidget(ignition_status_label, 4, 0, 1, 2);
 
 
         gridLayout->addWidget(ignition_box, 2, 0, 1, 1);
@@ -397,14 +408,6 @@ public:
 
 
         gridLayout->addWidget(avionics_box, 3, 3, 2, 1);
-
-        logo = new QLabel(Form);
-        logo->setObjectName(QStringLiteral("logo"));
-        logo->setStyleSheet(QLatin1String("\n"
-                                          "\n"
-                                          "image: url(:/assets/logo.png);"));
-
-        gridLayout->addWidget(logo, 5, 4, 1, 1);
 
         accel_box = new QGroupBox(Form);
         accel_box->setObjectName(QStringLiteral("accel_box"));
@@ -680,6 +683,14 @@ public:
 
         gridLayout->addWidget(gps_box, 3, 0, 2, 3);
 
+        logo = new QLabel(Form);
+        logo->setObjectName(QStringLiteral("logo"));
+        logo->setStyleSheet(QLatin1String("\n"
+                                          "\n"
+                                          "image: url(:/assets/logo.png);"));
+
+        gridLayout->addWidget(logo, 5, 4, 1, 1);
+
 
         retranslateUi(Form);
 
@@ -688,136 +699,137 @@ public:
 
     void retranslateUi(QWidget *Form)
     {
-        Form->setWindowTitle(QApplication::translate("Form", "GSBellaLui2020", Q_NULLPTR));
-        time_panel->setText(QApplication::translate("Form", "44:44:44", Q_NULLPTR));
-        xbee_button->setText(QApplication::translate("Form", "START XBee", Q_NULLPTR));
-        change_theme->setText(QApplication::translate("Form", "Change Color Theme", Q_NULLPTR));
-        current_time_label->setText(QApplication::translate("Form", "Current Time:", Q_NULLPTR));
+        Form->setWindowTitle(QApplication::translate("Form", "GSBellaLui2020", nullptr));
+        time_panel->setText(QApplication::translate("Form", "44:44:44", nullptr));
+        xbee_button->setText(QApplication::translate("Form", "START XBee", nullptr));
+        change_theme->setText(QApplication::translate("Form", "Change Color Theme", nullptr));
+        current_time_label->setText(QApplication::translate("Form", "Current Time:", nullptr));
 #ifndef QT_NO_TOOLTIP
-        reset_button->setToolTip(QApplication::translate("Form", "Resets saved data", Q_NULLPTR));
+        reset_button->setToolTip(QApplication::translate("Form", "Resets saved data", nullptr));
 #endif // QT_NO_TOOLTIP
-        reset_button->setText(QApplication::translate("Form", "Reset", Q_NULLPTR));
-        euler_box->setTitle(QApplication::translate("Form", "Euler angles", Q_NULLPTR));
+        reset_button->setText(QApplication::translate("Form", "Reset", nullptr));
+        euler_box->setTitle(QApplication::translate("Form", "Euler angles", nullptr));
         euler_x_panel->setText(QString());
         euler_y_panel->setText(QString());
-        euler_x_label->setText(QApplication::translate("Form", "X", Q_NULLPTR));
-        euler_y_label->setText(QApplication::translate("Form", "Y", Q_NULLPTR));
-        euler_z_label->setText(QApplication::translate("Form", "Z", Q_NULLPTR));
+        euler_x_label->setText(QApplication::translate("Form", "X", nullptr));
+        euler_y_label->setText(QApplication::translate("Form", "Y", nullptr));
+        euler_z_label->setText(QApplication::translate("Form", "Z", nullptr));
         euler_z_panel->setText(QString());
-        ignition_box->setTitle(QApplication::translate("Form", "Ignition", Q_NULLPTR));
-        key_2_label->setText(QApplication::translate("Form", "KEY 2", Q_NULLPTR));
-        ignition_button->setText(QApplication::translate("Form", "Ready For Ignition", Q_NULLPTR));
-        ready_ignition_panel->setText(QApplication::translate("Form", "X", Q_NULLPTR));
-        key_1_label->setText(QApplication::translate("Form", "KEY 1", Q_NULLPTR));
-        key_2_panel->setText(QApplication::translate("Form", "X", Q_NULLPTR));
-        key_1_panel->setText(QApplication::translate("Form", "X", Q_NULLPTR));
-        red_button_label->setText(QApplication::translate("Form", "Red Button", Q_NULLPTR));
-        red_button_panel->setText(QApplication::translate("Form", "X", Q_NULLPTR));
+        ignition_box->setTitle(QApplication::translate("Form", "Ignition", nullptr));
         code_3->setText(QString());
         code_2->setText(QString());
         code_1->setText(QString());
         code_0->setText(QString());
-        avionics_box->setTitle(QApplication::translate("Form", "Avionics Data", Q_NULLPTR));
-        altitude_label_telemetry->setText(QApplication::translate("Form", "ALT.", Q_NULLPTR));
-        speed_label->setText(QApplication::translate("Form", "SPEED", Q_NULLPTR));
-        temperature_label->setText(QApplication::translate("Form", "TEMP", Q_NULLPTR));
+        ready_ignition_panel->setText(QApplication::translate("Form", "X", nullptr));
+        key_2_label->setText(QApplication::translate("Form", "KEY 2", nullptr));
+        key_1_label->setText(QApplication::translate("Form", "KEY 1", nullptr));
+        ignition_button->setText(QApplication::translate("Form", "Ready For Ignition", nullptr));
+        key_2_panel->setText(QApplication::translate("Form", "X", nullptr));
+        key_1_panel->setText(QApplication::translate("Form", "X", nullptr));
+        red_button_label->setText(QApplication::translate("Form", "Red Button", nullptr));
+        red_button_panel->setText(QApplication::translate("Form", "X", nullptr));
+        ignition_status_label->setText(QApplication::translate("Form", "Ignition", nullptr));
+        avionics_box->setTitle(QApplication::translate("Form", "Avionics Data", nullptr));
+        altitude_label_telemetry->setText(QApplication::translate("Form", "ALT.", nullptr));
+        speed_label->setText(QApplication::translate("Form", "SPEED", nullptr));
+        temperature_label->setText(QApplication::translate("Form", "TEMP", nullptr));
         temperature_panel->setText(QString());
         pressure_panel->setText(QString());
         speed_panel->setText(QString());
         altitude_panel_telemetry->setText(QString());
-        hpa_unit_label->setText(QApplication::translate("Form", "hPa", Q_NULLPTR));
-        celcius_label->setText(QApplication::translate("Form", "<html><head/><body><p><span style=\" vertical-align:super;\">o</span>C</p></body></html>", Q_NULLPTR));
-        m_s_unit_label->setText(QApplication::translate("Form", "m/s", Q_NULLPTR));
-        avionics_state_label->setText(QApplication::translate("Form", "AV. STATE", Q_NULLPTR));
-        pressure_label->setText(QApplication::translate("Form", "PRESS.", Q_NULLPTR));
-        m_unit_label_3->setText(QApplication::translate("Form", "m", Q_NULLPTR));
+        hpa_unit_label->setText(QApplication::translate("Form", "hPa", nullptr));
+        celcius_label->setText(QApplication::translate("Form", "<html><head/><body><p><span style=\" vertical-align:super;\">o</span>C</p></body></html>", nullptr));
+        m_s_unit_label->setText(QApplication::translate("Form", "m/s", nullptr));
+        avionics_state_label->setText(QApplication::translate("Form", "AV. STATE", nullptr));
+        pressure_label->setText(QApplication::translate("Form", "PRESS.", nullptr));
+        m_unit_label_3->setText(QApplication::translate("Form", "m", nullptr));
         avionics_state_panel->setText(QString());
-#ifndef QT_NO_TOOLTIP
-        logo->setToolTip(QApplication::translate("Form", "<html><head/><body><p>Project Bella Lui 2020</p></body></html>", Q_NULLPTR));
-#endif // QT_NO_TOOLTIP
-        logo->setText(QString());
-        accel_box->setTitle(QApplication::translate("Form", "Accelerometer", Q_NULLPTR));
-        accel_x_label->setText(QApplication::translate("Form", "X", Q_NULLPTR));
-        accel_z_label->setText(QApplication::translate("Form", "Z", Q_NULLPTR));
-        accel_y_label->setText(QApplication::translate("Form", "Y", Q_NULLPTR));
+        accel_box->setTitle(QApplication::translate("Form", "Accelerometer", nullptr));
+        accel_x_label->setText(QApplication::translate("Form", "X", nullptr));
+        accel_z_label->setText(QApplication::translate("Form", "Z", nullptr));
+        accel_y_label->setText(QApplication::translate("Form", "Y", nullptr));
         accel_x_panel->setText(QString());
         accel_y_panel->setText(QString());
         accel_z_panel->setText(QString());
-        com_box->setTitle(QApplication::translate("Form", "COM", Q_NULLPTR));
+        com_box->setTitle(QApplication::translate("Form", "COM", nullptr));
 #ifndef QT_NO_TOOLTIP
-        last_refresh_label->setToolTip(QApplication::translate("Form", "<html><head/><body><p>Last packet's timestamp</p></body></html>", Q_NULLPTR));
+        last_refresh_label->setToolTip(QApplication::translate("Form", "<html><head/><body><p>Last packet's timestamp</p></body></html>", nullptr));
 #endif // QT_NO_TOOLTIP
-        last_refresh_label->setText(QApplication::translate("Form", "Last Refresh", Q_NULLPTR));
+        last_refresh_label->setText(QApplication::translate("Form", "Last Refresh", nullptr));
 #ifndef QT_NO_TOOLTIP
-        last_packet_nbr_label->setToolTip(QApplication::translate("Form", "<html><head/><body><p>The last received packet's number (defined by TX)</p></body></html>", Q_NULLPTR));
+        last_packet_nbr_label->setToolTip(QApplication::translate("Form", "<html><head/><body><p>The last received packet's number (defined by TX)</p></body></html>", nullptr));
 #endif // QT_NO_TOOLTIP
-        last_packet_nbr_label->setText(QApplication::translate("Form", "Last Packet Number", Q_NULLPTR));
+        last_packet_nbr_label->setText(QApplication::translate("Form", "Last Packet Number", nullptr));
 #ifndef QT_NO_TOOLTIP
-        packets_second_label->setToolTip(QApplication::translate("Form", "<html><head/><body><p>The number of packets received in last second</p></body></html>", Q_NULLPTR));
+        packets_second_label->setToolTip(QApplication::translate("Form", "<html><head/><body><p>The number of packets received in last second</p></body></html>", nullptr));
 #endif // QT_NO_TOOLTIP
-        packets_second_label->setText(QApplication::translate("Form", "Packets/second", Q_NULLPTR));
+        packets_second_label->setText(QApplication::translate("Form", "Packets/second", nullptr));
 #ifndef QT_NO_TOOLTIP
-        packets_second_bar->setToolTip(QApplication::translate("Form", "<html><head/><body><p>The number of packets received in last second</p></body></html>", Q_NULLPTR));
+        packets_second_bar->setToolTip(QApplication::translate("Form", "<html><head/><body><p>The number of packets received in last second</p></body></html>", nullptr));
 #endif // QT_NO_TOOLTIP
-        packets_second_bar->setFormat(QApplication::translate("Form", "%v", Q_NULLPTR));
+        packets_second_bar->setFormat(QApplication::translate("Form", "%v", nullptr));
 #ifndef QT_NO_TOOLTIP
-        last_packet_number_panel->setToolTip(QApplication::translate("Form", "<html><head/><body><p>The last received packet's number (defined by TX)</p></body></html>", Q_NULLPTR));
+        last_packet_number_panel->setToolTip(QApplication::translate("Form", "<html><head/><body><p>The last received packet's number (defined by TX)</p></body></html>", nullptr));
 #endif // QT_NO_TOOLTIP
         last_packet_number_panel->setText(QString());
 #ifndef QT_NO_TOOLTIP
-        received_pack_cnt_label->setToolTip(QApplication::translate("Form", "<html><head/><body><p>The count of the received packets from the start of the program</p></body></html>", Q_NULLPTR));
+        received_pack_cnt_label->setToolTip(QApplication::translate("Form", "<html><head/><body><p>The count of the received packets from the start of the program</p></body></html>", nullptr));
 #endif // QT_NO_TOOLTIP
-        received_pack_cnt_label->setText(QApplication::translate("Form", "Received Packet Count", Q_NULLPTR));
+        received_pack_cnt_label->setText(QApplication::translate("Form", "Received Packet Count", nullptr));
 #ifndef QT_NO_TOOLTIP
-        last_refresh_panel->setToolTip(QApplication::translate("Form", "<html><head/><body><p>Last packet's timestamp</p></body></html>", Q_NULLPTR));
+        last_refresh_panel->setToolTip(QApplication::translate("Form", "<html><head/><body><p>Last packet's timestamp</p></body></html>", nullptr));
 #endif // QT_NO_TOOLTIP
         last_refresh_panel->setText(QString());
 #ifndef QT_NO_TOOLTIP
-        received_pack_cnt_panel->setToolTip(QApplication::translate("Form", "<html><head/><body><p>The count of the received packets from the start of the program</p></body></html>", Q_NULLPTR));
+        received_pack_cnt_panel->setToolTip(QApplication::translate("Form", "<html><head/><body><p>The count of the received packets from the start of the program</p></body></html>", nullptr));
 #endif // QT_NO_TOOLTIP
         received_pack_cnt_panel->setText(QString());
 #ifndef QT_NO_TOOLTIP
-        miss_label->setToolTip(QApplication::translate("Form", "<html><head/><body><p>Lost packets in last 2 seconds</p></body></html>", Q_NULLPTR));
+        miss_label->setToolTip(QApplication::translate("Form", "<html><head/><body><p>Lost packets in last 2 seconds</p></body></html>", nullptr));
 #endif // QT_NO_TOOLTIP
-        miss_label->setText(QApplication::translate("Form", "Misses", Q_NULLPTR));
+        miss_label->setText(QApplication::translate("Form", "Misses", nullptr));
 #ifndef QT_NO_TOOLTIP
-        miss_panel->setToolTip(QApplication::translate("Form", "<html><head/><body><p>Lost packets in last 2 seconds</p></body></html>", Q_NULLPTR));
+        miss_panel->setToolTip(QApplication::translate("Form", "<html><head/><body><p>Lost packets in last 2 seconds</p></body></html>", nullptr));
 #endif // QT_NO_TOOLTIP
         miss_panel->setText(QString());
-        corrupted_label->setText(QApplication::translate("Form", "Corrupted Packets", Q_NULLPTR));
+        corrupted_label->setText(QApplication::translate("Form", "Corrupted Packets", nullptr));
         corrupted_panel->setText(QString());
-        last_datagram_id->setText(QApplication::translate("Form", "Last Datagram ID", Q_NULLPTR));
+        last_datagram_id->setText(QApplication::translate("Form", "Last Datagram ID", nullptr));
         last_datagram_id_panel->setText(QString());
-        groupBox->setTitle(QApplication::translate("Form", "File Transmission", Q_NULLPTR));
-        receiver_state_label->setText(QApplication::translate("Form", "Receiver State", Q_NULLPTR));
-        transmitter_state_label->setText(QApplication::translate("Form", "Transmitter State", Q_NULLPTR));
+        groupBox->setTitle(QApplication::translate("Form", "File Transmission", nullptr));
+        receiver_state_label->setText(QApplication::translate("Form", "Receiver State", nullptr));
+        transmitter_state_label->setText(QApplication::translate("Form", "Transmitter State", nullptr));
         transmitter_state_panel->setText(QString());
-        file_transmission_button->setText(QApplication::translate("Form", "Start File Transmission", Q_NULLPTR));
+        file_transmission_button->setText(QApplication::translate("Form", "Start File Transmission", nullptr));
         receiver_state_panel->setText(QString());
-        file_transmission_progress_bar->setFormat(QApplication::translate("Form", "%v / %m", Q_NULLPTR));
-        gps_box->setTitle(QApplication::translate("Form", "GPS", Q_NULLPTR));
-        longitude_label->setText(QApplication::translate("Form", "LONGITUDE", Q_NULLPTR));
-        latitude_label->setText(QApplication::translate("Form", "LATITUDE", Q_NULLPTR));
-        altitude_label_gps->setText(QApplication::translate("Form", "ALTITUDE", Q_NULLPTR));
-        sat_nbr_label->setText(QApplication::translate("Form", "SATELLITES", Q_NULLPTR));
-        hdop_label->setText(QApplication::translate("Form", "HDOP", Q_NULLPTR));
-        altitude_max_label->setText(QApplication::translate("Form", "ALTITUDE MAX", Q_NULLPTR));
+        file_transmission_progress_bar->setFormat(QApplication::translate("Form", "%v / %m", nullptr));
+        gps_box->setTitle(QApplication::translate("Form", "GPS", nullptr));
+        longitude_label->setText(QApplication::translate("Form", "LONGITUDE", nullptr));
+        latitude_label->setText(QApplication::translate("Form", "LATITUDE", nullptr));
+        altitude_label_gps->setText(QApplication::translate("Form", "ALTITUDE", nullptr));
+        sat_nbr_label->setText(QApplication::translate("Form", "SATELLITES", nullptr));
+        hdop_label->setText(QApplication::translate("Form", "HDOP", nullptr));
+        altitude_max_label->setText(QApplication::translate("Form", "ALTITUDE MAX", nullptr));
         longitude_panel->setText(QString());
-        ft_unit_label_2->setText(QApplication::translate("Form", "ft", Q_NULLPTR));
-        m_unit_label_2->setText(QApplication::translate("Form", "m", Q_NULLPTR));
-        m_unit_label->setText(QApplication::translate("Form", "m", Q_NULLPTR));
-        ft_unit_label->setText(QApplication::translate("Form", "ft", Q_NULLPTR));
+        ft_unit_label_2->setText(QApplication::translate("Form", "ft", nullptr));
+        m_unit_label_2->setText(QApplication::translate("Form", "m", nullptr));
+        m_unit_label->setText(QApplication::translate("Form", "m", nullptr));
+        ft_unit_label->setText(QApplication::translate("Form", "ft", nullptr));
         latitude_panel->setText(QString());
         hdop_panel->setText(QString());
         sat_nbr_panel->setText(QString());
+#ifndef QT_NO_TOOLTIP
+        logo->setToolTip(QApplication::translate("Form", "<html><head/><body><p>Project Bella Lui 2020</p></body></html>", nullptr));
+#endif // QT_NO_TOOLTIP
+        logo->setText(QString());
     } // retranslateUi
 
 };
 
 namespace Ui {
-class Form: public Ui_Form {};
+    class Form: public Ui_Form {};
 } // namespace Ui
 
 QT_END_NAMESPACE
 
-#endif // PRESS_ALTLA2343_H
+#endif // PRESS_ALTGSTYDK_H

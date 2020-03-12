@@ -216,10 +216,16 @@ void GuiWindow::refresh_ignition_frame()
     bool button  = data_->getData<bool>(IGNITION_RED_BUTTON_PUSHED);
     bool clicked = data_->getData<bool>(IGNITION_CLICKED);
 
+
     show_ok_X(key_1_panel, key1);
     show_ok_X(key_2_panel, key2);
     show_ok_X(red_button_panel, button);
     show_ok_X(ready_ignition_panel, clicked);
+
+    // Ignition status
+    std::string str(ignit::getIgnitionState(
+            data_->eatData<ignit::IgnitionState>(IGNITION_STATUS, ignit::SLEEP)));
+    ignition_status_label->setText(QString::fromStdString(str));
 
     #ifdef SOUND_ON
     if (key1 && key2 && clicked) {
