@@ -1,15 +1,13 @@
 //
-// Created by stephanie on 13/02/20.
+// Created by stephanie on 12/03/20.
 //
 
-#ifndef ERT2020GS_GSEORDER_H
-#define ERT2020GS_GSEORDER_H
-
+#ifndef ERT2020GS_PLORDER_H
+#define ERT2020GS_PLORDER_H
 
 #include <Data.h>
-#include <GSE/GSEOrderValues.h>
 
-class GSEOrder: public Data {
+class PLOrder: public Data{
 public:
     void write(Packet& packet) override;
     void parse(Packet& packet) override;
@@ -23,5 +21,6 @@ private:
     uint8_t order;
 };
 
+};
 
-#endif //ERT2020GS_GSEORDER_H
+#endif //ERT2020GS_PLORDER_H

@@ -107,6 +107,16 @@ enum DataType {
     GSE_MOTOR_SPEED,
     GSE_TANK_WEIGHT,
 
+    /// Payload data
+    PL_GPS_ALTITUDE,    // float                **The last altitude reading
+    PL_GPS_LONGITUDE,    // float               **The last longitude reading
+    PL_GPS_LATITUDE,    // float                **The last latitude reading
+    PL_GPS_HDOP,    // float
+    PL_GPS_SAT_NBR, // uint8_t,
+    PL_TEMPERATURE,
+    PL_STATE,
+
+
     /// !!! THIS MUST BE THE LAST LINE !!!
     /// The size of the connected data array
     ARRAY_SIZE

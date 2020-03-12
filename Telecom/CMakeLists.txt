@@ -18,7 +18,7 @@ endif (USE_XBEE)
 file(GLOB_RECURSE SOURCES DataStructures/* Serializer/*.cpp DataHandler/*.cpp
                           Worker/*.cpp RFmodem/RFmodem.h)
 
-add_library(${PROJECT_NAME} ${SOURCES} ${SOURCES_RF} ${SOURCES_RF2} DataStructures/Avionics/StatusAV.cpp DataStructures/Avionics/StatusAV.h DataStructures/Avionics/StateValues.h DataStructures/GSE/GSEOrder.cpp DataStructures/GSE/GSEOrder.h DataStructures/GSE/GSEOrderValues.h DataStructures/GSE/GSESensors.cpp DataStructures/GSE/GSESensors.h)
+add_library(${PROJECT_NAME} ${SOURCES} ${SOURCES_RF} ${SOURCES_RF2} DataStructures/Avionics/StatusAV.cpp DataStructures/Avionics/StatusAV.h DataStructures/Avionics/StateValues.h DataStructures/GSE/GSEOrder.cpp DataStructures/GSE/GSEOrder.h DataStructures/GSE/GSEOrderValues.h DataStructures/GSE/GSESensors.cpp DataStructures/GSE/GSESensors.h DataStructures/Payload/PLTemperature.h DataStructures/Payload/PLTemperature.cpp DataStructures/Payload/PLGps.cpp DataStructures/Payload/PLGps.h DataStructures/Payload/StatusPL.cpp DataStructures/Payload/StatusPL.h DataStructures/Payload/PLOrder.cpp DataStructures/Payload/PLOrder.h DataStructures/Payload/PLStateValues.h)
 
 target_include_directories(${PROJECT_NAME} PUBLIC DataStructures)
 target_include_directories(${PROJECT_NAME} PUBLIC RFmodem)
