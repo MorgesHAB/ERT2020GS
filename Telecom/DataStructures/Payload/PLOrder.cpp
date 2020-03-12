@@ -20,11 +20,11 @@ std::string PLOrder::log() const {
 }
 
 void PLOrder::updateTx(std::shared_ptr<Connector> connector) {
-    //For GS, always in transmitting mode for this packet
+    //TODO: order = (create enum)
 }
 
 void PLOrder::updateRx(std::shared_ptr<Connector> connector) {
-
+    //For GS, always in transmitting mode for this packet
 }
 
 
