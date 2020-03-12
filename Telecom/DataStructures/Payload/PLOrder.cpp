@@ -16,7 +16,7 @@ void PLOrder::print() const {
 }
 std::string PLOrder::log() const {
     return std::move("PL order" + SEPARATOR +
-                     std::to_string(status) + SEPARATOR);
+                     std::to_string(order) + SEPARATOR);
 }
 
 void PLOrder::updateTx(std::shared_ptr<Connector> connector) {
