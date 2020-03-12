@@ -6,3 +6,7 @@
 #define ERT2020GS_PLSTATEVALUES_H
 
 #endif //ERT2020GS_PLSTATEVALUES_H
+
+enum PlStateValues {
+
+};
