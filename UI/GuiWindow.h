@@ -41,6 +41,7 @@ public slots:
     void ignite_clicked();
     void theme_change_clicked();
     void file_transmission_pressed();
+    void valve_control();
 
 private:
     enum Theme {WHITE_ON_BLACK = 0, GREEN_ON_BLACK, BLACK_ON_WHITE, THEME_COUNT};
@@ -55,6 +56,7 @@ private:
     void check_and_show();
     void refresh_time();
     void refresh_file_transmission_box();
+    void refresh_lionel_stuff();
 
     void show_ok_X(QLabel*, bool);
     void show_ok(QLabel*);

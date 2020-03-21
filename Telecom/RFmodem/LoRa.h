@@ -20,7 +20,7 @@ public:
     void send(Packet *packet) override;
     bool receive(Packet *packet);
     bool receive(DataHandler &dataHandler) override;
-    int getRSSI();
+    int getRSSI() override;
 
 private:
     RH_RF95 rf95;

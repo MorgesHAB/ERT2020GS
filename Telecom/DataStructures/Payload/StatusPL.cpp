@@ -26,5 +26,5 @@ void StatusPL::updateTx(std::shared_ptr <Connector> connector) {
 }
 
 void StatusPL::updateRx(std::shared_ptr <Connector> connector) {
-    connector->setData(ui_interface::PL_STATE, status);
+    connector->setData(ui_interface::PL_STATE_UI, status);
 }

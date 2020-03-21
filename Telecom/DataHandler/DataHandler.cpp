@@ -57,13 +57,13 @@ DataHandler::DataHandler(std::shared_ptr<Connector> connector)
     dataHandler[AIR_BRAKES]->add(new SensorData<float>(DataType::AIR_BRAKES_ANGLE));
 
     //// Payload Datagram
-    dataHandler[PL_INFO]->add(new String("Not ready yet"));
-    dataHandler[PL_INFO]->add(new States({1, 0, 1, 1, 0, 0, 1, 0}));
+    dataHandler[PL_STATE]->add(new String("Not ready yet"));
+    dataHandler[PL_STATE]->add(new States({1, 0, 1, 1, 0, 0, 1, 0}));
 
     dataHandler[PL_IMAGE]->add(new File("panda.jpg", 200));
 
     //// GSE Datagram
-    dataHandler[GSE_ORDER]->add(new GSEOrder);
+    //dataHandler[GSE_ORDER]->add(new GSEOrder);
 
     // Acknowledge
     dataHandler[ACK]->add(new ACKManager);
@@ -141,7 +141,7 @@ bool DataHandler::updateRx(Packet *packet) {
     }
     else if (frameType == 0x88) { // command response
         std::cout << "RSSI = -" << +packet->getPacket()[5] << " dBm" << std::endl;
-        connector->setData(ui_interface::LAST_RSSI, packet->getPacket()[5]);
+        connector->setData(ui_interface::RSSI_VALUE, packet->getPacket()[5]);
     }
     else {
         connector->incrementData(ui_interface::CORRUPTED_PACKET_CTR);

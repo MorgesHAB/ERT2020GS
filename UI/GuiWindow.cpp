@@ -72,6 +72,42 @@ GuiWindow::GuiWindow(std::shared_ptr<Connector> connector) :
     grabKeyboard();
     timer_->start(REFRESH_RATE);
 }
+///////////////////////////////////////////////////////////////////////////
+void GuiWindow::refresh_lionel_stuff() {
+
+    verticalSlider_1->setValue(rand() % 100);
+    verticalSlider_2->setValue(rand() % 100);
+    verticalSlider_3->setValue(rand() % 100);
+    verticalSlider_4->setValue(rand() % 100);
+    verticalSlider_5->setValue(rand() % 100);
+    verticalSlider_11->setValue(rand() % 100);
+    verticalSlider_12->setValue(rand() % 100);
+    verticalSlider_13->setValue(rand() % 100);
+    verticalSlider_14->setValue(rand() % 100);
+    verticalSlider_15->setValue(rand() % 100);
+
+    //// Lionel test
+    static bool a(false);
+    ignition_status_label->setStyleSheet((a) ? "QLabel {color: rgb(255, 255, 255);}"
+                                             : "QLabel {color: rgb(255, 0, 0);}");
+    antenna_img->setStyleSheet((xbee_acvite_ && a) ?
+                               "QLabel {image: url(:/assets/radioON.png);}":
+                               "QLabel {image: url(:/assets/radioOFF.png);}");
+    a = !a;
+}
+
+void GuiWindow::valve_control() {
+    lionel_label->setText(serialport_selector->currentText());
+    lionel_label->setStyleSheet("QLabel {color: rgb(100, 25, 255);}");
+
+    QString url = R"(Yann.png)";
+    QPixmap img(url);
+    image_lio->setPixmap(img);
+    data_->setData(ui_interface::RSSI_READ_ORDER, true);
+    static int x(0);
+    data_->setData(IGNITION_STATUS, (ignit::IgnitionState) x);
+    x+=1;
+}
 
 void GuiWindow::reset_button_pressed()
 {
@@ -89,6 +125,7 @@ void GuiWindow::refresh_data()
     refresh_ignition_frame();
     refresh_gps();
     refresh_file_transmission_box();
+    refresh_lionel_stuff();
     ++tick_counter_;
 }
 
@@ -97,6 +134,8 @@ void GuiWindow::xbee_clicked()
     if (!xbee_acvite_) {
         //logger.log(new Gui_Message("XBee ON button clicked!"));
         std::cout << "XBee ON button clicked!" << std::endl;
+        uint64_t index(serialport_selector->currentIndex());
+        data_->setData(ui_interface::SERIALPORT_INDEX, index);
         data_->setData(ui_interface::ACTIVE_XBEE, true);
         xbee_button->setText("STOP XBee");
     } else {
@@ -223,9 +262,29 @@ void GuiWindow::refresh_ignition_frame()
     show_ok_X(ready_ignition_panel, clicked);
 
     // Ignition status
-    std::string str(ignit::getIgnitionState(
-            data_->eatData<ignit::IgnitionState>(IGNITION_STATUS, ignit::SLEEP)));
-    ignition_status_label->setText(QString::fromStdString(str));
+    auto ignitState = data_->getData<ignit::IgnitionState>(IGNITION_STATUS);
+    ignition_status_label->setText(QString::fromStdString(ignit::getIgnitionState(ignitState)));
+    switch (ignitState) {
+        case ignit::SLEEP:
+            ignition_state_icon->setStyleSheet("QLabel {image: url(:/assets/safe.png);}");
+            break;
+        case ignit::WRONG_CODE_RECEIVED:
+            ignition_state_icon->setStyleSheet("QLabel {image: url(:/assets/password.png);}");
+            info_ignition->setText("The GSE informs you that you are entering the wrong code - No Ignition - Permission denied");
+            break;
+        case ignit::ARMED:
+            ignition_state_icon->setStyleSheet("QLabel {image: url(:/assets/warning.png);}");
+            info_ignition->setText("GSE confirmation : Code is correct - ARMED - Ready for Ignition !");
+
+            break;
+        case ignit::IGNITION_ON:
+            ignition_state_icon->setStyleSheet("QLabel {image: url(:/assets/fire.png);}");
+            info_ignition->setText("Ignition circuit active ! Igniters should be burning!");
+#ifdef SOUND_ON
+            // playSound(takeoff);
+#endif
+            break;
+    }
 
     #ifdef SOUND_ON
     if (key1 && key2 && clicked) {
@@ -249,6 +308,7 @@ void GuiWindow::initialize_slots_signals()
     connect(ignition_button, SIGNAL(pressed()), this, SLOT(ignite_clicked()));
     connect(change_theme, SIGNAL(pressed()), this, SLOT(theme_change_clicked()));
     connect(file_transmission_button, SIGNAL(pressed()), this, SLOT(file_transmission_pressed()));
+    connect(valve_button,SIGNAL(pressed()), this, SLOT(valve_control()));
 }
 
 void GuiWindow::refresh_telemetry()
@@ -293,28 +353,12 @@ void GuiWindow::refresh_com()
     uint32_t packets(data_->eatData<uint32_t>(PACKET_RX_RATE_CTR, 0));
     packets_second_bar->setValue((packets * (1000.0 / (REFRESH_RATE))));
     corrupted_panel->setText(qstr(data_->getData<uint64_t>(CORRUPTED_PACKET_CTR)));
+
+    rssi_value->display(data_->getData<uint8_t>(ui_interface::RSSI_VALUE));
 }
 
 void GuiWindow::check_and_show()
 {
-    using namespace ignit;
-    switch (data_->eatData<IgnitionState>(IGNITION_STATUS, ignit::SLEEP)) {
-        case WRONG_CODE_RECEIVED:
-            QMessageBox::warning(this, "GSE Info", "The GSE informs you that you are entering the wrong code - No Ignition - Permission denied");
-            break;
-        case ARMED:
-            QMessageBox::warning(this, "GSE Info", "GSE confirmation : Code is correct - ARMED - Ready for Ignition !");
-            break;
-        case IGNITION_ON:
-            #ifdef SOUND_ON
-            // playSound(takeoff);
-            #endif
-            QMessageBox::warning(this, "GSE Info", "Ignition circuit active ! Igniters should be burning!");
-            break;
-        default:
-            break;
-    }
-
     if (data_->eatData<bool>(FILE_TRANSMISSION_ALL_RECEIVED, false)) {
         QMessageBox::warning(this, "File", "File transmission finished - All received");
     }

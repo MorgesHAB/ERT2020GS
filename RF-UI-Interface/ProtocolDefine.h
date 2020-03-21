@@ -32,9 +32,11 @@ enum DataType {
     IGNITION_CLICKED, // bool        **This is set to true when ignition button is clicked.
     //                              @attention !!! Listener should eat this boolean to be able to detect further clicks !!!
 
-    /// RF modem
-    LAST_RSSI, // uint8_t           **Reports the RSSI in -dBm of the last received RF data packet.
+    SERIALPORT_INDEX,
+    RSSI_READ_ORDER,
+    RSSI_VALUE, // uint8_t           **Reports the RSSI in -dBm of the last received RF data packet.
 
+    //////////////// RF modem
     /// Ignition
     IGNITION_STATUS,            // bool        ** true :  FIRE,  false : ABORTED
     IGNITION_KEY_1_ACTIVATED,   // bool
@@ -114,7 +116,7 @@ enum DataType {
     PL_GPS_HDOP,    // float
     PL_GPS_SAT_NBR, // uint8_t,
     PL_TEMPERATURE,
-    PL_STATE,
+    PL_STATE_UI,
 
 
     /// !!! THIS MUST BE THE LAST LINE !!!

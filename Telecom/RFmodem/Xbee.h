@@ -23,7 +23,7 @@ public:
     bool receive(Packet *packet);
     bool receive(DataHandler &dataHandler) override;
 
-    void getRSSI();
+    int getRSSI() override;
 
 private:
     serial::Serial serialPort;

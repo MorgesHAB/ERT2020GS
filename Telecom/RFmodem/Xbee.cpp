@@ -71,7 +71,7 @@ bool Xbee::receive(Packet *packet) {
 }
 
 
-void Xbee::getRSSI() {
+int Xbee::getRSSI() {
     /* AT Command (API 1)
     Start delimiter: 7E
     Length: 00 04 (4)
@@ -84,4 +84,5 @@ void Xbee::getRSSI() {
         serialPort.write(command, sizeof(command));
         std::cout << "Diagnostic command have been sent - get RSSI" << std::endl;
     }
+    return 0;
 }

@@ -23,6 +23,7 @@ public:
 
     void manageIgnitionTx(DataHandler& dataHandler, RFmodem* rFmodem);
     void manageImageTransmission(DataHandler& dataHandler, RFmodem* rfmodem);
+    std::string getSerialport();
 
 private:
     // Connector Pointer

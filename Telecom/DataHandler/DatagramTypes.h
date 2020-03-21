@@ -17,28 +17,41 @@ namespace DatagramType {
 
     // Don't forget to modify header::print() when adding new packet type
     enum DatagramID {
-        INIT,
+        INIT, // ID = 0 not used
 
-        AV_GPS,
-        AV_STATUS,
-        AV_TELEMETRY,
-        AV_DEBUG,
+        /// Avionic Datagram
+            AV_GPS,
+            AV_STATUS,
+            AV_TELEMETRY,
+            AV_DEBUG,
 
-        PROPULSION,
-        AIR_BRAKES,
+        /// GSE Datagram
+            GSE_ORDER,
+            GSE_STATUS,
+            GSE_IGNITION,
 
-        GSE_ORDER,
-        GSE_STATUS,
-        GSE_IGNITION,
+        /// Payload Datagram
+            PL_IMAGE,
+            PL_STATE,
+            PL_GPS,
+            PL_ORDER,
 
-        PL_INFO,
-        PL_IMAGE,
+        /// Propulsion Datagram
+            PROPULSION,
 
-        ACK,
-        // TEST PACKET
-        IMAGE,
-        IGNITION_ANSWER,
-        TEST,
+        /// Air Brakes Datagram
+            AIR_BRAKES,
+
+        /// [Subsystem Name] Datagram
+        /// ...
+                            // <-- add new type here
+
+        /// TEST PACKET
+            ACK,
+            IMAGE,
+            IGNITION_ANSWER,
+            TEST,
+
                             // <-- add new type here
 
         /////////////////////////////////////////
@@ -57,8 +70,10 @@ namespace DatagramType {
             case GSE_ORDER: return "GSE ORDER";
             case GSE_STATUS: return "GSE STATUS";
             case GSE_IGNITION: return "GSE IGNITION";
-            case PL_INFO: return "PL INFO";
+            case PL_STATE: return "PL STATE";
             case PL_IMAGE: return "PL IMAGE";
+            case PL_GPS: return "PL GPS";
+            case PL_ORDER: return "PL ORDER";
             case IMAGE: return "Image";
             case TEST: return "TEST";
             case IGNITION_ANSWER: return "Ignition Response";

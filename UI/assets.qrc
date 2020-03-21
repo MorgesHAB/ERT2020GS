@@ -1,6 +1,30 @@
 <RCC>
   <qresource prefix="/">
     <file>assets/logo.png</file>
+    <file>assets/Sjf.png</file>
+    <file>assets/fire.png</file>
+    <file>assets/bella.jpg</file>
+	<file>assets/eiger.jpg</file>
+    <file>assets/EPFL.png</file>
+    <file>assets/ERT.png</file>
+    <file>assets/Logo_Eiger.png</file>
+    <file>assets/Logo_Matterhorn.png</file>
+
+    <file>assets/radioON.png</file>
+    <file>assets/radioOFF.png</file>
+
+    <file>assets/valve.png</file>
+    <file>assets/galaxy.png</file>
+    <file>assets/green_check.png</file>
+    <file>assets/redCross.png</file>
+    <file>assets/gps_track.png</file>
+        <file>assets/sensor.png</file>
+        <file>assets/warning.png</file>
+        <file>assets/safe.png</file>
+        <file>assets/password.png</file>
+
+
+
     <file>assets/nuclear_alarm.mp3</file>
     <file>assets/launch.mp3</file>
     <file>assets/hymne.mp3</file>
