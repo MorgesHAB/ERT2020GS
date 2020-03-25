@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'LioTestalrtSo.ui'
+** Form generated from reading UI file 'LioTestGlovAd.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.11.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef LIOTESTALRTSO_H
-#define LIOTESTALRTSO_H
+#ifndef LIOTESTGLOVAD_H
+#define LIOTESTGLOVAD_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
@@ -75,7 +75,6 @@ public:
     QLCDNumber *rssi_value;
     QLabel *label_31;
     QWidget *tab;
-    QDial *dial_3;
     QDial *dial;
     QDial *dial_2;
     QLabel *label_12;
@@ -112,17 +111,6 @@ public:
     QTextEdit *info_ignition;
     QLabel *label;
     QWidget *tab_2;
-    QWidget *gridLayoutWidget_2;
-    QGridLayout *gridLayout;
-    QLabel *label_9;
-    QLabel *label_3;
-    QLabel *label_4;
-    QLabel *label_11;
-    QLabel *label_5;
-    QLabel *label_2;
-    QLabel *label_10;
-    QLabel *label_7;
-    QLabel *label_8;
     QSlider *verticalSlider_1;
     QLineEdit *lineEdit;
     QSlider *verticalSlider_2;
@@ -135,6 +123,7 @@ public:
     QSlider *verticalSlider_14;
     QSlider *verticalSlider_15;
     QLabel *label_28;
+    QPushButton *pushButton_6;
     QTabWidget *tabWidget_2;
     QWidget *tab_3;
     QGroupBox *gps_box;
@@ -236,12 +225,27 @@ public:
     QPushButton *pushButton;
     QPushButton *pushButton_2;
     QPushButton *pushButton_3;
+    QPushButton *pushButton_4;
     QPushButton *valve_button;
+    QPushButton *pushButton_5;
+    QWidget *gridLayoutWidget_2;
+    QGridLayout *gridLayout;
+    QLabel *label_9;
+    QLabel *label_3;
+    QLabel *label_4;
+    QLabel *label_11;
+    QLabel *label_5;
+    QLabel *label_2;
+    QLabel *label_10;
+    QLabel *label_7;
+    QLabel *label_8;
     QLabel *label_29;
     QLabel *logo_2;
     QLabel *logo_3;
     QLabel *antenna_img;
     QLabel *label_60;
+    QLineEdit *lineEdit_3;
+    QLabel *label_61;
 
     void setupUi(QWidget *Form)
     {
@@ -312,7 +316,7 @@ public:
         tab_10->setObjectName(QStringLiteral("tab_10"));
         gridLayoutWidget_3 = new QWidget(tab_10);
         gridLayoutWidget_3->setObjectName(QStringLiteral("gridLayoutWidget_3"));
-        gridLayoutWidget_3->setGeometry(QRect(330, 40, 251, 153));
+        gridLayoutWidget_3->setGeometry(QRect(330, 40, 318, 203));
         gridLayout_12 = new QGridLayout(gridLayoutWidget_3);
         gridLayout_12->setObjectName(QStringLiteral("gridLayout_12"));
         gridLayout_12->setContentsMargins(0, 0, 0, 0);
@@ -474,10 +478,6 @@ public:
         tabWidget->addTab(tab_10, QString());
         tab = new QWidget();
         tab->setObjectName(QStringLiteral("tab"));
-        dial_3 = new QDial(tab);
-        dial_3->setObjectName(QStringLiteral("dial_3"));
-        dial_3->setGeometry(QRect(130, 190, 51, 61));
-        dial_3->setStyleSheet(QStringLiteral("background-color: rgb(85, 255, 255);"));
         dial = new QDial(tab);
         dial->setObjectName(QStringLiteral("dial"));
         dial->setGeometry(QRect(20, 190, 50, 64));
@@ -671,58 +671,6 @@ public:
         ignition_state_icon->raise();
         tab_2 = new QWidget();
         tab_2->setObjectName(QStringLiteral("tab_2"));
-        gridLayoutWidget_2 = new QWidget(tab_2);
-        gridLayoutWidget_2->setObjectName(QStringLiteral("gridLayoutWidget_2"));
-        gridLayoutWidget_2->setGeometry(QRect(40, 40, 220, 131));
-        gridLayout = new QGridLayout(gridLayoutWidget_2);
-        gridLayout->setObjectName(QStringLiteral("gridLayout"));
-        gridLayout->setContentsMargins(0, 0, 0, 0);
-        label_9 = new QLabel(gridLayoutWidget_2);
-        label_9->setObjectName(QStringLiteral("label_9"));
-
-        gridLayout->addWidget(label_9, 0, 2, 1, 1);
-
-        label_3 = new QLabel(gridLayoutWidget_2);
-        label_3->setObjectName(QStringLiteral("label_3"));
-
-        gridLayout->addWidget(label_3, 1, 0, 1, 1);
-
-        label_4 = new QLabel(gridLayoutWidget_2);
-        label_4->setObjectName(QStringLiteral("label_4"));
-
-        gridLayout->addWidget(label_4, 2, 0, 1, 1);
-
-        label_11 = new QLabel(gridLayoutWidget_2);
-        label_11->setObjectName(QStringLiteral("label_11"));
-        label_11->setStyleSheet(QStringLiteral("color: rgb(255, 255, 255);"));
-
-        gridLayout->addWidget(label_11, 2, 2, 1, 1);
-
-        label_5 = new QLabel(gridLayoutWidget_2);
-        label_5->setObjectName(QStringLiteral("label_5"));
-
-        gridLayout->addWidget(label_5, 0, 1, 1, 1);
-
-        label_2 = new QLabel(gridLayoutWidget_2);
-        label_2->setObjectName(QStringLiteral("label_2"));
-
-        gridLayout->addWidget(label_2, 0, 0, 1, 1);
-
-        label_10 = new QLabel(gridLayoutWidget_2);
-        label_10->setObjectName(QStringLiteral("label_10"));
-
-        gridLayout->addWidget(label_10, 1, 2, 1, 1);
-
-        label_7 = new QLabel(gridLayoutWidget_2);
-        label_7->setObjectName(QStringLiteral("label_7"));
-
-        gridLayout->addWidget(label_7, 1, 1, 1, 1);
-
-        label_8 = new QLabel(gridLayoutWidget_2);
-        label_8->setObjectName(QStringLiteral("label_8"));
-
-        gridLayout->addWidget(label_8, 2, 1, 1, 1);
-
         verticalSlider_1 = new QSlider(tab_2);
         verticalSlider_1->setObjectName(QStringLiteral("verticalSlider_1"));
         verticalSlider_1->setGeometry(QRect(340, 50, 22, 160));
@@ -770,6 +718,9 @@ public:
         label_28->setObjectName(QStringLiteral("label_28"));
         label_28->setGeometry(QRect(910, 10, 51, 281));
         label_28->setStyleSheet(QStringLiteral("image: url(:/assets/eiger.jpg);"));
+        pushButton_6 = new QPushButton(tab_2);
+        pushButton_6->setObjectName(QStringLiteral("pushButton_6"));
+        pushButton_6->setGeometry(QRect(60, 60, 131, 61));
         tabWidget->addTab(tab_2, QString());
         tabWidget_2 = new QTabWidget(Form);
         tabWidget_2->setObjectName(QStringLiteral("tabWidget_2"));
@@ -1049,10 +1000,10 @@ public:
 
         groupBox_2 = new QGroupBox(tab_3);
         groupBox_2->setObjectName(QStringLiteral("groupBox_2"));
-        groupBox_2->setGeometry(QRect(710, 20, 181, 271));
+        groupBox_2->setGeometry(QRect(780, 10, 181, 311));
         gridLayoutWidget_5 = new QWidget(groupBox_2);
         gridLayoutWidget_5->setObjectName(QStringLiteral("gridLayoutWidget_5"));
-        gridLayoutWidget_5->setGeometry(QRect(10, 30, 131, 231));
+        gridLayoutWidget_5->setGeometry(QRect(10, 30, 131, 276));
         gridLayout_15 = new QGridLayout(gridLayoutWidget_5);
         gridLayout_15->setObjectName(QStringLiteral("gridLayout_15"));
         gridLayout_15->setContentsMargins(0, 0, 0, 0);
@@ -1146,12 +1097,12 @@ public:
 
         verticalSlider = new QSlider(groupBox_2);
         verticalSlider->setObjectName(QStringLiteral("verticalSlider"));
-        verticalSlider->setGeometry(QRect(150, 29, 22, 231));
+        verticalSlider->setGeometry(QRect(150, 29, 22, 271));
         verticalSlider->setValue(68);
         verticalSlider->setOrientation(Qt::Vertical);
         horizontalLayoutWidget_2 = new QWidget(tab_3);
         horizontalLayoutWidget_2->setObjectName(QStringLiteral("horizontalLayoutWidget_2"));
-        horizontalLayoutWidget_2->setGeometry(QRect(380, 160, 323, 31));
+        horizontalLayoutWidget_2->setGeometry(QRect(380, 160, 386, 31));
         horizontalLayout_3 = new QHBoxLayout(horizontalLayoutWidget_2);
         horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
         horizontalLayout_3->setContentsMargins(0, 0, 0, 0);
@@ -1241,7 +1192,7 @@ public:
         image_lio = new QLabel(tab_4);
         image_lio->setObjectName(QStringLiteral("image_lio"));
         image_lio->setGeometry(QRect(260, 20, 701, 431));
-        image_lio->setStyleSheet(QStringLiteral("image: url(:/assets/Sjf.png);"));
+        image_lio->setStyleSheet(QStringLiteral("image: url(:/assets/ERT.jpg);"));
         tabWidget_2->addTab(tab_4, QString());
         GSE = new QWidget();
         GSE->setObjectName(QStringLiteral("GSE"));
@@ -1250,7 +1201,7 @@ public:
         groupBox_3->setGeometry(QRect(50, 30, 341, 281));
         gridLayoutWidget = new QWidget(groupBox_3);
         gridLayoutWidget->setObjectName(QStringLiteral("gridLayoutWidget"));
-        gridLayoutWidget->setGeometry(QRect(20, 30, 137, 111));
+        gridLayoutWidget->setGeometry(QRect(20, 30, 200, 121));
         gridLayout_11 = new QGridLayout(gridLayoutWidget);
         gridLayout_11->setObjectName(QStringLiteral("gridLayout_11"));
         gridLayout_11->setContentsMargins(0, 0, 0, 0);
@@ -1272,10 +1223,96 @@ public:
 
         gridLayout_11->addWidget(pushButton_3, 2, 1, 1, 1);
 
+        pushButton_4 = new QPushButton(groupBox_3);
+        pushButton_4->setObjectName(QStringLiteral("pushButton_4"));
+        pushButton_4->setGeometry(QRect(90, 210, 191, 27));
         valve_button = new QPushButton(GSE);
         valve_button->setObjectName(QStringLiteral("valve_button"));
-        valve_button->setGeometry(QRect(440, 80, 281, 211));
-        valve_button->setStyleSheet(QStringLiteral("image: url(:/assets/valve.png);"));
+        valve_button->setGeometry(QRect(440, 80, 131, 71));
+        valve_button->setStyleSheet(QLatin1String("QPushButton{\n"
+                                                  "qproperty-icon: url(:/assets/valve.png);\n"
+                                                  "qproperty-iconSize: 54px;\n"
+                                                  "font: 18pt \"MS Shell Dlg 2\";\n"
+                                                  "border: 2px solid;\n"
+                                                  "border-color: rgb(215, 237, 252);\n"
+                                                  "}\n"
+                                                  "QPushButton:hover {\n"
+                                                  "background-color: rgb(35, 35, 35); \n"
+                                                  "border: 3px solid;\n"
+                                                  "border-color: rgb(215, 237, 252);\n"
+                                                  "}\n"
+                                                  "QPushButton:pressed {\n"
+                                                  "border: 4px solid;\n"
+                                                  "border-color: rgb(92, 242, 135);\n"
+                                                  "}\n"
+                                                  ""));
+        pushButton_5 = new QPushButton(GSE);
+        pushButton_5->setObjectName(QStringLiteral("pushButton_5"));
+        pushButton_5->setGeometry(QRect(600, 170, 81, 71));
+        pushButton_5->setStyleSheet(QLatin1String("QPushButton{\n"
+                                                  "qproperty-icon: url(:/assets/send.png);\n"
+                                                  "qproperty-iconSize: 54px;\n"
+                                                  "}\n"
+                                                  "QPushButton:hover {\n"
+                                                  "background-color: rgb(35, 35, 35); \n"
+                                                  "qproperty-iconSize: 64px;\n"
+                                                  "}\n"
+                                                  "QPushButton:pressed {\n"
+                                                  "background-color: rgb(16, 16, 16);\n"
+                                                  "}\n"
+                                                  ""));
+        gridLayoutWidget_2 = new QWidget(GSE);
+        gridLayoutWidget_2->setObjectName(QStringLiteral("gridLayoutWidget_2"));
+        gridLayoutWidget_2->setGeometry(QRect(460, 300, 220, 131));
+        gridLayout = new QGridLayout(gridLayoutWidget_2);
+        gridLayout->setObjectName(QStringLiteral("gridLayout"));
+        gridLayout->setContentsMargins(0, 0, 0, 0);
+        label_9 = new QLabel(gridLayoutWidget_2);
+        label_9->setObjectName(QStringLiteral("label_9"));
+
+        gridLayout->addWidget(label_9, 0, 2, 1, 1);
+
+        label_3 = new QLabel(gridLayoutWidget_2);
+        label_3->setObjectName(QStringLiteral("label_3"));
+
+        gridLayout->addWidget(label_3, 1, 0, 1, 1);
+
+        label_4 = new QLabel(gridLayoutWidget_2);
+        label_4->setObjectName(QStringLiteral("label_4"));
+
+        gridLayout->addWidget(label_4, 2, 0, 1, 1);
+
+        label_11 = new QLabel(gridLayoutWidget_2);
+        label_11->setObjectName(QStringLiteral("label_11"));
+        label_11->setStyleSheet(QStringLiteral("color: rgb(255, 255, 255);"));
+
+        gridLayout->addWidget(label_11, 2, 2, 1, 1);
+
+        label_5 = new QLabel(gridLayoutWidget_2);
+        label_5->setObjectName(QStringLiteral("label_5"));
+
+        gridLayout->addWidget(label_5, 0, 1, 1, 1);
+
+        label_2 = new QLabel(gridLayoutWidget_2);
+        label_2->setObjectName(QStringLiteral("label_2"));
+
+        gridLayout->addWidget(label_2, 0, 0, 1, 1);
+
+        label_10 = new QLabel(gridLayoutWidget_2);
+        label_10->setObjectName(QStringLiteral("label_10"));
+
+        gridLayout->addWidget(label_10, 1, 2, 1, 1);
+
+        label_7 = new QLabel(gridLayoutWidget_2);
+        label_7->setObjectName(QStringLiteral("label_7"));
+
+        gridLayout->addWidget(label_7, 1, 1, 1, 1);
+
+        label_8 = new QLabel(gridLayoutWidget_2);
+        label_8->setObjectName(QStringLiteral("label_8"));
+
+        gridLayout->addWidget(label_8, 2, 1, 1, 1);
+
         tabWidget_2->addTab(GSE, QString());
         label_29 = new QLabel(Form);
         label_29->setObjectName(QStringLiteral("label_29"));
@@ -1298,6 +1335,12 @@ public:
         label_60->setObjectName(QStringLiteral("label_60"));
         label_60->setGeometry(QRect(570, 20, 241, 41));
         label_60->setStyleSheet(QStringLiteral("image: url(:/assets/ERT.png);"));
+        lineEdit_3 = new QLineEdit(Form);
+        lineEdit_3->setObjectName(QStringLiteral("lineEdit_3"));
+        lineEdit_3->setGeometry(QRect(1060, 520, 113, 25));
+        label_61 = new QLabel(Form);
+        label_61->setObjectName(QStringLiteral("label_61"));
+        label_61->setGeometry(QRect(1040, 490, 111, 20));
         tabWidget_2->raise();
         tabWidget->raise();
         widget->raise();
@@ -1307,11 +1350,13 @@ public:
         logo_3->raise();
         antenna_img->raise();
         label_60->raise();
+        lineEdit_3->raise();
+        label_61->raise();
 
         retranslateUi(Form);
 
-        tabWidget->setCurrentIndex(2);
-        tabWidget_2->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(3);
+        tabWidget_2->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(Form);
@@ -1415,17 +1460,9 @@ public:
         ignition_state_icon->setText(QString());
         label->setText(QApplication::translate("Form", "GSE info", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(Ignition), QApplication::translate("Form", "Ignition", nullptr));
-        label_9->setText(QApplication::translate("Form", "[m]", nullptr));
-        label_3->setText(QApplication::translate("Form", "Longitude", nullptr));
-        label_4->setText(QApplication::translate("Form", "Latitude", nullptr));
-        label_11->setText(QApplication::translate("Form", "\302\260", nullptr));
-        label_5->setText(QApplication::translate("Form", "12", nullptr));
-        label_2->setText(QApplication::translate("Form", "Altitude", nullptr));
-        label_10->setText(QApplication::translate("Form", "[\302\260C]", nullptr));
-        label_7->setText(QApplication::translate("Form", "25", nullptr));
-        label_8->setText(QApplication::translate("Form", "8", nullptr));
         lineEdit->setText(QApplication::translate("Form", "MorgesHAB", nullptr));
         label_28->setText(QString());
+        pushButton_6->setText(QApplication::translate("Form", "Play Music", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("Form", "Sound", nullptr));
         gps_box->setTitle(QApplication::translate("Form", "GPS", nullptr));
         longitude_label->setText(QApplication::translate("Form", "LONGITUDE", nullptr));
@@ -1513,7 +1550,18 @@ public:
         pushButton->setText(QApplication::translate("Form", "Open Valve", nullptr));
         pushButton_2->setText(QApplication::translate("Form", "Open purge Valve", nullptr));
         pushButton_3->setText(QApplication::translate("Form", "Emergency stop", nullptr));
+        pushButton_4->setText(QApplication::translate("Form", "Disconnect filling wire", nullptr));
         valve_button->setText(QApplication::translate("Form", "Valve", nullptr));
+        pushButton_5->setText(QString());
+        label_9->setText(QApplication::translate("Form", "[m]", nullptr));
+        label_3->setText(QApplication::translate("Form", "Longitude", nullptr));
+        label_4->setText(QApplication::translate("Form", "Latitude", nullptr));
+        label_11->setText(QApplication::translate("Form", "\302\260", nullptr));
+        label_5->setText(QApplication::translate("Form", "12", nullptr));
+        label_2->setText(QApplication::translate("Form", "Altitude", nullptr));
+        label_10->setText(QApplication::translate("Form", "[\302\260C]", nullptr));
+        label_7->setText(QApplication::translate("Form", "25", nullptr));
+        label_8->setText(QApplication::translate("Form", "8", nullptr));
         tabWidget_2->setTabText(tabWidget_2->indexOf(GSE), QApplication::translate("Form", "GSE", nullptr));
         label_29->setText(QString());
 #ifndef QT_NO_TOOLTIP
@@ -1526,6 +1574,8 @@ public:
         logo_3->setText(QString());
         antenna_img->setText(QString());
         label_60->setText(QString());
+        lineEdit_3->setText(QString());
+        label_61->setText(QApplication::translate("Form", "Enter password", nullptr));
     } // retranslateUi
 
 };
@@ -1536,4 +1586,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // LIOTESTALRTSO_H
+#endif // LIOTESTGLOVAD_H

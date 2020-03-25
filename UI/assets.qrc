@@ -1,7 +1,7 @@
 <RCC>
   <qresource prefix="/">
     <file>assets/logo.png</file>
-    <file>assets/Sjf.png</file>
+    <file>assets/ERT.jpg</file>
     <file>assets/fire.png</file>
     <file>assets/bella.jpg</file>
 	<file>assets/eiger.jpg</file>
@@ -22,7 +22,10 @@
         <file>assets/warning.png</file>
         <file>assets/safe.png</file>
         <file>assets/password.png</file>
+        <file>assets/send.png</file>
+        <file>assets/sendPlane.png</file>
 
+        <file>assets/BL.png</file>
 
 
     <file>assets/nuclear_alarm.mp3</file>

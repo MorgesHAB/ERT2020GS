@@ -157,7 +157,7 @@ QTabWidget::pane {
 </string>
    </property>
    <property name="currentIndex">
-    <number>2</number>
+    <number>3</number>
    </property>
    <widget class="QWidget" name="tab_10">
     <attribute name="title">
@@ -168,8 +168,8 @@ QTabWidget::pane {
       <rect>
        <x>330</x>
        <y>40</y>
-       <width>251</width>
-       <height>153</height>
+       <width>318</width>
+       <height>203</height>
       </rect>
      </property>
      <layout class="QGridLayout" name="gridLayout_12">
@@ -446,19 +446,6 @@ QTabWidget::pane {
     <attribute name="title">
      <string>Config</string>
     </attribute>
-    <widget class="QDial" name="dial_3">
-     <property name="geometry">
-      <rect>
-       <x>130</x>
-       <y>190</y>
-       <width>51</width>
-       <height>61</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: rgb(85, 255, 255);</string>
-     </property>
-    </widget>
     <widget class="QDial" name="dial">
      <property name="geometry">
       <rect>
@@ -874,84 +861,6 @@ gridline-color: rgb(255, 0, 0);</string>
     <attribute name="title">
      <string>Sound</string>
     </attribute>
-    <widget class="QWidget" name="gridLayoutWidget_2">
-     <property name="geometry">
-      <rect>
-       <x>40</x>
-       <y>40</y>
-       <width>220</width>
-       <height>131</height>
-      </rect>
-     </property>
-     <layout class="QGridLayout" name="gridLayout">
-      <item row="0" column="2">
-       <widget class="QLabel" name="label_9">
-        <property name="text">
-         <string>[m]</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="label_3">
-        <property name="text">
-         <string>Longitude</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="label_4">
-        <property name="text">
-         <string>Latitude</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="2">
-       <widget class="QLabel" name="label_11">
-        <property name="styleSheet">
-         <string notr="true">color: rgb(255, 255, 255);</string>
-        </property>
-        <property name="text">
-         <string>°</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1">
-       <widget class="QLabel" name="label_5">
-        <property name="text">
-         <string>12</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0">
-       <widget class="QLabel" name="label_2">
-        <property name="text">
-         <string>Altitude</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="2">
-       <widget class="QLabel" name="label_10">
-        <property name="text">
-         <string>[°C]</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QLabel" name="label_7">
-        <property name="text">
-         <string>25</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1">
-       <widget class="QLabel" name="label_8">
-        <property name="text">
-         <string>8</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
     <widget class="QSlider" name="verticalSlider_1">
      <property name="geometry">
       <rect>
@@ -1111,6 +1020,19 @@ gridline-color: rgb(255, 0, 0);</string>
       <string/>
      </property>
     </widget>
+    <widget class="QPushButton" name="pushButton_6">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>60</y>
+       <width>131</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Play Music</string>
+     </property>
+    </widget>
    </widget>
   </widget>
   <widget class="QTabWidget" name="tabWidget_2">
@@ -1133,7 +1055,7 @@ QTabWidget::pane {
 }</string>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>2</number>
    </property>
    <widget class="QWidget" name="tab_3">
     <attribute name="title">
@@ -1600,10 +1522,10 @@ QTabWidget::pane {
     <widget class="QGroupBox" name="groupBox_2">
      <property name="geometry">
       <rect>
-       <x>710</x>
-       <y>20</y>
+       <x>780</x>
+       <y>10</y>
        <width>181</width>
-       <height>271</height>
+       <height>311</height>
       </rect>
      </property>
      <property name="title">
@@ -1615,7 +1537,7 @@ QTabWidget::pane {
         <x>10</x>
         <y>30</y>
         <width>131</width>
-        <height>231</height>
+        <height>276</height>
        </rect>
       </property>
       <layout class="QGridLayout" name="gridLayout_15">
@@ -1763,7 +1685,7 @@ QTabWidget::pane {
         <x>150</x>
         <y>29</y>
         <width>22</width>
-        <height>231</height>
+        <height>271</height>
        </rect>
       </property>
       <property name="value">
@@ -1779,7 +1701,7 @@ QTabWidget::pane {
       <rect>
        <x>380</x>
        <y>160</y>
-       <width>323</width>
+       <width>386</width>
        <height>31</height>
       </rect>
      </property>
@@ -1953,7 +1875,7 @@ QTabWidget::pane {
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">image: url(:/assets/Sjf.png);</string>
+      <string notr="true">image: url(:/assets/ERT.jpg);</string>
      </property>
      <property name="text">
       <string/>
@@ -1981,8 +1903,8 @@ QTabWidget::pane {
        <rect>
         <x>20</x>
         <y>30</y>
-        <width>137</width>
-        <height>111</height>
+        <width>200</width>
+        <height>121</height>
        </rect>
       </property>
       <layout class="QGridLayout" name="gridLayout_11">
@@ -2017,22 +1939,156 @@ border-color: rgb(0, 0, 127);</string>
        </item>
       </layout>
      </widget>
+     <widget class="QPushButton" name="pushButton_4">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>210</y>
+        <width>191</width>
+        <height>27</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Disconnect filling wire</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QPushButton" name="valve_button">
      <property name="geometry">
       <rect>
        <x>440</x>
        <y>80</y>
-       <width>281</width>
-       <height>211</height>
+       <width>131</width>
+       <height>71</height>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">image: url(:/assets/valve.png);</string>
+      <string notr="true">QPushButton{
+qproperty-icon: url(:/assets/valve.png);
+qproperty-iconSize: 54px;
+font: 18pt &quot;MS Shell Dlg 2&quot;;
+border: 2px solid;
+border-color: rgb(215, 237, 252);
+}
+QPushButton:hover {
+background-color: rgb(35, 35, 35); 
+border: 3px solid;
+border-color: rgb(215, 237, 252);
+}
+QPushButton:pressed {
+border: 4px solid;
+border-color: rgb(92, 242, 135);
+}
+</string>
      </property>
      <property name="text">
       <string>Valve</string>
      </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_5">
+     <property name="geometry">
+      <rect>
+       <x>600</x>
+       <y>170</y>
+       <width>81</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+qproperty-icon: url(:/assets/send.png);
+qproperty-iconSize: 54px;
+}
+QPushButton:hover {
+background-color: rgb(35, 35, 35); 
+qproperty-iconSize: 64px;
+}
+QPushButton:pressed {
+background-color: rgb(16, 16, 16);
+}
+</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QWidget" name="gridLayoutWidget_2">
+     <property name="geometry">
+      <rect>
+       <x>460</x>
+       <y>300</y>
+       <width>220</width>
+       <height>131</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="2">
+       <widget class="QLabel" name="label_9">
+        <property name="text">
+         <string>[m]</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>Longitude</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_4">
+        <property name="text">
+         <string>Latitude</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="2">
+       <widget class="QLabel" name="label_11">
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);</string>
+        </property>
+        <property name="text">
+         <string>°</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLabel" name="label_5">
+        <property name="text">
+         <string>12</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>Altitude</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2">
+       <widget class="QLabel" name="label_10">
+        <property name="text">
+         <string>[°C]</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLabel" name="label_7">
+        <property name="text">
+         <string>25</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLabel" name="label_8">
+        <property name="text">
+         <string>8</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </widget>
    </widget>
   </widget>
@@ -2123,6 +2179,32 @@ image: url(:/assets/radioON.png);</string>
     <string/>
    </property>
   </widget>
+  <widget class="QLineEdit" name="lineEdit_3">
+   <property name="geometry">
+    <rect>
+     <x>1060</x>
+     <y>520</y>
+     <width>113</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_61">
+   <property name="geometry">
+    <rect>
+     <x>1040</x>
+     <y>490</y>
+     <width>111</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Enter password</string>
+   </property>
+  </widget>
   <zorder>tabWidget_2</zorder>
   <zorder>tabWidget</zorder>
   <zorder>widget</zorder>
@@ -2132,6 +2214,8 @@ image: url(:/assets/radioON.png);</string>
   <zorder>logo_3</zorder>
   <zorder>antenna_img</zorder>
   <zorder>label_60</zorder>
+  <zorder>lineEdit_3</zorder>
+  <zorder>label_61</zorder>
  </widget>
  <resources>
   <include location="../assets.qrc"/>
