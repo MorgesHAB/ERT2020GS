@@ -15,5 +15,4 @@ enum PlStateValues {
     RECORDING,
     FLYING,
     LANDED
-    //FIXME
 };
