@@ -1,2 +1,0 @@
-/usr/bin/ar qc libLogLib.a  CMakeFiles/LogLib.dir/Logger.cpp.o CMakeFiles/LogLib.dir/Logger_buffer.cpp.o CMakeFiles/LogLib.dir/double_buffer.cpp.o CMakeFiles/LogLib.dir/utilities.cpp.o
-/usr/bin/ranlib libLogLib.a

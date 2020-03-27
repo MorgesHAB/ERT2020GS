@@ -1,2 +1,0 @@
-/usr/bin/ar qc libRF-UI-Interface.a  CMakeFiles/RF-UI-Interface.dir/connector.cpp.o
-/usr/bin/ranlib libRF-UI-Interface.a
