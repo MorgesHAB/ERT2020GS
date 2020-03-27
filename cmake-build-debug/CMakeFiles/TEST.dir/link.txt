@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/TEST.dir/src/TestDebug.cpp.o  -o TEST Telecom/RFmodem/lib/serial/libserial.a -lrt -lpthread 

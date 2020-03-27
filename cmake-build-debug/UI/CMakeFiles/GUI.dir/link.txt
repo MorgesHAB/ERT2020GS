@@ -1,0 +1,2 @@
+/usr/bin/ar qc libGUI.a  CMakeFiles/GUI.dir/GUI_autogen/mocs_compilation.cpp.o CMakeFiles/GUI.dir/GuiWindow.cpp.o CMakeFiles/GUI.dir/gui_logger.cpp.o CMakeFiles/GUI.dir/gui_message.cpp.o
+/usr/bin/ranlib libGUI.a

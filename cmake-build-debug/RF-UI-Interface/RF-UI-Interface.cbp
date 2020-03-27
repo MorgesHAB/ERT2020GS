@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="RF-UI-Interface"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\usr\;CMake Files\..\..\..\..\..\..\usr\lib\;CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\;CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\;CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Widgets\;CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\;CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Core\;CMake Files\UI\;CMake Files\Logger\;CMake Files\Telecom\;CMake Files\Telecom\RFmodem\;CMake Files\Telecom\RFmodem\lib\;CMake Files\Telecom\RFmodem\lib\serial\;CMake Files\RF-UI-Interface\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/stephanie/Documents/ERT/Code Lionel/ERT2020GS/cmake-build-debug/RF-UI-Interface"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/stephanie/Documents/ERT/Code\ Lionel/ERT2020GS/cmake-build-debug/RF-UI-Interface/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/stephanie/Documents/ERT/Code\ Lionel/ERT2020GS/cmake-build-debug/RF-UI-Interface/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/stephanie/Documents/ERT/Code\ Lionel/ERT2020GS/cmake-build-debug/RF-UI-Interface/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/stephanie/Documents/ERT/Code\ Lionel/ERT2020GS/cmake-build-debug/RF-UI-Interface/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="RF-UI-Interface">
+				<Option output="/home/stephanie/Documents/ERT/Code Lionel/ERT2020GS/cmake-build-debug/RF-UI-Interface/libRF-UI-Interface.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/stephanie/Documents/ERT/Code Lionel/ERT2020GS/cmake-build-debug/RF-UI-Interface"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/stephanie/Documents/ERT/Code Lionel/ERT2020GS/cmake-build-debug/RF-UI-Interface"/>
+					<Add directory="/home/stephanie/Documents/ERT/Code Lionel/ERT2020GS/RF-UI-Interface"/>
+					<Add directory="/usr/include/c++/5"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
+					<Add directory="/usr/include/c++/5/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/stephanie/Documents/ERT/Code\ Lionel/ERT2020GS/cmake-build-debug/RF-UI-Interface/Makefile&quot;  VERBOSE=1 RF-UI-Interface"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/stephanie/Documents/ERT/Code\ Lionel/ERT2020GS/cmake-build-debug/RF-UI-Interface/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/stephanie/Documents/ERT/Code\ Lionel/ERT2020GS/cmake-build-debug/RF-UI-Interface/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/stephanie/Documents/ERT/Code\ Lionel/ERT2020GS/cmake-build-debug/RF-UI-Interface/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="RF-UI-Interface/fast">
+				<Option output="/home/stephanie/Documents/ERT/Code Lionel/ERT2020GS/cmake-build-debug/RF-UI-Interface/libRF-UI-Interface.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/stephanie/Documents/ERT/Code Lionel/ERT2020GS/cmake-build-debug/RF-UI-Interface"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/stephanie/Documents/ERT/Code Lionel/ERT2020GS/cmake-build-debug/RF-UI-Interface"/>
+					<Add directory="/home/stephanie/Documents/ERT/Code Lionel/ERT2020GS/RF-UI-Interface"/>
+					<Add directory="/usr/include/c++/5"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
+					<Add directory="/usr/include/c++/5/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/stephanie/Documents/ERT/Code\ Lionel/ERT2020GS/cmake-build-debug/RF-UI-Interface/Makefile&quot;  VERBOSE=1 RF-UI-Interface/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/stephanie/Documents/ERT/Code\ Lionel/ERT2020GS/cmake-build-debug/RF-UI-Interface/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/stephanie/Documents/ERT/Code\ Lionel/ERT2020GS/cmake-build-debug/RF-UI-Interface/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/stephanie/Documents/ERT/Code\ Lionel/ERT2020GS/cmake-build-debug/RF-UI-Interface/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/stephanie/Documents/ERT/Code Lionel/ERT2020GS/RF-UI-Interface/ProtocolDefine.h">
+			<Option target="RF-UI-Interface"/>
+		</Unit>
+		<Unit filename="/home/stephanie/Documents/ERT/Code Lionel/ERT2020GS/RF-UI-Interface/connector.cpp">
+			<Option target="RF-UI-Interface"/>
+		</Unit>
+		<Unit filename="/home/stephanie/Documents/ERT/Code Lionel/ERT2020GS/RF-UI-Interface/connector.h">
+			<Option target="RF-UI-Interface"/>
+		</Unit>
+		<Unit filename="/home/stephanie/Documents/ERT/Code Lionel/ERT2020GS/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/stephanie/Documents/ERT/Code Lionel/ERT2020GS/../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Widgets/Qt5WidgetsConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Widgets\"/>
+		</Unit>
+		<Unit filename="/home/stephanie/Documents/ERT/Code Lionel/ERT2020GS/../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Widgets/Qt5WidgetsConfigExtras.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Widgets\"/>
+		</Unit>
+		<Unit filename="/home/stephanie/Documents/ERT/Code Lionel/ERT2020GS/../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Widgets/Qt5WidgetsConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Widgets\"/>
+		</Unit>
+		<Unit filename="/home/stephanie/Documents/ERT/Code Lionel/ERT2020GS/../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Widgets/Qt5WidgetsMacros.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Widgets\"/>
+		</Unit>
+		<Unit filename="/home/stephanie/Documents/ERT/Code Lionel/ERT2020GS/../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5GuiConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/stephanie/Documents/ERT/Code Lionel/ERT2020GS/../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5GuiConfigExtras.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/stephanie/Documents/ERT/Code Lionel/ERT2020GS/../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5GuiConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/stephanie/Documents/ERT/Code Lionel/ERT2020GS/../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Core/Qt5CoreConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Core\"/>
+		</Unit>
+		<Unit filename="/home/stephanie/Documents/ERT/Code Lionel/ERT2020GS/../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Core/Qt5CoreConfigExtras.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Core\"/>
+		</Unit>
+		<Unit filename="/home/stephanie/Documents/ERT/Code Lionel/ERT2020GS/../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Core/Qt5CoreConfigExtrasMkspecDir.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Core\"/>
+		</Unit>
+		<Unit filename="/home/stephanie/Documents/ERT/Code Lionel/ERT2020GS/../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Core/Qt5CoreConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Core\"/>
+		</Unit>
+		<Unit filename="/home/stephanie/Documents/ERT/Code Lionel/ERT2020GS/../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Core/Qt5CoreMacros.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Core\"/>
+		</Unit>
+		<Unit filename="/home/stephanie/Documents/ERT/Code Lionel/ERT2020GS/UI/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\UI\"/>
+		</Unit>
+		<Unit filename="/home/stephanie/Documents/ERT/Code Lionel/ERT2020GS/UI/assets.qrc">
+			<Option virtualFolder="CMake Files\UI\"/>
+		</Unit>
+		<Unit filename="/home/stephanie/Documents/ERT/Code Lionel/ERT2020GS/Logger/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\Logger\"/>
+		</Unit>
+		<Unit filename="/home/stephanie/Documents/ERT/Code Lionel/ERT2020GS/Telecom/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\Telecom\"/>
+		</Unit>
+		<Unit filename="/home/stephanie/Documents/ERT/Code Lionel/ERT2020GS/Telecom/RFmodem/lib/serial/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\Telecom\RFmodem\lib\serial\"/>
+		</Unit>
+		<Unit filename="/home/stephanie/Documents/ERT/Code Lionel/ERT2020GS/RF-UI-Interface/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\RF-UI-Interface\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

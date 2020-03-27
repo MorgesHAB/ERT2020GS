@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/ImageCom.dir/src/ImageCom.cpp.o  -o ImageCom Telecom/libTelecom.a RF-UI-Interface/libRF-UI-Interface.a -latomic Logger/libLogLib.a Telecom/RFmodem/lib/serial/libserial.a -lrt -lpthread 
