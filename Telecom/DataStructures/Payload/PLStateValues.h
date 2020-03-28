@@ -7,6 +7,12 @@
 
 #endif //ERT2020GS_PLSTATEVALUES_H
 
-enum PlStateValues {
 
+enum PlStateValues {
+    IDLE,
+    STANDBY,
+    READY,
+    RECORDING,
+    FLYING,
+    LANDED
 };

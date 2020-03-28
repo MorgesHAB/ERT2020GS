@@ -253,7 +253,9 @@ void GuiWindow::refresh_av_state()
 
 void GuiWindow::initialize_style()
 {
-    QCoreApplication::setAttribute(Qt::AA_UseStyleSheetPropagationInWidgetStyles);
+    //
+    //
+    // QCoreApplication::setAttribute(Qt::AA_UseStyleSheetPropagationInWidgetStyles);
     QApplication::setStyle(QStyleFactory::create("cleanlooks"));
     Ui_Form::setupUi(this);
 }
