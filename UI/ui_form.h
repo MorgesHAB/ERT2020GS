@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'LioTestbXERbD.ui'
+** Form generated from reading UI file 'LioTestRyzcpb.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.11.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef LIOTESTBXERBD_H
-#define LIOTESTBXERBD_H
+#ifndef LIOTESTRYZCPB_H
+#define LIOTESTRYZCPB_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
@@ -19,10 +19,12 @@
 #include <QtWidgets/QLCDNumber>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
+#include <QtWidgets/QPlainTextEdit>
 #include <QtWidgets/QProgressBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSlider>
 #include <QtWidgets/QTabWidget>
+#include <QtWidgets/QTextBrowser>
 #include <QtWidgets/QTextEdit>
 #include <QtWidgets/QWidget>
 
@@ -247,6 +249,29 @@ public:
     QLabel *label_8;
     QLabel *label_61;
     QLineEdit *lineEdit_3;
+    QGroupBox *groupBox_5;
+    QWidget *gridLayoutWidget_7;
+    QGridLayout *gridLayout_17;
+    QLabel *label_68;
+    QLabel *label_70;
+    QLabel *label_71;
+    QLabel *label_72;
+    QLabel *label_73;
+    QLabel *label_74;
+    QLabel *label_75;
+    QLabel *label_76;
+    QLabel *label_77;
+    QLabel *label_78;
+    QLabel *label_79;
+    QLabel *label_80;
+    QLabel *label_81;
+    QLabel *label_82;
+    QLabel *label_83;
+    QLabel *label_84;
+    QSlider *verticalSlider_6;
+    QTextBrowser *textBrowser;
+    QPlainTextEdit *plainTextEdit;
+    QTextEdit *textEdit;
     QLabel *label_29;
     QLabel *logo_2;
     QLabel *logo_3;
@@ -260,7 +285,7 @@ public:
     {
         if (Form->objectName().isEmpty())
             Form->setObjectName(QStringLiteral("Form"));
-        Form->resize(1220, 902);
+        Form->resize(1228, 907);
         Form->setMinimumSize(QSize(600, 0));
         Form->setMaximumSize(QSize(9999, 9999));
         Form->setMouseTracking(false);
@@ -309,7 +334,7 @@ public:
         tab_10->setObjectName(QStringLiteral("tab_10"));
         gridLayoutWidget_3 = new QWidget(tab_10);
         gridLayoutWidget_3->setObjectName(QStringLiteral("gridLayoutWidget_3"));
-        gridLayoutWidget_3->setGeometry(QRect(330, 40, 318, 169));
+        gridLayoutWidget_3->setGeometry(QRect(330, 40, 318, 219));
         gridLayout_12 = new QGridLayout(gridLayoutWidget_3);
         gridLayout_12->setObjectName(QStringLiteral("gridLayout_12"));
         gridLayout_12->setContentsMargins(0, 0, 0, 0);
@@ -876,7 +901,7 @@ public:
         tabWidget->addTab(tab_2, QString());
         tabWidget_2 = new QTabWidget(Form);
         tabWidget_2->setObjectName(QStringLiteral("tabWidget_2"));
-        tabWidget_2->setGeometry(QRect(10, 430, 1081, 461));
+        tabWidget_2->setGeometry(QRect(10, 430, 1091, 461));
         tabWidget_2->setStyleSheet(QLatin1String("QTabBar::tab {\n"
                                                  "	background: rgb(18, 19, 77);\n"
                                                  "	border: 1px solid white;\n"
@@ -1432,7 +1457,7 @@ public:
                                                   ""));
         gridLayoutWidget_2 = new QWidget(GSE);
         gridLayoutWidget_2->setObjectName(QStringLiteral("gridLayoutWidget_2"));
-        gridLayoutWidget_2->setGeometry(QRect(130, 340, 171, 81));
+        gridLayoutWidget_2->setGeometry(QRect(130, 340, 186, 101));
         gridLayout = new QGridLayout(gridLayoutWidget_2);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
         gridLayout->setContentsMargins(0, 0, 0, 0);
@@ -1488,6 +1513,121 @@ public:
         lineEdit_3 = new QLineEdit(GSE);
         lineEdit_3->setObjectName(QStringLiteral("lineEdit_3"));
         lineEdit_3->setGeometry(QRect(590, 70, 113, 25));
+        groupBox_5 = new QGroupBox(GSE);
+        groupBox_5->setObjectName(QStringLiteral("groupBox_5"));
+        groupBox_5->setGeometry(QRect(740, 70, 181, 311));
+        gridLayoutWidget_7 = new QWidget(groupBox_5);
+        gridLayoutWidget_7->setObjectName(QStringLiteral("gridLayoutWidget_7"));
+        gridLayoutWidget_7->setGeometry(QRect(10, 30, 131, 276));
+        gridLayout_17 = new QGridLayout(gridLayoutWidget_7);
+        gridLayout_17->setObjectName(QStringLiteral("gridLayout_17"));
+        gridLayout_17->setContentsMargins(0, 0, 0, 0);
+        label_68 = new QLabel(gridLayoutWidget_7);
+        label_68->setObjectName(QStringLiteral("label_68"));
+
+        gridLayout_17->addWidget(label_68, 1, 0, 1, 1);
+
+        label_70 = new QLabel(gridLayoutWidget_7);
+        label_70->setObjectName(QStringLiteral("label_70"));
+
+        gridLayout_17->addWidget(label_70, 6, 0, 1, 1);
+
+        label_71 = new QLabel(gridLayoutWidget_7);
+        label_71->setObjectName(QStringLiteral("label_71"));
+
+        gridLayout_17->addWidget(label_71, 7, 0, 1, 1);
+
+        label_72 = new QLabel(gridLayoutWidget_7);
+        label_72->setObjectName(QStringLiteral("label_72"));
+
+        gridLayout_17->addWidget(label_72, 5, 0, 1, 1);
+
+        label_73 = new QLabel(gridLayoutWidget_7);
+        label_73->setObjectName(QStringLiteral("label_73"));
+
+        gridLayout_17->addWidget(label_73, 0, 0, 1, 1);
+
+        label_74 = new QLabel(gridLayoutWidget_7);
+        label_74->setObjectName(QStringLiteral("label_74"));
+
+        gridLayout_17->addWidget(label_74, 3, 0, 1, 1);
+
+        label_75 = new QLabel(gridLayoutWidget_7);
+        label_75->setObjectName(QStringLiteral("label_75"));
+
+        gridLayout_17->addWidget(label_75, 4, 0, 1, 1);
+
+        label_76 = new QLabel(gridLayoutWidget_7);
+        label_76->setObjectName(QStringLiteral("label_76"));
+
+        gridLayout_17->addWidget(label_76, 2, 0, 1, 1);
+
+        label_77 = new QLabel(gridLayoutWidget_7);
+        label_77->setObjectName(QStringLiteral("label_77"));
+        label_77->setStyleSheet(QStringLiteral("image: url(:/assets/green_check.png);"));
+
+        gridLayout_17->addWidget(label_77, 0, 1, 1, 1);
+
+        label_78 = new QLabel(gridLayoutWidget_7);
+        label_78->setObjectName(QStringLiteral("label_78"));
+        label_78->setStyleSheet(QStringLiteral("image: url(:/assets/green_check.png);"));
+
+        gridLayout_17->addWidget(label_78, 1, 1, 1, 1);
+
+        label_79 = new QLabel(gridLayoutWidget_7);
+        label_79->setObjectName(QStringLiteral("label_79"));
+        label_79->setStyleSheet(QStringLiteral("image: url(:/assets/green_check.png);"));
+
+        gridLayout_17->addWidget(label_79, 2, 1, 1, 1);
+
+        label_80 = new QLabel(gridLayoutWidget_7);
+        label_80->setObjectName(QStringLiteral("label_80"));
+        label_80->setStyleSheet(QStringLiteral("image: url(:/assets/green_check.png);"));
+
+        gridLayout_17->addWidget(label_80, 3, 1, 1, 1);
+
+        label_81 = new QLabel(gridLayoutWidget_7);
+        label_81->setObjectName(QStringLiteral("label_81"));
+        label_81->setStyleSheet(QStringLiteral("image: url(:/assets/green_check.png);"));
+
+        gridLayout_17->addWidget(label_81, 4, 1, 1, 1);
+
+        label_82 = new QLabel(gridLayoutWidget_7);
+        label_82->setObjectName(QStringLiteral("label_82"));
+        label_82->setStyleSheet(QStringLiteral("image: url(:/assets/green_check.png);"));
+
+        gridLayout_17->addWidget(label_82, 5, 1, 1, 1);
+
+        label_83 = new QLabel(gridLayoutWidget_7);
+        label_83->setObjectName(QStringLiteral("label_83"));
+        label_83->setStyleSheet(QStringLiteral("image: url(:/assets/green_check.png);"));
+
+        gridLayout_17->addWidget(label_83, 6, 1, 1, 1);
+
+        label_84 = new QLabel(gridLayoutWidget_7);
+        label_84->setObjectName(QStringLiteral("label_84"));
+        label_84->setStyleSheet(QStringLiteral("image: url(:/assets/redCross.png);"));
+
+        gridLayout_17->addWidget(label_84, 7, 1, 1, 1);
+
+        verticalSlider_6 = new QSlider(groupBox_5);
+        verticalSlider_6->setObjectName(QStringLiteral("verticalSlider_6"));
+        verticalSlider_6->setGeometry(QRect(150, 40, 22, 251));
+        verticalSlider_6->setStyleSheet(QStringLiteral(""));
+        verticalSlider_6->setMaximum(7);
+        verticalSlider_6->setValue(7);
+        verticalSlider_6->setOrientation(Qt::Vertical);
+        verticalSlider_6->setTickPosition(QSlider::TicksAbove);
+        verticalSlider_6->setTickInterval(1);
+        textBrowser = new QTextBrowser(GSE);
+        textBrowser->setObjectName(QStringLiteral("textBrowser"));
+        textBrowser->setGeometry(QRect(450, 170, 256, 61));
+        plainTextEdit = new QPlainTextEdit(GSE);
+        plainTextEdit->setObjectName(QStringLiteral("plainTextEdit"));
+        plainTextEdit->setGeometry(QRect(450, 250, 104, 71));
+        textEdit = new QTextEdit(GSE);
+        textEdit->setObjectName(QStringLiteral("textEdit"));
+        textEdit->setGeometry(QRect(440, 350, 104, 71));
         tabWidget_2->addTab(GSE, QString());
         label_29 = new QLabel(Form);
         label_29->setObjectName(QStringLiteral("label_29"));
@@ -1761,6 +1901,29 @@ public:
         label_8->setText(QApplication::translate("Form", "8", nullptr));
         label_61->setText(QApplication::translate("Form", "Enter password", nullptr));
         lineEdit_3->setText(QString());
+        groupBox_5->setTitle(QApplication::translate("Form", "GSE states", nullptr));
+        label_68->setText(QApplication::translate("Form", "Calibration", nullptr));
+        label_70->setText(QApplication::translate("Form", "1st Event", nullptr));
+        label_71->setText(QApplication::translate("Form", "2nd Event", nullptr));
+        label_72->setText(QApplication::translate("Form", "Coast", nullptr));
+        label_73->setText(QApplication::translate("Form", "Sleep", nullptr));
+        label_74->setText(QApplication::translate("Form", "Filling", nullptr));
+        label_75->setText(QApplication::translate("Form", "Lift off", nullptr));
+        label_76->setText(QApplication::translate("Form", "IDLE", nullptr));
+        label_77->setText(QString());
+        label_78->setText(QString());
+        label_79->setText(QString());
+        label_80->setText(QString());
+        label_81->setText(QString());
+        label_82->setText(QString());
+        label_83->setText(QString());
+        label_84->setText(QString());
+        textBrowser->setHtml(QApplication::translate("Form", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+                                                             "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+                                                             "p, li { white-space: pre-wrap; }\n"
+                                                             "</style></head><body style=\" font-family:'MS Shell Dlg 2'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
+                                                             "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">hello</p>\n"
+                                                             "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>", nullptr));
         tabWidget_2->setTabText(tabWidget_2->indexOf(GSE), QApplication::translate("Form", "GSE", nullptr));
         label_29->setText(QString());
 #ifndef QT_NO_TOOLTIP
@@ -1786,4 +1949,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // LIOTESTBXERBD_H
+#endif // LIOTESTRYZCPB_H
