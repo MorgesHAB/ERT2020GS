@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1220</width>
+    <width>1223</width>
     <height>902</height>
    </rect>
   </property>
@@ -37,33 +37,15 @@ color: rgb(255, 255, 255);</string>
     <rect>
      <x>9</x>
      <y>9</y>
-     <width>545</width>
+     <width>401</width>
      <height>45</height>
     </rect>
    </property>
    <layout class="QGridLayout" name="gridLayout_5">
-    <item row="0" column="4">
-     <widget class="QLabel" name="time_panel">
-      <property name="minimumSize">
-       <size>
-        <width>70</width>
-        <height>0</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>60</width>
-        <height>16777215</height>
-       </size>
-      </property>
-      <property name="styleSheet">
-       <string notr="true"/>
-      </property>
+    <item row="0" column="2">
+     <widget class="QPushButton" name="change_theme">
       <property name="text">
-       <string>44:44:44</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
+       <string>Change Color Theme</string>
       </property>
      </widget>
     </item>
@@ -74,29 +56,6 @@ color: rgb(255, 255, 255);</string>
       </property>
       <property name="text">
        <string>Reset</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="2">
-     <widget class="QPushButton" name="change_theme">
-      <property name="text">
-       <string>Change Color Theme</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="3">
-     <widget class="QLabel" name="current_time_label">
-      <property name="maximumSize">
-       <size>
-        <width>100</width>
-        <height>16777215</height>
-       </size>
-      </property>
-      <property name="text">
-       <string>Current Time:</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
       </property>
      </widget>
     </item>
@@ -142,7 +101,7 @@ image: url(:/assets/logo.png);</string>
      <x>10</x>
      <y>60</y>
      <width>981</width>
-     <height>321</height>
+     <height>351</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -157,7 +116,7 @@ QTabWidget::pane {
 </string>
    </property>
    <property name="currentIndex">
-    <number>3</number>
+    <number>2</number>
    </property>
    <widget class="QWidget" name="tab_10">
     <attribute name="title">
@@ -169,14 +128,36 @@ QTabWidget::pane {
        <x>330</x>
        <y>40</y>
        <width>318</width>
-       <height>203</height>
+       <height>219</height>
       </rect>
      </property>
      <layout class="QGridLayout" name="gridLayout_12">
       <item row="2" column="1">
        <widget class="QProgressBar" name="progressBar_4">
+        <property name="styleSheet">
+         <string notr="true">QProgressBar {
+	color: white;
+}
+QProgressBar:horizontal {
+	border: 1px solid gray;
+	border-radius: 10px;
+	background: black;
+	padding: 1px;
+    text-align: center;
+}
+QProgressBar::chunk:horizontal {
+	background: qlineargradient(x1: 0, y1: 0.5, x2: 1, y2: 		0.5, stop: 0 rgb(39, 68, 255), stop: 1 rgb(190, 255, 178));
+	border-radius: 5px;
+}</string>
+        </property>
+        <property name="maximum">
+         <number>30</number>
+        </property>
         <property name="value">
-         <number>80</number>
+         <number>18</number>
+        </property>
+        <property name="format">
+         <string>%v</string>
         </property>
        </widget>
       </item>
@@ -206,18 +187,59 @@ QTabWidget::pane {
       </item>
       <item row="3" column="1">
        <widget class="QProgressBar" name="progressBar_9">
+        <property name="styleSheet">
+         <string notr="true">QProgressBar {
+	color: white;
+}
+QProgressBar:horizontal {
+	border: 1px solid gray;
+	border-radius: 10px;
+	background: black;
+	padding: 1px;
+    text-align: center;
+}
+QProgressBar::chunk:horizontal {
+	background: qlineargradient(x1: 0, y1: 0.5, x2: 1, y2: 		0.5, stop: 0 rgb(39, 68, 255), stop: 1 rgb(255, 158, 110));
+	border-radius: 5px;
+}</string>
+        </property>
+        <property name="maximum">
+         <number>30</number>
+        </property>
         <property name="value">
          <number>24</number>
+        </property>
+        <property name="format">
+         <string>%v</string>
         </property>
        </widget>
       </item>
       <item row="4" column="1">
        <widget class="QProgressBar" name="progressBar_5">
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(255, 85, 255);</string>
+         <string notr="true">QProgressBar {
+	color: white;
+}
+QProgressBar:horizontal {
+	border: 1px solid gray;
+	border-radius: 10px;
+	background: black;
+	padding: 1px;
+    text-align: center;
+}
+QProgressBar::chunk:horizontal {
+	background: qlineargradient(x1: 0, y1: 0.5, x2: 1, y2: 		0.5, stop: 0 rgb(39, 68, 255), stop: 1 rgb(176, 111, 255));
+	border-radius: 5px;
+}</string>
+        </property>
+        <property name="maximum">
+         <number>30</number>
         </property>
         <property name="value">
-         <number>2</number>
+         <number>10</number>
+        </property>
+        <property name="format">
+         <string>%v</string>
         </property>
        </widget>
       </item>
@@ -238,10 +260,29 @@ QTabWidget::pane {
       <item row="1" column="1">
        <widget class="QProgressBar" name="progressBar_8">
         <property name="styleSheet">
-         <string notr="true"/>
+         <string notr="true">QProgressBar {
+	color: white;
+}
+QProgressBar:horizontal {
+	border: 1px solid gray;
+	border-radius: 10px;
+	background: black;
+	padding: 1px;
+    text-align: center;
+}
+QProgressBar::chunk:horizontal {
+	background: qlineargradient(x1: 0, y1: 0.5, x2: 1, y2: 		0.5, stop: 0 rgb(39, 68, 255), stop: 1 rgb(125, 249, 255));
+	border-radius: 5px;
+}</string>
+        </property>
+        <property name="maximum">
+         <number>30</number>
         </property>
         <property name="value">
-         <number>67</number>
+         <number>12</number>
+        </property>
+        <property name="format">
+         <string>%v</string>
         </property>
        </widget>
       </item>
@@ -441,43 +482,56 @@ QTabWidget::pane {
       </item>
      </layout>
     </widget>
+    <widget class="QSlider" name="verticalSlider_16">
+     <property name="geometry">
+      <rect>
+       <x>930</x>
+       <y>0</y>
+       <width>51</width>
+       <height>291</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QSlider::groove:vertical {
+background: qlineargradient(x1: 0.5, y1: 0, x2: 0.5, y2: 1, stop: 0 rgb(80, 37, 255), 
+stop: 0.25 rgb(161, 98, 255),
+stop: 0.5 rgb(62, 255, 48),
+stop: 0.75 rgb(255, 160, 64),
+stop: 1 rgb(203, 0, 3));    
+	width: 10px;
+	border-radius: 5px;
+}
+
+QSlider::handle:vertical {
+    height: 30px;	
+	image: url(:/assets/arrow.png);
+	margin:0 -30px; /* expand outside the groove */
+}</string>
+     </property>
+     <property name="value">
+      <number>34</number>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="tickPosition">
+      <enum>QSlider::TicksBelow</enum>
+     </property>
+     <property name="tickInterval">
+      <number>0</number>
+     </property>
+    </widget>
    </widget>
    <widget class="QWidget" name="tab">
     <attribute name="title">
      <string>Config</string>
     </attribute>
-    <widget class="QDial" name="dial">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>190</y>
-       <width>50</width>
-       <height>64</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: rgb(85, 255, 255);</string>
-     </property>
-    </widget>
-    <widget class="QDial" name="dial_2">
-     <property name="geometry">
-      <rect>
-       <x>80</x>
-       <y>187</y>
-       <width>50</width>
-       <height>64</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: rgb(85, 255, 255);</string>
-     </property>
-    </widget>
     <widget class="QLabel" name="label_12">
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>60</y>
-       <width>251</width>
+       <y>10</y>
+       <width>181</width>
        <height>20</height>
       </rect>
      </property>
@@ -492,8 +546,8 @@ QTabWidget::pane {
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>90</y>
-       <width>101</width>
+       <y>50</y>
+       <width>131</width>
        <height>25</height>
       </rect>
      </property>
@@ -528,6 +582,26 @@ QTabWidget::pane {
       </rect>
      </property>
      <layout class="QGridLayout" name="gridLayout_16">
+      <item row="1" column="3">
+       <widget class="QLCDNumber" name="lcdNumber_2"/>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLCDNumber" name="lcdNumber"/>
+      </item>
+      <item row="1" column="2">
+       <widget class="QLabel" name="label_47">
+        <property name="text">
+         <string>Max</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_45">
+        <property name="text">
+         <string>Altitude</string>
+        </property>
+       </widget>
+      </item>
       <item row="0" column="0">
        <widget class="QLabel" name="label_54">
         <property name="text">
@@ -542,33 +616,57 @@ QTabWidget::pane {
         </property>
        </widget>
       </item>
-      <item row="0" column="2" colspan="3">
-       <widget class="QLabel" name="label_42">
-        <property name="styleSheet">
-         <string notr="true">image: url(:/assets/gps_track.png);</string>
-        </property>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="horizontalLayoutWidget_2">
+     <property name="geometry">
+      <rect>
+       <x>390</x>
+       <y>260</y>
+       <width>386</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <item>
+       <widget class="QLabel" name="label_51">
         <property name="text">
-         <string/>
+         <string>Latitude</string>
         </property>
        </widget>
       </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="label_45">
+      <item>
+       <widget class="QLabel" name="label_52">
         <property name="text">
-         <string>Altitude</string>
+         <string>46.984</string>
         </property>
        </widget>
       </item>
-      <item row="1" column="1">
-       <widget class="QLCDNumber" name="lcdNumber"/>
-      </item>
-      <item row="1" column="3">
-       <widget class="QLCDNumber" name="lcdNumber_2"/>
-      </item>
-      <item row="1" column="2">
-       <widget class="QLabel" name="label_47">
+      <item>
+       <widget class="QLabel" name="label_57">
         <property name="text">
-         <string>Max</string>
+         <string>°</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_53">
+        <property name="text">
+         <string>Longitude</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_55">
+        <property name="text">
+         <string>89.983</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_58">
+        <property name="text">
+         <string>°</string>
         </property>
        </widget>
       </item>
@@ -582,9 +680,9 @@ QTabWidget::pane {
     <widget class="QGroupBox" name="ignition_box">
      <property name="geometry">
       <rect>
-       <x>60</x>
+       <x>20</x>
        <y>30</y>
-       <width>188</width>
+       <width>181</width>
        <height>211</height>
       </rect>
      </property>
@@ -592,160 +690,6 @@ QTabWidget::pane {
       <string>Ignition</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
-      <item row="5" column="0" colspan="2">
-       <widget class="QFrame" name="frame">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>40</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>16777215</width>
-          <height>35</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">border-color: rgb(255, 0, 0);
-gridline-color: rgb(255, 0, 0);</string>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::WinPanel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Plain</enum>
-        </property>
-        <layout class="QHBoxLayout" name="horizontalLayout">
-         <item>
-          <widget class="QLabel" name="code_3">
-           <property name="minimumSize">
-            <size>
-             <width>21</width>
-             <height>21</height>
-            </size>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="code_2">
-           <property name="minimumSize">
-            <size>
-             <width>21</width>
-             <height>21</height>
-            </size>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="code_1">
-           <property name="minimumSize">
-            <size>
-             <width>21</width>
-             <height>21</height>
-            </size>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="code_0">
-           <property name="minimumSize">
-            <size>
-             <width>21</width>
-             <height>21</height>
-            </size>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-      </item>
-      <item row="0" column="1">
-       <widget class="QLabel" name="ready_ignition_panel">
-        <property name="minimumSize">
-         <size>
-          <width>23</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>23</width>
-          <height>16777215</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">color: rgb(255, 0, 0);</string>
-        </property>
-        <property name="text">
-         <string>X</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="key_2_label">
-        <property name="text">
-         <string>KEY 2</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="key_1_label">
-        <property name="text">
-         <string>KEY 1</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0">
-       <widget class="QPushButton" name="ignition_button">
-        <property name="minimumSize">
-         <size>
-          <width>132</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true"/>
-        </property>
-        <property name="text">
-         <string>Ready For Ignition</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1">
-       <widget class="QLabel" name="key_2_panel">
-        <property name="styleSheet">
-         <string notr="true">color: rgb(255, 0, 0);</string>
-        </property>
-        <property name="text">
-         <string>X</string>
-        </property>
-       </widget>
-      </item>
       <item row="1" column="1">
        <widget class="QLabel" name="key_1_panel">
         <property name="styleSheet">
@@ -773,7 +717,69 @@ gridline-color: rgb(255, 0, 0);</string>
         </property>
        </widget>
       </item>
-      <item row="4" column="0" colspan="2">
+      <item row="0" column="0">
+       <widget class="QPushButton" name="ignition_button">
+        <property name="minimumSize">
+         <size>
+          <width>132</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string>Ready For Ignition</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="key_2_label">
+        <property name="text">
+         <string>KEY 2</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="key_1_label">
+        <property name="text">
+         <string>KEY 1</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLabel" name="key_2_panel">
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 0, 0);</string>
+        </property>
+        <property name="text">
+         <string>X</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLabel" name="ready_ignition_panel">
+        <property name="minimumSize">
+         <size>
+          <width>23</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>23</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 0, 0);</string>
+        </property>
+        <property name="text">
+         <string>X</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
        <widget class="QLabel" name="ignition_status_label">
         <property name="font">
          <font>
@@ -799,10 +805,10 @@ gridline-color: rgb(255, 0, 0);</string>
     <widget class="QLabel" name="label_30">
      <property name="geometry">
       <rect>
-       <x>600</x>
+       <x>630</x>
        <y>10</y>
-       <width>361</width>
-       <height>271</height>
+       <width>341</width>
+       <height>281</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -812,50 +818,258 @@ gridline-color: rgb(255, 0, 0);</string>
       <string/>
      </property>
     </widget>
-    <widget class="QLabel" name="ignition_state_icon">
+    <widget class="QGroupBox" name="groupBox_4">
      <property name="geometry">
       <rect>
-       <x>260</x>
-       <y>170</y>
-       <width>81</width>
-       <height>61</height>
+       <x>230</x>
+       <y>10</y>
+       <width>381</width>
+       <height>271</height>
       </rect>
      </property>
-     <property name="styleSheet">
-      <string notr="true">image: url(:/assets/warning.png);</string>
+     <property name="title">
+      <string>Ignition</string>
      </property>
-     <property name="text">
-      <string/>
-     </property>
+     <widget class="QLabel" name="label_65">
+      <property name="geometry">
+       <rect>
+        <x>170</x>
+        <y>150</y>
+        <width>91</width>
+        <height>91</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">image: url(:/assets/keyON.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_67">
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>240</y>
+        <width>68</width>
+        <height>19</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>CTO key</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_66">
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>150</y>
+        <width>101</width>
+        <height>91</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">image: url(:/assets/keyOFF.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="ready_ignit_button">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>130</y>
+        <width>131</width>
+        <height>121</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+qproperty-icon: url(:/assets/readiness.png);
+qproperty-iconSize: 120px;
+border-radius: 20px;
+}
+QPushButton:hover {
+background-color: rgb(35, 35, 35); 
+qproperty-iconSize: 64px;
+}
+QPushButton:pressed {
+background-color: rgb(16, 16, 16);
+}
+</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="ignition_state_icon">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>80</y>
+        <width>81</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">image: url(:/assets/warning.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="red_button">
+      <property name="geometry">
+       <rect>
+        <x>280</x>
+        <y>40</y>
+        <width>91</width>
+        <height>111</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">image: url(:/assets/alarmOFF.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QFrame" name="frame">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>80</y>
+        <width>161</width>
+        <height>40</height>
+       </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>40</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>35</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-color: rgb(255, 0, 0);
+gridline-color: rgb(255, 0, 0);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::WinPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Plain</enum>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QLabel" name="code_3">
+         <property name="minimumSize">
+          <size>
+           <width>21</width>
+           <height>21</height>
+          </size>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="code_2">
+         <property name="minimumSize">
+          <size>
+           <width>21</width>
+           <height>21</height>
+          </size>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="code_1">
+         <property name="minimumSize">
+          <size>
+           <width>21</width>
+           <height>21</height>
+          </size>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="code_0">
+         <property name="minimumSize">
+          <size>
+           <width>21</width>
+           <height>21</height>
+          </size>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QLabel" name="label_69">
+      <property name="geometry">
+       <rect>
+        <x>290</x>
+        <y>240</y>
+        <width>68</width>
+        <height>19</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>COO key</string>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="info_ignition">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>261</width>
+        <height>61</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>30</y>
+        <width>68</width>
+        <height>19</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>GSE info</string>
+      </property>
+     </widget>
     </widget>
-    <widget class="QTextEdit" name="info_ignition">
-     <property name="geometry">
-      <rect>
-       <x>250</x>
-       <y>60</y>
-       <width>111</width>
-       <height>181</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label">
-     <property name="geometry">
-      <rect>
-       <x>260</x>
-       <y>40</y>
-       <width>68</width>
-       <height>19</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>GSE info</string>
-     </property>
-    </widget>
-    <zorder>ignition_box</zorder>
-    <zorder>label_30</zorder>
-    <zorder>info_ignition</zorder>
-    <zorder>label</zorder>
-    <zorder>ignition_state_icon</zorder>
    </widget>
    <widget class="QWidget" name="tab_2">
     <attribute name="title">
@@ -1000,24 +1214,14 @@ gridline-color: rgb(255, 0, 0);</string>
        <height>160</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="value">
+      <number>60</number>
+     </property>
      <property name="orientation">
       <enum>Qt::Vertical</enum>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_28">
-     <property name="geometry">
-      <rect>
-       <x>910</x>
-       <y>10</y>
-       <width>51</width>
-       <height>281</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">image: url(:/assets/eiger.jpg);</string>
-     </property>
-     <property name="text">
-      <string/>
      </property>
     </widget>
     <widget class="QPushButton" name="pushButton_6">
@@ -1025,12 +1229,61 @@ gridline-color: rgb(255, 0, 0);</string>
       <rect>
        <x>60</x>
        <y>60</y>
-       <width>131</width>
-       <height>61</height>
+       <width>121</width>
+       <height>31</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-radius: 8px;
+background-color: rgb(255, 170, 0);</string>
      </property>
      <property name="text">
       <string>Play Music</string>
+     </property>
+    </widget>
+    <widget class="QProgressBar" name="progressBar">
+     <property name="geometry">
+      <rect>
+       <x>410</x>
+       <y>250</y>
+       <width>331</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Times New Roman</family>
+       <pointsize>16</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QProgressBar {
+	color: white;
+	font: 16pt &quot;Times New Roman&quot;;
+}
+QProgressBar:horizontal {
+	border: 1px solid gray;
+	border-radius: 10px;
+	background: black;
+	padding: 1px;
+    text-align: center;
+}
+QProgressBar::chunk:horizontal {
+	background: qlineargradient(x1: 0, y1: 0.5, x2: 1, y2: 		0.5, stop: 0 rgb(39, 68, 255), stop: 1 rgb(255, 38, 114));
+	border-radius: 10px;
+}</string>
+     </property>
+     <property name="value">
+      <number>78</number>
+     </property>
+     <property name="invertedAppearance">
+      <bool>false</bool>
+     </property>
+     <property name="format">
+      <string>%p%</string>
      </property>
     </widget>
    </widget>
@@ -1039,9 +1292,9 @@ gridline-color: rgb(255, 0, 0);</string>
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>400</y>
-     <width>981</width>
-     <height>491</height>
+     <y>430</y>
+     <width>1081</width>
+     <height>461</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -1065,7 +1318,7 @@ QTabWidget::pane {
      <property name="geometry">
       <rect>
        <x>30</x>
-       <y>20</y>
+       <y>30</y>
        <width>309</width>
        <height>200</height>
       </rect>
@@ -1076,6 +1329,9 @@ QTabWidget::pane {
        <height>200</height>
       </size>
      </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
      <property name="title">
       <string>GPS</string>
      </property>
@@ -1083,28 +1339,28 @@ QTabWidget::pane {
       <item row="3" column="0">
        <widget class="QLabel" name="longitude_label">
         <property name="text">
-         <string>LONGITUDE</string>
+         <string>Longitude</string>
         </property>
        </widget>
       </item>
       <item row="7" column="0">
        <widget class="QLabel" name="sat_nbr_label">
         <property name="text">
-         <string>SATELLITES</string>
+         <string>Satellites</string>
         </property>
        </widget>
       </item>
       <item row="1" column="0">
        <widget class="QLabel" name="altitude_label_gps">
         <property name="text">
-         <string>ALTITUDE</string>
+         <string>Altitude</string>
         </property>
        </widget>
       </item>
       <item row="5" column="0">
        <widget class="QLabel" name="latitude_label">
         <property name="text">
-         <string>LATITUDE</string>
+         <string>Latitude</string>
         </property>
        </widget>
       </item>
@@ -1138,7 +1394,7 @@ QTabWidget::pane {
       <item row="2" column="0">
        <widget class="QLabel" name="altitude_max_label">
         <property name="text">
-         <string>ALTITUDE MAX</string>
+         <string>Altitude max</string>
         </property>
        </widget>
       </item>
@@ -1238,10 +1494,10 @@ QTabWidget::pane {
     <widget class="QGroupBox" name="euler_box">
      <property name="geometry">
       <rect>
-       <x>370</x>
-       <y>20</y>
+       <x>420</x>
+       <y>330</y>
        <width>111</width>
-       <height>108</height>
+       <height>91</height>
       </rect>
      </property>
      <property name="title">
@@ -1438,29 +1694,16 @@ QTabWidget::pane {
     <widget class="QGroupBox" name="accel_box">
      <property name="geometry">
       <rect>
-       <x>280</x>
-       <y>250</y>
+       <x>250</x>
+       <y>310</y>
        <width>121</width>
-       <height>108</height>
+       <height>111</height>
       </rect>
      </property>
      <property name="title">
       <string>Accelerometer</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_7">
-      <item row="0" column="0">
-       <widget class="QLabel" name="accel_x_label">
-        <property name="maximumSize">
-         <size>
-          <width>25</width>
-          <height>16777215</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>X</string>
-        </property>
-       </widget>
-      </item>
       <item row="2" column="0">
        <widget class="QLabel" name="accel_z_label">
         <property name="maximumSize">
@@ -1487,6 +1730,29 @@ QTabWidget::pane {
         </property>
        </widget>
       </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="accel_x_label">
+        <property name="maximumSize">
+         <size>
+          <width>25</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>X</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLabel" name="accel_z_panel">
+        <property name="frameShape">
+         <enum>QFrame::NoFrame</enum>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
       <item row="0" column="1">
        <widget class="QLabel" name="accel_x_panel">
         <property name="frameShape">
@@ -1507,11 +1773,15 @@ QTabWidget::pane {
         </property>
        </widget>
       </item>
-      <item row="2" column="1">
-       <widget class="QLabel" name="accel_z_panel">
-        <property name="frameShape">
-         <enum>QFrame::NoFrame</enum>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_28">
+        <property name="text">
+         <string>Norm</string>
         </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QLabel" name="label_63">
         <property name="text">
          <string/>
         </property>
@@ -1522,8 +1792,8 @@ QTabWidget::pane {
     <widget class="QGroupBox" name="groupBox_2">
      <property name="geometry">
       <rect>
-       <x>780</x>
-       <y>10</y>
+       <x>350</x>
+       <y>20</y>
        <width>181</width>
        <height>311</height>
       </rect>
@@ -1683,72 +1953,30 @@ QTabWidget::pane {
       <property name="geometry">
        <rect>
         <x>150</x>
-        <y>29</y>
+        <y>40</y>
         <width>22</width>
-        <height>271</height>
+        <height>251</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="maximum">
+       <number>7</number>
+      </property>
       <property name="value">
-       <number>68</number>
+       <number>7</number>
       </property>
       <property name="orientation">
        <enum>Qt::Vertical</enum>
       </property>
+      <property name="tickPosition">
+       <enum>QSlider::TicksAbove</enum>
+      </property>
+      <property name="tickInterval">
+       <number>1</number>
+      </property>
      </widget>
-    </widget>
-    <widget class="QWidget" name="horizontalLayoutWidget_2">
-     <property name="geometry">
-      <rect>
-       <x>380</x>
-       <y>160</y>
-       <width>386</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <layout class="QHBoxLayout" name="horizontalLayout_3">
-      <item>
-       <widget class="QLabel" name="label_51">
-        <property name="text">
-         <string>Latitude</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_52">
-        <property name="text">
-         <string>46.984</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_57">
-        <property name="text">
-         <string>°</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_53">
-        <property name="text">
-         <string>Longitude</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_55">
-        <property name="text">
-         <string>89.983</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_58">
-        <property name="text">
-         <string>°</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
     </widget>
     <widget class="QLabel" name="label_59">
      <property name="geometry">
@@ -1766,6 +1994,22 @@ QTabWidget::pane {
       <string/>
      </property>
     </widget>
+    <widget class="QLabel" name="label_42">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>10</y>
+       <width>191</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">image: url(:/assets/gps_track.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
    </widget>
    <widget class="QWidget" name="tab_4">
     <attribute name="title">
@@ -1776,15 +2020,15 @@ QTabWidget::pane {
       <rect>
        <x>20</x>
        <y>50</y>
-       <width>189</width>
-       <height>174</height>
+       <width>261</width>
+       <height>161</height>
       </rect>
      </property>
      <property name="title">
       <string>File Transmission</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_9">
-      <item row="3" column="0">
+      <item row="2" column="0">
        <widget class="QLabel" name="transmitter_state_label">
         <property name="minimumSize">
          <size>
@@ -1803,14 +2047,14 @@ QTabWidget::pane {
         </property>
        </widget>
       </item>
-      <item row="3" column="1">
+      <item row="2" column="1">
        <widget class="QLabel" name="transmitter_state_panel">
         <property name="text">
          <string/>
         </property>
        </widget>
       </item>
-      <item row="2" column="0">
+      <item row="1" column="0">
        <widget class="QLabel" name="receiver_state_label">
         <property name="minimumSize">
          <size>
@@ -1829,37 +2073,20 @@ QTabWidget::pane {
         </property>
        </widget>
       </item>
-      <item row="2" column="1">
+      <item row="1" column="1">
        <widget class="QLabel" name="receiver_state_panel">
         <property name="text">
          <string/>
         </property>
        </widget>
       </item>
-      <item row="0" column="0" colspan="2">
-       <widget class="QPushButton" name="file_transmission_button">
-        <property name="text">
-         <string>Start File Transmission</string>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="0" colspan="2">
-       <widget class="QProgressBar" name="file_transmission_progress_bar">
-        <property name="value">
-         <number>24</number>
-        </property>
-        <property name="format">
-         <string>%v / %m</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
+      <item row="0" column="0">
        <widget class="QLabel" name="lionel_label">
         <property name="styleSheet">
          <string notr="true">color: rgb(255, 0, 0);</string>
         </property>
         <property name="text">
-         <string>Lionel is HERE</string>
+         <string>Test </string>
         </property>
        </widget>
       </item>
@@ -1868,7 +2095,7 @@ QTabWidget::pane {
     <widget class="QLabel" name="image_lio">
      <property name="geometry">
       <rect>
-       <x>260</x>
+       <x>360</x>
        <y>20</y>
        <width>701</width>
        <height>431</height>
@@ -1879,6 +2106,85 @@ QTabWidget::pane {
      </property>
      <property name="text">
       <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="file_transmission_button">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>270</y>
+       <width>171</width>
+       <height>151</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+qproperty-icon: url(:/assets/PLimg.png);
+qproperty-iconSize: 154px;
+font: 18pt &quot;MS Shell Dlg 2&quot;;
+border: 2px solid;
+border-color: rgb(215, 237, 252);
+border-radius: 10px;
+}
+QPushButton:hover {
+background-color: rgb(35, 35, 35); 
+border: 3px solid;
+border-color: rgb(215, 237, 252);
+}
+QPushButton:pressed {
+border: 4px solid;
+border-color: rgb(92, 242, 135);
+}
+</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_64">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>390</y>
+       <width>68</width>
+       <height>19</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Waiting</string>
+     </property>
+    </widget>
+    <widget class="QProgressBar" name="file_transmission_progress_bar">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>220</y>
+       <width>231</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QProgressBar {
+	color: white;
+	font: 16pt &quot;Times New Roman&quot;;
+}
+QProgressBar:horizontal {
+	border: 1px solid gray;
+	border-radius: 10px;
+	background: black;
+	padding: 1px;
+    text-align: center;
+}
+QProgressBar::chunk:horizontal {
+	background: qlineargradient(x1: 0, y1: 0.5, x2: 1, y2: 		0.5, stop: 0 rgb(39, 68, 255), stop: 1 rgb(255, 38, 114));
+	border-radius: 10px;
+}</string>
+     </property>
+     <property name="value">
+      <number>24</number>
+     </property>
+     <property name="format">
+      <string>%v / %m</string>
      </property>
     </widget>
    </widget>
@@ -1942,8 +2248,8 @@ border-color: rgb(0, 0, 127);</string>
      <widget class="QPushButton" name="pushButton_4">
       <property name="geometry">
        <rect>
-        <x>90</x>
-        <y>210</y>
+        <x>20</x>
+        <y>170</y>
         <width>191</width>
         <height>27</height>
        </rect>
@@ -1958,7 +2264,7 @@ border-color: rgb(0, 0, 127);</string>
       <rect>
        <x>440</x>
        <y>80</y>
-       <width>131</width>
+       <width>121</width>
        <height>71</height>
       </rect>
      </property>
@@ -1969,6 +2275,7 @@ qproperty-iconSize: 54px;
 font: 18pt &quot;MS Shell Dlg 2&quot;;
 border: 2px solid;
 border-color: rgb(215, 237, 252);
+border-radius: 10px;
 }
 QPushButton:hover {
 background-color: rgb(35, 35, 35); 
@@ -1988,8 +2295,8 @@ border-color: rgb(92, 242, 135);
     <widget class="QPushButton" name="pushButton_5">
      <property name="geometry">
       <rect>
-       <x>600</x>
-       <y>170</y>
+       <x>590</x>
+       <y>100</y>
        <width>81</width>
        <height>71</height>
       </rect>
@@ -1998,6 +2305,7 @@ border-color: rgb(92, 242, 135);
       <string notr="true">QPushButton{
 qproperty-icon: url(:/assets/send.png);
 qproperty-iconSize: 54px;
+border-radius: 20px;
 }
 QPushButton:hover {
 background-color: rgb(35, 35, 35); 
@@ -2015,10 +2323,10 @@ background-color: rgb(16, 16, 16);
     <widget class="QWidget" name="gridLayoutWidget_2">
      <property name="geometry">
       <rect>
-       <x>460</x>
-       <y>300</y>
-       <width>220</width>
-       <height>131</height>
+       <x>130</x>
+       <y>340</y>
+       <width>186</width>
+       <height>101</height>
       </rect>
      </property>
      <layout class="QGridLayout" name="gridLayout">
@@ -2090,6 +2398,32 @@ background-color: rgb(16, 16, 16);
       </item>
      </layout>
     </widget>
+    <widget class="QLabel" name="label_61">
+     <property name="geometry">
+      <rect>
+       <x>590</x>
+       <y>40</y>
+       <width>111</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Enter password</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_3">
+     <property name="geometry">
+      <rect>
+       <x>590</x>
+       <y>70</y>
+       <width>113</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
    </widget>
   </widget>
   <widget class="QLabel" name="label_29">
@@ -2146,10 +2480,42 @@ background-color: rgb(16, 16, 16);
     <string/>
    </property>
   </widget>
+  <widget class="QLabel" name="label_60">
+   <property name="geometry">
+    <rect>
+     <x>590</x>
+     <y>20</y>
+     <width>241</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">image: url(:/assets/ERT.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_62">
+   <property name="geometry">
+    <rect>
+     <x>1120</x>
+     <y>400</y>
+     <width>101</width>
+     <height>501</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">image: url(:/assets/BL.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
   <widget class="QLabel" name="antenna_img">
    <property name="geometry">
     <rect>
-     <x>910</x>
+     <x>940</x>
      <y>30</y>
      <width>51</width>
      <height>51</height>
@@ -2163,46 +2529,51 @@ image: url(:/assets/radioON.png);</string>
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="label_60">
+  <widget class="QLabel" name="label_13">
    <property name="geometry">
     <rect>
-     <x>570</x>
-     <y>20</y>
-     <width>241</width>
+     <x>410</x>
+     <y>10</y>
+     <width>41</width>
      <height>41</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">image: url(:/assets/ERT.png);</string>
+    <string notr="true">image: url(:/assets/watch.png);</string>
    </property>
    <property name="text">
     <string/>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_3">
+  <widget class="QLabel" name="time_panel">
    <property name="geometry">
     <rect>
-     <x>1060</x>
-     <y>520</y>
-     <width>113</width>
-     <height>25</height>
+     <x>460</x>
+     <y>20</y>
+     <width>70</width>
+     <height>31</height>
     </rect>
    </property>
-   <property name="text">
-    <string/>
+   <property name="minimumSize">
+    <size>
+     <width>70</width>
+     <height>0</height>
+    </size>
    </property>
-  </widget>
-  <widget class="QLabel" name="label_61">
-   <property name="geometry">
-    <rect>
-     <x>1040</x>
-     <y>490</y>
-     <width>111</width>
-     <height>20</height>
-    </rect>
+   <property name="maximumSize">
+    <size>
+     <width>60</width>
+     <height>16777215</height>
+    </size>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
    </property>
    <property name="text">
-    <string>Enter password</string>
+    <string>12:54:24</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
   <zorder>tabWidget_2</zorder>
@@ -2212,10 +2583,11 @@ image: url(:/assets/radioON.png);</string>
   <zorder>label_29</zorder>
   <zorder>logo_2</zorder>
   <zorder>logo_3</zorder>
-  <zorder>antenna_img</zorder>
   <zorder>label_60</zorder>
-  <zorder>lineEdit_3</zorder>
-  <zorder>label_61</zorder>
+  <zorder>label_62</zorder>
+  <zorder>antenna_img</zorder>
+  <zorder>label_13</zorder>
+  <zorder>time_panel</zorder>
  </widget>
  <resources>
   <include location="../assets.qrc"/>

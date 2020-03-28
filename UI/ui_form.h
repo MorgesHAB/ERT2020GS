@@ -1,18 +1,17 @@
 /********************************************************************************
-** Form generated from reading UI file 'LioTestGlovAd.ui'
+** Form generated from reading UI file 'LioTestbXERbD.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.11.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef LIOTESTGLOVAD_H
-#define LIOTESTGLOVAD_H
+#ifndef LIOTESTBXERBD_H
+#define LIOTESTBXERBD_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QComboBox>
-#include <QtWidgets/QDial>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QGroupBox>
@@ -34,10 +33,8 @@ class Ui_Form
 public:
     QWidget *widget;
     QGridLayout *gridLayout_5;
-    QLabel *time_panel;
-    QPushButton *reset_button;
     QPushButton *change_theme;
-    QLabel *current_time_label;
+    QPushButton *reset_button;
     QPushButton *xbee_button;
     QLabel *logo;
     QTabWidget *tabWidget;
@@ -74,40 +71,53 @@ public:
     QLabel *label_27;
     QLCDNumber *rssi_value;
     QLabel *label_31;
+    QSlider *verticalSlider_16;
     QWidget *tab;
-    QDial *dial;
-    QDial *dial_2;
     QLabel *label_12;
     QComboBox *serialport_selector;
     QWidget *gridLayoutWidget_6;
     QGridLayout *gridLayout_16;
+    QLCDNumber *lcdNumber_2;
+    QLCDNumber *lcdNumber;
+    QLabel *label_47;
+    QLabel *label_45;
     QLabel *label_54;
     QLabel *label_56;
-    QLabel *label_42;
-    QLabel *label_45;
-    QLCDNumber *lcdNumber;
-    QLCDNumber *lcdNumber_2;
-    QLabel *label_47;
+    QWidget *horizontalLayoutWidget_2;
+    QHBoxLayout *horizontalLayout_3;
+    QLabel *label_51;
+    QLabel *label_52;
+    QLabel *label_57;
+    QLabel *label_53;
+    QLabel *label_55;
+    QLabel *label_58;
     QWidget *Ignition;
     QGroupBox *ignition_box;
     QGridLayout *gridLayout_2;
+    QLabel *key_1_panel;
+    QLabel *red_button_label;
+    QLabel *red_button_panel;
+    QPushButton *ignition_button;
+    QLabel *key_2_label;
+    QLabel *key_1_label;
+    QLabel *key_2_panel;
+    QLabel *ready_ignition_panel;
+    QLabel *ignition_status_label;
+    QLabel *label_30;
+    QGroupBox *groupBox_4;
+    QLabel *label_65;
+    QLabel *label_67;
+    QLabel *label_66;
+    QPushButton *ready_ignit_button;
+    QLabel *ignition_state_icon;
+    QLabel *red_button;
     QFrame *frame;
     QHBoxLayout *horizontalLayout;
     QLabel *code_3;
     QLabel *code_2;
     QLabel *code_1;
     QLabel *code_0;
-    QLabel *ready_ignition_panel;
-    QLabel *key_2_label;
-    QLabel *key_1_label;
-    QPushButton *ignition_button;
-    QLabel *key_2_panel;
-    QLabel *key_1_panel;
-    QLabel *red_button_label;
-    QLabel *red_button_panel;
-    QLabel *ignition_status_label;
-    QLabel *label_30;
-    QLabel *ignition_state_icon;
+    QLabel *label_69;
     QTextEdit *info_ignition;
     QLabel *label;
     QWidget *tab_2;
@@ -122,8 +132,8 @@ public:
     QSlider *verticalSlider_13;
     QSlider *verticalSlider_14;
     QSlider *verticalSlider_15;
-    QLabel *label_28;
     QPushButton *pushButton_6;
+    QProgressBar *progressBar;
     QTabWidget *tabWidget_2;
     QWidget *tab_3;
     QGroupBox *gps_box;
@@ -172,12 +182,14 @@ public:
     QLabel *avionics_state_panel;
     QGroupBox *accel_box;
     QGridLayout *gridLayout_7;
-    QLabel *accel_x_label;
     QLabel *accel_z_label;
     QLabel *accel_y_label;
+    QLabel *accel_x_label;
+    QLabel *accel_z_panel;
     QLabel *accel_x_panel;
     QLabel *accel_y_panel;
-    QLabel *accel_z_panel;
+    QLabel *label_28;
+    QLabel *label_63;
     QGroupBox *groupBox_2;
     QWidget *gridLayoutWidget_5;
     QGridLayout *gridLayout_15;
@@ -198,15 +210,8 @@ public:
     QLabel *label_49;
     QLabel *label_50;
     QSlider *verticalSlider;
-    QWidget *horizontalLayoutWidget_2;
-    QHBoxLayout *horizontalLayout_3;
-    QLabel *label_51;
-    QLabel *label_52;
-    QLabel *label_57;
-    QLabel *label_53;
-    QLabel *label_55;
-    QLabel *label_58;
     QLabel *label_59;
+    QLabel *label_42;
     QWidget *tab_4;
     QGroupBox *groupBox;
     QGridLayout *gridLayout_9;
@@ -214,10 +219,11 @@ public:
     QLabel *transmitter_state_panel;
     QLabel *receiver_state_label;
     QLabel *receiver_state_panel;
-    QPushButton *file_transmission_button;
-    QProgressBar *file_transmission_progress_bar;
     QLabel *lionel_label;
     QLabel *image_lio;
+    QPushButton *file_transmission_button;
+    QLabel *label_64;
+    QProgressBar *file_transmission_progress_bar;
     QWidget *GSE;
     QGroupBox *groupBox_3;
     QWidget *gridLayoutWidget;
@@ -239,13 +245,16 @@ public:
     QLabel *label_10;
     QLabel *label_7;
     QLabel *label_8;
+    QLabel *label_61;
+    QLineEdit *lineEdit_3;
     QLabel *label_29;
     QLabel *logo_2;
     QLabel *logo_3;
-    QLabel *antenna_img;
     QLabel *label_60;
-    QLineEdit *lineEdit_3;
-    QLabel *label_61;
+    QLabel *label_62;
+    QLabel *antenna_img;
+    QLabel *label_13;
+    QLabel *time_panel;
 
     void setupUi(QWidget *Form)
     {
@@ -259,34 +268,18 @@ public:
                                           "color: rgb(255, 255, 255);"));
         widget = new QWidget(Form);
         widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(9, 9, 545, 45));
+        widget->setGeometry(QRect(9, 9, 401, 45));
         gridLayout_5 = new QGridLayout(widget);
         gridLayout_5->setObjectName(QStringLiteral("gridLayout_5"));
-        time_panel = new QLabel(widget);
-        time_panel->setObjectName(QStringLiteral("time_panel"));
-        time_panel->setMinimumSize(QSize(70, 0));
-        time_panel->setMaximumSize(QSize(60, 16777215));
-        time_panel->setStyleSheet(QStringLiteral(""));
-        time_panel->setAlignment(Qt::AlignCenter);
-
-        gridLayout_5->addWidget(time_panel, 0, 4, 1, 1);
-
-        reset_button = new QPushButton(widget);
-        reset_button->setObjectName(QStringLiteral("reset_button"));
-
-        gridLayout_5->addWidget(reset_button, 0, 0, 1, 1);
-
         change_theme = new QPushButton(widget);
         change_theme->setObjectName(QStringLiteral("change_theme"));
 
         gridLayout_5->addWidget(change_theme, 0, 2, 1, 1);
 
-        current_time_label = new QLabel(widget);
-        current_time_label->setObjectName(QStringLiteral("current_time_label"));
-        current_time_label->setMaximumSize(QSize(100, 16777215));
-        current_time_label->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+        reset_button = new QPushButton(widget);
+        reset_button->setObjectName(QStringLiteral("reset_button"));
 
-        gridLayout_5->addWidget(current_time_label, 0, 3, 1, 1);
+        gridLayout_5->addWidget(reset_button, 0, 0, 1, 1);
 
         xbee_button = new QPushButton(widget);
         xbee_button->setObjectName(QStringLiteral("xbee_button"));
@@ -302,7 +295,7 @@ public:
                                           "image: url(:/assets/logo.png);"));
         tabWidget = new QTabWidget(Form);
         tabWidget->setObjectName(QStringLiteral("tabWidget"));
-        tabWidget->setGeometry(QRect(10, 60, 981, 321));
+        tabWidget->setGeometry(QRect(10, 60, 981, 351));
         tabWidget->setStyleSheet(QLatin1String("QTabBar::tab {\n"
                                                "	background: rgb(30, 30, 30);\n"
                                                "	border: 1px solid white;\n"
@@ -316,13 +309,28 @@ public:
         tab_10->setObjectName(QStringLiteral("tab_10"));
         gridLayoutWidget_3 = new QWidget(tab_10);
         gridLayoutWidget_3->setObjectName(QStringLiteral("gridLayoutWidget_3"));
-        gridLayoutWidget_3->setGeometry(QRect(330, 40, 318, 203));
+        gridLayoutWidget_3->setGeometry(QRect(330, 40, 318, 169));
         gridLayout_12 = new QGridLayout(gridLayoutWidget_3);
         gridLayout_12->setObjectName(QStringLiteral("gridLayout_12"));
         gridLayout_12->setContentsMargins(0, 0, 0, 0);
         progressBar_4 = new QProgressBar(gridLayoutWidget_3);
         progressBar_4->setObjectName(QStringLiteral("progressBar_4"));
-        progressBar_4->setValue(80);
+        progressBar_4->setStyleSheet(QLatin1String("QProgressBar {\n"
+                                                   "	color: white;\n"
+                                                   "}\n"
+                                                   "QProgressBar:horizontal {\n"
+                                                   "	border: 1px solid gray;\n"
+                                                   "	border-radius: 10px;\n"
+                                                   "	background: black;\n"
+                                                   "	padding: 1px;\n"
+                                                   "    text-align: center;\n"
+                                                   "}\n"
+                                                   "QProgressBar::chunk:horizontal {\n"
+                                                   "	background: qlineargradient(x1: 0, y1: 0.5, x2: 1, y2: 		0.5, stop: 0 rgb(39, 68, 255), stop: 1 rgb(190, 255, 178));\n"
+                                                   "	border-radius: 5px;\n"
+                                                   "}"));
+        progressBar_4->setMaximum(30);
+        progressBar_4->setValue(18);
 
         gridLayout_12->addWidget(progressBar_4, 2, 1, 1, 1);
 
@@ -344,14 +352,43 @@ public:
 
         progressBar_9 = new QProgressBar(gridLayoutWidget_3);
         progressBar_9->setObjectName(QStringLiteral("progressBar_9"));
+        progressBar_9->setStyleSheet(QLatin1String("QProgressBar {\n"
+                                                   "	color: white;\n"
+                                                   "}\n"
+                                                   "QProgressBar:horizontal {\n"
+                                                   "	border: 1px solid gray;\n"
+                                                   "	border-radius: 10px;\n"
+                                                   "	background: black;\n"
+                                                   "	padding: 1px;\n"
+                                                   "    text-align: center;\n"
+                                                   "}\n"
+                                                   "QProgressBar::chunk:horizontal {\n"
+                                                   "	background: qlineargradient(x1: 0, y1: 0.5, x2: 1, y2: 		0.5, stop: 0 rgb(39, 68, 255), stop: 1 rgb(255, 158, 110));\n"
+                                                   "	border-radius: 5px;\n"
+                                                   "}"));
+        progressBar_9->setMaximum(30);
         progressBar_9->setValue(24);
 
         gridLayout_12->addWidget(progressBar_9, 3, 1, 1, 1);
 
         progressBar_5 = new QProgressBar(gridLayoutWidget_3);
         progressBar_5->setObjectName(QStringLiteral("progressBar_5"));
-        progressBar_5->setStyleSheet(QStringLiteral("background-color: rgb(255, 85, 255);"));
-        progressBar_5->setValue(2);
+        progressBar_5->setStyleSheet(QLatin1String("QProgressBar {\n"
+                                                   "	color: white;\n"
+                                                   "}\n"
+                                                   "QProgressBar:horizontal {\n"
+                                                   "	border: 1px solid gray;\n"
+                                                   "	border-radius: 10px;\n"
+                                                   "	background: black;\n"
+                                                   "	padding: 1px;\n"
+                                                   "    text-align: center;\n"
+                                                   "}\n"
+                                                   "QProgressBar::chunk:horizontal {\n"
+                                                   "	background: qlineargradient(x1: 0, y1: 0.5, x2: 1, y2: 		0.5, stop: 0 rgb(39, 68, 255), stop: 1 rgb(176, 111, 255));\n"
+                                                   "	border-radius: 5px;\n"
+                                                   "}"));
+        progressBar_5->setMaximum(30);
+        progressBar_5->setValue(10);
 
         gridLayout_12->addWidget(progressBar_5, 4, 1, 1, 1);
 
@@ -367,8 +404,22 @@ public:
 
         progressBar_8 = new QProgressBar(gridLayoutWidget_3);
         progressBar_8->setObjectName(QStringLiteral("progressBar_8"));
-        progressBar_8->setStyleSheet(QStringLiteral(""));
-        progressBar_8->setValue(67);
+        progressBar_8->setStyleSheet(QLatin1String("QProgressBar {\n"
+                                                   "	color: white;\n"
+                                                   "}\n"
+                                                   "QProgressBar:horizontal {\n"
+                                                   "	border: 1px solid gray;\n"
+                                                   "	border-radius: 10px;\n"
+                                                   "	background: black;\n"
+                                                   "	padding: 1px;\n"
+                                                   "    text-align: center;\n"
+                                                   "}\n"
+                                                   "QProgressBar::chunk:horizontal {\n"
+                                                   "	background: qlineargradient(x1: 0, y1: 0.5, x2: 1, y2: 		0.5, stop: 0 rgb(39, 68, 255), stop: 1 rgb(125, 249, 255));\n"
+                                                   "	border-radius: 5px;\n"
+                                                   "}"));
+        progressBar_8->setMaximum(30);
+        progressBar_8->setValue(12);
 
         gridLayout_12->addWidget(progressBar_8, 1, 1, 1, 1);
 
@@ -475,20 +526,34 @@ public:
 
         horizontalLayout_2->addWidget(label_31);
 
+        verticalSlider_16 = new QSlider(tab_10);
+        verticalSlider_16->setObjectName(QStringLiteral("verticalSlider_16"));
+        verticalSlider_16->setGeometry(QRect(930, 0, 51, 291));
+        verticalSlider_16->setStyleSheet(QLatin1String("QSlider::groove:vertical {\n"
+                                                       "background: qlineargradient(x1: 0.5, y1: 0, x2: 0.5, y2: 1, stop: 0 rgb(80, 37, 255), \n"
+                                                       "stop: 0.25 rgb(161, 98, 255),\n"
+                                                       "stop: 0.5 rgb(62, 255, 48),\n"
+                                                       "stop: 0.75 rgb(255, 160, 64),\n"
+                                                       "stop: 1 rgb(203, 0, 3));    \n"
+                                                       "	width: 10px;\n"
+                                                       "	border-radius: 5px;\n"
+                                                       "}\n"
+                                                       "\n"
+                                                       "QSlider::handle:vertical {\n"
+                                                       "    height: 30px;	\n"
+                                                       "	image: url(:/assets/arrow.png);\n"
+                                                       "	margin:0 -30px; /* expand outside the groove */\n"
+                                                       "}"));
+        verticalSlider_16->setValue(34);
+        verticalSlider_16->setOrientation(Qt::Vertical);
+        verticalSlider_16->setTickPosition(QSlider::TicksBelow);
+        verticalSlider_16->setTickInterval(0);
         tabWidget->addTab(tab_10, QString());
         tab = new QWidget();
         tab->setObjectName(QStringLiteral("tab"));
-        dial = new QDial(tab);
-        dial->setObjectName(QStringLiteral("dial"));
-        dial->setGeometry(QRect(20, 190, 50, 64));
-        dial->setStyleSheet(QStringLiteral("background-color: rgb(85, 255, 255);"));
-        dial_2 = new QDial(tab);
-        dial_2->setObjectName(QStringLiteral("dial_2"));
-        dial_2->setGeometry(QRect(80, 187, 50, 64));
-        dial_2->setStyleSheet(QStringLiteral("background-color: rgb(85, 255, 255);"));
         label_12 = new QLabel(tab);
         label_12->setObjectName(QStringLiteral("label_12"));
-        label_12->setGeometry(QRect(20, 60, 251, 20));
+        label_12->setGeometry(QRect(20, 10, 181, 20));
         label_12->setStyleSheet(QStringLiteral("color: rgb(221, 242, 255);"));
         serialport_selector = new QComboBox(tab);
         serialport_selector->addItem(QString());
@@ -496,13 +561,33 @@ public:
         serialport_selector->addItem(QString());
         serialport_selector->addItem(QString());
         serialport_selector->setObjectName(QStringLiteral("serialport_selector"));
-        serialport_selector->setGeometry(QRect(20, 90, 101, 25));
+        serialport_selector->setGeometry(QRect(20, 50, 131, 25));
         gridLayoutWidget_6 = new QWidget(tab);
         gridLayoutWidget_6->setObjectName(QStringLiteral("gridLayoutWidget_6"));
         gridLayoutWidget_6->setGeometry(QRect(410, 60, 341, 191));
         gridLayout_16 = new QGridLayout(gridLayoutWidget_6);
         gridLayout_16->setObjectName(QStringLiteral("gridLayout_16"));
         gridLayout_16->setContentsMargins(0, 0, 0, 0);
+        lcdNumber_2 = new QLCDNumber(gridLayoutWidget_6);
+        lcdNumber_2->setObjectName(QStringLiteral("lcdNumber_2"));
+
+        gridLayout_16->addWidget(lcdNumber_2, 1, 3, 1, 1);
+
+        lcdNumber = new QLCDNumber(gridLayoutWidget_6);
+        lcdNumber->setObjectName(QStringLiteral("lcdNumber"));
+
+        gridLayout_16->addWidget(lcdNumber, 1, 1, 1, 1);
+
+        label_47 = new QLabel(gridLayoutWidget_6);
+        label_47->setObjectName(QStringLiteral("label_47"));
+
+        gridLayout_16->addWidget(label_47, 1, 2, 1, 1);
+
+        label_45 = new QLabel(gridLayoutWidget_6);
+        label_45->setObjectName(QStringLiteral("label_45"));
+
+        gridLayout_16->addWidget(label_45, 1, 0, 1, 1);
+
         label_54 = new QLabel(gridLayoutWidget_6);
         label_54->setObjectName(QStringLiteral("label_54"));
 
@@ -513,42 +598,156 @@ public:
 
         gridLayout_16->addWidget(label_56, 0, 1, 1, 1);
 
-        label_42 = new QLabel(gridLayoutWidget_6);
-        label_42->setObjectName(QStringLiteral("label_42"));
-        label_42->setStyleSheet(QStringLiteral("image: url(:/assets/gps_track.png);"));
+        horizontalLayoutWidget_2 = new QWidget(tab);
+        horizontalLayoutWidget_2->setObjectName(QStringLiteral("horizontalLayoutWidget_2"));
+        horizontalLayoutWidget_2->setGeometry(QRect(390, 260, 386, 31));
+        horizontalLayout_3 = new QHBoxLayout(horizontalLayoutWidget_2);
+        horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
+        horizontalLayout_3->setContentsMargins(0, 0, 0, 0);
+        label_51 = new QLabel(horizontalLayoutWidget_2);
+        label_51->setObjectName(QStringLiteral("label_51"));
 
-        gridLayout_16->addWidget(label_42, 0, 2, 1, 3);
+        horizontalLayout_3->addWidget(label_51);
 
-        label_45 = new QLabel(gridLayoutWidget_6);
-        label_45->setObjectName(QStringLiteral("label_45"));
+        label_52 = new QLabel(horizontalLayoutWidget_2);
+        label_52->setObjectName(QStringLiteral("label_52"));
 
-        gridLayout_16->addWidget(label_45, 1, 0, 1, 1);
+        horizontalLayout_3->addWidget(label_52);
 
-        lcdNumber = new QLCDNumber(gridLayoutWidget_6);
-        lcdNumber->setObjectName(QStringLiteral("lcdNumber"));
+        label_57 = new QLabel(horizontalLayoutWidget_2);
+        label_57->setObjectName(QStringLiteral("label_57"));
 
-        gridLayout_16->addWidget(lcdNumber, 1, 1, 1, 1);
+        horizontalLayout_3->addWidget(label_57);
 
-        lcdNumber_2 = new QLCDNumber(gridLayoutWidget_6);
-        lcdNumber_2->setObjectName(QStringLiteral("lcdNumber_2"));
+        label_53 = new QLabel(horizontalLayoutWidget_2);
+        label_53->setObjectName(QStringLiteral("label_53"));
 
-        gridLayout_16->addWidget(lcdNumber_2, 1, 3, 1, 1);
+        horizontalLayout_3->addWidget(label_53);
 
-        label_47 = new QLabel(gridLayoutWidget_6);
-        label_47->setObjectName(QStringLiteral("label_47"));
+        label_55 = new QLabel(horizontalLayoutWidget_2);
+        label_55->setObjectName(QStringLiteral("label_55"));
 
-        gridLayout_16->addWidget(label_47, 1, 2, 1, 1);
+        horizontalLayout_3->addWidget(label_55);
+
+        label_58 = new QLabel(horizontalLayoutWidget_2);
+        label_58->setObjectName(QStringLiteral("label_58"));
+
+        horizontalLayout_3->addWidget(label_58);
 
         tabWidget->addTab(tab, QString());
         Ignition = new QWidget();
         Ignition->setObjectName(QStringLiteral("Ignition"));
         ignition_box = new QGroupBox(Ignition);
         ignition_box->setObjectName(QStringLiteral("ignition_box"));
-        ignition_box->setGeometry(QRect(60, 30, 188, 211));
+        ignition_box->setGeometry(QRect(20, 30, 181, 211));
         gridLayout_2 = new QGridLayout(ignition_box);
         gridLayout_2->setObjectName(QStringLiteral("gridLayout_2"));
-        frame = new QFrame(ignition_box);
+        key_1_panel = new QLabel(ignition_box);
+        key_1_panel->setObjectName(QStringLiteral("key_1_panel"));
+        key_1_panel->setStyleSheet(QStringLiteral("color: rgb(255, 0, 0);"));
+
+        gridLayout_2->addWidget(key_1_panel, 1, 1, 1, 1);
+
+        red_button_label = new QLabel(ignition_box);
+        red_button_label->setObjectName(QStringLiteral("red_button_label"));
+
+        gridLayout_2->addWidget(red_button_label, 3, 0, 1, 1);
+
+        red_button_panel = new QLabel(ignition_box);
+        red_button_panel->setObjectName(QStringLiteral("red_button_panel"));
+        red_button_panel->setStyleSheet(QStringLiteral("color: rgb(255, 0, 0);"));
+
+        gridLayout_2->addWidget(red_button_panel, 3, 1, 1, 1);
+
+        ignition_button = new QPushButton(ignition_box);
+        ignition_button->setObjectName(QStringLiteral("ignition_button"));
+        ignition_button->setMinimumSize(QSize(132, 0));
+        ignition_button->setStyleSheet(QStringLiteral(""));
+
+        gridLayout_2->addWidget(ignition_button, 0, 0, 1, 1);
+
+        key_2_label = new QLabel(ignition_box);
+        key_2_label->setObjectName(QStringLiteral("key_2_label"));
+
+        gridLayout_2->addWidget(key_2_label, 2, 0, 1, 1);
+
+        key_1_label = new QLabel(ignition_box);
+        key_1_label->setObjectName(QStringLiteral("key_1_label"));
+
+        gridLayout_2->addWidget(key_1_label, 1, 0, 1, 1);
+
+        key_2_panel = new QLabel(ignition_box);
+        key_2_panel->setObjectName(QStringLiteral("key_2_panel"));
+        key_2_panel->setStyleSheet(QStringLiteral("color: rgb(255, 0, 0);"));
+
+        gridLayout_2->addWidget(key_2_panel, 2, 1, 1, 1);
+
+        ready_ignition_panel = new QLabel(ignition_box);
+        ready_ignition_panel->setObjectName(QStringLiteral("ready_ignition_panel"));
+        ready_ignition_panel->setMinimumSize(QSize(23, 0));
+        ready_ignition_panel->setMaximumSize(QSize(23, 16777215));
+        ready_ignition_panel->setStyleSheet(QStringLiteral("color: rgb(255, 0, 0);"));
+
+        gridLayout_2->addWidget(ready_ignition_panel, 0, 1, 1, 1);
+
+        ignition_status_label = new QLabel(ignition_box);
+        ignition_status_label->setObjectName(QStringLiteral("ignition_status_label"));
+        QFont font;
+        font.setFamily(QStringLiteral("Verdana"));
+        font.setBold(true);
+        font.setItalic(false);
+        font.setWeight(75);
+        ignition_status_label->setFont(font);
+        ignition_status_label->setAutoFillBackground(false);
+        ignition_status_label->setAlignment(Qt::AlignCenter);
+
+        gridLayout_2->addWidget(ignition_status_label, 4, 0, 1, 1);
+
+        label_30 = new QLabel(Ignition);
+        label_30->setObjectName(QStringLiteral("label_30"));
+        label_30->setGeometry(QRect(630, 10, 341, 281));
+        label_30->setStyleSheet(QStringLiteral("image: url(:/assets/galaxy.png);"));
+        groupBox_4 = new QGroupBox(Ignition);
+        groupBox_4->setObjectName(QStringLiteral("groupBox_4"));
+        groupBox_4->setGeometry(QRect(230, 10, 381, 271));
+        label_65 = new QLabel(groupBox_4);
+        label_65->setObjectName(QStringLiteral("label_65"));
+        label_65->setGeometry(QRect(170, 150, 91, 91));
+        label_65->setStyleSheet(QStringLiteral("image: url(:/assets/keyON.png);"));
+        label_67 = new QLabel(groupBox_4);
+        label_67->setObjectName(QStringLiteral("label_67"));
+        label_67->setGeometry(QRect(180, 240, 68, 19));
+        label_66 = new QLabel(groupBox_4);
+        label_66->setObjectName(QStringLiteral("label_66"));
+        label_66->setGeometry(QRect(270, 150, 101, 91));
+        label_66->setStyleSheet(QStringLiteral("image: url(:/assets/keyOFF.png);"));
+        ready_ignit_button = new QPushButton(groupBox_4);
+        ready_ignit_button->setObjectName(QStringLiteral("ready_ignit_button"));
+        ready_ignit_button->setGeometry(QRect(20, 130, 131, 121));
+        ready_ignit_button->setStyleSheet(QLatin1String("QPushButton{\n"
+                                                        "qproperty-icon: url(:/assets/readiness.png);\n"
+                                                        "qproperty-iconSize: 120px;\n"
+                                                        "border-radius: 20px;\n"
+                                                        "}\n"
+                                                        "QPushButton:hover {\n"
+                                                        "background-color: rgb(35, 35, 35); \n"
+                                                        "qproperty-iconSize: 64px;\n"
+                                                        "}\n"
+                                                        "QPushButton:pressed {\n"
+                                                        "background-color: rgb(16, 16, 16);\n"
+                                                        "}\n"
+                                                        ""));
+        ignition_state_icon = new QLabel(groupBox_4);
+        ignition_state_icon->setObjectName(QStringLiteral("ignition_state_icon"));
+        ignition_state_icon->setGeometry(QRect(190, 80, 81, 61));
+        ignition_state_icon->setStyleSheet(QStringLiteral("image: url(:/assets/warning.png);"));
+        red_button = new QLabel(groupBox_4);
+        red_button->setObjectName(QStringLiteral("red_button"));
+        red_button->setGeometry(QRect(280, 40, 91, 111));
+        red_button->setStyleSheet(QStringLiteral("image: url(:/assets/alarmOFF.png);"));
+        frame = new QFrame(groupBox_4);
         frame->setObjectName(QStringLiteral("frame"));
+        frame->setGeometry(QRect(10, 80, 161, 40));
         frame->setMinimumSize(QSize(0, 40));
         frame->setMaximumSize(QSize(16777215, 35));
         frame->setStyleSheet(QLatin1String("border-color: rgb(255, 0, 0);\n"
@@ -585,90 +784,16 @@ public:
 
         horizontalLayout->addWidget(code_0);
 
-
-        gridLayout_2->addWidget(frame, 5, 0, 1, 2);
-
-        ready_ignition_panel = new QLabel(ignition_box);
-        ready_ignition_panel->setObjectName(QStringLiteral("ready_ignition_panel"));
-        ready_ignition_panel->setMinimumSize(QSize(23, 0));
-        ready_ignition_panel->setMaximumSize(QSize(23, 16777215));
-        ready_ignition_panel->setStyleSheet(QStringLiteral("color: rgb(255, 0, 0);"));
-
-        gridLayout_2->addWidget(ready_ignition_panel, 0, 1, 1, 1);
-
-        key_2_label = new QLabel(ignition_box);
-        key_2_label->setObjectName(QStringLiteral("key_2_label"));
-
-        gridLayout_2->addWidget(key_2_label, 2, 0, 1, 1);
-
-        key_1_label = new QLabel(ignition_box);
-        key_1_label->setObjectName(QStringLiteral("key_1_label"));
-
-        gridLayout_2->addWidget(key_1_label, 1, 0, 1, 1);
-
-        ignition_button = new QPushButton(ignition_box);
-        ignition_button->setObjectName(QStringLiteral("ignition_button"));
-        ignition_button->setMinimumSize(QSize(132, 0));
-        ignition_button->setStyleSheet(QStringLiteral(""));
-
-        gridLayout_2->addWidget(ignition_button, 0, 0, 1, 1);
-
-        key_2_panel = new QLabel(ignition_box);
-        key_2_panel->setObjectName(QStringLiteral("key_2_panel"));
-        key_2_panel->setStyleSheet(QStringLiteral("color: rgb(255, 0, 0);"));
-
-        gridLayout_2->addWidget(key_2_panel, 2, 1, 1, 1);
-
-        key_1_panel = new QLabel(ignition_box);
-        key_1_panel->setObjectName(QStringLiteral("key_1_panel"));
-        key_1_panel->setStyleSheet(QStringLiteral("color: rgb(255, 0, 0);"));
-
-        gridLayout_2->addWidget(key_1_panel, 1, 1, 1, 1);
-
-        red_button_label = new QLabel(ignition_box);
-        red_button_label->setObjectName(QStringLiteral("red_button_label"));
-
-        gridLayout_2->addWidget(red_button_label, 3, 0, 1, 1);
-
-        red_button_panel = new QLabel(ignition_box);
-        red_button_panel->setObjectName(QStringLiteral("red_button_panel"));
-        red_button_panel->setStyleSheet(QStringLiteral("color: rgb(255, 0, 0);"));
-
-        gridLayout_2->addWidget(red_button_panel, 3, 1, 1, 1);
-
-        ignition_status_label = new QLabel(ignition_box);
-        ignition_status_label->setObjectName(QStringLiteral("ignition_status_label"));
-        QFont font;
-        font.setFamily(QStringLiteral("Verdana"));
-        font.setBold(true);
-        font.setItalic(false);
-        font.setWeight(75);
-        ignition_status_label->setFont(font);
-        ignition_status_label->setAutoFillBackground(false);
-        ignition_status_label->setAlignment(Qt::AlignCenter);
-
-        gridLayout_2->addWidget(ignition_status_label, 4, 0, 1, 2);
-
-        label_30 = new QLabel(Ignition);
-        label_30->setObjectName(QStringLiteral("label_30"));
-        label_30->setGeometry(QRect(600, 10, 361, 271));
-        label_30->setStyleSheet(QStringLiteral("image: url(:/assets/galaxy.png);"));
-        ignition_state_icon = new QLabel(Ignition);
-        ignition_state_icon->setObjectName(QStringLiteral("ignition_state_icon"));
-        ignition_state_icon->setGeometry(QRect(260, 170, 81, 61));
-        ignition_state_icon->setStyleSheet(QStringLiteral("image: url(:/assets/warning.png);"));
-        info_ignition = new QTextEdit(Ignition);
+        label_69 = new QLabel(groupBox_4);
+        label_69->setObjectName(QStringLiteral("label_69"));
+        label_69->setGeometry(QRect(290, 240, 68, 19));
+        info_ignition = new QTextEdit(groupBox_4);
         info_ignition->setObjectName(QStringLiteral("info_ignition"));
-        info_ignition->setGeometry(QRect(250, 60, 111, 181));
-        label = new QLabel(Ignition);
+        info_ignition->setGeometry(QRect(10, 20, 261, 61));
+        label = new QLabel(groupBox_4);
         label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(260, 40, 68, 19));
+        label->setGeometry(QRect(20, 30, 68, 19));
         tabWidget->addTab(Ignition, QString());
-        ignition_box->raise();
-        label_30->raise();
-        info_ignition->raise();
-        label->raise();
-        ignition_state_icon->raise();
         tab_2 = new QWidget();
         tab_2->setObjectName(QStringLiteral("tab_2"));
         verticalSlider_1 = new QSlider(tab_2);
@@ -713,18 +838,45 @@ public:
         verticalSlider_15 = new QSlider(tab_2);
         verticalSlider_15->setObjectName(QStringLiteral("verticalSlider_15"));
         verticalSlider_15->setGeometry(QRect(700, 50, 22, 160));
+        verticalSlider_15->setStyleSheet(QStringLiteral(""));
+        verticalSlider_15->setValue(60);
         verticalSlider_15->setOrientation(Qt::Vertical);
-        label_28 = new QLabel(tab_2);
-        label_28->setObjectName(QStringLiteral("label_28"));
-        label_28->setGeometry(QRect(910, 10, 51, 281));
-        label_28->setStyleSheet(QStringLiteral("image: url(:/assets/eiger.jpg);"));
         pushButton_6 = new QPushButton(tab_2);
         pushButton_6->setObjectName(QStringLiteral("pushButton_6"));
-        pushButton_6->setGeometry(QRect(60, 60, 131, 61));
+        pushButton_6->setGeometry(QRect(60, 60, 121, 31));
+        pushButton_6->setStyleSheet(QLatin1String("border-radius: 8px;\n"
+                                                  "background-color: rgb(255, 170, 0);"));
+        progressBar = new QProgressBar(tab_2);
+        progressBar->setObjectName(QStringLiteral("progressBar"));
+        progressBar->setGeometry(QRect(410, 250, 331, 23));
+        QFont font1;
+        font1.setFamily(QStringLiteral("Times New Roman"));
+        font1.setPointSize(16);
+        font1.setBold(false);
+        font1.setItalic(false);
+        font1.setWeight(50);
+        progressBar->setFont(font1);
+        progressBar->setStyleSheet(QLatin1String("QProgressBar {\n"
+                                                 "	color: white;\n"
+                                                 "	font: 16pt \"Times New Roman\";\n"
+                                                 "}\n"
+                                                 "QProgressBar:horizontal {\n"
+                                                 "	border: 1px solid gray;\n"
+                                                 "	border-radius: 10px;\n"
+                                                 "	background: black;\n"
+                                                 "	padding: 1px;\n"
+                                                 "    text-align: center;\n"
+                                                 "}\n"
+                                                 "QProgressBar::chunk:horizontal {\n"
+                                                 "	background: qlineargradient(x1: 0, y1: 0.5, x2: 1, y2: 		0.5, stop: 0 rgb(39, 68, 255), stop: 1 rgb(255, 38, 114));\n"
+                                                 "	border-radius: 10px;\n"
+                                                 "}"));
+        progressBar->setValue(78);
+        progressBar->setInvertedAppearance(false);
         tabWidget->addTab(tab_2, QString());
         tabWidget_2 = new QTabWidget(Form);
         tabWidget_2->setObjectName(QStringLiteral("tabWidget_2"));
-        tabWidget_2->setGeometry(QRect(10, 400, 981, 491));
+        tabWidget_2->setGeometry(QRect(10, 430, 1081, 461));
         tabWidget_2->setStyleSheet(QLatin1String("QTabBar::tab {\n"
                                                  "	background: rgb(18, 19, 77);\n"
                                                  "	border: 1px solid white;\n"
@@ -737,8 +889,9 @@ public:
         tab_3->setObjectName(QStringLiteral("tab_3"));
         gps_box = new QGroupBox(tab_3);
         gps_box->setObjectName(QStringLiteral("gps_box"));
-        gps_box->setGeometry(QRect(30, 20, 309, 200));
+        gps_box->setGeometry(QRect(30, 30, 309, 200));
         gps_box->setMinimumSize(QSize(0, 200));
+        gps_box->setStyleSheet(QStringLiteral(""));
         gridLayout_3 = new QGridLayout(gps_box);
         gridLayout_3->setObjectName(QStringLiteral("gridLayout_3"));
         longitude_label = new QLabel(gps_box);
@@ -843,7 +996,7 @@ public:
 
         euler_box = new QGroupBox(tab_3);
         euler_box->setObjectName(QStringLiteral("euler_box"));
-        euler_box->setGeometry(QRect(370, 20, 111, 108));
+        euler_box->setGeometry(QRect(420, 330, 111, 91));
         gridLayout_6 = new QGridLayout(euler_box);
         gridLayout_6->setObjectName(QStringLiteral("gridLayout_6"));
         euler_x_panel = new QLabel(euler_box);
@@ -959,15 +1112,9 @@ public:
 
         accel_box = new QGroupBox(tab_3);
         accel_box->setObjectName(QStringLiteral("accel_box"));
-        accel_box->setGeometry(QRect(280, 250, 121, 108));
+        accel_box->setGeometry(QRect(250, 310, 121, 111));
         gridLayout_7 = new QGridLayout(accel_box);
         gridLayout_7->setObjectName(QStringLiteral("gridLayout_7"));
-        accel_x_label = new QLabel(accel_box);
-        accel_x_label->setObjectName(QStringLiteral("accel_x_label"));
-        accel_x_label->setMaximumSize(QSize(25, 16777215));
-
-        gridLayout_7->addWidget(accel_x_label, 0, 0, 1, 1);
-
         accel_z_label = new QLabel(accel_box);
         accel_z_label->setObjectName(QStringLiteral("accel_z_label"));
         accel_z_label->setMaximumSize(QSize(25, 16777215));
@@ -979,6 +1126,18 @@ public:
         accel_y_label->setMaximumSize(QSize(25, 16777215));
 
         gridLayout_7->addWidget(accel_y_label, 1, 0, 1, 1);
+
+        accel_x_label = new QLabel(accel_box);
+        accel_x_label->setObjectName(QStringLiteral("accel_x_label"));
+        accel_x_label->setMaximumSize(QSize(25, 16777215));
+
+        gridLayout_7->addWidget(accel_x_label, 0, 0, 1, 1);
+
+        accel_z_panel = new QLabel(accel_box);
+        accel_z_panel->setObjectName(QStringLiteral("accel_z_panel"));
+        accel_z_panel->setFrameShape(QFrame::NoFrame);
+
+        gridLayout_7->addWidget(accel_z_panel, 2, 1, 1, 1);
 
         accel_x_panel = new QLabel(accel_box);
         accel_x_panel->setObjectName(QStringLiteral("accel_x_panel"));
@@ -992,15 +1151,19 @@ public:
 
         gridLayout_7->addWidget(accel_y_panel, 1, 1, 1, 1);
 
-        accel_z_panel = new QLabel(accel_box);
-        accel_z_panel->setObjectName(QStringLiteral("accel_z_panel"));
-        accel_z_panel->setFrameShape(QFrame::NoFrame);
+        label_28 = new QLabel(accel_box);
+        label_28->setObjectName(QStringLiteral("label_28"));
 
-        gridLayout_7->addWidget(accel_z_panel, 2, 1, 1, 1);
+        gridLayout_7->addWidget(label_28, 3, 0, 1, 1);
+
+        label_63 = new QLabel(accel_box);
+        label_63->setObjectName(QStringLiteral("label_63"));
+
+        gridLayout_7->addWidget(label_63, 3, 1, 1, 1);
 
         groupBox_2 = new QGroupBox(tab_3);
         groupBox_2->setObjectName(QStringLiteral("groupBox_2"));
-        groupBox_2->setGeometry(QRect(780, 10, 181, 311));
+        groupBox_2->setGeometry(QRect(350, 20, 181, 311));
         gridLayoutWidget_5 = new QWidget(groupBox_2);
         gridLayoutWidget_5->setObjectName(QStringLiteral("gridLayoutWidget_5"));
         gridLayoutWidget_5->setGeometry(QRect(10, 30, 131, 276));
@@ -1097,55 +1260,27 @@ public:
 
         verticalSlider = new QSlider(groupBox_2);
         verticalSlider->setObjectName(QStringLiteral("verticalSlider"));
-        verticalSlider->setGeometry(QRect(150, 29, 22, 271));
-        verticalSlider->setValue(68);
+        verticalSlider->setGeometry(QRect(150, 40, 22, 251));
+        verticalSlider->setStyleSheet(QStringLiteral(""));
+        verticalSlider->setMaximum(7);
+        verticalSlider->setValue(7);
         verticalSlider->setOrientation(Qt::Vertical);
-        horizontalLayoutWidget_2 = new QWidget(tab_3);
-        horizontalLayoutWidget_2->setObjectName(QStringLiteral("horizontalLayoutWidget_2"));
-        horizontalLayoutWidget_2->setGeometry(QRect(380, 160, 386, 31));
-        horizontalLayout_3 = new QHBoxLayout(horizontalLayoutWidget_2);
-        horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
-        horizontalLayout_3->setContentsMargins(0, 0, 0, 0);
-        label_51 = new QLabel(horizontalLayoutWidget_2);
-        label_51->setObjectName(QStringLiteral("label_51"));
-
-        horizontalLayout_3->addWidget(label_51);
-
-        label_52 = new QLabel(horizontalLayoutWidget_2);
-        label_52->setObjectName(QStringLiteral("label_52"));
-
-        horizontalLayout_3->addWidget(label_52);
-
-        label_57 = new QLabel(horizontalLayoutWidget_2);
-        label_57->setObjectName(QStringLiteral("label_57"));
-
-        horizontalLayout_3->addWidget(label_57);
-
-        label_53 = new QLabel(horizontalLayoutWidget_2);
-        label_53->setObjectName(QStringLiteral("label_53"));
-
-        horizontalLayout_3->addWidget(label_53);
-
-        label_55 = new QLabel(horizontalLayoutWidget_2);
-        label_55->setObjectName(QStringLiteral("label_55"));
-
-        horizontalLayout_3->addWidget(label_55);
-
-        label_58 = new QLabel(horizontalLayoutWidget_2);
-        label_58->setObjectName(QStringLiteral("label_58"));
-
-        horizontalLayout_3->addWidget(label_58);
-
+        verticalSlider->setTickPosition(QSlider::TicksAbove);
+        verticalSlider->setTickInterval(1);
         label_59 = new QLabel(tab_3);
         label_59->setObjectName(QStringLiteral("label_59"));
         label_59->setGeometry(QRect(150, 230, 41, 51));
         label_59->setStyleSheet(QStringLiteral("image: url(:/assets/sensor.png);"));
+        label_42 = new QLabel(tab_3);
+        label_42->setObjectName(QStringLiteral("label_42"));
+        label_42->setGeometry(QRect(150, 10, 191, 41));
+        label_42->setStyleSheet(QStringLiteral("image: url(:/assets/gps_track.png);"));
         tabWidget_2->addTab(tab_3, QString());
         tab_4 = new QWidget();
         tab_4->setObjectName(QStringLiteral("tab_4"));
         groupBox = new QGroupBox(tab_4);
         groupBox->setObjectName(QStringLiteral("groupBox"));
-        groupBox->setGeometry(QRect(20, 50, 189, 174));
+        groupBox->setGeometry(QRect(20, 50, 261, 161));
         gridLayout_9 = new QGridLayout(groupBox);
         gridLayout_9->setObjectName(QStringLiteral("gridLayout_9"));
         transmitter_state_label = new QLabel(groupBox);
@@ -1153,46 +1288,78 @@ public:
         transmitter_state_label->setMinimumSize(QSize(140, 0));
         transmitter_state_label->setMaximumSize(QSize(1241251, 16777215));
 
-        gridLayout_9->addWidget(transmitter_state_label, 3, 0, 1, 1);
+        gridLayout_9->addWidget(transmitter_state_label, 2, 0, 1, 1);
 
         transmitter_state_panel = new QLabel(groupBox);
         transmitter_state_panel->setObjectName(QStringLiteral("transmitter_state_panel"));
 
-        gridLayout_9->addWidget(transmitter_state_panel, 3, 1, 1, 1);
+        gridLayout_9->addWidget(transmitter_state_panel, 2, 1, 1, 1);
 
         receiver_state_label = new QLabel(groupBox);
         receiver_state_label->setObjectName(QStringLiteral("receiver_state_label"));
         receiver_state_label->setMinimumSize(QSize(140, 0));
         receiver_state_label->setMaximumSize(QSize(212411, 16777215));
 
-        gridLayout_9->addWidget(receiver_state_label, 2, 0, 1, 1);
+        gridLayout_9->addWidget(receiver_state_label, 1, 0, 1, 1);
 
         receiver_state_panel = new QLabel(groupBox);
         receiver_state_panel->setObjectName(QStringLiteral("receiver_state_panel"));
 
-        gridLayout_9->addWidget(receiver_state_panel, 2, 1, 1, 1);
-
-        file_transmission_button = new QPushButton(groupBox);
-        file_transmission_button->setObjectName(QStringLiteral("file_transmission_button"));
-
-        gridLayout_9->addWidget(file_transmission_button, 0, 0, 1, 2);
-
-        file_transmission_progress_bar = new QProgressBar(groupBox);
-        file_transmission_progress_bar->setObjectName(QStringLiteral("file_transmission_progress_bar"));
-        file_transmission_progress_bar->setValue(24);
-
-        gridLayout_9->addWidget(file_transmission_progress_bar, 4, 0, 1, 2);
+        gridLayout_9->addWidget(receiver_state_panel, 1, 1, 1, 1);
 
         lionel_label = new QLabel(groupBox);
         lionel_label->setObjectName(QStringLiteral("lionel_label"));
         lionel_label->setStyleSheet(QStringLiteral("color: rgb(255, 0, 0);"));
 
-        gridLayout_9->addWidget(lionel_label, 1, 0, 1, 1);
+        gridLayout_9->addWidget(lionel_label, 0, 0, 1, 1);
 
         image_lio = new QLabel(tab_4);
         image_lio->setObjectName(QStringLiteral("image_lio"));
-        image_lio->setGeometry(QRect(260, 20, 701, 431));
+        image_lio->setGeometry(QRect(360, 20, 701, 431));
         image_lio->setStyleSheet(QStringLiteral("image: url(:/assets/ERT.jpg);"));
+        file_transmission_button = new QPushButton(tab_4);
+        file_transmission_button->setObjectName(QStringLiteral("file_transmission_button"));
+        file_transmission_button->setGeometry(QRect(40, 270, 171, 151));
+        file_transmission_button->setStyleSheet(QLatin1String("QPushButton{\n"
+                                                              "qproperty-icon: url(:/assets/PLimg.png);\n"
+                                                              "qproperty-iconSize: 154px;\n"
+                                                              "font: 18pt \"MS Shell Dlg 2\";\n"
+                                                              "border: 2px solid;\n"
+                                                              "border-color: rgb(215, 237, 252);\n"
+                                                              "border-radius: 10px;\n"
+                                                              "}\n"
+                                                              "QPushButton:hover {\n"
+                                                              "background-color: rgb(35, 35, 35); \n"
+                                                              "border: 3px solid;\n"
+                                                              "border-color: rgb(215, 237, 252);\n"
+                                                              "}\n"
+                                                              "QPushButton:pressed {\n"
+                                                              "border: 4px solid;\n"
+                                                              "border-color: rgb(92, 242, 135);\n"
+                                                              "}\n"
+                                                              ""));
+        label_64 = new QLabel(tab_4);
+        label_64->setObjectName(QStringLiteral("label_64"));
+        label_64->setGeometry(QRect(120, 390, 68, 19));
+        file_transmission_progress_bar = new QProgressBar(tab_4);
+        file_transmission_progress_bar->setObjectName(QStringLiteral("file_transmission_progress_bar"));
+        file_transmission_progress_bar->setGeometry(QRect(30, 220, 231, 31));
+        file_transmission_progress_bar->setStyleSheet(QLatin1String("QProgressBar {\n"
+                                                                    "	color: white;\n"
+                                                                    "	font: 16pt \"Times New Roman\";\n"
+                                                                    "}\n"
+                                                                    "QProgressBar:horizontal {\n"
+                                                                    "	border: 1px solid gray;\n"
+                                                                    "	border-radius: 10px;\n"
+                                                                    "	background: black;\n"
+                                                                    "	padding: 1px;\n"
+                                                                    "    text-align: center;\n"
+                                                                    "}\n"
+                                                                    "QProgressBar::chunk:horizontal {\n"
+                                                                    "	background: qlineargradient(x1: 0, y1: 0.5, x2: 1, y2: 		0.5, stop: 0 rgb(39, 68, 255), stop: 1 rgb(255, 38, 114));\n"
+                                                                    "	border-radius: 10px;\n"
+                                                                    "}"));
+        file_transmission_progress_bar->setValue(24);
         tabWidget_2->addTab(tab_4, QString());
         GSE = new QWidget();
         GSE->setObjectName(QStringLiteral("GSE"));
@@ -1225,16 +1392,17 @@ public:
 
         pushButton_4 = new QPushButton(groupBox_3);
         pushButton_4->setObjectName(QStringLiteral("pushButton_4"));
-        pushButton_4->setGeometry(QRect(90, 210, 191, 27));
+        pushButton_4->setGeometry(QRect(20, 170, 191, 27));
         valve_button = new QPushButton(GSE);
         valve_button->setObjectName(QStringLiteral("valve_button"));
-        valve_button->setGeometry(QRect(440, 80, 131, 71));
+        valve_button->setGeometry(QRect(440, 80, 121, 71));
         valve_button->setStyleSheet(QLatin1String("QPushButton{\n"
                                                   "qproperty-icon: url(:/assets/valve.png);\n"
                                                   "qproperty-iconSize: 54px;\n"
                                                   "font: 18pt \"MS Shell Dlg 2\";\n"
                                                   "border: 2px solid;\n"
                                                   "border-color: rgb(215, 237, 252);\n"
+                                                  "border-radius: 10px;\n"
                                                   "}\n"
                                                   "QPushButton:hover {\n"
                                                   "background-color: rgb(35, 35, 35); \n"
@@ -1248,10 +1416,11 @@ public:
                                                   ""));
         pushButton_5 = new QPushButton(GSE);
         pushButton_5->setObjectName(QStringLiteral("pushButton_5"));
-        pushButton_5->setGeometry(QRect(600, 170, 81, 71));
+        pushButton_5->setGeometry(QRect(590, 100, 81, 71));
         pushButton_5->setStyleSheet(QLatin1String("QPushButton{\n"
                                                   "qproperty-icon: url(:/assets/send.png);\n"
                                                   "qproperty-iconSize: 54px;\n"
+                                                  "border-radius: 20px;\n"
                                                   "}\n"
                                                   "QPushButton:hover {\n"
                                                   "background-color: rgb(35, 35, 35); \n"
@@ -1263,7 +1432,7 @@ public:
                                                   ""));
         gridLayoutWidget_2 = new QWidget(GSE);
         gridLayoutWidget_2->setObjectName(QStringLiteral("gridLayoutWidget_2"));
-        gridLayoutWidget_2->setGeometry(QRect(460, 300, 220, 131));
+        gridLayoutWidget_2->setGeometry(QRect(130, 340, 171, 81));
         gridLayout = new QGridLayout(gridLayoutWidget_2);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
         gridLayout->setContentsMargins(0, 0, 0, 0);
@@ -1313,6 +1482,12 @@ public:
 
         gridLayout->addWidget(label_8, 2, 1, 1, 1);
 
+        label_61 = new QLabel(GSE);
+        label_61->setObjectName(QStringLiteral("label_61"));
+        label_61->setGeometry(QRect(590, 40, 111, 20));
+        lineEdit_3 = new QLineEdit(GSE);
+        lineEdit_3->setObjectName(QStringLiteral("lineEdit_3"));
+        lineEdit_3->setGeometry(QRect(590, 70, 113, 25));
         tabWidget_2->addTab(GSE, QString());
         label_29 = new QLabel(Form);
         label_29->setObjectName(QStringLiteral("label_29"));
@@ -1326,21 +1501,30 @@ public:
         logo_3->setObjectName(QStringLiteral("logo_3"));
         logo_3->setGeometry(QRect(1140, 110, 61, 61));
         logo_3->setStyleSheet(QStringLiteral("image: url(:/assets/Logo_Matterhorn.png);"));
-        antenna_img = new QLabel(Form);
-        antenna_img->setObjectName(QStringLiteral("antenna_img"));
-        antenna_img->setGeometry(QRect(910, 30, 51, 51));
-        antenna_img->setStyleSheet(QLatin1String("image: url(:/assets/radioOFF.png);\n"
-                                                 "image: url(:/assets/radioON.png);"));
         label_60 = new QLabel(Form);
         label_60->setObjectName(QStringLiteral("label_60"));
-        label_60->setGeometry(QRect(570, 20, 241, 41));
+        label_60->setGeometry(QRect(590, 20, 241, 41));
         label_60->setStyleSheet(QStringLiteral("image: url(:/assets/ERT.png);"));
-        lineEdit_3 = new QLineEdit(Form);
-        lineEdit_3->setObjectName(QStringLiteral("lineEdit_3"));
-        lineEdit_3->setGeometry(QRect(1060, 520, 113, 25));
-        label_61 = new QLabel(Form);
-        label_61->setObjectName(QStringLiteral("label_61"));
-        label_61->setGeometry(QRect(1040, 490, 111, 20));
+        label_62 = new QLabel(Form);
+        label_62->setObjectName(QStringLiteral("label_62"));
+        label_62->setGeometry(QRect(1120, 400, 101, 501));
+        label_62->setStyleSheet(QStringLiteral("image: url(:/assets/BL.png);"));
+        antenna_img = new QLabel(Form);
+        antenna_img->setObjectName(QStringLiteral("antenna_img"));
+        antenna_img->setGeometry(QRect(940, 30, 51, 51));
+        antenna_img->setStyleSheet(QLatin1String("image: url(:/assets/radioOFF.png);\n"
+                                                 "image: url(:/assets/radioON.png);"));
+        label_13 = new QLabel(Form);
+        label_13->setObjectName(QStringLiteral("label_13"));
+        label_13->setGeometry(QRect(410, 10, 41, 41));
+        label_13->setStyleSheet(QStringLiteral("image: url(:/assets/watch.png);"));
+        time_panel = new QLabel(Form);
+        time_panel->setObjectName(QStringLiteral("time_panel"));
+        time_panel->setGeometry(QRect(460, 20, 70, 31));
+        time_panel->setMinimumSize(QSize(70, 0));
+        time_panel->setMaximumSize(QSize(60, 16777215));
+        time_panel->setStyleSheet(QStringLiteral(""));
+        time_panel->setAlignment(Qt::AlignCenter);
         tabWidget_2->raise();
         tabWidget->raise();
         widget->raise();
@@ -1348,14 +1532,15 @@ public:
         label_29->raise();
         logo_2->raise();
         logo_3->raise();
-        antenna_img->raise();
         label_60->raise();
-        lineEdit_3->raise();
-        label_61->raise();
+        label_62->raise();
+        antenna_img->raise();
+        label_13->raise();
+        time_panel->raise();
 
         retranslateUi(Form);
 
-        tabWidget->setCurrentIndex(3);
+        tabWidget->setCurrentIndex(2);
         tabWidget_2->setCurrentIndex(2);
 
 
@@ -1365,23 +1550,25 @@ public:
     void retranslateUi(QWidget *Form)
     {
         Form->setWindowTitle(QApplication::translate("Form", "GSBellaLui2020", nullptr));
-        time_panel->setText(QApplication::translate("Form", "44:44:44", nullptr));
+        change_theme->setText(QApplication::translate("Form", "Change Color Theme", nullptr));
 #ifndef QT_NO_TOOLTIP
         reset_button->setToolTip(QApplication::translate("Form", "Resets saved data", nullptr));
 #endif // QT_NO_TOOLTIP
         reset_button->setText(QApplication::translate("Form", "Reset", nullptr));
-        change_theme->setText(QApplication::translate("Form", "Change Color Theme", nullptr));
-        current_time_label->setText(QApplication::translate("Form", "Current Time:", nullptr));
         xbee_button->setText(QApplication::translate("Form", "START XBee", nullptr));
 #ifndef QT_NO_TOOLTIP
         logo->setToolTip(QApplication::translate("Form", "<html><head/><body><p>Project Bella Lui 2020</p></body></html>", nullptr));
 #endif // QT_NO_TOOLTIP
         logo->setText(QString());
+        progressBar_4->setFormat(QApplication::translate("Form", "%v", nullptr));
         label_20->setText(QApplication::translate("Form", "GSE", nullptr));
         label_6->setText(QApplication::translate("Form", "Communmication Packet Rate", nullptr));
         label_21->setText(QApplication::translate("Form", "PP", nullptr));
+        progressBar_9->setFormat(QApplication::translate("Form", "%v", nullptr));
+        progressBar_5->setFormat(QApplication::translate("Form", "%v", nullptr));
         label_16->setText(QApplication::translate("Form", "AV", nullptr));
         label_17->setText(QApplication::translate("Form", "PL", nullptr));
+        progressBar_8->setFormat(QApplication::translate("Form", "%v", nullptr));
         com_box->setTitle(QApplication::translate("Form", "COM", nullptr));
 #ifndef QT_NO_TOOLTIP
         last_packet_nbr_label->setToolTip(QApplication::translate("Form", "<html><head/><body><p>The last received packet's number (defined by TX)</p></body></html>", nullptr));
@@ -1436,43 +1623,55 @@ public:
         serialport_selector->setItemText(2, QApplication::translate("Form", "ttyS3", nullptr));
         serialport_selector->setItemText(3, QApplication::translate("Form", "ttyS6", nullptr));
 
+        label_47->setText(QApplication::translate("Form", "Max", nullptr));
+        label_45->setText(QApplication::translate("Form", "Altitude", nullptr));
         label_54->setText(QApplication::translate("Form", "Sat nbr", nullptr));
         label_56->setText(QApplication::translate("Form", "12", nullptr));
-        label_42->setText(QString());
-        label_45->setText(QApplication::translate("Form", "Altitude", nullptr));
-        label_47->setText(QApplication::translate("Form", "Max", nullptr));
+        label_51->setText(QApplication::translate("Form", "Latitude", nullptr));
+        label_52->setText(QApplication::translate("Form", "46.984", nullptr));
+        label_57->setText(QApplication::translate("Form", "\302\260", nullptr));
+        label_53->setText(QApplication::translate("Form", "Longitude", nullptr));
+        label_55->setText(QApplication::translate("Form", "89.983", nullptr));
+        label_58->setText(QApplication::translate("Form", "\302\260", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("Form", "Config", nullptr));
         ignition_box->setTitle(QApplication::translate("Form", "Ignition", nullptr));
+        key_1_panel->setText(QApplication::translate("Form", "X", nullptr));
+        red_button_label->setText(QApplication::translate("Form", "Red Button", nullptr));
+        red_button_panel->setText(QApplication::translate("Form", "X", nullptr));
+        ignition_button->setText(QApplication::translate("Form", "Ready For Ignition", nullptr));
+        key_2_label->setText(QApplication::translate("Form", "KEY 2", nullptr));
+        key_1_label->setText(QApplication::translate("Form", "KEY 1", nullptr));
+        key_2_panel->setText(QApplication::translate("Form", "X", nullptr));
+        ready_ignition_panel->setText(QApplication::translate("Form", "X", nullptr));
+        ignition_status_label->setText(QApplication::translate("Form", "Ignition", nullptr));
+        label_30->setText(QString());
+        groupBox_4->setTitle(QApplication::translate("Form", "Ignition", nullptr));
+        label_65->setText(QString());
+        label_67->setText(QApplication::translate("Form", "CTO key", nullptr));
+        label_66->setText(QString());
+        ready_ignit_button->setText(QString());
+        ignition_state_icon->setText(QString());
+        red_button->setText(QString());
         code_3->setText(QString());
         code_2->setText(QString());
         code_1->setText(QString());
         code_0->setText(QString());
-        ready_ignition_panel->setText(QApplication::translate("Form", "X", nullptr));
-        key_2_label->setText(QApplication::translate("Form", "KEY 2", nullptr));
-        key_1_label->setText(QApplication::translate("Form", "KEY 1", nullptr));
-        ignition_button->setText(QApplication::translate("Form", "Ready For Ignition", nullptr));
-        key_2_panel->setText(QApplication::translate("Form", "X", nullptr));
-        key_1_panel->setText(QApplication::translate("Form", "X", nullptr));
-        red_button_label->setText(QApplication::translate("Form", "Red Button", nullptr));
-        red_button_panel->setText(QApplication::translate("Form", "X", nullptr));
-        ignition_status_label->setText(QApplication::translate("Form", "Ignition", nullptr));
-        label_30->setText(QString());
-        ignition_state_icon->setText(QString());
+        label_69->setText(QApplication::translate("Form", "COO key", nullptr));
         label->setText(QApplication::translate("Form", "GSE info", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(Ignition), QApplication::translate("Form", "Ignition", nullptr));
         lineEdit->setText(QApplication::translate("Form", "MorgesHAB", nullptr));
-        label_28->setText(QString());
         pushButton_6->setText(QApplication::translate("Form", "Play Music", nullptr));
+        progressBar->setFormat(QApplication::translate("Form", "%p%", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("Form", "Sound", nullptr));
         gps_box->setTitle(QApplication::translate("Form", "GPS", nullptr));
-        longitude_label->setText(QApplication::translate("Form", "LONGITUDE", nullptr));
-        sat_nbr_label->setText(QApplication::translate("Form", "SATELLITES", nullptr));
-        altitude_label_gps->setText(QApplication::translate("Form", "ALTITUDE", nullptr));
-        latitude_label->setText(QApplication::translate("Form", "LATITUDE", nullptr));
+        longitude_label->setText(QApplication::translate("Form", "Longitude", nullptr));
+        sat_nbr_label->setText(QApplication::translate("Form", "Satellites", nullptr));
+        altitude_label_gps->setText(QApplication::translate("Form", "Altitude", nullptr));
+        latitude_label->setText(QApplication::translate("Form", "Latitude", nullptr));
         longitude_panel->setText(QString());
         ft_unit_label_2->setText(QApplication::translate("Form", "ft", nullptr));
         hdop_label->setText(QApplication::translate("Form", "HDOP", nullptr));
-        altitude_max_label->setText(QApplication::translate("Form", "ALTITUDE MAX", nullptr));
+        altitude_max_label->setText(QApplication::translate("Form", "Altitude max", nullptr));
         m_unit_label->setText(QApplication::translate("Form", "m", nullptr));
         m_unit_label_2->setText(QApplication::translate("Form", "m", nullptr));
         ft_unit_label->setText(QApplication::translate("Form", "ft", nullptr));
@@ -1502,12 +1701,14 @@ public:
         m_unit_label_3->setText(QApplication::translate("Form", "m", nullptr));
         avionics_state_panel->setText(QString());
         accel_box->setTitle(QApplication::translate("Form", "Accelerometer", nullptr));
-        accel_x_label->setText(QApplication::translate("Form", "X", nullptr));
         accel_z_label->setText(QApplication::translate("Form", "Z", nullptr));
         accel_y_label->setText(QApplication::translate("Form", "Y", nullptr));
+        accel_x_label->setText(QApplication::translate("Form", "X", nullptr));
+        accel_z_panel->setText(QString());
         accel_x_panel->setText(QString());
         accel_y_panel->setText(QString());
-        accel_z_panel->setText(QString());
+        label_28->setText(QApplication::translate("Form", "Norm", nullptr));
+        label_63->setText(QString());
         groupBox_2->setTitle(QApplication::translate("Form", "AV states", nullptr));
         label_33->setText(QApplication::translate("Form", "Calibration", nullptr));
         label_38->setText(QApplication::translate("Form", "1st Event", nullptr));
@@ -1525,23 +1726,19 @@ public:
         label_48->setText(QString());
         label_49->setText(QString());
         label_50->setText(QString());
-        label_51->setText(QApplication::translate("Form", "Latitude", nullptr));
-        label_52->setText(QApplication::translate("Form", "46.984", nullptr));
-        label_57->setText(QApplication::translate("Form", "\302\260", nullptr));
-        label_53->setText(QApplication::translate("Form", "Longitude", nullptr));
-        label_55->setText(QApplication::translate("Form", "89.983", nullptr));
-        label_58->setText(QApplication::translate("Form", "\302\260", nullptr));
         label_59->setText(QString());
+        label_42->setText(QString());
         tabWidget_2->setTabText(tabWidget_2->indexOf(tab_3), QApplication::translate("Form", "Avionic", nullptr));
         groupBox->setTitle(QApplication::translate("Form", "File Transmission", nullptr));
         transmitter_state_label->setText(QApplication::translate("Form", "Transmitter State", nullptr));
         transmitter_state_panel->setText(QString());
         receiver_state_label->setText(QApplication::translate("Form", "Receiver State", nullptr));
         receiver_state_panel->setText(QString());
-        file_transmission_button->setText(QApplication::translate("Form", "Start File Transmission", nullptr));
-        file_transmission_progress_bar->setFormat(QApplication::translate("Form", "%v / %m", nullptr));
-        lionel_label->setText(QApplication::translate("Form", "Lionel is HERE", nullptr));
+        lionel_label->setText(QApplication::translate("Form", "Test ", nullptr));
         image_lio->setText(QString());
+        file_transmission_button->setText(QString());
+        label_64->setText(QApplication::translate("Form", "Waiting", nullptr));
+        file_transmission_progress_bar->setFormat(QApplication::translate("Form", "%v / %m", nullptr));
         tabWidget_2->setTabText(tabWidget_2->indexOf(tab_4), QApplication::translate("Form", "Payload", nullptr));
         groupBox_3->setTitle(QApplication::translate("Form", "GSE Control", nullptr));
 #ifndef QT_NO_WHATSTHIS
@@ -1562,6 +1759,8 @@ public:
         label_10->setText(QApplication::translate("Form", "[\302\260C]", nullptr));
         label_7->setText(QApplication::translate("Form", "25", nullptr));
         label_8->setText(QApplication::translate("Form", "8", nullptr));
+        label_61->setText(QApplication::translate("Form", "Enter password", nullptr));
+        lineEdit_3->setText(QString());
         tabWidget_2->setTabText(tabWidget_2->indexOf(GSE), QApplication::translate("Form", "GSE", nullptr));
         label_29->setText(QString());
 #ifndef QT_NO_TOOLTIP
@@ -1572,10 +1771,11 @@ public:
         logo_3->setToolTip(QApplication::translate("Form", "<html><head/><body><p>Project Bella Lui 2020</p></body></html>", nullptr));
 #endif // QT_NO_TOOLTIP
         logo_3->setText(QString());
-        antenna_img->setText(QString());
         label_60->setText(QString());
-        lineEdit_3->setText(QString());
-        label_61->setText(QApplication::translate("Form", "Enter password", nullptr));
+        label_62->setText(QString());
+        antenna_img->setText(QString());
+        label_13->setText(QString());
+        time_panel->setText(QApplication::translate("Form", "12:54:24", nullptr));
     } // retranslateUi
 
 };
@@ -1586,4 +1786,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // LIOTESTGLOVAD_H
+#endif // LIOTESTBXERBD_H

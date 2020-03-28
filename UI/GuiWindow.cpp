@@ -149,6 +149,18 @@ void GuiWindow::xbee_clicked()
 
 void GuiWindow::ignite_clicked()
 {
+    if (ready_ignition_) {
+        ready_ignit_button->setStyleSheet(
+                "QPushButton { qproperty-icon: url(:/assets/readiness.png);}");
+        red_button->setStyleSheet(
+                "QLabel { image: url(:/assets/alarmON.png);}");
+    } else {
+        ready_ignit_button->setStyleSheet(
+                "QPushButton { qproperty-icon: url(:/assets/notreadiness.png);}");
+        red_button->setStyleSheet(
+                "QLabel { image: url(:/assets/alarmOFF.png);}");
+    }
+
     std::cout << "Ignition button clicked!" << std::endl;
     ready_ignition_ = data_->getData<bool>(IGNITION_CLICKED);
     ready_ignition_ = !ready_ignition_;
@@ -305,7 +317,7 @@ void GuiWindow::initialize_slots_signals()
     connect(timer_, SIGNAL(timeout()), this, SLOT(refresh_data()));
     connect(xbee_button, SIGNAL(pressed()), this, SLOT(xbee_clicked()));
     connect(reset_button, SIGNAL(pressed()), this, SLOT(reset_button_pressed()));
-    connect(ignition_button, SIGNAL(pressed()), this, SLOT(ignite_clicked()));
+    connect(ready_ignit_button, SIGNAL(pressed()), this, SLOT(ignite_clicked()));
     connect(change_theme, SIGNAL(pressed()), this, SLOT(theme_change_clicked()));
     connect(file_transmission_button, SIGNAL(pressed()), this, SLOT(file_transmission_pressed()));
     connect(valve_button,SIGNAL(pressed()), this, SLOT(valve_control()));
@@ -338,8 +350,7 @@ void GuiWindow::refresh_gps()
 void GuiWindow::refresh_com()
 {
     refresh_misses();
-    last_packet_number_panel->setText(
-            qstr(data_->getData<uint32_t>(TX_PACKET_NR)));
+    last_packet_number_panel->setText(qstr(data_->getData<uint32_t>(TX_PACKET_NR)));
     std::string str(DatagramType::getDatagramIDName(data_->getData<uint8_t>(ui_interface::DATAGRAM_ID)));
     last_datagram_id_panel->setText(QString::fromStdString(str));
     received_pack_cnt_panel->setText(qstr(data_->getData<uint32_t>(RX_PACKET_CTR)));
