@@ -116,178 +116,12 @@ QTabWidget::pane {
 </string>
    </property>
    <property name="currentIndex">
-    <number>2</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="tab_10">
     <attribute name="title">
      <string>Communication Control</string>
     </attribute>
-    <widget class="QWidget" name="gridLayoutWidget_3">
-     <property name="geometry">
-      <rect>
-       <x>330</x>
-       <y>40</y>
-       <width>318</width>
-       <height>219</height>
-      </rect>
-     </property>
-     <layout class="QGridLayout" name="gridLayout_12">
-      <item row="2" column="1">
-       <widget class="QProgressBar" name="progressBar_4">
-        <property name="styleSheet">
-         <string notr="true">QProgressBar {
-	color: white;
-}
-QProgressBar:horizontal {
-	border: 1px solid gray;
-	border-radius: 10px;
-	background: black;
-	padding: 1px;
-    text-align: center;
-}
-QProgressBar::chunk:horizontal {
-	background: qlineargradient(x1: 0, y1: 0.5, x2: 1, y2: 		0.5, stop: 0 rgb(39, 68, 255), stop: 1 rgb(190, 255, 178));
-	border-radius: 5px;
-}</string>
-        </property>
-        <property name="maximum">
-         <number>30</number>
-        </property>
-        <property name="value">
-         <number>18</number>
-        </property>
-        <property name="format">
-         <string>%v</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="0">
-       <widget class="QLabel" name="label_20">
-        <property name="text">
-         <string>GSE</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0" colspan="2">
-       <widget class="QLabel" name="label_6">
-        <property name="styleSheet">
-         <string notr="true">color: rgb(199, 214, 255);</string>
-        </property>
-        <property name="text">
-         <string>Communmication Packet Rate</string>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="0">
-       <widget class="QLabel" name="label_21">
-        <property name="text">
-         <string>PP</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="1">
-       <widget class="QProgressBar" name="progressBar_9">
-        <property name="styleSheet">
-         <string notr="true">QProgressBar {
-	color: white;
-}
-QProgressBar:horizontal {
-	border: 1px solid gray;
-	border-radius: 10px;
-	background: black;
-	padding: 1px;
-    text-align: center;
-}
-QProgressBar::chunk:horizontal {
-	background: qlineargradient(x1: 0, y1: 0.5, x2: 1, y2: 		0.5, stop: 0 rgb(39, 68, 255), stop: 1 rgb(255, 158, 110));
-	border-radius: 5px;
-}</string>
-        </property>
-        <property name="maximum">
-         <number>30</number>
-        </property>
-        <property name="value">
-         <number>24</number>
-        </property>
-        <property name="format">
-         <string>%v</string>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="1">
-       <widget class="QProgressBar" name="progressBar_5">
-        <property name="styleSheet">
-         <string notr="true">QProgressBar {
-	color: white;
-}
-QProgressBar:horizontal {
-	border: 1px solid gray;
-	border-radius: 10px;
-	background: black;
-	padding: 1px;
-    text-align: center;
-}
-QProgressBar::chunk:horizontal {
-	background: qlineargradient(x1: 0, y1: 0.5, x2: 1, y2: 		0.5, stop: 0 rgb(39, 68, 255), stop: 1 rgb(176, 111, 255));
-	border-radius: 5px;
-}</string>
-        </property>
-        <property name="maximum">
-         <number>30</number>
-        </property>
-        <property name="value">
-         <number>10</number>
-        </property>
-        <property name="format">
-         <string>%v</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="label_16">
-        <property name="text">
-         <string>AV</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="label_17">
-        <property name="text">
-         <string>PL</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QProgressBar" name="progressBar_8">
-        <property name="styleSheet">
-         <string notr="true">QProgressBar {
-	color: white;
-}
-QProgressBar:horizontal {
-	border: 1px solid gray;
-	border-radius: 10px;
-	background: black;
-	padding: 1px;
-    text-align: center;
-}
-QProgressBar::chunk:horizontal {
-	background: qlineargradient(x1: 0, y1: 0.5, x2: 1, y2: 		0.5, stop: 0 rgb(39, 68, 255), stop: 1 rgb(125, 249, 255));
-	border-radius: 5px;
-}</string>
-        </property>
-        <property name="maximum">
-         <number>30</number>
-        </property>
-        <property name="value">
-         <number>12</number>
-        </property>
-        <property name="format">
-         <string>%v</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
     <widget class="QGroupBox" name="com_box">
      <property name="geometry">
       <rect>
@@ -521,6 +355,221 @@ QSlider::handle:vertical {
       <number>0</number>
      </property>
     </widget>
+    <widget class="QGroupBox" name="groupBox_7">
+     <property name="geometry">
+      <rect>
+       <x>330</x>
+       <y>30</y>
+       <width>331</width>
+       <height>251</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>Communication Rate</string>
+     </property>
+     <widget class="QWidget" name="gridLayoutWidget_3">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>90</y>
+        <width>311</width>
+        <height>206</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_12">
+       <item row="3" column="1">
+        <widget class="QProgressBar" name="progressBar_4">
+         <property name="styleSheet">
+          <string notr="true">QProgressBar {
+	color: white;
+}
+QProgressBar:horizontal {
+	border: 1px solid gray;
+	border-radius: 10px;
+	background: black;
+	padding: 1px;
+    text-align: center;
+}
+QProgressBar::chunk:horizontal {
+	background: qlineargradient(x1: 0, y1: 0.5, x2: 1, y2: 		0.5, stop: 0 rgb(39, 68, 255), stop: 1 rgb(190, 255, 178));
+	border-radius: 5px;
+}</string>
+         </property>
+         <property name="maximum">
+          <number>30</number>
+         </property>
+         <property name="value">
+          <number>18</number>
+         </property>
+         <property name="format">
+          <string>%v</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="label_20">
+         <property name="text">
+          <string>GSE</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0" colspan="2">
+        <widget class="QLabel" name="label_6">
+         <property name="styleSheet">
+          <string notr="true">color: rgb(199, 214, 255);</string>
+         </property>
+         <property name="text">
+          <string>Communmication Packet Rate</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QProgressBar" name="progressBar_9">
+         <property name="styleSheet">
+          <string notr="true">QProgressBar {
+	color: white;
+}
+QProgressBar:horizontal {
+	border: 1px solid gray;
+	border-radius: 10px;
+	background: black;
+	padding: 1px;
+    text-align: center;
+}
+QProgressBar::chunk:horizontal {
+	background: qlineargradient(x1: 0, y1: 0.5, x2: 1, y2: 		0.5, stop: 0 rgb(39, 68, 255), stop: 1 rgb(255, 158, 110));
+	border-radius: 5px;
+}</string>
+         </property>
+         <property name="maximum">
+          <number>30</number>
+         </property>
+         <property name="value">
+          <number>24</number>
+         </property>
+         <property name="format">
+          <string>%v</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLabel" name="label_21">
+         <property name="text">
+          <string>PP</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <widget class="QProgressBar" name="progressBar_5">
+         <property name="styleSheet">
+          <string notr="true">QProgressBar {
+	color: white;
+}
+QProgressBar:horizontal {
+	border: 1px solid gray;
+	border-radius: 10px;
+	background: black;
+	padding: 1px;
+    text-align: center;
+}
+QProgressBar::chunk:horizontal {
+	background: qlineargradient(x1: 0, y1: 0.5, x2: 1, y2: 		0.5, stop: 0 rgb(39, 68, 255), stop: 1 rgb(176, 111, 255));
+	border-radius: 5px;
+}</string>
+         </property>
+         <property name="maximum">
+          <number>30</number>
+         </property>
+         <property name="value">
+          <number>10</number>
+         </property>
+         <property name="format">
+          <string>%v</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QProgressBar" name="progressBar_8">
+         <property name="styleSheet">
+          <string notr="true">QProgressBar {
+	color: white;
+}
+QProgressBar:horizontal {
+	border: 1px solid gray;
+	border-radius: 10px;
+	background: black;
+	padding: 1px;
+    text-align: center;
+}
+QProgressBar::chunk:horizontal {
+	background: qlineargradient(x1: 0, y1: 0.5, x2: 1, y2: 		0.5, stop: 0 rgb(39, 68, 255), stop: 1 rgb(125, 249, 255));
+	border-radius: 5px;
+}</string>
+         </property>
+         <property name="maximum">
+          <number>30</number>
+         </property>
+         <property name="value">
+          <number>12</number>
+         </property>
+         <property name="format">
+          <string>%v</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="label_16">
+         <property name="text">
+          <string>AV</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="label_17">
+         <property name="text">
+          <string>PL</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_88">
+         <property name="text">
+          <string>All</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QProgressBar" name="progressBar_10">
+         <property name="styleSheet">
+          <string notr="true">QProgressBar {
+	color: white;
+}
+QProgressBar:horizontal {
+	border: 1px solid gray;
+	border-radius: 10px;
+	background: black;
+	padding: 1px;
+    text-align: center;
+}
+QProgressBar::chunk:horizontal {
+	background: qlineargradient(x1: 0, y1: 0.5, x2: 1, y2: 		0.5, stop: 0 rgb(39, 68, 255), stop: 1 rgb(16, 255, 72));
+	border-radius: 5px;
+}</string>
+         </property>
+         <property name="maximum">
+          <number>30</number>
+         </property>
+         <property name="value">
+          <number>28</number>
+         </property>
+         <property name="format">
+          <string>%v</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
    </widget>
    <widget class="QWidget" name="tab">
     <attribute name="title">
@@ -671,6 +720,96 @@ QSlider::handle:vertical {
        </widget>
       </item>
      </layout>
+    </widget>
+    <widget class="QPushButton" name="valve_button">
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>210</y>
+       <width>121</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+qproperty-icon: url(:/assets/valve.png);
+qproperty-iconSize: 54px;
+font: 18pt &quot;MS Shell Dlg 2&quot;;
+border: 2px solid;
+border-color: rgb(215, 237, 252);
+border-radius: 10px;
+}
+QPushButton:hover {
+background-color: rgb(35, 35, 35); 
+border: 3px solid;
+border-color: rgb(215, 237, 252);
+}
+QPushButton:pressed {
+border: 4px solid;
+border-color: rgb(92, 242, 135);
+}
+</string>
+     </property>
+     <property name="text">
+      <string>Valve</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_61">
+     <property name="geometry">
+      <rect>
+       <x>200</x>
+       <y>60</y>
+       <width>111</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Enter password</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_5">
+     <property name="geometry">
+      <rect>
+       <x>200</x>
+       <y>120</y>
+       <width>81</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+qproperty-icon: url(:/assets/send.png);
+qproperty-iconSize: 54px;
+border-radius: 20px;
+}
+QPushButton:hover {
+background-color: rgb(35, 35, 35); 
+qproperty-iconSize: 64px;
+}
+QPushButton:pressed {
+background-color: rgb(16, 16, 16);
+}
+</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_3">
+     <property name="geometry">
+      <rect>
+       <x>200</x>
+       <y>90</y>
+       <width>113</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="readOnly">
+      <bool>false</bool>
+     </property>
     </widget>
    </widget>
    <widget class="QWidget" name="Ignition">
@@ -1059,14 +1198,14 @@ gridline-color: rgb(255, 0, 0);</string>
      <widget class="QLabel" name="label">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>30</y>
-        <width>68</width>
-        <height>19</height>
+        <x>170</x>
+        <y>50</y>
+        <width>91</width>
+        <height>20</height>
        </rect>
       </property>
       <property name="text">
-       <string>GSE info</string>
+       <string>Ignition info</string>
       </property>
      </widget>
     </widget>
@@ -1078,7 +1217,7 @@ gridline-color: rgb(255, 0, 0);</string>
     <widget class="QSlider" name="verticalSlider_1">
      <property name="geometry">
       <rect>
-       <x>340</x>
+       <x>570</x>
        <y>50</y>
        <width>22</width>
        <height>160</height>
@@ -1104,7 +1243,7 @@ gridline-color: rgb(255, 0, 0);</string>
     <widget class="QSlider" name="verticalSlider_2">
      <property name="geometry">
       <rect>
-       <x>380</x>
+       <x>610</x>
        <y>50</y>
        <width>22</width>
        <height>160</height>
@@ -1117,7 +1256,7 @@ gridline-color: rgb(255, 0, 0);</string>
     <widget class="QSlider" name="verticalSlider_3">
      <property name="geometry">
       <rect>
-       <x>420</x>
+       <x>650</x>
        <y>50</y>
        <width>22</width>
        <height>160</height>
@@ -1130,7 +1269,7 @@ gridline-color: rgb(255, 0, 0);</string>
     <widget class="QSlider" name="verticalSlider_4">
      <property name="geometry">
       <rect>
-       <x>460</x>
+       <x>690</x>
        <y>50</y>
        <width>22</width>
        <height>160</height>
@@ -1143,7 +1282,7 @@ gridline-color: rgb(255, 0, 0);</string>
     <widget class="QSlider" name="verticalSlider_5">
      <property name="geometry">
       <rect>
-       <x>500</x>
+       <x>730</x>
        <y>50</y>
        <width>22</width>
        <height>160</height>
@@ -1156,7 +1295,7 @@ gridline-color: rgb(255, 0, 0);</string>
     <widget class="QSlider" name="verticalSlider_11">
      <property name="geometry">
       <rect>
-       <x>540</x>
+       <x>770</x>
        <y>50</y>
        <width>22</width>
        <height>160</height>
@@ -1169,7 +1308,7 @@ gridline-color: rgb(255, 0, 0);</string>
     <widget class="QSlider" name="verticalSlider_12">
      <property name="geometry">
       <rect>
-       <x>620</x>
+       <x>850</x>
        <y>50</y>
        <width>22</width>
        <height>160</height>
@@ -1182,7 +1321,7 @@ gridline-color: rgb(255, 0, 0);</string>
     <widget class="QSlider" name="verticalSlider_13">
      <property name="geometry">
       <rect>
-       <x>580</x>
+       <x>810</x>
        <y>50</y>
        <width>22</width>
        <height>160</height>
@@ -1195,7 +1334,7 @@ gridline-color: rgb(255, 0, 0);</string>
     <widget class="QSlider" name="verticalSlider_14">
      <property name="geometry">
       <rect>
-       <x>660</x>
+       <x>890</x>
        <y>50</y>
        <width>22</width>
        <height>160</height>
@@ -1208,7 +1347,7 @@ gridline-color: rgb(255, 0, 0);</string>
     <widget class="QSlider" name="verticalSlider_15">
      <property name="geometry">
       <rect>
-       <x>700</x>
+       <x>930</x>
        <y>50</y>
        <width>22</width>
        <height>160</height>
@@ -1244,8 +1383,8 @@ background-color: rgb(255, 170, 0);</string>
     <widget class="QProgressBar" name="progressBar">
      <property name="geometry">
       <rect>
-       <x>410</x>
-       <y>250</y>
+       <x>620</x>
+       <y>280</y>
        <width>331</width>
        <height>23</height>
       </rect>
@@ -1293,7 +1432,7 @@ QProgressBar::chunk:horizontal {
     <rect>
      <x>10</x>
      <y>430</y>
-     <width>1091</width>
+     <width>1051</width>
      <height>461</height>
     </rect>
    </property>
@@ -1308,11 +1447,11 @@ QTabWidget::pane {
 }</string>
    </property>
    <property name="currentIndex">
-    <number>2</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="tab_3">
     <attribute name="title">
-     <string>Avionic</string>
+     <string>AV - GSE - PL</string>
     </attribute>
     <widget class="QGroupBox" name="gps_box">
      <property name="geometry">
@@ -2010,195 +2149,122 @@ QTabWidget::pane {
       <string/>
      </property>
     </widget>
-   </widget>
-   <widget class="QWidget" name="tab_4">
-    <attribute name="title">
-     <string>Payload</string>
-    </attribute>
-    <widget class="QGroupBox" name="groupBox">
+    <widget class="QGroupBox" name="groupBox_6">
      <property name="geometry">
       <rect>
-       <x>20</x>
-       <y>50</y>
-       <width>261</width>
-       <height>161</height>
-      </rect>
-     </property>
-     <property name="title">
-      <string>File Transmission</string>
-     </property>
-     <layout class="QGridLayout" name="gridLayout_9">
-      <item row="2" column="0">
-       <widget class="QLabel" name="transmitter_state_label">
-        <property name="minimumSize">
-         <size>
-          <width>140</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>1241251</width>
-          <height>16777215</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>Transmitter State</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1">
-       <widget class="QLabel" name="transmitter_state_panel">
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="receiver_state_label">
-        <property name="minimumSize">
-         <size>
-          <width>140</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>212411</width>
-          <height>16777215</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>Receiver State</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QLabel" name="receiver_state_panel">
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0">
-       <widget class="QLabel" name="lionel_label">
-        <property name="styleSheet">
-         <string notr="true">color: rgb(255, 0, 0);</string>
-        </property>
-        <property name="text">
-         <string>Test </string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-    <widget class="QLabel" name="image_lio">
-     <property name="geometry">
-      <rect>
-       <x>360</x>
-       <y>20</y>
-       <width>701</width>
-       <height>431</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">image: url(:/assets/ERT.jpg);</string>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="file_transmission_button">
-     <property name="geometry">
-      <rect>
-       <x>40</x>
-       <y>270</y>
-       <width>171</width>
+       <x>570</x>
+       <y>240</y>
+       <width>241</width>
        <height>151</height>
       </rect>
      </property>
-     <property name="styleSheet">
-      <string notr="true">QPushButton{
-qproperty-icon: url(:/assets/PLimg.png);
-qproperty-iconSize: 154px;
-font: 18pt &quot;MS Shell Dlg 2&quot;;
-border: 2px solid;
-border-color: rgb(215, 237, 252);
-border-radius: 10px;
-}
-QPushButton:hover {
-background-color: rgb(35, 35, 35); 
-border: 3px solid;
-border-color: rgb(215, 237, 252);
-}
-QPushButton:pressed {
-border: 4px solid;
-border-color: rgb(92, 242, 135);
-}
-</string>
+     <property name="title">
+      <string>GSE Sensor Data</string>
      </property>
-     <property name="text">
-      <string/>
-     </property>
+     <widget class="QWidget" name="gridLayoutWidget_2">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>221</width>
+        <height>121</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="0" column="1">
+        <widget class="QLabel" name="label_15">
+         <property name="text">
+          <string>26.9</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2">
+        <widget class="QLabel" name="label_18">
+         <property name="text">
+          <string>[°C]</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_14">
+         <property name="text">
+          <string>Tank Temp</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_19">
+         <property name="text">
+          <string>Hose Pressure</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="2">
+        <widget class="QLabel" name="label_23">
+         <property name="text">
+          <string>[hPa]</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLabel" name="label_22">
+         <property name="text">
+          <string>1013</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="label_24">
+         <property name="text">
+          <string>Hose Temp</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="2">
+        <widget class="QLabel" name="label_26">
+         <property name="text">
+          <string>[°C]</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="label_85">
+         <property name="text">
+          <string>Rocket Weight</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QLabel" name="label_25">
+         <property name="text">
+          <string>45</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QLabel" name="label_86">
+         <property name="text">
+          <string>5.7</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="2">
+        <widget class="QLabel" name="label_87">
+         <property name="text">
+          <string>[kg]</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
     </widget>
-    <widget class="QLabel" name="label_64">
-     <property name="geometry">
-      <rect>
-       <x>120</x>
-       <y>390</y>
-       <width>68</width>
-       <height>19</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Waiting</string>
-     </property>
-    </widget>
-    <widget class="QProgressBar" name="file_transmission_progress_bar">
-     <property name="geometry">
-      <rect>
-       <x>30</x>
-       <y>220</y>
-       <width>231</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QProgressBar {
-	color: white;
-	font: 16pt &quot;Times New Roman&quot;;
-}
-QProgressBar:horizontal {
-	border: 1px solid gray;
-	border-radius: 10px;
-	background: black;
-	padding: 1px;
-    text-align: center;
-}
-QProgressBar::chunk:horizontal {
-	background: qlineargradient(x1: 0, y1: 0.5, x2: 1, y2: 		0.5, stop: 0 rgb(39, 68, 255), stop: 1 rgb(255, 38, 114));
-	border-radius: 10px;
-}</string>
-     </property>
-     <property name="value">
-      <number>24</number>
-     </property>
-     <property name="format">
-      <string>%v / %m</string>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QWidget" name="GSE">
-    <attribute name="title">
-     <string>GSE</string>
-    </attribute>
     <widget class="QGroupBox" name="groupBox_3">
      <property name="geometry">
       <rect>
-       <x>50</x>
-       <y>30</y>
-       <width>341</width>
-       <height>281</height>
+       <x>560</x>
+       <y>20</y>
+       <width>251</width>
+       <height>211</height>
       </rect>
      </property>
      <property name="title">
@@ -2259,177 +2325,12 @@ border-color: rgb(0, 0, 127);</string>
       </property>
      </widget>
     </widget>
-    <widget class="QPushButton" name="valve_button">
-     <property name="geometry">
-      <rect>
-       <x>440</x>
-       <y>80</y>
-       <width>121</width>
-       <height>71</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QPushButton{
-qproperty-icon: url(:/assets/valve.png);
-qproperty-iconSize: 54px;
-font: 18pt &quot;MS Shell Dlg 2&quot;;
-border: 2px solid;
-border-color: rgb(215, 237, 252);
-border-radius: 10px;
-}
-QPushButton:hover {
-background-color: rgb(35, 35, 35); 
-border: 3px solid;
-border-color: rgb(215, 237, 252);
-}
-QPushButton:pressed {
-border: 4px solid;
-border-color: rgb(92, 242, 135);
-}
-</string>
-     </property>
-     <property name="text">
-      <string>Valve</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="pushButton_5">
-     <property name="geometry">
-      <rect>
-       <x>590</x>
-       <y>100</y>
-       <width>81</width>
-       <height>71</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QPushButton{
-qproperty-icon: url(:/assets/send.png);
-qproperty-iconSize: 54px;
-border-radius: 20px;
-}
-QPushButton:hover {
-background-color: rgb(35, 35, 35); 
-qproperty-iconSize: 64px;
-}
-QPushButton:pressed {
-background-color: rgb(16, 16, 16);
-}
-</string>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
-    <widget class="QWidget" name="gridLayoutWidget_2">
-     <property name="geometry">
-      <rect>
-       <x>130</x>
-       <y>340</y>
-       <width>186</width>
-       <height>101</height>
-      </rect>
-     </property>
-     <layout class="QGridLayout" name="gridLayout">
-      <item row="0" column="2">
-       <widget class="QLabel" name="label_9">
-        <property name="text">
-         <string>[m]</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="label_3">
-        <property name="text">
-         <string>Longitude</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="label_4">
-        <property name="text">
-         <string>Latitude</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="2">
-       <widget class="QLabel" name="label_11">
-        <property name="styleSheet">
-         <string notr="true">color: rgb(255, 255, 255);</string>
-        </property>
-        <property name="text">
-         <string>°</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1">
-       <widget class="QLabel" name="label_5">
-        <property name="text">
-         <string>12</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0">
-       <widget class="QLabel" name="label_2">
-        <property name="text">
-         <string>Altitude</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="2">
-       <widget class="QLabel" name="label_10">
-        <property name="text">
-         <string>[°C]</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QLabel" name="label_7">
-        <property name="text">
-         <string>25</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1">
-       <widget class="QLabel" name="label_8">
-        <property name="text">
-         <string>8</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-    <widget class="QLabel" name="label_61">
-     <property name="geometry">
-      <rect>
-       <x>590</x>
-       <y>40</y>
-       <width>111</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Enter password</string>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="lineEdit_3">
-     <property name="geometry">
-      <rect>
-       <x>590</x>
-       <y>70</y>
-       <width>113</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
     <widget class="QGroupBox" name="groupBox_5">
      <property name="geometry">
       <rect>
-       <x>740</x>
-       <y>70</y>
-       <width>181</width>
+       <x>820</x>
+       <y>20</y>
+       <width>211</width>
        <height>311</height>
       </rect>
      </property>
@@ -2441,7 +2342,7 @@ background-color: rgb(16, 16, 16);
        <rect>
         <x>10</x>
         <y>30</y>
-        <width>131</width>
+        <width>161</width>
         <height>276</height>
        </rect>
       </property>
@@ -2449,56 +2350,56 @@ background-color: rgb(16, 16, 16);
        <item row="1" column="0">
         <widget class="QLabel" name="label_68">
          <property name="text">
-          <string>Calibration</string>
+          <string>Fill Valve init</string>
          </property>
         </widget>
        </item>
        <item row="6" column="0">
         <widget class="QLabel" name="label_70">
          <property name="text">
-          <string>1st Event</string>
+          <string>Purge Open</string>
          </property>
         </widget>
        </item>
        <item row="7" column="0">
         <widget class="QLabel" name="label_71">
          <property name="text">
-          <string>2nd Event</string>
+          <string>Purge Close</string>
          </property>
         </widget>
        </item>
        <item row="5" column="0">
         <widget class="QLabel" name="label_72">
          <property name="text">
-          <string>Coast</string>
+          <string>Fill Close</string>
          </property>
         </widget>
        </item>
        <item row="0" column="0">
         <widget class="QLabel" name="label_73">
          <property name="text">
-          <string>Sleep</string>
+          <string>Purge Valve init</string>
          </property>
         </widget>
        </item>
        <item row="3" column="0">
         <widget class="QLabel" name="label_74">
          <property name="text">
-          <string>Filling</string>
+          <string>Fill Open</string>
          </property>
         </widget>
        </item>
        <item row="4" column="0">
         <widget class="QLabel" name="label_75">
          <property name="text">
-          <string>Lift off</string>
+          <string>Filling ...</string>
          </property>
         </widget>
        </item>
        <item row="2" column="0">
         <widget class="QLabel" name="label_76">
          <property name="text">
-          <string>IDLE</string>
+          <string>Ready for filling</string>
          </property>
         </widget>
        </item>
@@ -2587,7 +2488,7 @@ background-color: rgb(16, 16, 16);
      <widget class="QSlider" name="verticalSlider_6">
       <property name="geometry">
        <rect>
-        <x>150</x>
+        <x>180</x>
         <y>40</y>
         <width>22</width>
         <height>251</height>
@@ -2613,42 +2514,181 @@ background-color: rgb(16, 16, 16);
       </property>
      </widget>
     </widget>
-    <widget class="QTextBrowser" name="textBrowser">
+   </widget>
+   <widget class="QWidget" name="tab_4">
+    <attribute name="title">
+     <string>Payload Image</string>
+    </attribute>
+    <widget class="QGroupBox" name="groupBox">
      <property name="geometry">
       <rect>
-       <x>450</x>
-       <y>170</y>
-       <width>256</width>
-       <height>61</height>
+       <x>20</x>
+       <y>50</y>
+       <width>261</width>
+       <height>161</height>
       </rect>
      </property>
-     <property name="html">
-      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;hello&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <property name="title">
+      <string>File Transmission</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_9">
+      <item row="2" column="0">
+       <widget class="QLabel" name="transmitter_state_label">
+        <property name="minimumSize">
+         <size>
+          <width>140</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>1241251</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Transmitter State</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLabel" name="transmitter_state_panel">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="receiver_state_label">
+        <property name="minimumSize">
+         <size>
+          <width>140</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>212411</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Receiver State</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLabel" name="receiver_state_panel">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="lionel_label">
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 0, 0);</string>
+        </property>
+        <property name="text">
+         <string>Test </string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QLabel" name="image_lio">
+     <property name="geometry">
+      <rect>
+       <x>300</x>
+       <y>10</y>
+       <width>701</width>
+       <height>431</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">image: url(:/assets/ERT.jpg);</string>
+     </property>
+     <property name="text">
+      <string/>
      </property>
     </widget>
-    <widget class="QPlainTextEdit" name="plainTextEdit">
+    <widget class="QPushButton" name="file_transmission_button">
      <property name="geometry">
       <rect>
-       <x>450</x>
-       <y>250</y>
-       <width>104</width>
-       <height>71</height>
+       <x>40</x>
+       <y>270</y>
+       <width>171</width>
+       <height>151</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+qproperty-icon: url(:/assets/PLimg.png);
+qproperty-iconSize: 154px;
+font: 18pt &quot;MS Shell Dlg 2&quot;;
+border: 2px solid;
+border-color: rgb(215, 237, 252);
+border-radius: 10px;
+}
+QPushButton:hover {
+background-color: rgb(35, 35, 35); 
+border: 3px solid;
+border-color: rgb(215, 237, 252);
+}
+QPushButton:pressed {
+border: 4px solid;
+border-color: rgb(92, 242, 135);
+}
+</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
     </widget>
-    <widget class="QTextEdit" name="textEdit">
+    <widget class="QLabel" name="label_64">
      <property name="geometry">
       <rect>
-       <x>440</x>
-       <y>350</y>
-       <width>104</width>
-       <height>71</height>
+       <x>120</x>
+       <y>390</y>
+       <width>68</width>
+       <height>19</height>
       </rect>
+     </property>
+     <property name="text">
+      <string>Waiting</string>
+     </property>
+    </widget>
+    <widget class="QProgressBar" name="file_transmission_progress_bar">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>220</y>
+       <width>231</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QProgressBar {
+	color: white;
+	font: 16pt &quot;Times New Roman&quot;;
+}
+QProgressBar:horizontal {
+	border: 1px solid gray;
+	border-radius: 10px;
+	background: black;
+	padding: 1px;
+    text-align: center;
+}
+QProgressBar::chunk:horizontal {
+	background: qlineargradient(x1: 0, y1: 0.5, x2: 1, y2: 		0.5, stop: 0 rgb(39, 68, 255), stop: 1 rgb(255, 38, 114));
+	border-radius: 10px;
+}</string>
+     </property>
+     <property name="value">
+      <number>24</number>
+     </property>
+     <property name="format">
+      <string>%v / %m</string>
      </property>
     </widget>
    </widget>
