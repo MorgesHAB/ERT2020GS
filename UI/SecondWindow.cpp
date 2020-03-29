@@ -322,6 +322,7 @@ void SecondWindow::initialize_slots_signals()
     connect(file_transmission_button, SIGNAL(pressed()), this, SLOT(file_transmission_pressed()));
     connect(valve_button,SIGNAL(pressed()), this, SLOT(valve_control()));
     connect(play_music,SIGNAL(pressed()), this, SLOT(play_music_pressed()));
+    connect(rssi_button,SIGNAL(pressed()), this, SLOT(rssi_get_pressed()));
 }
 
 void SecondWindow::refresh_telemetry()
@@ -441,6 +442,10 @@ void SecondWindow::play_music_pressed() {
         m_player->stop();
 #endif
     }
+}
+
+void SecondWindow::rssi_get_pressed() {
+    data_->setData(ui_interface::RSSI_READ_ORDER, true);
 }
 
 #ifdef SOUND_ON

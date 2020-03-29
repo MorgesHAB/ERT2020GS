@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1228</width>
-    <height>860</height>
+    <width>1229</width>
+    <height>862</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -308,8 +308,8 @@ gridline-color: rgb(255, 0, 0);</string>
         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2'; font-size:12pt;&quot;&gt;The GSE informs you that you are entering the wrong code - No Ignition - Permission denied&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;The GSE informs you that you are entering the wrong code - No Ignition - Permission denied&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
      </widget>
@@ -426,6 +426,12 @@ background-color: rgb(16, 16, 16);
       <layout class="QGridLayout" name="gridLayout_12">
        <item row="3" column="1">
         <widget class="QProgressBar" name="progressBar_4">
+         <property name="maximumSize">
+          <size>
+           <width>274</width>
+           <height>21</height>
+          </size>
+         </property>
          <property name="styleSheet">
           <string notr="true">QProgressBar {
 	color: white;
@@ -712,6 +718,12 @@ QProgressBar::chunk:horizontal {
        </item>
        <item row="3" column="1">
         <widget class="QLabel" name="corrupted_panel">
+         <property name="maximumSize">
+          <size>
+           <width>144</width>
+           <height>23</height>
+          </size>
+         </property>
          <property name="text">
           <string>1</string>
          </property>

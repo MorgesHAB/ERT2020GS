@@ -34,6 +34,7 @@ public slots:
     void file_transmission_pressed();
     void valve_control();
     void play_music_pressed();
+    void rssi_get_pressed();
 
 private:
     enum Theme {WHITE_ON_BLACK = 0, GREEN_ON_BLACK, BLACK_ON_WHITE, THEME_COUNT};

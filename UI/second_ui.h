@@ -1,24 +1,21 @@
 /********************************************************************************
-** Form generated from reading UI file 'LioTestZT2885.ui'
+** Form generated from reading UI file 'LioTestMFcKQi.ui'
 **
-** Created by: Qt User Interface Compiler version 5.9.5
+** Created by: Qt User Interface Compiler version 5.11.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef LIOTESTZT2885_H
-#define LIOTESTZT2885_H
+#ifndef LIOTESTMFCKQI_H
+#define LIOTESTMFCKQI_H
 
 #include <QtCore/QVariant>
-#include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHBoxLayout>
-#include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLCDNumber>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
@@ -81,7 +78,7 @@ public:
     QLabel *corrupted_label;
     QLabel *corrupted_panel;
     QSlider *verticalSlider_16;
-    QPushButton *valve_button_2;
+    QPushButton *rssi_button;
     QLabel *label_31;
     QLCDNumber *rssi_value;
     QWidget *tab;
@@ -252,7 +249,7 @@ public:
     {
         if (second_ui->objectName().isEmpty())
             second_ui->setObjectName(QStringLiteral("second_ui"));
-        second_ui->resize(1228, 860);
+        second_ui->resize(1229, 862);
         second_ui->setMinimumSize(QSize(600, 0));
         second_ui->setMaximumSize(QSize(9999, 9999));
         second_ui->setMouseTracking(false);
@@ -396,6 +393,7 @@ public:
         gridLayout_12->setContentsMargins(0, 0, 0, 0);
         progressBar_4 = new QProgressBar(gridLayoutWidget_3);
         progressBar_4->setObjectName(QStringLiteral("progressBar_4"));
+        progressBar_4->setMaximumSize(QSize(274, 21));
         progressBar_4->setStyleSheet(QLatin1String("QProgressBar {\n"
                                                    "	color: white;\n"
                                                    "}\n"
@@ -582,6 +580,7 @@ public:
 
         corrupted_panel = new QLabel(gridLayoutWidget_4);
         corrupted_panel->setObjectName(QStringLiteral("corrupted_panel"));
+        corrupted_panel->setMaximumSize(QSize(144, 23));
         corrupted_panel->setAlignment(Qt::AlignCenter);
 
         gridLayout_10->addWidget(corrupted_panel, 3, 1, 1, 1);
@@ -608,27 +607,27 @@ public:
         verticalSlider_16->setOrientation(Qt::Vertical);
         verticalSlider_16->setTickPosition(QSlider::TicksBelow);
         verticalSlider_16->setTickInterval(0);
-        valve_button_2 = new QPushButton(Ignition);
-        valve_button_2->setObjectName(QStringLiteral("valve_button_2"));
-        valve_button_2->setGeometry(QRect(900, 10, 81, 41));
-        valve_button_2->setStyleSheet(QLatin1String("QPushButton{\n"
-                                                    "qproperty-icon: url(:/assets/rssi.png);\n"
-                                                    "qproperty-iconSize: 25px;\n"
-                                                    "font: 14pt \"MS Shell Dlg 2\";\n"
-                                                    "border: 1px solid;\n"
-                                                    "border-color: rgb(215, 237, 252);\n"
-                                                    "border-radius: 10px;\n"
-                                                    "}\n"
-                                                    "QPushButton:hover {\n"
-                                                    "background-color: rgb(35, 35, 35); \n"
-                                                    "border: 2px solid;\n"
-                                                    "border-color: rgb(215, 237, 252);\n"
-                                                    "}\n"
-                                                    "QPushButton:pressed {\n"
-                                                    "border: 3px solid;\n"
-                                                    "border-color: rgb(92, 242, 135);\n"
-                                                    "}\n"
-                                                    ""));
+        rssi_button = new QPushButton(Ignition);
+        rssi_button->setObjectName(QStringLiteral("rssi_button"));
+        rssi_button->setGeometry(QRect(900, 10, 81, 41));
+        rssi_button->setStyleSheet(QLatin1String("QPushButton{\n"
+                                                 "qproperty-icon: url(:/assets/rssi.png);\n"
+                                                 "qproperty-iconSize: 25px;\n"
+                                                 "font: 14pt \"MS Shell Dlg 2\";\n"
+                                                 "border: 1px solid;\n"
+                                                 "border-color: rgb(215, 237, 252);\n"
+                                                 "border-radius: 10px;\n"
+                                                 "}\n"
+                                                 "QPushButton:hover {\n"
+                                                 "background-color: rgb(35, 35, 35); \n"
+                                                 "border: 2px solid;\n"
+                                                 "border-color: rgb(215, 237, 252);\n"
+                                                 "}\n"
+                                                 "QPushButton:pressed {\n"
+                                                 "border: 3px solid;\n"
+                                                 "border-color: rgb(92, 242, 135);\n"
+                                                 "}\n"
+                                                 ""));
         label_31 = new QLabel(Ignition);
         label_31->setObjectName(QStringLiteral("label_31"));
         label_31->setGeometry(QRect(960, 290, 61, 31));
@@ -643,7 +642,7 @@ public:
         groupBox_4->raise();
         groupBox_7->raise();
         verticalSlider_16->raise();
-        valve_button_2->raise();
+        rssi_button->raise();
         label_31->raise();
         tab = new QWidget();
         tab->setObjectName(QStringLiteral("tab"));
@@ -652,6 +651,10 @@ public:
         label_12->setGeometry(QRect(20, 10, 181, 20));
         label_12->setStyleSheet(QStringLiteral("color: rgb(221, 242, 255);"));
         serialport_selector = new QComboBox(tab);
+        serialport_selector->addItem(QString());
+        serialport_selector->addItem(QString());
+        serialport_selector->addItem(QString());
+        serialport_selector->addItem(QString());
         serialport_selector->setObjectName(QStringLiteral("serialport_selector"));
         serialport_selector->setGeometry(QRect(20, 50, 131, 25));
         valve_button = new QPushButton(tab);
@@ -1449,7 +1452,7 @@ public:
         groupBox_8->setGeometry(QRect(20, 20, 241, 151));
         gridLayoutWidget_6 = new QWidget(groupBox_8);
         gridLayoutWidget_6->setObjectName(QStringLiteral("gridLayoutWidget_6"));
-        gridLayoutWidget_6->setGeometry(QRect(10, 30, 221, 61));
+        gridLayoutWidget_6->setGeometry(QRect(10, 30, 221, 66));
         gridLayout_4 = new QGridLayout(gridLayoutWidget_6);
         gridLayout_4->setObjectName(QStringLiteral("gridLayout_4"));
         gridLayout_4->setContentsMargins(0, 0, 0, 0);
@@ -1545,7 +1548,6 @@ public:
                                                   "QPushButton:hover {\n"
                                                   "background-color: rgb(10, 0, 0); \n"
                                                   "qproperty-iconSize: 64px;\n"
-                                                  "title: \"Hello\";\n"
                                                   "}\n"
                                                   "QPushButton:pressed {\n"
                                                   "background-color: rgb(16, 16, 16);\n"
@@ -1582,8 +1584,8 @@ public:
 
         retranslateUi(second_ui);
 
-        tabWidget->setCurrentIndex(2);
-        tabWidget_2->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(0);
+        tabWidget_2->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(second_ui);
@@ -1591,160 +1593,158 @@ public:
 
     void retranslateUi(QWidget *second_ui)
     {
-        second_ui->setWindowTitle(QApplication::translate("second_ui", "GSBellaLui2020", Q_NULLPTR));
+        second_ui->setWindowTitle(QApplication::translate("second_ui", "GSBellaLui2020", nullptr));
 #ifndef QT_NO_TOOLTIP
-        logo->setToolTip(QApplication::translate("second_ui", "<html><head/><body><p>Project Bella Lui 2020</p></body></html>", Q_NULLPTR));
+        logo->setToolTip(QApplication::translate("second_ui", "<html><head/><body><p>Project Bella Lui 2020</p></body></html>", nullptr));
 #endif // QT_NO_TOOLTIP
         logo->setText(QString());
-        groupBox_4->setTitle(QApplication::translate("second_ui", "Ignition", Q_NULLPTR));
-        groupBox->setTitle(QApplication::translate("second_ui", "Circuit", Q_NULLPTR));
-        label_69->setText(QApplication::translate("second_ui", "COO key", Q_NULLPTR));
+        groupBox_4->setTitle(QApplication::translate("second_ui", "Ignition", nullptr));
+        groupBox->setTitle(QApplication::translate("second_ui", "Circuit", nullptr));
+        label_69->setText(QApplication::translate("second_ui", "COO key", nullptr));
         ignition_key2->setText(QString());
         ignition_key1->setText(QString());
         red_button->setText(QString());
-        label_67->setText(QApplication::translate("second_ui", "CTO key", Q_NULLPTR));
+        label_67->setText(QApplication::translate("second_ui", "CTO key", nullptr));
 #ifndef QT_NO_TOOLTIP
-        frame->setToolTip(QApplication::translate("second_ui", "<html><head/><body><p>Ignition Code on GST</p></body></html>", Q_NULLPTR));
+        frame->setToolTip(QApplication::translate("second_ui", "<html><head/><body><p>Ignition Code on GST</p></body></html>", nullptr));
 #endif // QT_NO_TOOLTIP
-        code_3->setText(QApplication::translate("second_ui", "1", Q_NULLPTR));
+        code_3->setText(QApplication::translate("second_ui", "1", nullptr));
 #ifndef QT_NO_TOOLTIP
-        code_2->setToolTip(QApplication::translate("second_ui", "<html><head/><body><p><br/></p></body></html>", Q_NULLPTR));
+        code_2->setToolTip(QApplication::translate("second_ui", "<html><head/><body><p><br/></p></body></html>", nullptr));
 #endif // QT_NO_TOOLTIP
-        code_2->setText(QApplication::translate("second_ui", "0", Q_NULLPTR));
-        code_1->setText(QApplication::translate("second_ui", "0", Q_NULLPTR));
-        code_0->setText(QApplication::translate("second_ui", "1", Q_NULLPTR));
-        groupBox_9->setTitle(QApplication::translate("second_ui", "Info", Q_NULLPTR));
+        code_2->setText(QApplication::translate("second_ui", "0", nullptr));
+        code_1->setText(QApplication::translate("second_ui", "0", nullptr));
+        code_0->setText(QApplication::translate("second_ui", "1", nullptr));
+        groupBox_9->setTitle(QApplication::translate("second_ui", "Info", nullptr));
         info_ignition->setHtml(QApplication::translate("second_ui", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
                                                                     "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
                                                                     "p, li { white-space: pre-wrap; }\n"
-                                                                    "</style></head><body style=\" font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
-                                                                    "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2'; font-size:12pt;\">The GSE informs you that you are entering the wrong code - No Ignition - Permission denied</span></p></body></html>", Q_NULLPTR));
+                                                                    "</style></head><body style=\" font-family:'MS Shell Dlg 2'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
+                                                                    "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">The GSE informs you that you are entering the wrong code - No Ignition - Permission denied</p></body></html>", nullptr));
         ready_ignit_button->setText(QString());
-        groupBox_10->setTitle(QApplication::translate("second_ui", "State", Q_NULLPTR));
-        ignition_status_label->setText(QApplication::translate("second_ui", "Ignition", Q_NULLPTR));
+        groupBox_10->setTitle(QApplication::translate("second_ui", "State", nullptr));
+        ignition_status_label->setText(QApplication::translate("second_ui", "Ignition", nullptr));
         ignition_state_icon->setText(QString());
-        groupBox_7->setTitle(QApplication::translate("second_ui", "Communication Rate", Q_NULLPTR));
-        progressBar_4->setFormat(QApplication::translate("second_ui", "%v", Q_NULLPTR));
-        label_20->setText(QApplication::translate("second_ui", "GSE", Q_NULLPTR));
-        label_6->setText(QApplication::translate("second_ui", "Number of packets received per second", Q_NULLPTR));
-        progressBar_9->setFormat(QApplication::translate("second_ui", "%v", Q_NULLPTR));
-        label_21->setText(QApplication::translate("second_ui", "PP", Q_NULLPTR));
-        progressBar_5->setFormat(QApplication::translate("second_ui", "%v", Q_NULLPTR));
-        progressBar_8->setFormat(QApplication::translate("second_ui", "%v", Q_NULLPTR));
-        label_16->setText(QApplication::translate("second_ui", "AV", Q_NULLPTR));
-        label_17->setText(QApplication::translate("second_ui", "PL", Q_NULLPTR));
-        all_packet_rate->setFormat(QApplication::translate("second_ui", "%v", Q_NULLPTR));
-        label_88->setText(QApplication::translate("second_ui", "All", Q_NULLPTR));
+        groupBox_7->setTitle(QApplication::translate("second_ui", "Communication Rate", nullptr));
+        progressBar_4->setFormat(QApplication::translate("second_ui", "%v", nullptr));
+        label_20->setText(QApplication::translate("second_ui", "GSE", nullptr));
+        label_6->setText(QApplication::translate("second_ui", "Number of packets received per second", nullptr));
+        progressBar_9->setFormat(QApplication::translate("second_ui", "%v", nullptr));
+        label_21->setText(QApplication::translate("second_ui", "PP", nullptr));
+        progressBar_5->setFormat(QApplication::translate("second_ui", "%v", nullptr));
+        progressBar_8->setFormat(QApplication::translate("second_ui", "%v", nullptr));
+        label_16->setText(QApplication::translate("second_ui", "AV", nullptr));
+        label_17->setText(QApplication::translate("second_ui", "PL", nullptr));
+        all_packet_rate->setFormat(QApplication::translate("second_ui", "%v", nullptr));
+        label_88->setText(QApplication::translate("second_ui", "All", nullptr));
 #ifndef QT_NO_TOOLTIP
-        miss_label->setToolTip(QApplication::translate("second_ui", "<html><head/><body><p>Lost packets in last 2 seconds</p></body></html>", Q_NULLPTR));
+        miss_label->setToolTip(QApplication::translate("second_ui", "<html><head/><body><p>Lost packets in last 2 seconds</p></body></html>", nullptr));
 #endif // QT_NO_TOOLTIP
-        miss_label->setText(QApplication::translate("second_ui", "Misses", Q_NULLPTR));
+        miss_label->setText(QApplication::translate("second_ui", "Misses", nullptr));
 #ifndef QT_NO_TOOLTIP
-        miss_panel->setToolTip(QApplication::translate("second_ui", "<html><head/><body><p>Lost packets in last 2 seconds</p></body></html>", Q_NULLPTR));
+        miss_panel->setToolTip(QApplication::translate("second_ui", "<html><head/><body><p>Lost packets in last 2 seconds</p></body></html>", nullptr));
 #endif // QT_NO_TOOLTIP
-        miss_panel->setText(QApplication::translate("second_ui", "4", Q_NULLPTR));
+        miss_panel->setText(QApplication::translate("second_ui", "4", nullptr));
 #ifndef QT_NO_TOOLTIP
-        last_refresh_panel->setToolTip(QApplication::translate("second_ui", "<html><head/><body><p>Last packet's timestamp</p></body></html>", Q_NULLPTR));
+        last_refresh_panel->setToolTip(QApplication::translate("second_ui", "<html><head/><body><p>Last packet's timestamp</p></body></html>", nullptr));
 #endif // QT_NO_TOOLTIP
-        last_refresh_panel->setText(QApplication::translate("second_ui", "2:32", Q_NULLPTR));
+        last_refresh_panel->setText(QApplication::translate("second_ui", "2:32", nullptr));
 #ifndef QT_NO_TOOLTIP
-        received_pack_cnt_label->setToolTip(QApplication::translate("second_ui", "<html><head/><body><p>The count of the received packets from the start of the program</p></body></html>", Q_NULLPTR));
+        received_pack_cnt_label->setToolTip(QApplication::translate("second_ui", "<html><head/><body><p>The count of the received packets from the start of the program</p></body></html>", nullptr));
 #endif // QT_NO_TOOLTIP
-        received_pack_cnt_label->setText(QApplication::translate("second_ui", "Received Packet Count", Q_NULLPTR));
+        received_pack_cnt_label->setText(QApplication::translate("second_ui", "Received Packet Count", nullptr));
 #ifndef QT_NO_TOOLTIP
-        received_pack_cnt_panel->setToolTip(QApplication::translate("second_ui", "<html><head/><body><p>The count of the received packets from the start of the program</p></body></html>", Q_NULLPTR));
+        received_pack_cnt_panel->setToolTip(QApplication::translate("second_ui", "<html><head/><body><p>The count of the received packets from the start of the program</p></body></html>", nullptr));
 #endif // QT_NO_TOOLTIP
-        received_pack_cnt_panel->setText(QApplication::translate("second_ui", "13442", Q_NULLPTR));
+        received_pack_cnt_panel->setText(QApplication::translate("second_ui", "13442", nullptr));
 #ifndef QT_NO_TOOLTIP
-        last_refresh_label->setToolTip(QApplication::translate("second_ui", "<html><head/><body><p>Last packet's timestamp</p></body></html>", Q_NULLPTR));
+        last_refresh_label->setToolTip(QApplication::translate("second_ui", "<html><head/><body><p>Last packet's timestamp</p></body></html>", nullptr));
 #endif // QT_NO_TOOLTIP
-        last_refresh_label->setText(QApplication::translate("second_ui", "Time since last packet", Q_NULLPTR));
-        corrupted_label->setText(QApplication::translate("second_ui", "Corrupted Packets", Q_NULLPTR));
-        corrupted_panel->setText(QApplication::translate("second_ui", "1", Q_NULLPTR));
+        last_refresh_label->setText(QApplication::translate("second_ui", "Time since last packet", nullptr));
+        corrupted_label->setText(QApplication::translate("second_ui", "Corrupted Packets", nullptr));
+        corrupted_panel->setText(QApplication::translate("second_ui", "1", nullptr));
 #ifndef QT_NO_TOOLTIP
-        valve_button_2->setToolTip(QApplication::translate("second_ui", "<html><head/><body><p>Get RSSI</p></body></html>", Q_NULLPTR));
+        rssi_button->setToolTip(QApplication::translate("second_ui", "<html><head/><body><p>Get RSSI</p></body></html>", nullptr));
 #endif // QT_NO_TOOLTIP
-        valve_button_2->setText(QApplication::translate("second_ui", "RSSI", Q_NULLPTR));
-        label_31->setText(QApplication::translate("second_ui", " [dBm]", Q_NULLPTR));
-        tabWidget->setTabText(tabWidget->indexOf(Ignition), QApplication::translate("second_ui", "Ignition - RF Control", Q_NULLPTR));
-        label_12->setText(QApplication::translate("second_ui", "Serial port selection", Q_NULLPTR));
-        serialport_selector->clear();
-        serialport_selector->insertItems(0, QStringList()
-                                                << QApplication::translate("second_ui", "ttyUSB0", Q_NULLPTR)
-                                                << QApplication::translate("second_ui", "ttyUSB1", Q_NULLPTR)
-                                                << QApplication::translate("second_ui", "ttyS3", Q_NULLPTR)
-                                                << QApplication::translate("second_ui", "ttyS6", Q_NULLPTR)
-                                         );
-        valve_button->setText(QApplication::translate("second_ui", "Valve", Q_NULLPTR));
-        label_61->setText(QApplication::translate("second_ui", "Enter password", Q_NULLPTR));
+        rssi_button->setText(QApplication::translate("second_ui", "RSSI", nullptr));
+        label_31->setText(QApplication::translate("second_ui", " [dBm]", nullptr));
+        tabWidget->setTabText(tabWidget->indexOf(Ignition), QApplication::translate("second_ui", "Ignition - RF Control", nullptr));
+        label_12->setText(QApplication::translate("second_ui", "Serial port selection", nullptr));
+        serialport_selector->setItemText(0, QApplication::translate("second_ui", "ttyUSB0", nullptr));
+        serialport_selector->setItemText(1, QApplication::translate("second_ui", "ttyUSB1", nullptr));
+        serialport_selector->setItemText(2, QApplication::translate("second_ui", "ttyS3", nullptr));
+        serialport_selector->setItemText(3, QApplication::translate("second_ui", "ttyS6", nullptr));
+
+        valve_button->setText(QApplication::translate("second_ui", "Valve", nullptr));
+        label_61->setText(QApplication::translate("second_ui", "Enter password", nullptr));
         lineEdit_3->setText(QString());
-        change_theme->setText(QApplication::translate("second_ui", "Change Color Theme", Q_NULLPTR));
+        change_theme->setText(QApplication::translate("second_ui", "Change Color Theme", nullptr));
 #ifndef QT_NO_TOOLTIP
-        reset_button->setToolTip(QApplication::translate("second_ui", "Resets saved data", Q_NULLPTR));
+        reset_button->setToolTip(QApplication::translate("second_ui", "Resets saved data", nullptr));
 #endif // QT_NO_TOOLTIP
-        reset_button->setText(QApplication::translate("second_ui", "Reset", Q_NULLPTR));
-        xbee_button->setText(QApplication::translate("second_ui", "START XBee", Q_NULLPTR));
-        tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("second_ui", "Config", Q_NULLPTR));
-        lineEdit->setText(QApplication::translate("second_ui", "ERT2020GS", Q_NULLPTR));
+        reset_button->setText(QApplication::translate("second_ui", "Reset", nullptr));
+        xbee_button->setText(QApplication::translate("second_ui", "START XBee", nullptr));
+        tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("second_ui", "Config", nullptr));
+        lineEdit->setText(QApplication::translate("second_ui", "ERT2020GS", nullptr));
 #ifndef QT_NO_TOOLTIP
-        play_music->setToolTip(QApplication::translate("second_ui", "<html><head/><body><p>Send message</p></body></html>", Q_NULLPTR));
+        play_music->setToolTip(QApplication::translate("second_ui", "<html><head/><body><p>Send message</p></body></html>", nullptr));
 #endif // QT_NO_TOOLTIP
         play_music->setText(QString());
-        tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("second_ui", "Music", Q_NULLPTR));
-        gps_box->setTitle(QApplication::translate("second_ui", "GPS", Q_NULLPTR));
-        longitude_label->setText(QApplication::translate("second_ui", "Longitude", Q_NULLPTR));
-        sat_nbr_label->setText(QApplication::translate("second_ui", "Satellites", Q_NULLPTR));
-        altitude_label_gps->setText(QApplication::translate("second_ui", "Altitude", Q_NULLPTR));
-        latitude_label->setText(QApplication::translate("second_ui", "Latitude", Q_NULLPTR));
+        tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("second_ui", "Music", nullptr));
+        gps_box->setTitle(QApplication::translate("second_ui", "GPS", nullptr));
+        longitude_label->setText(QApplication::translate("second_ui", "Longitude", nullptr));
+        sat_nbr_label->setText(QApplication::translate("second_ui", "Satellites", nullptr));
+        altitude_label_gps->setText(QApplication::translate("second_ui", "Altitude", nullptr));
+        latitude_label->setText(QApplication::translate("second_ui", "Latitude", nullptr));
         longitude_panel->setText(QString());
-        ft_unit_label_2->setText(QApplication::translate("second_ui", "ft", Q_NULLPTR));
-        hdop_label->setText(QApplication::translate("second_ui", "HDOP", Q_NULLPTR));
-        altitude_max_label->setText(QApplication::translate("second_ui", "Altitude max", Q_NULLPTR));
-        m_unit_label->setText(QApplication::translate("second_ui", "m", Q_NULLPTR));
-        m_unit_label_2->setText(QApplication::translate("second_ui", "m", Q_NULLPTR));
-        ft_unit_label->setText(QApplication::translate("second_ui", "ft", Q_NULLPTR));
+        ft_unit_label_2->setText(QApplication::translate("second_ui", "ft", nullptr));
+        hdop_label->setText(QApplication::translate("second_ui", "HDOP", nullptr));
+        altitude_max_label->setText(QApplication::translate("second_ui", "Altitude max", nullptr));
+        m_unit_label->setText(QApplication::translate("second_ui", "m", nullptr));
+        m_unit_label_2->setText(QApplication::translate("second_ui", "m", nullptr));
+        ft_unit_label->setText(QApplication::translate("second_ui", "ft", nullptr));
         latitude_panel->setText(QString());
         hdop_panel->setText(QString());
-        euler_box->setTitle(QApplication::translate("second_ui", "Euler angles", Q_NULLPTR));
+        euler_box->setTitle(QApplication::translate("second_ui", "Euler angles", nullptr));
         euler_x_panel->setText(QString());
-        euler_y_label->setText(QApplication::translate("second_ui", "Y", Q_NULLPTR));
-        euler_z_label->setText(QApplication::translate("second_ui", "Z", Q_NULLPTR));
-        euler_x_label->setText(QApplication::translate("second_ui", "X", Q_NULLPTR));
+        euler_y_label->setText(QApplication::translate("second_ui", "Y", nullptr));
+        euler_z_label->setText(QApplication::translate("second_ui", "Z", nullptr));
+        euler_x_label->setText(QApplication::translate("second_ui", "X", nullptr));
         euler_z_panel->setText(QString());
         euler_y_panel->setText(QString());
-        avionics_box->setTitle(QApplication::translate("second_ui", "Avionics Data", Q_NULLPTR));
-        temperature_label->setText(QApplication::translate("second_ui", "Temperature", Q_NULLPTR));
-        speed_label->setText(QApplication::translate("second_ui", "Speed", Q_NULLPTR));
-        altitude_label_telemetry->setText(QApplication::translate("second_ui", "Altitude", Q_NULLPTR));
+        avionics_box->setTitle(QApplication::translate("second_ui", "Avionics Data", nullptr));
+        temperature_label->setText(QApplication::translate("second_ui", "Temperature", nullptr));
+        speed_label->setText(QApplication::translate("second_ui", "Speed", nullptr));
+        altitude_label_telemetry->setText(QApplication::translate("second_ui", "Altitude", nullptr));
         speed_panel->setText(QString());
         temperature_panel->setText(QString());
         pressure_panel->setText(QString());
         altitude_panel_telemetry->setText(QString());
-        celcius_label->setText(QApplication::translate("second_ui", "<html><head/><body><p><span style=\" vertical-align:super;\">o</span>C</p></body></html>", Q_NULLPTR));
-        hpa_unit_label->setText(QApplication::translate("second_ui", "hPa", Q_NULLPTR));
-        pressure_label->setText(QApplication::translate("second_ui", "Pressure", Q_NULLPTR));
-        avionics_state_label->setText(QApplication::translate("second_ui", "AV. STATE", Q_NULLPTR));
-        m_s_unit_label->setText(QApplication::translate("second_ui", "m/s", Q_NULLPTR));
-        m_unit_label_3->setText(QApplication::translate("second_ui", "m", Q_NULLPTR));
+        celcius_label->setText(QApplication::translate("second_ui", "<html><head/><body><p><span style=\" vertical-align:super;\">o</span>C</p></body></html>", nullptr));
+        hpa_unit_label->setText(QApplication::translate("second_ui", "hPa", nullptr));
+        pressure_label->setText(QApplication::translate("second_ui", "Pressure", nullptr));
+        avionics_state_label->setText(QApplication::translate("second_ui", "AV. STATE", nullptr));
+        m_s_unit_label->setText(QApplication::translate("second_ui", "m/s", nullptr));
+        m_unit_label_3->setText(QApplication::translate("second_ui", "m", nullptr));
         avionics_state_panel->setText(QString());
-        accel_box->setTitle(QApplication::translate("second_ui", "Accelerometer", Q_NULLPTR));
-        accel_z_label->setText(QApplication::translate("second_ui", "Z", Q_NULLPTR));
-        accel_y_label->setText(QApplication::translate("second_ui", "Y", Q_NULLPTR));
-        accel_x_label->setText(QApplication::translate("second_ui", "X", Q_NULLPTR));
+        accel_box->setTitle(QApplication::translate("second_ui", "Accelerometer", nullptr));
+        accel_z_label->setText(QApplication::translate("second_ui", "Z", nullptr));
+        accel_y_label->setText(QApplication::translate("second_ui", "Y", nullptr));
+        accel_x_label->setText(QApplication::translate("second_ui", "X", nullptr));
         accel_z_panel->setText(QString());
         accel_x_panel->setText(QString());
         accel_y_panel->setText(QString());
-        label_28->setText(QApplication::translate("second_ui", "Norm", Q_NULLPTR));
+        label_28->setText(QApplication::translate("second_ui", "Norm", nullptr));
         label_63->setText(QString());
-        groupBox_2->setTitle(QApplication::translate("second_ui", "AV States", Q_NULLPTR));
-        label_33->setText(QApplication::translate("second_ui", "Calibration", Q_NULLPTR));
-        label_38->setText(QApplication::translate("second_ui", "1st Event", Q_NULLPTR));
-        label_39->setText(QApplication::translate("second_ui", "2nd Event", Q_NULLPTR));
-        label_37->setText(QApplication::translate("second_ui", "Coast", Q_NULLPTR));
-        label_32->setText(QApplication::translate("second_ui", "Sleep", Q_NULLPTR));
-        label_35->setText(QApplication::translate("second_ui", "Filling", Q_NULLPTR));
-        label_36->setText(QApplication::translate("second_ui", "Lift off", Q_NULLPTR));
-        label_34->setText(QApplication::translate("second_ui", "IDLE", Q_NULLPTR));
+        groupBox_2->setTitle(QApplication::translate("second_ui", "AV States", nullptr));
+        label_33->setText(QApplication::translate("second_ui", "Calibration", nullptr));
+        label_38->setText(QApplication::translate("second_ui", "1st Event", nullptr));
+        label_39->setText(QApplication::translate("second_ui", "2nd Event", nullptr));
+        label_37->setText(QApplication::translate("second_ui", "Coast", nullptr));
+        label_32->setText(QApplication::translate("second_ui", "Sleep", nullptr));
+        label_35->setText(QApplication::translate("second_ui", "Filling", nullptr));
+        label_36->setText(QApplication::translate("second_ui", "Lift off", nullptr));
+        label_34->setText(QApplication::translate("second_ui", "IDLE", nullptr));
         label_40->setText(QString());
         label_41->setText(QString());
         label_43->setText(QString());
@@ -1755,37 +1755,37 @@ public:
         label_50->setText(QString());
         label_59->setText(QString());
         label_42->setText(QString());
-        groupBox_6->setTitle(QApplication::translate("second_ui", "GSE Sensor Data", Q_NULLPTR));
-        label_15->setText(QApplication::translate("second_ui", "26.9", Q_NULLPTR));
-        label_18->setText(QApplication::translate("second_ui", "[\302\260C]", Q_NULLPTR));
-        label_14->setText(QApplication::translate("second_ui", "Tank Temp", Q_NULLPTR));
-        label_19->setText(QApplication::translate("second_ui", "Hose Pressure", Q_NULLPTR));
-        label_23->setText(QApplication::translate("second_ui", "[hPa]", Q_NULLPTR));
-        label_22->setText(QApplication::translate("second_ui", "1013", Q_NULLPTR));
-        label_24->setText(QApplication::translate("second_ui", "Hose Temp", Q_NULLPTR));
-        label_26->setText(QApplication::translate("second_ui", "[\302\260C]", Q_NULLPTR));
-        label_85->setText(QApplication::translate("second_ui", "Rocket Weight", Q_NULLPTR));
-        label_25->setText(QApplication::translate("second_ui", "45", Q_NULLPTR));
-        label_86->setText(QApplication::translate("second_ui", "5.7", Q_NULLPTR));
-        label_87->setText(QApplication::translate("second_ui", "[kg]", Q_NULLPTR));
-        groupBox_3->setTitle(QApplication::translate("second_ui", "GSE Control", Q_NULLPTR));
+        groupBox_6->setTitle(QApplication::translate("second_ui", "GSE Sensor Data", nullptr));
+        label_15->setText(QApplication::translate("second_ui", "26.9", nullptr));
+        label_18->setText(QApplication::translate("second_ui", "[\302\260C]", nullptr));
+        label_14->setText(QApplication::translate("second_ui", "Tank Temp", nullptr));
+        label_19->setText(QApplication::translate("second_ui", "Hose Pressure", nullptr));
+        label_23->setText(QApplication::translate("second_ui", "[hPa]", nullptr));
+        label_22->setText(QApplication::translate("second_ui", "1013", nullptr));
+        label_24->setText(QApplication::translate("second_ui", "Hose Temp", nullptr));
+        label_26->setText(QApplication::translate("second_ui", "[\302\260C]", nullptr));
+        label_85->setText(QApplication::translate("second_ui", "Rocket Weight", nullptr));
+        label_25->setText(QApplication::translate("second_ui", "45", nullptr));
+        label_86->setText(QApplication::translate("second_ui", "5.7", nullptr));
+        label_87->setText(QApplication::translate("second_ui", "[kg]", nullptr));
+        groupBox_3->setTitle(QApplication::translate("second_ui", "GSE Control", nullptr));
         pushButton_3->setText(QString());
         label_2->setText(QString());
-        pushButton_2->setText(QApplication::translate("second_ui", "Purge Valve", Q_NULLPTR));
+        pushButton_2->setText(QApplication::translate("second_ui", "Purge Valve", nullptr));
 #ifndef QT_NO_WHATSTHIS
-        pushButton->setWhatsThis(QApplication::translate("second_ui", "<html><head/><body><p><br/></p></body></html>", Q_NULLPTR));
+        pushButton->setWhatsThis(QApplication::translate("second_ui", "<html><head/><body><p><br/></p></body></html>", nullptr));
 #endif // QT_NO_WHATSTHIS
-        pushButton->setText(QApplication::translate("second_ui", "Open Fill Valve", Q_NULLPTR));
-        pushButton_4->setText(QApplication::translate("second_ui", "Disconnect filling wire", Q_NULLPTR));
-        groupBox_5->setTitle(QApplication::translate("second_ui", "GSE States", Q_NULLPTR));
-        label_68->setText(QApplication::translate("second_ui", "Fill Valve init", Q_NULLPTR));
-        label_70->setText(QApplication::translate("second_ui", "Purge Open", Q_NULLPTR));
-        label_71->setText(QApplication::translate("second_ui", "Purge Close", Q_NULLPTR));
-        label_72->setText(QApplication::translate("second_ui", "Fill Close", Q_NULLPTR));
-        label_73->setText(QApplication::translate("second_ui", "Purge Valve init", Q_NULLPTR));
-        label_74->setText(QApplication::translate("second_ui", "Fill Open", Q_NULLPTR));
-        label_75->setText(QApplication::translate("second_ui", "Filling ...", Q_NULLPTR));
-        label_76->setText(QApplication::translate("second_ui", "Ready for filling", Q_NULLPTR));
+        pushButton->setText(QApplication::translate("second_ui", "Open Fill Valve", nullptr));
+        pushButton_4->setText(QApplication::translate("second_ui", "Disconnect filling wire", nullptr));
+        groupBox_5->setTitle(QApplication::translate("second_ui", "GSE States", nullptr));
+        label_68->setText(QApplication::translate("second_ui", "Fill Valve init", nullptr));
+        label_70->setText(QApplication::translate("second_ui", "Purge Open", nullptr));
+        label_71->setText(QApplication::translate("second_ui", "Purge Close", nullptr));
+        label_72->setText(QApplication::translate("second_ui", "Fill Close", nullptr));
+        label_73->setText(QApplication::translate("second_ui", "Purge Valve init", nullptr));
+        label_74->setText(QApplication::translate("second_ui", "Fill Open", nullptr));
+        label_75->setText(QApplication::translate("second_ui", "Filling ...", nullptr));
+        label_76->setText(QApplication::translate("second_ui", "Ready for filling", nullptr));
         label_78->setText(QString());
         label_77->setText(QString());
         label_79->setText(QString());
@@ -1795,36 +1795,36 @@ public:
         label_84->setText(QString());
         label_83->setText(QString());
         label_30->setText(QString());
-        tabWidget_2->setTabText(tabWidget_2->indexOf(tab_3), QApplication::translate("second_ui", "AV - GSE - PL", Q_NULLPTR));
+        tabWidget_2->setTabText(tabWidget_2->indexOf(tab_3), QApplication::translate("second_ui", "AV - GSE - PL", nullptr));
         image_lio->setText(QString());
         file_transmission_button->setText(QString());
-        groupBox_8->setTitle(QApplication::translate("second_ui", "File Transmission", Q_NULLPTR));
-        transmitter_state_label->setText(QApplication::translate("second_ui", "Transmitter State", Q_NULLPTR));
-        receiver_state_label->setText(QApplication::translate("second_ui", "Receiver State", Q_NULLPTR));
+        groupBox_8->setTitle(QApplication::translate("second_ui", "File Transmission", nullptr));
+        transmitter_state_label->setText(QApplication::translate("second_ui", "Transmitter State", nullptr));
+        receiver_state_label->setText(QApplication::translate("second_ui", "Receiver State", nullptr));
         receiver_state_panel->setText(QString());
         transmitter_state_panel->setText(QString());
-        file_transmission_progress_bar->setFormat(QApplication::translate("second_ui", "%v / %m", Q_NULLPTR));
-        tabWidget_2->setTabText(tabWidget_2->indexOf(tab_4), QApplication::translate("second_ui", "Payload Image", Q_NULLPTR));
+        file_transmission_progress_bar->setFormat(QApplication::translate("second_ui", "%v / %m", nullptr));
+        tabWidget_2->setTabText(tabWidget_2->indexOf(tab_4), QApplication::translate("second_ui", "Payload Image", nullptr));
         label_29->setText(QString());
 #ifndef QT_NO_TOOLTIP
-        logo_2->setToolTip(QApplication::translate("second_ui", "<html><head/><body><p>Project Bella Lui 2020</p></body></html>", Q_NULLPTR));
+        logo_2->setToolTip(QApplication::translate("second_ui", "<html><head/><body><p>Project Bella Lui 2020</p></body></html>", nullptr));
 #endif // QT_NO_TOOLTIP
         logo_2->setText(QString());
 #ifndef QT_NO_TOOLTIP
-        logo_3->setToolTip(QApplication::translate("second_ui", "<html><head/><body><p>Project Bella Lui 2020</p></body></html>", Q_NULLPTR));
+        logo_3->setToolTip(QApplication::translate("second_ui", "<html><head/><body><p>Project Bella Lui 2020</p></body></html>", nullptr));
 #endif // QT_NO_TOOLTIP
         logo_3->setText(QString());
         label_62->setText(QString());
         antenna_img->setText(QString());
         label_60->setText(QString());
-        time_panel->setText(QApplication::translate("second_ui", "12:54:24", Q_NULLPTR));
+        time_panel->setText(QApplication::translate("second_ui", "12:54:24", nullptr));
         label_13->setText(QString());
 #ifndef QT_NO_TOOLTIP
-        pushButton_7->setToolTip(QApplication::translate("second_ui", "<html><head/><body><p>Start Xbee</p></body></html>", Q_NULLPTR));
+        pushButton_7->setToolTip(QApplication::translate("second_ui", "<html><head/><body><p>Start Xbee</p></body></html>", nullptr));
 #endif // QT_NO_TOOLTIP
         pushButton_7->setText(QString());
 #ifndef QT_NO_TOOLTIP
-        pushButton_5->setToolTip(QApplication::translate("second_ui", "<html><head/><body><p>Send message</p></body></html>", Q_NULLPTR));
+        pushButton_5->setToolTip(QApplication::translate("second_ui", "<html><head/><body><p>Send message</p></body></html>", nullptr));
 #endif // QT_NO_TOOLTIP
         pushButton_5->setText(QString());
     } // retranslateUi
@@ -1832,9 +1832,9 @@ public:
 };
 
 namespace Ui {
-class second_ui: public Ui_second_ui {};
+    class second_ui: public Ui_second_ui {};
 } // namespace Ui
 
 QT_END_NAMESPACE
 
-#endif // LIOTESTZT2885_H
+#endif // LIOTESTMFCKQI_H
