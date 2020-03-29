@@ -113,15 +113,15 @@ void DataHandler::printLastRxPacket() const {
 
 void DataHandler::logLastRxPacket() {
     dataHandler[lastRxID]->log();
-    //std::cout << dataHandler[lastRxID]->log_description(); // debug
 }
 
-void DataHandler::updateTx(DatagramType::DatagramID type) {
-    dataHandler[type]->updateTx(connector);
+bool DataHandler::updateTx(DatagramType::DatagramID type) {
+    return dataHandler[type]->updateTx(connector);
 }
 
 bool DataHandler::updateRx(Packet *packet) {
     // TODO  /!\ PROTOCOL define !!! /!\.
+    // TODO !!!!!!!!!!!! COULD BE DONE IN sub classes FUNCTION
     std::cout << "New Packet" << std::endl;
     packet->printDebug();
     uint8_t frameType = packet->getPacket()[0];
@@ -136,7 +136,7 @@ bool DataHandler::updateRx(Packet *packet) {
         connector->incrementData(ui_interface::PACKET_RX_RATE_CTR);
         connector->incrementData(ui_interface::RX_PACKET_CTR);
         lastRxID = ID;
-        dataHandler[lastRxID]->updateRx(packet, connector);
+        dataHandler[lastRxID]->updateRx(packet, connector); // TODO  use of return not necessary ?
         return true;
     }
     else if (frameType == 0x88) { // command response

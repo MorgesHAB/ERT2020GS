@@ -21,11 +21,8 @@ std::string PLTemperature::log() const {
                             std::to_string(temperature) + SEPARATOR);
 }
 
-void PLTemperature::updateTx(std::shared_ptr<Connector> connector) {
-    //For GS, always in receiving mode for this packet
-}
-
-void PLTemperature::updateRx(std::shared_ptr<Connector> connector) {
+bool PLTemperature::updateRx(std::shared_ptr<Connector> connector) {
     connector->setData(ui_interface::PL_TEMPERATURE, temperature);
+    return true;
 }
 

@@ -9,8 +9,9 @@
 
 #include "ACKManager.h"
 
-void ACKManager::updateTx(std::shared_ptr<Connector> connector) {
+bool ACKManager::updateTx(std::shared_ptr<Connector> connector) {
     if (connector->eatData<bool>(ui_interface::IGNITION_STATUS, false)) ACK = true;
+    return true; // TODO
 }
 
 void ACKManager::write(Packet &packet) {
@@ -25,7 +26,7 @@ void ACKManager::parse(Packet &packet) {
     packet.parse(ACK);
 }
 
-void ACKManager::updateRx(std::shared_ptr<Connector> connector) {
+bool ACKManager::updateRx(std::shared_ptr<Connector> connector) {
     using namespace DatagramType;
     switch (ACK) {
         case 1: {
@@ -39,6 +40,7 @@ void ACKManager::updateRx(std::shared_ptr<Connector> connector) {
         break;
         //case XX: other stuff
     }
+    return true; // TODO
 }
 
 void ACKManager::print() const {

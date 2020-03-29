@@ -23,10 +23,10 @@ void MyData::print() const {
     std::cout << "nbr: " << nbr << "  x: " << x << std::endl;
 }
 
-void MyData::updateTx(std::shared_ptr<Connector> connector) {
-    Data::updateTx(connector);
+bool MyData::updateTx(std::shared_ptr<Connector> connector) {
+    return Data::updateTx(connector);
 }
 
-void MyData::updateRx(std::shared_ptr<Connector> connector) {
-    Data::updateRx(connector);
+bool MyData::updateRx(std::shared_ptr<Connector> connector) {
+    return Data::updateRx(connector);
 }

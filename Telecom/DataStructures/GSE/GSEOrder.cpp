@@ -39,12 +39,14 @@ void GSEOrder::print() const {
 
 }
 
-void GSEOrder::updateTx(std::shared_ptr<Connector> connector) {
+bool GSEOrder::updateTx(std::shared_ptr<Connector> connector) {
     //order = connector->getData<uint8_t>(ui_interface::GSE_ORDER_VALUE);
     order = gse::OPEN_PURGE_VALVE;
+    return true;
 }
 
-void GSEOrder::updateRx(std::shared_ptr<Connector> connector) {
+bool GSEOrder::updateRx(std::shared_ptr<Connector> connector) {
+    return true;
 }
 
 

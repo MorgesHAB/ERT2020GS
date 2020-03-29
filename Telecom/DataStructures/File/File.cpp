@@ -47,7 +47,7 @@ void File::print() const {
     }
 }
 
-void File::updateTx(std::shared_ptr<Connector> connector) {
+bool File::updateTx(std::shared_ptr<Connector> connector) {
     switch (myState) { // if myState was ... then ...
         /////// On the File Receiver // updated only if need to send request (connector order)
         case SLEEP:
@@ -80,6 +80,8 @@ void File::updateTx(std::shared_ptr<Connector> connector) {
     connector->setData(ui_interface::FILE_TRANSMISSION_RECEIVED_STATE, receivedState);
     std::cout << "MyState : " << getStateName(myState) << "\t ReceivedState : "
               << getStateName(receivedState) << std::endl;
+
+    return true; // TODO adapt
 }
 
 void File::write(Packet &packet) {
@@ -169,7 +171,7 @@ void File::parse(Packet &packet) {
     }
 }
 
-void File::updateRx(std::shared_ptr<Connector> connector) {
+bool File::updateRx(std::shared_ptr<Connector> connector) {
     connector->setData(ui_interface::FILE_TRANSMISSION_TOTAL_PACKETS, nbrTotPacket);
     connector->setData(ui_interface::FILE_TRANSMISSION_CURRENT_PACKET, packetNbr);
 
@@ -213,6 +215,8 @@ void File::updateRx(std::shared_ptr<Connector> connector) {
     connector->setData(ui_interface::FILE_TRANSMISSION_RECEIVED_STATE, receivedState);
     std::cout << "MyState : " << getStateName(myState) << "\t ReceivedState : "
               << getStateName(receivedState) << std::endl;
+
+    return true; // TODO adapt
 }
 
 

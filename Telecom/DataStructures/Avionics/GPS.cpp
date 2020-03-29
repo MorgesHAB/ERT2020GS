@@ -49,7 +49,7 @@ void GPS::print() const {
               << "hdop : " << hdop << std::endl;
 }
 
-void GPS::updateTx(std::shared_ptr<Connector> connector) {
+bool GPS::updateTx(std::shared_ptr<Connector> connector) {
     /*  struct gps_data_t* newData;
 
       if (!gpsd.waiting(5000000)) return;
@@ -70,9 +70,10 @@ void GPS::updateTx(std::shared_ptr<Connector> connector) {
     altitude =  500 + ((float) rand()/ RAND_MAX) * 1000;
     satelliteNbr = rand() % 10;
     hdop =  100 + ((float) rand()/ RAND_MAX) * 100;
+    return true;
 }
 
-void GPS::updateRx(std::shared_ptr<Connector> connector) {
+bool GPS::updateRx(std::shared_ptr<Connector> connector) {
     connector->setData(ui_interface::GPS_LATITUDE, latitude);
     connector->setData(ui_interface::GPS_LONGITUDE, longitude);
     connector->setData(ui_interface::GPS_ALTITUDE, altitude);
@@ -80,6 +81,7 @@ void GPS::updateRx(std::shared_ptr<Connector> connector) {
     connector->setData(ui_interface::GPS_SAT_NBR, satelliteNbr);
     if (altitude > connector->getData<float>(ui_interface::ALTITUDE_MAX))
         connector->setData(ui_interface::ALTITUDE_MAX, altitude);
+    return true;
 }
 
 std::string GPS::log() const {

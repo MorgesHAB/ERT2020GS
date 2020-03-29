@@ -32,12 +32,14 @@ std::string StatusAV::log() const {
                      std::to_string(value) + SEPARATOR);
 }
 
-void StatusAV::updateTx(std::shared_ptr<Connector> connector) {
+bool StatusAV::updateTx(std::shared_ptr<Connector> connector) {
     status = rand() % 8;
+    return true;
 }
 
-void StatusAV::updateRx(std::shared_ptr<Connector> connector) {
+bool StatusAV::updateRx(std::shared_ptr<Connector> connector) {
     connector->setData(ui_interface::STATUS_AV_ID, id);
     connector->setData(ui_interface::STATUS_AV_VALUE, value);
     connector->setData(ui_interface::STATUS_AV_STATE, status);
+    return true;
 }

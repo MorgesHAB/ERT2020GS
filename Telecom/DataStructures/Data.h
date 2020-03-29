@@ -25,8 +25,8 @@ public:
     virtual void print() const = 0;
     virtual std::string log() const { return ""; }
 
-    virtual void updateTx(std::shared_ptr<Connector> connector) {}
-    virtual void updateRx(std::shared_ptr<Connector> connector) {}
+    virtual bool updateTx(std::shared_ptr<Connector> connector) { return true; }
+    virtual bool updateRx(std::shared_ptr<Connector> connector) { return true; }
 
     virtual ~Data() = default;
 };

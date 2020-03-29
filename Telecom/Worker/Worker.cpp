@@ -54,12 +54,7 @@ void Worker::mainRoutine() {
 
 
 void Worker::manageIgnitionTx(DataHandler& dataHandler, RFmodem* rfmodem) {
-    // If ignition from Gui & keys & red button
-    dataHandler.updateTx(DatagramType::GSE_IGNITION); // TODO updateTx return bool
-    if (connector->getData<bool>(ui_interface::IGNITION_KEY_1_ACTIVATED) &&
-        connector->getData<bool>(ui_interface::IGNITION_KEY_2_ACTIVATED) &&
-        connector->getData<bool>(ui_interface::IGNITION_RED_BUTTON_PUSHED) &&
-        connector->eatData<bool>(ui_interface::IGNITION_CLICKED, false)) {
+    if (dataHandler.updateTx(DatagramType::GSE_IGNITION)) {
         // /!\ Critical point /!\.
         for (int i(0); i < IGNITION_PACKET_FLOW_NBR; ++i) {
             rfmodem->send(dataHandler.getPacket(DatagramType::GSE_IGNITION));

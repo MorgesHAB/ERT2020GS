@@ -44,13 +44,15 @@ std::string Header::log() const {
             std::to_string(packetNbr) + SEPARATOR);
 }
 
-void Header::updateTx(std::shared_ptr<Connector> connector) {
+bool Header::updateTx(std::shared_ptr<Connector> connector) {
     ++packetNbr;
     timestamp = std::time(nullptr);
+    return true;
 }
 
-void Header::updateRx(std::shared_ptr<Connector> connector) {
+bool Header::updateRx(std::shared_ptr<Connector> connector) {
     connector->setData(ui_interface::DATAGRAM_ID, DatagramID);
     connector->setData(ui_interface::TX_PACKET_NR, packetNbr);
     connector->setData(ui_interface::TIMESTAMP, timestamp);
+    return true;
 }

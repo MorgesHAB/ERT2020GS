@@ -74,7 +74,7 @@ QTabWidget::pane {
 </string>
    </property>
    <property name="currentIndex">
-    <number>2</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="Ignition">
     <attribute name="title">
@@ -762,7 +762,7 @@ QSlider::handle:vertical {
       <number>0</number>
      </property>
     </widget>
-    <widget class="QPushButton" name="valve_button_2">
+    <widget class="QPushButton" name="rssi_button">
      <property name="geometry">
       <rect>
        <x>900</x>
@@ -834,7 +834,7 @@ border-color: rgb(92, 242, 135);
     <zorder>groupBox_4</zorder>
     <zorder>groupBox_7</zorder>
     <zorder>verticalSlider_16</zorder>
-    <zorder>valve_button_2</zorder>
+    <zorder>rssi_button</zorder>
     <zorder>label_31</zorder>
    </widget>
    <widget class="QWidget" name="tab">
@@ -1202,7 +1202,7 @@ QTabWidget::pane {
 }</string>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>1</number>
    </property>
    <widget class="QWidget" name="tab_3">
     <attribute name="title">
@@ -2442,7 +2442,7 @@ border-color: rgb(92, 242, 135);
         <x>10</x>
         <y>30</y>
         <width>221</width>
-        <height>61</height>
+        <height>66</height>
        </rect>
       </property>
       <layout class="QGridLayout" name="gridLayout_4">
@@ -2708,7 +2708,6 @@ border-radius: 25px;
 QPushButton:hover {
 background-color: rgb(10, 0, 0); 
 qproperty-iconSize: 64px;
-title: &quot;Hello&quot;;
 }
 QPushButton:pressed {
 background-color: rgb(16, 16, 16);

@@ -17,8 +17,8 @@ public:
     void print() const override;
     std::string log() const override;
 
-    void updateTx(std::shared_ptr<Connector> connector) override;
-    void updateRx(std::shared_ptr<Connector> connector) override;
+    bool updateTx(std::shared_ptr<Connector> connector) override;
+    bool updateRx(std::shared_ptr<Connector> connector) override;
 
 private:
     float hose_pressure, hose_temp, motor_speed, tank_weight;
