@@ -30,9 +30,11 @@ int main(int argc, char **argv) {
     
     std::shared_ptr<Connector> connector(std::make_shared<Connector>());
 
+    std::shared_ptr<Connector> fake_connector(std::make_shared<Connector>());
+
     QApplication app(argc, argv);
     
-    GuiWindow guiWindow(connector);
+    GuiWindow guiWindow(fake_connector);
 
     SecondWindow secWindow(connector);
 

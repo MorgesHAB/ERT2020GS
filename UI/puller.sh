@@ -1,5 +1,5 @@
-git checkout master
+git checkout GUI2.0
 git pull
-git checkout gui_branch
+git checkout gui-branch2.0
 git merge master
 git push

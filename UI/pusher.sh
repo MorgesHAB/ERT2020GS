@@ -1,6 +1,6 @@
 ./committer.sh
 git push 
-git checkout master
-git merge gui_branch
+git checkout GUI2.0
+git merge gui-branch2.0
 git push
-git checkout gui_branch
+git checkout gui-branch2.0
