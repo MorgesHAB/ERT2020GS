@@ -6,7 +6,7 @@ project(ERT2020GS)
 set(USE_GUI ON)
 set(USE_XBEE ON)
 set(RUNNING_ON_RPI OFF) # <-- if not ON, the Ignition hardware won't wrork
-set(USE_SOUND OFF)
+set(USE_SOUND ON)
 ####
 set(USE_LORA OFF)
 set(USE_GPS OFF)

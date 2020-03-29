@@ -42,6 +42,7 @@ public slots:
     void theme_change_clicked();
     void file_transmission_pressed();
     void valve_control();
+    void play_music_pressed();
 
 private:
     enum Theme {WHITE_ON_BLACK = 0, GREEN_ON_BLACK, BLACK_ON_WHITE, THEME_COUNT};
@@ -88,6 +89,7 @@ private:
     bool ready_ignition_;
     bool xbee_acvite_;
     bool fullscreen_;
+    bool musicON_;
 };
 
 #endif // GUIWINDOW_H

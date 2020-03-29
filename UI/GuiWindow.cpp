@@ -57,14 +57,14 @@ GuiWindow::GuiWindow(std::shared_ptr<Connector> connector) :
     current_theme_(0),
     ready_ignition_(false),
     xbee_acvite_(false),
-    fullscreen_(false)
+    fullscreen_(false),
+    musicON_(false)
 {
     #ifdef SOUND_ON
     m_player = new QMediaPlayer();
     alarm    = "qrc:/assets/nuclear_alarm.mp3";
     takeoff  = "qrc:/assets/launch.mp3";
     hymne    = "qrc:/assets/hymne.mp3";
-    playSound(hymne);
     #endif
 
     initialize_style();
@@ -74,18 +74,21 @@ GuiWindow::GuiWindow(std::shared_ptr<Connector> connector) :
 }
 ///////////////////////////////////////////////////////////////////////////
 void GuiWindow::refresh_lionel_stuff() {
-
-    verticalSlider_1->setValue(rand() % 100);
-    verticalSlider_2->setValue(rand() % 100);
-    verticalSlider_3->setValue(rand() % 100);
-    verticalSlider_4->setValue(rand() % 100);
-    verticalSlider_5->setValue(rand() % 100);
-    verticalSlider_11->setValue(rand() % 100);
-    verticalSlider_12->setValue(rand() % 100);
-    verticalSlider_13->setValue(rand() % 100);
-    verticalSlider_14->setValue(rand() % 100);
-    verticalSlider_15->setValue(rand() % 100);
-
+    if (musicON_) {
+        #ifdef SOUND_ON
+                playSound(hymne);
+        #endif
+        verticalSlider_1->setValue(rand() % 100);
+        verticalSlider_2->setValue(rand() % 100);
+        verticalSlider_3->setValue(rand() % 100);
+        verticalSlider_4->setValue(rand() % 100);
+        verticalSlider_5->setValue(rand() % 100);
+        verticalSlider_11->setValue(rand() % 100);
+        verticalSlider_12->setValue(rand() % 100);
+        verticalSlider_13->setValue(rand() % 100);
+        verticalSlider_14->setValue(rand() % 100);
+        verticalSlider_15->setValue(rand() % 100);
+    }
     //// Lionel test
     static bool a(false);
     ignition_status_label->setStyleSheet((a) ? "QLabel {color: rgb(255, 255, 255);}"
@@ -97,9 +100,6 @@ void GuiWindow::refresh_lionel_stuff() {
 }
 
 void GuiWindow::valve_control() {
-    lionel_label->setText(serialport_selector->currentText());
-    lionel_label->setStyleSheet("QLabel {color: rgb(100, 25, 255);}");
-
     QString url = R"(Yann.png)";
     QPixmap img(url);
     image_lio->setPixmap(img);
@@ -149,6 +149,7 @@ void GuiWindow::xbee_clicked()
 
 void GuiWindow::ignite_clicked()
 {
+    ready_ignition_ = data_->getData<bool>(IGNITION_CLICKED);
     if (ready_ignition_) {
         ready_ignit_button->setStyleSheet(
                 "QPushButton { qproperty-icon: url(:/assets/readiness.png);}");
@@ -162,10 +163,8 @@ void GuiWindow::ignite_clicked()
     }
 
     std::cout << "Ignition button clicked!" << std::endl;
-    ready_ignition_ = data_->getData<bool>(IGNITION_CLICKED);
     ready_ignition_ = !ready_ignition_;
     data_->setData(ui_interface::IGNITION_CLICKED, ready_ignition_);
-    show_ok_X(ready_ignition_panel, ready_ignition_);
 }
 
 void GuiWindow::theme_change_clicked()
@@ -174,7 +173,7 @@ void GuiWindow::theme_change_clicked()
 
     std::string str("Theme change button clicked. ");
 
-    if (current_theme_ == WHITE_ON_BLACK) {
+ /*   if (current_theme_ == WHITE_ON_BLACK) {
         str += "Theme set to \"white on black.\"";
 
         setStyleSheet(QLatin1String("background-color: rgb(30, 30, 30);\n"
@@ -192,7 +191,7 @@ void GuiWindow::theme_change_clicked()
         setStyleSheet(QLatin1String("background-color: rgb(255, 255, 255);\n"
           "color: rgb(0, 0, 0);"));
         packets_second_bar->setStyleSheet(QLatin1String("color: rgb(0,0,0);"));
-    }
+    }*/
     //logger.log(new Gui_Message(str));
 }
 
@@ -256,7 +255,7 @@ void GuiWindow::initialize_style()
     //
     //
     // QCoreApplication::setAttribute(Qt::AA_UseStyleSheetPropagationInWidgetStyles);
-    QApplication::setStyle(QStyleFactory::create("cleanlooks"));
+    //QApplication::setStyle(QStyleFactory::create("cleanlooks"));
     Ui_Form::setupUi(this);
 }
 
@@ -269,11 +268,11 @@ void GuiWindow::refresh_ignition_frame()
     bool button  = data_->getData<bool>(IGNITION_RED_BUTTON_PUSHED);
     bool clicked = data_->getData<bool>(IGNITION_CLICKED);
 
-
-    show_ok_X(key_1_panel, key1);
-    show_ok_X(key_2_panel, key2);
-    show_ok_X(red_button_panel, button);
-    show_ok_X(ready_ignition_panel, clicked);
+    // Keys
+    ignition_key1->setStyleSheet((key1) ? "QLabel {image: url(:/assets/keyON.png);}"
+                                        : "QLabel {image: url(:/assets/keyOFF.png);}");
+    ignition_key2->setStyleSheet((key2) ? "QLabel {image: url(:/assets/keyON.png);}"
+                                        : "QLabel {image: url(:/assets/keyOFF.png);}");
 
     // Ignition status
     auto ignitState = data_->getData<ignit::IgnitionState>(IGNITION_STATUS);
@@ -323,6 +322,7 @@ void GuiWindow::initialize_slots_signals()
     connect(change_theme, SIGNAL(pressed()), this, SLOT(theme_change_clicked()));
     connect(file_transmission_button, SIGNAL(pressed()), this, SLOT(file_transmission_pressed()));
     connect(valve_button,SIGNAL(pressed()), this, SLOT(valve_control()));
+    connect(play_music,SIGNAL(pressed()), this, SLOT(play_music_pressed()));
 }
 
 void GuiWindow::refresh_telemetry()
@@ -346,15 +346,15 @@ void GuiWindow::refresh_gps()
     longitude_panel->setText(qstr(data_->getData<float>(GPS_LONGITUDE)));
     latitude_panel->setText(qstr(data_->getData<float>(GPS_LATITUDE)));
     hdop_panel->setText(qstr(data_->getData<float>(GPS_HDOP)));
-    sat_nbr_panel->setText(qstr(data_->getData<uint8_t>(GPS_SAT_NBR)));
+    sat_nbr_panel->display(qstr(data_->getData<uint8_t>(GPS_SAT_NBR)));
 }
 
 void GuiWindow::refresh_com()
 {
     refresh_misses();
-    last_packet_number_panel->setText(qstr(data_->getData<uint32_t>(TX_PACKET_NR)));
+    //last_packet_number_panel->setText(qstr(data_->getData<uint32_t>(TX_PACKET_NR)));
     std::string str(DatagramType::getDatagramIDName(data_->getData<uint8_t>(ui_interface::DATAGRAM_ID)));
-    last_datagram_id_panel->setText(QString::fromStdString(str));
+    //last_datagram_id_panel->setText(QString::fromStdString(str));
     received_pack_cnt_panel->setText(qstr(data_->getData<uint32_t>(RX_PACKET_CTR)));
     // this->speed_lcd->display(data_->getData<float>(SPEED)); no speed
     time_t timestamp(data_->getData<time_t>(TIMESTAMP));
@@ -364,7 +364,7 @@ void GuiWindow::refresh_com()
     miss_panel->setText(qstr(calculate_misses_in_last_2()));
     this->last_refresh_panel->setText(tbuffer);
     uint32_t packets(data_->eatData<uint32_t>(PACKET_RX_RATE_CTR, 0));
-    packets_second_bar->setValue((packets * (1000.0 / (REFRESH_RATE))));
+    all_packet_rate->setValue((packets * (1000.0 / (REFRESH_RATE))));
     corrupted_panel->setText(qstr(data_->getData<uint64_t>(CORRUPTED_PACKET_CTR)));
 
     rssi_value->display(data_->getData<uint8_t>(ui_interface::RSSI_VALUE));
@@ -425,6 +425,25 @@ void GuiWindow::keyPressEvent(QKeyEvent * ckey)
     (fullscreen_) ? showFullScreen() : showNormal();
 }
 
+void GuiWindow::play_music_pressed() {
+    musicON_ = !musicON_;
+    if (!musicON_) {
+        verticalSlider_1->setValue(0);
+        verticalSlider_2->setValue(0);
+        verticalSlider_3->setValue(0);
+        verticalSlider_4->setValue(0);
+        verticalSlider_5->setValue(0);
+        verticalSlider_11->setValue(0);
+        verticalSlider_12->setValue(0);
+        verticalSlider_13->setValue(0);
+        verticalSlider_14->setValue(0);
+        verticalSlider_15->setValue(0);
+        #ifdef SOUND_ON
+                m_player->stop();
+        #endif
+    }
+}
+
 #ifdef SOUND_ON
 void GuiWindow::playSound(const char * url)
 {
@@ -433,5 +452,4 @@ void GuiWindow::playSound(const char * url)
     m_player->setVolume(100);
     m_player->play();
 }
-
 #endif

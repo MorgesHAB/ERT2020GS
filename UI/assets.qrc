@@ -27,7 +27,7 @@
 
     <file>assets/BL.png</file>
     <file>assets/PLimg.png</file>
-    <file>assets/KeyON.png</file>
+    <file>assets/keyON.png</file>
 	<file>assets/keyON2.png</file>
 
     <file>assets/keyOFF.png</file>
@@ -38,6 +38,10 @@
     <file>assets/alarmOFF.png</file>
     <file>assets/arrow.png</file>
     <file>assets/watch.png</file>
+    <file>assets/emergency.png</file>
+    <file>assets/power.png</file>
+    <file>assets/rssi.png</file>
+    <file>assets/play.png</file>
 
 
     <file>assets/nuclear_alarm.mp3</file>
