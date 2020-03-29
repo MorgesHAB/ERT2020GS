@@ -10,8 +10,16 @@
 #include "Xbee.h"
 
 
-Xbee::Xbee(std::string port) : serialPort(port, 115200) {
-    std::cout << "Xbee initialise correctly now - serial port ok" << std::endl;
+Xbee::Xbee(std::string port) {
+    try {
+        serialPort.setBaudrate(115200);
+        serialPort.setPort(port);
+        serialPort.open();
+        if (serialPort.isOpen())
+            std::cout << "Xbee initialise correctly now - serial port ok" << std::endl;
+    } catch (const serial::IOException &e) {
+        std::cerr << "Serial port error : IOException" << std::endl;
+    }
 }
 
 void Xbee::send(Packet *packet) {
@@ -85,4 +93,8 @@ int Xbee::getRSSI() {
         std::cout << "Diagnostic command have been sent - get RSSI" << std::endl;
     }
     return 0;
+}
+
+bool Xbee::isOpen() {
+    return serialPort.isOpen();
 }

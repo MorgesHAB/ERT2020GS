@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'LioTestMFcKQi.ui'
+** Form generated from reading UI file 'LioTestdhBAKP.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.11.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef LIOTESTMFCKQI_H
-#define LIOTESTMFCKQI_H
+#ifndef LIOTESTDHBAKP_H
+#define LIOTESTDHBAKP_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
@@ -89,7 +89,9 @@ public:
     QLineEdit *lineEdit_3;
     QPushButton *change_theme;
     QPushButton *reset_button;
-    QPushButton *xbee_button;
+    QPushButton *xbee_button_3;
+    QLabel *serialport_status;
+    QLabel *label;
     QWidget *tab_2;
     QSlider *verticalSlider_1;
     QLineEdit *lineEdit;
@@ -242,14 +244,14 @@ public:
     QLabel *label_60;
     QLabel *time_panel;
     QLabel *label_13;
-    QPushButton *pushButton_7;
+    QPushButton *xbee_button;
     QPushButton *pushButton_5;
 
     void setupUi(QWidget *second_ui)
     {
         if (second_ui->objectName().isEmpty())
             second_ui->setObjectName(QStringLiteral("second_ui"));
-        second_ui->resize(1229, 862);
+        second_ui->resize(1227, 862);
         second_ui->setMinimumSize(QSize(600, 0));
         second_ui->setMaximumSize(QSize(9999, 9999));
         second_ui->setMouseTracking(false);
@@ -680,21 +682,29 @@ public:
                                                   ""));
         label_61 = new QLabel(tab);
         label_61->setObjectName(QStringLiteral("label_61"));
-        label_61->setGeometry(QRect(200, 60, 111, 20));
+        label_61->setGeometry(QRect(500, 100, 111, 20));
         lineEdit_3 = new QLineEdit(tab);
         lineEdit_3->setObjectName(QStringLiteral("lineEdit_3"));
-        lineEdit_3->setGeometry(QRect(200, 90, 113, 25));
+        lineEdit_3->setGeometry(QRect(500, 130, 113, 25));
         lineEdit_3->setReadOnly(false);
         change_theme = new QPushButton(tab);
         change_theme->setObjectName(QStringLiteral("change_theme"));
-        change_theme->setGeometry(QRect(10, 110, 158, 27));
+        change_theme->setGeometry(QRect(10, 230, 158, 27));
         reset_button = new QPushButton(tab);
         reset_button->setObjectName(QStringLiteral("reset_button"));
         reset_button->setGeometry(QRect(10, 160, 121, 27));
-        xbee_button = new QPushButton(tab);
-        xbee_button->setObjectName(QStringLiteral("xbee_button"));
-        xbee_button->setGeometry(QRect(20, 220, 111, 27));
-        xbee_button->setMinimumSize(QSize(100, 0));
+        xbee_button_3 = new QPushButton(tab);
+        xbee_button_3->setObjectName(QStringLiteral("xbee_button_3"));
+        xbee_button_3->setGeometry(QRect(20, 90, 111, 27));
+        xbee_button_3->setMinimumSize(QSize(100, 0));
+        serialport_status = new QLabel(tab);
+        serialport_status->setObjectName(QStringLiteral("serialport_status"));
+        serialport_status->setGeometry(QRect(320, 40, 41, 41));
+        serialport_status->setStyleSheet(QLatin1String("image: url(:/assets/green_check.png);\n"
+                                                       ""));
+        label = new QLabel(tab);
+        label->setObjectName(QStringLiteral("label"));
+        label->setGeometry(QRect(180, 50, 131, 21));
         tabWidget->addTab(tab, QString());
         tab_2 = new QWidget();
         tab_2->setObjectName(QStringLiteral("tab_2"));
@@ -1537,22 +1547,22 @@ public:
         label_13->setObjectName(QStringLiteral("label_13"));
         label_13->setGeometry(QRect(550, 10, 41, 41));
         label_13->setStyleSheet(QStringLiteral("image: url(:/assets/watch.png);"));
-        pushButton_7 = new QPushButton(second_ui);
-        pushButton_7->setObjectName(QStringLiteral("pushButton_7"));
-        pushButton_7->setGeometry(QRect(1060, 70, 51, 51));
-        pushButton_7->setStyleSheet(QLatin1String("QPushButton{\n"
-                                                  "qproperty-icon: url(:/assets/power.png);\n"
-                                                  "qproperty-iconSize: 55px;\n"
-                                                  "border-radius: 25px;\n"
-                                                  "}\n"
-                                                  "QPushButton:hover {\n"
-                                                  "background-color: rgb(10, 0, 0); \n"
-                                                  "qproperty-iconSize: 64px;\n"
-                                                  "}\n"
-                                                  "QPushButton:pressed {\n"
-                                                  "background-color: rgb(16, 16, 16);\n"
-                                                  "}\n"
-                                                  ""));
+        xbee_button = new QPushButton(second_ui);
+        xbee_button->setObjectName(QStringLiteral("xbee_button"));
+        xbee_button->setGeometry(QRect(1060, 70, 51, 51));
+        xbee_button->setStyleSheet(QLatin1String("QPushButton{\n"
+                                                 "qproperty-icon: url(:/assets/power.png);\n"
+                                                 "qproperty-iconSize: 55px;\n"
+                                                 "border-radius: 25px;\n"
+                                                 "}\n"
+                                                 "QPushButton:hover {\n"
+                                                 "background-color: rgb(10, 0, 0); \n"
+                                                 "qproperty-iconSize: 64px;\n"
+                                                 "}\n"
+                                                 "QPushButton:pressed {\n"
+                                                 "background-color: rgb(16, 16, 16);\n"
+                                                 "}\n"
+                                                 ""));
         pushButton_5 = new QPushButton(second_ui);
         pushButton_5->setObjectName(QStringLiteral("pushButton_5"));
         pushButton_5->setGeometry(QRect(1140, 70, 51, 51));
@@ -1579,13 +1589,13 @@ public:
         label_60->raise();
         time_panel->raise();
         label_13->raise();
-        pushButton_7->raise();
+        xbee_button->raise();
         pushButton_5->raise();
 
         retranslateUi(second_ui);
 
-        tabWidget->setCurrentIndex(0);
-        tabWidget_2->setCurrentIndex(1);
+        tabWidget->setCurrentIndex(1);
+        tabWidget_2->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(second_ui);
@@ -1683,7 +1693,9 @@ public:
         reset_button->setToolTip(QApplication::translate("second_ui", "Resets saved data", nullptr));
 #endif // QT_NO_TOOLTIP
         reset_button->setText(QApplication::translate("second_ui", "Reset", nullptr));
-        xbee_button->setText(QApplication::translate("second_ui", "START XBee", nullptr));
+        xbee_button_3->setText(QApplication::translate("second_ui", "START XBee", nullptr));
+        serialport_status->setText(QString());
+        label->setText(QApplication::translate("second_ui", "Serial port status", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("second_ui", "Config", nullptr));
         lineEdit->setText(QApplication::translate("second_ui", "ERT2020GS", nullptr));
 #ifndef QT_NO_TOOLTIP
@@ -1820,9 +1832,9 @@ public:
         time_panel->setText(QApplication::translate("second_ui", "12:54:24", nullptr));
         label_13->setText(QString());
 #ifndef QT_NO_TOOLTIP
-        pushButton_7->setToolTip(QApplication::translate("second_ui", "<html><head/><body><p>Start Xbee</p></body></html>", nullptr));
+        xbee_button->setToolTip(QApplication::translate("second_ui", "<html><head/><body><p>Start Xbee</p></body></html>", nullptr));
 #endif // QT_NO_TOOLTIP
-        pushButton_7->setText(QString());
+        xbee_button->setText(QString());
 #ifndef QT_NO_TOOLTIP
         pushButton_5->setToolTip(QApplication::translate("second_ui", "<html><head/><body><p>Send message</p></body></html>", nullptr));
 #endif // QT_NO_TOOLTIP
@@ -1837,4 +1849,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // LIOTESTMFCKQI_H
+#endif // LIOTESTDHBAKP_H

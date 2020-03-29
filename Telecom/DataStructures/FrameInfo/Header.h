@@ -30,7 +30,8 @@ public:
 
 private:
     uint8_t myDelimiter[4] = {'E', 'P', 'F', 'L'};
-    uint8_t DatagramID;
+    uint8_t myRxDelimiter[4];
+    uint8_t datagramID;
     static uint32_t packetNbr;  // common to all datagram
     std::time_t timestamp;
 };

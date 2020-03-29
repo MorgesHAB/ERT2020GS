@@ -31,22 +31,27 @@ void Worker::mainRoutine() {
         // Your RF modem
         RFmodem* xbee = new Xbee(getSerialport());
         //RFmodem* loRa = new LoRa;   // another example
+        connector->setData(ui_interface::SERIALPORT_ERROR, xbee->isOpen());
 
-        while (connector->getData<bool>(ui_interface::ACTIVE_XBEE) &&
-               connector->getData<bool>(ui_interface::RUNNING)) {
-            // Manage Reception
-            if (xbee->receive(dataHandler)) {
-                dataHandler.logLastRxPacket();
-                dataHandler.printLastRxPacket();
-                //xbee->getRSSI();
+        if (xbee->isOpen()) {
+            while (connector->getData<bool>(ui_interface::ACTIVE_XBEE) &&
+                   connector->getData<bool>(ui_interface::RUNNING)) {
+                // Manage Reception
+                if (xbee->receive(dataHandler)) {
+                    dataHandler.logLastRxPacket();
+                    dataHandler.printLastRxPacket();
+                    //xbee->getRSSI();
+                }
+                // Manage Transmission
+                //manageIgnitionTx(dataHandler, xbee);
+                manageImageTransmission(dataHandler, xbee);
+                if (connector->eatData<bool>(ui_interface::RSSI_READ_ORDER, false))
+                    xbee->getRSSI();
+
+                std::this_thread::sleep_for(std::chrono::milliseconds(50));
             }
-            // Manage Transmission
-            manageIgnitionTx(dataHandler, xbee);
-            manageImageTransmission(dataHandler, xbee);
-            if (connector->eatData<bool>(ui_interface::RSSI_READ_ORDER, false))
-                xbee->getRSSI();
-
-            std::this_thread::sleep_for(std::chrono::milliseconds(50));
+        } else {
+            connector->setData(ui_interface::ACTIVE_XBEE, false);
         }
         delete xbee;
     }

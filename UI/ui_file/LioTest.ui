@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1229</width>
+    <width>1227</width>
     <height>862</height>
    </rect>
   </property>
@@ -74,7 +74,7 @@ QTabWidget::pane {
 </string>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>1</number>
    </property>
    <widget class="QWidget" name="Ignition">
     <attribute name="title">
@@ -935,8 +935,8 @@ border-color: rgb(92, 242, 135);
     <widget class="QLabel" name="label_61">
      <property name="geometry">
       <rect>
-       <x>200</x>
-       <y>60</y>
+       <x>500</x>
+       <y>100</y>
        <width>111</width>
        <height>20</height>
       </rect>
@@ -948,8 +948,8 @@ border-color: rgb(92, 242, 135);
     <widget class="QLineEdit" name="lineEdit_3">
      <property name="geometry">
       <rect>
-       <x>200</x>
-       <y>90</y>
+       <x>500</x>
+       <y>130</y>
        <width>113</width>
        <height>25</height>
       </rect>
@@ -965,7 +965,7 @@ border-color: rgb(92, 242, 135);
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>110</y>
+       <y>230</y>
        <width>158</width>
        <height>27</height>
       </rect>
@@ -990,11 +990,11 @@ border-color: rgb(92, 242, 135);
       <string>Reset</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="xbee_button">
+    <widget class="QPushButton" name="xbee_button_3">
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>220</y>
+       <y>90</y>
        <width>111</width>
        <height>27</height>
       </rect>
@@ -1007,6 +1007,36 @@ border-color: rgb(92, 242, 135);
      </property>
      <property name="text">
       <string>START XBee</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="serialport_status">
+     <property name="geometry">
+      <rect>
+       <x>320</x>
+       <y>40</y>
+       <width>41</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">image: url(:/assets/green_check.png);
+</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>180</x>
+       <y>50</y>
+       <width>131</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Serial port status</string>
      </property>
     </widget>
    </widget>
@@ -1214,7 +1244,7 @@ QTabWidget::pane {
 }</string>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="tab_3">
     <attribute name="title">
@@ -2699,7 +2729,7 @@ image: url(:/assets/radioON.png);</string>
     <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_7">
+  <widget class="QPushButton" name="xbee_button">
    <property name="geometry">
     <rect>
      <x>1060</x>
@@ -2771,7 +2801,7 @@ background-color: rgb(16, 16, 16);
   <zorder>label_60</zorder>
   <zorder>time_panel</zorder>
   <zorder>label_13</zorder>
-  <zorder>pushButton_7</zorder>
+  <zorder>xbee_button</zorder>
   <zorder>pushButton_5</zorder>
  </widget>
  <resources>
