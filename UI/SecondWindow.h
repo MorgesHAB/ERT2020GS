@@ -1,16 +1,7 @@
-/*!
- * \file GuiWindow.h
- *
- * \brief Gui Window module interface
- *
- * \author      KESKE CEM - EPFL EL BA3
- * \date        02.12.2019
- */
+#ifndef SECONDWINDOW_H
+#define SECONDWINDOW_H
 
-#ifndef GUIWINDOW_H
-#define GUIWINDOW_H
-
-#include "ui_form.h"
+#include "second_ui.h"
 #include "../RF-UI-Interface/connector.h"
 #include "../RF-UI-Interface/ProtocolDefine.h"
 #include "gui_logger.h"
@@ -28,10 +19,10 @@
 
 
 
-class GuiWindow : public QWidget, public Ui_Form {
+class SecondWindow : public QWidget, public Ui_second_ui {
     Q_OBJECT
 public:
-    GuiWindow(std::shared_ptr<Connector> connector);
+    SecondWindow(std::shared_ptr<Connector> connector);
     void update();
 
 public slots:
@@ -41,6 +32,8 @@ public slots:
     void ignite_clicked();
     void theme_change_clicked();
     void file_transmission_pressed();
+    void valve_control();
+    void play_music_pressed();
 
 private:
     enum Theme {WHITE_ON_BLACK = 0, GREEN_ON_BLACK, BLACK_ON_WHITE, THEME_COUNT};
@@ -55,6 +48,7 @@ private:
     void check_and_show();
     void refresh_time();
     void refresh_file_transmission_box();
+    void refresh_lionel_stuff();
 
     void show_ok_X(QLabel*, bool);
     void show_ok(QLabel*);
@@ -86,6 +80,7 @@ private:
     bool ready_ignition_;
     bool xbee_acvite_;
     bool fullscreen_;
+    bool musicON_;
 };
 
-#endif // GUIWINDOW_H
+#endif //SECOND_WINDOW
