@@ -74,7 +74,7 @@ QTabWidget::pane {
 </string>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="Ignition">
     <attribute name="title">
@@ -308,8 +308,8 @@ gridline-color: rgb(255, 0, 0);</string>
         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;The GSE informs you that you are entering the wrong code - No Ignition - Permission denied&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;The GSE informs you that you are entering the wrong code - No Ignition - Permission denied&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
      </widget>
@@ -661,7 +661,7 @@ QProgressBar::chunk:horizontal {
         </widget>
        </item>
        <item row="2" column="1">
-        <widget class="QLabel" name="last_refresh_panel">
+        <widget class="QLabel" name="time_since_last_Rx">
          <property name="toolTip">
           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Last packet's timestamp&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
@@ -705,7 +705,7 @@ QProgressBar::chunk:horizontal {
           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Last packet's timestamp&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="text">
-          <string>Time since last packet</string>
+          <string>Time since last received packet</string>
          </property>
         </widget>
        </item>
@@ -2760,7 +2760,7 @@ background-color: rgb(16, 16, 16);
     <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_5">
+  <widget class="QPushButton" name="send_msg">
    <property name="geometry">
     <rect>
      <x>1140</x>
@@ -2802,7 +2802,7 @@ background-color: rgb(16, 16, 16);
   <zorder>time_panel</zorder>
   <zorder>label_13</zorder>
   <zorder>xbee_button</zorder>
-  <zorder>pushButton_5</zorder>
+  <zorder>send_msg</zorder>
  </widget>
  <resources>
   <include location="../assets.qrc"/>
