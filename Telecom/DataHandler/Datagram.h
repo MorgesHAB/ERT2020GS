@@ -28,8 +28,8 @@ public:
     std::string log_description() const override;
     void log();
 
-    void updateTx(std::shared_ptr<Connector> connector);
-    void updateRx(Packet *packet, std::shared_ptr<Connector> connector);
+    bool updateTx(std::shared_ptr<Connector> connector);
+    bool updateRx(Packet *packet, std::shared_ptr<Connector> connector);
 
     void add(Data* data);
     Packet* getDataPacket();

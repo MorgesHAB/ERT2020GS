@@ -21,10 +21,7 @@ std::string StatusPL::log() const {
                      std::to_string(status) + SEPARATOR);
 }
 
-void StatusPL::updateTx(std::shared_ptr <Connector> connector) {
-    //For GS, always in receiving mode for this packet
-}
-
-void StatusPL::updateRx(std::shared_ptr <Connector> connector) {
+bool StatusPL::updateRx(std::shared_ptr <Connector> connector) {
     connector->setData(ui_interface::PL_STATE_UI, status);
+    return true;
 }

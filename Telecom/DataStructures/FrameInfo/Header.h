@@ -25,12 +25,13 @@ public:
     void print() const override;
     std::string log() const override;
 
-    void updateTx(std::shared_ptr<Connector> connector) override;
-    void updateRx(std::shared_ptr<Connector> connector) override;
+    bool updateTx(std::shared_ptr<Connector> connector) override;
+    bool updateRx(std::shared_ptr<Connector> connector) override;
 
 private:
     uint8_t myDelimiter[4] = {'E', 'P', 'F', 'L'};
-    uint8_t DatagramID;
+    uint8_t myRxDelimiter[4];
+    uint8_t datagramID;
     static uint32_t packetNbr;  // common to all datagram
     std::time_t timestamp;
 };

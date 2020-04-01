@@ -19,12 +19,14 @@ std::string PLOrder::log() const {
                      std::to_string(order) + SEPARATOR);
 }
 
-void PLOrder::updateTx(std::shared_ptr<Connector> connector) {
+bool PLOrder::updateTx(std::shared_ptr<Connector> connector) {
     //TODO: order = (create enum)
+    return true;
 }
 
-void PLOrder::updateRx(std::shared_ptr<Connector> connector) {
+bool PLOrder::updateRx(std::shared_ptr<Connector> connector) {
     //For GS, always in transmitting mode for this packet
+    return true;
 }
 
 

@@ -52,7 +52,7 @@ IgnitionCode::IgnitionCode() : states(4, false), ignitionState(ignit::SLEEP) {
     pinMode(GPIO_IN_CODE3, INPUT);
 }
 
-void IgnitionCode::updateTx(std::shared_ptr<Connector> connector) {
+bool IgnitionCode::updateTx(std::shared_ptr<Connector> connector) {
     // run on GST
     // Read Data to print on Gui for visual confirmation of component operation
     bool key1(digitalRead(GPIO_IN_KEY_1)), key2(digitalRead(GPIO_IN_KEY_2));
@@ -63,8 +63,8 @@ void IgnitionCode::updateTx(std::shared_ptr<Connector> connector) {
     } else {
         digitalWrite(GPIO_OUT_LED_BUTTON, LOW);
     }
-    connector->setData(ui_interface::IGNITION_RED_BUTTON_PUSHED,
-                       digitalRead(GPIO_IN_RED_BUTTON));
+    bool redButtonPressed(digitalRead(GPIO_IN_RED_BUTTON));
+    connector->setData(ui_interface::IGNITION_RED_BUTTON_PUSHED, redButtonPressed);
 
     states[0] = digitalRead(GPIO_IN_CODE0);
     states[1] = digitalRead(GPIO_IN_CODE1);
@@ -72,6 +72,10 @@ void IgnitionCode::updateTx(std::shared_ptr<Connector> connector) {
     states[3] = digitalRead(GPIO_IN_CODE3);
     uint8_t code(states[3] << 3 | states[2] << 2 | states[1] << 1 | states[0]);
     connector->setData(ui_interface::TX_IGNITION_CODE, code);
+
+    // true if send Ignition packet
+    return key1 && key2 && redButtonPressed &&
+           connector->eatData<bool>(ui_interface::IGNITION_CLICKED, false); // Gui
 }
 
 void IgnitionCode::write(Packet &packet) {
@@ -91,7 +95,7 @@ void IgnitionCode::parse(Packet &packet) {
     }
 }
 
-void IgnitionCode::updateRx(std::shared_ptr<Connector> connector) {
+bool IgnitionCode::updateRx(std::shared_ptr<Connector> connector) {
     // run on GSE
     using namespace ignit;
     std::vector<int> codeRx = {digitalRead(GPIO_IN_CODE0),
@@ -128,6 +132,7 @@ void IgnitionCode::updateRx(std::shared_ptr<Connector> connector) {
         ignitionState = WRONG_CODE_RECEIVED;
         connector->setData(ui_interface::IGNITION_STATUS, ignitionState);
     }
+    return true; // TODO adapt
 }
 
 void IgnitionCode::print() const {

@@ -1,4 +1,4 @@
-#ifdef aa
+#ifndef aa
 #include <QApplication>
 #include <memory>
 #include <thread>
@@ -10,6 +10,7 @@
 #include "GuiWindow.h"
 #include "../Logger/Logger.h"
 #include "../Logger/utilities.h"
+#include "SecondWindow.h"
 
 class Data: public Loggable{
 public:
@@ -93,13 +94,15 @@ main(int argc, char ** argv)
 
     {
     QApplication app(argc, argv);
-    GuiWindow w(c);
+    GuiWindow firstwin(c);
+    SecondWindow secondwin(c);
     // run all threads
 
 
     std::cout << utilities::time_long() << std::endl;
     // end the program
-    w.show();
+    firstwin.show();
+    secondwin.show();
     app.exec();
     }
     receiver_thread.join();

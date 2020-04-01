@@ -21,7 +21,7 @@ public:
     DataHandler(std::shared_ptr<Connector> connector);
     virtual ~DataHandler();
 
-    void updateTx(DatagramType::DatagramID type);
+    bool updateTx(DatagramType::DatagramID type);
     bool updateRx(Packet* packet);
 
     void print(DatagramType::DatagramID type) const;

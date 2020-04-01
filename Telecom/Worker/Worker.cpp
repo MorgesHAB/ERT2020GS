@@ -31,22 +31,27 @@ void Worker::mainRoutine() {
         // Your RF modem
         RFmodem* xbee = new Xbee(getSerialport());
         //RFmodem* loRa = new LoRa;   // another example
+        connector->setData(ui_interface::SERIALPORT_ERROR, xbee->isOpen());
 
-        while (connector->getData<bool>(ui_interface::ACTIVE_XBEE) &&
-               connector->getData<bool>(ui_interface::RUNNING)) {
-            // Manage Reception
-            if (xbee->receive(dataHandler)) {
-                dataHandler.logLastRxPacket();
-                dataHandler.printLastRxPacket();
-                //xbee->getRSSI();
+        if (xbee->isOpen()) {
+            while (connector->getData<bool>(ui_interface::ACTIVE_XBEE) &&
+                   connector->getData<bool>(ui_interface::RUNNING)) {
+                // Manage Reception
+                if (xbee->receive(dataHandler)) {
+                    dataHandler.logLastRxPacket();
+                    dataHandler.printLastRxPacket();
+                    //xbee->getRSSI();
+                }
+                // Manage Transmission
+                //manageIgnitionTx(dataHandler, xbee);
+                manageImageTransmission(dataHandler, xbee);
+                if (connector->eatData<bool>(ui_interface::RSSI_READ_ORDER, false))
+                    xbee->getRSSI();
+
+                std::this_thread::sleep_for(std::chrono::milliseconds(50));
             }
-            // Manage Transmission
-            manageIgnitionTx(dataHandler, xbee);
-            manageImageTransmission(dataHandler, xbee);
-            if (connector->eatData<bool>(ui_interface::RSSI_READ_ORDER, false))
-                xbee->getRSSI();
-
-            std::this_thread::sleep_for(std::chrono::milliseconds(50));
+        } else {
+            connector->setData(ui_interface::ACTIVE_XBEE, false);
         }
         delete xbee;
     }
@@ -54,12 +59,7 @@ void Worker::mainRoutine() {
 
 
 void Worker::manageIgnitionTx(DataHandler& dataHandler, RFmodem* rfmodem) {
-    // If ignition from Gui & keys & red button
-    dataHandler.updateTx(DatagramType::GSE_IGNITION); // TODO updateTx return bool
-    if (connector->getData<bool>(ui_interface::IGNITION_KEY_1_ACTIVATED) &&
-        connector->getData<bool>(ui_interface::IGNITION_KEY_2_ACTIVATED) &&
-        connector->getData<bool>(ui_interface::IGNITION_RED_BUTTON_PUSHED) &&
-        connector->eatData<bool>(ui_interface::IGNITION_CLICKED, false)) {
+    if (dataHandler.updateTx(DatagramType::GSE_IGNITION)) {
         // /!\ Critical point /!\.
         for (int i(0); i < IGNITION_PACKET_FLOW_NBR; ++i) {
             rfmodem->send(dataHandler.getPacket(DatagramType::GSE_IGNITION));

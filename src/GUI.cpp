@@ -20,6 +20,7 @@
 #include <chrono>
 #include <QApplication>
 #include <GuiWindow.h>
+#include <SecondWindow.h>
 #include <connector.h>
 #include <Worker.h>
 
@@ -29,16 +30,24 @@ int main(int argc, char **argv) {
     
     std::shared_ptr<Connector> connector(std::make_shared<Connector>());
 
+    std::shared_ptr<Connector> fake_connector(std::make_shared<Connector>());
+
     QApplication app(argc, argv);
     
-    GuiWindow guiWindow(connector);
+    //GuiWindow guiWindow(fake_connector);
+
+    SecondWindow secWindow(connector);
 
     //run all threads
     std::thread t1(&Worker::mainRoutine, Worker(connector));
 
     std::this_thread::sleep_for(std::chrono::milliseconds(300));
 
-    guiWindow.show();
+    //guiWindow.show();
+
+    std::this_thread::sleep_for(std::chrono::milliseconds(300));
+	
+    secWindow.show();
 
     std::this_thread::sleep_for(std::chrono::milliseconds(300));
 

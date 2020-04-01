@@ -7,13 +7,15 @@
 
 #endif //ERT2020GS_PLORDERVALUES_H
 
-enum PLOrderValues {
-    GET_STATE,
-    SHUTDOWN,
-    WAKE,
-    INJECT,
-    BYPASS_INJECT,
-    REC,
-    GET_IMAGE,
-    ABORT
-};
+namespace pl{
+    enum PLOrderValues {
+        GET_STATE,
+        SHUTDOWN,
+        WAKE,
+        INJECT,
+        BYPASS_INJECT,
+        REC,
+        GET_IMAGE,
+        ABORT
+    };
+}

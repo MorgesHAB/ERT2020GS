@@ -33,14 +33,11 @@ std::string PLGps::log() const {
                              std::to_string(satelliteNbr) + SEPARATOR);
 }
 
-void PLGps::updateTx(std::shared_ptr<Connector> connector) {
-    //For GS, always in receiving mode for this packet
-}
-
-void PLGps::updateRx(std::shared_ptr<Connector> connector) {
+bool PLGps::updateRx(std::shared_ptr<Connector> connector) {
     connector->setData(ui_interface::PL_GPS_LATITUDE, latitude);
     connector->setData(ui_interface::PL_GPS_LONGITUDE, longitude);
     connector->setData(ui_interface::PL_GPS_ALTITUDE, altitude);
     connector->setData(ui_interface::PL_GPS_HDOP, hdop);
     connector->setData(ui_interface::PL_GPS_SAT_NBR, satelliteNbr);
+    return true;
 }

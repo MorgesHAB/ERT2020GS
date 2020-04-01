@@ -44,7 +44,7 @@ void Telemetry::print() const {
               << " Altitude : " << altitude << std::endl;
 }
 
-void Telemetry::updateTx(std::shared_ptr<Connector> connector) {
+bool Telemetry::updateTx(std::shared_ptr<Connector> connector) {
     accelerometer.x = -2 + ((float) rand()/ RAND_MAX) * 6;
     accelerometer.y = -3 + ((float) rand()/ RAND_MAX) * 3;
     accelerometer.z = -5 + ((float) rand()/ RAND_MAX) * 20;
@@ -55,9 +55,10 @@ void Telemetry::updateTx(std::shared_ptr<Connector> connector) {
     pressure =  100 + ((float) rand()/ RAND_MAX) * 50;
     speed =  3 + ((float) rand()/ RAND_MAX) * 10;
     altitude =  500 + ((float) rand()/ RAND_MAX) * 1000;
+    return true;
 }
 
-void Telemetry::updateRx(std::shared_ptr<Connector> connector) {
+bool Telemetry::updateRx(std::shared_ptr<Connector> connector) {
     connector->setData(ui_interface::T_ACCELEROMETER_X, accelerometer.x);
     connector->setData(ui_interface::T_ACCELEROMETER_Y, accelerometer.y);
     connector->setData(ui_interface::T_ACCELEROMETER_Z, accelerometer.z);
@@ -70,6 +71,7 @@ void Telemetry::updateRx(std::shared_ptr<Connector> connector) {
     connector->setData(ui_interface::T_ALTITUDE, altitude);
     if (altitude > connector->getData<float>(ui_interface::ALTITUDE_MAX))
         connector->setData(ui_interface::ALTITUDE_MAX, altitude);
+    return true;
 }
 
 std::string Telemetry::log() const {

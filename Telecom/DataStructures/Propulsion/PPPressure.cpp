@@ -27,10 +27,12 @@ void PPPressure::print() const {
     std::cout << "Pressure Data : " << pressure << " hPa" << std::endl;
 }
 
-void PPPressure::updateTx(std::shared_ptr<Connector> connector) {
+bool PPPressure::updateTx(std::shared_ptr<Connector> connector) {
     pressure = 850 + ((float) rand() / RAND_MAX) * 300;
+    return true;
 }
 
-void PPPressure::updateRx(std::shared_ptr<Connector> connector) {
+bool PPPressure::updateRx(std::shared_ptr<Connector> connector) {
     connector->setData(ui_interface::DataType ::PP_PRESSURE, pressure);
+    return true;
 }

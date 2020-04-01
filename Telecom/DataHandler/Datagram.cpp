@@ -34,24 +34,30 @@ std::string Datagram::log_description() const {
     return std::move(datagramLog);
 }
 
-void Datagram::updateTx(std::shared_ptr<Connector> connector) {
+bool Datagram::updateTx(std::shared_ptr<Connector> connector) {
     delete dataPacket;  // Data should have been logged
     dataPacket = new Packet;
 
+    bool status(true);
     for (auto &data : datagram) {
-        data->updateTx(connector);
+        status &= data->updateTx(connector);
         data->write(*dataPacket);
     }
+    return status;
 }
 
-void Datagram::updateRx(Packet *packet, std::shared_ptr<Connector> connector) {
+bool Datagram::updateRx(Packet *packet, std::shared_ptr<Connector> connector) {
     delete dataPacket;
     dataPacket = packet;
 
+    bool status(true);
     for (auto &data : datagram) {
-        data->parse(*dataPacket);
-        data->updateRx(connector);
+        if (status) {
+            data->parse(*dataPacket);
+            status &= data->updateRx(connector);
+        }
     }
+    return status;
 }
 
 void Datagram::log() {
