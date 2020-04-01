@@ -120,31 +120,6 @@ bool DataHandler::updateTx(DatagramType::DatagramID type) {
 }
 
 bool DataHandler::updateRx(Packet *packet) {
-    // TODO  /!\ PROTOCOL define !!! /!\.
-    // TODO !!!!!!!!!!!! COULD BE DONE IN sub classes FUNCTION
-    std::cout << "New Packet" << std::endl;
-    packet->printDebug();
-    uint8_t frameType = packet->getPacket()[0];
-    auto ID = (DatagramType::DatagramID) packet->getPacket()[12];
-    std::string myDelimiter = {(char) packet->getPacket()[13],
-                               (char) packet->getPacket()[14],
-                               (char) packet->getPacket()[15],
-                               (char) packet->getPacket()[16]};
-
-    if (frameType == 0x90 && myDelimiter == "EPFL"
-        && ID > 0 && ID < DatagramType::TOTAL_NBR_OF_TYPES) {
-        connector->incrementData(ui_interface::PACKET_RX_RATE_CTR);
-        connector->incrementData(ui_interface::RX_PACKET_CTR);
-        lastRxID = ID;
-        dataHandler[lastRxID]->updateRx(packet, connector); // TODO  use of return not necessary ?
-        return true;
-    }
-    else if (frameType == 0x88) { // command response
-        std::cout << "RSSI = -" << +packet->getPacket()[5] << " dBm" << std::endl;
-        connector->setData(ui_interface::RSSI_VALUE, packet->getPacket()[5]);
-    }
-    else {
-        connector->incrementData(ui_interface::CORRUPTED_PACKET_CTR);
-    }
-    return false;
+    lastRxID = (DatagramType::DatagramID) packet->getPacket()[12]; // Position of Datagram ID in packet
+    return dataHandler[lastRxID]->updateRx(packet, connector);
 }

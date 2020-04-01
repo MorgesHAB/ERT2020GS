@@ -12,7 +12,8 @@
 
 #include <Data.h>
 
-#define XBEE_FRAME_OPTIONS_SIZE     14
+#define XBEE_TX_OPTIONS_SIZE        14
+#define XBEE_RX_OPTIONS_SIZE        12
 
 
 class XbeeOptions : public Data {
@@ -23,8 +24,11 @@ public:
     void parse(Packet& packet) override;
     void print() const override;
 
+    bool updateRx(std::shared_ptr<Connector> connector) override;
+
 private:
-    uint8_t xbeeTransmitOptions[XBEE_FRAME_OPTIONS_SIZE];
+    uint8_t xbeeTransmitOptions[XBEE_TX_OPTIONS_SIZE];
+    uint8_t xbeeReceivedOptions[XBEE_RX_OPTIONS_SIZE];
 };
 
 

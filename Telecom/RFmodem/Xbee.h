@@ -24,6 +24,7 @@ public:
     bool receive(DataHandler &dataHandler) override;
 
     int getRSSI() override;
+    bool isOpen() override;
 
 private:
     serial::Serial serialPort;

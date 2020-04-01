@@ -52,8 +52,10 @@ bool Datagram::updateRx(Packet *packet, std::shared_ptr<Connector> connector) {
 
     bool status(true);
     for (auto &data : datagram) {
-        data->parse(*dataPacket);
-        status &= data->updateRx(connector);
+        if (status) {
+            data->parse(*dataPacket);
+            status &= data->updateRx(connector);
+        }
     }
     return status;
 }

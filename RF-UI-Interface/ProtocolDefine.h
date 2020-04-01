@@ -31,6 +31,7 @@ enum DataType {
     ACTIVE_XBEE,      // bool             **This is set to true-false by the Activate-Xbee button.
     IGNITION_CLICKED, // bool        **This is set to true when ignition button is clicked.
     //                              @attention !!! Listener should eat this boolean to be able to detect further clicks !!!
+    SERIALPORT_ERROR, // bool eat by Gui
 
     SERIALPORT_INDEX,
     RSSI_READ_ORDER,
@@ -44,7 +45,14 @@ enum DataType {
     IGNITION_RED_BUTTON_PUSHED, // bool
     IGNITION_SENT,              // bool to eat
 
-    /// PacketNbr
+    /// Packet Rate
+    PACKET_CTR_ALL,
+    PACKET_CTR_AV,
+    PACKET_CTR_GSE,
+    PACKET_CTR_PL,
+    PACKET_CTR_PP,
+    TIME_SINCE_LAST_RX_PACKET,
+
     PACKET_RX_RATE_CTR, // uint32_t  **This is incremented on each packet received, eated by guito find the packet rate.
     RX_PACKET_CTR,    // uint32_t        **This is the count of the received packets from the beginning of the program
     CORRUPTED_PACKET_CTR,    // uint64_t **The count of the corrupted packets received. Incremented by RX.

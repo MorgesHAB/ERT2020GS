@@ -72,6 +72,7 @@ SecondWindow::SecondWindow(std::shared_ptr<Connector> connector) :
     initialize_slots_signals();
     grabKeyboard();
     timer_->start(REFRESH_RATE);
+    data_->setData(ui_interface::TIME_SINCE_LAST_RX_PACKET, std::time(nullptr));
 }
 ///////////////////////////////////////////////////////////////////////////
 void SecondWindow::refresh_lionel_stuff() {
@@ -97,6 +98,9 @@ void SecondWindow::refresh_lionel_stuff() {
     antenna_img->setStyleSheet((xbee_acvite_ && a) ?
                                                    "QLabel {image: url(:/assets/radioON.png);}":
                                                    "QLabel {image: url(:/assets/radioOFF.png);}");
+    serialport_status->setStyleSheet((data_->getData<bool>(ui_interface::SERIALPORT_ERROR)) ?
+                               "QLabel {image: url(:/assets/green_check.png);}":
+                               "QLabel {image: url(:/assets//redCross.png);}");
     a = !a;
 }
 
@@ -104,7 +108,7 @@ void SecondWindow::valve_control() {
     QString url = R"(Yann.png)";
     QPixmap img(url);
     image_lio->setPixmap(img);
-    data_->setData(ui_interface::RSSI_READ_ORDER, true);
+    data_->setData(ui_interface::RSSI_VALUE, (uint8_t) (rand() % 100));
     static int x(0);
     data_->setData(IGNITION_STATUS, (ignit::IgnitionState) x);
     x+=1;
@@ -138,12 +142,12 @@ void SecondWindow::xbee_clicked()
         uint64_t index(serialport_selector->currentIndex());
         data_->setData(ui_interface::SERIALPORT_INDEX, index);
         data_->setData(ui_interface::ACTIVE_XBEE, true);
-        xbee_button->setText("STOP XBee");
+        //xbee_button->setText("STOP XBee");
     } else {
         //logger.log(new Gui_Message("XBee STOP button clicked!"));
         std::cout << "XBee STOP button clicked!" << std::endl;
         data_->setData(ui_interface::ACTIVE_XBEE, false);
-        xbee_button->setText("START XBee");
+        //xbee_button->setText("START XBee");
     }
     xbee_acvite_ = !xbee_acvite_;
 }
@@ -309,7 +313,7 @@ void SecondWindow::refresh_ignition_frame()
         }
     }
     if (data_->eatData<bool>(IGNITION_SENT, false)) playSound(takeoff);
-#endif // ifdef SOUND_ON
+#endif // SOUND_ON
 }
 
 void SecondWindow::initialize_slots_signals()
@@ -323,6 +327,7 @@ void SecondWindow::initialize_slots_signals()
     connect(valve_button,SIGNAL(pressed()), this, SLOT(valve_control()));
     connect(play_music,SIGNAL(pressed()), this, SLOT(play_music_pressed()));
     connect(rssi_button,SIGNAL(pressed()), this, SLOT(rssi_get_pressed()));
+    connect(send_msg,SIGNAL(pressed()), this, SLOT(send_msg_pressed()));
 }
 
 void SecondWindow::refresh_telemetry()
@@ -362,12 +367,19 @@ void SecondWindow::refresh_com()
     struct tm * tptr = std::localtime(&timestamp);
     std::strftime(tbuffer, 32, "%T", tptr);
     miss_panel->setText(qstr(calculate_misses_in_last_2()));
-    this->last_refresh_panel->setText(tbuffer);
+    //this->last_refresh_panel->setText(tbuffer);
     uint32_t packets(data_->eatData<uint32_t>(PACKET_RX_RATE_CTR, 0));
     all_packet_rate->setValue((packets * (1000.0 / (REFRESH_RATE))));
     corrupted_panel->setText(qstr(data_->getData<uint64_t>(CORRUPTED_PACKET_CTR)));
 
-    rssi_value->display(data_->getData<uint8_t>(ui_interface::RSSI_VALUE));
+    rssi_value->display(-1* (int) data_->getData<uint8_t>(ui_interface::RSSI_VALUE));
+
+    // Time since last received packet
+    time_t t = difftime(std::time(nullptr), data_->getData<time_t>(ui_interface::TIME_SINCE_LAST_RX_PACKET));
+    struct tm* tt = gmtime(&t);
+    char buf[32];
+    std::strftime(buf, 32, "%T", tt);
+    time_since_last_Rx->setText(buf);
 }
 
 void SecondWindow::check_and_show()
@@ -375,8 +387,6 @@ void SecondWindow::check_and_show()
     if (data_->eatData<bool>(FILE_TRANSMISSION_ALL_RECEIVED, false)) {
         QMessageBox::warning(this, "File", "File transmission finished - All received");
     }
-
-    // show_ok_X(ready_ignition_panel, data_->getData<bool>(IGNITION_CLICKED));
 }
 
 void SecondWindow::refresh_time()
@@ -446,6 +456,11 @@ void SecondWindow::play_music_pressed() {
 
 void SecondWindow::rssi_get_pressed() {
     data_->setData(ui_interface::RSSI_READ_ORDER, true);
+}
+
+void SecondWindow::send_msg_pressed() {
+    // for test
+    data_->setData(ui_interface::TIME_SINCE_LAST_RX_PACKET, std::time(nullptr));
 }
 
 #ifdef SOUND_ON
