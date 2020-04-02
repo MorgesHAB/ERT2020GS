@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'LioTestsxDXzW.ui'
+** Form generated from reading UI file 'LioTestsfDayX.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.11.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef LIOTESTSXDXZW_H
-#define LIOTESTSXDXZW_H
+#ifndef LIOTESTSFDAYX_H
+#define LIOTESTSFDAYX_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
@@ -89,7 +89,6 @@ public:
     QLineEdit *lineEdit_3;
     QPushButton *change_theme;
     QPushButton *reset_button;
-    QPushButton *xbee_button_3;
     QLabel *serialport_status;
     QLabel *label;
     QWidget *tab_2;
@@ -226,7 +225,7 @@ public:
     QSlider *verticalSlider_6;
     QLabel *label_30;
     QWidget *tab_4;
-    QLabel *image_lio;
+    QLabel *PL_image_display;
     QPushButton *file_transmission_button;
     QGroupBox *groupBox_8;
     QWidget *gridLayoutWidget_6;
@@ -236,6 +235,7 @@ public:
     QLabel *receiver_state_panel;
     QLabel *transmitter_state_panel;
     QProgressBar *file_transmission_progress_bar;
+    QPushButton *clear_image;
     QLabel *label_29;
     QLabel *logo_2;
     QLabel *logo_3;
@@ -297,7 +297,7 @@ public:
         red_button = new QLabel(groupBox);
         red_button->setObjectName(QStringLiteral("red_button"));
         red_button->setGeometry(QRect(50, 50, 91, 111));
-        red_button->setStyleSheet(QStringLiteral("image: url(:/assets/alarmON.png);"));
+        red_button->setStyleSheet(QStringLiteral("image: url(:/assets/alarmOFF.png);"));
         label_67 = new QLabel(groupBox);
         label_67->setObjectName(QStringLiteral("label_67"));
         label_67->setGeometry(QRect(30, 230, 68, 19));
@@ -693,10 +693,6 @@ public:
         reset_button = new QPushButton(tab);
         reset_button->setObjectName(QStringLiteral("reset_button"));
         reset_button->setGeometry(QRect(10, 160, 121, 27));
-        xbee_button_3 = new QPushButton(tab);
-        xbee_button_3->setObjectName(QStringLiteral("xbee_button_3"));
-        xbee_button_3->setGeometry(QRect(20, 90, 111, 27));
-        xbee_button_3->setMinimumSize(QSize(100, 0));
         serialport_status = new QLabel(tab);
         serialport_status->setObjectName(QStringLiteral("serialport_status"));
         serialport_status->setGeometry(QRect(320, 40, 41, 41));
@@ -1433,10 +1429,11 @@ public:
         groupBox_5->raise();
         tab_4 = new QWidget();
         tab_4->setObjectName(QStringLiteral("tab_4"));
-        image_lio = new QLabel(tab_4);
-        image_lio->setObjectName(QStringLiteral("image_lio"));
-        image_lio->setGeometry(QRect(300, 10, 671, 411));
-        image_lio->setStyleSheet(QStringLiteral("image: url(:/assets/ERT.jpg);"));
+        PL_image_display = new QLabel(tab_4);
+        PL_image_display->setObjectName(QStringLiteral("PL_image_display"));
+        PL_image_display->setGeometry(QRect(300, 20, 801, 411));
+        PL_image_display->setStyleSheet(QStringLiteral("image: url(:/assets/space.png);"));
+        PL_image_display->setAlignment(Qt::AlignCenter);
         file_transmission_button = new QPushButton(tab_4);
         file_transmission_button->setObjectName(QStringLiteral("file_transmission_button"));
         file_transmission_button->setGeometry(QRect(30, 190, 171, 151));
@@ -1511,6 +1508,27 @@ public:
                                                                     "	border-radius: 10px;\n"
                                                                     "}"));
         file_transmission_progress_bar->setValue(24);
+        clear_image = new QPushButton(tab_4);
+        clear_image->setObjectName(QStringLiteral("clear_image"));
+        clear_image->setGeometry(QRect(30, 360, 151, 51));
+        clear_image->setStyleSheet(QLatin1String("QPushButton{\n"
+                                                 "qproperty-icon: url(:/assets/clear.png);\n"
+                                                 "qproperty-iconSize: 30px;\n"
+                                                 "font: 14pt \"MS Shell Dlg 2\";\n"
+                                                 "border: 2px solid;\n"
+                                                 "border-color: rgb(215, 237, 252);\n"
+                                                 "border-radius: 10px;\n"
+                                                 "}\n"
+                                                 "QPushButton:hover {\n"
+                                                 "background-color: rgb(35, 35, 35); \n"
+                                                 "border: 3px solid;\n"
+                                                 "border-color: rgb(215, 237, 252);\n"
+                                                 "}\n"
+                                                 "QPushButton:pressed {\n"
+                                                 "border: 4px solid;\n"
+                                                 "border-color: rgb(92, 242, 135);\n"
+                                                 "}\n"
+                                                 ""));
         tabWidget_2->addTab(tab_4, QString());
         label_29 = new QLabel(second_ui);
         label_29->setObjectName(QStringLiteral("label_29"));
@@ -1596,7 +1614,7 @@ public:
         retranslateUi(second_ui);
 
         tabWidget->setCurrentIndex(0);
-        tabWidget_2->setCurrentIndex(0);
+        tabWidget_2->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(second_ui);
@@ -1694,7 +1712,6 @@ public:
         reset_button->setToolTip(QApplication::translate("second_ui", "Resets saved data", nullptr));
 #endif // QT_NO_TOOLTIP
         reset_button->setText(QApplication::translate("second_ui", "Reset", nullptr));
-        xbee_button_3->setText(QApplication::translate("second_ui", "START XBee", nullptr));
         serialport_status->setText(QString());
         label->setText(QApplication::translate("second_ui", "Serial port status", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("second_ui", "Config", nullptr));
@@ -1809,7 +1826,7 @@ public:
         label_83->setText(QString());
         label_30->setText(QString());
         tabWidget_2->setTabText(tabWidget_2->indexOf(tab_3), QApplication::translate("second_ui", "AV - GSE - PL", nullptr));
-        image_lio->setText(QString());
+        PL_image_display->setText(QString());
         file_transmission_button->setText(QString());
         groupBox_8->setTitle(QApplication::translate("second_ui", "File Transmission", nullptr));
         transmitter_state_label->setText(QApplication::translate("second_ui", "Transmitter State", nullptr));
@@ -1817,6 +1834,7 @@ public:
         receiver_state_panel->setText(QString());
         transmitter_state_panel->setText(QString());
         file_transmission_progress_bar->setFormat(QApplication::translate("second_ui", "%v / %m", nullptr));
+        clear_image->setText(QApplication::translate("second_ui", "Clear image", nullptr));
         tabWidget_2->setTabText(tabWidget_2->indexOf(tab_4), QApplication::translate("second_ui", "Payload Image", nullptr));
         label_29->setText(QString());
 #ifndef QT_NO_TOOLTIP
@@ -1850,4 +1868,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // LIOTESTSXDXZW_H
+#endif // LIOTESTSFDAYX_H

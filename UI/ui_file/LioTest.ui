@@ -159,7 +159,7 @@ QTabWidget::pane {
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">image: url(:/assets/alarmON.png);</string>
+        <string notr="true">image: url(:/assets/alarmOFF.png);</string>
        </property>
        <property name="text">
         <string/>
@@ -990,25 +990,6 @@ border-color: rgb(92, 242, 135);
       <string>Reset</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="xbee_button_3">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>90</y>
-       <width>111</width>
-       <height>27</height>
-      </rect>
-     </property>
-     <property name="minimumSize">
-      <size>
-       <width>100</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="text">
-      <string>START XBee</string>
-     </property>
-    </widget>
     <widget class="QLabel" name="serialport_status">
      <property name="geometry">
       <rect>
@@ -1244,7 +1225,7 @@ QTabWidget::pane {
 }</string>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>1</number>
    </property>
    <widget class="QWidget" name="tab_3">
     <attribute name="title">
@@ -2420,20 +2401,23 @@ border-color: rgb(92, 242, 135);
     <attribute name="title">
      <string>Payload Image</string>
     </attribute>
-    <widget class="QLabel" name="image_lio">
+    <widget class="QLabel" name="PL_image_display">
      <property name="geometry">
       <rect>
        <x>300</x>
-       <y>10</y>
-       <width>671</width>
+       <y>20</y>
+       <width>801</width>
        <height>411</height>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">image: url(:/assets/ERT.jpg);</string>
+      <string notr="true">image: url(:/assets/space.png);</string>
      </property>
      <property name="text">
       <string/>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
     <widget class="QPushButton" name="file_transmission_button">
@@ -2579,6 +2563,39 @@ QProgressBar::chunk:horizontal {
        <string>%v / %m</string>
       </property>
      </widget>
+    </widget>
+    <widget class="QPushButton" name="clear_image">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>360</y>
+       <width>151</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+qproperty-icon: url(:/assets/clear.png);
+qproperty-iconSize: 30px;
+font: 14pt &quot;MS Shell Dlg 2&quot;;
+border: 2px solid;
+border-color: rgb(215, 237, 252);
+border-radius: 10px;
+}
+QPushButton:hover {
+background-color: rgb(35, 35, 35); 
+border: 3px solid;
+border-color: rgb(215, 237, 252);
+}
+QPushButton:pressed {
+border: 4px solid;
+border-color: rgb(92, 242, 135);
+}
+</string>
+     </property>
+     <property name="text">
+      <string>Clear image</string>
+     </property>
     </widget>
    </widget>
   </widget>

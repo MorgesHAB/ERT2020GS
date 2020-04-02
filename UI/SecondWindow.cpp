@@ -1,4 +1,3 @@
-#include "SecondWindow.h"
 /*!
  * \file SecondWindow.h
  *
@@ -9,10 +8,6 @@
  */
 
 #include "SecondWindow.h"
-/// see reference for #include's
-/// https://stackoverflow.com/questions/3943352/where-to-put-include-statements-header-or-source
-/// https://stackoverflow.com/questions/2297567/where-should-include-be-put-in-c
-/// and many others
 
 #include <chrono>
 #include <iostream>
@@ -34,6 +29,20 @@
 constexpr uint32_t REFRESH_RATE(500);
 
 using namespace ui_interface;
+
+void SecondWindow::refresh_data()
+{
+    refresh_com();
+    refresh_av_state();
+    refresh_telemetry();
+    refresh_time();
+    check_and_show();
+    refresh_ignition_frame();
+    refresh_gps();
+    refresh_file_transmission();
+    refresh_lionel_stuff();
+    ++tick_counter_;
+}
 
 inline QString degree_representation(double value)
 {
@@ -105,9 +114,6 @@ void SecondWindow::refresh_lionel_stuff() {
 }
 
 void SecondWindow::valve_control() {
-    QString url = R"(Yann.png)";
-    QPixmap img(url);
-    image_lio->setPixmap(img);
     static int x(0);
     data_->setData(IGNITION_STATUS, (ignit::IgnitionState) x);
     x+=1;
@@ -117,20 +123,6 @@ void SecondWindow::reset_button_pressed()
 {
     constexpr uint64_t z(0);
     for (auto& index : dataToReset) data_->setData(index, z);
-}
-
-void SecondWindow::refresh_data()
-{
-    refresh_com();
-    refresh_av_state();
-    refresh_telemetry();
-    refresh_time();
-    check_and_show();
-    refresh_ignition_frame();
-    refresh_gps();
-    refresh_file_transmission_box();
-    refresh_lionel_stuff();
-    ++tick_counter_;
 }
 
 void SecondWindow::xbee_clicked()
@@ -327,6 +319,7 @@ void SecondWindow::initialize_slots_signals()
     connect(play_music,SIGNAL(pressed()), this, SLOT(play_music_pressed()));
     connect(rssi_button,SIGNAL(pressed()), this, SLOT(rssi_get_pressed()));
     connect(send_msg,SIGNAL(pressed()), this, SLOT(send_msg_pressed()));
+    connect(clear_image,SIGNAL(pressed()), this, SLOT(clear_image_pressed()));
 }
 
 void SecondWindow::refresh_telemetry()
@@ -390,9 +383,7 @@ void SecondWindow::refresh_com()
 
 void SecondWindow::check_and_show()
 {
-    if (data_->eatData<bool>(FILE_TRANSMISSION_ALL_RECEIVED, false)) {
-        QMessageBox::warning(this, "File", "File transmission finished - All received");
-    }
+
 }
 
 void SecondWindow::refresh_time()
@@ -405,15 +396,21 @@ void SecondWindow::refresh_time()
     time_panel->setText(tbuffer);
 }
 
-void SecondWindow::refresh_file_transmission_box()
+void SecondWindow::refresh_file_transmission()
 {
-    FileTransmissionStates state(data_->getData<FileTransmissionStates>(ui_interface::FILE_TRANSMISSION_RECEIVED_STATE));
-
+    auto state(data_->getData<FileTransmissionStates>(ui_interface::FILE_TRANSMISSION_RECEIVED_STATE));
     transmitter_state_panel->setText(QString::fromStdString(getStateName(state)));
     state = data_->getData<FileTransmissionStates>(ui_interface::FILE_TRANSMISSION_MY_STATE);
     receiver_state_panel->setText(QString::fromStdString(getStateName(state)));
+
     file_transmission_progress_bar->setMaximum(data_->getData<uint64_t>(ui_interface::FILE_TRANSMISSION_TOTAL_PACKETS));
     file_transmission_progress_bar->setValue(data_->getData<uint16_t>(ui_interface::FILE_TRANSMISSION_CURRENT_PACKET));
+
+    if (data_->eatData<bool>(FILE_TRANSMISSION_ALL_RECEIVED, false)) {
+        PL_image_display->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+        QPixmap img(QString::fromStdString(data_->getImgPLfilename()));
+        PL_image_display->setPixmap(img);
+    }
 }
 
 void SecondWindow::show_ok_X(QLabel * label, bool ok)
@@ -467,6 +464,10 @@ void SecondWindow::rssi_get_pressed() {
 void SecondWindow::send_msg_pressed() {
     // for test
     data_->setData(ui_interface::RSSI_VALUE, (uint8_t) (rand() % 100));
+}
+
+void SecondWindow::clear_image_pressed() {
+    PL_image_display->clear();
 }
 
 #ifdef SOUND_ON

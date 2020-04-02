@@ -67,6 +67,7 @@ bool File::updateTx(std::shared_ptr<Connector> connector) {
         case ALL_RECEIVED:
             std::cout << "ACK : Every Packet have been received correctly" << std::endl;
             exportFile();
+            connector->setImgPLfilename(fileName);
             connector->setData(ui_interface::FILE_TRANSMISSION_ALL_RECEIVED, true);
             break;
         default:
@@ -172,7 +173,7 @@ void File::parse(Packet &packet) {
 }
 
 bool File::updateRx(std::shared_ptr<Connector> connector) {
-    connector->setData(ui_interface::FILE_TRANSMISSION_TOTAL_PACKETS, nbrTotPacket);
+    connector->setData(ui_interface::FILE_TRANSMISSION_TOTAL_PACKETS, nbrTotPacket - 1);
     connector->setData(ui_interface::FILE_TRANSMISSION_CURRENT_PACKET, packetNbr);
 
     switch (myState) {
