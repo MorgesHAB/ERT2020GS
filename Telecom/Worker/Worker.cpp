@@ -73,8 +73,8 @@ void Worker::manageIgnitionTx(DataHandler& dataHandler, RFmodem* rfmodem) {
 void Worker::manageImageTransmission(DataHandler &dataHandler, RFmodem *rfmodem) {
     // Image communication
     if (connector->eatData<bool>(ui_interface::SEND_FILE_REQUEST, false)) {
-        dataHandler.updateTx(DatagramType::IMAGE);
-        rfmodem->send(dataHandler.getPacket(DatagramType::IMAGE));
+        dataHandler.updateTx(DatagramType::PL_IMAGE);
+        rfmodem->send(dataHandler.getPacket(DatagramType::PL_IMAGE));
     }
 }
 

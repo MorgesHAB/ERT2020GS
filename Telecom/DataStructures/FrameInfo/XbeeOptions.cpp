@@ -47,9 +47,5 @@ void XbeeOptions::print() const {
 }
 
 bool XbeeOptions::updateRx(std::shared_ptr<Connector> connector) {
-    if (xbeeReceivedOptions[0] == 0x88) { // RSSI command response
-        std::cout << "RSSI = -" << +xbeeReceivedOptions[5] << " dBm" << std::endl;
-        connector->setData(ui_interface::RSSI_VALUE, xbeeReceivedOptions[5]);
-    }
     return xbeeReceivedOptions[0] == API_RECEIVED_PACKET;
 }

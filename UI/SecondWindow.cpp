@@ -108,7 +108,6 @@ void SecondWindow::valve_control() {
     QString url = R"(Yann.png)";
     QPixmap img(url);
     image_lio->setPixmap(img);
-    data_->setData(ui_interface::RSSI_VALUE, (uint8_t) (rand() % 100));
     static int x(0);
     data_->setData(IGNITION_STATUS, (ignit::IgnitionState) x);
     x+=1;
@@ -346,8 +345,8 @@ void SecondWindow::refresh_telemetry()
 
 void SecondWindow::refresh_gps()
 {
-    altitude_lcd_gps->display(qstr(data_->getData<float>(GPS_ALTITUDE)));
-    altitude_max_lcd_m->display(qstr(data_->getData<float>(ALTITUDE_MAX)));
+    altitude_lcd_gps->display(qstr((int) data_->getData<float>(GPS_ALTITUDE)));
+    altitude_max_lcd_m->display(qstr((int) data_->getData<float>(ALTITUDE_MAX)));
     longitude_panel->setText(qstr(data_->getData<float>(GPS_LONGITUDE)));
     latitude_panel->setText(qstr(data_->getData<float>(GPS_LATITUDE)));
     hdop_panel->setText(qstr(data_->getData<float>(GPS_HDOP)));
@@ -368,10 +367,17 @@ void SecondWindow::refresh_com()
     std::strftime(tbuffer, 32, "%T", tptr);
     miss_panel->setText(qstr(calculate_misses_in_last_2()));
     //this->last_refresh_panel->setText(tbuffer);
-    uint32_t packets(data_->eatData<uint32_t>(PACKET_RX_RATE_CTR, 0));
-    all_packet_rate->setValue((packets * (1000.0 / (REFRESH_RATE))));
+    uint32_t coef(1000.0 / REFRESH_RATE);
+    all_packet_rate->setValue((data_->eatData<uint32_t>(PACKET_CTR_ALL, 0) * coef));
+    AV_packet_rate->setValue((data_->eatData<uint32_t>(PACKET_CTR_AV, 0) * coef));
+    PL_packet_rate->setValue((data_->eatData<uint32_t>(PACKET_CTR_PL, 0) * coef));
+    GSE_packet_rate->setValue((data_->eatData<uint32_t>(PACKET_CTR_GSE, 0) * coef));
+    PP_packet_rate->setValue((data_->eatData<uint32_t>(PACKET_CTR_PP, 0) * coef));
+
     corrupted_panel->setText(qstr(data_->getData<uint64_t>(CORRUPTED_PACKET_CTR)));
 
+    // call this every X seconds if you want or update when  RSSSI button clicked
+    //data_->setData(ui_interface::RSSI_READ_ORDER, true);
     rssi_value->display(-1* (int) data_->getData<uint8_t>(ui_interface::RSSI_VALUE));
 
     // Time since last received packet
@@ -460,7 +466,7 @@ void SecondWindow::rssi_get_pressed() {
 
 void SecondWindow::send_msg_pressed() {
     // for test
-    data_->setData(ui_interface::TIME_SINCE_LAST_RX_PACKET, std::time(nullptr));
+    data_->setData(ui_interface::RSSI_VALUE, (uint8_t) (rand() % 100));
 }
 
 #ifdef SOUND_ON

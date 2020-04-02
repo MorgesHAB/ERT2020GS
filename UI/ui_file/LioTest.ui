@@ -425,7 +425,7 @@ background-color: rgb(16, 16, 16);
       </property>
       <layout class="QGridLayout" name="gridLayout_12">
        <item row="3" column="1">
-        <widget class="QProgressBar" name="progressBar_4">
+        <widget class="QProgressBar" name="PL_packet_rate">
          <property name="maximumSize">
           <size>
            <width>274</width>
@@ -478,7 +478,7 @@ QProgressBar::chunk:horizontal {
         </widget>
        </item>
        <item row="4" column="1">
-        <widget class="QProgressBar" name="progressBar_9">
+        <widget class="QProgressBar" name="GSE_packet_rate">
          <property name="styleSheet">
           <string notr="true">QProgressBar {
 	color: white;
@@ -515,7 +515,7 @@ QProgressBar::chunk:horizontal {
         </widget>
        </item>
        <item row="5" column="1">
-        <widget class="QProgressBar" name="progressBar_5">
+        <widget class="QProgressBar" name="PP_packet_rate">
          <property name="styleSheet">
           <string notr="true">QProgressBar {
 	color: white;
@@ -545,7 +545,7 @@ QProgressBar::chunk:horizontal {
         </widget>
        </item>
        <item row="2" column="1">
-        <widget class="QProgressBar" name="progressBar_8">
+        <widget class="QProgressBar" name="AV_packet_rate">
          <property name="styleSheet">
           <string notr="true">QProgressBar {
 	color: white;
@@ -1358,6 +1358,9 @@ QTabWidget::pane {
        <widget class="QLCDNumber" name="altitude_max_lcd_m">
         <property name="enabled">
          <bool>true</bool>
+        </property>
+        <property name="digitCount">
+         <number>5</number>
         </property>
         <property name="segmentStyle">
          <enum>QLCDNumber::Flat</enum>

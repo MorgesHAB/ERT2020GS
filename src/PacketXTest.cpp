@@ -35,6 +35,9 @@ static void sig_handler(int _) {
 }
 
 int main(int argc, char** argv) {
+    std::cout << "Syntax : ./PacketTest [Tx or Rx] [DatagramID] [serial port]" << std::endl;
+    std::cout << "Syntax ex : ./PacketTest Tx 3 ttyS3" << std::endl;
+    
     using namespace DatagramType;
 
     signal(SIGINT, sig_handler);
@@ -52,7 +55,8 @@ int main(int argc, char** argv) {
             modeTx = std::string(argv[1]) == "Tx";
             break;
         default:
-            std::cout << "Mode Rx" << std::endl;
+            std::cout << "Bad syntax" << std::endl;
+            return 0;
     }
 
     Connector connector;
@@ -70,7 +74,7 @@ int main(int argc, char** argv) {
             dataHandler.updateTx(ID);
             xbee.send(dataHandler.getPacket(ID));
 
-            std::this_thread::sleep_for(std::chrono::milliseconds(200));
+            std::this_thread::sleep_for(std::chrono::milliseconds(1000));
         }
         // ./XbeeTest               // Receiver Part
         else {

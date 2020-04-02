@@ -6,7 +6,7 @@
  *     | |____| | \ \  | |      | |__| |____) |    / /_| |_| / /_| |_| |
  *     |______|_|  \_\ |_|       \_____|_____/    |____|\___/____|\___/
  *
- * \file XbeeTest.cpp
+ * \file AVsimulator.cpp
  *
  * \brief Ground Support Equipment Transceiver
  *
@@ -30,6 +30,9 @@ static void sig_handler(int _) {
 }
 
 int main(int argc, char** argv) {
+    std::cout << "Transmit syntax : ./AVsimulator ttyUSB0 Tx" << std::endl;
+    std::cout << "Receive syntax :  ./AVsimulator ttyS3 Rx" << std::endl;
+
 
     signal(SIGINT, sig_handler);
 

@@ -61,6 +61,10 @@ DataHandler::DataHandler(std::shared_ptr<Connector> connector)
     dataHandler[PL_STATE]->add(new States({1, 0, 1, 1, 0, 0, 1, 0}));
 
     dataHandler[PL_IMAGE]->add(new File("panda.jpg", 200));
+    //dataHandler[PL_IMAGE]->add(new File("Yann.png", 200));
+    //dataHandler[PL_IMAGE]->add(new Picture(200, "livePic.jpg", 600, 600));
+
+
 
     //// GSE Datagram
     //dataHandler[GSE_ORDER]->add(new GSEOrder);
@@ -75,12 +79,6 @@ DataHandler::DataHandler(std::shared_ptr<Connector> connector)
     //// TEST ----------- Datagram
     dataHandler[TEST]->add(new String("First sentence transmit via XBee !!"));
     dataHandler[TEST]->add(new States({1, 0, 1, 1, 0, 0, 1, 0}));
-
-    //// Packet Type n°5
-    dataHandler[IMAGE]->add(new File("Yann.png", 200));
-    //dataHandler[IMAGE]->add(new File("Yann.png", 100));
-    //dataHandler[IMAGE]->add(new Picture(200, "nul.jpg", 600, 600));
-
 
     dataHandler[IGNITION_ANSWER]->add(new SensorData<ignit::IgnitionState>(DataType::IGNITION_STATUS));
 
@@ -120,6 +118,15 @@ bool DataHandler::updateTx(DatagramType::DatagramID type) {
 }
 
 bool DataHandler::updateRx(Packet *packet) {
-    lastRxID = (DatagramType::DatagramID) packet->getPacket()[12]; // Position of Datagram ID in packet
-    return dataHandler[lastRxID]->updateRx(packet, connector);
+    if (packet->getPacket()[0] == 0x90) {
+        lastRxID = (DatagramType::DatagramID) packet->getPacket()[12]; // Position of Datagram ID in packet
+        return dataHandler[lastRxID]->updateRx(packet, connector);
+    }
+    else if (packet->getPacket()[0] == 0x88) { // RSSI command response
+        std::cout << "RSSI = -" << +packet->getPacket()[5] << " dBm" << std::endl;
+        connector->setData(ui_interface::RSSI_VALUE, packet->getPacket()[5]);
+    }
+    // Else packet won't be parsed
+    connector->incrementData(ui_interface::CORRUPTED_PACKET_CTR);
+    return false;
 }

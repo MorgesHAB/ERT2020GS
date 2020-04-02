@@ -48,7 +48,6 @@ namespace DatagramType {
 
         /// TEST PACKET
             ACK,
-            IMAGE,
             IGNITION_ANSWER,
             TEST,
 
@@ -74,7 +73,6 @@ namespace DatagramType {
             case PL_IMAGE: return "PL IMAGE";
             case PL_GPS: return "PL GPS";
             case PL_ORDER: return "PL ORDER";
-            case IMAGE: return "Image";
             case TEST: return "TEST";
             case IGNITION_ANSWER: return "Ignition Response";
             default: return "Unknown";

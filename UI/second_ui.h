@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'LioTestoEzXMX.ui'
+** Form generated from reading UI file 'LioTestsxDXzW.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.11.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef LIOTESTOEZXMX_H
-#define LIOTESTOEZXMX_H
+#ifndef LIOTESTSXDXZW_H
+#define LIOTESTSXDXZW_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
@@ -56,13 +56,13 @@ public:
     QGroupBox *groupBox_7;
     QWidget *gridLayoutWidget_3;
     QGridLayout *gridLayout_12;
-    QProgressBar *progressBar_4;
+    QProgressBar *PL_packet_rate;
     QLabel *label_20;
     QLabel *label_6;
-    QProgressBar *progressBar_9;
+    QProgressBar *GSE_packet_rate;
     QLabel *label_21;
-    QProgressBar *progressBar_5;
-    QProgressBar *progressBar_8;
+    QProgressBar *PP_packet_rate;
+    QProgressBar *AV_packet_rate;
     QLabel *label_16;
     QLabel *label_17;
     QProgressBar *all_packet_rate;
@@ -393,28 +393,28 @@ public:
         gridLayout_12 = new QGridLayout(gridLayoutWidget_3);
         gridLayout_12->setObjectName(QStringLiteral("gridLayout_12"));
         gridLayout_12->setContentsMargins(0, 0, 0, 0);
-        progressBar_4 = new QProgressBar(gridLayoutWidget_3);
-        progressBar_4->setObjectName(QStringLiteral("progressBar_4"));
-        progressBar_4->setMaximumSize(QSize(274, 21));
-        progressBar_4->setStyleSheet(QLatin1String("QProgressBar {\n"
-                                                   "	color: white;\n"
-                                                   "}\n"
-                                                   "QProgressBar:horizontal {\n"
-                                                   "	border: 1px solid gray;\n"
-                                                   "	border-radius: 10px;\n"
-                                                   "	background: black;\n"
-                                                   "	padding: 1px;\n"
-                                                   "    text-align: center;\n"
-                                                   "	height: 10px;\n"
-                                                   "}\n"
-                                                   "QProgressBar::chunk:horizontal {\n"
-                                                   "	background: qlineargradient(x1: 0, y1: 0.5, x2: 1, y2: 		0.5, stop: 0 rgb(39, 68, 255), stop: 1 rgb(190, 255, 178));\n"
-                                                   "	border-radius: 5px;\n"
-                                                   "}"));
-        progressBar_4->setMaximum(30);
-        progressBar_4->setValue(18);
+        PL_packet_rate = new QProgressBar(gridLayoutWidget_3);
+        PL_packet_rate->setObjectName(QStringLiteral("PL_packet_rate"));
+        PL_packet_rate->setMaximumSize(QSize(274, 21));
+        PL_packet_rate->setStyleSheet(QLatin1String("QProgressBar {\n"
+                                                    "	color: white;\n"
+                                                    "}\n"
+                                                    "QProgressBar:horizontal {\n"
+                                                    "	border: 1px solid gray;\n"
+                                                    "	border-radius: 10px;\n"
+                                                    "	background: black;\n"
+                                                    "	padding: 1px;\n"
+                                                    "    text-align: center;\n"
+                                                    "	height: 10px;\n"
+                                                    "}\n"
+                                                    "QProgressBar::chunk:horizontal {\n"
+                                                    "	background: qlineargradient(x1: 0, y1: 0.5, x2: 1, y2: 		0.5, stop: 0 rgb(39, 68, 255), stop: 1 rgb(190, 255, 178));\n"
+                                                    "	border-radius: 5px;\n"
+                                                    "}"));
+        PL_packet_rate->setMaximum(30);
+        PL_packet_rate->setValue(18);
 
-        gridLayout_12->addWidget(progressBar_4, 3, 1, 1, 1);
+        gridLayout_12->addWidget(PL_packet_rate, 3, 1, 1, 1);
 
         label_20 = new QLabel(gridLayoutWidget_3);
         label_20->setObjectName(QStringLiteral("label_20"));
@@ -427,76 +427,76 @@ public:
 
         gridLayout_12->addWidget(label_6, 0, 0, 1, 2);
 
-        progressBar_9 = new QProgressBar(gridLayoutWidget_3);
-        progressBar_9->setObjectName(QStringLiteral("progressBar_9"));
-        progressBar_9->setStyleSheet(QLatin1String("QProgressBar {\n"
-                                                   "	color: white;\n"
-                                                   "}\n"
-                                                   "QProgressBar:horizontal {\n"
-                                                   "	border: 1px solid gray;\n"
-                                                   "	border-radius: 10px;\n"
-                                                   "	background: black;\n"
-                                                   "	padding: 1px;\n"
-                                                   "    text-align: center;\n"
-                                                   "	height: 10px;\n"
-                                                   "}\n"
-                                                   "QProgressBar::chunk:horizontal {\n"
-                                                   "	background: qlineargradient(x1: 0, y1: 0.5, x2: 1, y2: 		0.5, stop: 0 rgb(39, 68, 255), stop: 1 rgb(255, 158, 110));\n"
-                                                   "	border-radius: 5px;\n"
-                                                   "}"));
-        progressBar_9->setMaximum(30);
-        progressBar_9->setValue(24);
+        GSE_packet_rate = new QProgressBar(gridLayoutWidget_3);
+        GSE_packet_rate->setObjectName(QStringLiteral("GSE_packet_rate"));
+        GSE_packet_rate->setStyleSheet(QLatin1String("QProgressBar {\n"
+                                                     "	color: white;\n"
+                                                     "}\n"
+                                                     "QProgressBar:horizontal {\n"
+                                                     "	border: 1px solid gray;\n"
+                                                     "	border-radius: 10px;\n"
+                                                     "	background: black;\n"
+                                                     "	padding: 1px;\n"
+                                                     "    text-align: center;\n"
+                                                     "	height: 10px;\n"
+                                                     "}\n"
+                                                     "QProgressBar::chunk:horizontal {\n"
+                                                     "	background: qlineargradient(x1: 0, y1: 0.5, x2: 1, y2: 		0.5, stop: 0 rgb(39, 68, 255), stop: 1 rgb(255, 158, 110));\n"
+                                                     "	border-radius: 5px;\n"
+                                                     "}"));
+        GSE_packet_rate->setMaximum(30);
+        GSE_packet_rate->setValue(24);
 
-        gridLayout_12->addWidget(progressBar_9, 4, 1, 1, 1);
+        gridLayout_12->addWidget(GSE_packet_rate, 4, 1, 1, 1);
 
         label_21 = new QLabel(gridLayoutWidget_3);
         label_21->setObjectName(QStringLiteral("label_21"));
 
         gridLayout_12->addWidget(label_21, 5, 0, 1, 1);
 
-        progressBar_5 = new QProgressBar(gridLayoutWidget_3);
-        progressBar_5->setObjectName(QStringLiteral("progressBar_5"));
-        progressBar_5->setStyleSheet(QLatin1String("QProgressBar {\n"
-                                                   "	color: white;\n"
-                                                   "}\n"
-                                                   "QProgressBar:horizontal {\n"
-                                                   "	border: 1px solid gray;\n"
-                                                   "	border-radius: 10px;\n"
-                                                   "	background: black;\n"
-                                                   "	padding: 1px;\n"
-                                                   "    text-align: center;\n"
-                                                   "	height: 10px;\n"
-                                                   "}\n"
-                                                   "QProgressBar::chunk:horizontal {\n"
-                                                   "	background: qlineargradient(x1: 0, y1: 0.5, x2: 1, y2: 		0.5, stop: 0 rgb(39, 68, 255), stop: 1 rgb(176, 111, 255));\n"
-                                                   "	border-radius: 5px;\n"
-                                                   "}"));
-        progressBar_5->setMaximum(30);
-        progressBar_5->setValue(10);
+        PP_packet_rate = new QProgressBar(gridLayoutWidget_3);
+        PP_packet_rate->setObjectName(QStringLiteral("PP_packet_rate"));
+        PP_packet_rate->setStyleSheet(QLatin1String("QProgressBar {\n"
+                                                    "	color: white;\n"
+                                                    "}\n"
+                                                    "QProgressBar:horizontal {\n"
+                                                    "	border: 1px solid gray;\n"
+                                                    "	border-radius: 10px;\n"
+                                                    "	background: black;\n"
+                                                    "	padding: 1px;\n"
+                                                    "    text-align: center;\n"
+                                                    "	height: 10px;\n"
+                                                    "}\n"
+                                                    "QProgressBar::chunk:horizontal {\n"
+                                                    "	background: qlineargradient(x1: 0, y1: 0.5, x2: 1, y2: 		0.5, stop: 0 rgb(39, 68, 255), stop: 1 rgb(176, 111, 255));\n"
+                                                    "	border-radius: 5px;\n"
+                                                    "}"));
+        PP_packet_rate->setMaximum(30);
+        PP_packet_rate->setValue(10);
 
-        gridLayout_12->addWidget(progressBar_5, 5, 1, 1, 1);
+        gridLayout_12->addWidget(PP_packet_rate, 5, 1, 1, 1);
 
-        progressBar_8 = new QProgressBar(gridLayoutWidget_3);
-        progressBar_8->setObjectName(QStringLiteral("progressBar_8"));
-        progressBar_8->setStyleSheet(QLatin1String("QProgressBar {\n"
-                                                   "	color: white;\n"
-                                                   "}\n"
-                                                   "QProgressBar:horizontal {\n"
-                                                   "	border: 1px solid gray;\n"
-                                                   "	border-radius: 10px;\n"
-                                                   "	background: black;\n"
-                                                   "	padding: 1px;\n"
-                                                   "    text-align: center;\n"
-                                                   "	height: 10px;\n"
-                                                   "}\n"
-                                                   "QProgressBar::chunk:horizontal {\n"
-                                                   "	background: qlineargradient(x1: 0, y1: 0.5, x2: 1, y2: 		0.5, stop: 0 rgb(39, 68, 255), stop: 1 rgb(125, 249, 255));\n"
-                                                   "	border-radius: 5px;\n"
-                                                   "}"));
-        progressBar_8->setMaximum(30);
-        progressBar_8->setValue(12);
+        AV_packet_rate = new QProgressBar(gridLayoutWidget_3);
+        AV_packet_rate->setObjectName(QStringLiteral("AV_packet_rate"));
+        AV_packet_rate->setStyleSheet(QLatin1String("QProgressBar {\n"
+                                                    "	color: white;\n"
+                                                    "}\n"
+                                                    "QProgressBar:horizontal {\n"
+                                                    "	border: 1px solid gray;\n"
+                                                    "	border-radius: 10px;\n"
+                                                    "	background: black;\n"
+                                                    "	padding: 1px;\n"
+                                                    "    text-align: center;\n"
+                                                    "	height: 10px;\n"
+                                                    "}\n"
+                                                    "QProgressBar::chunk:horizontal {\n"
+                                                    "	background: qlineargradient(x1: 0, y1: 0.5, x2: 1, y2: 		0.5, stop: 0 rgb(39, 68, 255), stop: 1 rgb(125, 249, 255));\n"
+                                                    "	border-radius: 5px;\n"
+                                                    "}"));
+        AV_packet_rate->setMaximum(30);
+        AV_packet_rate->setValue(12);
 
-        gridLayout_12->addWidget(progressBar_8, 2, 1, 1, 1);
+        gridLayout_12->addWidget(AV_packet_rate, 2, 1, 1, 1);
 
         label_16 = new QLabel(gridLayoutWidget_3);
         label_16->setObjectName(QStringLiteral("label_16"));
@@ -846,6 +846,7 @@ public:
         altitude_max_lcd_m = new QLCDNumber(gps_box);
         altitude_max_lcd_m->setObjectName(QStringLiteral("altitude_max_lcd_m"));
         altitude_max_lcd_m->setEnabled(true);
+        altitude_max_lcd_m->setDigitCount(5);
         altitude_max_lcd_m->setSegmentStyle(QLCDNumber::Flat);
 
         gridLayout_3->addWidget(altitude_max_lcd_m, 2, 1, 1, 1);
@@ -1636,13 +1637,13 @@ public:
         ignition_status_label->setText(QApplication::translate("second_ui", "Ignition", nullptr));
         ignition_state_icon->setText(QString());
         groupBox_7->setTitle(QApplication::translate("second_ui", "Communication Rate", nullptr));
-        progressBar_4->setFormat(QApplication::translate("second_ui", "%v", nullptr));
+        PL_packet_rate->setFormat(QApplication::translate("second_ui", "%v", nullptr));
         label_20->setText(QApplication::translate("second_ui", "GSE", nullptr));
         label_6->setText(QApplication::translate("second_ui", "Number of packets received per second", nullptr));
-        progressBar_9->setFormat(QApplication::translate("second_ui", "%v", nullptr));
+        GSE_packet_rate->setFormat(QApplication::translate("second_ui", "%v", nullptr));
         label_21->setText(QApplication::translate("second_ui", "PP", nullptr));
-        progressBar_5->setFormat(QApplication::translate("second_ui", "%v", nullptr));
-        progressBar_8->setFormat(QApplication::translate("second_ui", "%v", nullptr));
+        PP_packet_rate->setFormat(QApplication::translate("second_ui", "%v", nullptr));
+        AV_packet_rate->setFormat(QApplication::translate("second_ui", "%v", nullptr));
         label_16->setText(QApplication::translate("second_ui", "AV", nullptr));
         label_17->setText(QApplication::translate("second_ui", "PL", nullptr));
         all_packet_rate->setFormat(QApplication::translate("second_ui", "%v", nullptr));
@@ -1849,4 +1850,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // LIOTESTOEZXMX_H
+#endif // LIOTESTSXDXZW_H

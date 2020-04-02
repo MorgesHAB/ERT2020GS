@@ -102,6 +102,7 @@ static void libgps_dump_state(struct gps_data_t *collect)
 
 int main(void)
 {
+    // gpsmm gpsd;
     gpsmm gps_rec("localhost", DEFAULT_GPSD_PORT);
 
     if (gps_rec.stream(WATCH_ENABLE|WATCH_JSON) == NULL) {
@@ -122,7 +123,29 @@ int main(void)
             libgps_dump_state(newdata);
         }
     }
+    //gpsd("localhost", DEFAULT_GPSD_PORT)
+    /*  struct gps_data_t* newData;
 
+  if (!gpsd.waiting(5000000)) return;
+
+  if ((newData = gpsd.read()) == NULL) {
+      std::cerr << "Read error" << std::endl;
+  } else {
+      if (newData->set & ALTITUDE_SET) altitude = newData->fix.altitude;
+      if (newData->set & SPEED_SET) speed = newData->fix.speed;
+      if (newData->set & TIME_SET) time = newData->fix.time;
+      if (newData->set & LATLON_SET) {
+          latitude = newData->fix.latitude;
+          longitude = newData->fix.longitude;
+      }
+  }*/
     cout << "Exiting\n";
     return 0;
 }
+
+/* CmakeLists
+if (USE_GPS)
+target_link_libraries(${PROJECT_NAME} gps) # GPS
+endif (USE_GPS)
+
+ */

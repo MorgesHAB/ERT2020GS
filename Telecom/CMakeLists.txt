@@ -38,11 +38,6 @@ if (RUNNING_ON_RPI)
     target_link_libraries(${PROJECT_NAME} crypt) # link crypt
 endif (RUNNING_ON_RPI)
 
-
-if (USE_GPS)
-    target_link_libraries(${PROJECT_NAME} gps) # GPS
-endif (USE_GPS)
-
 if (USE_LORA)
     target_link_libraries(${PROJECT_NAME} RadioHead) # LoRa
 endif (USE_LORA)

@@ -10,16 +10,9 @@
 #include <iomanip>
 #include <Loggable.h>
 #include "GPS.h"
-#include "../../../Logger/Loggable.h"
 
-GPS::GPS() /*,
-             gpsd("localhost", DEFAULT_GPSD_PORT) */{
+GPS::GPS() {
     srand(std::time(nullptr)); // for simulation random
-
-    /* if (gpsd.stream(WATCH_ENABLE|WATCH_JSON) == NULL) {
-         std::cerr << "No GPSD running" << std::endl;
-         exit(0);
-     }*/
 }
 
 void GPS::write(Packet& packet) {
@@ -50,21 +43,6 @@ void GPS::print() const {
 }
 
 bool GPS::updateTx(std::shared_ptr<Connector> connector) {
-    /*  struct gps_data_t* newData;
-
-      if (!gpsd.waiting(5000000)) return;
-
-      if ((newData = gpsd.read()) == NULL) {
-          std::cerr << "Read error" << std::endl;
-      } else {
-          if (newData->set & ALTITUDE_SET) altitude = newData->fix.altitude;
-          if (newData->set & SPEED_SET) speed = newData->fix.speed;
-          if (newData->set & TIME_SET) time = newData->fix.time;
-          if (newData->set & LATLON_SET) {
-              latitude = newData->fix.latitude;
-              longitude = newData->fix.longitude;
-          }
-      }*/
     latitude =  42 + ((float) rand()/ RAND_MAX) * 6;
     longitude =  11 + ((float) rand()/ RAND_MAX) * 6;
     altitude =  500 + ((float) rand()/ RAND_MAX) * 1000;
