@@ -320,6 +320,7 @@ void SecondWindow::initialize_slots_signals()
     connect(rssi_button,SIGNAL(pressed()), this, SLOT(rssi_get_pressed()));
     connect(send_msg,SIGNAL(pressed()), this, SLOT(send_msg_pressed()));
     connect(clear_image,SIGNAL(pressed()), this, SLOT(clear_image_pressed()));
+    connect(PL_image_abort,SIGNAL(pressed()), this, SLOT(image_abort_pressed()));
 }
 
 void SecondWindow::refresh_telemetry()
@@ -468,6 +469,10 @@ void SecondWindow::send_msg_pressed() {
 
 void SecondWindow::clear_image_pressed() {
     PL_image_display->clear();
+}
+
+void SecondWindow::image_abort_pressed() {
+    data_->setData(ui_interface::FILE_TRANSMISSION_ABORT_ORDER, true);
 }
 
 #ifdef SOUND_ON

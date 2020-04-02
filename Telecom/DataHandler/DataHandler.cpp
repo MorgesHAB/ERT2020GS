@@ -60,8 +60,8 @@ DataHandler::DataHandler(std::shared_ptr<Connector> connector)
     dataHandler[PL_STATE]->add(new String("Not ready yet"));
     dataHandler[PL_STATE]->add(new States({1, 0, 1, 1, 0, 0, 1, 0}));
 
-    //dataHandler[PL_IMAGE]->add(new File("panda.jpg", 200));
-    dataHandler[PL_IMAGE]->add(new File("Yann.png", 200));
+    dataHandler[PL_IMAGE]->add(new File("panda.jpg", 200));
+    //dataHandler[PL_IMAGE]->add(new File("Yann.png", 200));
     //dataHandler[PL_IMAGE]->add(new Picture(200, "livePic.jpg", 600, 600));
 
 

@@ -37,6 +37,7 @@ public slots:
     void rssi_get_pressed();
     void send_msg_pressed();
     void clear_image_pressed();
+    void image_abort_pressed();
 
 private:
     enum Theme {WHITE_ON_BLACK = 0, GREEN_ON_BLACK, BLACK_ON_WHITE, THEME_COUNT};

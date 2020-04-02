@@ -40,11 +40,15 @@ void Worker::mainRoutine() {
                 if (xbee->receive(dataHandler)) {
                     dataHandler.logLastRxPacket();
                     dataHandler.printLastRxPacket();
-                    //xbee->getRSSI();
                 }
                 // Manage Transmission
                 //manageIgnitionTx(dataHandler, xbee);
-                manageImageTransmission(dataHandler, xbee);
+
+                // Manage Image Transmission
+                if (dataHandler.updateTx(DatagramType::PL_IMAGE))
+                    xbee->send(dataHandler.getPacket(DatagramType::PL_IMAGE));
+
+                // if need to send AT command for RSSI
                 if (connector->eatData<bool>(ui_interface::RSSI_READ_ORDER, false))
                     xbee->getRSSI();
 
@@ -68,14 +72,6 @@ void Worker::manageIgnitionTx(DataHandler& dataHandler, RFmodem* rfmodem) {
         connector->setData(ui_interface::IGNITION_SENT, true);
     }
     //need ack
-}
-
-void Worker::manageImageTransmission(DataHandler &dataHandler, RFmodem *rfmodem) {
-    // Image communication
-    if (connector->eatData<bool>(ui_interface::SEND_FILE_REQUEST, false)) {
-        dataHandler.updateTx(DatagramType::PL_IMAGE);
-        rfmodem->send(dataHandler.getPacket(DatagramType::PL_IMAGE));
-    }
 }
 
 std::string Worker::getSerialport() {
