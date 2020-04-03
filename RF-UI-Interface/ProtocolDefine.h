@@ -94,14 +94,21 @@ namespace ui_interface {
 
 
         /// File transmission
-        SEND_FILE_REQUEST, // bool       **true if button on the gui is clicked, eated by Telecom thread
-        // File transmitting States
-        FILE_TRANSMISSION_TOTAL_PACKETS,  // uint64_t
-        FILE_TRANSMISSION_CURRENT_PACKET, // uint64_t
-        FILE_TRANSMISSION_MY_STATE,       // enum in DataStructures/File
-        FILE_TRANSMISSION_RECEIVED_STATE,
-        FILE_TRANSMISSION_ALL_RECEIVED, // bool to EAT - for activation of warning window
-        FILE_TRANSMISSION_ABORT_ORDER, // Gui push button
+            SEND_FILE_REQUEST, // bool       **true if button on the gui is clicked, eated by Telecom thread
+            // File transmitting States
+            FILE_TRANSMISSION_TOTAL_PACKETS,  // uint64_t
+            FILE_TRANSMISSION_CURRENT_PACKET, // uint64_t
+            FILE_TRANSMISSION_MY_STATE,       // enum in DataStructures/File
+            FILE_TRANSMISSION_RECEIVED_STATE,
+            FILE_TRANSMISSION_ALL_RECEIVED, // bool to EAT - for activation of warning window
+            FILE_TRANSMISSION_ABORT_ORDER, // Gui push button
+            // Gui state
+            FTX_FILE_TX_SENT,
+            FTX_PL_RESPONSE,
+            FTX_MISSING_REQUEST_SENT,
+            FTX_ALL_RECEIVED,
+            FTX_ACK_SENT,
+
 
         /// Avionics status variables
         STATUS_AV_ID,

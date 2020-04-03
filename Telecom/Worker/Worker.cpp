@@ -58,6 +58,7 @@ void Worker::mainRoutine() {
             connector->setData(ui_interface::ACTIVE_XBEE, false);
         }
         delete xbee;
+        connector->setData(ui_interface::SERIALPORT_ERROR, false);
     }
 }
 

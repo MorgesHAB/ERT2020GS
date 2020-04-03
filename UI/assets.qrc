@@ -41,10 +41,20 @@
         <file>assets/arrow.png</file>
         <file>assets/watch.png</file>
         <file>assets/emergency.png</file>
-        <file>assets/power.png</file>
+        <file>assets/powerON.png</file>
+                <file>assets/powerOFF.png</file>
+
         <file>assets/rssi.png</file>
         <file>assets/play.png</file>
         <file>assets/clear.png</file>
+
+        <file>assets/validated.png</file>
+        <file>assets/check.png</file>
+        <file>assets/correct.png</file>
+        <file>assets/ok.png</file>
+        <file>assets/refresh.png</file>
+        <file>assets/refresh2.png</file>
+        <file>assets/none.png</file>
 
         <file>assets/nuclear_alarm.mp3</file>
         <file>assets/launch.mp3</file>

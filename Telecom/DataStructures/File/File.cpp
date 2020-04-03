@@ -57,6 +57,7 @@ bool File::updateTx(std::shared_ptr<Connector> connector) {
             if (connector->eatData<bool>(ui_interface::SEND_FILE_REQUEST, false)) {
                 myState = SEND_FILE_REQUEST_TO_TX;
                 sendingData = true;
+                connector->setData(ui_interface::FTX_FILE_TX_SENT, true);
             }
             break;
         case WAITING_PACKET:
@@ -68,9 +69,13 @@ bool File::updateTx(std::shared_ptr<Connector> connector) {
             for (uint16_t i(0); i < nbrTotPacket && missingPacketNbr.size() < bytePerPacket / 2; ++i) {
                 if (!file[i]) missingPacketNbr.push_back(i);
             }
-            if (missingPacketNbr.empty()) myState = ALL_RECEIVED;
+            if (missingPacketNbr.empty()) {
+                myState = ALL_RECEIVED;
+                connector->setData(ui_interface::FTX_ALL_RECEIVED, true);
+            }
             else {
                 lastPacketNbr = missingPacketNbr.back();
+                connector->setData(ui_interface::FTX_MISSING_REQUEST_SENT, true);
                 break;
             }
         case ALL_RECEIVED:
@@ -78,6 +83,7 @@ bool File::updateTx(std::shared_ptr<Connector> connector) {
             exportFile();
             connector->setImgPLfilename(fileName);
             connector->setData(ui_interface::FILE_TRANSMISSION_ALL_RECEIVED, true);
+            connector->setData(ui_interface::FTX_ACK_SENT, true);
             break;
         /////// On the File Transmitter : update FSM state only at Reception
         case WAITING_MISSING_PACKET_REQUEST:
@@ -226,6 +232,7 @@ bool File::updateRx(std::shared_ptr<Connector> connector) {
     connector->setData(ui_interface::FILE_TRANSMISSION_CURRENT_PACKET, packetNbr);
     connector->setData(ui_interface::FILE_TRANSMISSION_MY_STATE, myState);
     connector->setData(ui_interface::FILE_TRANSMISSION_RECEIVED_STATE, receivedState);
+    connector->setData(ui_interface::FTX_PL_RESPONSE, true);
     std::cout << "MyState : " << getStateName(myState) << "\t ReceivedState : "
               << getStateName(receivedState) << std::endl;
 

@@ -108,7 +108,7 @@ void SecondWindow::refresh_lionel_stuff() {
                                                    "QLabel {image: url(:/assets/radioON.png);}":
                                                    "QLabel {image: url(:/assets/radioOFF.png);}");
     serialport_status->setStyleSheet((data_->getData<bool>(ui_interface::SERIALPORT_ERROR)) ?
-                               "QLabel {image: url(:/assets/green_check.png);}":
+                               "QLabel {image: url(:/assets/correct.png);}":
                                "QLabel {image: url(:/assets//redCross.png);}");
     a = !a;
 }
@@ -128,17 +128,25 @@ void SecondWindow::reset_button_pressed()
 void SecondWindow::xbee_clicked()
 {
     if (!xbee_acvite_) {
+        xbee_button->setStyleSheet("QPushButton{\n"
+                                   "qproperty-icon: url(:/assets/powerOFF.png);\n"
+                                   "qproperty-iconSize: 55px;\n"
+                                   "border-radius: 25px;\n"
+                                   "}\n");
         //logger.log(new Gui_Message("XBee ON button clicked!"));
         std::cout << "XBee ON button clicked!" << std::endl;
         uint64_t index(serialport_selector->currentIndex());
         data_->setData(ui_interface::SERIALPORT_INDEX, index);
         data_->setData(ui_interface::ACTIVE_XBEE, true);
-        //xbee_button->setText("STOP XBee");
     } else {
+        xbee_button->setStyleSheet("QPushButton{\n"
+                                   "qproperty-icon: url(:/assets/powerON.png);\n"
+                                   "qproperty-iconSize: 55px;\n"
+                                   "border-radius: 25px;\n"
+                                   "}\n");
         //logger.log(new Gui_Message("XBee STOP button clicked!"));
         std::cout << "XBee STOP button clicked!" << std::endl;
         data_->setData(ui_interface::ACTIVE_XBEE, false);
-        //xbee_button->setText("START XBee");
     }
     xbee_acvite_ = !xbee_acvite_;
 }
@@ -407,6 +415,17 @@ void SecondWindow::refresh_file_transmission()
     file_transmission_progress_bar->setMaximum(data_->getData<uint64_t>(ui_interface::FILE_TRANSMISSION_TOTAL_PACKETS));
     file_transmission_progress_bar->setValue(data_->getData<uint16_t>(ui_interface::FILE_TRANSMISSION_CURRENT_PACKET));
 
+    if (data_->getData<bool>(ui_interface::FTX_FILE_TX_SENT))
+        PL_state_file_Tx_sent->setStyleSheet("QLabel {image: url(:/assets/correct.png);}");
+    if (data_->getData<bool>(ui_interface::FTX_PL_RESPONSE))
+        PL_state_payload_response->setStyleSheet("QLabel {image: url(:/assets/correct.png);}");
+    if (data_->getData<bool>(ui_interface::FTX_MISSING_REQUEST_SENT))
+        PL_state_missing_request_sent->setStyleSheet("QLabel {image: url(:/assets/correct.png);}");
+    if (data_->getData<bool>(ui_interface::FTX_ALL_RECEIVED))
+        PL_state_all_received->setStyleSheet("QLabel {image: url(:/assets/correct.png);}");
+    if (data_->getData<bool>(ui_interface::FTX_ACK_SENT))
+        PL_state_ack_sent->setStyleSheet("QLabel {image: url(:/assets/correct.png);}");
+
     if (data_->eatData<bool>(FILE_TRANSMISSION_ALL_RECEIVED, false)) {
         PL_image_display->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
         QPixmap img(QString::fromStdString(data_->getImgPLfilename()));
@@ -469,6 +488,16 @@ void SecondWindow::send_msg_pressed() {
 
 void SecondWindow::clear_image_pressed() {
     PL_image_display->clear();
+    PL_state_file_Tx_sent->setStyleSheet("QLabel {image: url(:/assets/refresh.png);}");
+    PL_state_payload_response->setStyleSheet("QLabel {image: url(:/assets/refresh.png);}");
+    PL_state_missing_request_sent->setStyleSheet("QLabel {image: url(:/assets/refresh.png);}");
+    PL_state_all_received->setStyleSheet("QLabel {image: url(:/assets/refresh.png);}");
+    PL_state_ack_sent->setStyleSheet("QLabel {image: url(:/assets/refresh.png);}");
+    data_->setData(ui_interface::FTX_FILE_TX_SENT, false);
+    data_->setData(ui_interface::FTX_PL_RESPONSE, false);
+    data_->setData(ui_interface::FTX_MISSING_REQUEST_SENT, false);
+    data_->setData(ui_interface::FTX_ALL_RECEIVED, false);
+    data_->setData(ui_interface::FTX_ACK_SENT, false);
 }
 
 void SecondWindow::image_abort_pressed() {

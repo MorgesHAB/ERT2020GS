@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'LioTestllaIWA.ui'
+** Form generated from reading UI file 'LioTestxZhSPC.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.11.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef LIOTESTLLAIWA_H
-#define LIOTESTLLAIWA_H
+#ifndef LIOTESTXZHSPC_H
+#define LIOTESTXZHSPC_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
@@ -236,27 +236,20 @@ public:
     QLabel *transmitter_state_panel;
     QProgressBar *file_transmission_progress_bar;
     QPushButton *clear_image;
-    QGroupBox *groupBox_11;
-    QWidget *gridLayoutWidget_8;
-    QGridLayout *gridLayout_16;
-    QLabel *label_45;
-    QLabel *label_47;
-    QLabel *label_51;
-    QLabel *label_52;
-    QLabel *label_53;
-    QLabel *label_54;
-    QLabel *label_55;
-    QLabel *label_56;
-    QLabel *label_57;
-    QLabel *label_58;
-    QLabel *label_64;
-    QLabel *label_65;
-    QLabel *label_66;
-    QLabel *label_89;
-    QLabel *label_90;
-    QLabel *label_91;
-    QSlider *verticalSlider_7;
     QPushButton *PL_image_abort;
+    QGroupBox *groupBox_12;
+    QWidget *gridLayoutWidget_9;
+    QGridLayout *gridLayout_18;
+    QLabel *PL_state_file_Tx_sent;
+    QLabel *label_97;
+    QLabel *label_100;
+    QLabel *PL_state_payload_response;
+    QLabel *label_98;
+    QLabel *label_99;
+    QLabel *PL_state_missing_request_sent;
+    QLabel *PL_state_all_received;
+    QLabel *label_105;
+    QLabel *PL_state_ack_sent;
     QLabel *label_29;
     QLabel *logo_2;
     QLabel *logo_3;
@@ -717,7 +710,7 @@ public:
         serialport_status = new QLabel(tab);
         serialport_status->setObjectName(QStringLiteral("serialport_status"));
         serialport_status->setGeometry(QRect(320, 40, 41, 41));
-        serialport_status->setStyleSheet(QLatin1String("image: url(:/assets/green_check.png);\n"
+        serialport_status->setStyleSheet(QLatin1String("image: url(:/assets/refresh.png);\n"
                                                        ""));
         label = new QLabel(tab);
         label->setObjectName(QStringLiteral("label"));
@@ -1125,49 +1118,49 @@ public:
 
         label_40 = new QLabel(gridLayoutWidget_5);
         label_40->setObjectName(QStringLiteral("label_40"));
-        label_40->setStyleSheet(QStringLiteral("image: url(:/assets/green_check.png);"));
+        label_40->setStyleSheet(QStringLiteral("image: url(:/assets/check.png);"));
 
         gridLayout_15->addWidget(label_40, 0, 1, 1, 1);
 
         label_41 = new QLabel(gridLayoutWidget_5);
         label_41->setObjectName(QStringLiteral("label_41"));
-        label_41->setStyleSheet(QStringLiteral("image: url(:/assets/green_check.png);"));
+        label_41->setStyleSheet(QStringLiteral("image: url(:/assets/check.png);"));
 
         gridLayout_15->addWidget(label_41, 1, 1, 1, 1);
 
         label_43 = new QLabel(gridLayoutWidget_5);
         label_43->setObjectName(QStringLiteral("label_43"));
-        label_43->setStyleSheet(QStringLiteral("image: url(:/assets/green_check.png);"));
+        label_43->setStyleSheet(QStringLiteral("image: url(:/assets/redCross.png);"));
 
         gridLayout_15->addWidget(label_43, 2, 1, 1, 1);
 
         label_44 = new QLabel(gridLayoutWidget_5);
         label_44->setObjectName(QStringLiteral("label_44"));
-        label_44->setStyleSheet(QStringLiteral("image: url(:/assets/green_check.png);"));
+        label_44->setStyleSheet(QStringLiteral("image: url(:/assets/correct.png);"));
 
         gridLayout_15->addWidget(label_44, 3, 1, 1, 1);
 
         label_46 = new QLabel(gridLayoutWidget_5);
         label_46->setObjectName(QStringLiteral("label_46"));
-        label_46->setStyleSheet(QStringLiteral("image: url(:/assets/green_check.png);"));
+        label_46->setStyleSheet(QStringLiteral("image: url(:/assets/correct.png);"));
 
         gridLayout_15->addWidget(label_46, 4, 1, 1, 1);
 
         label_48 = new QLabel(gridLayoutWidget_5);
         label_48->setObjectName(QStringLiteral("label_48"));
-        label_48->setStyleSheet(QStringLiteral("image: url(:/assets/green_check.png);"));
+        label_48->setStyleSheet(QStringLiteral("image: url(:/assets/refresh.png);"));
 
         gridLayout_15->addWidget(label_48, 5, 1, 1, 1);
 
         label_49 = new QLabel(gridLayoutWidget_5);
         label_49->setObjectName(QStringLiteral("label_49"));
-        label_49->setStyleSheet(QStringLiteral("image: url(:/assets/green_check.png);"));
+        label_49->setStyleSheet(QStringLiteral("image: url(:/assets/refresh2.png);"));
 
         gridLayout_15->addWidget(label_49, 6, 1, 1, 1);
 
         label_50 = new QLabel(gridLayoutWidget_5);
         label_50->setObjectName(QStringLiteral("label_50"));
-        label_50->setStyleSheet(QStringLiteral("image: url(:/assets/redCross.png);"));
+        label_50->setStyleSheet(QStringLiteral("image: url(:/assets/refresh.png);"));
 
         gridLayout_15->addWidget(label_50, 7, 1, 1, 1);
 
@@ -1328,10 +1321,10 @@ public:
                                                   "}"));
         groupBox_5 = new QGroupBox(tab_3);
         groupBox_5->setObjectName(QStringLiteral("groupBox_5"));
-        groupBox_5->setGeometry(QRect(820, 20, 211, 261));
+        groupBox_5->setGeometry(QRect(820, 20, 211, 281));
         gridLayoutWidget_7 = new QWidget(groupBox_5);
         gridLayoutWidget_7->setObjectName(QStringLiteral("gridLayoutWidget_7"));
-        gridLayoutWidget_7->setGeometry(QRect(10, 30, 161, 221));
+        gridLayoutWidget_7->setGeometry(QRect(10, 30, 161, 231));
         gridLayout_17 = new QGridLayout(gridLayoutWidget_7);
         gridLayout_17->setObjectName(QStringLiteral("gridLayout_17"));
         gridLayout_17->setContentsMargins(0, 0, 0, 0);
@@ -1377,19 +1370,19 @@ public:
 
         label_78 = new QLabel(gridLayoutWidget_7);
         label_78->setObjectName(QStringLiteral("label_78"));
-        label_78->setStyleSheet(QStringLiteral("image: url(:/assets/green_check.png);"));
+        label_78->setStyleSheet(QStringLiteral("image: url(:/assets/ok.png);"));
 
         gridLayout_17->addWidget(label_78, 1, 1, 1, 1);
 
         label_77 = new QLabel(gridLayoutWidget_7);
         label_77->setObjectName(QStringLiteral("label_77"));
-        label_77->setStyleSheet(QStringLiteral("image: url(:/assets/green_check.png);"));
+        label_77->setStyleSheet(QStringLiteral("image: url(:/assets/ok.png);"));
 
         gridLayout_17->addWidget(label_77, 0, 1, 1, 1);
 
         label_79 = new QLabel(gridLayoutWidget_7);
         label_79->setObjectName(QStringLiteral("label_79"));
-        label_79->setStyleSheet(QStringLiteral("image: url(:/assets/green_check.png);"));
+        label_79->setStyleSheet(QStringLiteral("image: url(:/assets/ok.png);"));
 
         gridLayout_17->addWidget(label_79, 2, 1, 1, 1);
 
@@ -1401,13 +1394,13 @@ public:
 
         label_81 = new QLabel(gridLayoutWidget_7);
         label_81->setObjectName(QStringLiteral("label_81"));
-        label_81->setStyleSheet(QStringLiteral("image: url(:/assets/green_check.png);"));
+        label_81->setStyleSheet(QStringLiteral("image: url(:/assets/refresh2.png);"));
 
         gridLayout_17->addWidget(label_81, 4, 1, 1, 1);
 
         label_82 = new QLabel(gridLayoutWidget_7);
         label_82->setObjectName(QStringLiteral("label_82"));
-        label_82->setStyleSheet(QStringLiteral("image: url(:/assets/green_check.png);"));
+        label_82->setStyleSheet(QStringLiteral("image: url(:/assets/refresh2.png);"));
 
         gridLayout_17->addWidget(label_82, 5, 1, 1, 1);
 
@@ -1457,17 +1450,17 @@ public:
         PL_image_display->setAlignment(Qt::AlignCenter);
         file_transmission_button = new QPushButton(tab_4);
         file_transmission_button->setObjectName(QStringLiteral("file_transmission_button"));
-        file_transmission_button->setGeometry(QRect(10, 190, 171, 151));
+        file_transmission_button->setGeometry(QRect(240, 180, 121, 111));
         file_transmission_button->setStyleSheet(QLatin1String("QPushButton{\n"
                                                               "qproperty-icon: url(:/assets/PLimg.png);\n"
-                                                              "qproperty-iconSize: 154px;\n"
+                                                              "qproperty-iconSize: 120px;\n"
                                                               "font: 18pt \"MS Shell Dlg 2\";\n"
                                                               "border: 2px solid;\n"
                                                               "border-color: rgb(215, 237, 252);\n"
                                                               "border-radius: 10px;\n"
                                                               "}\n"
                                                               "QPushButton:hover {\n"
-                                                              "background-color: rgb(35, 35, 35); \n"
+                                                              "background-color: black; \n"
                                                               "border: 3px solid;\n"
                                                               "border-color: rgb(215, 237, 252);\n"
                                                               "}\n"
@@ -1531,17 +1524,17 @@ public:
         file_transmission_progress_bar->setValue(24);
         clear_image = new QPushButton(tab_4);
         clear_image->setObjectName(QStringLiteral("clear_image"));
-        clear_image->setGeometry(QRect(30, 360, 151, 51));
+        clear_image->setGeometry(QRect(240, 380, 131, 51));
         clear_image->setStyleSheet(QLatin1String("QPushButton{\n"
                                                  "qproperty-icon: url(:/assets/clear.png);\n"
                                                  "qproperty-iconSize: 30px;\n"
-                                                 "font: 14pt \"MS Shell Dlg 2\";\n"
+                                                 "font: 12pt \"MS Shell Dlg 2\";\n"
                                                  "border: 2px solid;\n"
                                                  "border-color: rgb(215, 237, 252);\n"
                                                  "border-radius: 10px;\n"
                                                  "}\n"
                                                  "QPushButton:hover {\n"
-                                                 "background-color: rgb(35, 35, 35); \n"
+                                                 "background-color: black; \n"
                                                  "border: 3px solid;\n"
                                                  "border-color: rgb(215, 237, 252);\n"
                                                  "}\n"
@@ -1550,113 +1543,6 @@ public:
                                                  "border-color: rgb(92, 242, 135);\n"
                                                  "}\n"
                                                  ""));
-        groupBox_11 = new QGroupBox(tab_4);
-        groupBox_11->setObjectName(QStringLiteral("groupBox_11"));
-        groupBox_11->setGeometry(QRect(190, 170, 181, 271));
-        gridLayoutWidget_8 = new QWidget(groupBox_11);
-        gridLayoutWidget_8->setObjectName(QStringLiteral("gridLayoutWidget_8"));
-        gridLayoutWidget_8->setGeometry(QRect(10, 30, 131, 231));
-        gridLayout_16 = new QGridLayout(gridLayoutWidget_8);
-        gridLayout_16->setObjectName(QStringLiteral("gridLayout_16"));
-        gridLayout_16->setContentsMargins(0, 0, 0, 0);
-        label_45 = new QLabel(gridLayoutWidget_8);
-        label_45->setObjectName(QStringLiteral("label_45"));
-
-        gridLayout_16->addWidget(label_45, 1, 0, 1, 1);
-
-        label_47 = new QLabel(gridLayoutWidget_8);
-        label_47->setObjectName(QStringLiteral("label_47"));
-
-        gridLayout_16->addWidget(label_47, 6, 0, 1, 1);
-
-        label_51 = new QLabel(gridLayoutWidget_8);
-        label_51->setObjectName(QStringLiteral("label_51"));
-
-        gridLayout_16->addWidget(label_51, 7, 0, 1, 1);
-
-        label_52 = new QLabel(gridLayoutWidget_8);
-        label_52->setObjectName(QStringLiteral("label_52"));
-
-        gridLayout_16->addWidget(label_52, 5, 0, 1, 1);
-
-        label_53 = new QLabel(gridLayoutWidget_8);
-        label_53->setObjectName(QStringLiteral("label_53"));
-
-        gridLayout_16->addWidget(label_53, 0, 0, 1, 1);
-
-        label_54 = new QLabel(gridLayoutWidget_8);
-        label_54->setObjectName(QStringLiteral("label_54"));
-
-        gridLayout_16->addWidget(label_54, 3, 0, 1, 1);
-
-        label_55 = new QLabel(gridLayoutWidget_8);
-        label_55->setObjectName(QStringLiteral("label_55"));
-
-        gridLayout_16->addWidget(label_55, 4, 0, 1, 1);
-
-        label_56 = new QLabel(gridLayoutWidget_8);
-        label_56->setObjectName(QStringLiteral("label_56"));
-        label_56->setStyleSheet(QStringLiteral(""));
-
-        gridLayout_16->addWidget(label_56, 2, 0, 1, 1);
-
-        label_57 = new QLabel(gridLayoutWidget_8);
-        label_57->setObjectName(QStringLiteral("label_57"));
-        label_57->setStyleSheet(QStringLiteral("image: url(:/assets/green_check.png);"));
-
-        gridLayout_16->addWidget(label_57, 0, 1, 1, 1);
-
-        label_58 = new QLabel(gridLayoutWidget_8);
-        label_58->setObjectName(QStringLiteral("label_58"));
-        label_58->setStyleSheet(QStringLiteral("image: url(:/assets/green_check.png);"));
-
-        gridLayout_16->addWidget(label_58, 1, 1, 1, 1);
-
-        label_64 = new QLabel(gridLayoutWidget_8);
-        label_64->setObjectName(QStringLiteral("label_64"));
-        label_64->setStyleSheet(QStringLiteral("image: url(:/assets/green_check.png);"));
-
-        gridLayout_16->addWidget(label_64, 2, 1, 1, 1);
-
-        label_65 = new QLabel(gridLayoutWidget_8);
-        label_65->setObjectName(QStringLiteral("label_65"));
-        label_65->setStyleSheet(QStringLiteral("image: url(:/assets/green_check.png);"));
-
-        gridLayout_16->addWidget(label_65, 3, 1, 1, 1);
-
-        label_66 = new QLabel(gridLayoutWidget_8);
-        label_66->setObjectName(QStringLiteral("label_66"));
-        label_66->setStyleSheet(QStringLiteral("image: url(:/assets/green_check.png);"));
-
-        gridLayout_16->addWidget(label_66, 4, 1, 1, 1);
-
-        label_89 = new QLabel(gridLayoutWidget_8);
-        label_89->setObjectName(QStringLiteral("label_89"));
-        label_89->setStyleSheet(QStringLiteral("image: url(:/assets/green_check.png);"));
-
-        gridLayout_16->addWidget(label_89, 5, 1, 1, 1);
-
-        label_90 = new QLabel(gridLayoutWidget_8);
-        label_90->setObjectName(QStringLiteral("label_90"));
-        label_90->setStyleSheet(QStringLiteral("image: url(:/assets/green_check.png);"));
-
-        gridLayout_16->addWidget(label_90, 6, 1, 1, 1);
-
-        label_91 = new QLabel(gridLayoutWidget_8);
-        label_91->setObjectName(QStringLiteral("label_91"));
-        label_91->setStyleSheet(QStringLiteral("image: url(:/assets/redCross.png);"));
-
-        gridLayout_16->addWidget(label_91, 7, 1, 1, 1);
-
-        verticalSlider_7 = new QSlider(groupBox_11);
-        verticalSlider_7->setObjectName(QStringLiteral("verticalSlider_7"));
-        verticalSlider_7->setGeometry(QRect(150, 40, 22, 211));
-        verticalSlider_7->setStyleSheet(QStringLiteral(""));
-        verticalSlider_7->setMaximum(7);
-        verticalSlider_7->setValue(7);
-        verticalSlider_7->setOrientation(Qt::Vertical);
-        verticalSlider_7->setTickPosition(QSlider::TicksAbove);
-        verticalSlider_7->setTickInterval(1);
         PL_image_abort = new QPushButton(tab_4);
         PL_image_abort->setObjectName(QStringLiteral("PL_image_abort"));
         PL_image_abort->setGeometry(QRect(290, 50, 61, 61));
@@ -1667,7 +1553,77 @@ public:
                                                     "}\n"
                                                     "QPushButton:hover {\n"
                                                     "background-color: rgb(250, 191, 1); \n"
-                                                    "}"));
+                                                    "}\n"
+                                                    "QPushButton:pressed {\n"
+                                                    "background-color: rgb(0, 255, 127);\n"
+                                                    "}\n"
+                                                    ""));
+        groupBox_12 = new QGroupBox(tab_4);
+        groupBox_12->setObjectName(QStringLiteral("groupBox_12"));
+        groupBox_12->setGeometry(QRect(10, 170, 211, 171));
+        gridLayoutWidget_9 = new QWidget(groupBox_12);
+        gridLayoutWidget_9->setObjectName(QStringLiteral("gridLayoutWidget_9"));
+        gridLayoutWidget_9->setGeometry(QRect(10, 20, 191, 141));
+        gridLayout_18 = new QGridLayout(gridLayoutWidget_9);
+        gridLayout_18->setObjectName(QStringLiteral("gridLayout_18"));
+        gridLayout_18->setContentsMargins(0, 0, 0, 0);
+        PL_state_file_Tx_sent = new QLabel(gridLayoutWidget_9);
+        PL_state_file_Tx_sent->setObjectName(QStringLiteral("PL_state_file_Tx_sent"));
+        PL_state_file_Tx_sent->setStyleSheet(QStringLiteral("image: url(:/assets/refresh.png);"));
+
+        gridLayout_18->addWidget(PL_state_file_Tx_sent, 0, 1, 1, 1);
+
+        label_97 = new QLabel(gridLayoutWidget_9);
+        label_97->setObjectName(QStringLiteral("label_97"));
+
+        gridLayout_18->addWidget(label_97, 2, 0, 1, 1);
+
+        label_100 = new QLabel(gridLayoutWidget_9);
+        label_100->setObjectName(QStringLiteral("label_100"));
+        label_100->setStyleSheet(QStringLiteral(""));
+
+        gridLayout_18->addWidget(label_100, 1, 0, 1, 1);
+
+        PL_state_payload_response = new QLabel(gridLayoutWidget_9);
+        PL_state_payload_response->setObjectName(QStringLiteral("PL_state_payload_response"));
+        PL_state_payload_response->setStyleSheet(QStringLiteral("image: url(:/assets/refresh.png);"));
+
+        gridLayout_18->addWidget(PL_state_payload_response, 1, 1, 1, 1);
+
+        label_98 = new QLabel(gridLayoutWidget_9);
+        label_98->setObjectName(QStringLiteral("label_98"));
+
+        gridLayout_18->addWidget(label_98, 3, 0, 1, 1);
+
+        label_99 = new QLabel(gridLayoutWidget_9);
+        label_99->setObjectName(QStringLiteral("label_99"));
+        label_99->setStyleSheet(QStringLiteral(""));
+
+        gridLayout_18->addWidget(label_99, 0, 0, 1, 1);
+
+        PL_state_missing_request_sent = new QLabel(gridLayoutWidget_9);
+        PL_state_missing_request_sent->setObjectName(QStringLiteral("PL_state_missing_request_sent"));
+        PL_state_missing_request_sent->setStyleSheet(QStringLiteral("image: url(:/assets/refresh.png);"));
+
+        gridLayout_18->addWidget(PL_state_missing_request_sent, 2, 1, 1, 1);
+
+        PL_state_all_received = new QLabel(gridLayoutWidget_9);
+        PL_state_all_received->setObjectName(QStringLiteral("PL_state_all_received"));
+        PL_state_all_received->setStyleSheet(QStringLiteral("image: url(:/assets/refresh.png);"));
+
+        gridLayout_18->addWidget(PL_state_all_received, 3, 1, 1, 1);
+
+        label_105 = new QLabel(gridLayoutWidget_9);
+        label_105->setObjectName(QStringLiteral("label_105"));
+
+        gridLayout_18->addWidget(label_105, 4, 0, 1, 1);
+
+        PL_state_ack_sent = new QLabel(gridLayoutWidget_9);
+        PL_state_ack_sent->setObjectName(QStringLiteral("PL_state_ack_sent"));
+        PL_state_ack_sent->setStyleSheet(QStringLiteral("image: url(:/assets/refresh.png);"));
+
+        gridLayout_18->addWidget(PL_state_ack_sent, 4, 1, 1, 1);
+
         tabWidget_2->addTab(tab_4, QString());
         label_29 = new QLabel(second_ui);
         label_29->setObjectName(QStringLiteral("label_29"));
@@ -1709,7 +1665,7 @@ public:
         xbee_button->setObjectName(QStringLiteral("xbee_button"));
         xbee_button->setGeometry(QRect(1060, 70, 51, 51));
         xbee_button->setStyleSheet(QLatin1String("QPushButton{\n"
-                                                 "qproperty-icon: url(:/assets/power.png);\n"
+                                                 "qproperty-icon: url(:/assets/powerON.png);\n"
                                                  "qproperty-iconSize: 55px;\n"
                                                  "border-radius: 25px;\n"
                                                  "}\n"
@@ -1974,24 +1930,18 @@ public:
         transmitter_state_panel->setText(QString());
         file_transmission_progress_bar->setFormat(QApplication::translate("second_ui", "%v / %m", nullptr));
         clear_image->setText(QApplication::translate("second_ui", "Clear image", nullptr));
-        groupBox_11->setTitle(QApplication::translate("second_ui", "File Transmission Status", nullptr));
-        label_45->setText(QApplication::translate("second_ui", "Calibration", nullptr));
-        label_47->setText(QApplication::translate("second_ui", "1st Event", nullptr));
-        label_51->setText(QApplication::translate("second_ui", "2nd Event", nullptr));
-        label_52->setText(QApplication::translate("second_ui", "Coast", nullptr));
-        label_53->setText(QApplication::translate("second_ui", "Sleep", nullptr));
-        label_54->setText(QApplication::translate("second_ui", "Filling", nullptr));
-        label_55->setText(QApplication::translate("second_ui", "Lift off", nullptr));
-        label_56->setText(QApplication::translate("second_ui", "IDLE", nullptr));
-        label_57->setText(QString());
-        label_58->setText(QString());
-        label_64->setText(QString());
-        label_65->setText(QString());
-        label_66->setText(QString());
-        label_89->setText(QString());
-        label_90->setText(QString());
-        label_91->setText(QString());
         PL_image_abort->setText(QString());
+        groupBox_12->setTitle(QApplication::translate("second_ui", "File Transmission Status", nullptr));
+        PL_state_file_Tx_sent->setText(QString());
+        label_97->setText(QApplication::translate("second_ui", "Missing packet Request sent", nullptr));
+        label_100->setText(QApplication::translate("second_ui", "Payload response received", nullptr));
+        PL_state_payload_response->setText(QString());
+        label_98->setText(QApplication::translate("second_ui", "All Received", nullptr));
+        label_99->setText(QApplication::translate("second_ui", "File Request Tx sent", nullptr));
+        PL_state_missing_request_sent->setText(QString());
+        PL_state_all_received->setText(QString());
+        label_105->setText(QApplication::translate("second_ui", "ACK sent to PL", nullptr));
+        PL_state_ack_sent->setText(QString());
         tabWidget_2->setTabText(tabWidget_2->indexOf(tab_4), QApplication::translate("second_ui", "Payload Image", nullptr));
         label_29->setText(QString());
 #ifndef QT_NO_TOOLTIP
@@ -2025,4 +1975,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // LIOTESTLLAIWA_H
+#endif // LIOTESTXZHSPC_H
