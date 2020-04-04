@@ -58,8 +58,18 @@ IgnitionCode::IgnitionCode() : code(4, false), ignitionCode(0),
 }
 
 bool IgnitionCode::updateTx(std::shared_ptr<Connector> connector) {
-    if (receivedState == WAITING_IGNITION_VALIDATION)
+    if (receivedState == WAITING_ARMED_VALIDATION ||
+        receivedState == WAITING_IGNITION_VALIDATION) {
+        receivedState = SLEEP;
         return true;    // GSE side will send myState
+    }
+    // debug !!!!!!!!!!!!!!!!
+    if (connector->eatData<bool>(ui_interface::IGNITION_CLICKED, false)) {
+        ignitionCode = 3;
+        if (myState == WAITING_ARMED_VALIDATION) myState = WAITING_IGNITION_VALIDATION;
+        else myState = WAITING_ARMED_VALIDATION;
+        return true;
+    }
 
 #ifdef RUNNING_ON_RPI
     // run on GST
@@ -87,7 +97,8 @@ bool IgnitionCode::updateTx(std::shared_ptr<Connector> connector) {
     // true if send Ignition packet
     if (key1 && key2 && redButtonPressed &&
         connector->eatData<bool>(ui_interface::IGNITION_CLICKED, false)) {
-        myState = WAITING_IGNITION_VALIDATION;
+        if (myState == WAITING_ARMED_VALIDATION) myState = WAITING_IGNITION_VALIDATION;
+        else myState = WAITING_ARMED_VALIDATION;
         return true;    // Ignition will be send
     }
     return false;
@@ -104,11 +115,15 @@ void IgnitionCode::write(Packet &packet) {
 void IgnitionCode::parse(Packet &packet) {
     packet.parse(ignitionCode);
     packet.parse(receivedState);
+    for (uint8_t i(0); i < code.size(); ++i) {
+        code[i] = ignitionCode & (1 << i);
+    }
 }
 
 bool IgnitionCode::updateRx(std::shared_ptr<Connector> connector) {
     // GST side
-    if (receivedState != WAITING_IGNITION_VALIDATION) {
+    if (receivedState != WAITING_ARMED_VALIDATION &&
+        receivedState != WAITING_IGNITION_VALIDATION) {
         connector->setData(ui_interface::IGNITION_STATUS, receivedState);
         if (receivedState == IGNITION_ON) myState = SLEEP;
         return true;
@@ -132,13 +147,15 @@ bool IgnitionCode::updateRx(std::shared_ptr<Connector> connector) {
         switch (myState) {
             case WRONG_CODE_RECEIVED:
             case SLEEP:
-                myState = ARMED;
+                if (receivedState == WAITING_ARMED_VALIDATION) myState = ARMED;
                 digitalWrite(GPIO_OUT_IGNITION, LOW); // safe
                 break;
             case ARMED:
-                std::cout << "Code Rx & Tx are identical => GPIO ignition HIGH !!" << std::endl;
-                myState = IGNITION_ON;
-                digitalWrite(GPIO_OUT_IGNITION, HIGH); // /!\ Ignition !!!!!!!!
+                if (receivedState == WAITING_IGNITION_VALIDATION) {
+                    std::cout << "Code Rx & Tx are identical => GPIO ignition HIGH !!" << std::endl;
+                    myState = IGNITION_ON;
+                    digitalWrite(GPIO_OUT_IGNITION, HIGH); // /!\ Ignition !!!!!!!!
+                }
             default:
                 break;
         }

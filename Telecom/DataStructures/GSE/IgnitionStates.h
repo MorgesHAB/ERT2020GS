@@ -19,6 +19,7 @@ namespace ignit {
         ARMED,
         IGNITION_ON,
         // GST States
+        WAITING_ARMED_VALIDATION,
         WAITING_IGNITION_VALIDATION,
     };
 

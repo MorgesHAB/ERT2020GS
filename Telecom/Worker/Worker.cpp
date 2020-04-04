@@ -12,7 +12,7 @@
 #include <Xbee.h>
 #include "Worker.h"
 
-#define IGNITION_PACKET_FLOW_NBR        10
+#define IGNITION_PACKET_FLOW_NBR        5
 
 Worker::Worker(std::shared_ptr<Connector> connector) : connector(connector) {}
 
@@ -69,7 +69,7 @@ void Worker::manageIgnitionTx(DataHandler& dataHandler, RFmodem* rfmodem) {
         // /!\ Critical point /!\.
         for (int i(0); i < IGNITION_PACKET_FLOW_NBR; ++i) {
             rfmodem->send(dataHandler.getPacket(DatagramType::GSE_IGNITION));
-            std::this_thread::sleep_for(std::chrono::milliseconds(1));
+            std::this_thread::sleep_for(std::chrono::milliseconds(10));
         }
         connector->setData(ui_interface::IGNITION_SENT, true);
     }
