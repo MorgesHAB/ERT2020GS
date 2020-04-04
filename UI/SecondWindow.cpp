@@ -16,7 +16,7 @@
 #include "../Telecom/DataStructures/Avionics/StateValues.h"
 #include "../Telecom/DataHandler/DatagramTypes.h"
 #include "../Telecom/DataStructures/File/FileTransmissionStates.h"
-#include "../Telecom/DataStructures/Propulsion/IgnitionStates.h"
+#include "GSE/IgnitionStates.h"
 #include "gui_message.h"
 
 #include <QStyleFactory>
@@ -107,10 +107,14 @@ void SecondWindow::refresh_lionel_stuff() {
     antenna_img->setStyleSheet((xbee_acvite_ && a) ?
                                                    "QLabel {image: url(:/assets/radioON.png);}":
                                                    "QLabel {image: url(:/assets/radioOFF.png);}");
-    serialport_status->setStyleSheet((data_->getData<bool>(ui_interface::SERIALPORT_ERROR)) ?
-                               "QLabel {image: url(:/assets/correct.png);}":
-                               "QLabel {image: url(:/assets//redCross.png);}");
     a = !a;
+
+    auto serialStatus = data_->getData<int>(ui_interface::SERIALPORT_STATUS);
+    serialport_status->setStyleSheet(
+            (serialStatus == 0) ? "QLabel {image: url(:/assets/refresh.png);}"
+                                : (serialStatus == 1)
+                                  ? "QLabel {image: url(:/assets/correct.png);}"
+                                  : "QLabel {image: url(:/assets//redCross.png);}");
 }
 
 void SecondWindow::valve_control() {

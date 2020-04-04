@@ -2823,7 +2823,7 @@ background-color: rgb(0, 255, 127);
    </property>
    <property name="styleSheet">
     <string notr="true">image: url(:/assets/radioOFF.png);
-image: url(:/assets/radioON.png);</string>
+</string>
    </property>
    <property name="text">
     <string/>
@@ -2911,13 +2911,12 @@ qproperty-iconSize: 55px;
 border-radius: 25px;
 }
 QPushButton:hover {
-background-color: rgb(10, 0, 0); 
+background-color: black; 
 qproperty-iconSize: 64px;
 }
 QPushButton:pressed {
 background-color: rgb(16, 16, 16);
-}
-</string>
+}</string>
    </property>
    <property name="text">
     <string/>

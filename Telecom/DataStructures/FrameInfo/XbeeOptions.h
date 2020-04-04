@@ -22,7 +22,6 @@ public:
 
     void write(Packet& packet) override;
     void parse(Packet& packet) override;
-    void print() const override;
 
     bool updateRx(std::shared_ptr<Connector> connector) override;
 

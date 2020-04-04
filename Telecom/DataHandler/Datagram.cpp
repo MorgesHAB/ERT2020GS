@@ -40,8 +40,10 @@ bool Datagram::updateTx(std::shared_ptr<Connector> connector) {
 
     bool status(true);
     for (auto &data : datagram) {
-        status &= data->updateTx(connector);
-        data->write(*dataPacket);
+        if (status) {
+            status &= data->updateTx(connector);
+            data->write(*dataPacket);
+        }
     }
     return status;
 }

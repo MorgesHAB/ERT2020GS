@@ -33,13 +33,13 @@ public:
     }
 
     bool updateTx(std::shared_ptr<Connector> connector) override {
-        // just for Test - this class is only use at reception
-        //data = ((double) rand()/ RAND_MAX) * 1000;
         data = connector->getData<Tdata>(name);
+        return true;
     }
 
     bool updateRx(std::shared_ptr<Connector> connector) override {
         connector->setData(name, data);
+        return true;
     }
 
 private:

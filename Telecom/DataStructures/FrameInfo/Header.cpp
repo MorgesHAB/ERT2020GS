@@ -75,7 +75,7 @@ bool Header::updateRx(std::shared_ptr<Connector> connector) {
         case AV_DEBUG:
             connector->incrementData(ui_interface::PACKET_CTR_AV);
             break;
-        case GSE_STATUS:
+        case GSE_SENSORS:
         case GSE_ORDER:
         case GSE_IGNITION:
             connector->incrementData(ui_interface::PACKET_CTR_GSE);

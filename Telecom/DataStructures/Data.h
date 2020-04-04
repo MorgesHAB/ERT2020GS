@@ -22,7 +22,7 @@ public:
     virtual void write(Packet& packet) = 0;
     virtual void parse(Packet& packet) = 0;
 
-    virtual void print() const = 0;
+    virtual void print() const {};
     virtual std::string log() const { return ""; }
 
     virtual bool updateTx(std::shared_ptr<Connector> connector) { return true; }

@@ -14,14 +14,10 @@
  * \date        04.11.2019
  */
 
-#include <chrono>
-#include <thread>
-
 #include <Xbee.h>
 #include <DataHandler.h>
-#include <connector.h>
 #include <csignal>
-#include <Propulsion/IgnitionStates.h>
+#include <GSE/IgnitionStates.h>
 
 static volatile sig_atomic_t keep_running = 1;
 
@@ -44,16 +40,18 @@ int main(int argc, char** argv) {
     using namespace DatagramType;
 
     while (keep_running) {
+        // Generate fake communication flow during ignition
         DatagramID ID = AV_TELEMETRY;
         dataHandler.updateTx(ID);
         xbee.send(dataHandler.getPacket(ID));
+
         if (xbee.receive(dataHandler)) {
             dataHandler.printLastRxPacket();
         }
-        dataHandler.updateTx(IGNITION_ANSWER);
-        if (connector.eatData<ignit::IgnitionState>(ui_interface::IGNITION_STATUS, ignit::SLEEP)) { // not 0 => not SLEEP
-            for (int i(0); i < 10; ++i) {
-                xbee.send(dataHandler.getPacket(IGNITION_ANSWER));      // Send 10 times ignition packet
+
+        if (dataHandler.updateTx(GSE_IGNITION)) {
+            for (int i(0); i < 5; ++i) {
+                xbee.send(dataHandler.getPacket(GSE_IGNITION)); // Send 5 times ignition status
                 std::this_thread::sleep_for(std::chrono::milliseconds(10));
             }
         }

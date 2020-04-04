@@ -32,7 +32,7 @@ namespace ui_interface {
         ACTIVE_XBEE,      // bool             **This is set to true-false by the Activate-Xbee button.
         IGNITION_CLICKED, // bool        **This is set to true when ignition button is clicked.
         //                              @attention !!! Listener should eat this boolean to be able to detect further clicks !!!
-        SERIALPORT_ERROR, // bool eat by Gui
+        SERIALPORT_STATUS, // bool eat by Gui
 
         SERIALPORT_INDEX,
         RSSI_READ_ORDER,

@@ -31,7 +31,7 @@ void Worker::mainRoutine() {
         // Your RF modem
         RFmodem* xbee = new Xbee(getSerialport());
         //RFmodem* loRa = new LoRa;   // another example
-        connector->setData(ui_interface::SERIALPORT_ERROR, xbee->isOpen());
+        connector->setData(ui_interface::SERIALPORT_STATUS, (xbee->isOpen()) ? 1 : 2);
 
         if (xbee->isOpen()) {
             while (connector->getData<bool>(ui_interface::ACTIVE_XBEE) &&
@@ -42,7 +42,7 @@ void Worker::mainRoutine() {
                     dataHandler.printLastRxPacket();
                 }
                 // Manage Transmission
-                //manageIgnitionTx(dataHandler, xbee);
+                manageIgnitionTx(dataHandler, xbee);
 
                 // Manage Image Transmission
                 if (dataHandler.updateTx(DatagramType::PL_IMAGE))
@@ -56,9 +56,10 @@ void Worker::mainRoutine() {
             }
         } else {
             connector->setData(ui_interface::ACTIVE_XBEE, false);
+            std::this_thread::sleep_for(std::chrono::seconds(3)); // time to show error
         }
         delete xbee;
-        connector->setData(ui_interface::SERIALPORT_ERROR, false);
+        connector->setData(ui_interface::SERIALPORT_STATUS, 0);
     }
 }
 

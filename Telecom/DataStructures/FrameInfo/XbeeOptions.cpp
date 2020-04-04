@@ -42,10 +42,6 @@ void XbeeOptions::parse(Packet &packet) {
     for (auto& part : xbeeReceivedOptions) packet.parse(part);
 }
 
-void XbeeOptions::print() const {
-    // Don't print Xbee options
-}
-
 bool XbeeOptions::updateRx(std::shared_ptr<Connector> connector) {
     return xbeeReceivedOptions[0] == API_RECEIVED_PACKET;
 }

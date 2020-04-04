@@ -14,9 +14,12 @@ namespace ignit {
 
     enum IgnitionState {
         SLEEP,
+        // GSE States
         WRONG_CODE_RECEIVED,
         ARMED,
-        IGNITION_ON
+        IGNITION_ON,
+        // GST States
+        WAITING_IGNITION_VALIDATION,
     };
 
     //For GUI
@@ -26,6 +29,7 @@ namespace ignit {
             case WRONG_CODE_RECEIVED: return "Wrong Code on GSE";
             case ARMED: return "ARMED";
             case IGNITION_ON: return "IGNITION ON !!";
+            case WAITING_IGNITION_VALIDATION: return "Waiting Ignition validation";
             default: return "Unknown";
         }
     }

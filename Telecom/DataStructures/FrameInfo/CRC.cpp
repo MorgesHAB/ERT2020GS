@@ -27,8 +27,3 @@ void CRC::write(Packet &packet) {
 void CRC::parse(Packet &packet) {
     packet.parse(CRC);
 }
-
-void CRC::print() const {
-    // don't care about CRC value
-    //std::cout << "CheckSum Value (CRC): " << CRC << std::endl;
-}
