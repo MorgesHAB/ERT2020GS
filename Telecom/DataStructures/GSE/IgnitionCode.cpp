@@ -22,6 +22,8 @@
 #define GPIO_IN_CODE1           24
 #define GPIO_IN_CODE2           27
 #define GPIO_IN_CODE3           22
+
+#define NBR_SEC_CIRC_ON_AFTER_IGNITION      10
 //////////////////////////////////////
 // This data is composed of boolean states => 4 states for the ignition code
 // So to minimize the packet size, we combine all these states in a byte (8 bits)
@@ -36,7 +38,8 @@
 using namespace ignit;
 
 IgnitionCode::IgnitionCode() : code(4, false), ignitionCode(0),
-                               myState(SLEEP), receivedState(SLEEP) {
+                               myState(SLEEP), receivedState(SLEEP),
+                               ignitionTime(0) {
 #ifdef RUNNING_ON_RPI
     wiringPiSetupGpio();
     // Configure GPIO OUT for the igniter
@@ -58,9 +61,16 @@ IgnitionCode::IgnitionCode() : code(4, false), ignitionCode(0),
 }
 
 bool IgnitionCode::updateTx(std::shared_ptr<Connector> connector) {
+    // GSE Side
+    if (myState == IGNITION_ON && ignitionTime != 0) {
+        if (clock() - ignitionTime > NBR_SEC_CIRC_ON_AFTER_IGNITION * CLOCKS_PER_SEC) {
+            digitalWrite(GPIO_OUT_IGNITION, LOW);
+            myState = SLEEP;
+            std::cout << "Ignition circuit deactivated automatically" << std::endl;
+        }
+    }
     if (receivedState == WAITING_ARMED_VALIDATION ||
         receivedState == WAITING_IGNITION_VALIDATION) {
-        receivedState = SLEEP;
         return true;    // GSE side will send myState
     }
     // debug !!!!!!!!!!!!!!!!
@@ -147,7 +157,10 @@ bool IgnitionCode::updateRx(std::shared_ptr<Connector> connector) {
         switch (myState) {
             case WRONG_CODE_RECEIVED:
             case SLEEP:
-                if (receivedState == WAITING_ARMED_VALIDATION) myState = ARMED;
+                if (receivedState == WAITING_ARMED_VALIDATION) {
+                    myState = ARMED;
+                    std::cout << "Code are identical => Armed !!" << std::endl;
+                }
                 digitalWrite(GPIO_OUT_IGNITION, LOW); // safe
                 break;
             case ARMED:
@@ -155,6 +168,7 @@ bool IgnitionCode::updateRx(std::shared_ptr<Connector> connector) {
                     std::cout << "Code Rx & Tx are identical => GPIO ignition HIGH !!" << std::endl;
                     myState = IGNITION_ON;
                     digitalWrite(GPIO_OUT_IGNITION, HIGH); // /!\ Ignition !!!!!!!!
+                    ignitionTime = clock();
                 }
             default:
                 break;

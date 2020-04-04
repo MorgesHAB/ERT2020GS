@@ -32,6 +32,7 @@ private:
     std::vector<bool> code;
     uint8_t ignitionCode;
     ignit::IgnitionState myState, receivedState;
+    clock_t ignitionTime;
 };
 
 

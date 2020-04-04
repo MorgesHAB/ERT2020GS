@@ -73,7 +73,6 @@ void Worker::manageIgnitionTx(DataHandler& dataHandler, RFmodem* rfmodem) {
         }
         connector->setData(ui_interface::IGNITION_SENT, true);
     }
-    //need ack
 }
 
 std::string Worker::getSerialport() {

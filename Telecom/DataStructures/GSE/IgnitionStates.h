@@ -30,6 +30,7 @@ namespace ignit {
             case WRONG_CODE_RECEIVED: return "Wrong Code on GSE";
             case ARMED: return "ARMED";
             case IGNITION_ON: return "IGNITION ON !!";
+            case WAITING_ARMED_VALIDATION: return "Waiting Armed validation";
             case WAITING_IGNITION_VALIDATION: return "Waiting Ignition validation";
             default: return "Unknown";
         }
