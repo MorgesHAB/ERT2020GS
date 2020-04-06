@@ -1,7 +1,7 @@
 /*!
- * \file SensorData.h
+ * \file BasicData.h
  *
- * \brief SensorData module interface
+ * \brief BasicData module interface
  *
  * Generic class to transmit some data
  * eg: float, int, uint32-16-8, char etc
@@ -16,9 +16,9 @@
 #include <Data.h>
 
 template<typename Tdata>
-class SensorData : public Data {
+class BasicData : public Data {
 public:
-    SensorData(ui_interface::DataType name) : name(name) {}
+    BasicData(ui_interface::DataType name) : name(name) {}
 
     void write(Packet& packet) override {
         packet.write(data);

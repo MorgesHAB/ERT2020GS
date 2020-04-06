@@ -50,10 +50,7 @@ int main(int argc, char** argv) {
         }
 
         if (dataHandler.updateTx(GSE_IGNITION)) {
-            for (int i(0); i < 5; ++i) {
-                xbee.send(dataHandler.getPacket(GSE_IGNITION)); // Send 5 times ignition status
-                std::this_thread::sleep_for(std::chrono::milliseconds(10));
-            }
+            xbee.send(dataHandler.getPacket(GSE_IGNITION));
         }
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
     }

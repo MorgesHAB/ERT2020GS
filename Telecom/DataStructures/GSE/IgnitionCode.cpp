@@ -23,7 +23,7 @@
 #define GPIO_IN_CODE2           27
 #define GPIO_IN_CODE3           22
 
-#define NBR_SEC_CIRC_ON_AFTER_IGNITION      10
+#define SHUTDOWN_TIME           10000000 // on RPi should be 10000
 //////////////////////////////////////
 // This data is composed of boolean states => 4 states for the ignition code
 // So to minimize the packet size, we combine all these states in a byte (8 bits)
@@ -63,15 +63,18 @@ IgnitionCode::IgnitionCode() : code(4, false), ignitionCode(0),
 bool IgnitionCode::updateTx(std::shared_ptr<Connector> connector) {
     // GSE Side
     if (myState == IGNITION_ON && ignitionTime != 0) {
-        if (clock() - ignitionTime > NBR_SEC_CIRC_ON_AFTER_IGNITION * CLOCKS_PER_SEC) {
+        if (clock() - ignitionTime > SHUTDOWN_TIME) {
+            #ifdef RUNNING_ON_RPI
             digitalWrite(GPIO_OUT_IGNITION, LOW);
+            #endif
             myState = SLEEP;
             std::cout << "Ignition circuit deactivated automatically" << std::endl;
         }
     }
     if (receivedState == WAITING_ARMED_VALIDATION ||
         receivedState == WAITING_IGNITION_VALIDATION) {
-        return true;    // GSE side will send myState
+        receivedState = SLEEP;
+        return true;    // GSE side will send myState (ACK)
     }
     // debug !!!!!!!!!!!!!!!!
     if (connector->eatData<bool>(ui_interface::IGNITION_CLICKED, false)) {
@@ -118,7 +121,6 @@ bool IgnitionCode::updateTx(std::shared_ptr<Connector> connector) {
 void IgnitionCode::write(Packet &packet) {
     packet.write(ignitionCode);
     packet.write(myState);
-    if (myState == IGNITION_ON) myState = SLEEP;
 }
 
 

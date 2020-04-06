@@ -9,12 +9,11 @@
 
 #include <FrameInfo/Header.h>
 #include <FrameInfo/XbeeOptions.h>
-#include <FrameInfo/ACK.h>
 #include <FrameInfo/CRC.h>
 
 #include <Basic/States.h>
 #include <Basic/String.h>
-#include <Basic/SensorData.h>
+#include <Basic/BasicData.h>
 
 #include <Avionics/GPS.h>
 #include <Avionics/Telemetry.h>
@@ -77,14 +76,14 @@ DataHandler::DataHandler(std::shared_ptr<Connector> connector)
 
         dataHandler[PL_ORDER]->add(new PLOrder);
 
-        dataHandler[PL_IMAGE]->add(new File("Yann.png", 200));
+        dataHandler[PL_IMAGE]->add(new File("panda.jpg", 200));
         //dataHandler[PL_IMAGE]->add(new Picture(200, "livePic.jpg", 600, 600));
 
     //// Propulsion Datagram
         dataHandler[PROPULSION]->add(new PPPressure);
 
     //// Air Brakes Datagram
-        dataHandler[AIR_BRAKES]->add(new SensorData<float>(DataType::AIR_BRAKES_ANGLE));
+        dataHandler[AIR_BRAKES]->add(new BasicData<float>(DataType::AIR_BRAKES_ANGLE));
 
     //// [Subsystem Name] Datagram
         // dataHandler[DatagramID]->add(new MyData);

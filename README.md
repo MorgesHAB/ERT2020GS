@@ -3,12 +3,12 @@
 # EPFL Rocket Team - <em>Bella Lui Project 2020</em>
 
 ### Goal 
-Spaceport America Cup competition - Launch a Rocket to the exact altitude of 10'000 feets  
+Spaceport America Cup competition - Launch a Rocket to the exact altitude of 10'000 feets.  
 SRAD Hybrid Engine category. 
 For more informations : https://epflrocketteam.ch/fr/ :rocket:
 
 ### Description
-Code of the <b>Ground Segment system</b> which will run on a Raspberry Pi 4 with XBee RF modems.
+Software of the <b>Ground Segment system</b> which will run on a Raspberry Pi 4 with XBee RF modems.
 
 -----------------------------------------------------------------
 ## Repository organization
@@ -56,7 +56,7 @@ Code of the <b>Ground Segment system</b> which will run on a Raspberry Pi 4 with
   * autoBuild.sh // bash script to compile the software : `bash autoBuild.sh`
 
 -----------------------------------------------------------------
-## Software organization
+## Software organization diagram
 
 <img src="doc/img/2020_GS_GST_System_Diagram.svg">
   
@@ -201,8 +201,92 @@ int main() {
     return 0;
 }
 ```
+-----------------------------------------------------------------
+## Information
 
-If you want to develop some more complex data structure, you have to follow this template: in Telecom/DataStructures
+### Developed with
+* Hardware
+    * Raspberry Pi 4 - SDRAM 4Go - SD card 32 Go
+    * 2 Xbee SX 868 MHz + PCBs + Antennas
+    * The Ground Station case (screens, battery, mouse, keyboard, ...)
+
+* Software
+    * [CLion](https://www.jetbrains.com/cpp/) from JetBrains
+    * Qt Designer for the graphical interface
+    * XCTU for xbee configurations
+
+Operating system NB : development on linux is easy.   
+If you want to develop it on windows, I use [ubuntu](https://ubuntu.com/tutorials/tutorial-ubuntu-on-windows#1-overview)
+application and Xserver for UI display redirection. Thus you can interact with the serial port
+and so with the xbee.
+
+-----------------------------------------------------------------
+### Authors
+* [Cem Keske](https://github.com/cem-keske) Mission UI
+* [Stéphanie Lebrun](https://github.com/StLebrun) implementation of some Data structures
+* [Lionel Isoz](https://github.com/MorgesHAB) RF telecommunication - xbee network
+
+-----------------------------------------------------------------
+### Acknowledgments
+* [Clément Nussbaumer](https://github.com/clementnuss/gs_matterhorn) - ERT2018 GS, inspired this software
+* Alexandre Devienne - Xbee PCB & antennas
+* [EPFL Rocket Team](https://epflrocketteam.ch/fr/)
+* [Flaticon](https://www.flaticon.com/categories) for UI icon
+
+-----------------------------------------------------------------
+### Useful links
+* [XBee API mode](https://www.digi.com/resources/documentation/Digidocs/90001942-13/concepts/c_api_frame_structure.htm?tocpath=XBee%20API%20mode%7C_____2)
+* [XBee Zigbee Mesh Kit](https://www.digi.com/resources/documentation/digidocs/pdfs/90001942-13.pdf)
+* [XBee SX 868](https://www.digi.com/resources/documentation/digidocs/pdfs/90001538.pdf)
+
+[<img src="doc/img/ERTbig.png" width=800>](https://epflrocketteam.ch/fr/)
+
+
+-----------------------------------------------------------------
+## Appendix
+
+### Installation of Raspbian
+
+Installation of Raspbian operating system on your Rapsberry Pi
+
+Download the last version of Raspbian on (a file with .img extension): https://www.raspberrypi.org/downloads/raspbian/
+
+Then write the img file on your SD card. You can use Win32DiskImager as software
+
+Plug a keyboard & a mouse via USB port and a screen via HDMI port to your Raspberry Pi. Finally plug the 5V power.
+
+-----------------------------------------------------------------
+## Tutorial #1 : create a new Datagram
+
+- [X] First, create a new DatagramID in [DatagramTypes.h](Telecom/DataHandler/DatagramTypes.h) 
+and modify the getDatagramIDName() function.  
+- [ ] Then go in the [constructor of DataHandler](Telecom/DataHandler/DataHandler.cpp) and create 
+your new Datagram referred to as `dataHandler[MY_DATAGRAMID]`  by adding it all the 
+Data you want.  
+NB : the "add" method calling order defines the data order in your packet. 
+```cpp
+dataHandler[DatagramID]->add(new MyData);
+```
+For example, if my DatagramID is "AVIONIC_TEST"
+```cpp
+dataHandler[AVIONIC_TEST]->add(new BasicData<float>(DataType::TEMPERATURE_SENSOR));
+dataHandler[AVIONIC_TEST]->add(new BasicData<float>(DataType::AV_ALTITUDE));
+dataHandler[AVIONIC_TEST]->add(new BasicData<uint8_t>(DataType::AV_ORDER));
+dataHandler[AVIONIC_TEST]->add(new String("Hello from space"));
+dataHandler[AVIONIC_TEST]->add(new GPS);
+//... and so on
+```
+You can add as much data as you want as long as the datagram (packet) size does not exceed 256 bytes.  
+
+If your Datagram is quiet basic, that means it only need to stock the received data in
+the RF-GUI connector or send a data located in that connector, you can use the generic 
+"BasicData" class and only specify the connector index define in 
+[ProtocolDefine.h](RF-UI-Interface/ProtocolDefine.h). Thus you will be able to process 
+and print your data in the GUI program.
+
+If your data is more complex, you have to create a new class that inherits of 
+[Data](Telecom/DataStructures/Data.h) by following this [Template.h](Telecom/DataStructures/Template.h).
+
 ```cpp
 // Pattern class
 #include <Data.h>
@@ -224,7 +308,8 @@ private:
 };
 ```
 Then choose the data you want to transmit for example nbr & x  
-So you just need to implement the write & parse function by adding 
+So you just need to implement the write & parse function by adding   
+Warning: the order is important.
 ```cpp
 void MyData::write(Packet &packet) {
     packet.write(nbr);  // Use low level function to write bit to bit the RFpacket
@@ -236,27 +321,7 @@ void MyData::parse(Packet &packet) {
     packet.parse(x);
 }
 ```
-Finally use std::cout for the print() function & update() your data as you need.
-
-Now you can create your own Datagram in the [constructor of DataHandler](Telecom/DataHandler/DataHandler.cpp)
-After adding a new PacketID in [DataHandler.h](Telecom/DataHandler/DataHandler.h)
-```cpp
-enum PacketID {
-    GPSID, ..., MY_DATA_TYPE,
-};
-```
------------------------------------------------------------------
-## Appendix
-### Installation of Raspbian
-
-Installation of Raspbian operating system on your Rapsberry Pi
-
-Download the last version of Raspbian on (a file with .img extension): https://www.raspberrypi.org/downloads/raspbian/
-
-Then write the img file on your SD card. You can use Win32DiskImager as software
-
-Plug a keyboard & a mouse via USB port and a screen via HDMI port to your Raspberry Pi. Finally plug the 5V power.
 
 -----------------------------------------------------------------
-
-[<img src="doc/img/ERTbig.png" width=800>](https://epflrocketteam.ch/fr/)
+## Tutorial #2 : change my RF modem
+coming soon...
