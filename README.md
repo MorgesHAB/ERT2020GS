@@ -153,16 +153,42 @@ You can also add this command in the file ```/etc/rc.local```
 in order to let the Raspberry Pi run this command automatically on boot
 
 -----------------------------------------------------------------
-## Building software
+## Configure the xbee
+For a correct communication, if the xbee leaves the factory, you will have to flash
+the same configurations profile as the other xbee modules using XCTU software.  
+You can find this configuration profile in [doc/XbeeGS2020config.xpro](doc/XbeeGS2020config.xpro)  
+
+-----------------------------------------------------------------
+## Building the software
 
 First clone this GitHub repository in a folder using:
 ```console
 git clone https://github.com/MorgesHAB/ERT2020GS.git
 ```
-Move to the root folder of the project and run the bash to compile and build the executable files:
+Move to the root folder of the project and run the bash to compile and build 
+the executable files:
 ```console
 sudo bash autoBuild.sh
 ```
+If there are some errors :
+* Open the main [CmakeLists.txt](CMakeLists.txt) and select your build configuration.
+Maybe your Qt installation, or other get some errors.
+```console
+set(USE_GUI ON) # write ON or OFF 
+set(USE_XBEE ON)
+set(RUNNING_ON_RPI OFF) # OFF if you're working on your laptop
+set(USE_SOUND OFF)
+```
+* First test that the cmake works correctly
+```console
+cd build
+cmake ..
+```
+* Then use make and specify your target, eg an executable without Qt :
+```console
+make AVsimulator
+```
+
 -----------------------------------------------------------------
 ## Run software
 After having run the autoBuild.sh script correctly (no errors), many executable should have been created in a "build" folder.  
@@ -204,6 +230,12 @@ int main() {
 -----------------------------------------------------------------
 ## Information
 
+### Read doxygen documentation
+Open this file in a web browser [doc/html/index.html](doc/html/index.html)  
+For example you will find this class architecture diagram
+<img src="doc/img/inherit_graph.png" width=600>
+
+-----------------------------------------------------------------
 ### Developed with
 * Hardware
     * Raspberry Pi 4 - SDRAM 4Go - SD card 32 Go

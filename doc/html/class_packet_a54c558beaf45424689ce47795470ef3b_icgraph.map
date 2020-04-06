@@ -1,11 +1,7 @@
 <map id="Packet::getSize" name="Packet::getSize">
-<area shape="rect" id="node1" title=" " alt="" coords="699,107,813,133"/>
-<area shape="rect" id="node2" href="$class_packet.html#ab679ad2bad217892c3972b67250cb922" title=" " alt="" coords="517,5,651,32"/>
-<area shape="rect" id="node3" href="$class_lo_ra.html#a684fcf77b91dde5041e5ea2311bdc1c7" title=" " alt="" coords="540,56,628,83"/>
-<area shape="rect" id="node4" href="$class_xbee.html#a4cec4d5399ca6ac3c4b8730722f33d8d" title=" " alt="" coords="541,107,627,133"/>
-<area shape="rect" id="node8" href="$class_c_r_c.html#aeddd1dee044aae53123c47198ec84c18" title=" " alt="" coords="542,157,626,184"/>
-<area shape="rect" id="node9" href="$class_packet.html#ab69b4811d3878531ac371c35281072ae" title=" " alt="" coords="535,208,633,235"/>
-<area shape="rect" id="node5" href="$class_worker.html#a4204b589149f82ed426cc7f74232a36f" title=" " alt="" coords="104,107,248,133"/>
-<area shape="rect" id="node7" href="$class_worker.html#a21ca3be76ce5f99d145521a5a59c12d7" title=" " alt="" coords="296,132,469,159"/>
-<area shape="rect" id="node6" href="$_g_u_i_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,107,56,133"/>
+<area shape="rect" id="node1" title=" " alt="" coords="152,81,267,108"/>
+<area shape="rect" id="node2" href="$class_lo_ra.html#a684fcf77b91dde5041e5ea2311bdc1c7" title=" " alt="" coords="11,5,99,32"/>
+<area shape="rect" id="node3" href="$class_xbee.html#a4cec4d5399ca6ac3c4b8730722f33d8d" title=" " alt="" coords="11,56,98,83"/>
+<area shape="rect" id="node4" href="$class_c_r_c.html#aeddd1dee044aae53123c47198ec84c18" title=" " alt="" coords="13,107,97,133"/>
+<area shape="rect" id="node5" href="$class_packet.html#ab69b4811d3878531ac371c35281072ae" title=" " alt="" coords="5,157,104,184"/>
 </map>

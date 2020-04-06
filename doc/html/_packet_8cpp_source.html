@@ -133,7 +133,7 @@ $(document).ready(function(){initNavTree('_packet_8cpp_source.html','');});
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
 <div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="class_packet.html#ab679ad2bad217892c3972b67250cb922">   50</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_packet.html#ab679ad2bad217892c3972b67250cb922">Packet::printDebug</a>()<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;Print packet Debug byte per byte :&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordflow">for</span> (uint8_t i(0); i &lt; <a class="code" href="class_packet.html#a54c558beaf45424689ce47795470ef3b">getSize</a>(); ++i) std::cout &lt;&lt; +packet[i] &lt;&lt; <span class="stringliteral">&quot; &quot;</span>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordflow">for</span> (uint8_t i(0); i &lt; size; ++i) std::cout &lt;&lt; +packet[i] &lt;&lt; <span class="stringliteral">&quot; &quot;</span>;</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    std::cout &lt;&lt; std::endl;</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
