@@ -233,7 +233,7 @@ int main() {
 ### Read doxygen documentation
 Open this file in a web browser [doc/html/index.html](doc/html/index.html)  
 For example you will find this class architecture diagram
-<img src="doc/img/inherit_graph.png" width=600>
+<img src="doc/img/inherit_graph.png">
 
 -----------------------------------------------------------------
 ### Developed with
