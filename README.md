@@ -2,13 +2,25 @@
 
 # EPFL Rocket Team - <em>Bella Lui Project 2020</em>
 
+-----------------------------------------------------------------
+## Table of Contents
+1. [Repository organization tree](#repository-organization-tree)
+2. [Software organization diagram](#software-organization-diagram)
+3. [Prerequisites](#prerequisites)
+4. [Configure the xbee](#configure-the-xbee)
+5. [Building software](#building-software)
+6. [Run software](#run-software)
+7. [Information](#information)
+8. [Appendix - Tutorial](#appendix)
+-----------------------------------------------------------------
 ### Goal 
 Spaceport America Cup competition - Launch a Rocket to the exact altitude of 10'000 feets.  
 SRAD Hybrid Engine category. 
 For more informations : https://epflrocketteam.ch/fr/ :rocket:
 
 ### Description
-Software of the <b>Ground Segment system</b> which will run on a Raspberry Pi 4 with XBee RF modems.
+Software of the <b>Ground Segment system</b> which will run on a Raspberry Pi 4 
+with XBee RF modems.
 
 -----------------------------------------------------------------
 ## Repository organization tree
@@ -180,7 +192,7 @@ the same configurations profile as the other xbee modules using XCTU software.
 You can find this configuration profile in [doc/XbeeGS2020config.xpro](doc/XbeeGS2020config.xpro)  
 
 -----------------------------------------------------------------
-## Building the software
+## Building software
 
 First clone this GitHub repository in a folder using:
 ```console
@@ -377,4 +389,17 @@ void MyData::parse(Packet &packet) {
 
 -----------------------------------------------------------------
 ## Tutorial #2 : change my RF modem
-coming soon...
+If you want to use other radio modules in addition of the xbee or LoRa, you will just 
+need to adapt some part of the code.  
+
+First create your new RF module class and made it inherit from the abstract class 
+[RFmodem.h](Telecom/RFmodem/RFmodem.h). Then you have to override the send and
+receive functions. You can have a look to [Xbee.cpp](Telecom/RFmodem/Xbee.cpp) as an example, 
+but mainly, your send function must be able to transmit an array of uint8_t and your 
+receive function to fill a uint8_t array with the received data.
+Next, if you need, override also the getRSSI and isOpen functions.
+If your new RF module requires some new library dependencies, be sure to adapt the 
+[CMakeLists.txt](Telecom/CMakeLists.txt).
+
+Finally you just need to change the RFmodem pointer with 
+your new RF module instance in the mainRoutine of [Worker.cpp](Telecom/Worker/Worker.cpp).
