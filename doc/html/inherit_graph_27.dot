@@ -1,0 +1,14 @@
+digraph "Graphical Class Hierarchy"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node57 [label="exception",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node57 -> Node0 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node0 [label="serial::IOException",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classserial_1_1_i_o_exception.html",tooltip=" "];
+  Node57 -> Node59 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node59 [label="serial::PortNotOpenedException",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classserial_1_1_port_not_opened_exception.html",tooltip=" "];
+  Node57 -> Node60 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node60 [label="serial::SerialException",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classserial_1_1_serial_exception.html",tooltip=" "];
+}

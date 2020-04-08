@@ -1,0 +1,12 @@
+digraph "serial::Serial::SerialImpl::waitReadable"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="serial::Serial::SerialImpl\l::waitReadable",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="timespec_from_ms",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$unix_8cc.html#a89267c1a694b6017c261da0387291546",tooltip=" "];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="millis",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_ras_pi_8cpp.html#a6ff7f2532a22366f0013bc41397129fd",tooltip=" "];
+}

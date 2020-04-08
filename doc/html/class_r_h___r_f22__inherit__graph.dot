@@ -1,0 +1,13 @@
+digraph "RH_RF22"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{RH_RF22\n|# _interruptPin\l# _myInterruptIndex\l# _idleMode\l# _deviceType\l# _polynomial\l# _bufLen\l# _buf\l# _rxBufValid\l# _txBufSentIndex\l# _lastPreambleTime\l# _deviceForInterrupt\l# _interruptCount\l|+ RH_RF22()\l+ init()\l+ reset()\l+ statusRead()\l+ adcRead()\l+ temperatureRead()\l+ wutRead()\l+ setWutPeriod()\l+ setFrequency()\l+ setFHStepSize()\land 21 more...\l# handleInterrupt()\l# clearRxBuf()\l# clearTxBuf()\l# fillTxBuf()\l# appendTxBuf()\l# sendNextFragment()\l# readNextFragment()\l# resetFifos()\l# resetRxFifo()\l# resetTxFifo()\land 6 more...\l# isr0()\l# isr1()\l# isr2()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Driver to send and receive unaddressed, unreliable datagrams via an RF22 and compatible radio transce..."];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node2 [label="{RHGenericDriver\n|# _mode\l# _thisAddress\l# _promiscuous\l# _rxHeaderTo\l# _rxHeaderFrom\l# _rxHeaderId\l# _rxHeaderFlags\l# _txHeaderTo\l# _txHeaderFrom\l# _txHeaderId\l# _txHeaderFlags\l# _lastRssi\l# _rxBad\l# _rxGood\l# _txGood\l|+ RHGenericDriver()\l+ init()\l+ available()\l+ recv()\l+ send()\l+ maxMessageLength()\l+ waitAvailable()\l+ waitPacketSent()\l+ waitPacketSent()\l+ waitAvailableTimeout()\land 17 more...\l+ printBuffer()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_r_h_generic_driver.html",tooltip="Abstract base class for a RadioHead driver."];
+  Node3 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node3 [label="{RHLinuxSPI\n||+ RHLinuxSPI()\l+ init()\l+ transfer()\l+ spiRead()\l+ spiWrite()\l+ spiBurstRead()\l+ spiBurstWrite()\l+ attachInterrupt()\l+ detachInterrupt()\l+ begin()\l+ end()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_r_h_linux_s_p_i.html",tooltip="Encapsulate a hardware SPI bus interface."];
+  Node4 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node4 [label="{RHGenericSPI\n|# _frequency\l# _bitOrder\l# _dataMode\l|+ RHGenericSPI()\l+ transfer()\l+ attachInterrupt()\l+ detachInterrupt()\l+ begin()\l+ end()\l+ setBitOrder()\l+ setDataMode()\l+ setFrequency()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_r_h_generic_s_p_i.html",tooltip="Base class for SPI interfaces."];
+}

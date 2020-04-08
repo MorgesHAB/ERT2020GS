@@ -28,8 +28,7 @@ if (USE_XBEE)
     include_directories(Telecom/RFmodem/lib/serial/include/)
 
     add_executable(AVsimulator src/AVsimulator.cpp)
-    add_executable(IgniterRPi src/IgniterRPi.cpp)
-    add_executable(ImageCom src/ImageCom.cpp)
+    add_executable(GSE_PLsimu src/GSE_PLsimu.cpp)
     add_executable(TestPacket src/PacketXTest.cpp)
 
     if (USE_GUI)
@@ -48,13 +47,12 @@ endif (USE_LORA)
 
 if (USE_XBEE)
     target_link_libraries(AVsimulator Telecom)
-    target_link_libraries(IgniterRPi Telecom)
-    target_link_libraries(ImageCom Telecom)
+    target_link_libraries(GSE_PLsimu Telecom)
     target_link_libraries(TestPacket Telecom)
 
-    add_executable(TEST src/TestDebug.cpp)
+    add_executable(XbeeTest src/XbeeTest.cpp)
     include_directories(RFmodem/lib/serial/include/)
-    target_link_libraries(TEST serial)
+    target_link_libraries(XbeeTest serial)
 
     if (USE_GUI)
         target_link_libraries(${PROJECT_NAME} GUI)

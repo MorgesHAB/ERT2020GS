@@ -1,0 +1,40 @@
+<map id="C:/Users/disoz/Documents/GitHub/ERT2020GS/UI/SecondWindow.h" name="C:/Users/disoz/Documents/GitHub/ERT2020GS/UI/SecondWindow.h">
+<area shape="rect" id="node1" title="Gui Window module implementation." alt="" coords="3167,5,3429,47"/>
+<area shape="rect" id="node2" href="$second__ui_8h.html" title=" " alt="" coords="1413,95,1505,121"/>
+<area shape="rect" id="node19" href="$connector_8h.html" title=" " alt="" coords="3054,244,3174,285"/>
+<area shape="rect" id="node23" href="$_protocol_define_8h.html" title="User Interface &#45; RF Telecom interface protocol definition." alt="" coords="3151,333,3269,360"/>
+<area shape="rect" id="node24" href="$gui__logger_8h.html" title=" " alt="" coords="2932,95,3024,121"/>
+<area shape="rect" id="node35" title=" " alt="" coords="3299,95,3369,121"/>
+<area shape="rect" id="node36" title=" " alt="" coords="3393,95,3457,121"/>
+<area shape="rect" id="node37" title=" " alt="" coords="3481,95,3579,121"/>
+<area shape="rect" id="node38" title=" " alt="" coords="3603,95,3689,121"/>
+<area shape="rect" id="node3" title=" " alt="" coords="1235,169,1353,196"/>
+<area shape="rect" id="node4" title=" " alt="" coords="1378,169,1541,196"/>
+<area shape="rect" id="node5" title=" " alt="" coords="1565,169,1727,196"/>
+<area shape="rect" id="node6" title=" " alt="" coords="1752,169,1887,196"/>
+<area shape="rect" id="node7" title=" " alt="" coords="1911,169,2072,196"/>
+<area shape="rect" id="node8" title=" " alt="" coords="2096,169,2252,196"/>
+<area shape="rect" id="node9" title=" " alt="" coords="2276,169,2445,196"/>
+<area shape="rect" id="node10" title=" " alt="" coords="2470,169,2638,196"/>
+<area shape="rect" id="node11" title=" " alt="" coords="2663,169,2792,196"/>
+<area shape="rect" id="node12" title=" " alt="" coords="5,169,151,196"/>
+<area shape="rect" id="node13" title=" " alt="" coords="175,169,346,196"/>
+<area shape="rect" id="node14" title=" " alt="" coords="371,169,537,196"/>
+<area shape="rect" id="node15" title=" " alt="" coords="562,169,693,196"/>
+<area shape="rect" id="node16" title=" " alt="" coords="717,169,877,196"/>
+<area shape="rect" id="node17" title=" " alt="" coords="901,169,1047,196"/>
+<area shape="rect" id="node18" title=" " alt="" coords="1071,169,1210,196"/>
+<area shape="rect" id="node20" title=" " alt="" coords="2906,408,2967,435"/>
+<area shape="rect" id="node21" title=" " alt="" coords="3063,408,3114,435"/>
+<area shape="rect" id="node22" title=" " alt="" coords="2653,408,2708,435"/>
+<area shape="rect" id="node25" href="$_logger_8h.html" title="Logger module interface." alt="" coords="2816,169,2943,196"/>
+<area shape="rect" id="node26" href="$_loggable_8h.html" title="Loggable module interface." alt="" coords="2391,333,2477,360"/>
+<area shape="rect" id="node27" href="$_logger__buffer_8h.html" title=" " alt="" coords="2763,333,2873,360"/>
+<area shape="rect" id="node30" href="$double__buffer_8h.html" title=" " alt="" coords="2870,251,2979,278"/>
+<area shape="rect" id="node31" title=" " alt="" coords="2569,333,2635,360"/>
+<area shape="rect" id="node32" title=" " alt="" coords="2505,251,2616,278"/>
+<area shape="rect" id="node33" title=" " alt="" coords="2641,251,2699,278"/>
+<area shape="rect" id="node34" title=" " alt="" coords="2723,251,2795,278"/>
+<area shape="rect" id="node28" title=" " alt="" coords="2826,408,2882,435"/>
+<area shape="rect" id="node29" title=" " alt="" coords="2733,408,2802,435"/>
+</map>

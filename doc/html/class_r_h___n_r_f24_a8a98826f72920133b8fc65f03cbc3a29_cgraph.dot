@@ -1,0 +1,21 @@
+digraph "RH_NRF24::printRegisters"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="RH_NRF24::printRegisters",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="SerialSimulator::print",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_serial_simulator.html#a234ffff97bfc7399b1d8edb3e4240380",tooltip=" "];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="SerialSimulator::println",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_serial_simulator.html#a7091e824733afdea0ff2a8baa2ad83d6",tooltip=" "];
+  Node3 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="RH_NRF24::spiBurstReadRegister",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_r_h___n_r_f24.html#a44bc544fc10e67943694c5b5c5139d32",tooltip=" "];
+  Node4 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="RHNRFSPIDriver::spiBurstRead",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_r_h_n_r_f_s_p_i_driver.html#a395f4af2d6dbb62ea62c74b1377f490a",tooltip=" "];
+  Node5 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="digitalWrite",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_ras_pi_8cpp.html#a21c224d04b05de3f68dce98958d02b7c",tooltip=" "];
+  Node5 -> Node7 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="RHGenericSPI::transfer",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_r_h_generic_s_p_i.html#a14bc6f8954d9d68c0a56319444ffdd24",tooltip=" "];
+}

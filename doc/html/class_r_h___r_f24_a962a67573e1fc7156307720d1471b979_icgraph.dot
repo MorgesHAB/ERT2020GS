@@ -1,0 +1,35 @@
+digraph "RH_RF24::set_properties"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="RH_RF24::set_properties",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="RH_RF24::init",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_r_h___r_f24.html#a2cb53e42f79e769497ae564a8d74230e",tooltip=" "];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="RH_RF24::send",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_r_h___r_f24.html#a9aaa8c5b36eccb568c87c4c9e74e7877",tooltip=" "];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="RH_RF24::setCRCPolynomial",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_r_h___r_f24.html#a4c5d2b6dce422f3d09c83327ef603363",tooltip=" "];
+  Node4 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="RH_RF24::setFrequency",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_r_h___r_f24.html#aede4988f5e9daef3b471615aae7ad720",tooltip=" "];
+  Node5 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="RH_RF24::setModemRegisters",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_r_h___r_f24.html#afd00202f768b4f0f893f2fbb9e650c7b",tooltip=" "];
+  Node1 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="RH_RF24::setModeRx",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_r_h___r_f24.html#a52218f0ec1c9c8ec01b6ca771309faf4",tooltip=" "];
+  Node7 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="RH_RF24::available",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_r_h___r_f24.html#ad807aee44ebdc88869aca06ceefb6607",tooltip=" "];
+  Node8 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="RH_RF24::recv",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_r_h___r_f24.html#a9937ab8c31b887a2d47c9e7fd2c7370e",tooltip=" "];
+  Node1 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 [label="RH_RF24::setPreambleLength",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_r_h___r_f24.html#ad362ade85bb04260ce35e8e1e0071a56",tooltip=" "];
+  Node10 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node11 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 [label="RH_RF24::setSyncWords",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_r_h___r_f24.html#a9eaa19e721fe511ac04b08e9e3a7e723",tooltip=" "];
+  Node11 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node12 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node12 [label="RH_RF24::setTxPower",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_r_h___r_f24.html#a2078de5a7a5821a673fcf7ab95ab8575",tooltip=" "];
+  Node12 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

@@ -1,0 +1,13 @@
+digraph "C:/Users/disoz/Documents/GitHub/ERT2020GS/Telecom/RFmodem/lib/RadioHead/examples" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_ef78388813ba77867720a372781a96cc {
+    graph [ bgcolor="#ddddee", pencolor="black", label="RadioHead" fontname="Helvetica", fontsize="10", URL="dir_ef78388813ba77867720a372781a96cc.html"]
+  subgraph clusterdir_f7ae9c9ae6d822f952bba6b2517e8798 {
+    graph [ bgcolor="#eeeeff", pencolor="black", label="" URL="dir_f7ae9c9ae6d822f952bba6b2517e8798.html"];
+    dir_f7ae9c9ae6d822f952bba6b2517e8798 [shape=plaintext label="examples"];
+    dir_f164a62870c1aea2952efcdc3e52959b [shape=box label="raspi" color="black" fillcolor="white" style="filled" URL="dir_f164a62870c1aea2952efcdc3e52959b.html"];
+  }
+  }
+}

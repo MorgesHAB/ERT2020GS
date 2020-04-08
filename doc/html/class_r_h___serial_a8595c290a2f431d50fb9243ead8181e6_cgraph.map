@@ -1,0 +1,12 @@
+<map id="RH_Serial::waitAvailableTimeout" name="RH_Serial::waitAvailableTimeout">
+<area shape="rect" id="node1" title=" " alt="" coords="5,125,168,166"/>
+<area shape="rect" id="node2" href="$class_r_h___serial.html#a7e608a91618692ef62b57ce9312cecf1" title=" " alt="" coords="247,81,384,108"/>
+<area shape="rect" id="node8" href="$_ras_pi_8cpp.html#a6ff7f2532a22366f0013bc41397129fd" title=" " alt="" coords="524,136,576,163"/>
+<area shape="rect" id="node9" href="$class_r_h_generic_driver.html#a8ed545cecc22196a325333dc9637e4cf" title=" " alt="" coords="216,183,415,225"/>
+<area shape="rect" id="node3" href="$class_r_h___serial.html#a24dd6dd48c5f6f3a314500cfaa6dbc4a" title=" " alt="" coords="479,81,621,108"/>
+<area shape="rect" id="node4" href="$class_r_h___serial.html#ae338b82cdcf91499d6ab725267f9bf91" title="Adds a charater to the Rx buffer." alt="" coords="686,5,851,32"/>
+<area shape="rect" id="node5" href="$_r_h_c_r_c_8cpp.html#a8fc360d4f6a587da7dbc75d7380aa140" title=" " alt="" coords="900,31,1036,57"/>
+<area shape="rect" id="node6" href="$class_r_h___serial.html#adf99523e191286fe11821a4095fcaff2" title="Empties the Rx buffer." alt="" coords="693,107,844,133"/>
+<area shape="rect" id="node7" href="$class_r_h___serial.html#af88b6a87914622ba69411707958a959e" title=" " alt="" coords="685,157,852,184"/>
+<area shape="rect" id="node10" href="$class_r_h_generic_driver.html#a2dd522b8eb16c51dc948b4ca4d623888" title=" " alt="" coords="463,191,637,217"/>
+</map>

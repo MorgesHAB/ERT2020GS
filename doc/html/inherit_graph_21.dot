@@ -1,0 +1,8 @@
+digraph "Graphical Class Hierarchy"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node0 [label="RHRouter::RoutedMessageHeader",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct_r_h_router_1_1_routed_message_header.html",tooltip="Defines the structure of the RHRouter message header, used to keep track of end-to-end delivery param..."];
+}

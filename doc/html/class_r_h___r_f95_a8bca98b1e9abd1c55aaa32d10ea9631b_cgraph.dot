@@ -1,0 +1,16 @@
+digraph "RH_RF95::recv"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="RH_RF95::recv",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="RH_RF95::available",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_r_h___r_f95.html#a917a6b16ca2be2da530516220560cf43",tooltip=" "];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="RH_RF95::setModeRx",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_r_h___r_f95.html#ade668dcd0730fef266c8d94c7e6e7085",tooltip=" "];
+  Node3 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="RHLinuxSPI::spiWrite",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_r_h_linux_s_p_i.html#a090235d967429bdf01b5a32132ef2d3e",tooltip=" "];
+  Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="RH_RF95::clearRxBuf",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_r_h___r_f95.html#a1af385a295c834e88610dfcfb4112fb2",tooltip="Clear our local receive buffer."];
+}

@@ -1,0 +1,7 @@
+digraph "RH_RF22::ModemConfig"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{RH_RF22::ModemConfig\n|+ reg_1c\l+ reg_1f\l+ reg_20\l+ reg_21\l+ reg_22\l+ reg_23\l+ reg_24\l+ reg_25\l+ reg_2c\l+ reg_2d\land 8 more...\l|}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Defines register values for a set of modem configuration registers."];
+}

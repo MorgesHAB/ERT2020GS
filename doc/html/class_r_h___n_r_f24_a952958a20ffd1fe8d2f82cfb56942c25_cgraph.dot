@@ -1,0 +1,23 @@
+digraph "RH_NRF24::send"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="RH_NRF24::send",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="RH_NRF24::setModeTx",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_r_h___n_r_f24.html#a8444dc8484bd0c1f8681c1282b2cc812",tooltip=" "];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="digitalWrite",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_ras_pi_8cpp.html#a21c224d04b05de3f68dce98958d02b7c",tooltip=" "];
+  Node2 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="RH_NRF24::spiWriteRegister",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_r_h___n_r_f24.html#a38647e0230a13e2328fe91330c7089b2",tooltip=" "];
+  Node4 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="RHNRFSPIDriver::spiWrite",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_r_h_n_r_f_s_p_i_driver.html#a4795454482baa5a2c4df6e89c97b19b3",tooltip=" "];
+  Node5 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="RHGenericSPI::transfer",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_r_h_generic_s_p_i.html#a14bc6f8954d9d68c0a56319444ffdd24",tooltip=" "];
+  Node1 -> Node7 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="RHNRFSPIDriver::spiBurst\lWrite",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_r_h_n_r_f_s_p_i_driver.html#aaf701d926af0e7c5d64b676b11b3905c",tooltip=" "];
+  Node7 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

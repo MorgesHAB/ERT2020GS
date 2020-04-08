@@ -1,0 +1,12 @@
+digraph "serial::MillisecondTimer::remaining"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="serial::MillisecondTimer\l::remaining",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="serial::Serial::SerialImpl\l::read",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classserial_1_1serial_1_1_serial_1_1_serial_impl.html#ada61c83884f0f6350874fc32e640cbac",tooltip=" "];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="serial::Serial::SerialImpl\l::write",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classserial_1_1serial_1_1_serial_1_1_serial_impl.html#a89b50df2562176fd250413833d636d0a",tooltip=" "];
+}

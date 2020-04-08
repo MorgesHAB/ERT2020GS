@@ -95,7 +95,7 @@ int Xbee::getRSSI() {
         serialPort.write(command, sizeof(command));
         std::cout << "Diagnostic command have been sent - get RSSI" << std::endl;
     }
-    return 0;
+    return 0;   // value will be in a xbee packet at reception (updateRx)
 }
 
 bool Xbee::isOpen() {

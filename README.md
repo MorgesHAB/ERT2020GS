@@ -9,7 +9,7 @@
 3. [Prerequisites](#prerequisites)
 4. [Configure the xbee](#configure-the-xbee)
 5. [Building software](#building-software)
-6. [Run software](#run-software)
+6. [Running the tests](#running-the-tests)
 7. [Information](#information)
 8. [Appendix - Tutorial](#appendix)
 -----------------------------------------------------------------
@@ -219,13 +219,24 @@ cmake ..
 ```
 * Then use make and specify your target, eg an executable without Qt :
 ```console
-make AVsimulator
+make XbeeTest
+make AVsimualtor
 ```
 
 -----------------------------------------------------------------
-## Run software
-After having run the autoBuild.sh script correctly (no errors), many executable should have been created in a "build" folder.  
-The main program calls "ERT2020GS" and is the one run on the Ground Station with a graphical user interface
+## Running the tests
+For this part, your working directory should be `.../ERT2020GS/build`. If this directory
+doesn't exist, just type `mkdir build` from ERT2020GS.
+First test that your xbee communication is working
+```console
+make XbeeTest
+./XbeeTest Tx ttyUSB0
+```
+
+
+After having run the autoBuild.sh script correctly (no errors), many executable 
+should have been created in a "build" folder. The main program calls "ERT2020GS" 
+and is the one run on the Ground Station with a graphical user interface.
 ```console
 ./ERT2020GS
 ```

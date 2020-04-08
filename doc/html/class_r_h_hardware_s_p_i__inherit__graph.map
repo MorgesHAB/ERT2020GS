@@ -1,0 +1,4 @@
+<map id="RHHardwareSPI" name="RHHardwareSPI">
+<area shape="rect" id="node1" title="Encapsulate a hardware SPI bus interface." alt="" coords="5,277,140,428"/>
+<area shape="rect" id="node2" href="$class_r_h_generic_s_p_i.html" title="Base class for SPI interfaces." alt="" coords="9,5,137,229"/>
+</map>

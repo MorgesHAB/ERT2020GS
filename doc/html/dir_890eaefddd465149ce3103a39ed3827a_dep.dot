@@ -1,0 +1,17 @@
+digraph "C:/Users/disoz/Documents/GitHub/ERT2020GS/Telecom/RFmodem/lib/serial/tests" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_01769d8f5aa3446387fc427e397c1794 {
+    graph [ bgcolor="#ddddee", pencolor="black", label="serial" fontname="Helvetica", fontsize="10", URL="dir_01769d8f5aa3446387fc427e397c1794.html"]
+  subgraph clusterdir_890eaefddd465149ce3103a39ed3827a {
+    graph [ bgcolor="#eeeeff", pencolor="black", label="" URL="dir_890eaefddd465149ce3103a39ed3827a.html"];
+    dir_890eaefddd465149ce3103a39ed3827a [shape=plaintext label="tests"];
+    dir_86fdee02bd0049e06b4aa9e424b231c3 [shape=box label="proof_of_concepts" color="black" fillcolor="white" style="filled" URL="dir_86fdee02bd0049e06b4aa9e424b231c3.html"];
+    dir_95bb54f41bf4377c3c10c682a52fc0a9 [shape=box label="unit" color="black" fillcolor="white" style="filled" URL="dir_95bb54f41bf4377c3c10c682a52fc0a9.html"];
+  }
+  }
+  dir_9260bf821c62849d35ade27504a9c8e7 [shape=box label="include" fillcolor="white" style="filled" color="red" URL="dir_9260bf821c62849d35ade27504a9c8e7.html"];
+  dir_890eaefddd465149ce3103a39ed3827a->dir_9260bf821c62849d35ade27504a9c8e7 [headlabel="2", labeldistance=1.5 headhref="dir_000027_000021.html"];
+  dir_95bb54f41bf4377c3c10c682a52fc0a9->dir_9260bf821c62849d35ade27504a9c8e7 [headlabel="1", labeldistance=1.5 headhref="dir_000029_000021.html"];
+}

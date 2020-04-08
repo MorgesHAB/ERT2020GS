@@ -1,0 +1,16 @@
+digraph "RHNRFSPIDriver::init"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="RHNRFSPIDriver::init",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="RHGenericSPI::begin",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_r_h_generic_s_p_i.html#a6a3cda8ef2eb6230dbf7572c5fa6915e",tooltip=" "];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="delay",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_ras_pi_8cpp.html#a6bc5f943544a887f8b23cadfb26a5e30",tooltip=" "];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="digitalWrite",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_ras_pi_8cpp.html#a21c224d04b05de3f68dce98958d02b7c",tooltip=" "];
+  Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="pinMode",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_ras_pi_8cpp.html#a1875409d12eee562555bda94cad7f973",tooltip=" "];
+}
