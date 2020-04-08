@@ -34,7 +34,7 @@ int main(int argc, char **argv) {
 
     QApplication app(argc, argv);
     
-    //GuiWindow guiWindow(fake_connector);
+    GuiWindow guiWindow(fake_connector);
 
     SecondWindow secWindow(connector);
 
@@ -43,7 +43,7 @@ int main(int argc, char **argv) {
 
     std::this_thread::sleep_for(std::chrono::milliseconds(300));
 
-    //guiWindow.show();
+    guiWindow.show();
 
     std::this_thread::sleep_for(std::chrono::milliseconds(300));
 	
