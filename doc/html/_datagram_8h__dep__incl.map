@@ -1,0 +1,18 @@
+<map id="C:/Users/disoz/Documents/GitHub/ERT2020GS/Telecom/DataHandler/Datagram.h" name="C:/Users/disoz/Documents/GitHub/ERT2020GS/Telecom/DataHandler/Datagram.h">
+<area shape="rect" id="node1" title="Datagram module interface." alt="" coords="877,5,1072,61"/>
+<area shape="rect" id="node2" href="$_datagram_8cpp.html" title="Datagram module implementation." alt="" coords="768,109,963,165"/>
+<area shape="rect" id="node3" href="$_data_handler_8h.html" title="DataHandler module interface." alt="" coords="987,109,1181,165"/>
+<area shape="rect" id="node4" href="$_a_vsimulator_8cpp.html" title="Ground Support Equipment Transceiver." alt="" coords="5,429,269,470"/>
+<area shape="rect" id="node5" href="$_igniter_r_pi_8cpp.html" title="Ground Support Equipment Transceiver." alt="" coords="294,429,543,470"/>
+<area shape="rect" id="node6" href="$_image_com_8cpp.html" title="Image communication main for the Transmitter Send an image / Picture if a request is received." alt="" coords="567,429,822,470"/>
+<area shape="rect" id="node7" href="$_packet_x_test_8cpp.html" title="Ground Support Equipment Transceiver." alt="" coords="1065,429,1332,470"/>
+<area shape="rect" id="node8" href="$_data_handler_8cpp.html" title="DataHandler module implementation." alt="" coords="1391,213,1588,269"/>
+<area shape="rect" id="node9" href="$_worker_8h.html" title="Worker module interface." alt="" coords="1353,317,1548,373"/>
+<area shape="rect" id="node12" href="$_r_fmodem_8h.html" title="RFmodem module interface." alt="" coords="1121,213,1316,269"/>
+<area shape="rect" id="node10" href="$_g_u_i_8cpp.html" title="Ground Support Equipment Transceiver." alt="" coords="1794,429,2009,470"/>
+<area shape="rect" id="node11" href="$_worker_8cpp.html" title="Worker module implementation." alt="" coords="1356,421,1551,477"/>
+<area shape="rect" id="node13" href="$_lo_ra_8h.html" title="LoRa module interface." alt="" coords="1124,317,1319,373"/>
+<area shape="rect" id="node15" href="$_xbee_8h.html" title="XBee module interface." alt="" coords="847,317,1041,373"/>
+<area shape="rect" id="node14" href="$_lo_ra_8cpp.html" title="LoRa module implementation." alt="" coords="1575,421,1769,477"/>
+<area shape="rect" id="node16" href="$_xbee_8cpp.html" title="XBee module implementation." alt="" coords="847,421,1041,477"/>
+</map>

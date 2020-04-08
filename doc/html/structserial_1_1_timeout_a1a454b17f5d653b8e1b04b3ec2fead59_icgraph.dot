@@ -1,0 +1,14 @@
+digraph "serial::Timeout::Timeout"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="serial::Timeout::Timeout",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="serial::Timeout::simpleTimeout",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structserial_1_1_timeout.html#aa4fbd72e16f47c9aea9fb3c32ca17828",tooltip=" "];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="run",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$serial__example_8cc.html#ac1f545534cdaab9094198a5dc2c2a79f",tooltip=" "];
+  Node3 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="main",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$serial__example_8cc.html#a3c04138a5bfe5d72780bb7e82a18e627",tooltip=" "];
+}

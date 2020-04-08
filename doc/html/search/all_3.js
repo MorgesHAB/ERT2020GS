@@ -1,5 +1,25 @@
 var searchData=
 [
-  ['eatdata_37',['eatData',['../class_connector.html#a8cf544d88169101efaaa9f6f0be033c3',1,'Connector']]],
-  ['exportfile_38',['exportFile',['../class_file.html#a72080b26925a58073719c3973cf6bc33',1,'File']]]
+  ['data_73',['Data',['../class_data.html',1,'Data'],['../class_data.html#a733c670aeff5ac6e4bf914d565a1a734',1,'Data::Data()']]],
+  ['data_2eh_74',['Data.h',['../_data_8h.html',1,'']]],
+  ['datagram_75',['Datagram',['../class_datagram.html',1,'Datagram'],['../class_datagram.html#a82ef58a6e18d740e9add20d86ff5ec6c',1,'Datagram::Datagram()']]],
+  ['datagram_2ecpp_76',['Datagram.cpp',['../_datagram_8cpp.html',1,'']]],
+  ['datagram_2eh_77',['Datagram.h',['../_datagram_8h.html',1,'']]],
+  ['datagram_5fid_78',['DATAGRAM_ID',['../namespaceui__interface.html#a330ca830968457ebc03914bccdeebd56a8920da3c910738452364974ee2ebccb9',1,'ui_interface']]],
+  ['datagramid_79',['DatagramID',['../namespace_datagram_type.html#a4cde51ee287839c970eb6d3f419f383e',1,'DatagramType']]],
+  ['datagramtype_80',['DatagramType',['../namespace_datagram_type.html',1,'']]],
+  ['datagramtypes_2eh_81',['DatagramTypes.h',['../_datagram_types_8h.html',1,'']]],
+  ['datahandler_82',['DataHandler',['../class_data_handler.html',1,'DataHandler'],['../class_data_handler.html#a6fe3e0b43402725675921ecddc8f75a0',1,'DataHandler::DataHandler()']]],
+  ['datahandler_2ecpp_83',['DataHandler.cpp',['../_data_handler_8cpp.html',1,'']]],
+  ['datahandler_2eh_84',['DataHandler.h',['../_data_handler_8h.html',1,'']]],
+  ['dataname_85',['dataname',['../class_data.html#a52af6f969e8be96d2bf2014fe6ef792a',1,'Data']]],
+  ['datatoreset_86',['dataToReset',['../namespaceui__interface.html#af20d91d2bfc7fb4e466e0b51af133f7d',1,'ui_interface']]],
+  ['datatype_87',['DataType',['../namespaceui__interface.html#a330ca830968457ebc03914bccdeebd56',1,'ui_interface']]],
+  ['default_5fsize_88',['DEFAULT_SIZE',['../_logger__buffer_8cpp.html#aeaf5f7739ad1e977988ba54de5860255',1,'Logger_buffer.cpp']]],
+  ['degree_5frepresentation_89',['degree_representation',['../_gui_window_8cpp.html#ab8b447332d828b52124f0b8bafbe2134',1,'degree_representation(double value):&#160;GuiWindow.cpp'],['../_second_window_8cpp.html#ab8b447332d828b52124f0b8bafbe2134',1,'degree_representation(double value):&#160;SecondWindow.cpp']]],
+  ['disconnect_5fhose_90',['DISCONNECT_HOSE',['../namespacegse.html#a0441726aa6e96d072f3217b1519dcfdba3b2a6910660342ed377655cbdc6c8784',1,'gse']]],
+  ['display_91',['display',['../class_double__buffer.html#a667f1e2c5d65898ce3dd5d81542c28a4',1,'Double_buffer::display()'],['../class_logger__buffer.html#a57176d8dafc9348ea811a34f95b08b57',1,'Logger_buffer::display()']]],
+  ['double_5fbuffer_92',['Double_buffer',['../class_double__buffer.html',1,'Double_buffer'],['../class_double__buffer.html#a24fb6af230abc674a7d6f128aede09d8',1,'Double_buffer::Double_buffer(const std::string &amp;filename)'],['../class_double__buffer.html#a3a3165b6c481111e6ca1d8a22228d3ca',1,'Double_buffer::Double_buffer(size_t size, const std::string &amp;filename)']]],
+  ['double_5fbuffer_2ecpp_93',['double_buffer.cpp',['../double__buffer_8cpp.html',1,'']]],
+  ['double_5fbuffer_2eh_94',['double_buffer.h',['../double__buffer_8h.html',1,'']]]
 ];

@@ -1,0 +1,18 @@
+digraph "RHGenericDriver::init"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="RHGenericDriver::init",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="RHDatagram::init",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_r_h_datagram.html#abe51be17fd7cc8db571c3b3ba2de0816",tooltip=" "];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="RHRouter::init",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_r_h_router.html#afb2c05984049e312d1b9b534d4b396cd",tooltip=" "];
+  Node2 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="main",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_ras_pi_r_h_8cpp.html#ac0f2228420376f4db7e1274f2b41667c",tooltip=" "];
+  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="RH_Serial::init",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_r_h___serial.html#a229f6238500f5b94fa93416ccbc51956",tooltip=" "];
+  Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="RH_ASK::init",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_r_h___a_s_k.html#af798dfdbe09e28f68394269215848a47",tooltip=" "];
+}

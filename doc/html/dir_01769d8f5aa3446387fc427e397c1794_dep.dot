@@ -1,0 +1,22 @@
+digraph "C:/Users/disoz/Documents/GitHub/ERT2020GS/Telecom/RFmodem/lib/serial" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_214c4232bc91c796264992cfbceb7352 {
+    graph [ bgcolor="#ddddee", pencolor="black", label="lib" fontname="Helvetica", fontsize="10", URL="dir_214c4232bc91c796264992cfbceb7352.html"]
+  subgraph clusterdir_01769d8f5aa3446387fc427e397c1794 {
+    graph [ bgcolor="#eeeeff", pencolor="black", label="" URL="dir_01769d8f5aa3446387fc427e397c1794.html"];
+    dir_01769d8f5aa3446387fc427e397c1794 [shape=plaintext label="serial"];
+    dir_64c5865e4635738cec21cc6f7e9d40d2 [shape=box label="doc" color="black" fillcolor="white" style="filled" URL="dir_64c5865e4635738cec21cc6f7e9d40d2.html"];
+    dir_dc0f8ddc9a6d36c15b6ea65566ce0576 [shape=box label="examples" color="black" fillcolor="white" style="filled" URL="dir_dc0f8ddc9a6d36c15b6ea65566ce0576.html"];
+    dir_9260bf821c62849d35ade27504a9c8e7 [shape=box label="include" color="red" fillcolor="white" style="filled" URL="dir_9260bf821c62849d35ade27504a9c8e7.html"];
+    dir_0f47c8eb95ef3101e7066c94cf519c3e [shape=box label="src" color="red" fillcolor="white" style="filled" URL="dir_0f47c8eb95ef3101e7066c94cf519c3e.html"];
+    dir_890eaefddd465149ce3103a39ed3827a [shape=box label="tests" color="red" fillcolor="white" style="filled" URL="dir_890eaefddd465149ce3103a39ed3827a.html"];
+  }
+  }
+  dir_02d2c86cd241969923768d6461021ed8 [shape=box label="DataStructures" fillcolor="white" style="filled" color="red" URL="dir_02d2c86cd241969923768d6461021ed8.html"];
+  dir_890eaefddd465149ce3103a39ed3827a->dir_9260bf821c62849d35ade27504a9c8e7 [headlabel="2", labeldistance=1.5 headhref="dir_000027_000021.html"];
+  dir_0f47c8eb95ef3101e7066c94cf519c3e->dir_9260bf821c62849d35ade27504a9c8e7 [headlabel="3", labeldistance=1.5 headhref="dir_000024_000021.html"];
+  dir_0f47c8eb95ef3101e7066c94cf519c3e->dir_02d2c86cd241969923768d6461021ed8 [headlabel="1", labeldistance=1.5 headhref="dir_000024_000005.html"];
+  dir_dc0f8ddc9a6d36c15b6ea65566ce0576->dir_9260bf821c62849d35ade27504a9c8e7 [headlabel="1", labeldistance=1.5 headhref="dir_000020_000021.html"];
+}

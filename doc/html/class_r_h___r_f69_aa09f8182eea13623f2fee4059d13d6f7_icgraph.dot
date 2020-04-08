@@ -1,0 +1,10 @@
+digraph "RH_RF69::printRegister"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="RH_RF69::printRegister",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="RH_RF69::printRegisters",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_r_h___r_f69.html#abf5be102f9291447f22b6df823455aea",tooltip=" "];
+}

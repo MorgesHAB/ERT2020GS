@@ -1,0 +1,6 @@
+<map id="Datagram::log" name="Datagram::log">
+<area shape="rect" id="node1" title=" " alt="" coords="5,31,108,57"/>
+<area shape="rect" id="node2" href="$class_logger.html#a8b8f7b58ff74f50bb57526fe6383cd73" title=" " alt="" coords="156,31,243,57"/>
+<area shape="rect" id="node3" href="$class_double__buffer.html#a6eecd281f7e37529690331686185e35e" title="add Adds the string to the buffer which is ready." alt="" coords="311,5,440,32"/>
+<area shape="rect" id="node4" href="$class_loggable.html#a4c2908fb32db7390490e493ef277432b" title=" " alt="" coords="291,56,460,83"/>
+</map>

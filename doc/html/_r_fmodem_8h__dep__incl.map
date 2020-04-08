@@ -1,0 +1,14 @@
+<map id="C:/Users/disoz/Documents/GitHub/ERT2020GS/Telecom/RFmodem/RFmodem.h" name="C:/Users/disoz/Documents/GitHub/ERT2020GS/Telecom/RFmodem/RFmodem.h">
+<area shape="rect" id="node1" title="RFmodem module interface." alt="" coords="349,5,544,61"/>
+<area shape="rect" id="node2" href="$_worker_8h.html" title="Worker module interface." alt="" coords="349,109,544,165"/>
+<area shape="rect" id="node5" href="$_lo_ra_8h.html" title="LoRa module interface." alt="" coords="125,109,320,165"/>
+<area shape="rect" id="node7" href="$_xbee_8h.html" title="XBee module interface." alt="" coords="973,109,1168,165"/>
+<area shape="rect" id="node3" href="$_g_u_i_8cpp.html" title="Ground Support Equipment Transceiver." alt="" coords="225,221,439,262"/>
+<area shape="rect" id="node4" href="$_worker_8cpp.html" title="Worker module implementation." alt="" coords="464,213,659,269"/>
+<area shape="rect" id="node6" href="$_lo_ra_8cpp.html" title="LoRa module implementation." alt="" coords="5,213,200,269"/>
+<area shape="rect" id="node8" href="$_a_vsimulator_8cpp.html" title="Ground Support Equipment Transceiver." alt="" coords="1192,221,1456,262"/>
+<area shape="rect" id="node9" href="$_igniter_r_pi_8cpp.html" title="Ground Support Equipment Transceiver." alt="" coords="1481,221,1730,262"/>
+<area shape="rect" id="node10" href="$_image_com_8cpp.html" title="Image communication main for the Transmitter Send an image / Picture if a request is received." alt="" coords="1754,221,2009,262"/>
+<area shape="rect" id="node11" href="$_packet_x_test_8cpp.html" title="Ground Support Equipment Transceiver." alt="" coords="683,221,949,262"/>
+<area shape="rect" id="node12" href="$_xbee_8cpp.html" title="XBee module implementation." alt="" coords="973,213,1168,269"/>
+</map>

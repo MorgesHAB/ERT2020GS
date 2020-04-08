@@ -1,0 +1,16 @@
+digraph "serial::Serial::available"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="serial::Serial::available",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="serial::Serial::SerialImpl\l::read",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classserial_1_1serial_1_1_serial_1_1_serial_impl.html#ada61c83884f0f6350874fc32e640cbac",tooltip=" "];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="Xbee::receive",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_xbee.html#acb5556a1865a37b8049eddd956ef1f8e",tooltip=" "];
+  Node3 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="Worker::mainRoutine",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_worker.html#a4204b589149f82ed426cc7f74232a36f",tooltip=" "];
+  Node4 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="main",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_g_u_i_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627",tooltip=" "];
+}

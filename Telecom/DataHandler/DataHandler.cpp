@@ -8,21 +8,29 @@
  */
 
 #include <FrameInfo/Header.h>
+#include <FrameInfo/XbeeOptions.h>
+#include <FrameInfo/CRC.h>
+
+#include <Basic/States.h>
+#include <Basic/String.h>
+#include <Basic/BasicData.h>
+
 #include <Avionics/GPS.h>
 #include <Avionics/Telemetry.h>
-#include <Propulsion/PPPressure.h>
-#include <Basic/States.h>
-#include <File/File.h>
-#include <FrameInfo/XbeeOptions.h>
-#include <FrameInfo/ACKManager.h>
-#include <FrameInfo/CRC.h>
-#include <Basic/String.h>
-#include <Basic/SensorData.h>
-#include <Propulsion/IgnitionCode.h>
-#include <File/Picture.h>
+#include <Avionics/StatusAV.h>
+
+#include <Payload/StatusPL.h>
+#include <Payload/PLGps.h>
+#include <Payload/PLOrder.h>
+
+#include <GSE/IgnitionCode.h>
 #include <GSE/GSEOrder.h>
 #include <GSE/GSESensors.h>
-#include <Avionics/StatusAV.h>
+
+#include <Propulsion/PPPressure.h>
+
+#include <File/File.h>
+#include <File/Picture.h>
 
 #include "DataHandler.h"
 
@@ -36,59 +44,60 @@ DataHandler::DataHandler(std::shared_ptr<Connector> connector)
     // default protocol header ex: packet Type, packet nbr, timestamp
     for (uint8_t id(1); id < TOTAL_NBR_OF_TYPES; ++id) {
         dataHandler[id] = new Datagram((DatagramID) id);
-        dataHandler[id]->add(new XbeeOptions);
-        dataHandler[id]->add(new Header(id));
+        dataHandler[id]->add(new XbeeOptions); // requirement of xbee protocol
+        dataHandler[id]->add(new Header(id)); // GS requirement
     }
     ///////////////////////////////////////////////////////////////////////////
     ////////////////////////// Your Playground ////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////
-
+    // Here you can create / compose all your datagram content with your Data
+    // First create your Datagram ID in DatagramTypes.h
+    // Data are in DataStructures/...
     //// Avionics Datagram
-    dataHandler[AV_GPS]->add(new GPS);
+        dataHandler[AV_GPS]->add(new GPS);
 
-    dataHandler[AV_STATUS]->add(new StatusAV);
+        dataHandler[AV_STATUS]->add(new StatusAV);
 
-    dataHandler[AV_TELEMETRY]->add(new Telemetry);
+        dataHandler[AV_TELEMETRY]->add(new Telemetry);
 
-    //// Propulsion Datagram
-    dataHandler[PROPULSION]->add(new PPPressure);
-
-    //// Air Brakes Datagram
-    dataHandler[AIR_BRAKES]->add(new SensorData<float>(DataType::AIR_BRAKES_ANGLE));
-
-    //// Payload Datagram
-    dataHandler[PL_STATE]->add(new String("Not ready yet"));
-    dataHandler[PL_STATE]->add(new States({1, 0, 1, 1, 0, 0, 1, 0}));
-
-    dataHandler[PL_IMAGE]->add(new File("panda.jpg", 200));
+        dataHandler[AV_DEBUG]->add(new String("Hello Avionic"));
 
     //// GSE Datagram
-    //dataHandler[GSE_ORDER]->add(new GSEOrder);
+        dataHandler[GSE_ORDER]->add(new GSEOrder);
 
-    // Acknowledge
-    dataHandler[ACK]->add(new ACKManager);
+        dataHandler[GSE_SENSORS]->add(new GSESensors);
 
-    #ifdef RUNNING_ON_RPI
-    dataHandler[GSE_IGNITION]->add(new IgnitionCode);
-    #endif
+        dataHandler[GSE_IGNITION]->add(new IgnitionCode);
 
-    //// TEST ----------- Datagram
+    //// Payload Datagram
+        dataHandler[PL_STATE]->add(new StatusPL);
+
+        dataHandler[PL_GPS]->add(new PLGps);
+
+        dataHandler[PL_ORDER]->add(new PLOrder);
+
+        dataHandler[PL_IMAGE]->add(new File("panda.jpg", 200));
+        //dataHandler[PL_IMAGE]->add(new Picture(200, "livePic.jpg", 600, 600));
+
+    //// Propulsion Datagram
+        dataHandler[PROPULSION]->add(new PPPressure);
+
+    //// Air Brakes Datagram
+        dataHandler[AIR_BRAKES]->add(new BasicData<float>(DataType::AIR_BRAKES_ANGLE));
+
+    //// [Subsystem Name] Datagram
+        // dataHandler[DatagramID]->add(new MyData);
+
+
+    //// TEST ----------- Datagram ----------
     dataHandler[TEST]->add(new String("First sentence transmit via XBee !!"));
     dataHandler[TEST]->add(new States({1, 0, 1, 1, 0, 0, 1, 0}));
-
-    //// Packet Type n°5
-    dataHandler[IMAGE]->add(new File("Yann.png", 200));
-    //dataHandler[IMAGE]->add(new File("Yann.png", 100));
-    //dataHandler[IMAGE]->add(new Picture(200, "nul.jpg", 600, 600));
-
-
-    dataHandler[IGNITION_ANSWER]->add(new SensorData<ignit::IgnitionState>(DataType::IGNITION_STATUS));
 
     ///////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////
     // END of protocol add CRC
     for (uint8_t id(1); id < TOTAL_NBR_OF_TYPES; ++id) {
-        dataHandler[id]->add(new CRC);
+        dataHandler[id]->add(new CRC);  // requirement of xbee protocol
     }
 }
 
@@ -120,6 +129,15 @@ bool DataHandler::updateTx(DatagramType::DatagramID type) {
 }
 
 bool DataHandler::updateRx(Packet *packet) {
-    lastRxID = (DatagramType::DatagramID) packet->getPacket()[12]; // Position of Datagram ID in packet
-    return dataHandler[lastRxID]->updateRx(packet, connector);
+    if (packet->getPacket()[0] == 0x90) {
+        lastRxID = (DatagramType::DatagramID) packet->getPacket()[12]; // Position of Datagram ID in packet
+        return dataHandler[lastRxID]->updateRx(packet, connector);
+    }
+    else if (packet->getPacket()[0] == 0x88) { // RSSI command response
+        std::cout << "RSSI = -" << +packet->getPacket()[5] << " dBm" << std::endl;
+        connector->setData(ui_interface::RSSI_VALUE, packet->getPacket()[5]);
+    }
+    // Else packet won't be parsed
+    connector->incrementData(ui_interface::CORRUPTED_PACKET_CTR);
+    return false;
 }

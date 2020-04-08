@@ -1,0 +1,7 @@
+digraph "RHRouter::RoutingTableEntry"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{RHRouter::RoutingTableEntry\n|+ dest\l+ next_hop\l+ state\l|}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Defines an entry in the routing table."];
+}

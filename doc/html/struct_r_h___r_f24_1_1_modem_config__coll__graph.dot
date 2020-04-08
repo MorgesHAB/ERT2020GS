@@ -1,0 +1,7 @@
+digraph "RH_RF24::ModemConfig"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{RH_RF24::ModemConfig\n|+ prop_2000\l+ prop_2003\l+ prop_2004\l+ prop_2005\l+ prop_2006\l+ prop_200a\l+ prop_200b\l+ prop_200c\l+ prop_2018\l+ prop_201e\land 71 more...\l|}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Defines property values for a set of modem configuration registers."];
+}

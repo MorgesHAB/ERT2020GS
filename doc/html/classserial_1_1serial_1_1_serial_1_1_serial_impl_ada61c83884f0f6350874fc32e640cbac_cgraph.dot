@@ -1,0 +1,22 @@
+digraph "serial::Serial::SerialImpl::read"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="serial::Serial::SerialImpl\l::read",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="serial::Serial::available",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classserial_1_1_serial.html#afafe25b2f3bb0809550abdc72c51a234",tooltip=" "];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="serial::Timeout::max",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structserial_1_1_timeout.html#adc68e33d2f94bfa33ba1062c363b9151",tooltip=" "];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="serial::Serial::read",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classserial_1_1_serial.html#a0261dbfb9361784ecb3eee98b85fa103",tooltip=" "];
+  Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="serial::MillisecondTimer\l::remaining",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classserial_1_1_millisecond_timer.html#a3786e2c6d8614adff0da39e1d1a2b0e3",tooltip=" "];
+  Node5 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="millis",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_ras_pi_8cpp.html#a6ff7f2532a22366f0013bc41397129fd",tooltip=" "];
+  Node1 -> Node7 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="serial::Serial::waitByte\lTimes",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classserial_1_1_serial.html#a318262c05074a9da15d410f8af29c15c",tooltip=" "];
+  Node1 -> Node8 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="serial::Serial::waitReadable",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classserial_1_1_serial.html#ad6e395bfe91718b66f6695c10ee90e5b",tooltip=" "];
+}

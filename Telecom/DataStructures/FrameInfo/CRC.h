@@ -17,7 +17,6 @@ class CRC : public Data {
 public:
     void write(Packet& packet) override;
     void parse(Packet& packet) override;
-    void print() const override;
 
 private:
     uint8_t CRC;

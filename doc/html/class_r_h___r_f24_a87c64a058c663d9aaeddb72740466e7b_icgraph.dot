@@ -1,0 +1,15 @@
+digraph "RH_RF24::clearBuffer"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="RH_RF24::clearBuffer",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Clears RH_RF24's internal TX and RX buffers and counters."];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="RH_RF24::handleInterrupt",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_r_h___r_f24.html#ace446bd70542adeedf7f7403212e809c",tooltip=" "];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="RH_RF24::readNextFragment",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_r_h___r_f24.html#a7d30de3f323b945c61feac26b614a89a",tooltip=" "];
+  Node3 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="RH_RF24::recv",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_r_h___r_f24.html#a9937ab8c31b887a2d47c9e7fd2c7370e",tooltip=" "];
+}

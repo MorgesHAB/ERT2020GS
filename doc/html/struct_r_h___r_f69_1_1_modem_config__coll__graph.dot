@@ -1,0 +1,7 @@
+digraph "RH_RF69::ModemConfig"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{RH_RF69::ModemConfig\n|+ reg_02\l+ reg_03\l+ reg_04\l+ reg_05\l+ reg_06\l+ reg_19\l+ reg_1a\l+ reg_37\l|}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Defines register values for a set of modem configuration registers."];
+}

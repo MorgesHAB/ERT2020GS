@@ -1,22 +1,8 @@
 var searchData=
 [
-  ['change_5ftheme_8',['change_theme',['../class_ui___form.html#a0e2dc369cb4007c0ebb05eb592c1afb4',1,'Ui_Form']]],
-  ['code_5f0_9',['code_0',['../class_ui___form.html#ae21949efc3a7a37e56a03643700d9163',1,'Ui_Form']]],
-  ['code_5f1_10',['code_1',['../class_ui___form.html#a4e8e6c6acd467d087e536bf7ad4b3a99',1,'Ui_Form']]],
-  ['code_5f2_11',['code_2',['../class_ui___form.html#add0bc126a76e05035ef8a10371c72d8e',1,'Ui_Form']]],
-  ['code_5f3_12',['code_3',['../class_ui___form.html#aa242347d7fcac9f78902d8a626d654ce',1,'Ui_Form']]],
-  ['com_5fbox_13',['com_box',['../class_ui___form.html#aab04f346776592a8404436d07b4d5078',1,'Ui_Form']]],
-  ['connector_14',['Connector',['../class_connector.html',1,'Connector'],['../class_connector.html#a19a1a94cd477e5c3dffc5fb26802b64e',1,'Connector::Connector()']]],
-  ['connector_2ecpp_15',['connector.cpp',['../connector_8cpp.html',1,'']]],
-  ['connector_2eh_16',['connector.h',['../connector_8h.html',1,'']]],
-  ['corrupted_5flabel_17',['corrupted_label',['../class_ui___form.html#a706908b04edc9f92b261bf614456e6c3',1,'Ui_Form']]],
-  ['corrupted_5fpacket_5fctr_18',['CORRUPTED_PACKET_CTR',['../namespaceui__interface.html#a330ca830968457ebc03914bccdeebd56a1a32abbca97ced928a6210b8b59d9be7',1,'ui_interface']]],
-  ['corrupted_5fpanel_19',['corrupted_panel',['../class_ui___form.html#ac4e6f8b08f967379b85d66973a154bac',1,'Ui_Form']]],
-  ['crc_20',['CRC',['../class_c_r_c.html',1,'']]],
-  ['crc_2ecpp_21',['CRC.cpp',['../_c_r_c_8cpp.html',1,'']]],
-  ['crc_2eh_22',['CRC.h',['../_c_r_c_8h.html',1,'']]],
-  ['ctrlgpio_23',['CtrlGPIO',['../class_ctrl_g_p_i_o.html',1,'CtrlGPIO'],['../class_ctrl_g_p_i_o.html#a02fcd079db7ffda51c40f837a96f8cc5',1,'CtrlGPIO::CtrlGPIO()']]],
-  ['ctrlgpio_2ecpp_24',['CtrlGPIO.cpp',['../_ctrl_g_p_i_o_8cpp.html',1,'']]],
-  ['ctrlgpio_2eh_25',['CtrlGPIO.h',['../_ctrl_g_p_i_o_8h.html',1,'']]],
-  ['current_5ftime_5flabel_26',['current_time_label',['../class_ui___form.html#a72d52e749b1b71fc4be059d21214003b',1,'Ui_Form']]]
+  ['basicdata_45',['BasicData',['../class_basic_data.html',1,'BasicData&lt; Tdata &gt;'],['../class_basic_data.html#a355f351486f66f1cecb1e9311b1be944',1,'BasicData::BasicData()']]],
+  ['basicdata_2ecpp_46',['BasicData.cpp',['../_basic_data_8cpp.html',1,'']]],
+  ['basicdata_2eh_47',['BasicData.h',['../_basic_data_8h.html',1,'']]],
+  ['buffer_48',['buffer',['../class_logger.html#a328683a3bb51efe5ff71b49d8b6805e2',1,'Logger']]],
+  ['bypass_5finject_49',['BYPASS_INJECT',['../namespacepl.html#a5ff06a3818cc59dad70c689030a7c81ea7d2cd7c3f9639704fc50f8b81f56c1f0',1,'pl']]]
 ];

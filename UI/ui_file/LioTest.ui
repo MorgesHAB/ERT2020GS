@@ -159,7 +159,7 @@ QTabWidget::pane {
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">image: url(:/assets/alarmON.png);</string>
+        <string notr="true">image: url(:/assets/alarmOFF.png);</string>
        </property>
        <property name="text">
         <string/>
@@ -425,7 +425,7 @@ background-color: rgb(16, 16, 16);
       </property>
       <layout class="QGridLayout" name="gridLayout_12">
        <item row="3" column="1">
-        <widget class="QProgressBar" name="progressBar_4">
+        <widget class="QProgressBar" name="PL_packet_rate">
          <property name="maximumSize">
           <size>
            <width>274</width>
@@ -478,7 +478,7 @@ QProgressBar::chunk:horizontal {
         </widget>
        </item>
        <item row="4" column="1">
-        <widget class="QProgressBar" name="progressBar_9">
+        <widget class="QProgressBar" name="GSE_packet_rate">
          <property name="styleSheet">
           <string notr="true">QProgressBar {
 	color: white;
@@ -515,7 +515,7 @@ QProgressBar::chunk:horizontal {
         </widget>
        </item>
        <item row="5" column="1">
-        <widget class="QProgressBar" name="progressBar_5">
+        <widget class="QProgressBar" name="PP_packet_rate">
          <property name="styleSheet">
           <string notr="true">QProgressBar {
 	color: white;
@@ -545,7 +545,7 @@ QProgressBar::chunk:horizontal {
         </widget>
        </item>
        <item row="2" column="1">
-        <widget class="QProgressBar" name="progressBar_8">
+        <widget class="QProgressBar" name="AV_packet_rate">
          <property name="styleSheet">
           <string notr="true">QProgressBar {
 	color: white;
@@ -990,25 +990,6 @@ border-color: rgb(92, 242, 135);
       <string>Reset</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="xbee_button_3">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>90</y>
-       <width>111</width>
-       <height>27</height>
-      </rect>
-     </property>
-     <property name="minimumSize">
-      <size>
-       <width>100</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="text">
-      <string>START XBee</string>
-     </property>
-    </widget>
     <widget class="QLabel" name="serialport_status">
      <property name="geometry">
       <rect>
@@ -1019,7 +1000,7 @@ border-color: rgb(92, 242, 135);
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">image: url(:/assets/green_check.png);
+      <string notr="true">image: url(:/assets/refresh.png);
 </string>
      </property>
      <property name="text">
@@ -1244,7 +1225,7 @@ QTabWidget::pane {
 }</string>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>1</number>
    </property>
    <widget class="QWidget" name="tab_3">
     <attribute name="title">
@@ -1358,6 +1339,9 @@ QTabWidget::pane {
        <widget class="QLCDNumber" name="altitude_max_lcd_m">
         <property name="enabled">
          <bool>true</bool>
+        </property>
+        <property name="digitCount">
+         <number>5</number>
         </property>
         <property name="segmentStyle">
          <enum>QLCDNumber::Flat</enum>
@@ -1805,7 +1789,7 @@ QTabWidget::pane {
        <item row="0" column="1">
         <widget class="QLabel" name="label_40">
          <property name="styleSheet">
-          <string notr="true">image: url(:/assets/green_check.png);</string>
+          <string notr="true">image: url(:/assets/check.png);</string>
          </property>
          <property name="text">
           <string/>
@@ -1815,7 +1799,7 @@ QTabWidget::pane {
        <item row="1" column="1">
         <widget class="QLabel" name="label_41">
          <property name="styleSheet">
-          <string notr="true">image: url(:/assets/green_check.png);</string>
+          <string notr="true">image: url(:/assets/check.png);</string>
          </property>
          <property name="text">
           <string/>
@@ -1825,7 +1809,7 @@ QTabWidget::pane {
        <item row="2" column="1">
         <widget class="QLabel" name="label_43">
          <property name="styleSheet">
-          <string notr="true">image: url(:/assets/green_check.png);</string>
+          <string notr="true">image: url(:/assets/redCross.png);</string>
          </property>
          <property name="text">
           <string/>
@@ -1835,7 +1819,7 @@ QTabWidget::pane {
        <item row="3" column="1">
         <widget class="QLabel" name="label_44">
          <property name="styleSheet">
-          <string notr="true">image: url(:/assets/green_check.png);</string>
+          <string notr="true">image: url(:/assets/correct.png);</string>
          </property>
          <property name="text">
           <string/>
@@ -1845,7 +1829,7 @@ QTabWidget::pane {
        <item row="4" column="1">
         <widget class="QLabel" name="label_46">
          <property name="styleSheet">
-          <string notr="true">image: url(:/assets/green_check.png);</string>
+          <string notr="true">image: url(:/assets/correct.png);</string>
          </property>
          <property name="text">
           <string/>
@@ -1855,7 +1839,7 @@ QTabWidget::pane {
        <item row="5" column="1">
         <widget class="QLabel" name="label_48">
          <property name="styleSheet">
-          <string notr="true">image: url(:/assets/green_check.png);</string>
+          <string notr="true">image: url(:/assets/refresh.png);</string>
          </property>
          <property name="text">
           <string/>
@@ -1865,7 +1849,7 @@ QTabWidget::pane {
        <item row="6" column="1">
         <widget class="QLabel" name="label_49">
          <property name="styleSheet">
-          <string notr="true">image: url(:/assets/green_check.png);</string>
+          <string notr="true">image: url(:/assets/refresh2.png);</string>
          </property>
          <property name="text">
           <string/>
@@ -1875,7 +1859,7 @@ QTabWidget::pane {
        <item row="7" column="1">
         <widget class="QLabel" name="label_50">
          <property name="styleSheet">
-          <string notr="true">image: url(:/assets/redCross.png);</string>
+          <string notr="true">image: url(:/assets/refresh.png);</string>
          </property>
          <property name="text">
           <string/>
@@ -2202,7 +2186,7 @@ border-color: rgb(92, 242, 135);
        <x>820</x>
        <y>20</y>
        <width>211</width>
-       <height>261</height>
+       <height>281</height>
       </rect>
      </property>
      <property name="title">
@@ -2214,7 +2198,7 @@ border-color: rgb(92, 242, 135);
         <x>10</x>
         <y>30</y>
         <width>161</width>
-        <height>221</height>
+        <height>231</height>
        </rect>
       </property>
       <layout class="QGridLayout" name="gridLayout_17">
@@ -2277,7 +2261,7 @@ border-color: rgb(92, 242, 135);
        <item row="1" column="1">
         <widget class="QLabel" name="label_78">
          <property name="styleSheet">
-          <string notr="true">image: url(:/assets/green_check.png);</string>
+          <string notr="true">image: url(:/assets/ok.png);</string>
          </property>
          <property name="text">
           <string/>
@@ -2287,7 +2271,7 @@ border-color: rgb(92, 242, 135);
        <item row="0" column="1">
         <widget class="QLabel" name="label_77">
          <property name="styleSheet">
-          <string notr="true">image: url(:/assets/green_check.png);</string>
+          <string notr="true">image: url(:/assets/ok.png);</string>
          </property>
          <property name="text">
           <string/>
@@ -2297,7 +2281,7 @@ border-color: rgb(92, 242, 135);
        <item row="2" column="1">
         <widget class="QLabel" name="label_79">
          <property name="styleSheet">
-          <string notr="true">image: url(:/assets/green_check.png);</string>
+          <string notr="true">image: url(:/assets/ok.png);</string>
          </property>
          <property name="text">
           <string/>
@@ -2317,7 +2301,7 @@ border-color: rgb(92, 242, 135);
        <item row="4" column="1">
         <widget class="QLabel" name="label_81">
          <property name="styleSheet">
-          <string notr="true">image: url(:/assets/green_check.png);</string>
+          <string notr="true">image: url(:/assets/refresh2.png);</string>
          </property>
          <property name="text">
           <string/>
@@ -2327,7 +2311,7 @@ border-color: rgb(92, 242, 135);
        <item row="5" column="1">
         <widget class="QLabel" name="label_82">
          <property name="styleSheet">
-          <string notr="true">image: url(:/assets/green_check.png);</string>
+          <string notr="true">image: url(:/assets/refresh2.png);</string>
          </property>
          <property name="text">
           <string/>
@@ -2417,42 +2401,45 @@ border-color: rgb(92, 242, 135);
     <attribute name="title">
      <string>Payload Image</string>
     </attribute>
-    <widget class="QLabel" name="image_lio">
+    <widget class="QLabel" name="PL_image_display">
      <property name="geometry">
       <rect>
-       <x>300</x>
-       <y>10</y>
-       <width>671</width>
+       <x>380</x>
+       <y>20</y>
+       <width>721</width>
        <height>411</height>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">image: url(:/assets/ERT.jpg);</string>
+      <string notr="true">image: url(:/assets/space.png);</string>
      </property>
      <property name="text">
       <string/>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
     <widget class="QPushButton" name="file_transmission_button">
      <property name="geometry">
       <rect>
-       <x>30</x>
-       <y>190</y>
-       <width>171</width>
-       <height>151</height>
+       <x>240</x>
+       <y>180</y>
+       <width>121</width>
+       <height>111</height>
       </rect>
      </property>
      <property name="styleSheet">
       <string notr="true">QPushButton{
 qproperty-icon: url(:/assets/PLimg.png);
-qproperty-iconSize: 154px;
+qproperty-iconSize: 120px;
 font: 18pt &quot;MS Shell Dlg 2&quot;;
 border: 2px solid;
 border-color: rgb(215, 237, 252);
 border-radius: 10px;
 }
 QPushButton:hover {
-background-color: rgb(35, 35, 35); 
+background-color: black; 
 border: 3px solid;
 border-color: rgb(215, 237, 252);
 }
@@ -2469,8 +2456,8 @@ border-color: rgb(92, 242, 135);
     <widget class="QGroupBox" name="groupBox_8">
      <property name="geometry">
       <rect>
-       <x>20</x>
-       <y>20</y>
+       <x>10</x>
+       <y>10</y>
        <width>241</width>
        <height>151</height>
       </rect>
@@ -2577,6 +2564,182 @@ QProgressBar::chunk:horizontal {
       </property>
      </widget>
     </widget>
+    <widget class="QPushButton" name="clear_image">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>380</y>
+       <width>131</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+qproperty-icon: url(:/assets/clear.png);
+qproperty-iconSize: 30px;
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+border: 2px solid;
+border-color: rgb(215, 237, 252);
+border-radius: 10px;
+}
+QPushButton:hover {
+background-color: black; 
+border: 3px solid;
+border-color: rgb(215, 237, 252);
+}
+QPushButton:pressed {
+border: 4px solid;
+border-color: rgb(92, 242, 135);
+}
+</string>
+     </property>
+     <property name="text">
+      <string>Clear image</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="PL_image_abort">
+     <property name="geometry">
+      <rect>
+       <x>290</x>
+       <y>50</y>
+       <width>61</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+image: url(:/assets/emergency.png);
+width: 60px;
+border-radius: 30px;
+}
+QPushButton:hover {
+background-color: rgb(250, 191, 1); 
+}
+QPushButton:pressed {
+background-color: rgb(0, 255, 127);
+}
+</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QGroupBox" name="groupBox_12">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>170</y>
+       <width>211</width>
+       <height>171</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>File Transmission Status</string>
+     </property>
+     <widget class="QWidget" name="gridLayoutWidget_9">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>191</width>
+        <height>141</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_18">
+       <item row="0" column="1">
+        <widget class="QLabel" name="PL_state_file_Tx_sent">
+         <property name="styleSheet">
+          <string notr="true">image: url(:/assets/refresh.png);</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="label_97">
+         <property name="text">
+          <string>Missing packet Request sent</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_100">
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="text">
+          <string>Payload response received</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLabel" name="PL_state_payload_response">
+         <property name="styleSheet">
+          <string notr="true">image: url(:/assets/refresh.png);</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="label_98">
+         <property name="text">
+          <string>All Received</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_99">
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="text">
+          <string>File Request Tx sent</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QLabel" name="PL_state_missing_request_sent">
+         <property name="styleSheet">
+          <string notr="true">image: url(:/assets/refresh.png);</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QLabel" name="PL_state_all_received">
+         <property name="styleSheet">
+          <string notr="true">image: url(:/assets/refresh.png);</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="label_105">
+         <property name="text">
+          <string>ACK sent to PL</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QLabel" name="PL_state_ack_sent">
+         <property name="styleSheet">
+          <string notr="true">image: url(:/assets/refresh.png);</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
    </widget>
   </widget>
   <widget class="QLabel" name="label_29">
@@ -2660,7 +2823,7 @@ QProgressBar::chunk:horizontal {
    </property>
    <property name="styleSheet">
     <string notr="true">image: url(:/assets/radioOFF.png);
-image: url(:/assets/radioON.png);</string>
+</string>
    </property>
    <property name="text">
     <string/>
@@ -2743,18 +2906,17 @@ image: url(:/assets/radioON.png);</string>
    </property>
    <property name="styleSheet">
     <string notr="true">QPushButton{
-qproperty-icon: url(:/assets/power.png);
+qproperty-icon: url(:/assets/powerON.png);
 qproperty-iconSize: 55px;
 border-radius: 25px;
 }
 QPushButton:hover {
-background-color: rgb(10, 0, 0); 
+background-color: black; 
 qproperty-iconSize: 64px;
 }
 QPushButton:pressed {
 background-color: rgb(16, 16, 16);
-}
-</string>
+}</string>
    </property>
    <property name="text">
     <string/>

@@ -1,4 +1,3 @@
-#include "SecondWindow.h"
 /*!
  * \file SecondWindow.h
  *
@@ -9,10 +8,6 @@
  */
 
 #include "SecondWindow.h"
-/// see reference for #include's
-/// https://stackoverflow.com/questions/3943352/where-to-put-include-statements-header-or-source
-/// https://stackoverflow.com/questions/2297567/where-should-include-be-put-in-c
-/// and many others
 
 #include <chrono>
 #include <iostream>
@@ -21,7 +16,7 @@
 #include "../Telecom/DataStructures/Avionics/StateValues.h"
 #include "../Telecom/DataHandler/DatagramTypes.h"
 #include "../Telecom/DataStructures/File/FileTransmissionStates.h"
-#include "../Telecom/DataStructures/Propulsion/IgnitionStates.h"
+#include "GSE/IgnitionStates.h"
 #include "gui_message.h"
 
 #include <QStyleFactory>
@@ -34,6 +29,20 @@
 constexpr uint32_t REFRESH_RATE(500);
 
 using namespace ui_interface;
+
+void SecondWindow::refresh_data()
+{
+    refresh_com();
+    refresh_av_state();
+    refresh_telemetry();
+    refresh_time();
+    check_and_show();
+    refresh_ignition_frame();
+    refresh_gps();
+    refresh_file_transmission();
+    refresh_lionel_stuff();
+    ++tick_counter_;
+}
 
 inline QString degree_representation(double value)
 {
@@ -98,17 +107,17 @@ void SecondWindow::refresh_lionel_stuff() {
     antenna_img->setStyleSheet((xbee_acvite_ && a) ?
                                                    "QLabel {image: url(:/assets/radioON.png);}":
                                                    "QLabel {image: url(:/assets/radioOFF.png);}");
-    serialport_status->setStyleSheet((data_->getData<bool>(ui_interface::SERIALPORT_ERROR)) ?
-                               "QLabel {image: url(:/assets/green_check.png);}":
-                               "QLabel {image: url(:/assets//redCross.png);}");
     a = !a;
+
+    auto serialStatus = data_->getData<int>(ui_interface::SERIALPORT_STATUS);
+    serialport_status->setStyleSheet(
+            (serialStatus == 0) ? "QLabel {image: url(:/assets/refresh.png);}"
+                                : (serialStatus == 1)
+                                  ? "QLabel {image: url(:/assets/correct.png);}"
+                                  : "QLabel {image: url(:/assets//redCross.png);}");
 }
 
 void SecondWindow::valve_control() {
-    QString url = R"(Yann.png)";
-    QPixmap img(url);
-    image_lio->setPixmap(img);
-    data_->setData(ui_interface::RSSI_VALUE, (uint8_t) (rand() % 100));
     static int x(0);
     data_->setData(IGNITION_STATUS, (ignit::IgnitionState) x);
     x+=1;
@@ -120,34 +129,28 @@ void SecondWindow::reset_button_pressed()
     for (auto& index : dataToReset) data_->setData(index, z);
 }
 
-void SecondWindow::refresh_data()
-{
-    refresh_com();
-    refresh_av_state();
-    refresh_telemetry();
-    refresh_time();
-    check_and_show();
-    refresh_ignition_frame();
-    refresh_gps();
-    refresh_file_transmission_box();
-    refresh_lionel_stuff();
-    ++tick_counter_;
-}
-
 void SecondWindow::xbee_clicked()
 {
     if (!xbee_acvite_) {
+        xbee_button->setStyleSheet("QPushButton{\n"
+                                   "qproperty-icon: url(:/assets/powerOFF.png);\n"
+                                   "qproperty-iconSize: 55px;\n"
+                                   "border-radius: 25px;\n"
+                                   "}\n");
         //logger.log(new Gui_Message("XBee ON button clicked!"));
         std::cout << "XBee ON button clicked!" << std::endl;
         uint64_t index(serialport_selector->currentIndex());
         data_->setData(ui_interface::SERIALPORT_INDEX, index);
         data_->setData(ui_interface::ACTIVE_XBEE, true);
-        //xbee_button->setText("STOP XBee");
     } else {
+        xbee_button->setStyleSheet("QPushButton{\n"
+                                   "qproperty-icon: url(:/assets/powerON.png);\n"
+                                   "qproperty-iconSize: 55px;\n"
+                                   "border-radius: 25px;\n"
+                                   "}\n");
         //logger.log(new Gui_Message("XBee STOP button clicked!"));
         std::cout << "XBee STOP button clicked!" << std::endl;
         data_->setData(ui_interface::ACTIVE_XBEE, false);
-        //xbee_button->setText("START XBee");
     }
     xbee_acvite_ = !xbee_acvite_;
 }
@@ -328,6 +331,8 @@ void SecondWindow::initialize_slots_signals()
     connect(play_music,SIGNAL(pressed()), this, SLOT(play_music_pressed()));
     connect(rssi_button,SIGNAL(pressed()), this, SLOT(rssi_get_pressed()));
     connect(send_msg,SIGNAL(pressed()), this, SLOT(send_msg_pressed()));
+    connect(clear_image,SIGNAL(pressed()), this, SLOT(clear_image_pressed()));
+    connect(PL_image_abort,SIGNAL(pressed()), this, SLOT(image_abort_pressed()));
 }
 
 void SecondWindow::refresh_telemetry()
@@ -346,8 +351,8 @@ void SecondWindow::refresh_telemetry()
 
 void SecondWindow::refresh_gps()
 {
-    altitude_lcd_gps->display(qstr(data_->getData<float>(GPS_ALTITUDE)));
-    altitude_max_lcd_m->display(qstr(data_->getData<float>(ALTITUDE_MAX)));
+    altitude_lcd_gps->display(qstr((int) data_->getData<float>(GPS_ALTITUDE)));
+    altitude_max_lcd_m->display(qstr((int) data_->getData<float>(ALTITUDE_MAX)));
     longitude_panel->setText(qstr(data_->getData<float>(GPS_LONGITUDE)));
     latitude_panel->setText(qstr(data_->getData<float>(GPS_LATITUDE)));
     hdop_panel->setText(qstr(data_->getData<float>(GPS_HDOP)));
@@ -368,10 +373,17 @@ void SecondWindow::refresh_com()
     std::strftime(tbuffer, 32, "%T", tptr);
     miss_panel->setText(qstr(calculate_misses_in_last_2()));
     //this->last_refresh_panel->setText(tbuffer);
-    uint32_t packets(data_->eatData<uint32_t>(PACKET_RX_RATE_CTR, 0));
-    all_packet_rate->setValue((packets * (1000.0 / (REFRESH_RATE))));
+    uint32_t coef(1000.0 / REFRESH_RATE);
+    all_packet_rate->setValue((data_->eatData<uint32_t>(PACKET_CTR_ALL, 0) * coef));
+    AV_packet_rate->setValue((data_->eatData<uint32_t>(PACKET_CTR_AV, 0) * coef));
+    PL_packet_rate->setValue((data_->eatData<uint32_t>(PACKET_CTR_PL, 0) * coef));
+    GSE_packet_rate->setValue((data_->eatData<uint32_t>(PACKET_CTR_GSE, 0) * coef));
+    PP_packet_rate->setValue((data_->eatData<uint32_t>(PACKET_CTR_PP, 0) * coef));
+
     corrupted_panel->setText(qstr(data_->getData<uint64_t>(CORRUPTED_PACKET_CTR)));
 
+    // call this every X seconds if you want or update when  RSSSI button clicked
+    //data_->setData(ui_interface::RSSI_READ_ORDER, true);
     rssi_value->display(-1* (int) data_->getData<uint8_t>(ui_interface::RSSI_VALUE));
 
     // Time since last received packet
@@ -384,9 +396,7 @@ void SecondWindow::refresh_com()
 
 void SecondWindow::check_and_show()
 {
-    if (data_->eatData<bool>(FILE_TRANSMISSION_ALL_RECEIVED, false)) {
-        QMessageBox::warning(this, "File", "File transmission finished - All received");
-    }
+
 }
 
 void SecondWindow::refresh_time()
@@ -399,15 +409,32 @@ void SecondWindow::refresh_time()
     time_panel->setText(tbuffer);
 }
 
-void SecondWindow::refresh_file_transmission_box()
+void SecondWindow::refresh_file_transmission()
 {
-    FileTransmissionStates state(data_->getData<FileTransmissionStates>(ui_interface::FILE_TRANSMISSION_RECEIVED_STATE));
-
+    auto state(data_->getData<FileTransmissionStates>(ui_interface::FILE_TRANSMISSION_RECEIVED_STATE));
     transmitter_state_panel->setText(QString::fromStdString(getStateName(state)));
     state = data_->getData<FileTransmissionStates>(ui_interface::FILE_TRANSMISSION_MY_STATE);
     receiver_state_panel->setText(QString::fromStdString(getStateName(state)));
+
     file_transmission_progress_bar->setMaximum(data_->getData<uint64_t>(ui_interface::FILE_TRANSMISSION_TOTAL_PACKETS));
     file_transmission_progress_bar->setValue(data_->getData<uint16_t>(ui_interface::FILE_TRANSMISSION_CURRENT_PACKET));
+
+    if (data_->getData<bool>(ui_interface::FTX_FILE_TX_SENT))
+        PL_state_file_Tx_sent->setStyleSheet("QLabel {image: url(:/assets/correct.png);}");
+    if (data_->getData<bool>(ui_interface::FTX_PL_RESPONSE))
+        PL_state_payload_response->setStyleSheet("QLabel {image: url(:/assets/correct.png);}");
+    if (data_->getData<bool>(ui_interface::FTX_MISSING_REQUEST_SENT))
+        PL_state_missing_request_sent->setStyleSheet("QLabel {image: url(:/assets/correct.png);}");
+    if (data_->getData<bool>(ui_interface::FTX_ALL_RECEIVED))
+        PL_state_all_received->setStyleSheet("QLabel {image: url(:/assets/correct.png);}");
+    if (data_->getData<bool>(ui_interface::FTX_ACK_SENT))
+        PL_state_ack_sent->setStyleSheet("QLabel {image: url(:/assets/correct.png);}");
+
+    if (data_->eatData<bool>(FILE_TRANSMISSION_ALL_RECEIVED, false)) {
+        PL_image_display->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+        QPixmap img(QString::fromStdString(data_->getImgPLfilename()));
+        PL_image_display->setPixmap(img);
+    }
 }
 
 void SecondWindow::show_ok_X(QLabel * label, bool ok)
@@ -460,7 +487,25 @@ void SecondWindow::rssi_get_pressed() {
 
 void SecondWindow::send_msg_pressed() {
     // for test
-    data_->setData(ui_interface::TIME_SINCE_LAST_RX_PACKET, std::time(nullptr));
+    data_->setData(ui_interface::RSSI_VALUE, (uint8_t) (rand() % 100));
+}
+
+void SecondWindow::clear_image_pressed() {
+    PL_image_display->clear();
+    PL_state_file_Tx_sent->setStyleSheet("QLabel {image: url(:/assets/refresh.png);}");
+    PL_state_payload_response->setStyleSheet("QLabel {image: url(:/assets/refresh.png);}");
+    PL_state_missing_request_sent->setStyleSheet("QLabel {image: url(:/assets/refresh.png);}");
+    PL_state_all_received->setStyleSheet("QLabel {image: url(:/assets/refresh.png);}");
+    PL_state_ack_sent->setStyleSheet("QLabel {image: url(:/assets/refresh.png);}");
+    data_->setData(ui_interface::FTX_FILE_TX_SENT, false);
+    data_->setData(ui_interface::FTX_PL_RESPONSE, false);
+    data_->setData(ui_interface::FTX_MISSING_REQUEST_SENT, false);
+    data_->setData(ui_interface::FTX_ALL_RECEIVED, false);
+    data_->setData(ui_interface::FTX_ACK_SENT, false);
+}
+
+void SecondWindow::image_abort_pressed() {
+    data_->setData(ui_interface::FILE_TRANSMISSION_ABORT_ORDER, true);
 }
 
 #ifdef SOUND_ON

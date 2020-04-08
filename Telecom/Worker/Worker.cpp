@@ -12,7 +12,7 @@
 #include <Xbee.h>
 #include "Worker.h"
 
-#define IGNITION_PACKET_FLOW_NBR        10
+#define IGNITION_PACKET_FLOW_NBR        5
 
 Worker::Worker(std::shared_ptr<Connector> connector) : connector(connector) {}
 
@@ -31,7 +31,7 @@ void Worker::mainRoutine() {
         // Your RF modem
         RFmodem* xbee = new Xbee(getSerialport());
         //RFmodem* loRa = new LoRa;   // another example
-        connector->setData(ui_interface::SERIALPORT_ERROR, xbee->isOpen());
+        connector->setData(ui_interface::SERIALPORT_STATUS, (xbee->isOpen()) ? 1 : 2);
 
         if (xbee->isOpen()) {
             while (connector->getData<bool>(ui_interface::ACTIVE_XBEE) &&
@@ -40,11 +40,15 @@ void Worker::mainRoutine() {
                 if (xbee->receive(dataHandler)) {
                     dataHandler.logLastRxPacket();
                     dataHandler.printLastRxPacket();
-                    //xbee->getRSSI();
                 }
                 // Manage Transmission
-                //manageIgnitionTx(dataHandler, xbee);
-                manageImageTransmission(dataHandler, xbee);
+                manageIgnitionTx(dataHandler, xbee);
+
+                // Manage Image Transmission
+                if (dataHandler.updateTx(DatagramType::PL_IMAGE))
+                    xbee->send(dataHandler.getPacket(DatagramType::PL_IMAGE));
+
+                // if need to send AT command for RSSI
                 if (connector->eatData<bool>(ui_interface::RSSI_READ_ORDER, false))
                     xbee->getRSSI();
 
@@ -52,8 +56,10 @@ void Worker::mainRoutine() {
             }
         } else {
             connector->setData(ui_interface::ACTIVE_XBEE, false);
+            std::this_thread::sleep_for(std::chrono::seconds(3)); // time to show error
         }
         delete xbee;
+        connector->setData(ui_interface::SERIALPORT_STATUS, 0);
     }
 }
 
@@ -63,18 +69,9 @@ void Worker::manageIgnitionTx(DataHandler& dataHandler, RFmodem* rfmodem) {
         // /!\ Critical point /!\.
         for (int i(0); i < IGNITION_PACKET_FLOW_NBR; ++i) {
             rfmodem->send(dataHandler.getPacket(DatagramType::GSE_IGNITION));
-            std::this_thread::sleep_for(std::chrono::milliseconds(1));
+            std::this_thread::sleep_for(std::chrono::milliseconds(10));
         }
         connector->setData(ui_interface::IGNITION_SENT, true);
-    }
-    //need ack
-}
-
-void Worker::manageImageTransmission(DataHandler &dataHandler, RFmodem *rfmodem) {
-    // Image communication
-    if (connector->eatData<bool>(ui_interface::SEND_FILE_REQUEST, false)) {
-        dataHandler.updateTx(DatagramType::IMAGE);
-        rfmodem->send(dataHandler.getPacket(DatagramType::IMAGE));
     }
 }
 

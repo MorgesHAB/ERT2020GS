@@ -1,0 +1,7 @@
+digraph "serial::Serial::SerialImpl"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{serial::Serial::SerialImpl\n||+ SerialImpl()\l+ ~SerialImpl()\l+ open()\l+ close()\l+ isOpen()\l+ available()\l+ waitReadable()\l+ waitByteTimes()\l+ read()\l+ write()\land 30 more...\l# reconfigurePort()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+}

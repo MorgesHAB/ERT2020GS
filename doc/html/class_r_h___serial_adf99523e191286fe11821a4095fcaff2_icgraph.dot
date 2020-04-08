@@ -1,0 +1,19 @@
+digraph "RH_Serial::clearRxBuf"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="RH_Serial::clearRxBuf",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Empties the Rx buffer."];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="RH_Serial::handleRx",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_r_h___serial.html#a24dd6dd48c5f6f3a314500cfaa6dbc4a",tooltip=" "];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="RH_Serial::available",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_r_h___serial.html#a7e608a91618692ef62b57ce9312cecf1",tooltip=" "];
+  Node3 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="RH_Serial::recv",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_r_h___serial.html#aa4976012fd542a84118d981245cdb116",tooltip=" "];
+  Node3 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="RH_Serial::waitAvailable",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_r_h___serial.html#a59e5acedbab7b23be2e77c7c6134ee50",tooltip=" "];
+  Node3 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="RH_Serial::waitAvailable\lTimeout",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_r_h___serial.html#a8595c290a2f431d50fb9243ead8181e6",tooltip=" "];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

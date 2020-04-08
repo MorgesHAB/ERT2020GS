@@ -36,6 +36,8 @@ public slots:
     void play_music_pressed();
     void rssi_get_pressed();
     void send_msg_pressed();
+    void clear_image_pressed();
+    void image_abort_pressed();
 
 private:
     enum Theme {WHITE_ON_BLACK = 0, GREEN_ON_BLACK, BLACK_ON_WHITE, THEME_COUNT};
@@ -49,7 +51,7 @@ private:
     void refresh_com();
     void check_and_show();
     void refresh_time();
-    void refresh_file_transmission_box();
+    void refresh_file_transmission();
     void refresh_lionel_stuff();
 
     void show_ok_X(QLabel*, bool);

@@ -1,0 +1,13 @@
+digraph "C:/Users/disoz/Documents/GitHub/ERT2020GS/Telecom/RFmodem/lib/serial/include/serial" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_9260bf821c62849d35ade27504a9c8e7 {
+    graph [ bgcolor="#ddddee", pencolor="black", label="include" fontname="Helvetica", fontsize="10", URL="dir_9260bf821c62849d35ade27504a9c8e7.html"]
+  subgraph clusterdir_03cc88d1a609ac56a3966a8d633e3adf {
+    graph [ bgcolor="#eeeeff", pencolor="black", label="" URL="dir_03cc88d1a609ac56a3966a8d633e3adf.html"];
+    dir_03cc88d1a609ac56a3966a8d633e3adf [shape=plaintext label="serial"];
+    dir_e4355e3619cab16678fe5bab74dccc09 [shape=box label="impl" color="black" fillcolor="white" style="filled" URL="dir_e4355e3619cab16678fe5bab74dccc09.html"];
+  }
+  }
+}

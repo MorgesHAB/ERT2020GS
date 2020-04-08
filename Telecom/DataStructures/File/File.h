@@ -49,6 +49,8 @@ private:
     std::vector<uint8_t*> file;
 
     std::vector<uint16_t> missingPacketNbr;
+    
+    bool sendingData;
 };
 
 

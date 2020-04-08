@@ -1,0 +1,9 @@
+digraph "RH_NRF51"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{RH_NRF51\n||+ RH_NRF51()\l+ init()\l+ setChannel()\l+ setNetworkAddress()\l+ setRF()\l+ setModeIdle()\l+ setModeRx()\l+ setModeTx()\l+ send()\l+ waitPacketSent()\l+ isSending()\l+ printRegisters()\l+ available()\l+ recv()\l+ maxMessageLength()\l# validateRxBuf()\l# clearRxBuf()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Send and receive addressed datagrams by nRF51 compatible transceivers."];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node2 [label="{RHGenericDriver\n|# _mode\l# _thisAddress\l# _promiscuous\l# _rxHeaderTo\l# _rxHeaderFrom\l# _rxHeaderId\l# _rxHeaderFlags\l# _txHeaderTo\l# _txHeaderFrom\l# _txHeaderId\l# _txHeaderFlags\l# _lastRssi\l# _rxBad\l# _rxGood\l# _txGood\l|+ RHGenericDriver()\l+ init()\l+ available()\l+ recv()\l+ send()\l+ maxMessageLength()\l+ waitAvailable()\l+ waitPacketSent()\l+ waitPacketSent()\l+ waitAvailableTimeout()\land 17 more...\l+ printBuffer()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_r_h_generic_driver.html",tooltip="Abstract base class for a RadioHead driver."];
+}

@@ -1,0 +1,17 @@
+digraph "C:/Users/disoz/Documents/GitHub/ERT2020GS/Telecom/RFmodem/lib" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_9ab0b6103efd647499e03d1d378bad92 {
+    graph [ bgcolor="#ddddee", pencolor="black", label="RFmodem" fontname="Helvetica", fontsize="10", URL="dir_9ab0b6103efd647499e03d1d378bad92.html"]
+  subgraph clusterdir_214c4232bc91c796264992cfbceb7352 {
+    graph [ bgcolor="#eeeeff", pencolor="black", label="" URL="dir_214c4232bc91c796264992cfbceb7352.html"];
+    dir_214c4232bc91c796264992cfbceb7352 [shape=plaintext label="lib"];
+    dir_ef78388813ba77867720a372781a96cc [shape=box label="RadioHead" color="red" fillcolor="white" style="filled" URL="dir_ef78388813ba77867720a372781a96cc.html"];
+    dir_01769d8f5aa3446387fc427e397c1794 [shape=box label="serial" color="red" fillcolor="white" style="filled" URL="dir_01769d8f5aa3446387fc427e397c1794.html"];
+  }
+  }
+  dir_02d2c86cd241969923768d6461021ed8 [shape=box label="DataStructures" fillcolor="white" style="filled" color="red" URL="dir_02d2c86cd241969923768d6461021ed8.html"];
+  dir_01769d8f5aa3446387fc427e397c1794->dir_02d2c86cd241969923768d6461021ed8 [headlabel="1", labeldistance=1.5 headhref="dir_000018_000005.html"];
+  dir_ef78388813ba77867720a372781a96cc->dir_02d2c86cd241969923768d6461021ed8 [headlabel="3", labeldistance=1.5 headhref="dir_000013_000005.html"];
+}

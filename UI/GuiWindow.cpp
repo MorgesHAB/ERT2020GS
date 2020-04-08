@@ -20,7 +20,7 @@
 #include "../Telecom/DataStructures/Avionics/StateValues.h"
 #include "../Telecom/DataHandler/DatagramTypes.h"
 #include "../Telecom/DataStructures/File/FileTransmissionStates.h"
-#include "../Telecom/DataStructures/Propulsion/IgnitionStates.h"
+#include "GSE/IgnitionStates.h"
 #include "gui_message.h"
 
 #include <QStyleFactory>
