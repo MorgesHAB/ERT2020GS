@@ -12,7 +12,6 @@
 
 #include <ctime>
 #include <Data.h>
-//#include <libgpsmm.h>
 
 
 class GPS : public Data {
@@ -31,8 +30,6 @@ private:
     uint8_t satelliteNbr;
     float hdop;
     float latitude, longitude, altitude;
-
-    // gpsmm gpsd;
 };
 
 

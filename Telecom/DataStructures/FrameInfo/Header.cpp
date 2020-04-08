@@ -56,8 +56,10 @@ bool Header::updateRx(std::shared_ptr<Connector> connector) {
     bool datagramIDcorrect(datagramID > 0 && datagramID < TOTAL_NBR_OF_TYPES);
 
     if (!(datagramIDcorrect && myRxDelimiter[0] == 'E' && myRxDelimiter[1] == 'P' &&
-          myRxDelimiter[2] == 'F' && myRxDelimiter[3] == 'L'))
+          myRxDelimiter[2] == 'F' && myRxDelimiter[3] == 'L')) {
+        connector->incrementData(ui_interface::CORRUPTED_PACKET_CTR);
         return false;
+    }
 
     connector->setData(ui_interface::DATAGRAM_ID, datagramID);
     connector->setData(ui_interface::TX_PACKET_NR, packetNbr);
@@ -73,7 +75,7 @@ bool Header::updateRx(std::shared_ptr<Connector> connector) {
         case AV_DEBUG:
             connector->incrementData(ui_interface::PACKET_CTR_AV);
             break;
-        case GSE_STATUS:
+        case GSE_SENSORS:
         case GSE_ORDER:
         case GSE_IGNITION:
             connector->incrementData(ui_interface::PACKET_CTR_GSE);

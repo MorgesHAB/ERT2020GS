@@ -21,117 +21,131 @@
 #include <array>
 
 namespace ui_interface {
-enum DataType {
-    ///General
 
-    RUNNING = 0, // bool             **Every thread listens this boolean and stop executing when it is false.
+    enum DataType {
+        ///General
 
-    /// Qt input informations
+        RUNNING = 0, // bool             **Every thread listens this boolean and stop executing when it is false.
 
-    ACTIVE_XBEE,      // bool             **This is set to true-false by the Activate-Xbee button.
-    IGNITION_CLICKED, // bool        **This is set to true when ignition button is clicked.
-    //                              @attention !!! Listener should eat this boolean to be able to detect further clicks !!!
-    SERIALPORT_ERROR, // bool eat by Gui
+        /// Qt input informations
 
-    SERIALPORT_INDEX,
-    RSSI_READ_ORDER,
-    RSSI_VALUE, // uint8_t           **Reports the RSSI in -dBm of the last received RF data packet.
+        ACTIVE_XBEE,      // bool             **This is set to true-false by the Activate-Xbee button.
+        IGNITION_CLICKED, // bool        **This is set to true when ignition button is clicked.
+        //                              @attention !!! Listener should eat this boolean to be able to detect further clicks !!!
+        SERIALPORT_STATUS, // bool eat by Gui
 
-    //////////////// RF modem
-    /// Ignition
-    IGNITION_STATUS,            // bool        ** true :  FIRE,  false : ABORTED
-    IGNITION_KEY_1_ACTIVATED,   // bool
-    IGNITION_KEY_2_ACTIVATED,   // bool
-    IGNITION_RED_BUTTON_PUSHED, // bool
-    IGNITION_SENT,              // bool to eat
+        SERIALPORT_INDEX,
+        RSSI_READ_ORDER,
+        RSSI_VALUE, // uint8_t           **Reports the RSSI in -dBm of the last received RF data packet.
 
-    /// Packet Rate
-    PACKET_CTR_ALL,
-    PACKET_CTR_AV,
-    PACKET_CTR_GSE,
-    PACKET_CTR_PL,
-    PACKET_CTR_PP,
-    TIME_SINCE_LAST_RX_PACKET,
+        //////////////// RF modem
+        /// Ignition
+        IGNITION_STATUS,            // bool        ** true :  FIRE,  false : ABORTED
+        IGNITION_KEY_1_ACTIVATED,   // bool
+        IGNITION_KEY_2_ACTIVATED,   // bool
+        IGNITION_RED_BUTTON_PUSHED, // bool
+        IGNITION_SENT,              // bool to eat
 
-    PACKET_RX_RATE_CTR, // uint32_t  **This is incremented on each packet received, eated by guito find the packet rate.
-    RX_PACKET_CTR,    // uint32_t        **This is the count of the received packets from the beginning of the program
-    CORRUPTED_PACKET_CTR,    // uint64_t **The count of the corrupted packets received. Incremented by RX.
+        /// Packet Rate
+        PACKET_CTR_ALL,
+        PACKET_CTR_AV,
+        PACKET_CTR_GSE,
+        PACKET_CTR_PL,
+        PACKET_CTR_PP,
+        TIME_SINCE_LAST_RX_PACKET,
 
-    /// Header
-    DATAGRAM_ID, // uint8_t            **The ID of the last packet received
-    TX_PACKET_NR,    // uint32_t         **This is the last packet's number.
-    TIMESTAMP, // time_t             **The Time of the last packet received
+        PACKET_RX_RATE_CTR, // uint32_t  **This is incremented on each packet received, eated by guito find the packet rate.
+        RX_PACKET_CTR,    // uint32_t        **This is the count of the received packets from the beginning of the program
+        CORRUPTED_PACKET_CTR,    // uint64_t **The count of the corrupted packets received. Incremented by RX.
 
-    /// GPS Data Structure
-    GPS_ALTITUDE,    // float                **The last altitude reading
-    GPS_LONGITUDE,    // float               **The last longitude reading
-    GPS_LATITUDE,    // float                **The last latitude reading
-    GPS_HDOP,    // float
-    GPS_SAT_NBR, // uint8_t
+        /// Header
+        DATAGRAM_ID, // uint8_t            **The ID of the last packet received
+        TX_PACKET_NR,    // uint32_t         **This is the last packet's number.
+        TIMESTAMP, // time_t             **The Time of the last packet received
 
-    // Telemetry Avionic Data
-    T_ACCELEROMETER_X, T_ACCELEROMETER_Y, T_ACCELEROMETER_Z, // float
-    T_EULER_X, T_EULER_Y, T_EULER_Z,                         // float
-    T_TEMPERATURE,                                           // float
-    T_PRESSURE,                                              // float
-    T_SPEED,                                                 // float
-    T_ALTITUDE,                                              // float
+        /// GPS Data Structure
+        GPS_ALTITUDE,    // float                **The last altitude reading
+        GPS_LONGITUDE,    // float               **The last longitude reading
+        GPS_LATITUDE,    // float                **The last latitude reading
+        GPS_HDOP,    // float
+        GPS_SAT_NBR, // uint8_t
 
-    // MetaData
-    ALTITUDE_MAX,
+        // Telemetry Avionic Data
+        T_ACCELEROMETER_X, T_ACCELEROMETER_Y, T_ACCELEROMETER_Z, // float
+        T_EULER_X, T_EULER_Y, T_EULER_Z,                         // float
+        T_TEMPERATURE,                                           // float
+        T_PRESSURE,                                              // float
+        T_SPEED,                                                 // float
+        T_ALTITUDE,                                              // float
 
-    /// Pressure Data
-    PP_PRESSURE,    // float           **Last pressure reading
+        // MetaData
+        ALTITUDE_MAX,
 
-    AIR_BRAKES_ANGLE, // float
+        /// Pressure Data
+        PP_PRESSURE,    // float           **Last pressure reading
 
-    // TEST
-    TEST_SENSOR_DATA, // print just for test it's a generic DataType
+        AIR_BRAKES_ANGLE, // float
 
-    /// Tx ignition code
-    TX_IGNITION_CODE, // uint8_t     **Extract first 4 lsb for the code.
+        // TEST
+        TEST_SENSOR_DATA, // print just for test it's a generic DataType
 
-
-    /// File transmission
-    SEND_FILE_REQUEST, // bool       **true if button on the gui is clicked, eated by Telecom thread
-    // File transmitting States
-    FILE_TRANSMISSION_TOTAL_PACKETS,  // uint64_t
-    FILE_TRANSMISSION_CURRENT_PACKET, // uint64_t
-    FILE_TRANSMISSION_MY_STATE,       // enum in DataStructures/File
-    FILE_TRANSMISSION_RECEIVED_STATE,
-    FILE_TRANSMISSION_ALL_RECEIVED, // bool to EAT - for activation of warning window
-    SENDING_DATA,                   // bool      **true when data sending (for Lionel - not print on Gui)
-
-    /// Avionics status variables
-    STATUS_AV_ID,
-    STATUS_AV_VALUE,
-    STATUS_AV_STATE, // enum in DataStructures/Avionics/StateValues.h
-
-    /// GSE orders
-    GSE_ORDER_VALUE, // enum in DataStructures/GSE/GSEOrderValues.h
-
-    /// GSE sensors
-    GSE_HOSE_PRESSURE,
-    GSE_HOSE_TEMP,
-    GSE_HOSE_STATUS,
-    GSE_MOTOR_SPEED,
-    GSE_TANK_WEIGHT,
-
-    /// Payload data
-    PL_GPS_ALTITUDE,    // float                **The last altitude reading
-    PL_GPS_LONGITUDE,    // float               **The last longitude reading
-    PL_GPS_LATITUDE,    // float                **The last latitude reading
-    PL_GPS_HDOP,    // float
-    PL_GPS_SAT_NBR, // uint8_t,
-    PL_TEMPERATURE,
-    PL_STATE_UI,
+        /// Tx ignition code
+        TX_IGNITION_CODE, // uint8_t     **Extract first 4 lsb for the code.
 
 
-    /// !!! THIS MUST BE THE LAST LINE !!!
-    /// The size of the connected data array
-    ARRAY_SIZE
-};
+        /// File transmission
+            SEND_FILE_REQUEST, // bool       **true if button on the gui is clicked, eated by Telecom thread
+            // File transmitting States
+            FILE_TRANSMISSION_TOTAL_PACKETS,  // uint64_t
+            FILE_TRANSMISSION_CURRENT_PACKET, // uint64_t
+            FILE_TRANSMISSION_MY_STATE,       // enum in DataStructures/File
+            FILE_TRANSMISSION_RECEIVED_STATE,
+            FILE_TRANSMISSION_ALL_RECEIVED, // bool to EAT - for activation of warning window
+            FILE_TRANSMISSION_ABORT_ORDER, // Gui push button
+            // Gui state
+            FTX_FILE_TX_SENT,
+            FTX_PL_RESPONSE,
+            FTX_MISSING_REQUEST_SENT,
+            FTX_ALL_RECEIVED,
+            FTX_ACK_SENT,
 
+
+        /// Avionics status variables
+        STATUS_AV_ID,
+        STATUS_AV_VALUE,
+        STATUS_AV_STATE, // enum in DataStructures/Avionics/StateValues.h
+
+        /// GSE orders
+        GSE_ORDER_VALUE, // enum in DataStructures/GSE/GSEOrderValues.h
+
+        /// GSE sensors
+        GSE_HOSE_PRESSURE,
+        GSE_HOSE_TEMP,
+        GSE_HOSE_STATUS,
+        GSE_MOTOR_SPEED,
+        GSE_TANK_WEIGHT,
+
+        /// Payload data
+        PL_GPS_ALTITUDE,    // float                **The last altitude reading
+        PL_GPS_LONGITUDE,    // float               **The last longitude reading
+        PL_GPS_LATITUDE,    // float                **The last latitude reading
+        PL_GPS_HDOP,    // float
+        PL_GPS_SAT_NBR, // uint8_t,
+        PL_TEMPERATURE,
+        PL_STATE_UI,
+
+
+        /// !!! THIS MUST BE THE LAST LINE !!!
+        /// The size of the connected data array
+        ARRAY_SIZE
+    };
+
+    enum StringType {
+        PL_RX_FILENAME,
+        /// !!! THIS MUST BE THE LAST LINE !!!
+        /// The size of the connected data array
+        STRING_ARRAY_SIZE
+    };
 
 /**
 *   The values put here will be reset to 0 when the connector resets.
@@ -193,7 +207,6 @@ enum DataType {
                    FILE_TRANSMISSION_MY_STATE,
                    FILE_TRANSMISSION_RECEIVED_STATE,
                    FILE_TRANSMISSION_ALL_RECEIVED,
-                   SENDING_DATA,
 
                    /// Avionics status variables
                    STATUS_AV_ID,

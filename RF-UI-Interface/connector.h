@@ -3,6 +3,7 @@
 
 #include <atomic>
 #include <array>
+#include <string>
 #include "ProtocolDefine.h"
 
 
@@ -21,8 +22,19 @@ public:
     template<typename T>
     T eatData(ui_interface::DataType type, uint64_t val);
 
+    // For string
+    void setData(ui_interface::StringType type, std::string s);
+
+    std::string getData(ui_interface::StringType type);
+
+    const std::string &getImgPLfilename() const;
+
+    void setImgPLfilename(const std::string &imgPLfilename);
+
 private:
     std::array<std::atomic<std::uint64_t>, ui_interface::ARRAY_SIZE> dataCollection;
+    std::string imgPLfilename;
+    //std::array<std::atomic<std::string>, ui_interface::STRING_ARRAY_SIZE> stringCollection;
 };
 
 

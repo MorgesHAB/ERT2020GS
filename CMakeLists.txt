@@ -9,7 +9,6 @@ set(RUNNING_ON_RPI OFF) # <-- if not ON, the Ignition hardware won't wrork
 set(USE_SOUND OFF)
 ####
 set(USE_LORA OFF)
-set(USE_GPS OFF)
 ###############################################################
 if (NOT RUNNING_ON_RPI)
     message("/!\\ Ignition Circuit not activated !")
@@ -28,17 +27,16 @@ endif (USE_LORA)
 if (USE_XBEE)
     include_directories(Telecom/RFmodem/lib/serial/include/)
 
-    add_executable(XbeeTest src/XbeeTest.cpp)
+    add_executable(AVsimulator src/AVsimulator.cpp)
     add_executable(IgniterRPi src/IgniterRPi.cpp)
     add_executable(ImageCom src/ImageCom.cpp)
     add_executable(TestPacket src/PacketXTest.cpp)
-    add_executable(maxAlt src/maxAlt.cpp)
 
     if (USE_GUI)
         find_package(Qt5Widgets)
         qt5_add_resources(RCC_SOURCES UI/assets.qrc)      # add resources to Gui
         add_subdirectory(UI)
-        add_executable(${PROJECT_NAME} ${RCC_SOURCES} src/GUI.cpp)
+        add_executable(${PROJECT_NAME} ${RCC_SOURCES} src/ERT2020GS.cpp)
     endif (USE_GUI)
 
 endif (USE_XBEE)
@@ -49,11 +47,14 @@ if (USE_LORA)
 endif (USE_LORA)
 
 if (USE_XBEE)
-    target_link_libraries(XbeeTest Telecom)
+    target_link_libraries(AVsimulator Telecom)
     target_link_libraries(IgniterRPi Telecom)
     target_link_libraries(ImageCom Telecom)
     target_link_libraries(TestPacket Telecom)
-    target_link_libraries(maxAlt Telecom)
+
+    add_executable(TEST src/TestDebug.cpp)
+    include_directories(RFmodem/lib/serial/include/)
+    target_link_libraries(TEST serial)
 
     if (USE_GUI)
         target_link_libraries(${PROJECT_NAME} GUI)
@@ -61,8 +62,3 @@ if (USE_XBEE)
     endif (USE_GUI)
 
 endif (USE_XBEE)
-
-
-add_executable(TEST src/TestDebug.cpp)
-include_directories(RFmodem/lib/serial/include/)
-target_link_libraries(TEST serial)

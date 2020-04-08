@@ -27,7 +27,7 @@ namespace DatagramType {
 
         /// GSE Datagram
             GSE_ORDER,
-            GSE_STATUS,
+            GSE_SENSORS,
             GSE_IGNITION,
 
         /// Payload Datagram
@@ -47,9 +47,6 @@ namespace DatagramType {
                             // <-- add new type here
 
         /// TEST PACKET
-            ACK,
-            IMAGE,
-            IGNITION_ANSWER,
             TEST,
 
                             // <-- add new type here
@@ -68,15 +65,13 @@ namespace DatagramType {
             case PROPULSION: return "PROPULSION";
             case AIR_BRAKES: return "AIR BRAKES";
             case GSE_ORDER: return "GSE ORDER";
-            case GSE_STATUS: return "GSE STATUS";
+            case GSE_SENSORS: return "GSE SENSORS";
             case GSE_IGNITION: return "GSE IGNITION";
             case PL_STATE: return "PL STATE";
             case PL_IMAGE: return "PL IMAGE";
             case PL_GPS: return "PL GPS";
             case PL_ORDER: return "PL ORDER";
-            case IMAGE: return "Image";
             case TEST: return "TEST";
-            case IGNITION_ANSWER: return "Ignition Response";
             default: return "Unknown";
         }
     }

@@ -13,9 +13,10 @@
 #include <string>
 
 enum FileTransmissionStates {
-    // Rx State
+    // Common State
     SLEEP,
     ABORT,
+    // Rx State
     SEND_FILE_REQUEST_TO_TX,
     WAITING_PACKET,
     SEND_MISSING_PACKET_REQUEST,

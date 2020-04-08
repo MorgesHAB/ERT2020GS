@@ -27,6 +27,8 @@ var NAVTREE =
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
         [ "All", "namespacemembers.html", null ],
+        [ "Functions", "namespacemembers_func.html", null ],
+        [ "Variables", "namespacemembers_vars.html", null ],
         [ "Enumerations", "namespacemembers_enum.html", null ],
         [ "Enumerator", "namespacemembers_eval.html", null ]
       ] ]
@@ -36,9 +38,9 @@ var NAVTREE =
       [ "Class Index", "classes.html", null ],
       [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
       [ "Class Members", "functions.html", [
-        [ "All", "functions.html", null ],
-        [ "Functions", "functions_func.html", null ],
-        [ "Variables", "functions_vars.html", null ]
+        [ "All", "functions.html", "functions_dup" ],
+        [ "Functions", "functions_func.html", "functions_func" ],
+        [ "Variables", "functions_vars.html", "functions_vars" ]
       ] ]
     ] ],
     [ "Files", "files.html", [
@@ -46,6 +48,8 @@ var NAVTREE =
       [ "File Members", "globals.html", [
         [ "All", "globals.html", null ],
         [ "Functions", "globals_func.html", null ],
+        [ "Enumerations", "globals_enum.html", null ],
+        [ "Enumerator", "globals_eval.html", null ],
         [ "Macros", "globals_defs.html", null ]
       ] ]
     ] ]
@@ -54,8 +58,11 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_c_r_c_8cpp.html",
-"class_ignition_code.html#a85e79df495b5f6ffb1c769392b58c472"
+"_a_c_k_8cpp.html",
+"_protocol_define_8h.html#a330ca830968457ebc03914bccdeebd56acd6e3adfa752049089fa2c9ad28c3250",
+"class_my_data.html#a229e6ccbbe75ffb65042dc8abc7de3c6",
+"class_ui__second__ui.html#a2509fc0abee42f6287ec400727574b89",
+"functions_d.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

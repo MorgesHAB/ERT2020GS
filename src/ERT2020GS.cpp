@@ -6,7 +6,7 @@
  *     | |____| | \ \  | |      | |__| |____) |    / /_| |_| / /_| |_| |
  *     |______|_|  \_\ |_|       \_____|_____/    |____|\___/____|\___/
  *
- * \file GUI.cpp
+ * \file ERT2020GS.cpp
  *
  * \brief Ground Support Equipment Transceiver
  *

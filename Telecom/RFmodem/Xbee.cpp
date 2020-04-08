@@ -8,6 +8,7 @@
  */
 
 #include "Xbee.h"
+#include <DatagramTypes.h>
 
 
 Xbee::Xbee(std::string port) {
@@ -25,7 +26,9 @@ Xbee::Xbee(std::string port) {
 void Xbee::send(Packet *packet) {
     if (serialPort.isOpen()) {
         serialPort.write(packet->getPacket(), packet->getSize());
-        std::cout << "Packet have been sent  size: " << +packet->getSize() << std::endl;
+        std::cout << DatagramType::getDatagramIDName(packet->getPacket()[17])
+                  << " Packet have been sent  size: " << +packet->getSize()
+                  << std::endl;
     }
 }
 

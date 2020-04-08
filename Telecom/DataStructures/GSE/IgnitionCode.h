@@ -29,8 +29,10 @@ public:
     bool updateRx(std::shared_ptr<Connector> connector) override;
 
 private:
-    std::vector<bool> states;
-    ignit::IgnitionState ignitionState;
+    std::vector<bool> code;
+    uint8_t ignitionCode;
+    ignit::IgnitionState myState, receivedState;
+    clock_t ignitionTime;
 };
 
 

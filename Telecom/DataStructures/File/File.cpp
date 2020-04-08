@@ -13,7 +13,7 @@ File::File(const std::string &fileName, uint16_t bytePerPacket)
         : fileName(fileName), bytePerPacket(bytePerPacket),
           myState(SLEEP), receivedState(SLEEP),
           packetNbr(0), nbrTotPacket(0), lastPacketNbr(0), missingNbrIterator(0),
-          nbrByteInLastPacket(0) {}
+          nbrByteInLastPacket(0), sendingData(false) {}
 
 File::~File() {
     for (auto& part : file) delete[] part;
@@ -48,10 +48,20 @@ void File::print() const {
 }
 
 bool File::updateTx(std::shared_ptr<Connector> connector) {
+    if (connector->eatData<bool>(ui_interface::FILE_TRANSMISSION_ABORT_ORDER, false))
+        myState = ABORT;
+
     switch (myState) { // if myState was ... then ...
         /////// On the File Receiver // updated only if need to send request (connector order)
         case SLEEP:
-            myState = SEND_FILE_REQUEST_TO_TX;
+            if (connector->eatData<bool>(ui_interface::SEND_FILE_REQUEST, false)) {
+                myState = SEND_FILE_REQUEST_TO_TX;
+                sendingData = true;
+                connector->setData(ui_interface::FTX_FILE_TX_SENT, true);
+            }
+            break;
+        case WAITING_PACKET:
+            sendingData = false;
             break;
         case SEND_MISSING_PACKET_REQUEST:
             missingPacketNbr.clear();
@@ -59,29 +69,34 @@ bool File::updateTx(std::shared_ptr<Connector> connector) {
             for (uint16_t i(0); i < nbrTotPacket && missingPacketNbr.size() < bytePerPacket / 2; ++i) {
                 if (!file[i]) missingPacketNbr.push_back(i);
             }
-            if (missingPacketNbr.empty()) myState = ALL_RECEIVED;
+            if (missingPacketNbr.empty()) {
+                myState = ALL_RECEIVED;
+                connector->setData(ui_interface::FTX_ALL_RECEIVED, true);
+            }
             else {
                 lastPacketNbr = missingPacketNbr.back();
+                connector->setData(ui_interface::FTX_MISSING_REQUEST_SENT, true);
                 break;
             }
         case ALL_RECEIVED:
             std::cout << "ACK : Every Packet have been received correctly" << std::endl;
             exportFile();
+            connector->setImgPLfilename(fileName);
             connector->setData(ui_interface::FILE_TRANSMISSION_ALL_RECEIVED, true);
+            connector->setData(ui_interface::FTX_ACK_SENT, true);
+            break;
+        /////// On the File Transmitter : update FSM state only at Reception
+        case WAITING_MISSING_PACKET_REQUEST:
+            sendingData = false;
             break;
         default:
             break;
     }
-    /////// On the File Transmitter : update FSM state only at Reception
-    if (myState == WAITING_MISSING_PACKET_REQUEST)
-        connector->setData(ui_interface::SENDING_DATA, false);
 
     connector->setData(ui_interface::FILE_TRANSMISSION_MY_STATE, myState);
     connector->setData(ui_interface::FILE_TRANSMISSION_RECEIVED_STATE, receivedState);
-    std::cout << "MyState : " << getStateName(myState) << "\t ReceivedState : "
-              << getStateName(receivedState) << std::endl;
 
-    return true; // TODO adapt
+    return sendingData;
 }
 
 void File::write(Packet &packet) {
@@ -91,7 +106,9 @@ void File::write(Packet &packet) {
     switch (myState) {
         /////// On the File Receiver
         case ALL_RECEIVED:
+        case ABORT:
             myState = SLEEP;
+            sendingData = false;
             break;
         case SEND_MISSING_PACKET_REQUEST:
             packet.write(lastPacketNbr);
@@ -119,7 +136,7 @@ void File::write(Packet &packet) {
             ++missingNbrIterator; // not use before missing process
             break;
         case SEND_FILE_REQUEST_TO_TX: // Sent
-            myState = WAITING_PACKET; // TODO state WAITING useful ?
+            myState = WAITING_PACKET;
             break;
         default:
             break;
@@ -172,13 +189,16 @@ void File::parse(Packet &packet) {
 }
 
 bool File::updateRx(std::shared_ptr<Connector> connector) {
-    connector->setData(ui_interface::FILE_TRANSMISSION_TOTAL_PACKETS, nbrTotPacket);
-    connector->setData(ui_interface::FILE_TRANSMISSION_CURRENT_PACKET, packetNbr);
+    if (connector->eatData<bool>(ui_interface::FILE_TRANSMISSION_ABORT_ORDER, false))
+        myState = ABORT;
 
     switch (myState) {
         /////// On the File Receiver
         case SEND_MISSING_PACKET_REQUEST:
-            connector->setData(ui_interface::SEND_FILE_REQUEST, true);
+            sendingData = true;
+            break;
+        case ABORT:
+            sendingData = true; // send abort
             break;
         default:
             break;
@@ -187,36 +207,36 @@ bool File::updateRx(std::shared_ptr<Connector> connector) {
         /////// On the File Transmitter
         case SEND_MISSING_PACKET_REQUEST:
             myState = SENDING_MISSING_PACKET;
-            connector->setData(ui_interface::SENDING_DATA, true);
+            sendingData = true;
             break;
         case SEND_FILE_REQUEST_TO_TX:
             if (myState == SLEEP) {
                 if (importFile()) {
                     myState = SENDING_PACKET;
-                    connector->setData(ui_interface::SENDING_DATA, true);
+                    sendingData = true;
                 } else {
                     myState = ABORT;
                 }
             }
             break;
         case ALL_RECEIVED:
-            connector->setData(ui_interface::SENDING_DATA, false);
+        case ABORT:
+            sendingData = false;
             myState = SLEEP;
             packetNbr = 0;
-            break;
-        case ABORT:
-            myState = SLEEP;
             break;
         default:
             break;
     }
-
+    connector->setData(ui_interface::FILE_TRANSMISSION_TOTAL_PACKETS, nbrTotPacket - 1);
+    connector->setData(ui_interface::FILE_TRANSMISSION_CURRENT_PACKET, packetNbr);
     connector->setData(ui_interface::FILE_TRANSMISSION_MY_STATE, myState);
     connector->setData(ui_interface::FILE_TRANSMISSION_RECEIVED_STATE, receivedState);
+    connector->setData(ui_interface::FTX_PL_RESPONSE, true);
     std::cout << "MyState : " << getStateName(myState) << "\t ReceivedState : "
               << getStateName(receivedState) << std::endl;
 
-    return true; // TODO adapt
+    return true;
 }
 
 
