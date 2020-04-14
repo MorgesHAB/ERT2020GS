@@ -398,6 +398,10 @@ void MyData::parse(Packet &packet) {
 }
 ```
 
+Finally, here is an example diagram of how to implement a new datagram
+<img src="doc/img/2020_GS_Datagram_Diagram.svg">
+
+
 -----------------------------------------------------------------
 ## Tutorial #2 : change my RF modem
 If you want to use other radio modules in addition of the xbee or LoRa, you will just 
