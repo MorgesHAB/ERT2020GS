@@ -1,11 +1,4 @@
 /*!
- *      ______ _____ _______      _____  _____     ___   ___ ___   ___
- *     |  ____|  __ \__   __|    / ____|/ ____|   |__ \ / _ \__ \ / _ \
- *     | |__  | |__) | | |      | |  __| (___        ) | | | | ) | | | |
- *     |  __| |  _  /  | |      | | |_ |\___ \      / /| | | |/ /| | | |
- *     | |____| | \ \  | |      | |__| |____) |    / /_| |_| / /_| |_| |
- *     |______|_|  \_\ |_|       \_____|_____/    |____|\___/____|\___/
- *
  * \file ProtocolDefine.h
  *
  * \brief User Interface - RF Telecom interface protocol definition
@@ -60,7 +53,7 @@ namespace ui_interface {
 
         /// Header
         DATAGRAM_ID, // uint8_t            **The ID of the last packet received
-        TX_PACKET_NR,    // uint32_t         **This is the last packet's number.
+        TX_PACKET_NR,    // uint32_t         **This is the last packet's number. // TODO delete (RF no longer use this)
         TIMESTAMP, // time_t             **The Time of the last packet received
 
         /// GPS Data Structure

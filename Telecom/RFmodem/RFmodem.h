@@ -20,7 +20,7 @@ public:
 
     virtual void send(Packet *packet) = 0;
     virtual bool receive(DataHandler &dataHandler) = 0;
-    virtual int getRSSI() {}
+    virtual int getRSSI() { return 0; }
     virtual bool isOpen() { return true; }
 
 

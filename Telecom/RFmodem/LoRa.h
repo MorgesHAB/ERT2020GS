@@ -16,10 +16,13 @@
 
 class LoRa : public RFmodem {
 public:
-    explicit LoRa(double frequency = 868.0, double TxPower = 23, int mode = 1);
+    explicit LoRa(float frequency = 868.0, double TxPower = 23, int mode = 1);
+
     void send(Packet *packet) override;
-    bool receive(Packet *packet);
+
     bool receive(DataHandler &dataHandler) override;
+    bool receive(Packet *packet);
+
     int getRSSI() override;
 
 private:

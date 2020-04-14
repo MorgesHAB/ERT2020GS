@@ -10,44 +10,25 @@
 #include "Header.h"
 #include <DatagramTypes.h>
 
-uint32_t Header::packetNbr = 0;     // init static variable
-
 Header::Header(uint8_t datagramID) : datagramID(datagramID),
                                      timestamp(std::time(nullptr)) {}
+
+bool Header::updateTx(std::shared_ptr<Connector> connector) {
+    timestamp = std::time(nullptr);
+    return true;
+}
 
 void Header::write(Packet &packet) {
     packet.write(datagramID);
     for (auto& e : myDelimiter) packet.write(e);    
-    packet.write(static_cast<uint32_t>(timestamp));
-    packet.write(packetNbr);
+    packet.write(timestamp);
 }
+
 
 void Header::parse(Packet &packet) {
     packet.parse(datagramID);
     for (auto& e : myRxDelimiter) packet.parse(e);
-    uint32_t tmp;
-    packet.parse(tmp);
-    timestamp = static_cast<time_t> (tmp);
-    packet.parse(packetNbr);
-}
-
-void Header::print() const {
-    std::cout << "*** Packet Type : " << DatagramType::getDatagramIDName(datagramID);
-    std::cout << "\t packet nbr: " << packetNbr << "\t time: "
-              << std::asctime(std::localtime(&timestamp)) << std::endl;
-}
-
-std::string Header::log() const {
-    return std::move("Header" + SEPARATOR +
-            std::to_string(datagramID) + SEPARATOR +
-            std::to_string(timestamp) + SEPARATOR +
-            std::to_string(packetNbr) + SEPARATOR);
-}
-
-bool Header::updateTx(std::shared_ptr<Connector> connector) {
-    ++packetNbr;
-    timestamp = std::time(nullptr);
-    return true;
+    packet.parse(timestamp);
 }
 
 bool Header::updateRx(std::shared_ptr<Connector> connector) {
@@ -62,7 +43,6 @@ bool Header::updateRx(std::shared_ptr<Connector> connector) {
     }
 
     connector->setData(ui_interface::DATAGRAM_ID, datagramID);
-    connector->setData(ui_interface::TX_PACKET_NR, packetNbr);
     connector->setData(ui_interface::TIMESTAMP, timestamp);
 
     connector->setData(ui_interface::TIME_SINCE_LAST_RX_PACKET, std::time(nullptr));
@@ -91,4 +71,15 @@ bool Header::updateRx(std::shared_ptr<Connector> connector) {
             break;
     }
     return true;
+}
+
+void Header::print() const {
+    std::cout << "*** Packet Type : " << DatagramType::getDatagramIDName(datagramID);
+    std::cout << "\t time: " << timestamp  << " [ms]" << std::endl;
+}
+
+std::string Header::log() const {
+    return std::move("Header" + SEPARATOR +
+                     std::to_string(datagramID) + SEPARATOR +
+                     std::to_string(timestamp) + SEPARATOR);
 }

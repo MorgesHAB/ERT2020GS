@@ -65,7 +65,6 @@ bool Xbee::receive(Packet *packet) {
             uint8_t info[3];
             serialPort.read(info, 3);
             uint16_t size((info[1] << 8)| info[2]);
-            std::cout << "Size : " << size << std::endl;
             packet->restart();
             serialPort.read(packet->getPacket(), size + 1);
             std::cout << "\n\nPacket Received" << std::endl;

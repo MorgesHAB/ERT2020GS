@@ -10,6 +10,7 @@ if (USE_LORA)
     add_subdirectory(RFmodem/lib/RadioHead)
     file(GLOB SOURCES_RF RFmodem/LoRa.cpp)
 endif (USE_LORA)
+
 if (USE_XBEE)
     add_subdirectory(RFmodem/lib/serial)
     file(GLOB SOURCES_RF2 RFmodem/Xbee.cpp)
@@ -47,3 +48,5 @@ if (USE_XBEE)
     include_directories(RFmodem/lib/serial/include/)
     target_link_libraries(${PROJECT_NAME} serial)
 endif (USE_XBEE)
+
+#target_compile_options(${PROJECT_NAME} PUBLIC -g -Wall)

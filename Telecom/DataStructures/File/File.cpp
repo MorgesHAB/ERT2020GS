@@ -10,9 +10,9 @@
 #include "File.h"
 
 File::File(const std::string &fileName, uint16_t bytePerPacket)
-        : fileName(fileName), bytePerPacket(bytePerPacket),
-          myState(SLEEP), receivedState(SLEEP),
-          packetNbr(0), nbrTotPacket(0), lastPacketNbr(0), missingNbrIterator(0),
+        : fileName(fileName), myState(SLEEP), receivedState(SLEEP),
+          bytePerPacket(bytePerPacket), packetNbr(0), nbrTotPacket(0),
+          lastPacketNbr(0), missingNbrIterator(0),
           nbrByteInLastPacket(0), sendingData(false) {}
 
 File::~File() {

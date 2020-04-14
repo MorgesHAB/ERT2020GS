@@ -35,10 +35,10 @@ void XbeeOptions::write(Packet &packet) {
 }
 
 void XbeeOptions::parse(Packet &packet) {
-    uint8_t startDelimiter;
-    //packet.parse(startDelimiter); // TODO already parsed
+    /*uint8_t startDelimiter;       // already parsed in xbee.receive()
+    //packet.parse(startDelimiter);
     uint16_t length;
-    //packet.parse(length);
+    //packet.parse(length); */
     for (auto& part : xbeeReceivedOptions) packet.parse(part);
 }
 
