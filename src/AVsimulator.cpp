@@ -8,10 +8,10 @@
  *
  * \file AVsimulator.cpp
  *
- * \brief Ground Support Equipment Transceiver
+ * \brief simulate the Avionic onboard computer
  *
  * \author      ISOZ Lionel - EPFL EL BA3
- * \date        04.11.2019
+ * \date        02.04.2020
  */
 
 #include <chrono>

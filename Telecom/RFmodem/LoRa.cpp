@@ -10,7 +10,7 @@
 #include "LoRa.h"
 #include <iostream>
 
-LoRa::LoRa(double frequency, double TxPower, int mode) {
+LoRa::LoRa(float frequency, double TxPower, int mode) {
     wiringPiSetupGpio();
 
     if (!rf95.init()) {
@@ -37,27 +37,24 @@ void LoRa::send(Packet *packet) {
     std::cout << "Packet have been sent" << std::endl;
 }
 
-bool LoRa::receive(Packet *packet) {
+bool LoRa::receive(DataHandler &dataHandler) {
     if (rf95.available()) {
-        packet->restart();
         uint8_t length(RH_RF95_MAX_MESSAGE_LEN);
-        if (rf95.recv(packet.getPacket(), &length)) {
-            std::cout << "\n\nPacket Received" << std::endl;
-            std::cout << "LoRa last RSSI : " << getRSSI() << " dBm" << std::endl;
-            return true;
+        Packet* packet = new Packet(length);
+        if (rf95.recv(packet->getPacket(), &length)) {
+            std::cout << "\n\nNew Packet Received" << std::endl;
+            return dataHandler.updateRx(packet);
         }
     }
     return false;
 }
 
-bool LoRa::receive(DataHandler &dataHandler) {
+bool LoRa::receive(Packet *packet) {
     if (rf95.available()) {
-        Packet* packet = new Packet;
+        packet->restart();
         uint8_t length(RH_RF95_MAX_MESSAGE_LEN);
         if (rf95.recv(packet->getPacket(), &length)) {
-            std::cout << "\n\nNew Packet Received" << std::endl;
-            std::cout << "LoRa last RSSI : " << getRSSI() << " dBm" << std::endl;
-            dataHandler.setPacket(packet);
+            std::cout << "\n\nPacket Received" << std::endl;
             return true;
         }
     }

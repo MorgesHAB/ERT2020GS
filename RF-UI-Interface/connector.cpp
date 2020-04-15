@@ -1,3 +1,13 @@
+/*!
+ * \file connector.h
+ *
+ * \brief Connector module implementation
+ *
+ * \author      ISOZ Lionel - EPFL EL BA3
+ * \author      KESKE Cem - EPFL EL BA3
+ * \date        02.12.2019
+ */
+
 #include "connector.h"
 
 constexpr uint64_t OFF_STATE(false);
@@ -13,16 +23,6 @@ Connector::Connector() {
 
 void Connector::incrementData(ui_interface::DataType type) {
     (&dataCollection[type])->fetch_add(1);
-}
-
-void Connector::setData(ui_interface::StringType type, std::string s) {
-    //std::atomic_store(&(dataCollection[type]), reinterpret_cast<uint64_t&> (s));
-
-   // std::atomic_store(&(stringCollection[type]), &s);
-}
-
-std::string Connector::getData(ui_interface::StringType type) {
-    return "a"; //std::move(std::atomic_load(&stringCollection[type]));
 }
 
 const std::string &Connector::getImgPLfilename() const {

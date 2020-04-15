@@ -20,10 +20,6 @@ add_subdirectory(Logger)
 add_subdirectory(Telecom)
 add_subdirectory(RF-UI-Interface)
 
-if (USE_LORA)
-    add_executable(LoRaTest src/LoRaTest.cpp)
-endif (USE_LORA)
-
 if (USE_XBEE)
     include_directories(Telecom/RFmodem/lib/serial/include/)
 
@@ -41,10 +37,6 @@ if (USE_XBEE)
 endif (USE_XBEE)
 
 ############# link librarie to targets #######################
-if (USE_LORA)
-    target_link_libraries(LoRaTest Telecom)
-endif (USE_LORA)
-
 if (USE_XBEE)
     target_link_libraries(AVsimulator Telecom)
     target_link_libraries(GSE_PLsimu Telecom)
