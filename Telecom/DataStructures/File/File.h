@@ -35,20 +35,24 @@ protected:
     std::string fileName;
 
 private:
+    // The packet number type
+    // choose uint8_t, uint16_t, uint32_t according to your needs Number max 2^16
+    typedef uint32_t Number;    // => 2^32 possible number
+
     FileTransmissionStates myState, receivedState;
 
     uint16_t bytePerPacket;
 
-    uint16_t packetNbr;
-    uint32_t nbrTotPacket;
-    uint32_t lastPacketNbr;
-    uint16_t missingNbrIterator;
+    Number packetNbr;
+    Number nbrTotPacket;
+    Number lastPacketNbr;
+    Number missingNbrIterator;
 
     uint8_t nbrByteInLastPacket;
 
     std::vector<uint8_t*> file;
 
-    std::vector<uint16_t> missingPacketNbr;
+    std::vector<Number> missingPacketNbr;
     
     bool sendingData;
 };
