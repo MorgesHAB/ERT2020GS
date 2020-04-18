@@ -136,6 +136,7 @@ bool DataHandler::updateRx(Packet *packet) {
     else if (packet->getPacket()[0] == 0x88) { // RSSI command response
         std::cout << "RSSI = -" << +packet->getPacket()[5] << " dBm" << std::endl;
         connector->setData(ui_interface::RSSI_VALUE, packet->getPacket()[5]);
+        return false;
     }
     // Else packet won't be parsed
     connector->incrementData(ui_interface::CORRUPTED_PACKET_CTR);

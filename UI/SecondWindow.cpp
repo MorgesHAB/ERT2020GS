@@ -1,10 +1,10 @@
 /*!
- * \file SecondWindow.h
+ * \file SecondWindow.cpp
  *
  * \brief Gui Window module implementation
  *
- * \author      KESKE CEM - EPFL EL BA3
- * \date        02.12.2019
+ * \author      ISOZ Lionel - EPFL EL BA3
+ * \date        22.03.2020
  */
 
 #include "SecondWindow.h"
@@ -13,11 +13,11 @@
 #include <iostream>
 #include <ctime>
 #include <array>
-#include "../Telecom/DataStructures/Avionics/StateValues.h"
-#include "../Telecom/DataHandler/DatagramTypes.h"
-#include "../Telecom/DataStructures/File/FileTransmissionStates.h"
-#include "GSE/IgnitionStates.h"
-#include "gui_message.h"
+
+#include <Avionics/StateValues.h>
+#include <DatagramTypes.h>
+#include <File/FileTransmissionStates.h>
+#include <GSE/IgnitionStates.h>
 
 #include <QStyleFactory>
 #include <QString>
@@ -44,11 +44,6 @@ void SecondWindow::refresh_data()
     ++tick_counter_;
 }
 
-inline QString degree_representation(double value)
-{
-    return QString::number(value) + "<sup>o</sup>";
-}
-
 // Works for double, uint8_t, uint32_t, uint64_t
 template <typename T> inline QString qstr(T value)
 {
@@ -62,13 +57,14 @@ inline bool get_bit(unsigned char byte, int position) // position in range 0-7
 
 SecondWindow::SecondWindow(std::shared_ptr<Connector> connector) :
     timer_(new QTimer(this)),
-    data_(connector),
+    connector(connector),
     missed_count_(0),
     current_theme_(0),
     ready_ignition_(false),
     xbee_acvite_(false),
     fullscreen_(false),
-    musicON_(false)
+    musicON_(false),
+    FTX_beginning_time(0)
 {
 #ifdef SOUND_ON
     m_player = new QMediaPlayer();
@@ -81,7 +77,7 @@ SecondWindow::SecondWindow(std::shared_ptr<Connector> connector) :
     initialize_slots_signals();
     grabKeyboard();
     timer_->start(REFRESH_RATE);
-    data_->setData(ui_interface::TIME_SINCE_LAST_RX_PACKET, std::time(nullptr));
+    connector->setData(ui_interface::TIME_SINCE_LAST_RX_PACKET, std::time(nullptr));
 }
 ///////////////////////////////////////////////////////////////////////////
 void SecondWindow::refresh_lionel_stuff() {
@@ -109,7 +105,7 @@ void SecondWindow::refresh_lionel_stuff() {
                                                    "QLabel {image: url(:/assets/radioOFF.png);}");
     a = !a;
 
-    auto serialStatus = data_->getData<int>(ui_interface::SERIALPORT_STATUS);
+    auto serialStatus = connector->getData<int>(ui_interface::SERIALPORT_STATUS);
     serialport_status->setStyleSheet(
             (serialStatus == 0) ? "QLabel {image: url(:/assets/refresh.png);}"
                                 : (serialStatus == 1)
@@ -119,14 +115,14 @@ void SecondWindow::refresh_lionel_stuff() {
 
 void SecondWindow::valve_control() {
     static int x(0);
-    data_->setData(IGNITION_STATUS, (ignit::IgnitionState) x);
+    connector->setData(IGNITION_STATUS, (ignit::IgnitionState) x);
     x+=1;
 }
 
 void SecondWindow::reset_button_pressed()
 {
     constexpr uint64_t z(0);
-    for (auto& index : dataToReset) data_->setData(index, z);
+    for (auto& index : dataToReset) connector->setData(index, z);
 }
 
 void SecondWindow::xbee_clicked()
@@ -140,8 +136,8 @@ void SecondWindow::xbee_clicked()
         //logger.log(new Gui_Message("XBee ON button clicked!"));
         std::cout << "XBee ON button clicked!" << std::endl;
         uint64_t index(serialport_selector->currentIndex());
-        data_->setData(ui_interface::SERIALPORT_INDEX, index);
-        data_->setData(ui_interface::ACTIVE_XBEE, true);
+        connector->setData(ui_interface::SERIALPORT_INDEX, index);
+        connector->setData(ui_interface::ACTIVE_XBEE, true);
     } else {
         xbee_button->setStyleSheet("QPushButton{\n"
                                    "qproperty-icon: url(:/assets/powerON.png);\n"
@@ -150,14 +146,14 @@ void SecondWindow::xbee_clicked()
                                    "}\n");
         //logger.log(new Gui_Message("XBee STOP button clicked!"));
         std::cout << "XBee STOP button clicked!" << std::endl;
-        data_->setData(ui_interface::ACTIVE_XBEE, false);
+        connector->setData(ui_interface::ACTIVE_XBEE, false);
     }
     xbee_acvite_ = !xbee_acvite_;
 }
 
 void SecondWindow::ignite_clicked()
 {
-    ready_ignition_ = data_->getData<bool>(IGNITION_CLICKED);
+    ready_ignition_ = connector->getData<bool>(IGNITION_CLICKED);
     if (ready_ignition_) {
         ready_ignit_button->setStyleSheet(
             "QPushButton { qproperty-icon: url(:/assets/readiness.png);}");
@@ -172,7 +168,7 @@ void SecondWindow::ignite_clicked()
 
     std::cout << "Ignition button clicked!" << std::endl;
     ready_ignition_ = !ready_ignition_;
-    data_->setData(ui_interface::IGNITION_CLICKED, ready_ignition_);
+    connector->setData(ui_interface::IGNITION_CLICKED, ready_ignition_);
 }
 
 void SecondWindow::theme_change_clicked()
@@ -206,7 +202,7 @@ void SecondWindow::theme_change_clicked()
 void SecondWindow::file_transmission_pressed()
 {
     //logger.log(new Gui_Message("File transmission button pressed. SEND_FILE_REQUEST set to true."));
-    data_->setData(ui_interface::SEND_FILE_REQUEST, true);
+    connector->setData(ui_interface::SEND_FILE_REQUEST, true);
 }
 
 uint16_t SecondWindow::calculate_misses_in_last_2()
@@ -231,20 +227,20 @@ void SecondWindow::closeEvent(QCloseEvent * event)
         event->ignore();
     } else {
         event->accept();
-        data_->setData(ui_interface::RUNNING, false);
+        connector->setData(ui_interface::RUNNING, false);
         std::cout << "running set to false" << std::endl;
     }
 }
 
 void SecondWindow::refresh_misses()
 {
-    missed_count_ = data_->getData<uint32_t>(TX_PACKET_NR)
-                    - data_->getData<uint32_t>(RX_PACKET_CTR);
+    missed_count_ = connector->getData<uint32_t>(TX_PACKET_NR)
+                    - connector->getData<uint32_t>(RX_PACKET_CTR);
 }
 
 void SecondWindow::refresh_ignition_code()
 {
-    uint8_t tmp(data_->getData<uint8_t>(ui_interface::TX_IGNITION_CODE));
+    uint8_t tmp(connector->getData<uint8_t>(ui_interface::TX_IGNITION_CODE));
 
     code_0->setText(QString::number(get_bit(tmp, 0)));
     code_1->setText(QString::number(get_bit(tmp, 1)));
@@ -254,7 +250,7 @@ void SecondWindow::refresh_ignition_code()
 
 void SecondWindow::refresh_av_state()
 {
-    std::string str(avionic::getAVStateName(data_->getData<uint8_t>(STATUS_AV_STATE)));
+    std::string str(avionic::getAVStateName(connector->getData<uint8_t>(STATUS_AV_STATE)));
     avionics_state_panel->setText(QString::fromStdString(str));
 }
 
@@ -269,10 +265,10 @@ void SecondWindow::refresh_ignition_frame()
 {
     refresh_ignition_code();
 
-    bool key1    = data_->getData<bool>(IGNITION_KEY_1_ACTIVATED);
-    bool key2    = data_->getData<bool>(IGNITION_KEY_2_ACTIVATED);
-    bool button  = data_->getData<bool>(IGNITION_RED_BUTTON_PUSHED);
-    bool clicked = data_->getData<bool>(IGNITION_CLICKED);
+    bool key1    = connector->getData<bool>(IGNITION_KEY_1_ACTIVATED);
+    bool key2    = connector->getData<bool>(IGNITION_KEY_2_ACTIVATED);
+    bool button  = connector->getData<bool>(IGNITION_RED_BUTTON_PUSHED);
+    bool clicked = connector->getData<bool>(IGNITION_CLICKED);
 
     // Keys
     ignition_key1->setStyleSheet((key1) ? "QLabel {image: url(:/assets/keyON.png);}"
@@ -281,7 +277,7 @@ void SecondWindow::refresh_ignition_frame()
                                         : "QLabel {image: url(:/assets/keyOFF.png);}");
 
     // Ignition status
-    auto ignitState = data_->getData<ignit::IgnitionState>(IGNITION_STATUS);
+    auto ignitState = connector->getData<ignit::IgnitionState>(IGNITION_STATUS);
     ignition_status_label->setText(QString::fromStdString(ignit::getIgnitionState(ignitState)));
     switch (ignitState) {
     case ignit::SLEEP:
@@ -315,7 +311,7 @@ void SecondWindow::refresh_ignition_frame()
             m_player->stop();
         }
     }
-    if (data_->eatData<bool>(IGNITION_SENT, false)) playSound(takeoff);
+    if (connector->eatData<bool>(IGNITION_SENT, false)) playSound(takeoff);
 #endif // SOUND_ON
 }
 
@@ -337,57 +333,57 @@ void SecondWindow::initialize_slots_signals()
 
 void SecondWindow::refresh_telemetry()
 {
-    altitude_panel_telemetry->setText(qstr(data_->getData<float>(T_ALTITUDE)));
-    accel_x_panel->setText(qstr(data_->getData<float>(T_ACCELEROMETER_X)));
-    accel_y_panel->setText(qstr(data_->getData<float>(T_ACCELEROMETER_Y)));
-    accel_z_panel->setText(qstr(data_->getData<float>(T_ACCELEROMETER_Z)));
-    euler_x_panel->setText(qstr(data_->getData<float>(T_EULER_X)));
-    euler_y_panel->setText(qstr(data_->getData<float>(T_EULER_Y)));
-    euler_z_panel->setText(qstr(data_->getData<float>(T_EULER_Z)));
-    pressure_panel->setText(qstr(data_->getData<float>(T_PRESSURE)));
-    speed_panel->setText(qstr(data_->getData<float>(T_SPEED)));
-    temperature_panel->setText(qstr(data_->getData<float>(T_TEMPERATURE)));
+    altitude_panel_telemetry->setText(qstr(connector->getData<float>(T_ALTITUDE)));
+    accel_x_panel->setText(qstr(connector->getData<float>(T_ACCELEROMETER_X)));
+    accel_y_panel->setText(qstr(connector->getData<float>(T_ACCELEROMETER_Y)));
+    accel_z_panel->setText(qstr(connector->getData<float>(T_ACCELEROMETER_Z)));
+    euler_x_panel->setText(qstr(connector->getData<float>(T_EULER_X)));
+    euler_y_panel->setText(qstr(connector->getData<float>(T_EULER_Y)));
+    euler_z_panel->setText(qstr(connector->getData<float>(T_EULER_Z)));
+    pressure_panel->setText(qstr(connector->getData<float>(T_PRESSURE)));
+    speed_panel->setText(qstr(connector->getData<float>(T_SPEED)));
+    temperature_panel->setText(qstr(connector->getData<float>(T_TEMPERATURE)));
 }
 
 void SecondWindow::refresh_gps()
 {
-    altitude_lcd_gps->display(qstr((int) data_->getData<float>(GPS_ALTITUDE)));
-    altitude_max_lcd_m->display(qstr((int) data_->getData<float>(ALTITUDE_MAX)));
-    longitude_panel->setText(qstr(data_->getData<float>(GPS_LONGITUDE)));
-    latitude_panel->setText(qstr(data_->getData<float>(GPS_LATITUDE)));
-    hdop_panel->setText(qstr(data_->getData<float>(GPS_HDOP)));
-    sat_nbr_panel->display(qstr(data_->getData<uint8_t>(GPS_SAT_NBR)));
+    altitude_lcd_gps->display(qstr((int) connector->getData<float>(GPS_ALTITUDE)));
+    altitude_max_lcd_m->display(qstr((int) connector->getData<float>(ALTITUDE_MAX)));
+    longitude_panel->setText(qstr(connector->getData<float>(GPS_LONGITUDE)));
+    latitude_panel->setText(qstr(connector->getData<float>(GPS_LATITUDE)));
+    hdop_panel->setText(qstr(connector->getData<float>(GPS_HDOP)));
+    sat_nbr_panel->display(qstr(connector->getData<uint8_t>(GPS_SAT_NBR)));
 }
 
 void SecondWindow::refresh_com()
 {
     refresh_misses();
-    //last_packet_number_panel->setText(qstr(data_->getData<uint32_t>(TX_PACKET_NR)));
-    std::string str(DatagramType::getDatagramIDName(data_->getData<uint8_t>(ui_interface::DATAGRAM_ID)));
+    //last_packet_number_panel->setText(qstr(connector->getData<uint32_t>(TX_PACKET_NR)));
+    std::string str(DatagramType::getDatagramIDName(connector->getData<uint8_t>(ui_interface::DATAGRAM_ID)));
     //last_datagram_id_panel->setText(QString::fromStdString(str));
-    received_pack_cnt_panel->setText(qstr(data_->getData<uint32_t>(RX_PACKET_CTR)));
-    // this->speed_lcd->display(data_->getData<float>(SPEED)); no speed
-    time_t timestamp(data_->getData<time_t>(TIMESTAMP));
+    received_pack_cnt_panel->setText(qstr(connector->getData<uint32_t>(RX_PACKET_CTR)));
+    // this->speed_lcd->display(connector->getData<float>(SPEED)); no speed
+    time_t timestamp(connector->getData<time_t>(TIMESTAMP));
     char tbuffer[32];
     struct tm * tptr = std::localtime(&timestamp);
     std::strftime(tbuffer, 32, "%T", tptr);
     miss_panel->setText(qstr(calculate_misses_in_last_2()));
     //this->last_refresh_panel->setText(tbuffer);
     uint32_t coef(1000.0 / REFRESH_RATE);
-    all_packet_rate->setValue((data_->eatData<uint32_t>(PACKET_CTR_ALL, 0) * coef));
-    AV_packet_rate->setValue((data_->eatData<uint32_t>(PACKET_CTR_AV, 0) * coef));
-    PL_packet_rate->setValue((data_->eatData<uint32_t>(PACKET_CTR_PL, 0) * coef));
-    GSE_packet_rate->setValue((data_->eatData<uint32_t>(PACKET_CTR_GSE, 0) * coef));
-    PP_packet_rate->setValue((data_->eatData<uint32_t>(PACKET_CTR_PP, 0) * coef));
+    all_packet_rate->setValue((connector->eatData<uint32_t>(PACKET_CTR_ALL, 0) * coef));
+    AV_packet_rate->setValue((connector->eatData<uint32_t>(PACKET_CTR_AV, 0) * coef));
+    PL_packet_rate->setValue((connector->eatData<uint32_t>(PACKET_CTR_PL, 0) * coef));
+    GSE_packet_rate->setValue((connector->eatData<uint32_t>(PACKET_CTR_GSE, 0) * coef));
+    PP_packet_rate->setValue((connector->eatData<uint32_t>(PACKET_CTR_PP, 0) * coef));
 
-    corrupted_panel->setText(qstr(data_->getData<uint64_t>(CORRUPTED_PACKET_CTR)));
+    corrupted_panel->setText(qstr(connector->getData<uint64_t>(CORRUPTED_PACKET_CTR)));
 
     // call this every X seconds if you want or update when  RSSSI button clicked
-    //data_->setData(ui_interface::RSSI_READ_ORDER, true);
-    rssi_value->display(-1* (int) data_->getData<uint8_t>(ui_interface::RSSI_VALUE));
+    //connector->setData(ui_interface::RSSI_READ_ORDER, true);
+    rssi_value->display(-1* (int) connector->getData<uint8_t>(ui_interface::RSSI_VALUE));
 
     // Time since last received packet
-    time_t t = difftime(std::time(nullptr), data_->getData<time_t>(ui_interface::TIME_SINCE_LAST_RX_PACKET));
+    time_t t = difftime(std::time(nullptr), connector->getData<time_t>(ui_interface::TIME_SINCE_LAST_RX_PACKET));
     struct tm* tt = gmtime(&t);
     char buf[32];
     std::strftime(buf, 32, "%T", tt);
@@ -411,29 +407,52 @@ void SecondWindow::refresh_time()
 
 void SecondWindow::refresh_file_transmission()
 {
-    auto state(data_->getData<FileTransmissionStates>(ui_interface::FILE_TRANSMISSION_RECEIVED_STATE));
+    auto state(connector->getData<FileTransmissionStates>(ui_interface::FILE_TRANSMISSION_RECEIVED_STATE));
     transmitter_state_panel->setText(QString::fromStdString(getStateName(state)));
-    state = data_->getData<FileTransmissionStates>(ui_interface::FILE_TRANSMISSION_MY_STATE);
+    state = connector->getData<FileTransmissionStates>(ui_interface::FILE_TRANSMISSION_MY_STATE);
     receiver_state_panel->setText(QString::fromStdString(getStateName(state)));
 
-    file_transmission_progress_bar->setMaximum(data_->getData<uint64_t>(ui_interface::FILE_TRANSMISSION_TOTAL_PACKETS));
-    file_transmission_progress_bar->setValue(data_->getData<uint16_t>(ui_interface::FILE_TRANSMISSION_CURRENT_PACKET));
+    auto packetTotNbr(connector->getData<uint32_t>(ui_interface::FILE_TRANSMISSION_TOTAL_PACKETS));
+    auto packetNbr(connector->getData<uint16_t>(ui_interface::FILE_TRANSMISSION_CURRENT_PACKET));
+    file_transmission_progress_bar->setMaximum(packetTotNbr);
+    file_transmission_progress_bar->setValue(packetNbr);
 
-    if (data_->getData<bool>(ui_interface::FTX_FILE_TX_SENT))
+    if (connector->eatData<bool>(ui_interface::FTX_FILE_TX_SENT, false)) {
+        FTX_beginning_time = std::time(nullptr);
         PL_state_file_Tx_sent->setStyleSheet("QLabel {image: url(:/assets/correct.png);}");
-    if (data_->getData<bool>(ui_interface::FTX_PL_RESPONSE))
+    }
+    if (connector->eatData<bool>(ui_interface::FTX_PL_RESPONSE, false))
         PL_state_payload_response->setStyleSheet("QLabel {image: url(:/assets/correct.png);}");
-    if (data_->getData<bool>(ui_interface::FTX_MISSING_REQUEST_SENT))
+    if (connector->eatData<bool>(ui_interface::FTX_MISSING_REQUEST_SENT, false))
         PL_state_missing_request_sent->setStyleSheet("QLabel {image: url(:/assets/correct.png);}");
-    if (data_->getData<bool>(ui_interface::FTX_ALL_RECEIVED))
+    if (connector->eatData<bool>(ui_interface::FTX_ALL_RECEIVED, false))
         PL_state_all_received->setStyleSheet("QLabel {image: url(:/assets/correct.png);}");
-    if (data_->getData<bool>(ui_interface::FTX_ACK_SENT))
+    if (connector->eatData<bool>(ui_interface::FTX_ACK_SENT, false)) {
+        FTX_beginning_time = 0;
         PL_state_ack_sent->setStyleSheet("QLabel {image: url(:/assets/correct.png);}");
+    }
 
-    if (data_->eatData<bool>(FILE_TRANSMISSION_ALL_RECEIVED, false)) {
+    if (connector->eatData<bool>(FILE_TRANSMISSION_ALL_RECEIVED, false)) {
         PL_image_display->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
-        QPixmap img(QString::fromStdString(data_->getImgPLfilename()));
+        QPixmap img(QString::fromStdString(connector->getImgPLfilename()));
         PL_image_display->setPixmap(img);
+    }
+
+    // Time since the beginning of the File transmission
+    if (FTX_beginning_time != 0) {
+        time_t t = difftime(std::time(nullptr), FTX_beginning_time);
+        struct tm *tt = gmtime(&t);
+        char buf[32];
+        std::strftime(buf, 32, "%T", tt);
+        ftx_beginning_time->setText(buf);
+
+        // Time left
+        if (PL_packet_rate->value() != 0) {
+            t = (packetTotNbr - packetNbr) / PL_packet_rate->value();
+            tt = gmtime(&t);
+            std::strftime(buf, 32, "%T", tt);
+            ftx_time_left->setText(buf);
+        }
     }
 }
 
@@ -482,12 +501,12 @@ void SecondWindow::play_music_pressed() {
 }
 
 void SecondWindow::rssi_get_pressed() {
-    data_->setData(ui_interface::RSSI_READ_ORDER, true);
+    connector->setData(ui_interface::RSSI_READ_ORDER, true);
 }
 
 void SecondWindow::send_msg_pressed() {
     // for test
-    data_->setData(ui_interface::RSSI_VALUE, (uint8_t) (rand() % 100));
+    connector->setData(ui_interface::RSSI_VALUE, (uint8_t) (rand() % 100));
 }
 
 void SecondWindow::clear_image_pressed() {
@@ -497,15 +516,20 @@ void SecondWindow::clear_image_pressed() {
     PL_state_missing_request_sent->setStyleSheet("QLabel {image: url(:/assets/refresh.png);}");
     PL_state_all_received->setStyleSheet("QLabel {image: url(:/assets/refresh.png);}");
     PL_state_ack_sent->setStyleSheet("QLabel {image: url(:/assets/refresh.png);}");
-    data_->setData(ui_interface::FTX_FILE_TX_SENT, false);
-    data_->setData(ui_interface::FTX_PL_RESPONSE, false);
-    data_->setData(ui_interface::FTX_MISSING_REQUEST_SENT, false);
-    data_->setData(ui_interface::FTX_ALL_RECEIVED, false);
-    data_->setData(ui_interface::FTX_ACK_SENT, false);
+    connector->setData(ui_interface::FTX_FILE_TX_SENT, false);
+    connector->setData(ui_interface::FTX_PL_RESPONSE, false);
+    connector->setData(ui_interface::FTX_MISSING_REQUEST_SENT, false);
+    connector->setData(ui_interface::FTX_ALL_RECEIVED, false);
+    connector->setData(ui_interface::FTX_ACK_SENT, false);
+    connector->setData(ui_interface::FILE_TRANSMISSION_TOTAL_PACKETS, 0);
+    connector->setData(ui_interface::FILE_TRANSMISSION_CURRENT_PACKET, 0);
+    ftx_beginning_time->setText("...");
+    ftx_time_left->setText("...");
 }
 
 void SecondWindow::image_abort_pressed() {
-    data_->setData(ui_interface::FILE_TRANSMISSION_ABORT_ORDER, true);
+    connector->setData(ui_interface::FILE_TRANSMISSION_ABORT_ORDER, true);
+    FTX_beginning_time = 0;
 }
 
 #ifdef SOUND_ON

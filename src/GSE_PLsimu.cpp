@@ -29,7 +29,8 @@ static void sig_handler(int _) {
 }
 
 int main(int argc, char** argv) {
-    std::cout << "Syntax : ./GSE_PLsimu [serialPort] [if noise 'ON']\n" << std::endl;
+    std::cout << "Syntax : ./GSE_PLsimu [serialPort] [nbr packet/sec] [if noise 'ON']" << std::endl;
+    std::cout << "Syntax eg : ./GSE_PLsimu ttyUSB0 20 ON \n" << std::endl;
 
     signal(SIGINT, sig_handler);
 
@@ -42,7 +43,8 @@ int main(int argc, char** argv) {
     DataHandler dataHandler(cptr);
     using namespace DatagramType;
 
-    bool noiseON(argc == 3 && std::string(argv[2]) == "ON");
+    uint32_t nbrPacketSec((argc >= 3) ? atoi(argv[2]) : 20);
+    bool noiseON(argc == 4 && std::string(argv[3]) == "ON");
 
     while (keep_running) {
         if (xbee.receive(dataHandler))
@@ -63,7 +65,7 @@ int main(int argc, char** argv) {
         if (dataHandler.updateTx(PL_IMAGE))
             xbee.send(dataHandler.getPacket(PL_IMAGE));
 
-        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        std::this_thread::sleep_for(std::chrono::milliseconds(1000 / nbrPacketSec));
     }
 
     return 0;

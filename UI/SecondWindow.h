@@ -1,10 +1,19 @@
+/*!
+ * \file SecondWindow.h
+ *
+ * \brief Gui Window module interface
+ *
+ * \author      ISOZ Lionel - EPFL EL BA3
+ * \date        22.03.2020
+ */
+
 #ifndef SECONDWINDOW_H
 #define SECONDWINDOW_H
 
 #include "second_ui.h"
-#include "../RF-UI-Interface/connector.h"
-#include "../RF-UI-Interface/ProtocolDefine.h"
-#include "gui_logger.h"
+
+#include <connector.h>
+#include <ProtocolDefine.h>
 
 #include <memory>
 
@@ -74,10 +83,8 @@ private:
     const char* takeoff;
     const char* hymne;
 
-    //Gui_Logger logger;
-
     QTimer * timer_;
-    std::shared_ptr<Connector> data_;
+    std::shared_ptr<Connector> connector;
     uint64_t tick_counter_;
     uint64_t missed_count_;
     uint8_t current_theme_;
@@ -85,6 +92,7 @@ private:
     bool xbee_acvite_;
     bool fullscreen_;
     bool musicON_;
+    time_t FTX_beginning_time;
 };
 
 #endif //SECOND_WINDOW
