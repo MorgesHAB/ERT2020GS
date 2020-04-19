@@ -65,8 +65,7 @@ bool File::updateTx(std::shared_ptr<Connector> connector) {
             break;
         case SEND_MISSING_PACKET_REQUEST:
             missingPacketNbr.clear();
-            // Assuming total packet nbr < 2^16
-            for (uint16_t i(0); i < nbrTotPacket && missingPacketNbr.size() < bytePerPacket / 2; ++i) {
+            for (Number i(0); i < nbrTotPacket && missingPacketNbr.size() < bytePerPacket / 2; ++i) {
                 if (!file[i]) missingPacketNbr.push_back(i);
             }
             if (missingPacketNbr.empty()) {
@@ -155,7 +154,7 @@ void File::parse(Packet &packet) {
             missingNbrIterator = 0;
             missingPacketNbr.clear();
             packet.parse(lastPacketNbr);
-            uint16_t nbr;
+            Number nbr;
             do {
                 packet.parse(nbr);
                 missingPacketNbr.push_back(nbr);
