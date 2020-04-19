@@ -10,8 +10,8 @@
 #include "Packet.h"
 
 
-Packet::Packet(size_t size) : packet(new uint8_t[size]), packetPosition(packet),
-                              size(size) {}
+Packet::Packet(size_t packetSize) : packet(new uint8_t[packetSize]),
+                                    packetPosition(packet), packetSize(packetSize) {}
 
 Packet::~Packet() {
     delete[] packet;
@@ -19,7 +19,7 @@ Packet::~Packet() {
 
 void Packet::restart() {
     delete[] packet;
-    packet = new uint8_t[size];
+    packet = new uint8_t[packetSize];
     packetPosition = packet;
 }
 
@@ -49,6 +49,6 @@ uint8_t Packet::getSize() const {
 
 void Packet::printDebug() const {
     std::cout << "Print packet Debug byte per byte :" << std::endl;
-    for (uint8_t i(0); i < size; ++i) std::cout << +packet[i] << " ";
+    for (uint8_t i(0); i < packetSize; ++i) std::cout << +packet[i] << " ";
     std::cout << std::endl;
 }

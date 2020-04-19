@@ -22,13 +22,14 @@
 
 #include <iostream>
 
-#define PACKET_SIZE_ALLOC_TX_PART       250
+#define PACKET_SIZE_ALLOC_TX_PART       255
 
 class Packet {
 public:
-    explicit Packet(size_t size = PACKET_SIZE_ALLOC_TX_PART);
+    explicit Packet(size_t packetSize = PACKET_SIZE_ALLOC_TX_PART);
     virtual ~Packet();
     void restart();
+
     void write(std::string& msg);
     void parse(std::string& msg);
 
@@ -40,6 +41,7 @@ public:
     uint8_t *getPacket();
     uint8_t getSize() const;
     void printDebug() const;
+
 private:
     template<typename R, typename T>
     void writeY(T t);
@@ -48,16 +50,15 @@ private:
 
     uint8_t* packet;
     uint8_t* packetPosition;
-    size_t size;
+    size_t packetSize;
 };
 
 // Template functions definitions (not in .cpp file because of link errors)
-
 template<typename T>
 void Packet::write(T t) {
     uint8_t size(sizeof(t));
     if (getSize() + size > PACKET_SIZE_ALLOC_TX_PART) {
-        std::cerr << "Error : Packet is full size: " << getSize() << " - bigger than "
+        std::cerr << "Error : Packet is full size: " << +getSize() + size << " - bigger than "
                   << PACKET_SIZE_ALLOC_TX_PART
                   << "\nA packet reorganization is required." << std::endl;
         exit(0);
@@ -66,7 +67,7 @@ void Packet::write(T t) {
     else if (size == 2) writeY<uint16_t>(t);
     else if (size == 4) writeY<uint32_t>(t);
     else if (size == 8) writeY<uint64_t>(t); // don't work on Rpi
-    else std::cout << "Error : Inconciliable type..." << std::endl;
+    else std::cout << "Error : Incompatible type ..." << std::endl;
 }
 
 template<typename T>
@@ -76,7 +77,7 @@ void Packet::parse(T &t) {
     else if (size == 2) parseY<uint16_t>(t);
     else if (size == 4) parseY<uint32_t>(t);
     else if (size == 8) parseY<uint64_t>(t);  // don't work on Rpi
-    else std::cout << "Error : Inconciliable type..." << std::endl;
+    else std::cout << "Error : Incompatible type ..." << std::endl;
 }
 
 
