@@ -37,6 +37,7 @@ protected:
 private:
     // The packet number type
     // choose uint8_t, uint16_t, uint32_t according to your needs Number max 2^16
+    // use uint16_t for basic file eg: image    use uint32_t for video
     typedef uint32_t Number;    // => 2^32 possible number
 
     FileTransmissionStates myState, receivedState;

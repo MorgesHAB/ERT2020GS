@@ -40,7 +40,7 @@ void File::print() const {
             std::cout << "!!!!!MISSING PACKET SENT AGAIN" << std::endl;
         case SENDING_PACKET:
             std::cout << "Received File Data " << fileName << " -- Packet n° " << packetNbr
-                      << " / " << nbrTotPacket - 1 << std::endl;
+                      << " / " << lastPacketNbr << std::endl;
             break;
         default:
             break;
@@ -227,7 +227,7 @@ bool File::updateRx(std::shared_ptr<Connector> connector) {
         default:
             break;
     }
-    connector->setData(ui_interface::FILE_TRANSMISSION_TOTAL_PACKETS, nbrTotPacket - 1);
+    connector->setData(ui_interface::FILE_TRANSMISSION_TOTAL_PACKETS, lastPacketNbr);
     connector->setData(ui_interface::FILE_TRANSMISSION_CURRENT_PACKET, packetNbr);
     connector->setData(ui_interface::FILE_TRANSMISSION_MY_STATE, myState);
     connector->setData(ui_interface::FILE_TRANSMISSION_RECEIVED_STATE, receivedState);
@@ -244,11 +244,11 @@ bool File::importFile() {
     std::ifstream fileIn(fileName, std::ios::in | std::ios::binary);
     file.clear();
     if (fileIn) {
-        size_t nbr(0);
+        Number nbr(0);
         while (!fileIn.eof()) {
             file.push_back(new uint8_t[bytePerPacket]);
             nbrByteInLastPacket = 0;
-            for (size_t i(0); i < bytePerPacket && !fileIn.eof(); ++i) {
+            for (Number i(0); i < bytePerPacket && !fileIn.eof(); ++i) {
                 file[nbr][i] = fileIn.get();
                 ++nbrByteInLastPacket;
             }
@@ -270,8 +270,8 @@ void File::exportFile() {
     std::ofstream fileOut(fileName, std::ios::out | std::ios::binary);
 
     if (fileOut) {
-        size_t last(bytePerPacket);
-        for(size_t i(0); i < nbrTotPacket; ++i) {
+        auto last(bytePerPacket);
+        for(Number i(0); i < nbrTotPacket; ++i) {
             if (i == nbrTotPacket - 1) last = nbrByteInLastPacket;
             if (file[i]) { // if received packet else nullptr
                 for (size_t j(0); j < last; ++j) fileOut.put(file[i][j]);
