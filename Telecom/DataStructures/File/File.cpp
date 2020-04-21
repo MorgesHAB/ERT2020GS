@@ -227,10 +227,15 @@ bool File::updateRx(std::shared_ptr<Connector> connector) {
             }
             break;
         case ALL_RECEIVED:
+            packetNbr = nbrTotPacket -1; // for Gui nice printing
         case ABORT:
             sendingData = false;
             myState = SLEEP;
             packetNbr = 0;
+            break;
+        case SENDING_MISSING_PACKET:
+        case SENDING_PACKET:
+            connector->incrementData(ui_interface::FTX_RX_PACKET_CTR);
             break;
         default:
             break;

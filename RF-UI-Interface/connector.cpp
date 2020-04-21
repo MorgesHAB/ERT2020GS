@@ -32,3 +32,7 @@ const std::string &Connector::getImgPLfilename() const {
 void Connector::setImgPLfilename(const std::string &imgPLfilename) {
     Connector::imgPLfilename = imgPLfilename;
 }
+
+void Connector::reset(ui_interface::DataType type) {
+    std::atomic_store(&(dataCollection[type]), OFF_STATE);
+}

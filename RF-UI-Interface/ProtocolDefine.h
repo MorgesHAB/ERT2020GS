@@ -99,7 +99,7 @@ namespace ui_interface {
             FILE_TRANSMISSION_RECEIVED_STATE,
             FILE_TRANSMISSION_ALL_RECEIVED, // bool to EAT - for activation of warning window
             FILE_TRANSMISSION_ABORT_ORDER, // Gui push button
-            // Gui state
+            // Gui state    FTX = File Tx (Transmission)
             FTX_FILE_TX_SENT,
             FTX_PL_RESPONSE,
             FTX_MISSING_REQUEST_SENT,
@@ -107,7 +107,7 @@ namespace ui_interface {
             FTX_ACK_SENT,
             // Gui command
             FTX_SEND_MISSING_REQUEST,   // bool eaten
-
+            FTX_RX_PACKET_CTR,      // uint64_t Counter
 
         /// Avionics status variables
         STATUS_AV_ID,

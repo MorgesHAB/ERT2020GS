@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'LioTestnNpRIo.ui'
+** Form generated from reading UI file 'LioTestJKQJdS.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.11.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef LIOTESTNNPRIO_H
-#define LIOTESTNNPRIO_H
+#ifndef LIOTESTJKQJDS_H
+#define LIOTESTJKQJDS_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
@@ -229,18 +229,19 @@ public:
     QGroupBox *groupBox_8;
     QWidget *gridLayoutWidget_6;
     QGridLayout *gridLayout_4;
-    QLabel *transmitter_state_panel;
+    QLabel *label_5;
+    QLabel *ftx_packet_ctr;
     QLabel *transmitter_state_label;
+    QLabel *transmitter_state_panel;
     QLabel *receiver_state_label;
-    QLabel *receiver_state_panel;
     QLabel *ftx_beginning_time;
     QLabel *label_3;
+    QLabel *receiver_state_panel;
     QLabel *label_4;
     QLabel *ftx_time_left;
+    QLabel *label_8;
+    QLabel *ftx_missed_packets;
     QProgressBar *file_transmission_progress_bar;
-    QPushButton *file_transmission_button;
-    QPushButton *clear_image;
-    QPushButton *PL_image_abort;
     QGroupBox *groupBox_12;
     QWidget *gridLayoutWidget_9;
     QGridLayout *gridLayout_18;
@@ -254,7 +255,10 @@ public:
     QLabel *PL_state_all_received;
     QLabel *label_105;
     QLabel *PL_state_ack_sent;
+    QPushButton *file_transmission_button;
+    QPushButton *PL_image_abort;
     QPushButton *ftx_missing_request;
+    QPushButton *clear_image;
     QLabel *label_29;
     QLabel *logo_2;
     QLabel *logo_3;
@@ -270,7 +274,7 @@ public:
     {
         if (second_ui->objectName().isEmpty())
             second_ui->setObjectName(QStringLiteral("second_ui"));
-        second_ui->resize(1227, 862);
+        second_ui->resize(1387, 862);
         second_ui->setMinimumSize(QSize(600, 0));
         second_ui->setMaximumSize(QSize(9999, 9999));
         second_ui->setMouseTracking(false);
@@ -788,7 +792,7 @@ public:
         tabWidget->addTab(tab_2, QString());
         tabWidget_2 = new QTabWidget(second_ui);
         tabWidget_2->setObjectName(QStringLiteral("tabWidget_2"));
-        tabWidget_2->setGeometry(QRect(10, 390, 1121, 461));
+        tabWidget_2->setGeometry(QRect(10, 390, 1281, 461));
         tabWidget_2->setStyleSheet(QLatin1String("QTabBar::tab {\n"
                                                  "	border: 1px solid white;\n"
                                                  "	padding: 1px 8px 1px 8px;\n"
@@ -1452,23 +1456,28 @@ public:
         tab_4->setObjectName(QStringLiteral("tab_4"));
         PL_image_display = new QLabel(tab_4);
         PL_image_display->setObjectName(QStringLiteral("PL_image_display"));
-        PL_image_display->setGeometry(QRect(400, 20, 701, 411));
+        PL_image_display->setGeometry(QRect(570, 10, 701, 411));
         PL_image_display->setStyleSheet(QStringLiteral("image: url(:/assets/space.png);"));
         PL_image_display->setAlignment(Qt::AlignCenter);
         groupBox_8 = new QGroupBox(tab_4);
         groupBox_8->setObjectName(QStringLiteral("groupBox_8"));
-        groupBox_8->setGeometry(QRect(10, 10, 381, 241));
+        groupBox_8->setGeometry(QRect(10, 10, 551, 421));
         gridLayoutWidget_6 = new QWidget(groupBox_8);
         gridLayoutWidget_6->setObjectName(QStringLiteral("gridLayoutWidget_6"));
-        gridLayoutWidget_6->setGeometry(QRect(10, 30, 241, 141));
+        gridLayoutWidget_6->setGeometry(QRect(10, 30, 261, 191));
         gridLayout_4 = new QGridLayout(gridLayoutWidget_6);
         gridLayout_4->setObjectName(QStringLiteral("gridLayout_4"));
         gridLayout_4->setContentsMargins(0, 0, 0, 0);
-        transmitter_state_panel = new QLabel(gridLayoutWidget_6);
-        transmitter_state_panel->setObjectName(QStringLiteral("transmitter_state_panel"));
-        transmitter_state_panel->setAlignment(Qt::AlignCenter);
+        label_5 = new QLabel(gridLayoutWidget_6);
+        label_5->setObjectName(QStringLiteral("label_5"));
 
-        gridLayout_4->addWidget(transmitter_state_panel, 1, 1, 1, 1);
+        gridLayout_4->addWidget(label_5, 4, 0, 1, 1);
+
+        ftx_packet_ctr = new QLabel(gridLayoutWidget_6);
+        ftx_packet_ctr->setObjectName(QStringLiteral("ftx_packet_ctr"));
+        ftx_packet_ctr->setAlignment(Qt::AlignCenter);
+
+        gridLayout_4->addWidget(ftx_packet_ctr, 4, 1, 1, 1);
 
         transmitter_state_label = new QLabel(gridLayoutWidget_6);
         transmitter_state_label->setObjectName(QStringLiteral("transmitter_state_label"));
@@ -1477,18 +1486,18 @@ public:
 
         gridLayout_4->addWidget(transmitter_state_label, 1, 0, 1, 1);
 
+        transmitter_state_panel = new QLabel(gridLayoutWidget_6);
+        transmitter_state_panel->setObjectName(QStringLiteral("transmitter_state_panel"));
+        transmitter_state_panel->setAlignment(Qt::AlignCenter);
+
+        gridLayout_4->addWidget(transmitter_state_panel, 1, 1, 1, 1);
+
         receiver_state_label = new QLabel(gridLayoutWidget_6);
         receiver_state_label->setObjectName(QStringLiteral("receiver_state_label"));
         receiver_state_label->setMinimumSize(QSize(140, 0));
         receiver_state_label->setMaximumSize(QSize(212411, 16777215));
 
         gridLayout_4->addWidget(receiver_state_label, 0, 0, 1, 1);
-
-        receiver_state_panel = new QLabel(gridLayoutWidget_6);
-        receiver_state_panel->setObjectName(QStringLiteral("receiver_state_panel"));
-        receiver_state_panel->setAlignment(Qt::AlignCenter);
-
-        gridLayout_4->addWidget(receiver_state_panel, 0, 1, 1, 1);
 
         ftx_beginning_time = new QLabel(gridLayoutWidget_6);
         ftx_beginning_time->setObjectName(QStringLiteral("ftx_beginning_time"));
@@ -1501,6 +1510,12 @@ public:
 
         gridLayout_4->addWidget(label_3, 2, 0, 1, 1);
 
+        receiver_state_panel = new QLabel(gridLayoutWidget_6);
+        receiver_state_panel->setObjectName(QStringLiteral("receiver_state_panel"));
+        receiver_state_panel->setAlignment(Qt::AlignCenter);
+
+        gridLayout_4->addWidget(receiver_state_panel, 0, 1, 1, 1);
+
         label_4 = new QLabel(gridLayoutWidget_6);
         label_4->setObjectName(QStringLiteral("label_4"));
 
@@ -1512,9 +1527,20 @@ public:
 
         gridLayout_4->addWidget(ftx_time_left, 3, 1, 1, 1);
 
+        label_8 = new QLabel(gridLayoutWidget_6);
+        label_8->setObjectName(QStringLiteral("label_8"));
+
+        gridLayout_4->addWidget(label_8, 5, 0, 1, 1);
+
+        ftx_missed_packets = new QLabel(gridLayoutWidget_6);
+        ftx_missed_packets->setObjectName(QStringLiteral("ftx_missed_packets"));
+        ftx_missed_packets->setAlignment(Qt::AlignCenter);
+
+        gridLayout_4->addWidget(ftx_missed_packets, 5, 1, 1, 1);
+
         file_transmission_progress_bar = new QProgressBar(groupBox_8);
         file_transmission_progress_bar->setObjectName(QStringLiteral("file_transmission_progress_bar"));
-        file_transmission_progress_bar->setGeometry(QRect(10, 190, 361, 31));
+        file_transmission_progress_bar->setGeometry(QRect(20, 240, 491, 31));
         file_transmission_progress_bar->setStyleSheet(QLatin1String("QProgressBar {\n"
                                                                     "	color: white;\n"
                                                                     "	font: 16pt \"Times New Roman\";\n"
@@ -1532,69 +1558,12 @@ public:
                                                                     "	border-radius: 10px;\n"
                                                                     "}"));
         file_transmission_progress_bar->setValue(24);
-        file_transmission_button = new QPushButton(groupBox_8);
-        file_transmission_button->setObjectName(QStringLiteral("file_transmission_button"));
-        file_transmission_button->setGeometry(QRect(260, 50, 111, 101));
-        file_transmission_button->setStyleSheet(QLatin1String("QPushButton{\n"
-                                                              "qproperty-icon: url(:/assets/PLimg.png);\n"
-                                                              "qproperty-iconSize: 100px;\n"
-                                                              "font: 18pt \"MS Shell Dlg 2\";\n"
-                                                              "border: 2px solid;\n"
-                                                              "border-color: rgb(215, 237, 252);\n"
-                                                              "border-radius: 10px;\n"
-                                                              "}\n"
-                                                              "QPushButton:hover {\n"
-                                                              "background-color: black; \n"
-                                                              "border: 3px solid;\n"
-                                                              "border-color: rgb(215, 237, 252);\n"
-                                                              "}\n"
-                                                              "QPushButton:pressed {\n"
-                                                              "border: 4px solid;\n"
-                                                              "border-color: rgb(92, 242, 135);\n"
-                                                              "}\n"
-                                                              ""));
-        clear_image = new QPushButton(tab_4);
-        clear_image->setObjectName(QStringLiteral("clear_image"));
-        clear_image->setGeometry(QRect(290, 370, 91, 51));
-        clear_image->setStyleSheet(QLatin1String("QPushButton{\n"
-                                                 "qproperty-icon: url(:/assets/clear.png);\n"
-                                                 "qproperty-iconSize: 30px;\n"
-                                                 "font: 12pt \"MS Shell Dlg 2\";\n"
-                                                 "border: 2px solid;\n"
-                                                 "border-color: rgb(215, 237, 252);\n"
-                                                 "border-radius: 10px;\n"
-                                                 "}\n"
-                                                 "QPushButton:hover {\n"
-                                                 "background-color: black; \n"
-                                                 "border: 3px solid;\n"
-                                                 "border-color: rgb(215, 237, 252);\n"
-                                                 "}\n"
-                                                 "QPushButton:pressed {\n"
-                                                 "border: 4px solid;\n"
-                                                 "border-color: rgb(92, 242, 135);\n"
-                                                 "}\n"
-                                                 ""));
-        PL_image_abort = new QPushButton(tab_4);
-        PL_image_abort->setObjectName(QStringLiteral("PL_image_abort"));
-        PL_image_abort->setGeometry(QRect(310, 260, 61, 61));
-        PL_image_abort->setStyleSheet(QLatin1String("QPushButton {\n"
-                                                    "image: url(:/assets/emergency.png);\n"
-                                                    "width: 60px;\n"
-                                                    "border-radius: 30px;\n"
-                                                    "}\n"
-                                                    "QPushButton:hover {\n"
-                                                    "background-color: rgb(250, 191, 1); \n"
-                                                    "}\n"
-                                                    "QPushButton:pressed {\n"
-                                                    "background-color: rgb(0, 255, 127);\n"
-                                                    "}\n"
-                                                    ""));
-        groupBox_12 = new QGroupBox(tab_4);
+        groupBox_12 = new QGroupBox(groupBox_8);
         groupBox_12->setObjectName(QStringLiteral("groupBox_12"));
-        groupBox_12->setGeometry(QRect(10, 260, 271, 171));
+        groupBox_12->setGeometry(QRect(280, 20, 271, 201));
         gridLayoutWidget_9 = new QWidget(groupBox_12);
         gridLayoutWidget_9->setObjectName(QStringLiteral("gridLayoutWidget_9"));
-        gridLayoutWidget_9->setGeometry(QRect(10, 20, 251, 146));
+        gridLayoutWidget_9->setGeometry(QRect(10, 20, 251, 171));
         gridLayout_18 = new QGridLayout(gridLayoutWidget_9);
         gridLayout_18->setObjectName(QStringLiteral("gridLayout_18"));
         gridLayout_18->setContentsMargins(0, 0, 0, 0);
@@ -1655,11 +1624,46 @@ public:
 
         gridLayout_18->addWidget(PL_state_ack_sent, 4, 1, 1, 1);
 
-        ftx_missing_request = new QPushButton(tab_4);
+        file_transmission_button = new QPushButton(groupBox_8);
+        file_transmission_button->setObjectName(QStringLiteral("file_transmission_button"));
+        file_transmission_button->setGeometry(QRect(100, 300, 111, 101));
+        file_transmission_button->setStyleSheet(QLatin1String("QPushButton{\n"
+                                                              "qproperty-icon: url(:/assets/PLimg.png);\n"
+                                                              "qproperty-iconSize: 100px;\n"
+                                                              "font: 18pt \"MS Shell Dlg 2\";\n"
+                                                              "border: 2px solid;\n"
+                                                              "border-color: rgb(215, 237, 252);\n"
+                                                              "border-radius: 10px;\n"
+                                                              "}\n"
+                                                              "QPushButton:hover {\n"
+                                                              "background-color: black; \n"
+                                                              "border: 3px solid;\n"
+                                                              "border-color: rgb(215, 237, 252);\n"
+                                                              "}\n"
+                                                              "QPushButton:pressed {\n"
+                                                              "border: 4px solid;\n"
+                                                              "border-color: rgb(92, 242, 135);\n"
+                                                              "}\n"
+                                                              ""));
+        PL_image_abort = new QPushButton(groupBox_8);
+        PL_image_abort->setObjectName(QStringLiteral("PL_image_abort"));
+        PL_image_abort->setGeometry(QRect(20, 320, 61, 61));
+        PL_image_abort->setStyleSheet(QLatin1String("QPushButton {\n"
+                                                    "image: url(:/assets/emergency.png);\n"
+                                                    "width: 60px;\n"
+                                                    "border-radius: 30px;\n"
+                                                    "}\n"
+                                                    "QPushButton:hover {\n"
+                                                    "background-color: rgb(250, 191, 1); \n"
+                                                    "}\n"
+                                                    "QPushButton:pressed {\n"
+                                                    "background-color: rgb(0, 255, 127);\n"
+                                                    "}\n"
+                                                    ""));
+        ftx_missing_request = new QPushButton(groupBox_8);
         ftx_missing_request->setObjectName(QStringLiteral("ftx_missing_request"));
-        ftx_missing_request->setGeometry(QRect(410, 370, 221, 41));
+        ftx_missing_request->setGeometry(QRect(230, 360, 221, 41));
         ftx_missing_request->setStyleSheet(QLatin1String("QPushButton{\n"
-                                                         "font: 12pt \"MS Shell Dlg 2\";\n"
                                                          "border: 2px solid;\n"
                                                          "border-color: rgb(215, 237, 252);\n"
                                                          "border-radius: 10px;\n"
@@ -1674,6 +1678,27 @@ public:
                                                          "border-color: rgb(92, 242, 135);\n"
                                                          "}\n"
                                                          ""));
+        clear_image = new QPushButton(groupBox_8);
+        clear_image->setObjectName(QStringLiteral("clear_image"));
+        clear_image->setGeometry(QRect(450, 290, 91, 51));
+        clear_image->setStyleSheet(QLatin1String("QPushButton{\n"
+                                                 "qproperty-icon: url(:/assets/clear.png);\n"
+                                                 "qproperty-iconSize: 30px;\n"
+                                                 "font: 12pt \"MS Shell Dlg 2\";\n"
+                                                 "border: 2px solid;\n"
+                                                 "border-color: rgb(215, 237, 252);\n"
+                                                 "border-radius: 10px;\n"
+                                                 "}\n"
+                                                 "QPushButton:hover {\n"
+                                                 "background-color: black; \n"
+                                                 "border: 3px solid;\n"
+                                                 "border-color: rgb(215, 237, 252);\n"
+                                                 "}\n"
+                                                 "QPushButton:pressed {\n"
+                                                 "border: 4px solid;\n"
+                                                 "border-color: rgb(92, 242, 135);\n"
+                                                 "}\n"
+                                                 ""));
         tabWidget_2->addTab(tab_4, QString());
         label_29 = new QLabel(second_ui);
         label_29->setObjectName(QStringLiteral("label_29"));
@@ -1681,15 +1706,15 @@ public:
         label_29->setStyleSheet(QStringLiteral("image: url(:/assets/EPFL.png);"));
         logo_2 = new QLabel(second_ui);
         logo_2->setObjectName(QStringLiteral("logo_2"));
-        logo_2->setGeometry(QRect(1050, 140, 91, 81));
+        logo_2->setGeometry(QRect(1230, 220, 91, 81));
         logo_2->setStyleSheet(QStringLiteral("image: url(:/assets/Logo_Eiger.png);"));
         logo_3 = new QLabel(second_ui);
         logo_3->setObjectName(QStringLiteral("logo_3"));
-        logo_3->setGeometry(QRect(1150, 140, 71, 81));
+        logo_3->setGeometry(QRect(1240, 320, 71, 81));
         logo_3->setStyleSheet(QStringLiteral("image: url(:/assets/Logo_Matterhorn.png);"));
         label_62 = new QLabel(second_ui);
         label_62->setObjectName(QStringLiteral("label_62"));
-        label_62->setGeometry(QRect(1130, 420, 91, 431));
+        label_62->setGeometry(QRect(1290, 420, 91, 431));
         label_62->setStyleSheet(QStringLiteral("image: url(:/assets/BL.png);"));
         antenna_img = new QLabel(second_ui);
         antenna_img->setObjectName(QStringLiteral("antenna_img"));
@@ -1972,18 +1997,19 @@ public:
         tabWidget_2->setTabText(tabWidget_2->indexOf(tab_3), QApplication::translate("second_ui", "AV - GSE - PL", nullptr));
         PL_image_display->setText(QString());
         groupBox_8->setTitle(QApplication::translate("second_ui", "File Transmission", nullptr));
-        transmitter_state_panel->setText(QApplication::translate("second_ui", "...", nullptr));
+        label_5->setText(QApplication::translate("second_ui", "Rx packet counter", nullptr));
+        ftx_packet_ctr->setText(QApplication::translate("second_ui", "...", nullptr));
         transmitter_state_label->setText(QApplication::translate("second_ui", "Transmitter State", nullptr));
+        transmitter_state_panel->setText(QApplication::translate("second_ui", "...", nullptr));
         receiver_state_label->setText(QApplication::translate("second_ui", "Receiver State", nullptr));
-        receiver_state_panel->setText(QApplication::translate("second_ui", "...", nullptr));
         ftx_beginning_time->setText(QApplication::translate("second_ui", "...", nullptr));
         label_3->setText(QApplication::translate("second_ui", "Transmission time", nullptr));
+        receiver_state_panel->setText(QApplication::translate("second_ui", "...", nullptr));
         label_4->setText(QApplication::translate("second_ui", "~ Time left ", nullptr));
         ftx_time_left->setText(QApplication::translate("second_ui", "...", nullptr));
+        label_8->setText(QApplication::translate("second_ui", "Packets missed", nullptr));
+        ftx_missed_packets->setText(QApplication::translate("second_ui", "...", nullptr));
         file_transmission_progress_bar->setFormat(QApplication::translate("second_ui", "%v / %m", nullptr));
-        file_transmission_button->setText(QString());
-        clear_image->setText(QApplication::translate("second_ui", "Clear", nullptr));
-        PL_image_abort->setText(QString());
         groupBox_12->setTitle(QApplication::translate("second_ui", "File Transmission Status", nullptr));
         PL_state_file_Tx_sent->setText(QString());
         label_97->setText(QApplication::translate("second_ui", "Missing packet Request sent", nullptr));
@@ -1995,7 +2021,10 @@ public:
         PL_state_all_received->setText(QString());
         label_105->setText(QApplication::translate("second_ui", "ACK sent to PL", nullptr));
         PL_state_ack_sent->setText(QString());
+        file_transmission_button->setText(QString());
+        PL_image_abort->setText(QString());
         ftx_missing_request->setText(QApplication::translate("second_ui", "Send Missing Packet Request", nullptr));
+        clear_image->setText(QApplication::translate("second_ui", "Clear", nullptr));
         tabWidget_2->setTabText(tabWidget_2->indexOf(tab_4), QApplication::translate("second_ui", "Payload Image", nullptr));
         label_29->setText(QString());
 #ifndef QT_NO_TOOLTIP
@@ -2029,4 +2058,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // LIOTESTNNPRIO_H
+#endif // LIOTESTJKQJDS_H

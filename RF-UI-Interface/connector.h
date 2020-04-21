@@ -32,6 +32,8 @@ public:
     template<typename T>
     T eatData(ui_interface::DataType type, uint64_t val);
 
+    void reset(ui_interface::DataType type);
+
     const std::string &getImgPLfilename() const;
 
     void setImgPLfilename(const std::string &imgPLfilename);

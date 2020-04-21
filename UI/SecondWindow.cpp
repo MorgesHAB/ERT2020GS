@@ -455,6 +455,10 @@ void SecondWindow::refresh_file_transmission()
             ftx_time_left->setText(buf);
         }
     }
+    // Packet counter
+    auto Rx_packet_ctr(connector->getData<uint64_t>(ui_interface::FTX_RX_PACKET_CTR));
+    ftx_packet_ctr->setText(qstr(Rx_packet_ctr - 1));
+    ftx_missed_packets->setText(qstr((packetNbr > Rx_packet_ctr) ? packetNbr - Rx_packet_ctr - 1 : 0));
 }
 
 void SecondWindow::show_ok_X(QLabel * label, bool ok)
@@ -528,6 +532,7 @@ void SecondWindow::clear_image_pressed() {
     connector->setData(ui_interface::FILE_TRANSMISSION_CURRENT_PACKET, 0);
     ftx_beginning_time->setText("...");
     ftx_time_left->setText("...");
+    connector->reset(ui_interface::FTX_RX_PACKET_CTR);
 }
 
 void SecondWindow::image_abort_pressed() {

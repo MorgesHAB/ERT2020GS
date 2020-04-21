@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1227</width>
+    <width>1387</width>
     <height>862</height>
    </rect>
   </property>
@@ -1220,7 +1220,7 @@ background-color: rgb(16, 16, 16);
     <rect>
      <x>10</x>
      <y>390</y>
-     <width>1121</width>
+     <width>1281</width>
      <height>461</height>
     </rect>
    </property>
@@ -2413,8 +2413,8 @@ border-color: rgb(92, 242, 135);
     <widget class="QLabel" name="PL_image_display">
      <property name="geometry">
       <rect>
-       <x>400</x>
-       <y>20</y>
+       <x>570</x>
+       <y>10</y>
        <width>701</width>
        <height>411</height>
       </rect>
@@ -2434,8 +2434,8 @@ border-color: rgb(92, 242, 135);
       <rect>
        <x>10</x>
        <y>10</y>
-       <width>381</width>
-       <height>241</height>
+       <width>551</width>
+       <height>421</height>
       </rect>
      </property>
      <property name="title">
@@ -2446,13 +2446,20 @@ border-color: rgb(92, 242, 135);
        <rect>
         <x>10</x>
         <y>30</y>
-        <width>241</width>
-        <height>141</height>
+        <width>261</width>
+        <height>191</height>
        </rect>
       </property>
       <layout class="QGridLayout" name="gridLayout_4">
-       <item row="1" column="1">
-        <widget class="QLabel" name="transmitter_state_panel">
+       <item row="4" column="0">
+        <widget class="QLabel" name="label_5">
+         <property name="text">
+          <string>Rx packet counter</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QLabel" name="ftx_packet_ctr">
          <property name="text">
           <string>...</string>
          </property>
@@ -2480,6 +2487,16 @@ border-color: rgb(92, 242, 135);
          </property>
         </widget>
        </item>
+       <item row="1" column="1">
+        <widget class="QLabel" name="transmitter_state_panel">
+         <property name="text">
+          <string>...</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
        <item row="0" column="0">
         <widget class="QLabel" name="receiver_state_label">
          <property name="minimumSize">
@@ -2496,16 +2513,6 @@ border-color: rgb(92, 242, 135);
          </property>
          <property name="text">
           <string>Receiver State</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1">
-        <widget class="QLabel" name="receiver_state_panel">
-         <property name="text">
-          <string>...</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
          </property>
         </widget>
        </item>
@@ -2526,6 +2533,16 @@ border-color: rgb(92, 242, 135);
          </property>
         </widget>
        </item>
+       <item row="0" column="1">
+        <widget class="QLabel" name="receiver_state_panel">
+         <property name="text">
+          <string>...</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
        <item row="3" column="0">
         <widget class="QLabel" name="label_4">
          <property name="text">
@@ -2543,14 +2560,31 @@ border-color: rgb(92, 242, 135);
          </property>
         </widget>
        </item>
+       <item row="5" column="0">
+        <widget class="QLabel" name="label_8">
+         <property name="text">
+          <string>Packets missed</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <widget class="QLabel" name="ftx_missed_packets">
+         <property name="text">
+          <string>...</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
       </layout>
      </widget>
      <widget class="QProgressBar" name="file_transmission_progress_bar">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>190</y>
-        <width>361</width>
+        <x>20</x>
+        <y>240</y>
+        <width>491</width>
         <height>31</height>
        </rect>
       </property>
@@ -2579,11 +2613,127 @@ QProgressBar::chunk:horizontal {
        <string>%v / %m</string>
       </property>
      </widget>
+     <widget class="QGroupBox" name="groupBox_12">
+      <property name="geometry">
+       <rect>
+        <x>280</x>
+        <y>20</y>
+        <width>271</width>
+        <height>201</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>File Transmission Status</string>
+      </property>
+      <widget class="QWidget" name="gridLayoutWidget_9">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>20</y>
+         <width>251</width>
+         <height>171</height>
+        </rect>
+       </property>
+       <layout class="QGridLayout" name="gridLayout_18">
+        <item row="0" column="1">
+         <widget class="QLabel" name="PL_state_file_Tx_sent">
+          <property name="styleSheet">
+           <string notr="true">image: url(:/assets/refresh.png);</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="label_97">
+          <property name="text">
+           <string>Missing packet Request sent</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="label_100">
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+          <property name="text">
+           <string>Payload response received</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QLabel" name="PL_state_payload_response">
+          <property name="styleSheet">
+           <string notr="true">image: url(:/assets/refresh.png);</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="0">
+         <widget class="QLabel" name="label_98">
+          <property name="text">
+           <string>All Received</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_99">
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+          <property name="text">
+           <string>File Request Tx sent</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QLabel" name="PL_state_missing_request_sent">
+          <property name="styleSheet">
+           <string notr="true">image: url(:/assets/refresh.png);</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QLabel" name="PL_state_all_received">
+          <property name="styleSheet">
+           <string notr="true">image: url(:/assets/refresh.png);</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="0">
+         <widget class="QLabel" name="label_105">
+          <property name="text">
+           <string>ACK sent to PL</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="1">
+         <widget class="QLabel" name="PL_state_ack_sent">
+          <property name="styleSheet">
+           <string notr="true">image: url(:/assets/refresh.png);</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
      <widget class="QPushButton" name="file_transmission_button">
       <property name="geometry">
        <rect>
-        <x>260</x>
-        <y>50</y>
+        <x>100</x>
+        <y>300</y>
         <width>111</width>
         <height>101</height>
        </rect>
@@ -2612,18 +2762,74 @@ border-color: rgb(92, 242, 135);
        <string/>
       </property>
      </widget>
-    </widget>
-    <widget class="QPushButton" name="clear_image">
-     <property name="geometry">
-      <rect>
-       <x>290</x>
-       <y>370</y>
-       <width>91</width>
-       <height>51</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QPushButton{
+     <widget class="QPushButton" name="PL_image_abort">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>320</y>
+        <width>61</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+image: url(:/assets/emergency.png);
+width: 60px;
+border-radius: 30px;
+}
+QPushButton:hover {
+background-color: rgb(250, 191, 1); 
+}
+QPushButton:pressed {
+background-color: rgb(0, 255, 127);
+}
+</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="ftx_missing_request">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>360</y>
+        <width>221</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+border: 2px solid;
+border-color: rgb(215, 237, 252);
+border-radius: 10px;
+}
+QPushButton:hover {
+background-color: black; 
+border: 3px solid;
+border-color: rgb(215, 237, 252);
+}
+QPushButton:pressed {
+border: 4px solid;
+border-color: rgb(92, 242, 135);
+}
+</string>
+      </property>
+      <property name="text">
+       <string>Send Missing Packet Request</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="clear_image">
+      <property name="geometry">
+       <rect>
+        <x>450</x>
+        <y>290</y>
+        <width>91</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
 qproperty-icon: url(:/assets/clear.png);
 qproperty-iconSize: 30px;
 font: 12pt &quot;MS Shell Dlg 2&quot;;
@@ -2641,183 +2847,11 @@ border: 4px solid;
 border-color: rgb(92, 242, 135);
 }
 </string>
-     </property>
-     <property name="text">
-      <string>Clear</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="PL_image_abort">
-     <property name="geometry">
-      <rect>
-       <x>310</x>
-       <y>260</y>
-       <width>61</width>
-       <height>61</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QPushButton {
-image: url(:/assets/emergency.png);
-width: 60px;
-border-radius: 30px;
-}
-QPushButton:hover {
-background-color: rgb(250, 191, 1); 
-}
-QPushButton:pressed {
-background-color: rgb(0, 255, 127);
-}
-</string>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
-    <widget class="QGroupBox" name="groupBox_12">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>260</y>
-       <width>271</width>
-       <height>171</height>
-      </rect>
-     </property>
-     <property name="title">
-      <string>File Transmission Status</string>
-     </property>
-     <widget class="QWidget" name="gridLayoutWidget_9">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>20</y>
-        <width>251</width>
-        <height>146</height>
-       </rect>
       </property>
-      <layout class="QGridLayout" name="gridLayout_18">
-       <item row="0" column="1">
-        <widget class="QLabel" name="PL_state_file_Tx_sent">
-         <property name="styleSheet">
-          <string notr="true">image: url(:/assets/refresh.png);</string>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="0">
-        <widget class="QLabel" name="label_97">
-         <property name="text">
-          <string>Missing packet Request sent</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <widget class="QLabel" name="label_100">
-         <property name="styleSheet">
-          <string notr="true"/>
-         </property>
-         <property name="text">
-          <string>Payload response received</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1">
-        <widget class="QLabel" name="PL_state_payload_response">
-         <property name="styleSheet">
-          <string notr="true">image: url(:/assets/refresh.png);</string>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="0">
-        <widget class="QLabel" name="label_98">
-         <property name="text">
-          <string>All Received</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="0">
-        <widget class="QLabel" name="label_99">
-         <property name="styleSheet">
-          <string notr="true"/>
-         </property>
-         <property name="text">
-          <string>File Request Tx sent</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="1">
-        <widget class="QLabel" name="PL_state_missing_request_sent">
-         <property name="styleSheet">
-          <string notr="true">image: url(:/assets/refresh.png);</string>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="1">
-        <widget class="QLabel" name="PL_state_all_received">
-         <property name="styleSheet">
-          <string notr="true">image: url(:/assets/refresh.png);</string>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="0">
-        <widget class="QLabel" name="label_105">
-         <property name="text">
-          <string>ACK sent to PL</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="1">
-        <widget class="QLabel" name="PL_state_ack_sent">
-         <property name="styleSheet">
-          <string notr="true">image: url(:/assets/refresh.png);</string>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-       </item>
-      </layout>
+      <property name="text">
+       <string>Clear</string>
+      </property>
      </widget>
-    </widget>
-    <widget class="QPushButton" name="ftx_missing_request">
-     <property name="geometry">
-      <rect>
-       <x>410</x>
-       <y>370</y>
-       <width>221</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QPushButton{
-border: 2px solid;
-border-color: rgb(215, 237, 252);
-border-radius: 10px;
-}
-QPushButton:hover {
-background-color: black; 
-border: 3px solid;
-border-color: rgb(215, 237, 252);
-}
-QPushButton:pressed {
-border: 4px solid;
-border-color: rgb(92, 242, 135);
-}
-</string>
-     </property>
-     <property name="text">
-      <string>Send Missing Packet Request</string>
-     </property>
     </widget>
    </widget>
   </widget>
@@ -2840,8 +2874,8 @@ border-color: rgb(92, 242, 135);
   <widget class="QLabel" name="logo_2">
    <property name="geometry">
     <rect>
-     <x>1050</x>
-     <y>140</y>
+     <x>1230</x>
+     <y>220</y>
      <width>91</width>
      <height>81</height>
     </rect>
@@ -2859,8 +2893,8 @@ border-color: rgb(92, 242, 135);
   <widget class="QLabel" name="logo_3">
    <property name="geometry">
     <rect>
-     <x>1150</x>
-     <y>140</y>
+     <x>1240</x>
+     <y>320</y>
      <width>71</width>
      <height>81</height>
     </rect>
@@ -2878,7 +2912,7 @@ border-color: rgb(92, 242, 135);
   <widget class="QLabel" name="label_62">
    <property name="geometry">
     <rect>
-     <x>1130</x>
+     <x>1290</x>
      <y>420</y>
      <width>91</width>
      <height>431</height>
