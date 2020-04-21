@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'LioTestWJuvbm.ui'
+** Form generated from reading UI file 'LioTestnNpRIo.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.11.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef LIOTESTWJUVBM_H
-#define LIOTESTWJUVBM_H
+#ifndef LIOTESTNNPRIO_H
+#define LIOTESTNNPRIO_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
@@ -254,6 +254,7 @@ public:
     QLabel *PL_state_all_received;
     QLabel *label_105;
     QLabel *PL_state_ack_sent;
+    QPushButton *ftx_missing_request;
     QLabel *label_29;
     QLabel *logo_2;
     QLabel *logo_3;
@@ -441,6 +442,7 @@ public:
 
         label_6 = new QLabel(gridLayoutWidget_3);
         label_6->setObjectName(QStringLiteral("label_6"));
+        label_6->setMaximumSize(QSize(309, 16777215));
         label_6->setStyleSheet(QStringLiteral("color: rgb(199, 214, 255);"));
 
         gridLayout_12->addWidget(label_6, 0, 0, 1, 2);
@@ -555,7 +557,7 @@ public:
 
         gridLayoutWidget_4 = new QWidget(groupBox_7);
         gridLayoutWidget_4->setObjectName(QStringLiteral("gridLayoutWidget_4"));
-        gridLayoutWidget_4->setGeometry(QRect(10, 190, 311, 111));
+        gridLayoutWidget_4->setGeometry(QRect(10, 190, 311, 116));
         gridLayout_10 = new QGridLayout(gridLayoutWidget_4);
         gridLayout_10->setObjectName(QStringLiteral("gridLayout_10"));
         gridLayout_10->setContentsMargins(0, 0, 0, 0);
@@ -1076,7 +1078,7 @@ public:
         groupBox_2->setGeometry(QRect(340, 20, 181, 271));
         gridLayoutWidget_5 = new QWidget(groupBox_2);
         gridLayoutWidget_5->setObjectName(QStringLiteral("gridLayoutWidget_5"));
-        gridLayoutWidget_5->setGeometry(QRect(10, 30, 131, 231));
+        gridLayoutWidget_5->setGeometry(QRect(10, 30, 131, 236));
         gridLayout_15 = new QGridLayout(gridLayoutWidget_5);
         gridLayout_15->setObjectName(QStringLiteral("gridLayout_15"));
         gridLayout_15->setContentsMargins(0, 0, 0, 0);
@@ -1191,7 +1193,7 @@ public:
         groupBox_6->setGeometry(QRect(560, 240, 241, 151));
         gridLayoutWidget_2 = new QWidget(groupBox_6);
         gridLayoutWidget_2->setObjectName(QStringLiteral("gridLayoutWidget_2"));
-        gridLayoutWidget_2->setGeometry(QRect(10, 20, 221, 121));
+        gridLayoutWidget_2->setGeometry(QRect(10, 20, 236, 121));
         gridLayout = new QGridLayout(gridLayoutWidget_2);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
         gridLayout->setContentsMargins(0, 0, 0, 0);
@@ -1329,7 +1331,7 @@ public:
         groupBox_5->setGeometry(QRect(820, 20, 211, 281));
         gridLayoutWidget_7 = new QWidget(groupBox_5);
         gridLayoutWidget_7->setObjectName(QStringLiteral("gridLayoutWidget_7"));
-        gridLayoutWidget_7->setGeometry(QRect(10, 30, 161, 231));
+        gridLayoutWidget_7->setGeometry(QRect(10, 30, 161, 236));
         gridLayout_17 = new QGridLayout(gridLayoutWidget_7);
         gridLayout_17->setObjectName(QStringLiteral("gridLayout_17"));
         gridLayout_17->setContentsMargins(0, 0, 0, 0);
@@ -1574,7 +1576,7 @@ public:
                                                  ""));
         PL_image_abort = new QPushButton(tab_4);
         PL_image_abort->setObjectName(QStringLiteral("PL_image_abort"));
-        PL_image_abort->setGeometry(QRect(320, 280, 61, 61));
+        PL_image_abort->setGeometry(QRect(310, 260, 61, 61));
         PL_image_abort->setStyleSheet(QLatin1String("QPushButton {\n"
                                                     "image: url(:/assets/emergency.png);\n"
                                                     "width: 60px;\n"
@@ -1592,7 +1594,7 @@ public:
         groupBox_12->setGeometry(QRect(10, 260, 271, 171));
         gridLayoutWidget_9 = new QWidget(groupBox_12);
         gridLayoutWidget_9->setObjectName(QStringLiteral("gridLayoutWidget_9"));
-        gridLayoutWidget_9->setGeometry(QRect(10, 20, 251, 141));
+        gridLayoutWidget_9->setGeometry(QRect(10, 20, 251, 146));
         gridLayout_18 = new QGridLayout(gridLayoutWidget_9);
         gridLayout_18->setObjectName(QStringLiteral("gridLayout_18"));
         gridLayout_18->setContentsMargins(0, 0, 0, 0);
@@ -1653,6 +1655,25 @@ public:
 
         gridLayout_18->addWidget(PL_state_ack_sent, 4, 1, 1, 1);
 
+        ftx_missing_request = new QPushButton(tab_4);
+        ftx_missing_request->setObjectName(QStringLiteral("ftx_missing_request"));
+        ftx_missing_request->setGeometry(QRect(410, 370, 221, 41));
+        ftx_missing_request->setStyleSheet(QLatin1String("QPushButton{\n"
+                                                         "font: 12pt \"MS Shell Dlg 2\";\n"
+                                                         "border: 2px solid;\n"
+                                                         "border-color: rgb(215, 237, 252);\n"
+                                                         "border-radius: 10px;\n"
+                                                         "}\n"
+                                                         "QPushButton:hover {\n"
+                                                         "background-color: black; \n"
+                                                         "border: 3px solid;\n"
+                                                         "border-color: rgb(215, 237, 252);\n"
+                                                         "}\n"
+                                                         "QPushButton:pressed {\n"
+                                                         "border: 4px solid;\n"
+                                                         "border-color: rgb(92, 242, 135);\n"
+                                                         "}\n"
+                                                         ""));
         tabWidget_2->addTab(tab_4, QString());
         label_29 = new QLabel(second_ui);
         label_29->setObjectName(QStringLiteral("label_29"));
@@ -1974,6 +1995,7 @@ public:
         PL_state_all_received->setText(QString());
         label_105->setText(QApplication::translate("second_ui", "ACK sent to PL", nullptr));
         PL_state_ack_sent->setText(QString());
+        ftx_missing_request->setText(QApplication::translate("second_ui", "Send Missing Packet Request", nullptr));
         tabWidget_2->setTabText(tabWidget_2->indexOf(tab_4), QApplication::translate("second_ui", "Payload Image", nullptr));
         label_29->setText(QString());
 #ifndef QT_NO_TOOLTIP
@@ -2007,4 +2029,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // LIOTESTWJUVBM_H
+#endif // LIOTESTNNPRIO_H

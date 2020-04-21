@@ -47,6 +47,7 @@ public slots:
     void send_msg_pressed();
     void clear_image_pressed();
     void image_abort_pressed();
+    void ftx_missing_request_pressed();
 
 private:
     enum Theme {WHITE_ON_BLACK = 0, GREEN_ON_BLACK, BLACK_ON_WHITE, THEME_COUNT};

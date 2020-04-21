@@ -52,6 +52,10 @@ void File::print() const {
 bool File::updateTx(std::shared_ptr<Connector> connector) {
     if (connector->eatData<bool>(ui_interface::FILE_TRANSMISSION_ABORT_ORDER, false))
         myState = ABORT;
+    if (connector->eatData<bool>(ui_interface::FTX_SEND_MISSING_REQUEST, false)) {
+        if (myState == WAITING_PACKET)
+                myState = SEND_MISSING_PACKET_REQUEST;
+    }
 
     switch (myState) { // if myState was ... then ...
         /////// On the File Receiver // updated only if need to send request (connector order)
@@ -66,6 +70,7 @@ bool File::updateTx(std::shared_ptr<Connector> connector) {
             sendingData = false;
             break;
         case SEND_MISSING_PACKET_REQUEST:
+            sendingData = true;
             missingPacketNbr.clear();
             for (Number i(0); i < nbrTotPacket && missingPacketNbr.size() < bytePerPacket / sizeof(Number); ++i) {
                 if (!file[i]) missingPacketNbr.push_back(i);
@@ -85,6 +90,9 @@ bool File::updateTx(std::shared_ptr<Connector> connector) {
             connector->setImgPLfilename(fileName);
             connector->setData(ui_interface::FILE_TRANSMISSION_ALL_RECEIVED, true);
             connector->setData(ui_interface::FTX_ACK_SENT, true);
+            break;
+        case ABORT:
+            sendingData = true; // send abort
             break;
         /////// On the File Transmitter : update FSM state only at Reception
         case WAITING_MISSING_PACKET_REQUEST:
@@ -202,17 +210,6 @@ bool File::updateRx(std::shared_ptr<Connector> connector) {
     if (connector->eatData<bool>(ui_interface::FILE_TRANSMISSION_ABORT_ORDER, false))
         myState = ABORT;
 
-    switch (myState) {
-        /////// On the File Receiver
-        case SEND_MISSING_PACKET_REQUEST:
-            sendingData = true;
-            break;
-        case ABORT:
-            sendingData = true; // send abort
-            break;
-        default:
-            break;
-    }
     switch (receivedState) {
         /////// On the File Transmitter
         case SEND_MISSING_PACKET_REQUEST:

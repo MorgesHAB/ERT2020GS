@@ -105,6 +105,8 @@ namespace ui_interface {
             FTX_MISSING_REQUEST_SENT,
             FTX_ALL_RECEIVED,
             FTX_ACK_SENT,
+            // Gui command
+            FTX_SEND_MISSING_REQUEST,   // bool eaten
 
 
         /// Avionics status variables

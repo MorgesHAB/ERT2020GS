@@ -329,6 +329,7 @@ void SecondWindow::initialize_slots_signals()
     connect(send_msg,SIGNAL(pressed()), this, SLOT(send_msg_pressed()));
     connect(clear_image,SIGNAL(pressed()), this, SLOT(clear_image_pressed()));
     connect(PL_image_abort,SIGNAL(pressed()), this, SLOT(image_abort_pressed()));
+    connect(ftx_missing_request,SIGNAL(pressed()), this, SLOT(ftx_missing_request_pressed()));
 }
 
 void SecondWindow::refresh_telemetry()
@@ -532,6 +533,10 @@ void SecondWindow::clear_image_pressed() {
 void SecondWindow::image_abort_pressed() {
     connector->setData(ui_interface::FILE_TRANSMISSION_ABORT_ORDER, true);
     FTX_beginning_time = 0;
+}
+
+void SecondWindow::ftx_missing_request_pressed() {
+    connector->setData(ui_interface::FTX_SEND_MISSING_REQUEST, true);
 }
 
 #ifdef SOUND_ON
