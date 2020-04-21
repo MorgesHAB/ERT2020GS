@@ -10,7 +10,7 @@
 #include <cstdlib>
 #include "Picture.h"
 
-Picture::Picture(uint8_t bytePerPacket, const std::string &fileName, uint16_t width,
+Picture::Picture(const std::string &fileName, uint8_t bytePerPacket, uint16_t width,
                  uint16_t height) : File(fileName, bytePerPacket),
                                     width(width), height(height), imgCapturedNbr(0) {}
 

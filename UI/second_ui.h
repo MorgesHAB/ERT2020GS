@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'LioTestGyrfgH.ui'
+** Form generated from reading UI file 'LioTestWJuvbm.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.11.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef LIOTESTGYRFGH_H
-#define LIOTESTGYRFGH_H
+#ifndef LIOTESTWJUVBM_H
+#define LIOTESTWJUVBM_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
@@ -86,7 +86,7 @@ public:
     QComboBox *serialport_selector;
     QPushButton *valve_button;
     QLabel *label_61;
-    QLineEdit *lineEdit_3;
+    QLineEdit *password_line_edit;
     QPushButton *change_theme;
     QPushButton *reset_button;
     QLabel *serialport_status;
@@ -543,7 +543,7 @@ public:
                                                      "	background: qlineargradient(x1: 0, y1: 0.5, x2: 1, y2: 		0.5, stop: 0 rgb(39, 68, 255), stop: 1 rgb(16, 255, 72));\n"
                                                      "	border-radius: 5px;\n"
                                                      "}"));
-        all_packet_rate->setMaximum(30);
+        all_packet_rate->setMaximum(50);
         all_packet_rate->setValue(28);
 
         gridLayout_12->addWidget(all_packet_rate, 1, 1, 1, 1);
@@ -701,10 +701,11 @@ public:
         label_61 = new QLabel(tab);
         label_61->setObjectName(QStringLiteral("label_61"));
         label_61->setGeometry(QRect(500, 100, 111, 20));
-        lineEdit_3 = new QLineEdit(tab);
-        lineEdit_3->setObjectName(QStringLiteral("lineEdit_3"));
-        lineEdit_3->setGeometry(QRect(500, 130, 113, 25));
-        lineEdit_3->setReadOnly(false);
+        password_line_edit = new QLineEdit(tab);
+        password_line_edit->setObjectName(QStringLiteral("password_line_edit"));
+        password_line_edit->setGeometry(QRect(500, 130, 113, 25));
+        password_line_edit->setDragEnabled(false);
+        password_line_edit->setReadOnly(false);
         change_theme = new QPushButton(tab);
         change_theme->setObjectName(QStringLiteral("change_theme"));
         change_theme->setGeometry(QRect(10, 230, 158, 27));
@@ -1803,7 +1804,7 @@ public:
 #ifndef QT_NO_TOOLTIP
         received_pack_cnt_label->setToolTip(QApplication::translate("second_ui", "<html><head/><body><p>The count of the received packets from the start of the program</p></body></html>", nullptr));
 #endif // QT_NO_TOOLTIP
-        received_pack_cnt_label->setText(QApplication::translate("second_ui", "Received Packet Count", nullptr));
+        received_pack_cnt_label->setText(QApplication::translate("second_ui", "Total Rx packet from start", nullptr));
 #ifndef QT_NO_TOOLTIP
         received_pack_cnt_panel->setToolTip(QApplication::translate("second_ui", "<html><head/><body><p>The count of the received packets from the start of the program</p></body></html>", nullptr));
 #endif // QT_NO_TOOLTIP
@@ -1828,7 +1829,7 @@ public:
 
         valve_button->setText(QApplication::translate("second_ui", "Valve", nullptr));
         label_61->setText(QApplication::translate("second_ui", "Enter password", nullptr));
-        lineEdit_3->setText(QString());
+        password_line_edit->setText(QString());
         change_theme->setText(QApplication::translate("second_ui", "Change Color Theme", nullptr));
 #ifndef QT_NO_TOOLTIP
         reset_button->setToolTip(QApplication::translate("second_ui", "Resets saved data", nullptr));
@@ -1957,7 +1958,7 @@ public:
         ftx_beginning_time->setText(QApplication::translate("second_ui", "...", nullptr));
         label_3->setText(QApplication::translate("second_ui", "Transmission time", nullptr));
         label_4->setText(QApplication::translate("second_ui", "~ Time left ", nullptr));
-        ftx_time_left->setText(QApplication::translate("second_ui", "28", nullptr));
+        ftx_time_left->setText(QApplication::translate("second_ui", "...", nullptr));
         file_transmission_progress_bar->setFormat(QApplication::translate("second_ui", "%v / %m", nullptr));
         file_transmission_button->setText(QString());
         clear_image->setText(QApplication::translate("second_ui", "Clear", nullptr));
@@ -2006,4 +2007,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // LIOTESTGYRFGH_H
+#endif // LIOTESTWJUVBM_H

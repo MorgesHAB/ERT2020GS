@@ -49,7 +49,7 @@ bool Datagram::updateTx(std::shared_ptr<Connector> connector) {
 }
 
 bool Datagram::updateRx(Packet *packet, std::shared_ptr<Connector> connector) {
-    delete dataPacket;      // sometimes cause seg fault ...
+    delete dataPacket;      // sometimes cause seg fault ... ||
     dataPacket = packet;
 
     bool status(true);

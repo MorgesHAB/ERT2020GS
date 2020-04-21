@@ -21,7 +21,8 @@ public:
 
     void mainRoutine();
 
-    void manageIgnitionTx(DataHandler& dataHandler, RFmodem* rFmodem);
+    void RFroutine(DataHandler& dataHandler, RFmodem* rfmodem);
+
     std::string getSerialport();
 
 private:

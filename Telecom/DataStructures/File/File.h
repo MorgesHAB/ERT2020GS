@@ -18,7 +18,14 @@
 
 class File : public Data {
 public:
-    File(const std::string &fileName, uint16_t bytePerPacket);
+    /**
+     * Data that manage to transmit a file
+     * @param fileName          The filename to transmit
+     * @param bytePerPacket     Number of pure file data per packet
+     *                          default is the maximum value
+     *                          /!\ This max depends of many parameters (protocol, software,...)
+     */
+    explicit File(const std::string &fileName, uint8_t bytePerPacket = 220); // The real max is 222
     virtual ~File() override;
 
     void write(Packet& packet) override;
@@ -42,7 +49,7 @@ private:
 
     FileTransmissionStates myState, receivedState;
 
-    uint16_t bytePerPacket;
+    uint8_t bytePerPacket;
 
     Number packetNbr;
     Number nbrTotPacket;

@@ -43,7 +43,7 @@ bool Xbee::receive(DataHandler &dataHandler) {
             uint8_t info[3];
             serialPort.read(info, 3);
             // length of the packet is stored at a specific position in Xbee protocol
-            uint16_t length(((info[1] << 8)| info[2]) + 1);
+            uint16_t length(((info[1] << 8)| info[2]) + 1); // + 1 is CRC
             Packet* packet = new Packet(length);
             serialPort.read(packet->getPacket(), length);
             return dataHandler.updateRx(packet);

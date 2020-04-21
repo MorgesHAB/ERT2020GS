@@ -9,7 +9,7 @@
 
 #include "File.h"
 
-File::File(const std::string &fileName, uint16_t bytePerPacket)
+File::File(const std::string &fileName, uint8_t bytePerPacket)
         : fileName(fileName), myState(SLEEP), receivedState(SLEEP),
           bytePerPacket(bytePerPacket), packetNbr(0), nbrTotPacket(0),
           lastPacketNbr(0), missingNbrIterator(0),
@@ -22,6 +22,8 @@ File::~File() {
 
 
 void File::print() const {
+    std::cout << "MyState : " << getStateName(myState) << "\t ReceivedState : "
+              << getStateName(receivedState) << std::endl;
     switch (receivedState) {
         case SEND_FILE_REQUEST_TO_TX:
             std::cout << "A File transmission request have been received" << std::endl;
@@ -40,7 +42,7 @@ void File::print() const {
             std::cout << "!!!!!MISSING PACKET SENT AGAIN" << std::endl;
         case SENDING_PACKET:
             std::cout << "Received File Data " << fileName << " -- Packet n° " << packetNbr
-                      << " / " << lastPacketNbr << std::endl;
+                      << " / " << nbrTotPacket - 1 << std::endl;
             break;
         default:
             break;
@@ -65,7 +67,7 @@ bool File::updateTx(std::shared_ptr<Connector> connector) {
             break;
         case SEND_MISSING_PACKET_REQUEST:
             missingPacketNbr.clear();
-            for (Number i(0); i < nbrTotPacket && missingPacketNbr.size() < bytePerPacket / 2; ++i) {
+            for (Number i(0); i < nbrTotPacket && missingPacketNbr.size() < bytePerPacket / sizeof(Number); ++i) {
                 if (!file[i]) missingPacketNbr.push_back(i);
             }
             if (missingPacketNbr.empty()) {
@@ -115,19 +117,23 @@ void File::write(Packet &packet) {
             myState = WAITING_PACKET;
             break;
         /////// On the File Transmitter
+        case INIT:
+            packet.write(nbrTotPacket);
+            packet.write(fileName);
+            myState = SENDING_PACKET;
+            break;
         case SENDING_MISSING_PACKET:
             packetNbr = missingPacketNbr[missingNbrIterator];
             // no break
         case SENDING_PACKET:
             packet.write(packetNbr);
-            if (packetNbr == 0) {
-                packet.write(fileName);
-                packet.write(nbrTotPacket);
-            }
-            if (packetNbr == nbrTotPacket - 1) packet.write(nbrByteInLastPacket);
-
-            for (uint32_t i(0); i < bytePerPacket; ++i) {
-                packet.write(file[packetNbr][i]);
+            if (packetNbr == nbrTotPacket - 1) {    // last packet
+                packet.write(nbrByteInLastPacket);
+                for (uint32_t i(0); i < nbrByteInLastPacket; ++i)
+                    packet.write(file[packetNbr][i]);
+            } else {
+                for (uint32_t i(0); i < bytePerPacket; ++i)
+                    packet.write(file[packetNbr][i]);
             }
             if (packetNbr == lastPacketNbr) myState = WAITING_MISSING_PACKET_REQUEST;
 
@@ -142,7 +148,7 @@ void File::write(Packet &packet) {
     }
 }
 
-// GSEOrder : parse then updateRx
+
 void File::parse(Packet &packet) {
     uint8_t statetmp;
     packet.parse(statetmp);
@@ -161,25 +167,30 @@ void File::parse(Packet &packet) {
             } while (nbr != lastPacketNbr);
             break;
         /////// On the File Receiver
+        case INIT:
+             // TODO while not init
+            packet.parse(nbrTotPacket);
+            packet.parse(fileName);
+            file.resize(nbrTotPacket, nullptr);
+            lastPacketNbr = nbrTotPacket - 1;
+            break;
         case SENDING_MISSING_PACKET:
         case SENDING_PACKET:
             packet.parse(packetNbr);
-            if (packetNbr == 0) { // TODO while not received packet 0
-                packet.parse(fileName);
-                packet.parse(nbrTotPacket);
-                file.resize(nbrTotPacket, nullptr);
-                lastPacketNbr = nbrTotPacket - 1;
-            }
             if (packetNbr < nbrTotPacket) { //security seg fault
                 file[packetNbr] = new uint8_t[bytePerPacket];
-                if (packetNbr == nbrTotPacket - 1) packet.parse(nbrByteInLastPacket);
 
-                for (uint32_t i(0); i < bytePerPacket; ++i) {
-                    packet.parse(file[packetNbr][i]);
+                if (packetNbr == nbrTotPacket - 1) {    // last packet
+                    packet.parse(nbrByteInLastPacket);
+                    for (uint32_t i(0); i < nbrByteInLastPacket; ++i)
+                        packet.parse(file[packetNbr][i]);
+                } else {
+                    for (uint32_t i(0); i < bytePerPacket; ++i)
+                        packet.parse(file[packetNbr][i]);
                 }
-                if (packetNbr == lastPacketNbr) { // max Nbr or last of missing
+
+                if (packetNbr == lastPacketNbr) // max Nbr or last of missing
                     myState = SEND_MISSING_PACKET_REQUEST;
-                }
             }
             break;
         default:
@@ -211,7 +222,7 @@ bool File::updateRx(std::shared_ptr<Connector> connector) {
         case SEND_FILE_REQUEST_TO_TX:
             if (myState == SLEEP) {
                 if (importFile()) {
-                    myState = SENDING_PACKET;
+                    myState = INIT;
                     sendingData = true;
                 } else {
                     myState = ABORT;
@@ -227,14 +238,11 @@ bool File::updateRx(std::shared_ptr<Connector> connector) {
         default:
             break;
     }
-    connector->setData(ui_interface::FILE_TRANSMISSION_TOTAL_PACKETS, lastPacketNbr);
+    connector->setData(ui_interface::FILE_TRANSMISSION_TOTAL_PACKETS, nbrTotPacket - 1);
     connector->setData(ui_interface::FILE_TRANSMISSION_CURRENT_PACKET, packetNbr);
     connector->setData(ui_interface::FILE_TRANSMISSION_MY_STATE, myState);
     connector->setData(ui_interface::FILE_TRANSMISSION_RECEIVED_STATE, receivedState);
     connector->setData(ui_interface::FTX_PL_RESPONSE, true);
-    std::cout << "MyState : " << getStateName(myState) << "\t ReceivedState : "
-              << getStateName(receivedState) << std::endl;
-
     return true;
 }
 

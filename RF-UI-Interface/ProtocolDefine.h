@@ -31,6 +31,9 @@ namespace ui_interface {
         RSSI_READ_ORDER,
         RSSI_VALUE, // uint8_t           **Reports the RSSI in -dBm of the last received RF data packet.
 
+        // logging
+        LOGGING_ACTIVE, // bool - GUI button
+
         //////////////// RF modem
         /// Ignition
         IGNITION_STATUS,            // bool        ** true :  FIRE,  false : ABORTED
@@ -55,6 +58,7 @@ namespace ui_interface {
         DATAGRAM_ID, // uint8_t            **The ID of the last packet received
         TX_PACKET_NR,    // uint32_t         **This is the last packet's number. // TODO delete (RF no longer use this)
         TIMESTAMP, // time_t             **The Time of the last packet received
+        TOTAL_RX_PACKET_CTR, //uint64_t         just increment when received a packet
 
         /// GPS Data Structure
         GPS_ALTITUDE,    // float                **The last altitude reading

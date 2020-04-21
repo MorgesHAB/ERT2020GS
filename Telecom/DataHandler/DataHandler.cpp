@@ -76,8 +76,8 @@ DataHandler::DataHandler(std::shared_ptr<Connector> connector)
 
         dataHandler[PL_ORDER]->add(new PLOrder);
 
-        dataHandler[PL_IMAGE]->add(new File("video1min.mp4", 220));
-        //dataHandler[PL_IMAGE]->add(new Picture(200, "livePic.jpg", 600, 600));
+        dataHandler[PL_IMAGE]->add(new File("Yann.png"));
+        //dataHandler[PL_IMAGE]->add(new Picture("livePic.jpg", 220, 600, 600));
 
     //// Propulsion Datagram
         dataHandler[PROPULSION]->add(new PPPressure);
@@ -131,7 +131,10 @@ bool DataHandler::updateTx(DatagramType::DatagramID type) {
 bool DataHandler::updateRx(Packet *packet) {
     if (packet->getPacket()[0] == 0x90) {
         lastRxID = (DatagramType::DatagramID) packet->getPacket()[12]; // Position of Datagram ID in packet
-        return dataHandler[lastRxID]->updateRx(packet, connector);
+        if (lastRxID > 0 && lastRxID < DatagramType::TOTAL_NBR_OF_TYPES) // ID valid ?
+            return dataHandler[lastRxID]->updateRx(packet, connector);
+        else
+            std::cout << "wrong DatagramID " << lastRxID << std::endl;
     }
     else if (packet->getPacket()[0] == 0x88) { // RSSI command response
         std::cout << "RSSI = -" << +packet->getPacket()[5] << " dBm" << std::endl;

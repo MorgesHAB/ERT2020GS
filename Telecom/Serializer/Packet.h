@@ -22,36 +22,91 @@
 
 #include <iostream>
 
-#define PACKET_SIZE_ALLOC_TX_PART       255
+#define PACKET_SIZE_ALLOC_TX_PART       255             // Xbee maximum size
 
 class Packet {
 public:
+    /**
+     * At Tx the size will be calculated automatically by calling write functions
+     * At Rx the size is specified
+     * Warning : depending on your module, there may be a maximum limit eg: 256 Bytes
+     * @param packetSize
+     */
     explicit Packet(size_t packetSize = PACKET_SIZE_ALLOC_TX_PART);
     virtual ~Packet();
-    void restart();
 
-    void write(std::string& msg);
-    void parse(std::string& msg);
-
+    /**
+     * write Data in the packet
+     * @tparam T    The basic type of your Data  eg: float, int, char, bool, uint16_t
+     * @param t     The variable containing the data you want to write
+     */
     template<typename T>
     void write(T t);
+    /**
+     * read tha Data in the packet
+     * @tparam T    The basic type of your Data  eg: float, int, char, bool, uint16_t
+     * @param t     The variable where data will be stored
+     */
     template<typename T>
     void parse(T &t);
 
+    /**
+     * overloaded function for sending strings
+     * Protocol : write string size (1 byte) + write char by char
+     * @param msg       The variable containing a sentence to send
+     */
+    void write(std::string &msg);
+
+    /**
+     * overloaded function for receiving strings
+     * @param msg       The variable where the string will be stored
+     */
+    void parse(std::string &msg);
+
+    /**
+     * Get the packet containing your data - will be use by your RF library for Tx & Rx
+     * @return      pointer on the packet
+     */
     uint8_t *getPacket();
+
+    /**
+     * Get you packet size, used for Tx
+     * Size is encapsulated data, the user does not take care of it
+     * @return      packet size (bytes)
+     */
     uint8_t getSize() const;
+
+    /**
+     * Print packet raw data - byte per byte
+     */
     void printDebug() const;
 
+    void restart();         // not used
+
 private:
+    /**
+     * Write a Data in an array of byte (uint8_t) => use binary shifting 1-2-4-8 bytes
+     * @tparam R    The type of data according to which the data will be encoded
+     * @tparam T    The base data type
+     * @param t     The data you want to write
+     */
     template<typename R, typename T>
     void writeY(T t);
+    /**
+     * Parse a sequence of byte (uint8_t) and concatenates to a sequence of bytes
+     * and then to the specified data type T
+     * @tparam R    The data type according to which the data will be encoded 1-2-4-8 bytes
+     * @tparam T    The base data type
+     * @param t     The variable where data will be stored
+     */
     template<typename R, typename T>
     void parseY(T &t);
 
-    uint8_t* packet;
-    uint8_t* packetPosition;
-    size_t packetSize;
+    uint8_t* packet;            //!< byte array
+    uint8_t* packetPosition;    //! byte array current index
+    size_t packetSize;          //! use for reception
 };
+
 
 // Template functions definitions (not in .cpp file because of link errors)
 template<typename T>

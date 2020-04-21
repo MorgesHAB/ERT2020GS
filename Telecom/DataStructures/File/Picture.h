@@ -15,8 +15,8 @@
 
 class Picture : public File {
 public:
-    explicit Picture(uint8_t bytePerPacket,
-                     const std::string &fileName = "picture.jpg",
+    explicit Picture(const std::string &fileName = "picture.jpg",
+                     uint8_t bytePerPacket = 220,
                      uint16_t width = 500,
                      uint16_t height = 500);
 

@@ -22,6 +22,7 @@ enum FileTransmissionStates {
     SEND_MISSING_PACKET_REQUEST,
     ALL_RECEIVED,
     // Tx State
+    INIT,
     SENDING_PACKET,
     WAITING_MISSING_PACKET_REQUEST,
     SENDING_MISSING_PACKET
@@ -30,10 +31,12 @@ enum FileTransmissionStates {
 static std::string getStateName(int state) {
     switch (state) {
         case SLEEP: return "SLEEP";
+        case ABORT: return "ABORT";
         case SEND_FILE_REQUEST_TO_TX: return "SEND FILE REQUEST TO TX";
         case WAITING_PACKET: return "WAITING PACKET";
         case SEND_MISSING_PACKET_REQUEST: return "SEND MISSING PACKET REQUEST";
         case ALL_RECEIVED: return "ALL RECEIVED";
+        case INIT: return "INIT";
         case SENDING_PACKET: return "SENDING PACKET";
         case WAITING_MISSING_PACKET_REQUEST: return "WAITING MISSING PACKET REQUEST";
         case SENDING_MISSING_PACKET: return "SENDING MISSING PACKET";

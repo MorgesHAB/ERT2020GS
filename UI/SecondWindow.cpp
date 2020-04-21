@@ -361,7 +361,7 @@ void SecondWindow::refresh_com()
     //last_packet_number_panel->setText(qstr(connector->getData<uint32_t>(TX_PACKET_NR)));
     std::string str(DatagramType::getDatagramIDName(connector->getData<uint8_t>(ui_interface::DATAGRAM_ID)));
     //last_datagram_id_panel->setText(QString::fromStdString(str));
-    received_pack_cnt_panel->setText(qstr(connector->getData<uint32_t>(RX_PACKET_CTR)));
+    received_pack_cnt_panel->setText(qstr(connector->getData<uint64_t>(TOTAL_RX_PACKET_CTR)));
     // this->speed_lcd->display(connector->getData<float>(SPEED)); no speed
     time_t timestamp(connector->getData<time_t>(TIMESTAMP));
     char tbuffer[32];
@@ -413,7 +413,7 @@ void SecondWindow::refresh_file_transmission()
     receiver_state_panel->setText(QString::fromStdString(getStateName(state)));
 
     auto packetTotNbr(connector->getData<uint32_t>(ui_interface::FILE_TRANSMISSION_TOTAL_PACKETS));
-    auto packetNbr(connector->getData<uint16_t>(ui_interface::FILE_TRANSMISSION_CURRENT_PACKET));
+    auto packetNbr(connector->getData<uint32_t>(ui_interface::FILE_TRANSMISSION_CURRENT_PACKET));
     file_transmission_progress_bar->setMaximum(packetTotNbr);
     file_transmission_progress_bar->setValue(packetNbr);
 
@@ -507,6 +507,8 @@ void SecondWindow::rssi_get_pressed() {
 void SecondWindow::send_msg_pressed() {
     // for test
     connector->setData(ui_interface::RSSI_VALUE, (uint8_t) (rand() % 100));
+    //password_line_edit->setText("hey !!");
+    std::cout << password_line_edit->text().toStdString() << std::endl;
 }
 
 void SecondWindow::clear_image_pressed() {

@@ -34,9 +34,7 @@ void Header::parse(Packet &packet) {
 bool Header::updateRx(std::shared_ptr<Connector> connector) {
     using namespace DatagramType;
 
-    bool datagramIDcorrect(datagramID > 0 && datagramID < TOTAL_NBR_OF_TYPES);
-
-    if (!(datagramIDcorrect && myRxDelimiter[0] == 'E' && myRxDelimiter[1] == 'P' &&
+    if (!(myRxDelimiter[0] == 'E' && myRxDelimiter[1] == 'P' &&
           myRxDelimiter[2] == 'F' && myRxDelimiter[3] == 'L')) {
         connector->incrementData(ui_interface::CORRUPTED_PACKET_CTR);
         return false;
@@ -47,6 +45,7 @@ bool Header::updateRx(std::shared_ptr<Connector> connector) {
 
     connector->setData(ui_interface::TIME_SINCE_LAST_RX_PACKET, std::time(nullptr));
     // Increment counter per subsystem for GUI packet rate slider
+    connector->incrementData(ui_interface::TOTAL_RX_PACKET_CTR);
     connector->incrementData(ui_interface::PACKET_CTR_ALL);
     switch (datagramID) {
         case AV_TELEMETRY:
