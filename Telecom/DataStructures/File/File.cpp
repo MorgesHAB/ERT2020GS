@@ -13,7 +13,7 @@ File::File(const std::string &fileName, uint8_t bytePerPacket)
         : fileName(fileName), myState(SLEEP), receivedState(SLEEP),
           bytePerPacket(bytePerPacket), packetNbr(0), nbrTotPacket(0),
           lastPacketNbr(0), missingNbrIterator(0),
-          nbrByteInLastPacket(0), sendingData(false) {}
+          nbrByteInLastPacket(0), sendingData(false), nbrRxFileCounter(0) {}
 
 File::~File() {
     for (auto& part : file) delete[] part;
@@ -50,11 +50,14 @@ void File::print() const {
 }
 
 bool File::updateTx(std::shared_ptr<Connector> connector) {
+    // File Receiver Gui button check
     if (connector->eatData<bool>(ui_interface::FILE_TRANSMISSION_ABORT_ORDER, false))
         myState = ABORT;
-    if (connector->eatData<bool>(ui_interface::FTX_SEND_MISSING_REQUEST, false)) {
-        if (myState == WAITING_PACKET)
-                myState = SEND_MISSING_PACKET_REQUEST;
+    if (myState == WAITING_PACKET) {
+        if (connector->eatData<bool>(ui_interface::FTX_SEND_MISSING_REQUEST, false))
+            myState = SEND_MISSING_PACKET_REQUEST;
+        if (connector->eatData<bool>(ui_interface::FTX_SAVE_FILE, false))
+            exportFile("Save");
     }
 
     switch (myState) { // if myState was ... then ...
@@ -86,7 +89,7 @@ bool File::updateTx(std::shared_ptr<Connector> connector) {
             }
         case ALL_RECEIVED:
             std::cout << "ACK : Every Packet have been received correctly" << std::endl;
-            exportFile();
+            exportFile("Rx" + std::to_string(++nbrRxFileCounter));
             connector->setImgPLfilename(fileName);
             connector->setData(ui_interface::FILE_TRANSMISSION_ALL_RECEIVED, true);
             connector->setData(ui_interface::FTX_ACK_SENT, true);
@@ -251,7 +254,7 @@ bool File::updateRx(std::shared_ptr<Connector> connector) {
 
 bool File::importFile() {
     // Store all bytes of the file
-    std::ifstream fileIn(fileName, std::ios::in | std::ios::binary);
+    std::ifstream fileIn(fileName, std::ios::in | std::ios::binary); // read in binary
     file.clear();
     if (fileIn) {
         Number nbr(0);
@@ -274,9 +277,9 @@ bool File::importFile() {
     }
 }
 
-void File::exportFile() {
-    fileName.replace(0, fileName.rfind('.'),
-                     fileName.substr(0, fileName.rfind('.')) + "Rx"); // <--replace with
+void File::exportFile(std::string filenameAdd) {
+    fileName.replace(0, fileName.rfind('.'), fileName.substr(0, fileName.rfind('.')) +
+                                             filenameAdd); // <--replace with
     std::ofstream fileOut(fileName, std::ios::out | std::ios::binary);
 
     if (fileOut) {

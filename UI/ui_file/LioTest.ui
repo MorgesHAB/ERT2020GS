@@ -2852,6 +2852,36 @@ border-color: rgb(92, 242, 135);
        <string>Clear</string>
       </property>
      </widget>
+     <widget class="QPushButton" name="ftx_save_file">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>300</y>
+        <width>171</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+border: 2px solid;
+border-color: rgb(215, 237, 252);
+border-radius: 10px;
+}
+QPushButton:hover {
+background-color: black; 
+border: 3px solid;
+border-color: rgb(215, 237, 252);
+}
+QPushButton:pressed {
+border: 4px solid;
+border-color: rgb(92, 242, 135);
+}
+</string>
+      </property>
+      <property name="text">
+       <string>Save current File Data</string>
+      </property>
+     </widget>
     </widget>
    </widget>
   </widget>

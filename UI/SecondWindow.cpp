@@ -330,6 +330,7 @@ void SecondWindow::initialize_slots_signals()
     connect(clear_image,SIGNAL(pressed()), this, SLOT(clear_image_pressed()));
     connect(PL_image_abort,SIGNAL(pressed()), this, SLOT(image_abort_pressed()));
     connect(ftx_missing_request,SIGNAL(pressed()), this, SLOT(ftx_missing_request_pressed()));
+    connect(ftx_save_file,SIGNAL(pressed()), this, SLOT(ftx_save_file_pressed()));
 }
 
 void SecondWindow::refresh_telemetry()
@@ -457,7 +458,7 @@ void SecondWindow::refresh_file_transmission()
     }
     // Packet counter
     auto Rx_packet_ctr(connector->getData<uint64_t>(ui_interface::FTX_RX_PACKET_CTR));
-    ftx_packet_ctr->setText(qstr(Rx_packet_ctr - 1));
+    ftx_packet_ctr->setText(qstr((Rx_packet_ctr > 0) ? Rx_packet_ctr - 1 : 0));
     ftx_missed_packets->setText(qstr((packetNbr > Rx_packet_ctr) ? packetNbr - Rx_packet_ctr - 1 : 0));
 }
 
@@ -542,6 +543,10 @@ void SecondWindow::image_abort_pressed() {
 
 void SecondWindow::ftx_missing_request_pressed() {
     connector->setData(ui_interface::FTX_SEND_MISSING_REQUEST, true);
+}
+
+void SecondWindow::ftx_save_file_pressed() {
+    connector->setData(ui_interface::FTX_SAVE_FILE, true);
 }
 
 #ifdef SOUND_ON

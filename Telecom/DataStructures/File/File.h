@@ -36,7 +36,7 @@ public:
     bool updateRx(std::shared_ptr<Connector> connector) override;
 
     virtual bool importFile();
-    void exportFile();
+    void exportFile(std::string filenameAdd = "");
 
 protected:
     std::string fileName;
@@ -61,7 +61,9 @@ private:
     std::vector<uint8_t*> file;
 
     std::vector<Number> missingPacketNbr;
-    
+
+    int nbrRxFileCounter;
+
     bool sendingData;
 };
 

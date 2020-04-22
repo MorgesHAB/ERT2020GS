@@ -108,6 +108,7 @@ namespace ui_interface {
             // Gui command
             FTX_SEND_MISSING_REQUEST,   // bool eaten
             FTX_RX_PACKET_CTR,      // uint64_t Counter
+            FTX_SAVE_FILE,  // bool eaten
 
         /// Avionics status variables
         STATUS_AV_ID,

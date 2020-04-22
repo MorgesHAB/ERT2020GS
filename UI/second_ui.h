@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'LioTestJKQJdS.ui'
+** Form generated from reading UI file 'LioTestCBKtHd.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.11.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef LIOTESTJKQJDS_H
-#define LIOTESTJKQJDS_H
+#ifndef LIOTESTCBKTHD_H
+#define LIOTESTCBKTHD_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
@@ -259,6 +259,7 @@ public:
     QPushButton *PL_image_abort;
     QPushButton *ftx_missing_request;
     QPushButton *clear_image;
+    QPushButton *ftx_save_file;
     QLabel *label_29;
     QLabel *logo_2;
     QLabel *logo_3;
@@ -1699,6 +1700,24 @@ public:
                                                  "border-color: rgb(92, 242, 135);\n"
                                                  "}\n"
                                                  ""));
+        ftx_save_file = new QPushButton(groupBox_8);
+        ftx_save_file->setObjectName(QStringLiteral("ftx_save_file"));
+        ftx_save_file->setGeometry(QRect(230, 300, 171, 41));
+        ftx_save_file->setStyleSheet(QLatin1String("QPushButton{\n"
+                                                   "border: 2px solid;\n"
+                                                   "border-color: rgb(215, 237, 252);\n"
+                                                   "border-radius: 10px;\n"
+                                                   "}\n"
+                                                   "QPushButton:hover {\n"
+                                                   "background-color: black; \n"
+                                                   "border: 3px solid;\n"
+                                                   "border-color: rgb(215, 237, 252);\n"
+                                                   "}\n"
+                                                   "QPushButton:pressed {\n"
+                                                   "border: 4px solid;\n"
+                                                   "border-color: rgb(92, 242, 135);\n"
+                                                   "}\n"
+                                                   ""));
         tabWidget_2->addTab(tab_4, QString());
         label_29 = new QLabel(second_ui);
         label_29->setObjectName(QStringLiteral("label_29"));
@@ -2025,6 +2044,7 @@ public:
         PL_image_abort->setText(QString());
         ftx_missing_request->setText(QApplication::translate("second_ui", "Send Missing Packet Request", nullptr));
         clear_image->setText(QApplication::translate("second_ui", "Clear", nullptr));
+        ftx_save_file->setText(QApplication::translate("second_ui", "Save current File Data", nullptr));
         tabWidget_2->setTabText(tabWidget_2->indexOf(tab_4), QApplication::translate("second_ui", "Payload Image", nullptr));
         label_29->setText(QString());
 #ifndef QT_NO_TOOLTIP
@@ -2058,4 +2078,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // LIOTESTJKQJDS_H
+#endif // LIOTESTCBKTHD_H

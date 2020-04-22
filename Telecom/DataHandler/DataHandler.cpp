@@ -76,7 +76,7 @@ DataHandler::DataHandler(std::shared_ptr<Connector> connector)
 
         dataHandler[PL_ORDER]->add(new PLOrder);
 
-        dataHandler[PL_IMAGE]->add(new File("Yann.png"));
+        dataHandler[PL_IMAGE]->add(new File("video1min.mp4"));
         //dataHandler[PL_IMAGE]->add(new Picture("livePic.jpg", 220, 600, 600));
 
     //// Propulsion Datagram
