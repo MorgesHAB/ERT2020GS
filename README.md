@@ -11,7 +11,9 @@
 5. [Building software](#building-software)
 6. [Running the tests](#running-the-tests)
 7. [Information](#information)
-8. [Appendix - Tutorial](#appendix)
+8. [Appendix](#appendix)  
+    8.1 [Datagrams description](#Datagrams-description)  
+    8.2 [Tutorials](#Tutorial-#1-:-create-a-new-Datagram)
 -----------------------------------------------------------------
 ### Goal 
 Spaceport America Cup competition - Launch a Rocket to the exact altitude of 10'000 feets.  
@@ -321,15 +323,11 @@ and so with the xbee.
 -----------------------------------------------------------------
 ## Appendix
 
-### Installation of Raspbian
+## Datagrams description
+Here is the communication protocol interface file that we share with other subsystems.  
+Zoom in for better visibility (svg).  
 
-Installation of Raspbian operating system on your Rapsberry Pi
-
-Download the last version of Raspbian on (a file with .img extension): https://www.raspberrypi.org/downloads/raspbian/
-
-Then write the img file on your SD card. You can use Win32DiskImager as software
-
-Plug a keyboard & a mouse via USB port and a screen via HDMI port to your Raspberry Pi. Finally plug the 5V power.
+<img src="doc/img/2020_GS_Communication%20Protocol%20Interface.svg">
 
 -----------------------------------------------------------------
 ## Tutorial #1 : create a new Datagram
@@ -418,3 +416,15 @@ If your new RF module requires some new library dependencies, be sure to adapt t
 
 Finally you just need to change the RFmodem pointer with 
 your new RF module instance in the mainRoutine of [Worker.cpp](Telecom/Worker/Worker.cpp).
+
+-----------------------------------------------------------------
+### Installation of Raspbian
+
+Installation of Raspbian operating system on your Rapsberry Pi
+
+Download the last version of Raspbian on (a file with .img extension): https://www.raspberrypi.org/downloads/raspbian/
+
+Then write the img file on your SD card. You can use Win32DiskImager as software
+
+Plug a keyboard & a mouse via USB port and a screen via HDMI port to your Raspberry Pi. 
+Finally plug the 5V power.
