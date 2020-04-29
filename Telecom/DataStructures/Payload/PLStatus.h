@@ -2,12 +2,12 @@
 // Created by stephanie on 12/03/20.
 //
 
-#ifndef ERT2020GS_STATUSPL_H
-#define ERT2020GS_STATUSPL_H
+#ifndef ERT2020GS_PLSTATUS_H
+#define ERT2020GS_PLSTATUS_H
 
 #include <Data.h>
 
-class StatusPL: public Data{
+class PLStatus: public Data{
 public:
     void write(Packet &packet) override;
 
@@ -23,4 +23,4 @@ private:
     uint8_t status; //TODO: create file with status
 };
 
-#endif //ERT2020GS_STATUSPL_H
+#endif //ERT2020GS_PLSTATUS_H

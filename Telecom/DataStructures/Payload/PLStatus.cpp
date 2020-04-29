@@ -2,26 +2,26 @@
 // Created by stephanie on 12/03/20.
 //
 
-#include "StatusPL.h"
+#include "PLStatus.h"
 
-void StatusPL::write(Packet &packet) {
+void PLStatus::write(Packet &packet) {
     packet.write(status);
 }
 
-void StatusPL::parse(Packet &packet) {
+void PLStatus::parse(Packet &packet) {
     packet.parse(status);
 }
 
-void StatusPL::print() const {
+void PLStatus::print() const {
 
 }
 
-std::string StatusPL::log() const {
+std::string PLStatus::log() const {
     return std::move("PL State" + SEPARATOR +
                      std::to_string(status) + SEPARATOR);
 }
 
-bool StatusPL::updateRx(std::shared_ptr <Connector> connector) {
+bool PLStatus::updateRx(std::shared_ptr <Connector> connector) {
     connector->setData(ui_interface::PL_STATE_UI, status);
     return true;
 }
