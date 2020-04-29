@@ -5,7 +5,7 @@
 -----------------------------------------------------------------
 ## Table of Contents
 1. [Repository organization tree](#repository-organization-tree)
-2. [Software organization diagram](#software-organization-diagram)
+2. [GST system diagram](#GST-system-diagram)
 3. [Prerequisites](#prerequisites)
 4. [Configure the xbee](#configure-the-xbee)
 5. [Building software](#building-software)
@@ -13,7 +13,7 @@
 7. [Information](#information)
 8. [Appendix](#appendix)  
     8.1 [Datagrams description](#Datagrams-description)  
-    8.2 [Tutorials](#Tutorial-#1-:-create-a-new-Datagram)
+    8.2 [Tutorials](#Tutorial-1-:-create-a-new-Datagram)
 -----------------------------------------------------------------
 ### Goal 
 Spaceport America Cup competition - Launch a Rocket to the exact altitude of 10'000 feets.  
@@ -91,9 +91,12 @@ ERT2020GS
     └───archive                 Old code
 ```
 -----------------------------------------------------------------
-## Software organization diagram
+## Ground Station system diagram
+###  GST Hardware diagram
+<img src="doc/img/2020_GS_GST_Hardware_System_Diagram.svg">
 
-<img src="doc/img/2020_GS_GST_System_Diagram.svg">
+###  GST Software diagram
+<img src="doc/img/2020_GS_GST_Software_System_Diagram.svg">
   
 -----------------------------------------------------------------
 ## Prerequisites
@@ -321,7 +324,7 @@ and so with the xbee.
 
 
 -----------------------------------------------------------------
-## Appendix
+# Appendix
 
 ## Datagrams description
 Here is the communication protocol interface file that we share with other subsystems.  
@@ -330,7 +333,7 @@ Zoom in for better visibility (svg).
 <img src="doc/img/2020_GS_Communication%20Protocol%20Interface.svg">
 
 -----------------------------------------------------------------
-## Tutorial #1 : create a new Datagram
+## Tutorial 1 : create a new Datagram
 
 - [X] First, create a new DatagramID in [DatagramTypes.h](Telecom/DataHandler/DatagramTypes.h) 
 and modify the getDatagramIDName() function.  
@@ -401,7 +404,7 @@ Finally, here is an example diagram of how to implement a new datagram
 
 
 -----------------------------------------------------------------
-## Tutorial #2 : change my RF modem
+## Tutorial 2 : change my RF modem
 If you want to use other radio modules in addition of the xbee or LoRa, you will just 
 need to adapt some part of the code.  
 
