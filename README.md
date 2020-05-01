@@ -4,25 +4,54 @@
 
 -----------------------------------------------------------------
 ## Table of Contents
-1. [Repository organization tree](#repository-organization-tree)
-2. [GST system diagram](#GST-system-diagram)
-3. [Prerequisites](#prerequisites)
-4. [Configure the xbee](#configure-the-xbee)
-5. [Building software](#building-software)
-6. [Running the tests](#running-the-tests)
-7. [Information](#information)
-8. [Appendix](#appendix)  
-    8.1 [Datagrams description](#Datagrams-description)  
-    8.2 [Tutorials](#Tutorial-1-:-create-a-new-Datagram)
+1. [Abstract](#abstract)
+2. [Repository organization tree](#repository-organization-tree)
+3. [GST system diagram](#GST-system-diagram)
+4. [Prerequisites](#prerequisites)
+5. [Configure the xbee](#configure-the-xbee)
+6. [Building software](#building-software)
+7. [Running the tests](#running-the-tests)
+8. [Information](#information)
+9. [Appendix](#appendix)  
+    9.1 [Datagrams description](#Datagrams-description)  
+    9.2 [Tutorials](#tutorial-1--create-a-new-datagram)
 -----------------------------------------------------------------
-### Goal 
-Spaceport America Cup competition - Launch a Rocket to the exact altitude of 10'000 feets.  
-SRAD Hybrid Engine category. 
-For more informations : https://epflrocketteam.ch/fr/ :rocket:
+## Abstract
+### Project purpose 
+The EPFL Rocket Team association will be participating in the 10’000 feet 
+SRAD Hybrid Engine category of the 2020 Spaceport America Cup, which will be held 
+from June 16th to 20th.  
+For more information, visit https://epflrocketteam.ch/fr/ :rocket:
 
 ### Description
-Software of the <b>Ground Segment system</b> which will run on a Raspberry Pi 4 
-with XBee RF modems.
+This repository represent the software of the <b>Ground Segment subsystem</b>.
+The main objective is to check that the mission is proceeding correctly via a 
+two-way radio link with the other rocket subsystems. 
+To do this, the ground station collects data from other subsystems (Avionics, Payload) 
+in order to control the smooth running and also acts by sending radio commands to the 
+Ground Support Equipment (GSE) in order to manage the <b>ignition</b> of the rocket.  
+Therefore, the software is composed of a part that manages the radio communication,
+ i.e. reading and writing radio packets correctly according to a specific protocol.
+In addition, the user interaction part is established using a graphical user interface 
+designed with Qt.  
+This C++ software will run on a Raspberry Pi 4 located in the "Ground Station case". 
+Radio communication is established using XBee RF modems (868 MHz in CH and 915 MHz in USA).
+
+### Radio Network
+<img src="doc/img/2020_GS_RF_Network.svg">
+
+### Subsystem requirements
+Avionics
+- [X] Display telemetry, GPS, status data on the GUI
+
+GSE + Propulsion
+- [X] Manage the ignition of the rocket (send correct code)
+- [ ] Manage the filling of the rocket via radio (open - close N2O valves)
+
+Payload
+- [X] Manage the transmission of a picture each 10 min
+- [X] Display some sensors data on the GUI
+
 
 -----------------------------------------------------------------
 ## Repository organization tree
