@@ -22,17 +22,17 @@ namespace ui_interface {
 
         /// Qt input informations
 
-        ACTIVE_XBEE,      // bool             **This is set to true-false by the Activate-Xbee button.
-        IGNITION_CLICKED, // bool        **This is set to true when ignition button is clicked.
-        //                              @attention !!! Listener should eat this boolean to be able to detect further clicks !!!
-        SERIALPORT_STATUS, // bool eat by Gui
+        ACTIVE_XBEE,        // bool             **This is set to true-false by the Activate-Xbee button.
+        IGNITION_CLICKED,   // bool             **This is set to true when ignition button is clicked.
+                            //                @attention !!! Listener should eat this boolean to be able to detect further clicks !!!
+        SERIALPORT_STATUS,                  // bool eaten by Gui
 
         SERIALPORT_INDEX,
         RSSI_READ_ORDER,
-        RSSI_VALUE, // uint8_t           **Reports the RSSI in -dBm of the last received RF data packet.
+        RSSI_VALUE,         // uint8_t           **Reports the RSSI in -dBm of the last received RF data packet.
 
         // logging
-        LOGGING_ACTIVE, // bool - GUI button
+        LOGGING_ACTIVE,             // bool - GUI button
 
         //////////////// RF modem
         /// Ignition
@@ -55,9 +55,9 @@ namespace ui_interface {
         CORRUPTED_PACKET_CTR,    // uint64_t **The count of the corrupted packets received. Incremented by RX.
 
         /// Header
-        DATAGRAM_ID, // uint8_t            **The ID of the last packet received
+        DATAGRAM_ID,     // uint8_t            **The ID of the last packet received
         TX_PACKET_NR,    // uint32_t         **This is the last packet's number. // TODO delete (RF no longer use this)
-        TIMESTAMP, // time_t             **The Time of the last packet received
+        TIMESTAMP,       // time_t                   **The Time of the last packet received
         TOTAL_RX_PACKET_CTR, //uint64_t         just increment when received a packet
 
         /// GPS Data Structure

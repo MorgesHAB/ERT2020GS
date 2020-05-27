@@ -10,7 +10,6 @@
 #include "GuiWindow.h"
 #include "../Logger/Logger.h"
 #include "../Logger/utilities.h"
-#include "SecondWindow.h"
 
 class Data: public Loggable{
 public:
@@ -95,14 +94,14 @@ main(int argc, char ** argv)
     {
     QApplication app(argc, argv);
     GuiWindow firstwin(c);
-    SecondWindow secondwin(c);
+    //SecondWindow secondwin(c);
     // run all threads
 
 
     std::cout << utilities::time_long() << std::endl;
     // end the program
     firstwin.show();
-    secondwin.show();
+    //secondwin.show();
     app.exec();
     }
     receiver_thread.join();

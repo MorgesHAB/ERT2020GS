@@ -20,7 +20,7 @@
 #include "../Telecom/DataStructures/Avionics/StateValues.h"
 #include "../Telecom/DataHandler/DatagramTypes.h"
 #include "../Telecom/DataStructures/File/FileTransmissionStates.h"
-#include "GSE/IgnitionStates.h"
+#include "../Telecom/DataStructures/GSE/IgnitionStates.h"
 #include "gui_message.h"
 
 #include <QStyleFactory>
@@ -343,7 +343,7 @@ void GuiWindow::refresh_file_transmission_box()
     file_transmission_progress_bar->setValue(data_->getData<uint16_t>(ui_interface::FILE_TRANSMISSION_CURRENT_PACKET));
 }
 
-void GuiWindow::show_ok_X(QLabel * label, bool ok)
+inline void GuiWindow::show_ok_X(QLabel * label, bool ok)
 {
     (ok) ? show_ok(label) : show_X(label);
 }
