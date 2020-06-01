@@ -98,7 +98,7 @@ main(int argc, char ** argv)
     // run all threads
 
 
-    std::cout << utilities::time_long() << std::endl;
+    std::cout << utilities::datetime_long() << std::endl;
     // end the program
     firstwin.show();
     //secondwin.show();

@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'press_altt27988.ui'
+** Form generated from reading UI file 'press_altS28074.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.9.5
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef PRESS_ALTT27988_H
-#define PRESS_ALTT27988_H
+#ifndef PRESS_ALTS28074_H
+#define PRESS_ALTS28074_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QAction>
@@ -50,11 +50,9 @@ public:
     QLabel *euler_y_label;
     QLabel *euler_z_label;
     QLabel *euler_z_panel;
-    QGroupBox *groupBox_2;
     QWidget *upper_widget;
     QGridLayout *gridLayout_5;
     QLabel *time_panel;
-    QLabel *current_time_label;
     QGroupBox *ignition_box;
     QGridLayout *gridLayout_2;
     QFrame *frame;
@@ -88,7 +86,6 @@ public:
     QLabel *corrupted_panel;
     QLabel *last_datagram_id;
     QLabel *last_datagram_id_panel;
-    QGroupBox *groupBox_3;
     QGroupBox *gps_box;
     QGridLayout *gridLayout_3;
     QLabel *longitude_label;
@@ -109,14 +106,6 @@ public:
     QLabel *latitude_panel;
     QLabel *hdop_panel;
     QLabel *sat_nbr_panel;
-    QGroupBox *groupBox;
-    QGridLayout *gridLayout_9;
-    QLabel *receiver_state_label;
-    QLabel *transmitter_state_label;
-    QLabel *transmitter_state_panel;
-    QPushButton *file_transmission_button;
-    QLabel *receiver_state_panel;
-    QProgressBar *file_transmission_progress_bar;
     QGroupBox *av_states_box;
     QGridLayout *gridLayout_11;
     QLabel *second_event_ok_panel;
@@ -133,7 +122,7 @@ public:
     QLabel *liftoff_label;
     QLabel *liftoff_state_ok_panel;
     QLabel *coast_label;
-    QGroupBox *groupBox1;
+    QGroupBox *groupBox;
     QGridLayout *gridLayout;
     QLabel *tank_temp_panel;
     QLabel *celcius_label2;
@@ -147,6 +136,43 @@ public:
     QLabel *hose_temp_panel;
     QLabel *rocket_weight_panel;
     QLabel *kg_label;
+    QTabWidget *logo_setup_widget;
+    QWidget *logo_tab;
+    QGridLayout *gridLayout_12;
+    QLabel *logo;
+    QWidget *config_tab;
+    QGridLayout *gridLayout_13;
+    QComboBox *serialport_selector;
+    QLabel *label;
+    QPushButton *xbee_button;
+    QPushButton *reset_button;
+    QPushButton *change_theme;
+    QGroupBox *gse_control_box;
+    QGridLayout *gridLayout_14;
+    QPushButton *filling_valve_button;
+    QLabel *filling_valve_panel;
+    QPushButton *purge_valve_button;
+    QLabel *purge_valve_panel;
+    QPushButton *disconnect_wire_button;
+    QLabel *disconnect_wire_ok;
+    QGroupBox *gse_state_box;
+    QGridLayout *gridLayout_15;
+    QLabel *purge_valve_init_label;
+    QLabel *fill_valve_init_label;
+    QLabel *ready_filling_label;
+    QLabel *fill_open_label;
+    QLabel *filling_label_2;
+    QLabel *fill_close_label;
+    QLabel *purge_open_label;
+    QLabel *purge_close_label;
+    QGroupBox *groupBox1;
+    QGridLayout *gridLayout_9;
+    QLabel *receiver_state_label;
+    QLabel *transmitter_state_label;
+    QLabel *transmitter_state_panel;
+    QPushButton *file_transmission_button;
+    QLabel *receiver_state_panel;
+    QProgressBar *file_transmission_progress_bar;
     QGroupBox *avionics_box;
     QGridLayout *gridLayout_8;
     QLabel *altitude_label_telemetry;
@@ -163,23 +189,12 @@ public:
     QLabel *pressure_label;
     QLabel *m_unit_label_3;
     QLabel *avionics_state_panel;
-    QTabWidget *tabWidget;
-    QWidget *logo_tab;
-    QGridLayout *gridLayout_12;
-    QLabel *logo;
-    QWidget *config_tab;
-    QGridLayout *gridLayout_13;
-    QComboBox *serialport_selector;
-    QLabel *label;
-    QPushButton *xbee_button;
-    QPushButton *reset_button;
-    QPushButton *change_theme;
 
     void setupUi(QWidget *Form)
     {
         if (Form->objectName().isEmpty())
             Form->setObjectName(QStringLiteral("Form"));
-        Form->resize(828, 649);
+        Form->resize(925, 674);
         Form->setMinimumSize(QSize(745, 635));
         Form->setMaximumSize(QSize(9999, 9999));
         Form->setMouseTracking(false);
@@ -280,30 +295,18 @@ public:
 
         gridLayout_10->addWidget(euler_box, 3, 5, 1, 1);
 
-        groupBox_2 = new QGroupBox(Form);
-        groupBox_2->setObjectName(QStringLiteral("groupBox_2"));
-
-        gridLayout_10->addWidget(groupBox_2, 5, 0, 1, 1);
-
         upper_widget = new QWidget(Form);
         upper_widget->setObjectName(QStringLiteral("upper_widget"));
         gridLayout_5 = new QGridLayout(upper_widget);
         gridLayout_5->setObjectName(QStringLiteral("gridLayout_5"));
         time_panel = new QLabel(upper_widget);
         time_panel->setObjectName(QStringLiteral("time_panel"));
-        time_panel->setMinimumSize(QSize(70, 0));
-        time_panel->setMaximumSize(QSize(60, 16777215));
+        time_panel->setMinimumSize(QSize(0, 0));
+        time_panel->setMaximumSize(QSize(999999, 16777215));
         time_panel->setStyleSheet(QStringLiteral(""));
         time_panel->setAlignment(Qt::AlignCenter);
 
-        gridLayout_5->addWidget(time_panel, 0, 5, 1, 1);
-
-        current_time_label = new QLabel(upper_widget);
-        current_time_label->setObjectName(QStringLiteral("current_time_label"));
-        current_time_label->setMaximumSize(QSize(100, 16777215));
-        current_time_label->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
-
-        gridLayout_5->addWidget(current_time_label, 0, 3, 1, 1);
+        gridLayout_5->addWidget(time_panel, 0, 4, 1, 1);
 
 
         gridLayout_10->addWidget(upper_widget, 0, 5, 1, 1);
@@ -500,11 +503,6 @@ public:
 
         gridLayout_10->addWidget(com_box, 2, 0, 2, 3);
 
-        groupBox_3 = new QGroupBox(Form);
-        groupBox_3->setObjectName(QStringLiteral("groupBox_3"));
-
-        gridLayout_10->addWidget(groupBox_3, 5, 4, 1, 1);
-
         gps_box = new QGroupBox(Form);
         gps_box->setObjectName(QStringLiteral("gps_box"));
         gps_box->setMinimumSize(QSize(0, 0));
@@ -613,48 +611,6 @@ public:
 
         gridLayout_10->addWidget(gps_box, 2, 3, 2, 2);
 
-        groupBox = new QGroupBox(Form);
-        groupBox->setObjectName(QStringLiteral("groupBox"));
-        gridLayout_9 = new QGridLayout(groupBox);
-        gridLayout_9->setObjectName(QStringLiteral("gridLayout_9"));
-        receiver_state_label = new QLabel(groupBox);
-        receiver_state_label->setObjectName(QStringLiteral("receiver_state_label"));
-        receiver_state_label->setMinimumSize(QSize(140, 0));
-        receiver_state_label->setMaximumSize(QSize(212411, 16777215));
-
-        gridLayout_9->addWidget(receiver_state_label, 1, 0, 1, 1);
-
-        transmitter_state_label = new QLabel(groupBox);
-        transmitter_state_label->setObjectName(QStringLiteral("transmitter_state_label"));
-        transmitter_state_label->setMinimumSize(QSize(140, 0));
-        transmitter_state_label->setMaximumSize(QSize(1241251, 16777215));
-
-        gridLayout_9->addWidget(transmitter_state_label, 2, 0, 1, 1);
-
-        transmitter_state_panel = new QLabel(groupBox);
-        transmitter_state_panel->setObjectName(QStringLiteral("transmitter_state_panel"));
-
-        gridLayout_9->addWidget(transmitter_state_panel, 2, 1, 1, 1);
-
-        file_transmission_button = new QPushButton(groupBox);
-        file_transmission_button->setObjectName(QStringLiteral("file_transmission_button"));
-
-        gridLayout_9->addWidget(file_transmission_button, 0, 0, 1, 2);
-
-        receiver_state_panel = new QLabel(groupBox);
-        receiver_state_panel->setObjectName(QStringLiteral("receiver_state_panel"));
-
-        gridLayout_9->addWidget(receiver_state_panel, 1, 1, 1, 1);
-
-        file_transmission_progress_bar = new QProgressBar(groupBox);
-        file_transmission_progress_bar->setObjectName(QStringLiteral("file_transmission_progress_bar"));
-        file_transmission_progress_bar->setValue(24);
-
-        gridLayout_9->addWidget(file_transmission_progress_bar, 3, 0, 1, 2);
-
-
-        gridLayout_10->addWidget(groupBox, 5, 1, 1, 3);
-
         av_states_box = new QGroupBox(Form);
         av_states_box->setObjectName(QStringLiteral("av_states_box"));
         gridLayout_11 = new QGridLayout(av_states_box);
@@ -754,80 +710,261 @@ public:
 
         gridLayout_10->addWidget(av_states_box, 0, 2, 2, 2);
 
-        groupBox1 = new QGroupBox(Form);
-        groupBox1->setObjectName(QStringLiteral("groupBox1"));
-        gridLayout = new QGridLayout(groupBox1);
+        groupBox = new QGroupBox(Form);
+        groupBox->setObjectName(QStringLiteral("groupBox"));
+        gridLayout = new QGridLayout(groupBox);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
-        tank_temp_panel = new QLabel(groupBox1);
+        tank_temp_panel = new QLabel(groupBox);
         tank_temp_panel->setObjectName(QStringLiteral("tank_temp_panel"));
         tank_temp_panel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         gridLayout->addWidget(tank_temp_panel, 0, 1, 1, 1);
 
-        celcius_label2 = new QLabel(groupBox1);
+        celcius_label2 = new QLabel(groupBox);
         celcius_label2->setObjectName(QStringLiteral("celcius_label2"));
         celcius_label2->setMaximumSize(QSize(40, 16777215));
 
         gridLayout->addWidget(celcius_label2, 0, 2, 1, 1);
 
-        tank_temp_label = new QLabel(groupBox1);
+        tank_temp_label = new QLabel(groupBox);
         tank_temp_label->setObjectName(QStringLiteral("tank_temp_label"));
 
         gridLayout->addWidget(tank_temp_label, 0, 0, 1, 1);
 
-        hose_pressure_label = new QLabel(groupBox1);
+        hose_pressure_label = new QLabel(groupBox);
         hose_pressure_label->setObjectName(QStringLiteral("hose_pressure_label"));
 
         gridLayout->addWidget(hose_pressure_label, 1, 0, 1, 1);
 
-        hpa_panel = new QLabel(groupBox1);
+        hpa_panel = new QLabel(groupBox);
         hpa_panel->setObjectName(QStringLiteral("hpa_panel"));
         hpa_panel->setMaximumSize(QSize(40, 16777215));
 
         gridLayout->addWidget(hpa_panel, 1, 2, 1, 1);
 
-        hose_pressure_panel = new QLabel(groupBox1);
+        hose_pressure_panel = new QLabel(groupBox);
         hose_pressure_panel->setObjectName(QStringLiteral("hose_pressure_panel"));
         hose_pressure_panel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         gridLayout->addWidget(hose_pressure_panel, 1, 1, 1, 1);
 
-        hoes_temp_label = new QLabel(groupBox1);
+        hoes_temp_label = new QLabel(groupBox);
         hoes_temp_label->setObjectName(QStringLiteral("hoes_temp_label"));
 
         gridLayout->addWidget(hoes_temp_label, 2, 0, 1, 1);
 
-        celcius_label_2 = new QLabel(groupBox1);
+        celcius_label_2 = new QLabel(groupBox);
         celcius_label_2->setObjectName(QStringLiteral("celcius_label_2"));
         celcius_label_2->setMaximumSize(QSize(40, 16777215));
 
         gridLayout->addWidget(celcius_label_2, 2, 2, 1, 1);
 
-        rocket_weight_label = new QLabel(groupBox1);
+        rocket_weight_label = new QLabel(groupBox);
         rocket_weight_label->setObjectName(QStringLiteral("rocket_weight_label"));
 
         gridLayout->addWidget(rocket_weight_label, 3, 0, 1, 1);
 
-        hose_temp_panel = new QLabel(groupBox1);
+        hose_temp_panel = new QLabel(groupBox);
         hose_temp_panel->setObjectName(QStringLiteral("hose_temp_panel"));
         hose_temp_panel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         gridLayout->addWidget(hose_temp_panel, 2, 1, 1, 1);
 
-        rocket_weight_panel = new QLabel(groupBox1);
+        rocket_weight_panel = new QLabel(groupBox);
         rocket_weight_panel->setObjectName(QStringLiteral("rocket_weight_panel"));
         rocket_weight_panel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         gridLayout->addWidget(rocket_weight_panel, 3, 1, 1, 1);
 
-        kg_label = new QLabel(groupBox1);
+        kg_label = new QLabel(groupBox);
         kg_label->setObjectName(QStringLiteral("kg_label"));
         kg_label->setMaximumSize(QSize(40, 16777215));
 
         gridLayout->addWidget(kg_label, 3, 2, 1, 1);
 
 
-        gridLayout_10->addWidget(groupBox1, 1, 5, 1, 1);
+        gridLayout_10->addWidget(groupBox, 1, 5, 1, 1);
+
+        logo_setup_widget = new QTabWidget(Form);
+        logo_setup_widget->setObjectName(QStringLiteral("logo_setup_widget"));
+        logo_setup_widget->setMaximumSize(QSize(9999, 9999));
+        logo_tab = new QWidget();
+        logo_tab->setObjectName(QStringLiteral("logo_tab"));
+        gridLayout_12 = new QGridLayout(logo_tab);
+        gridLayout_12->setObjectName(QStringLiteral("gridLayout_12"));
+        logo = new QLabel(logo_tab);
+        logo->setObjectName(QStringLiteral("logo"));
+        logo->setStyleSheet(QLatin1String("\n"
+                                          "\n"
+                                          "image: url(:/assets/logo.png);"));
+
+        gridLayout_12->addWidget(logo, 0, 0, 1, 1);
+
+        logo_setup_widget->addTab(logo_tab, QString());
+        config_tab = new QWidget();
+        config_tab->setObjectName(QStringLiteral("config_tab"));
+        gridLayout_13 = new QGridLayout(config_tab);
+        gridLayout_13->setObjectName(QStringLiteral("gridLayout_13"));
+        serialport_selector = new QComboBox(config_tab);
+        serialport_selector->setObjectName(QStringLiteral("serialport_selector"));
+
+        gridLayout_13->addWidget(serialport_selector, 1, 0, 1, 1);
+
+        label = new QLabel(config_tab);
+        label->setObjectName(QStringLiteral("label"));
+
+        gridLayout_13->addWidget(label, 0, 0, 1, 1);
+
+        xbee_button = new QPushButton(config_tab);
+        xbee_button->setObjectName(QStringLiteral("xbee_button"));
+        xbee_button->setMinimumSize(QSize(0, 0));
+
+        gridLayout_13->addWidget(xbee_button, 2, 0, 1, 1);
+
+        reset_button = new QPushButton(config_tab);
+        reset_button->setObjectName(QStringLiteral("reset_button"));
+
+        gridLayout_13->addWidget(reset_button, 3, 0, 1, 1);
+
+        change_theme = new QPushButton(config_tab);
+        change_theme->setObjectName(QStringLiteral("change_theme"));
+
+        gridLayout_13->addWidget(change_theme, 4, 0, 1, 1);
+
+        logo_setup_widget->addTab(config_tab, QString());
+
+        gridLayout_10->addWidget(logo_setup_widget, 5, 5, 1, 1);
+
+        gse_control_box = new QGroupBox(Form);
+        gse_control_box->setObjectName(QStringLiteral("gse_control_box"));
+        gridLayout_14 = new QGridLayout(gse_control_box);
+        gridLayout_14->setObjectName(QStringLiteral("gridLayout_14"));
+        filling_valve_button = new QPushButton(gse_control_box);
+        filling_valve_button->setObjectName(QStringLiteral("filling_valve_button"));
+
+        gridLayout_14->addWidget(filling_valve_button, 0, 0, 1, 1);
+
+        filling_valve_panel = new QLabel(gse_control_box);
+        filling_valve_panel->setObjectName(QStringLiteral("filling_valve_panel"));
+        filling_valve_panel->setStyleSheet(QStringLiteral(""));
+
+        gridLayout_14->addWidget(filling_valve_panel, 0, 1, 1, 1);
+
+        purge_valve_button = new QPushButton(gse_control_box);
+        purge_valve_button->setObjectName(QStringLiteral("purge_valve_button"));
+
+        gridLayout_14->addWidget(purge_valve_button, 1, 0, 1, 1);
+
+        purge_valve_panel = new QLabel(gse_control_box);
+        purge_valve_panel->setObjectName(QStringLiteral("purge_valve_panel"));
+        purge_valve_panel->setStyleSheet(QStringLiteral(""));
+
+        gridLayout_14->addWidget(purge_valve_panel, 1, 1, 1, 1);
+
+        disconnect_wire_button = new QPushButton(gse_control_box);
+        disconnect_wire_button->setObjectName(QStringLiteral("disconnect_wire_button"));
+
+        gridLayout_14->addWidget(disconnect_wire_button, 2, 0, 1, 1);
+
+        disconnect_wire_ok = new QLabel(gse_control_box);
+        disconnect_wire_ok->setObjectName(QStringLiteral("disconnect_wire_ok"));
+        disconnect_wire_ok->setMinimumSize(QSize(23, 0));
+        disconnect_wire_ok->setMaximumSize(QSize(23, 16777215));
+        disconnect_wire_ok->setStyleSheet(QStringLiteral("color: rgb(255, 0, 0);"));
+
+        gridLayout_14->addWidget(disconnect_wire_ok, 2, 1, 1, 1);
+
+
+        gridLayout_10->addWidget(gse_control_box, 5, 0, 1, 1);
+
+        gse_state_box = new QGroupBox(Form);
+        gse_state_box->setObjectName(QStringLiteral("gse_state_box"));
+        gridLayout_15 = new QGridLayout(gse_state_box);
+        gridLayout_15->setObjectName(QStringLiteral("gridLayout_15"));
+        purge_valve_init_label = new QLabel(gse_state_box);
+        purge_valve_init_label->setObjectName(QStringLiteral("purge_valve_init_label"));
+
+        gridLayout_15->addWidget(purge_valve_init_label, 0, 0, 1, 1);
+
+        fill_valve_init_label = new QLabel(gse_state_box);
+        fill_valve_init_label->setObjectName(QStringLiteral("fill_valve_init_label"));
+
+        gridLayout_15->addWidget(fill_valve_init_label, 1, 0, 1, 1);
+
+        ready_filling_label = new QLabel(gse_state_box);
+        ready_filling_label->setObjectName(QStringLiteral("ready_filling_label"));
+
+        gridLayout_15->addWidget(ready_filling_label, 2, 0, 1, 1);
+
+        fill_open_label = new QLabel(gse_state_box);
+        fill_open_label->setObjectName(QStringLiteral("fill_open_label"));
+
+        gridLayout_15->addWidget(fill_open_label, 3, 0, 1, 1);
+
+        filling_label_2 = new QLabel(gse_state_box);
+        filling_label_2->setObjectName(QStringLiteral("filling_label_2"));
+
+        gridLayout_15->addWidget(filling_label_2, 4, 0, 1, 1);
+
+        fill_close_label = new QLabel(gse_state_box);
+        fill_close_label->setObjectName(QStringLiteral("fill_close_label"));
+
+        gridLayout_15->addWidget(fill_close_label, 5, 0, 1, 1);
+
+        purge_open_label = new QLabel(gse_state_box);
+        purge_open_label->setObjectName(QStringLiteral("purge_open_label"));
+
+        gridLayout_15->addWidget(purge_open_label, 6, 0, 1, 1);
+
+        purge_close_label = new QLabel(gse_state_box);
+        purge_close_label->setObjectName(QStringLiteral("purge_close_label"));
+
+        gridLayout_15->addWidget(purge_close_label, 7, 0, 1, 1);
+
+
+        gridLayout_10->addWidget(gse_state_box, 0, 4, 2, 1);
+
+        groupBox1 = new QGroupBox(Form);
+        groupBox1->setObjectName(QStringLiteral("groupBox1"));
+        gridLayout_9 = new QGridLayout(groupBox1);
+        gridLayout_9->setObjectName(QStringLiteral("gridLayout_9"));
+        receiver_state_label = new QLabel(groupBox1);
+        receiver_state_label->setObjectName(QStringLiteral("receiver_state_label"));
+        receiver_state_label->setMinimumSize(QSize(140, 0));
+        receiver_state_label->setMaximumSize(QSize(212411, 16777215));
+
+        gridLayout_9->addWidget(receiver_state_label, 1, 0, 1, 1);
+
+        transmitter_state_label = new QLabel(groupBox1);
+        transmitter_state_label->setObjectName(QStringLiteral("transmitter_state_label"));
+        transmitter_state_label->setMinimumSize(QSize(140, 0));
+        transmitter_state_label->setMaximumSize(QSize(1241251, 16777215));
+
+        gridLayout_9->addWidget(transmitter_state_label, 2, 0, 1, 1);
+
+        transmitter_state_panel = new QLabel(groupBox1);
+        transmitter_state_panel->setObjectName(QStringLiteral("transmitter_state_panel"));
+
+        gridLayout_9->addWidget(transmitter_state_panel, 2, 1, 1, 1);
+
+        file_transmission_button = new QPushButton(groupBox1);
+        file_transmission_button->setObjectName(QStringLiteral("file_transmission_button"));
+
+        gridLayout_9->addWidget(file_transmission_button, 0, 0, 1, 2);
+
+        receiver_state_panel = new QLabel(groupBox1);
+        receiver_state_panel->setObjectName(QStringLiteral("receiver_state_panel"));
+
+        gridLayout_9->addWidget(receiver_state_panel, 1, 1, 1, 1);
+
+        file_transmission_progress_bar = new QProgressBar(groupBox1);
+        file_transmission_progress_bar->setObjectName(QStringLiteral("file_transmission_progress_bar"));
+        file_transmission_progress_bar->setValue(24);
+
+        gridLayout_9->addWidget(file_transmission_progress_bar, 3, 0, 1, 2);
+
+
+        gridLayout_10->addWidget(groupBox1, 5, 1, 1, 2);
 
         avionics_box = new QGroupBox(Form);
         avionics_box->setObjectName(QStringLiteral("avionics_box"));
@@ -870,17 +1007,20 @@ public:
 
         hpa_unit_label = new QLabel(avionics_box);
         hpa_unit_label->setObjectName(QStringLiteral("hpa_unit_label"));
+        hpa_unit_label->setMaximumSize(QSize(30, 16777215));
 
         gridLayout_8->addWidget(hpa_unit_label, 1, 2, 1, 1);
 
         celcius_label = new QLabel(avionics_box);
         celcius_label->setObjectName(QStringLiteral("celcius_label"));
         celcius_label->setMinimumSize(QSize(32, 40));
+        celcius_label->setMaximumSize(QSize(30, 16777215));
 
         gridLayout_8->addWidget(celcius_label, 0, 2, 1, 1);
 
         m_s_unit_label = new QLabel(avionics_box);
         m_s_unit_label->setObjectName(QStringLiteral("m_s_unit_label"));
+        m_s_unit_label->setMaximumSize(QSize(30, 16777215));
 
         gridLayout_8->addWidget(m_s_unit_label, 2, 2, 1, 1);
 
@@ -896,6 +1036,7 @@ public:
 
         m_unit_label_3 = new QLabel(avionics_box);
         m_unit_label_3->setObjectName(QStringLiteral("m_unit_label_3"));
+        m_unit_label_3->setMaximumSize(QSize(30, 16777215));
 
         gridLayout_8->addWidget(m_unit_label_3, 3, 2, 1, 1);
 
@@ -907,62 +1048,12 @@ public:
         gridLayout_8->addWidget(avionics_state_panel, 4, 1, 1, 2);
 
 
-        gridLayout_10->addWidget(avionics_box, 0, 4, 2, 1);
-
-        tabWidget = new QTabWidget(Form);
-        tabWidget->setObjectName(QStringLiteral("tabWidget"));
-        tabWidget->setMaximumSize(QSize(9999, 9999));
-        logo_tab = new QWidget();
-        logo_tab->setObjectName(QStringLiteral("logo_tab"));
-        gridLayout_12 = new QGridLayout(logo_tab);
-        gridLayout_12->setObjectName(QStringLiteral("gridLayout_12"));
-        logo = new QLabel(logo_tab);
-        logo->setObjectName(QStringLiteral("logo"));
-        logo->setStyleSheet(QLatin1String("\n"
-                                          "\n"
-                                          "image: url(:/assets/logo.png);"));
-
-        gridLayout_12->addWidget(logo, 0, 0, 1, 1);
-
-        tabWidget->addTab(logo_tab, QString());
-        config_tab = new QWidget();
-        config_tab->setObjectName(QStringLiteral("config_tab"));
-        gridLayout_13 = new QGridLayout(config_tab);
-        gridLayout_13->setObjectName(QStringLiteral("gridLayout_13"));
-        serialport_selector = new QComboBox(config_tab);
-        serialport_selector->setObjectName(QStringLiteral("serialport_selector"));
-
-        gridLayout_13->addWidget(serialport_selector, 1, 0, 1, 1);
-
-        label = new QLabel(config_tab);
-        label->setObjectName(QStringLiteral("label"));
-
-        gridLayout_13->addWidget(label, 0, 0, 1, 1);
-
-        xbee_button = new QPushButton(config_tab);
-        xbee_button->setObjectName(QStringLiteral("xbee_button"));
-        xbee_button->setMinimumSize(QSize(0, 0));
-
-        gridLayout_13->addWidget(xbee_button, 2, 0, 1, 1);
-
-        reset_button = new QPushButton(config_tab);
-        reset_button->setObjectName(QStringLiteral("reset_button"));
-
-        gridLayout_13->addWidget(reset_button, 3, 0, 1, 1);
-
-        change_theme = new QPushButton(config_tab);
-        change_theme->setObjectName(QStringLiteral("change_theme"));
-
-        gridLayout_13->addWidget(change_theme, 4, 0, 1, 1);
-
-        tabWidget->addTab(config_tab, QString());
-
-        gridLayout_10->addWidget(tabWidget, 5, 5, 1, 1);
+        gridLayout_10->addWidget(avionics_box, 5, 3, 1, 2);
 
 
         retranslateUi(Form);
 
-        tabWidget->setCurrentIndex(1);
+        logo_setup_widget->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(Form);
@@ -987,9 +1078,7 @@ public:
         euler_y_label->setText(QApplication::translate("Form", "Y", Q_NULLPTR));
         euler_z_label->setText(QApplication::translate("Form", "Z", Q_NULLPTR));
         euler_z_panel->setText(QString());
-        groupBox_2->setTitle(QApplication::translate("Form", "GSE Control", Q_NULLPTR));
         time_panel->setText(QApplication::translate("Form", "44:44:44", Q_NULLPTR));
-        current_time_label->setText(QApplication::translate("Form", "Current Time:", Q_NULLPTR));
         ignition_box->setTitle(QApplication::translate("Form", "Ignition", Q_NULLPTR));
         code_3->setText(QString());
         code_2->setText(QString());
@@ -1049,7 +1138,6 @@ public:
         corrupted_panel->setText(QString());
         last_datagram_id->setText(QApplication::translate("Form", "Last Datagram ID", Q_NULLPTR));
         last_datagram_id_panel->setText(QString());
-        groupBox_3->setTitle(QApplication::translate("Form", "GSE States", Q_NULLPTR));
         gps_box->setTitle(QApplication::translate("Form", "GPS", Q_NULLPTR));
         longitude_label->setText(QApplication::translate("Form", "LONGITUDE", Q_NULLPTR));
         latitude_label->setText(QApplication::translate("Form", "LATITUDE", Q_NULLPTR));
@@ -1065,13 +1153,6 @@ public:
         latitude_panel->setText(QString());
         hdop_panel->setText(QString());
         sat_nbr_panel->setText(QString());
-        groupBox->setTitle(QApplication::translate("Form", "File Transmission", Q_NULLPTR));
-        receiver_state_label->setText(QApplication::translate("Form", "Receiver State", Q_NULLPTR));
-        transmitter_state_label->setText(QApplication::translate("Form", "Transmitter State", Q_NULLPTR));
-        transmitter_state_panel->setText(QString());
-        file_transmission_button->setText(QApplication::translate("Form", "Start File Transmission", Q_NULLPTR));
-        receiver_state_panel->setText(QString());
-        file_transmission_progress_bar->setFormat(QApplication::translate("Form", "%v / %m", Q_NULLPTR));
         av_states_box->setTitle(QApplication::translate("Form", "AV States", Q_NULLPTR));
         second_event_ok_panel->setText(QApplication::translate("Form", "X", Q_NULLPTR));
         first_event_ok_panel->setText(QApplication::translate("Form", "X", Q_NULLPTR));
@@ -1087,7 +1168,7 @@ public:
         liftoff_label->setText(QApplication::translate("Form", "Lift off", Q_NULLPTR));
         liftoff_state_ok_panel->setText(QApplication::translate("Form", "X", Q_NULLPTR));
         coast_label->setText(QApplication::translate("Form", "Coast", Q_NULLPTR));
-        groupBox1->setTitle(QApplication::translate("Form", "GSE Sensor Data", Q_NULLPTR));
+        groupBox->setTitle(QApplication::translate("Form", "GSE Sensor Data", Q_NULLPTR));
         tank_temp_panel->setText(QApplication::translate("Form", "26.9", Q_NULLPTR));
         celcius_label2->setText(QApplication::translate("Form", "[\302\260C]", Q_NULLPTR));
         tank_temp_label->setText(QApplication::translate("Form", "Tank Temp", Q_NULLPTR));
@@ -1100,6 +1181,49 @@ public:
         hose_temp_panel->setText(QApplication::translate("Form", "45", Q_NULLPTR));
         rocket_weight_panel->setText(QApplication::translate("Form", "5.7", Q_NULLPTR));
         kg_label->setText(QApplication::translate("Form", "[kg]", Q_NULLPTR));
+#ifndef QT_NO_TOOLTIP
+        logo->setToolTip(QApplication::translate("Form", "<html><head/><body><p>Project Bella Lui 2020</p></body></html>", Q_NULLPTR));
+#endif // QT_NO_TOOLTIP
+        logo->setText(QString());
+        logo_setup_widget->setTabText(logo_setup_widget->indexOf(logo_tab), QApplication::translate("Form", "Logo", Q_NULLPTR));
+        serialport_selector->clear();
+        serialport_selector->insertItems(0, QStringList()
+                                                << QApplication::translate("Form", "ttyUSB0", Q_NULLPTR)
+                                                << QApplication::translate("Form", "ttyUSB1", Q_NULLPTR)
+                                                << QApplication::translate("Form", "ttyS3", Q_NULLPTR)
+                                                << QApplication::translate("Form", "ttyS6", Q_NULLPTR)
+                                         );
+        label->setText(QApplication::translate("Form", "Serial port:", Q_NULLPTR));
+        xbee_button->setText(QApplication::translate("Form", "START XBee", Q_NULLPTR));
+#ifndef QT_NO_TOOLTIP
+        reset_button->setToolTip(QApplication::translate("Form", "Resets saved data", Q_NULLPTR));
+#endif // QT_NO_TOOLTIP
+        reset_button->setText(QApplication::translate("Form", "Reset", Q_NULLPTR));
+        change_theme->setText(QApplication::translate("Form", "Change Color Theme", Q_NULLPTR));
+        logo_setup_widget->setTabText(logo_setup_widget->indexOf(config_tab), QApplication::translate("Form", "Config", Q_NULLPTR));
+        gse_control_box->setTitle(QApplication::translate("Form", "GSE Control", Q_NULLPTR));
+        filling_valve_button->setText(QApplication::translate("Form", "Filling Valve", Q_NULLPTR));
+        filling_valve_panel->setText(QApplication::translate("Form", "OPEN", Q_NULLPTR));
+        purge_valve_button->setText(QApplication::translate("Form", "Purge Valve", Q_NULLPTR));
+        purge_valve_panel->setText(QApplication::translate("Form", "OPEN", Q_NULLPTR));
+        disconnect_wire_button->setText(QApplication::translate("Form", "Disconnect Wire", Q_NULLPTR));
+        disconnect_wire_ok->setText(QApplication::translate("Form", "X", Q_NULLPTR));
+        gse_state_box->setTitle(QApplication::translate("Form", "GSE States", Q_NULLPTR));
+        purge_valve_init_label->setText(QApplication::translate("Form", "Purge Valve init", Q_NULLPTR));
+        fill_valve_init_label->setText(QApplication::translate("Form", "Fill Valve init", Q_NULLPTR));
+        ready_filling_label->setText(QApplication::translate("Form", "Ready for filling", Q_NULLPTR));
+        fill_open_label->setText(QApplication::translate("Form", "Fill Open", Q_NULLPTR));
+        filling_label_2->setText(QApplication::translate("Form", "Filling ...", Q_NULLPTR));
+        fill_close_label->setText(QApplication::translate("Form", "Fill Close", Q_NULLPTR));
+        purge_open_label->setText(QApplication::translate("Form", "Purge Open", Q_NULLPTR));
+        purge_close_label->setText(QApplication::translate("Form", "Purge Close", Q_NULLPTR));
+        groupBox1->setTitle(QApplication::translate("Form", "File Transmission", Q_NULLPTR));
+        receiver_state_label->setText(QApplication::translate("Form", "Receiver State", Q_NULLPTR));
+        transmitter_state_label->setText(QApplication::translate("Form", "Transmitter State", Q_NULLPTR));
+        transmitter_state_panel->setText(QString());
+        file_transmission_button->setText(QApplication::translate("Form", "Start File Transmission", Q_NULLPTR));
+        receiver_state_panel->setText(QString());
+        file_transmission_progress_bar->setFormat(QApplication::translate("Form", "%v / %m", Q_NULLPTR));
         avionics_box->setTitle(QApplication::translate("Form", "Avionics Data", Q_NULLPTR));
         altitude_label_telemetry->setText(QApplication::translate("Form", "ALT.", Q_NULLPTR));
         speed_label->setText(QApplication::translate("Form", "SPEED", Q_NULLPTR));
@@ -1115,26 +1239,6 @@ public:
         pressure_label->setText(QApplication::translate("Form", "PRESS.", Q_NULLPTR));
         m_unit_label_3->setText(QApplication::translate("Form", "m", Q_NULLPTR));
         avionics_state_panel->setText(QString());
-#ifndef QT_NO_TOOLTIP
-        logo->setToolTip(QApplication::translate("Form", "<html><head/><body><p>Project Bella Lui 2020</p></body></html>", Q_NULLPTR));
-#endif // QT_NO_TOOLTIP
-        logo->setText(QString());
-        tabWidget->setTabText(tabWidget->indexOf(logo_tab), QApplication::translate("Form", "Logo", Q_NULLPTR));
-        serialport_selector->clear();
-        serialport_selector->insertItems(0, QStringList()
-                                                << QApplication::translate("Form", "ttyUSB0", Q_NULLPTR)
-                                                << QApplication::translate("Form", "ttyUSB1", Q_NULLPTR)
-                                                << QApplication::translate("Form", "ttyS3", Q_NULLPTR)
-                                                << QApplication::translate("Form", "ttyS6", Q_NULLPTR)
-                                         );
-        label->setText(QApplication::translate("Form", "Serial port:", Q_NULLPTR));
-        xbee_button->setText(QApplication::translate("Form", "START XBee", Q_NULLPTR));
-#ifndef QT_NO_TOOLTIP
-        reset_button->setToolTip(QApplication::translate("Form", "Resets saved data", Q_NULLPTR));
-#endif // QT_NO_TOOLTIP
-        reset_button->setText(QApplication::translate("Form", "Reset", Q_NULLPTR));
-        change_theme->setText(QApplication::translate("Form", "Change Color Theme", Q_NULLPTR));
-        tabWidget->setTabText(tabWidget->indexOf(config_tab), QApplication::translate("Form", "Config", Q_NULLPTR));
     } // retranslateUi
 
 };
@@ -1145,4 +1249,4 @@ class Form: public Ui_Form {};
 
 QT_END_NAMESPACE
 
-#endif // PRESS_ALTT27988_H
+#endif // PRESS_ALTS28074_H

@@ -4,10 +4,22 @@
 
 namespace utilities {
 
-std::string time_short();
+/**
+ * @brief datetime_short
+ * @return An std::string representing the current system date and time.
+ */
+std::string datetime_short();
 
-
-std::string time_long();
+/**
+ * @brief datetime_long
+ * @return An std::string representing the current system date and time.
+ */
+std::string datetime_long();
+/**
+ * @brief time
+ * @return An std::String representing the current system time.
+ */
+std::string time();
 
 
 }

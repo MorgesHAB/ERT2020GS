@@ -11,9 +11,9 @@
 #define SECONDWINDOW_H
 
 #include "second_ui.h"
+#include "../RF-UI-Interface/connector.h"
+#include "../RF-UI-Interface/ProtocolDefine.h"
 
-#include <connector.h>
-#include <ProtocolDefine.h>
 
 #include <memory>
 

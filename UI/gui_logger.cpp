@@ -5,5 +5,5 @@
 
 void Gui_Logger::log(Loggable *data)
 {
-    Logger::buffer.add( "GUI\t" + utilities::time_long() + "\t" + data->log_description());
+    Logger::buffer.add( "GUI\t" + utilities::datetime_long() + "\t" + data->log_description());
 }

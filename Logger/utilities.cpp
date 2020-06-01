@@ -2,18 +2,26 @@
 #include <string>
 #include <ctime>
 
-std::string utilities::time_short()
+std::string utilities::datetime_short()
     {
         time_t timestamp(std::time(nullptr));
         char tbuffer[32];
         struct tm * tptr = std::localtime(&timestamp);
-        std::strftime(tbuffer, 32, "D%m%e-T%H%M%S", tptr);
+        std::strftime(tbuffer, 32, "D%m%d-T%H%M%S", tptr);
         return tbuffer;
     }
-std::string utilities::time_long() {
+std::string utilities::datetime_long() {
         time_t timestamp(std::time(nullptr));
         char tbuffer[32];
         struct tm * tptr = std::localtime(&timestamp);
-        std::strftime(tbuffer, 32, "%m/%e %H:%M:%S", tptr);
+        std::strftime(tbuffer, 32, "%d %h  %H:%M:%S", tptr);
         return tbuffer;
+}
+
+std::string utilities::time() {
+    time_t timestamp(std::time(nullptr));
+    char tbuffer[32];
+    struct tm * tptr = std::localtime(&timestamp);
+    std::strftime(tbuffer, 32, "%H:%M:%S", tptr);
+    return tbuffer;
 }

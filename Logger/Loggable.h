@@ -14,6 +14,9 @@
 
 static const std::string SEPARATOR = "\t";
 
+/**
+ * @brief The Loggable class An interface class for all the data which are loggable.
+ */
 class Loggable {
 public:
     virtual std::string log_description() const = 0; //don't forget to move when returning for efficiency reasons

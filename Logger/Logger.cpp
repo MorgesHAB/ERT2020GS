@@ -3,7 +3,7 @@
 
 static std::atomic<size_t> logger_ctr(0);
 
-Logger::Logger(std::string filename) : buffer(filename + utilities::time_short() + "-ID" + std::to_string(++logger_ctr) +  ".log") {
+Logger::Logger(std::string filename) : buffer(filename + utilities::datetime_short() + "-ID" + std::to_string(++logger_ctr) +  ".log") {
 
 }
 

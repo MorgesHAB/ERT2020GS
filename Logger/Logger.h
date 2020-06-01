@@ -24,6 +24,9 @@
 #include <fstream>
 
 
+/**
+ * @brief The Logger class This class can be used to log instances of Loggable. Each loggable object will be associated to a new .log file.
+ */
 class Logger {
 public:
     Logger(std::string filename = "");

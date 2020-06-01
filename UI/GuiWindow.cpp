@@ -22,6 +22,7 @@
 #include "../Telecom/DataStructures/File/FileTransmissionStates.h"
 #include "../Telecom/DataStructures/GSE/IgnitionStates.h"
 #include "gui_message.h"
+#include "../Logger/utilities.h"
 
 #include <QStyleFactory>
 #include <QString>
@@ -324,12 +325,7 @@ void GuiWindow::check_and_show()
 
 void GuiWindow::refresh_time()
 {
-    time_t timestamp(std::time(nullptr));
-    char tbuffer[32];
-    struct tm * tptr = std::localtime(&timestamp);
-
-    std::strftime(tbuffer, 32, "%H:%M:%S", tptr);
-    time_panel->setText(tbuffer);
+    time_panel->setText(QString::fromStdString(utilities::time()));
 }
 
 void GuiWindow::refresh_file_transmission_box()
