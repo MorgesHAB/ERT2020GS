@@ -4,6 +4,9 @@
 #include "../Logger/Logger.h"
 #include "../Logger/utilities.h"
 
+/**
+ * @brief The Gui_Message class Inheriting the Loggable, this is a basic data which will be used by the GUI.
+ */
 class Gui_Message : public Loggable {
 public:
     Gui_Message(const std::string & message);

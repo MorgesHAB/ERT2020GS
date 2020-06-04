@@ -47,6 +47,7 @@ private:
 
     void initialize_slots_signals();
     void initialize_style();
+    void init_password();
 
     void refresh_ignition_frame();
     void refresh_telemetry();
@@ -80,12 +81,13 @@ private:
     const char* takeoff;
     const char* hymne;
 
-    //Gui_Logger logger;
+    Logger logger;
 
     QTimer * timer_;
     std::shared_ptr<Connector> data_;
     uint64_t tick_counter_;
     uint8_t current_theme_;
+    std::string password_;
     bool ready_ignition_;
     bool xbee_acvite_;
     bool fullscreen_;

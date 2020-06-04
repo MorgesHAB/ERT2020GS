@@ -11,8 +11,8 @@ SOURCES += \
     ../Logger/Logger.cpp \
     ../Logger/Logger_buffer.cpp \
     ../RF-UI-Interface/connector.cpp \
+    Gui_message.cpp \
     gui_logger.cpp \
-    gui_message.cpp \
     gui_test.cc \
     GuiWindow.cpp \
     logger_tests.cc \
@@ -28,8 +28,8 @@ HEADERS += \
     ../Telecom/DataHandler/DatagramTypes.h \
     ../Telecom/DataStructures/File/FileTransmissionStates.h \
     ../Telecom/DataStructures/GSE/IgnitionStates.h \
+    Gui_message.h \
     gui_logger.h \
-    gui_message.h \
     second_ui.h \
     ui_form.h \
     GuiWindow.h \

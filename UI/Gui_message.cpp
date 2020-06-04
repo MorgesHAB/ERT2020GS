@@ -1,4 +1,4 @@
-#include "gui_message.h"
+#include "Gui_message.h"
 
 Gui_Message::Gui_Message(const std::string & message): message_("GUI\t" + utilities::datetime_long() + "\t" + message){}
 

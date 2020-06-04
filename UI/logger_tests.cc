@@ -47,6 +47,19 @@ int
     main(int argc, char ** argv)
 {
 
+    Logger test(1000, "THIS_IS_A_LOGFILE_b5");
+    Data* dat = new Data("This simulates a long packet which was sent "
+                         "from the rocket to our ground station. "
+                         "We love receiving long packets as we can log them all. "
+                         "This is used to test logging "
+                         "long packets at a high rate on the Raspberry Pi 4. "
+                         "This packet is exactly 256 bytes "
+                         "long.");
+    for(int i=0;i<50000;i++)
+    {
+        test.log(dat);
+        std::this_thread::sleep_for(std::chrono::microseconds(1));
+    }
 
     /*
     for(int i=0;i<200000;i++){

@@ -21,7 +21,7 @@
 #include "../Telecom/DataHandler/DatagramTypes.h"
 #include "../Telecom/DataStructures/File/FileTransmissionStates.h"
 #include "../Telecom/DataStructures/GSE/IgnitionStates.h"
-#include "gui_message.h"
+#include "Gui_message.h"
 #include "../Logger/utilities.h"
 
 #include <QStyleFactory>
@@ -29,6 +29,8 @@
 #include <QMessageBox>
 #include <QPixmap>
 #include <QCoreApplication>
+#include <QInputDialog>
+#include <QDir>
 
 
 constexpr uint32_t REFRESH_RATE(500);
@@ -64,7 +66,9 @@ GuiWindow::GuiWindow(std::shared_ptr<Connector> connector) :
     current_theme_(0),
     ready_ignition_(false),
     xbee_acvite_(false),
-    fullscreen_(false)
+    fullscreen_(false),
+    logger(5,"GUI"),
+    password_("EPFL")
 {
 #ifdef SOUND_ON
     m_player = new QMediaPlayer();
@@ -75,12 +79,16 @@ GuiWindow::GuiWindow(std::shared_ptr<Connector> connector) :
 #endif
     initialize_style();
     initialize_slots_signals();
+    init_password();
     grabKeyboard();
     timer_->start(REFRESH_RATE);
+    logger.log(new Gui_Message("Gui started."));
+
 }
 
 void GuiWindow::reset_button_pressed()
 {
+    logger.log(new Gui_Message("Reset button pressed. Data reset."));
     constexpr uint64_t z(0);
     for (auto& index : dataToReset) data_->setData(index, z);
 }
@@ -101,12 +109,12 @@ void GuiWindow::refresh_data()
 void GuiWindow::xbee_clicked()
 {
     if (!xbee_acvite_) {
-        //logger.log(new Gui_Message("XBee ON button clicked!"));
+        logger.log(new Gui_Message("XBee ON button clicked!"));
         std::cout << "XBee ON button clicked!" << std::endl;
         data_->setData(ui_interface::ACTIVE_XBEE, true);
         xbee_button->setText("STOP XBee");
     } else {
-        //logger.log(new Gui_Message("XBee STOP button clicked!"));
+        logger.log(new Gui_Message("XBee STOP button clicked!"));
         std::cout << "XBee STOP button clicked!" << std::endl;
         data_->setData(ui_interface::ACTIVE_XBEE, false);
         xbee_button->setText("START XBee");
@@ -117,16 +125,17 @@ void GuiWindow::xbee_clicked()
 void GuiWindow::ignite_clicked()
 {
     std::cout << "Ignition button clicked!" << std::endl;
+    std::string str("Ignition toggled. The state is: ");
     ready_ignition_ = data_->getData<bool>(IGNITION_CLICKED);
     ready_ignition_ = !ready_ignition_;
     data_->setData(ui_interface::IGNITION_CLICKED, ready_ignition_);
     show_ok_X(ready_ignition_panel, ready_ignition_);
+    logger.log(new Gui_Message(str.append(ready_ignition_? "READY" : "NOT READY")));
 }
 
 void GuiWindow::theme_change_clicked()
 {
     current_theme_ = ((current_theme_ + 1) % THEME_COUNT);
-
     std::string str("Theme change button clicked. ");
 
     if (current_theme_ == WHITE_ON_BLACK) {
@@ -148,10 +157,12 @@ void GuiWindow::theme_change_clicked()
                                     "color: rgb(0, 0, 0);"));
         packets_second_bar->setStyleSheet(QLatin1String("color: rgb(0,0,0);"));
     }
+    logger.log(new Gui_Message(str));
 }
 
 void GuiWindow::file_transmission_pressed()
 {
+    logger.log(new Gui_Message("File transmission request button pressed."));
     data_->setData(ui_interface::SEND_FILE_REQUEST, true);
 }
 /*
@@ -168,16 +179,20 @@ uint16_t GuiWindow::calculate_misses()
 */
 void GuiWindow::closeEvent(QCloseEvent * event)
 {
-    //logger.log(new Gui_Message("Window close clicked."));
+    logger.log(new Gui_Message("Window close attempt..."));
     QMessageBox::StandardButton resBtn = QMessageBox::question(this, "BELLA LUI 2020",
                                                                tr("Ending mission Bella Lui 2020.\nAre you sure?\n"),
                                                                QMessageBox::Cancel | QMessageBox::No | QMessageBox::Yes, QMessageBox::Yes);
 
     if (resBtn != QMessageBox::Yes) {
         event->ignore();
+        logger.log(new Gui_Message("Window close rejected."));
     } else {
+        logger.log(new Gui_Message("Window close accepted, exiting program."));
         event->accept();
         data_->setData(ui_interface::RUNNING, false);
+
+
         std::cout << "running set to false" << std::endl;
     }
 }
@@ -211,6 +226,19 @@ void GuiWindow::initialize_style()
     QCoreApplication::setAttribute(Qt::AA_UseStyleSheetPropagationInWidgetStyles);
     QApplication::setStyle(QStyleFactory::create("cleanlooks"));
     Ui_Form::setupUi(this);
+}
+
+void GuiWindow::init_password()
+{
+    bool ok;
+    QString text = QInputDialog::getText(this, tr("Password initialization"),
+                                         tr("Enter a password to use when enabling the manual mode. "
+                                            "\nIf you cancel this step the default password will be: EPFL"), QLineEdit::Normal,
+                                         "EPFL", &ok, Qt::Tool);
+    if (ok && !text.isEmpty())
+        password_ = text.toStdString();
+    logger.log(new Gui_Message("The password is set."));
+    std::cout << "The password is set to " << text.toStdString() << std::endl;
 }
 
 void GuiWindow::refresh_ignition_frame()
@@ -356,6 +384,8 @@ void GuiWindow::keyPressEvent(QKeyEvent * ckey)
         fullscreen_ = !fullscreen_;
     }
     (fullscreen_) ? showFullScreen() : showNormal();
+    std::string str("Fullscreen ");
+    logger.log(new Gui_Message(str.append(fullscreen_? "ON" : "OFF")));
 }
 
 #ifdef SOUND_ON

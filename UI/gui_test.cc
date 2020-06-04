@@ -87,35 +87,23 @@ main(int argc, char ** argv)
 
     // set up everything
 
-    //std::shared_ptr<Connector> c(std::make_shared<Connector>());
-   // A a;
-    //std::thread receiver_thread(&A::f1, a, c);
+    std::shared_ptr<Connector> c(std::make_shared<Connector>());
+    A a;
+    std::thread receiver_thread(&A::f1, a, c);
 
     {
-    //QApplication app(argc, argv);
-    //GuiWindow firstwin(c);
+    QApplication app(argc, argv);
+    GuiWindow firstwin(c);
     //SecondWindow secondwin(c);
     // run all threads
-    Logger test(1000, "THIS_IS_A_LOGFILE_b5");
-    Data* dat = new Data("This simulates a long packet which was sent "
-                         "from the rocket to our ground station. "
-                         "We love receiving long packets as we can log them all. "
-                         "This is used to test logging "
-                         "long packets at a high rate on the Raspberry Pi 4. "
-                         "This packet is exactly 256 bytes "
-                         "long.");
-    for(int i=0;i<50000;i++)
-    {
-        test.log(dat);
-        std::this_thread::sleep_for(std::chrono::microseconds(1));
-    }
+
     //std::cout << utilities::datetime_long() << std::endl;
     // end the program
-    //firstwin.show();
+    firstwin.show();
     //secondwin.show();
-    //app.exec();
+    app.exec();
     }
-    //receiver_thread.join();
+    receiver_thread.join();
     return 0;
 }
 #endif
