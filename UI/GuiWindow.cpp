@@ -35,12 +35,15 @@ constexpr uint32_t REFRESH_RATE(500);
 
 using namespace ui_interface;
 
+
+
+//-----Helpful Inline Utility Functions for GUI-----
+
 inline QString degree_representation(double value)
 {
     return QString::number(value) + "<sup>o</sup>";
 }
 
-// Works for double, uint8_t, uint32_t, uint64_t
 template <typename T> inline QString qstr(T value)
 {
     return QString::number(value);
@@ -51,10 +54,13 @@ inline bool get_bit(unsigned char byte, int position) // position in range 0-7
     return (byte >> position) & 0x1;
 }
 
+
+
+// GUI Window Class Functions
+
 GuiWindow::GuiWindow(std::shared_ptr<Connector> connector) :
     timer_(new QTimer(this)),
     data_(connector),
-    missed_count_(0),
     current_theme_(0),
     ready_ignition_(false),
     xbee_acvite_(false),
@@ -67,7 +73,6 @@ GuiWindow::GuiWindow(std::shared_ptr<Connector> connector) :
     hymne    = "qrc:/assets/hymne.mp3";
     playSound(hymne);
 #endif
-
     initialize_style();
     initialize_slots_signals();
     grabKeyboard();
@@ -143,26 +148,24 @@ void GuiWindow::theme_change_clicked()
                                     "color: rgb(0, 0, 0);"));
         packets_second_bar->setStyleSheet(QLatin1String("color: rgb(0,0,0);"));
     }
-    //logger.log(new Gui_Message(str));
 }
 
 void GuiWindow::file_transmission_pressed()
 {
-    //logger.log(new Gui_Message("File transmission button pressed. SEND_FILE_REQUEST set to true."));
     data_->setData(ui_interface::SEND_FILE_REQUEST, true);
 }
-
-uint16_t GuiWindow::calculate_misses_in_last_2()
+/*
+uint16_t GuiWindow::calculate_misses()
 {
-    static std::array<uint32_t, 2000 / REFRESH_RATE> before{ 0 };
+    static std::array<uint32_t, 1000 / REFRESH_RATE> before{ 0 };
 
-    uint16_t current(tick_counter_ % 2000 / REFRESH_RATE);
+    uint16_t current(tick_counter_ % 1000 / REFRESH_RATE);
     uint16_t tmp(missed_count_ - before[current]); // change
 
     before[current] = missed_count_;
     return tmp;
 }
-
+*/
 void GuiWindow::closeEvent(QCloseEvent * event)
 {
     //logger.log(new Gui_Message("Window close clicked."));
@@ -178,13 +181,15 @@ void GuiWindow::closeEvent(QCloseEvent * event)
         std::cout << "running set to false" << std::endl;
     }
 }
-
+/*
+ * Not used anymore as the packet number isn't sent.
+ * 
 void GuiWindow::refresh_misses()
 {
     missed_count_ = data_->getData<uint32_t>(TX_PACKET_NR)
                     - data_->getData<uint32_t>(RX_PACKET_CTR);
 }
-
+*/
 void GuiWindow::refresh_ignition_code()
 {
     uint8_t tmp(data_->getData<uint8_t>(ui_interface::TX_IGNITION_CODE));
@@ -278,19 +283,10 @@ void GuiWindow::refresh_gps()
 
 void GuiWindow::refresh_com()
 {
-    refresh_misses();
-    last_packet_number_panel->setText(
-        qstr(data_->getData<uint32_t>(TX_PACKET_NR)));
+    last_packet_number_panel->setText(qstr(data_->getData<uint32_t>(TX_PACKET_NR)));
     std::string str(DatagramType::getDatagramIDName(data_->getData<uint8_t>(ui_interface::DATAGRAM_ID)));
     last_datagram_id_panel->setText(QString::fromStdString(str));
     received_pack_cnt_panel->setText(qstr(data_->getData<uint32_t>(RX_PACKET_CTR)));
-    // this->speed_lcd->display(data_->getData<float>(SPEED)); no speed
-    time_t timestamp(data_->getData<time_t>(TIMESTAMP));
-    char tbuffer[32];
-    struct tm * tptr = std::localtime(&timestamp);
-    std::strftime(tbuffer, 32, "%T", tptr);
-    miss_panel->setText(qstr(calculate_misses_in_last_2()));
-    this->last_refresh_panel->setText(tbuffer);
     uint32_t packets(data_->eatData<uint32_t>(PACKET_RX_RATE_CTR, 0));
     packets_second_bar->setValue((packets * (1000.0 / (REFRESH_RATE))));
     corrupted_panel->setText(qstr(data_->getData<uint64_t>(CORRUPTED_PACKET_CTR)));
@@ -308,7 +304,7 @@ void GuiWindow::check_and_show()
         break;
     case IGNITION_ON:
 #ifdef SOUND_ON
-// playSound(takeoff);
+        // playSound(takeoff);
 #endif
         QMessageBox::warning(this, "GSE Info", "Ignition circuit active ! Igniters should be burning!");
         break;
@@ -319,8 +315,6 @@ void GuiWindow::check_and_show()
     if (data_->eatData<bool>(FILE_TRANSMISSION_ALL_RECEIVED, false)) {
         QMessageBox::warning(this, "File", "File transmission finished - All received");
     }
-
-    // show_ok_X(ready_ignition_panel, data_->getData<bool>(IGNITION_CLICKED));
 }
 
 void GuiWindow::refresh_time()

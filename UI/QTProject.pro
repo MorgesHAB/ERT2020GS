@@ -7,7 +7,7 @@ CONFIG+=c++11
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets multimedia
 
 SOURCES += \
-    ../Logger/double_buffer.cpp \
+    ../Logger/Double_buffer.cpp \
     ../Logger/Logger.cpp \
     ../Logger/Logger_buffer.cpp \
     ../RF-UI-Interface/connector.cpp \
@@ -19,7 +19,7 @@ SOURCES += \
     ../Logger/utilities.cpp
 
 HEADERS += \
-    ../Logger/double_buffer.h \
+    ../Logger/Double_buffer.h \
     ../Logger/Loggable.h \
     ../Logger/Logger.h \
     ../Logger/Logger_buffer.h \

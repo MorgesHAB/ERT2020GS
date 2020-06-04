@@ -1,4 +1,4 @@
-#include "double_buffer.h"
+#include "Double_buffer.h"
 
 #include <iostream>
 #include <ios>
@@ -29,9 +29,8 @@ void Double_buffer::add(const std::string & str)
         std::cerr << "The current buffer is not ready to fill." << std::endl;
 
     if(buffers_[current_buffer].is_full()){
-        //std::cout << "The buffer got full, initializing thread \n";
         std::thread (&Double_buffer::log_buffer, this, current_buffer).detach();
-        current_buffer = ++current_buffer % buffers_.size();
+        current_buffer = ++current_buffer % buffers_.size(); //change the buffer to the next one
     }
 }
 

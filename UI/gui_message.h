@@ -2,6 +2,7 @@
 #define Gui_Message_H
 
 #include "../Logger/Logger.h"
+#include "../Logger/utilities.h"
 
 class Gui_Message : public Loggable {
 public:

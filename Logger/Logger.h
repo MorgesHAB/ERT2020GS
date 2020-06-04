@@ -14,7 +14,7 @@
 
 #include "Loggable.h"
 #include "Logger_buffer.h"
-#include "double_buffer.h"
+#include "Double_buffer.h"
 #include "../RF-UI-Interface/connector.h"
 #include "../RF-UI-Interface/ProtocolDefine.h"
 #include <unordered_map>
@@ -30,6 +30,8 @@
 class Logger {
 public:
     Logger(std::string filename = "");
+
+    Logger(size_t buffer_size, std::string filename = "");
 
     virtual void log(Loggable* data);
 

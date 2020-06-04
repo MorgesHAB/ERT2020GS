@@ -50,14 +50,14 @@ namespace ui_interface {
         PACKET_CTR_PP,
         TIME_SINCE_LAST_RX_PACKET,
 
-        PACKET_RX_RATE_CTR, // uint32_t  **This is incremented on each packet received, eated by guito find the packet rate.
+        PACKET_RX_RATE_CTR, // uint32_t      **This is incremented on each packet received, eated by guito find the packet rate.
         RX_PACKET_CTR,    // uint32_t        **This is the count of the received packets from the beginning of the program
         CORRUPTED_PACKET_CTR,    // uint64_t **The count of the corrupted packets received. Incremented by RX.
 
         /// Header
         DATAGRAM_ID,     // uint8_t            **The ID of the last packet received
-        TX_PACKET_NR,    // uint32_t         **This is the last packet's number. // TODO delete (RF no longer use this)
-        TIMESTAMP,       // time_t                   **The Time of the last packet received
+        TX_PACKET_NR,    // uint32_t           **This is the last packet's number. // TODO delete (RF no longer use this)
+        TIMESTAMP,       // time_t             **The Time of the last packet received
         TOTAL_RX_PACKET_CTR, //uint64_t         just increment when received a packet
 
         /// GPS Data Structure

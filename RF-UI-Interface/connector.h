@@ -44,7 +44,7 @@ private:
 };
 
 
-// Definitions here because reference conflicts
+// Definitions here because of the reference conflicts
 template<typename T>
 void Connector::setData(ui_interface::DataType type, T t) {
     std::atomic_store(&(dataCollection[type]), reinterpret_cast<uint64_t&> (t));

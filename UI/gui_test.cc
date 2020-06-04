@@ -22,14 +22,14 @@ public:
 std::string Data::log_description() const {
     static int a = 0;
     ++a;
-    return std::to_string(a);
+    return std::to_string(a) + dataname;
 }
 
 class A {
 public:
     void f2(std::shared_ptr<Connector> c){
         while(c->getData<bool>(ui_interface::RUNNING)){
-        std::cout << "another looooop" << std::endl;
+        std::cout << "another loop" << std::endl;
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
         }
     }
@@ -71,7 +71,7 @@ public:
             }
             c->setData(ui_interface::TX_IGNITION_CODE, (uint8_t) a);
             
-	    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
         }
         std::cout << "Ending receiver thread!" << std::endl;
     } // f1
@@ -87,24 +87,35 @@ main(int argc, char ** argv)
 
     // set up everything
 
-    std::shared_ptr<Connector> c(std::make_shared<Connector>());
-    A a;
-    std::thread receiver_thread(&A::f1, a, c);
+    //std::shared_ptr<Connector> c(std::make_shared<Connector>());
+   // A a;
+    //std::thread receiver_thread(&A::f1, a, c);
 
     {
-    QApplication app(argc, argv);
-    GuiWindow firstwin(c);
+    //QApplication app(argc, argv);
+    //GuiWindow firstwin(c);
     //SecondWindow secondwin(c);
     // run all threads
-
-
-    std::cout << utilities::datetime_long() << std::endl;
-    // end the program
-    firstwin.show();
-    //secondwin.show();
-    app.exec();
+    Logger test(5, "THIS_IS_A_LOGFILE_b5");
+    Data* dat = new Data("This simulates a long packet which was sent "
+                         "from the rocket to our ground station. "
+                         "We love receiving long packets as we can log them all. "
+                         "This is used to test logging "
+                         "long packets at a high rate on the Raspberry Pi 4. "
+                         "This packet is exactly 256 bytes "
+                         "long.");
+    for(int i=0;i<2500;i++)
+    {
+        test.log(dat);
+        std::this_thread::sleep_for(std::chrono::microseconds(1));
     }
-    receiver_thread.join();
+    //std::cout << utilities::datetime_long() << std::endl;
+    // end the program
+    //firstwin.show();
+    //secondwin.show();
+    //app.exec();
+    }
+    //receiver_thread.join();
     return 0;
 }
 #endif

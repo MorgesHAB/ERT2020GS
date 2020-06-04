@@ -53,6 +53,7 @@ private:
     void refresh_gps();
     void refresh_com();
     void check_and_show();
+    
     void refresh_time();
     void refresh_file_transmission_box();
 
@@ -60,12 +61,15 @@ private:
     void show_ok(QLabel*);
     void show_X(QLabel*);
 
-    uint16_t calculate_misses_in_last_2();
+    
     void closeEvent(QCloseEvent * event) override;
     void keyPressEvent(QKeyEvent *event) override;
     void refresh_misses();
     void refresh_ignition_code();
     void refresh_av_state();
+    
+    //uint16_t calculate_misses();  can't do it as we don't send the packet number
+
 
 #ifdef SOUND_ON
     void playSound(const char * url);
@@ -81,11 +85,12 @@ private:
     QTimer * timer_;
     std::shared_ptr<Connector> data_;
     uint64_t tick_counter_;
-    uint64_t missed_count_;
     uint8_t current_theme_;
     bool ready_ignition_;
     bool xbee_acvite_;
     bool fullscreen_;
+    
+    //uint64_t missed_count_; can't do it as we don't send the packet number
 };
 
 #endif // GUIWINDOW_H
