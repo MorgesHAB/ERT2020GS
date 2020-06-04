@@ -96,7 +96,7 @@ main(int argc, char ** argv)
     //GuiWindow firstwin(c);
     //SecondWindow secondwin(c);
     // run all threads
-    Logger test(5, "THIS_IS_A_LOGFILE_b5");
+    Logger test(1000, "THIS_IS_A_LOGFILE_b5");
     Data* dat = new Data("This simulates a long packet which was sent "
                          "from the rocket to our ground station. "
                          "We love receiving long packets as we can log them all. "
@@ -104,7 +104,7 @@ main(int argc, char ** argv)
                          "long packets at a high rate on the Raspberry Pi 4. "
                          "This packet is exactly 256 bytes "
                          "long.");
-    for(int i=0;i<2500;i++)
+    for(int i=0;i<50000;i++)
     {
         test.log(dat);
         std::this_thread::sleep_for(std::chrono::microseconds(1));
