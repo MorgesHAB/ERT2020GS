@@ -31,6 +31,11 @@ class Logger {
 public:
     Logger(std::string filename = "");
 
+    /**
+     * @brief Logger
+     * @param buffer_size The size of the buffer. 10^6 packets/sec tested succesfully 100% with a size of 1000.
+     * @param filename The beginning of the name of the .log file.
+     */
     Logger(size_t buffer_size, std::string filename = "");
 
     virtual void log(Loggable* data);
