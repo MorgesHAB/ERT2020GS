@@ -35,6 +35,11 @@ public:
     void update();
 
 public slots:
+    void fill_valve_pressed();
+    void purge_valve_pressed();
+    void disconnect_wire_pressed();
+    void manual_mode_pressed();
+    void rssi_request_pressed();
     void reset_button_pressed();
     void refresh_data();
     void xbee_clicked();
@@ -48,6 +53,11 @@ private:
     void initialize_slots_signals();
     void initialize_style();
     void init_password();
+    /**
+     * @brief ask_password
+     * @return If the pasworrd was entered correctly.
+     */
+    bool ask_password();
 
     void refresh_ignition_frame();
     void refresh_telemetry();
@@ -88,6 +98,7 @@ private:
     uint64_t tick_counter_;
     uint8_t current_theme_;
     std::string password_;
+    bool manual_mode;
     bool ready_ignition_;
     bool xbee_acvite_;
     bool fullscreen_;

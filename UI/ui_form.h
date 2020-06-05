@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'press_altrc5285.ui'
+** Form generated from reading UI file 'press_altM12866.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.9.5
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef PRESS_ALTRC5285_H
-#define PRESS_ALTRC5285_H
+#ifndef PRESS_ALTM12866_H
+#define PRESS_ALTM12866_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QAction>
@@ -168,7 +168,7 @@ public:
     QGridLayout *gridLayout_5;
     QLabel *dbm_label;
     QLabel *time_panel;
-    QPushButton *pushButton;
+    QPushButton *manual_mode_button;
     QPushButton *request_rssi;
     QLabel *rssi_value_panel;
     QGroupBox *gse_control_box;
@@ -967,10 +967,10 @@ public:
 
         gridLayout_5->addWidget(time_panel, 0, 1, 1, 3);
 
-        pushButton = new QPushButton(upper_widget);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
+        manual_mode_button = new QPushButton(upper_widget);
+        manual_mode_button->setObjectName(QStringLiteral("manual_mode_button"));
 
-        gridLayout_5->addWidget(pushButton, 0, 0, 1, 1);
+        gridLayout_5->addWidget(manual_mode_button, 0, 0, 1, 1);
 
         request_rssi = new QPushButton(upper_widget);
         request_rssi->setObjectName(QStringLiteral("request_rssi"));
@@ -1297,7 +1297,7 @@ public:
         last_datagram_id_panel->setText(QString());
         dbm_label->setText(QApplication::translate("Form", "dBm", Q_NULLPTR));
         time_panel->setText(QApplication::translate("Form", "44:44:44", Q_NULLPTR));
-        pushButton->setText(QApplication::translate("Form", "Manual Mode", Q_NULLPTR));
+        manual_mode_button->setText(QApplication::translate("Form", "Manual Mode", Q_NULLPTR));
         request_rssi->setText(QApplication::translate("Form", "Request RSSI", Q_NULLPTR));
         rssi_value_panel->setText(QString());
         gse_control_box->setTitle(QApplication::translate("Form", "GSE Control", Q_NULLPTR));
@@ -1350,4 +1350,4 @@ class Form: public Ui_Form {};
 
 QT_END_NAMESPACE
 
-#endif // PRESS_ALTRC5285_H
+#endif // PRESS_ALTM12866_H

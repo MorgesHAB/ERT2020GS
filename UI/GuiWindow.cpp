@@ -61,14 +61,15 @@ inline bool get_bit(unsigned char byte, int position) // position in range 0-7
 // GUI Window Class Functions
 
 GuiWindow::GuiWindow(std::shared_ptr<Connector> connector) :
+    logger(5,"GUI"),
     timer_(new QTimer(this)),
     data_(connector),
     current_theme_(0),
+    password_("EPFL"),
+    manual_mode(false),
     ready_ignition_(false),
     xbee_acvite_(false),
-    fullscreen_(false),
-    logger(5,"GUI"),
-    password_("EPFL")
+    fullscreen_(false)
 {
 #ifdef SOUND_ON
     m_player = new QMediaPlayer();
@@ -80,10 +81,45 @@ GuiWindow::GuiWindow(std::shared_ptr<Connector> connector) :
     initialize_style();
     initialize_slots_signals();
     init_password();
-    grabKeyboard();
+    //grabKeyboard();
     timer_->start(REFRESH_RATE);
     logger.log(new Gui_Message("Gui started."));
 
+}
+
+void GuiWindow::fill_valve_pressed()
+{
+    logger.log(new Gui_Message("FILL valve button pressed"));
+}
+
+void GuiWindow::purge_valve_pressed()
+{
+    logger.log(new Gui_Message("PURGE valve button pressed"));
+}
+
+void GuiWindow::disconnect_wire_pressed()
+{
+    logger.log(new Gui_Message("DISCONNECT wire button pressed"));
+}
+
+void GuiWindow::manual_mode_pressed()
+{
+    logger.log(new Gui_Message("Manual mode button pressed"));
+    if(ask_password()){
+        manual_mode = true;
+        QMessageBox::information(this,"Manual Mode","Manual mode is activated");
+        logger.log(new Gui_Message("Manual mode activated."));
+        manual_mode_button->setCheckable(true);
+        manual_mode_button->setEnabled(false);
+        manual_mode_button->setChecked(true);
+
+    }
+
+}
+
+void GuiWindow::rssi_request_pressed()
+{
+     logger.log(new Gui_Message("RSSI request button pressed"));
 }
 
 void GuiWindow::reset_button_pressed()
@@ -111,7 +147,10 @@ void GuiWindow::xbee_clicked()
     if (!xbee_acvite_) {
         logger.log(new Gui_Message("XBee ON button clicked!"));
         std::cout << "XBee ON button clicked!" << std::endl;
+        uint64_t index = serialport_selector->currentIndex();
+        data_->setData(ui_interface::SERIALPORT_INDEX, index); //index selection hardcoded inside the telecom worker :(
         data_->setData(ui_interface::ACTIVE_XBEE, true);
+        logger.log(new Gui_Message("XBee port no " + std::to_string(index) + "selected."));
         xbee_button->setText("STOP XBee");
     } else {
         logger.log(new Gui_Message("XBee STOP button clicked!"));
@@ -241,6 +280,30 @@ void GuiWindow::init_password()
     std::cout << "The password is set to " << text.toStdString() << std::endl;
 }
 
+bool GuiWindow::ask_password()
+{
+    logger.log(new Gui_Message("Asked password to user."));
+
+    bool ok;
+    QString text = QInputDialog::getText(this, tr("Authorization required"),
+                                         tr("Enter the password if you have set one."
+                                            "\nThe default password is: EPFL"), QLineEdit::Normal,
+                                         "", &ok, Qt::Tool);
+    if (ok && !text.isEmpty()){
+        if(password_ == text.toStdString()){ //password is correct
+            logger.log(new Gui_Message("Password was entered correctly."));
+            return true;
+
+        } else {
+            QMessageBox::warning(this, "Warning", "Wrong password, permission denied.");
+            logger.log(new Gui_Message("Password wasn't correct."));
+        }
+        return false;
+    }
+
+    std::cout << "The password is set to " << text.toStdString() << std::endl;
+}
+
 void GuiWindow::refresh_ignition_frame()
 {
     refresh_ignition_code();
@@ -283,6 +346,10 @@ void GuiWindow::initialize_slots_signals()
     connect(ignition_button, SIGNAL(pressed()), this, SLOT(ignite_clicked()));
     connect(change_theme, SIGNAL(pressed()), this, SLOT(theme_change_clicked()));
     connect(file_transmission_button, SIGNAL(pressed()), this, SLOT(file_transmission_pressed()));
+    connect(filling_valve_button, SIGNAL(pressed()),this, SLOT(fill_valve_pressed()));
+    connect(purge_valve_button, SIGNAL(pressed()),this, SLOT(purge_valve_pressed()));
+    connect(disconnect_wire_button, SIGNAL(pressed()),this, SLOT(disconnect_wire_pressed()));
+    connect(manual_mode_button, SIGNAL(pressed()), this, SLOT(manual_mode_pressed()));
 }
 
 void GuiWindow::refresh_telemetry()
