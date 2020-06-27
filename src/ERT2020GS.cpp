@@ -30,24 +30,24 @@ int main(int argc, char **argv) {
     
     std::shared_ptr<Connector> connector(std::make_shared<Connector>());
 
-    std::shared_ptr<Connector> fake_connector(std::make_shared<Connector>());
+    //std::shared_ptr<Connector> fake_connector(std::make_shared<Connector>());
 
     QApplication app(argc, argv);
     
-    //GuiWindow guiWindow(fake_connector);
+    GuiWindow guiWindow(connector);
 
-    SecondWindow secWindow(connector);
+    //SecondWindow secWindow(connector);
 
     //run all threads
     std::thread t1(&Worker::mainRoutine, Worker(connector));
 
     std::this_thread::sleep_for(std::chrono::milliseconds(300));
 
-    //guiWindow.show();
+    guiWindow.show();
 
     std::this_thread::sleep_for(std::chrono::milliseconds(300));
 	
-    secWindow.show();
+    //secWindow.show();
 
     std::this_thread::sleep_for(std::chrono::milliseconds(300));
 
