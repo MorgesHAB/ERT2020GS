@@ -105,7 +105,7 @@ bool IgnitionCode::updateTx(std::shared_ptr<Connector> connector) {
     code[2] = digitalRead(GPIO_IN_CODE2);
     code[3] = digitalRead(GPIO_IN_CODE3);
     ignitionCode = code[3] << 3 | code[2] << 2 | code[1] << 1 | code[0];
-    connector->setData(ui_interface::TX_IGNITION_CODE, code);
+    connector->setData(ui_interface::TX_IGNITION_CODE, ignitionCode);
 
     // true if send Ignition packet
     if (key1 && key2 && redButtonPressed &&
