@@ -6,9 +6,9 @@
 ## Table of Contents
 1. [Abstract](#abstract)
 2. [Repository organization tree](#repository-organization-tree)
-3. [GST system diagram](#GST-system-diagram)
+3. [GST system diagram](#ground-station-system-diagram)
 4. [Prerequisites](#prerequisites)
-5. [Configure the xbee](#configure-the-xbee)
+5. [Configure the XBee](#configure-the-xbee)
 6. [Building software](#building-software)
 7. [Running the tests](#running-the-tests)
 8. [Information](#information)
@@ -332,19 +332,20 @@ and so with the xbee.
 
 -----------------------------------------------------------------
 ### Authors
-* [Cem Keske](https://github.com/cem-keske) Mission UI & Logger
-* [Stéphanie Lebrun](https://github.com/StLebrun) implementation of some Data structures
+* [Cem Keske](https://ch.linkedin.com/in/cem-keske-565363164) Mission UI & Logger
+* [Stéphanie Lebrun](https://ch.linkedin.com/in/st%C3%A9phanie-lebrun-491695192) implementation of some Data structures
 * [Lionel Isoz](https://github.com/MorgesHAB) RF telecommunication - xbee network - DataHandler
 
 -----------------------------------------------------------------
 ### Acknowledgments
 * [Clément Nussbaumer](https://github.com/clementnuss/gs_matterhorn) - ERT2018 GS, inspired this software
-* Alexandre Devienne - Xbee PCB & antennas
+* [Alexandre Devienne](https://ch.linkedin.com/in/alexandre-devienne-ba4242127) - Xbee PCB & antennas
 * [EPFL Rocket Team](https://epflrocketteam.ch/fr/)
 * [Flaticon](https://www.flaticon.com/categories) for UI icon
 
 -----------------------------------------------------------------
 ### Useful links
+Documentations
 * [XBee API mode](https://www.digi.com/resources/documentation/Digidocs/90001942-13/concepts/c_api_frame_structure.htm?tocpath=XBee%20API%20mode%7C_____2)
 * [XBee Zigbee Mesh Kit](https://www.digi.com/resources/documentation/digidocs/pdfs/90001942-13.pdf)
 * [XBee SX 868](https://www.digi.com/resources/documentation/digidocs/pdfs/90001538.pdf)
