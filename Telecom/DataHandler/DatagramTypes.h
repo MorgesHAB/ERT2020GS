@@ -35,6 +35,8 @@ namespace DatagramType {
             PL_STATE,
             PL_GPS,
             PL_ORDER,
+            PL_BME_SENSOR,
+            PL_BNO_SENSOR,
 
         /// Propulsion Datagram
             PROPULSION,
@@ -71,6 +73,8 @@ namespace DatagramType {
             case PL_IMAGE: return "PL IMAGE";
             case PL_GPS: return "PL GPS";
             case PL_ORDER: return "PL ORDER";
+            case PL_BME_SENSOR: return "PL BME SENSOR";
+            case PL_BNO_SENSOR: return "PL BNO SENSOR";
             case TEST: return "TEST";
             default: return "Unknown";
         }

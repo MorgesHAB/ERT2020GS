@@ -54,7 +54,7 @@ void Worker::RFroutine(DataHandler& dataHandler, RFmodem* rfmodem) {
 
     // Manage Reception
     if (rfmodem->receive(dataHandler)) {
-        if (connector->getData<bool>(ui_interface::LOGGING_ACTIVE))
+        //if (connector->getData<bool>(ui_interface::LOGGING_ACTIVE)) // always log -waiting a button
             dataHandler.logLastRxPacket();
         dataHandler.printLastRxPacket();
     }

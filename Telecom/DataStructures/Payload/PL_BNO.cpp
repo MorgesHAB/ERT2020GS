@@ -1,0 +1,45 @@
+/*!
+ * \file PL_BNO.cpp
+ *
+ * \brief PL_BNO module implementation
+ *
+ * \author      ISOZ Lionel - EPFL EL BA3
+ * \date        01.07.2020	
+ */
+
+#include "PL_BNO.h"
+
+void PL_BNO::write(Packet &packet) {
+    packet.write(temperature);
+    packet.write(orientationX);
+    packet.write(orientationY);
+    packet.write(orientationZ);
+    packet.write(accelerationX);
+    packet.write(accelerationY);
+    packet.write(accelerationZ);
+}
+
+void PL_BNO::parse(Packet &packet) {
+    packet.parse(temperature);
+    packet.parse(orientationX);
+    packet.parse(orientationY);
+    packet.parse(orientationZ);
+    packet.parse(accelerationX);
+    packet.parse(accelerationY);
+    packet.parse(accelerationZ);
+}
+
+void PL_BNO::print() const {
+    std::cout << " Temperature: " << +temperature << " Orientation: (" << orientationX
+              << "," << orientationY << "," << orientationZ << ")   " << " Accel: ("
+              << accelerationX << "," << accelerationY << "," << accelerationZ
+              << ")" << std::endl;
+}
+
+std::string PL_BNO::log() const {
+    return Data::log();
+}
+
+bool PL_BNO::updateRx(std::shared_ptr<Connector> connector) {
+    return Data::updateRx(connector);
+}
