@@ -144,6 +144,14 @@ void GuiWindow::refresh_data()
     refresh_gps();
     refresh_file_transmission_box();
     ++tick_counter_;
+
+    //refresh serial port config
+    auto serialStatus = data_->getData<int>(ui_interface::SERIALPORT_STATUS);
+    serialport_status->setStyleSheet(
+            (serialStatus == 0) ? "QLabel {image: url(:/assets/refresh.png);}"
+                                : (serialStatus == 1)
+                                  ? "QLabel {image: url(:/assets/correct.png);}"
+                                  : "QLabel {image: url(:/assets//redCross.png);}");
 }
 
 void GuiWindow::xbee_clicked()
