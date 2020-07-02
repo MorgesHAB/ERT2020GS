@@ -37,7 +37,14 @@ void PL_BNO::print() const {
 }
 
 std::string PL_BNO::log() const {
-    return Data::log();
+    return std::move("BNO PAYLOAD" + SEPARATOR +
+                     std::to_string(temperature) + SEPARATOR +
+                     std::to_string(orientationX) + SEPARATOR +
+                     std::to_string(orientationY) + SEPARATOR +
+                     std::to_string(orientationZ) + SEPARATOR +
+                     std::to_string(accelerationX) + SEPARATOR +
+                     std::to_string(accelerationY) + SEPARATOR +
+                     std::to_string(accelerationZ) );
 }
 
 bool PL_BNO::updateRx(std::shared_ptr<Connector> connector) {
