@@ -1579,10 +1579,20 @@ gridline-color: rgb(255, 0, 0);</string>
       <item>
        <widget class="QWidget" name="upper_widget" native="true">
         <layout class="QGridLayout" name="gridLayout_5">
-         <item row="1" column="3">
-          <widget class="QLabel" name="dbm_label">
+         <item row="0" column="0">
+          <widget class="QPushButton" name="manual_mode_button">
            <property name="text">
-            <string>dBm</string>
+            <string>Manual Mode</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1" colspan="2">
+          <widget class="QLabel" name="rssi_value_panel">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
            </property>
           </widget>
          </item>
@@ -1611,27 +1621,40 @@ gridline-color: rgb(255, 0, 0);</string>
            </property>
           </widget>
          </item>
-         <item row="0" column="0">
-          <widget class="QPushButton" name="manual_mode_button">
-           <property name="text">
-            <string>Manual Mode</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="0">
+         <item row="2" column="0">
           <widget class="QPushButton" name="request_rssi">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Get RSSI&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton{
+qproperty-icon: url(:/assets/rssi.png);
+qproperty-iconSize: 25px;
+font: 14pt &quot;MS Shell Dlg 2&quot;;
+border: 1px solid;
+border-color: rgb(215, 237, 252);
+border-radius: 10px;
+}
+QPushButton:hover {
+background-color: rgb(35, 35, 35); 
+border: 2px solid;
+border-color: rgb(215, 237, 252);
+}
+QPushButton:pressed {
+border: 3px solid;
+border-color: rgb(92, 242, 135);
+}
+</string>
+           </property>
            <property name="text">
-            <string>Request RSSI</string>
+            <string>RSSI</string>
            </property>
           </widget>
          </item>
-         <item row="1" column="1" colspan="2">
-          <widget class="QLabel" name="rssi_value_panel">
+         <item row="2" column="3">
+          <widget class="QLabel" name="dbm_label">
            <property name="text">
-            <string/>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            <string>dBm</string>
            </property>
           </widget>
          </item>
@@ -1644,6 +1667,13 @@ gridline-color: rgb(255, 0, 0);</string>
          <string>GSE Control</string>
         </property>
         <layout class="QGridLayout" name="gridLayout_14">
+         <item row="1" column="0">
+          <widget class="QPushButton" name="purge_valve_button">
+           <property name="text">
+            <string>Purge Valve</string>
+           </property>
+          </widget>
+         </item>
          <item row="0" column="0">
           <widget class="QPushButton" name="filling_valve_button">
            <property name="text">
@@ -1651,8 +1681,8 @@ gridline-color: rgb(255, 0, 0);</string>
            </property>
           </widget>
          </item>
-         <item row="0" column="1">
-          <widget class="QLabel" name="filling_valve_panel">
+         <item row="1" column="1">
+          <widget class="QLabel" name="purge_valve_panel">
            <property name="styleSheet">
             <string notr="true"/>
            </property>
@@ -1661,15 +1691,8 @@ gridline-color: rgb(255, 0, 0);</string>
            </property>
           </widget>
          </item>
-         <item row="1" column="0">
-          <widget class="QPushButton" name="purge_valve_button">
-           <property name="text">
-            <string>Purge Valve</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="1">
-          <widget class="QLabel" name="purge_valve_panel">
+         <item row="0" column="1">
+          <widget class="QLabel" name="filling_valve_panel">
            <property name="styleSheet">
             <string notr="true"/>
            </property>
