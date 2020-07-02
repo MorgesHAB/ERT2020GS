@@ -28,9 +28,9 @@ namespace avionic {
             case FILLING: return "FILLING";
             case LIFTOFF: return "LIFTOFF";
             case COAST: return "COAST";
-            case PRIMARY_EVENT: return "PRIMARY EVENT";
-            case SECONDARY_EVENT: return "SECONDARY EVENT";
-            case TOUCH_DOWN: return "TOUCH DOWN";
+            case PRIMARY_EVENT: return "1. EVENT";
+            case SECONDARY_EVENT: return "2. EVENT";
+            case TOUCH_DOWN: return "TOUCHDOWN";
             default: return "Unknown";
         }
     }

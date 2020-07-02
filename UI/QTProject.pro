@@ -12,6 +12,7 @@ SOURCES += \
     ../Logger/Logger_buffer.cpp \
     ../RF-UI-Interface/connector.cpp \
     Gui_message.cpp \
+    SecondWindow.cpp \
     gui_logger.cpp \
     gui_test.cc \
     GuiWindow.cpp \
@@ -29,6 +30,7 @@ HEADERS += \
     ../Telecom/DataStructures/File/FileTransmissionStates.h \
     ../Telecom/DataStructures/GSE/IgnitionStates.h \
     Gui_message.h \
+    SecondWindow.h \
     gui_logger.h \
     second_ui.h \
     ui_form.h \

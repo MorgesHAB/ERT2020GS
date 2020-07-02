@@ -115,6 +115,17 @@ namespace ui_interface {
         STATUS_AV_VALUE,
         STATUS_AV_STATE, // enum in DataStructures/Avionics/StateValues.h
 
+        /// Avionics state reach
+        SLEEP_REACHED,          //bool
+        CALIBRATION_REACHED,    //bool
+        IDLE_REACHED,           //bool
+        FILLING_REACHED,        //bool
+        LIFTOFF_REACHED,        //bool
+        COAST_REACHED,          //bool
+        PRIMARY_EVENT_REACHED,  //bool
+        SECONDARY_EVENT_REACHED,//bool
+        TOUCH_DOWN_REACHED,     //bool
+
         /// GSE orders
         GSE_ORDER_VALUE, // enum in DataStructures/GSE/GSEOrderValues.h
 

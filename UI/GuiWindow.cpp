@@ -17,6 +17,7 @@
 #include <iostream>
 #include <ctime>
 #include <array>
+#include <cmath>
 #include "../Telecom/DataStructures/Avionics/StateValues.h"
 #include "../Telecom/DataHandler/DatagramTypes.h"
 #include "../Telecom/DataStructures/File/FileTransmissionStates.h"
@@ -113,6 +114,7 @@ void GuiWindow::manual_mode_pressed()
         manual_mode_button->setEnabled(false);
         manual_mode_button->setChecked(true);
 
+
     }
 
 }
@@ -120,6 +122,8 @@ void GuiWindow::manual_mode_pressed()
 void GuiWindow::rssi_request_pressed()
 {
      logger.log(new Gui_Message("RSSI request button pressed"));
+     data_->setData(ui_interface::RSSI_READ_ORDER, true);
+
 }
 
 void GuiWindow::reset_button_pressed()
@@ -258,6 +262,16 @@ void GuiWindow::refresh_av_state()
 {
     std::string str(avionic::getAVStateName(data_->getData<uint8_t>(STATUS_AV_STATE)));
     avionics_state_panel->setText(QString::fromStdString(str));
+
+    show_ok_X(sleep_state_ok_panel, data_->getData<bool>(ui_interface::SLEEP_REACHED));
+    show_ok_X(calibration_state_ok_panel, data_->getData<bool>(ui_interface::CALIBRATION_REACHED));
+    show_ok_X(idle_state_ok_panel, data_->getData<bool>(ui_interface::IDLE_REACHED));
+    show_ok_X(filling_av_ok_panel, data_->getData<bool>(ui_interface::FILLING_REACHED));
+    show_ok_X(liftoff_state_ok_panel, data_->getData<bool>(ui_interface::LIFTOFF_REACHED));
+    show_ok_X(coast_state_ok_panel, data_->getData<bool>(ui_interface::COAST_REACHED));
+    show_ok_X(first_event_ok_panel, data_->getData<bool>(ui_interface::PRIMARY_EVENT_REACHED));
+    show_ok_X(second_event_ok_panel, data_->getData<bool>(ui_interface::SECONDARY_EVENT_REACHED));
+    show_ok_X(touchdown_event_ok_panel, data_->getData<bool>(ui_interface::TOUCH_DOWN_REACHED));
 }
 
 void GuiWindow::initialize_style()
@@ -289,19 +303,20 @@ bool GuiWindow::ask_password()
                                          tr("Enter the password if you have set one."
                                             "\nThe default password is: EPFL"), QLineEdit::Normal,
                                          "", &ok, Qt::Tool);
+    bool result(false);
     if (ok && !text.isEmpty()){
         if(password_ == text.toStdString()){ //password is correct
             logger.log(new Gui_Message("Password was entered correctly."));
-            return true;
+            result = true;
 
         } else {
             QMessageBox::warning(this, "Warning", "Wrong password, permission denied.");
             logger.log(new Gui_Message("Password wasn't correct."));
         }
-        return false;
     }
 
     std::cout << "The password is set to " << text.toStdString() << std::endl;
+    return result;
 }
 
 void GuiWindow::refresh_ignition_frame()
@@ -350,14 +365,23 @@ void GuiWindow::initialize_slots_signals()
     connect(purge_valve_button, SIGNAL(pressed()),this, SLOT(purge_valve_pressed()));
     connect(disconnect_wire_button, SIGNAL(pressed()),this, SLOT(disconnect_wire_pressed()));
     connect(manual_mode_button, SIGNAL(pressed()), this, SLOT(manual_mode_pressed()));
+    connect(request_rssi, SIGNAL(pressed()), this, SLOT(rssi_request_pressed()));
 }
 
 void GuiWindow::refresh_telemetry()
 {
     altitude_panel_telemetry->setText(qstr(data_->getData<float>(T_ALTITUDE)));
-    accel_x_panel->setText(qstr(data_->getData<float>(T_ACCELEROMETER_X)));
-    accel_y_panel->setText(qstr(data_->getData<float>(T_ACCELEROMETER_Y)));
-    accel_z_panel->setText(qstr(data_->getData<float>(T_ACCELEROMETER_Z)));
+
+    float accelx(data_->getData<float>(T_ACCELEROMETER_X));
+    float accely(data_->getData<float>(T_ACCELEROMETER_Y));
+    float accelz(data_->getData<float>(T_ACCELEROMETER_Z));
+
+    accel_x_panel->setText(qstr(accelx));
+    accel_y_panel->setText(qstr(accely));
+    accel_z_panel->setText(qstr(accelz));
+    norm_panel->setText(qstr(std::sqrt(accelx*accelx + accely*accely + accelz*accelz)));
+
+
     euler_x_panel->setText(qstr(data_->getData<float>(T_EULER_X)));
     euler_y_panel->setText(qstr(data_->getData<float>(T_EULER_Y)));
     euler_z_panel->setText(qstr(data_->getData<float>(T_EULER_Z)));
@@ -384,6 +408,7 @@ void GuiWindow::refresh_com()
     received_pack_cnt_panel->setText(qstr(data_->getData<uint32_t>(RX_PACKET_CTR)));
     uint32_t packets(data_->eatData<uint32_t>(PACKET_RX_RATE_CTR, 0));
     packets_second_bar->setValue((packets * (1000.0 / (REFRESH_RATE))));
+    rssi_value_panel->setText(qstr(-1* (int) data_->getData<uint8_t>(ui_interface::RSSI_VALUE)));
     corrupted_panel->setText(qstr(data_->getData<uint64_t>(CORRUPTED_PACKET_CTR)));
 }
 
@@ -420,7 +445,6 @@ void GuiWindow::refresh_time()
 void GuiWindow::refresh_file_transmission_box()
 {
     FileTransmissionStates state(data_->getData<FileTransmissionStates>(ui_interface::FILE_TRANSMISSION_RECEIVED_STATE));
-
     transmitter_state_panel->setText(QString::fromStdString(getStateName(state)));
     state = data_->getData<FileTransmissionStates>(ui_interface::FILE_TRANSMISSION_MY_STATE);
     receiver_state_panel->setText(QString::fromStdString(getStateName(state)));

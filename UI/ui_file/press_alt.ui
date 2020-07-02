@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>991</width>
-    <height>599</height>
+    <height>645</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -48,109 +48,14 @@ color: rgb(255, 255, 255);</string>
          <string>AV States</string>
         </property>
         <layout class="QGridLayout" name="gridLayout_11">
-         <item row="13" column="1">
-          <widget class="QLabel" name="second_event_ok_panel">
-           <property name="minimumSize">
-            <size>
-             <width>23</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>23</width>
-             <height>16777215</height>
-            </size>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">color: rgb(255, 0, 0);</string>
-           </property>
+         <item row="0" column="0">
+          <widget class="QLabel" name="sleep_label">
            <property name="text">
-            <string>X</string>
+            <string>Sleep</string>
            </property>
           </widget>
          </item>
-         <item row="12" column="1">
-          <widget class="QLabel" name="first_event_ok_panel">
-           <property name="minimumSize">
-            <size>
-             <width>23</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>23</width>
-             <height>16777215</height>
-            </size>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">color: rgb(255, 0, 0);</string>
-           </property>
-           <property name="text">
-            <string>X</string>
-           </property>
-          </widget>
-         </item>
-         <item row="4" column="1">
-          <widget class="QLabel" name="idle_state_ok_panel">
-           <property name="minimumSize">
-            <size>
-             <width>23</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>23</width>
-             <height>16777215</height>
-            </size>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">color: rgb(255, 0, 0);</string>
-           </property>
-           <property name="text">
-            <string>X</string>
-           </property>
-          </widget>
-         </item>
-         <item row="8" column="1">
-          <widget class="QLabel" name="coast_state_ok_panel">
-           <property name="minimumSize">
-            <size>
-             <width>23</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>23</width>
-             <height>16777215</height>
-            </size>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">color: rgb(255, 0, 0);</string>
-           </property>
-           <property name="text">
-            <string>X</string>
-           </property>
-          </widget>
-         </item>
-         <item row="12" column="0">
-          <widget class="QLabel" name="first_event_label">
-           <property name="text">
-            <string>1st Event</string>
-           </property>
-          </widget>
-         </item>
-         <item row="13" column="0">
-          <widget class="QLabel" name="second_event_label">
-           <property name="text">
-            <string>2nd Event</string>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="1">
+         <item row="0" column="1">
           <widget class="QLabel" name="sleep_state_ok_panel">
            <property name="minimumSize">
             <size>
@@ -170,23 +75,89 @@ color: rgb(255, 255, 255);</string>
            <property name="text">
             <string>X</string>
            </property>
-          </widget>
-         </item>
-         <item row="3" column="0">
-          <widget class="QLabel" name="sleep_label">
-           <property name="text">
-            <string>Sleep</string>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
            </property>
           </widget>
          </item>
-         <item row="5" column="0">
+         <item row="1" column="0">
+          <widget class="QLabel" name="calibration_label">
+           <property name="styleSheet">
+            <string notr="true"/>
+           </property>
+           <property name="text">
+            <string>Calibration</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QLabel" name="calibration_state_ok_panel">
+           <property name="minimumSize">
+            <size>
+             <width>23</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>23</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(255, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string>X</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="idle_label">
+           <property name="styleSheet">
+            <string notr="true"/>
+           </property>
+           <property name="text">
+            <string>IDLE</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QLabel" name="idle_state_ok_panel">
+           <property name="minimumSize">
+            <size>
+             <width>23</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>23</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(255, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string>X</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
           <widget class="QLabel" name="filling_label_av">
            <property name="text">
             <string>Filling</string>
            </property>
           </widget>
          </item>
-         <item row="5" column="1">
+         <item row="3" column="1">
           <widget class="QLabel" name="filling_av_ok_panel">
            <property name="minimumSize">
             <size>
@@ -206,26 +177,19 @@ color: rgb(255, 255, 255);</string>
            <property name="text">
             <string>X</string>
            </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
           </widget>
          </item>
          <item row="4" column="0">
-          <widget class="QLabel" name="idle_label">
-           <property name="styleSheet">
-            <string notr="true"/>
-           </property>
-           <property name="text">
-            <string>IDLE</string>
-           </property>
-          </widget>
-         </item>
-         <item row="6" column="0">
           <widget class="QLabel" name="liftoff_label">
            <property name="text">
             <string>Lift off</string>
            </property>
           </widget>
          </item>
-         <item row="6" column="1">
+         <item row="4" column="1">
           <widget class="QLabel" name="liftoff_state_ok_panel">
            <property name="minimumSize">
             <size>
@@ -245,12 +209,136 @@ color: rgb(255, 255, 255);</string>
            <property name="text">
             <string>X</string>
            </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
           </widget>
          </item>
-         <item row="8" column="0">
+         <item row="5" column="0">
           <widget class="QLabel" name="coast_label">
            <property name="text">
             <string>Coast</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="1">
+          <widget class="QLabel" name="coast_state_ok_panel">
+           <property name="minimumSize">
+            <size>
+             <width>23</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>23</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(255, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string>X</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="0">
+          <widget class="QLabel" name="first_event_label">
+           <property name="text">
+            <string>1st Event</string>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="1">
+          <widget class="QLabel" name="first_event_ok_panel">
+           <property name="minimumSize">
+            <size>
+             <width>23</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>23</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(255, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string>X</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="0">
+          <widget class="QLabel" name="second_event_label">
+           <property name="text">
+            <string>2nd Event</string>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="1">
+          <widget class="QLabel" name="second_event_ok_panel">
+           <property name="minimumSize">
+            <size>
+             <width>23</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>23</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(255, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string>X</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="8" column="0">
+          <widget class="QLabel" name="touchdown_label">
+           <property name="text">
+            <string>Touchdown</string>
+           </property>
+          </widget>
+         </item>
+         <item row="8" column="1">
+          <widget class="QLabel" name="touchdown_event_ok_panel">
+           <property name="minimumSize">
+            <size>
+             <width>23</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>23</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(255, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string>X</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
            </property>
           </widget>
          </item>
@@ -261,7 +349,7 @@ color: rgb(255, 255, 255);</string>
        <widget class="QGroupBox" name="ignition_box">
         <property name="minimumSize">
          <size>
-          <width>0</width>
+          <width>200</width>
           <height>0</height>
          </size>
         </property>
@@ -381,6 +469,9 @@ gridline-color: rgb(255, 0, 0);</string>
            <property name="text">
             <string>X</string>
            </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
           </widget>
          </item>
          <item row="2" column="0">
@@ -421,6 +512,9 @@ gridline-color: rgb(255, 0, 0);</string>
            <property name="text">
             <string>X</string>
            </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
           </widget>
          </item>
          <item row="1" column="1">
@@ -430,6 +524,9 @@ gridline-color: rgb(255, 0, 0);</string>
            </property>
            <property name="text">
             <string>X</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
            </property>
           </widget>
          </item>
@@ -447,6 +544,9 @@ gridline-color: rgb(255, 0, 0);</string>
            </property>
            <property name="text">
             <string>X</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
            </property>
           </widget>
          </item>
@@ -543,98 +643,6 @@ gridline-color: rgb(255, 0, 0);</string>
         </layout>
        </widget>
       </item>
-      <item row="2" column="1">
-       <widget class="QGroupBox" name="accel_box">
-        <property name="title">
-         <string>Accelerometer</string>
-        </property>
-        <layout class="QGridLayout" name="gridLayout_7">
-         <item row="0" column="0">
-          <widget class="QLabel" name="accel_x_label">
-           <property name="maximumSize">
-            <size>
-             <width>25</width>
-             <height>16777215</height>
-            </size>
-           </property>
-           <property name="text">
-            <string>X</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="0">
-          <widget class="QLabel" name="accel_z_label">
-           <property name="maximumSize">
-            <size>
-             <width>25</width>
-             <height>16777215</height>
-            </size>
-           </property>
-           <property name="text">
-            <string>Z</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="0">
-          <widget class="QLabel" name="accel_y_label">
-           <property name="maximumSize">
-            <size>
-             <width>25</width>
-             <height>16777215</height>
-            </size>
-           </property>
-           <property name="text">
-            <string>Y</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="1">
-          <widget class="QLabel" name="accel_x_panel">
-           <property name="frameShape">
-            <enum>QFrame::NoFrame</enum>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="1">
-          <widget class="QLabel" name="accel_y_panel">
-           <property name="frameShape">
-            <enum>QFrame::NoFrame</enum>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="1">
-          <widget class="QLabel" name="accel_z_panel">
-           <property name="frameShape">
-            <enum>QFrame::NoFrame</enum>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="0">
-          <widget class="QLabel" name="norm_label">
-           <property name="text">
-            <string>Norm</string>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="1">
-          <widget class="QLabel" name="norm_panel">
-           <property name="text">
-            <string/>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-      </item>
       <item row="1" column="0" colspan="2">
        <widget class="QGroupBox" name="gse_state_box">
         <property name="title">
@@ -658,8 +666,17 @@ gridline-color: rgb(255, 0, 0);</string>
            <property name="styleSheet">
             <string notr="true">color: rgb(255, 0, 0);</string>
            </property>
+           <property name="frameShape">
+            <enum>QFrame::NoFrame</enum>
+           </property>
+           <property name="lineWidth">
+            <number>1</number>
+           </property>
            <property name="text">
             <string>X</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
            </property>
           </widget>
          </item>
@@ -680,8 +697,17 @@ gridline-color: rgb(255, 0, 0);</string>
            <property name="styleSheet">
             <string notr="true">color: rgb(255, 0, 0);</string>
            </property>
+           <property name="frameShape">
+            <enum>QFrame::NoFrame</enum>
+           </property>
+           <property name="lineWidth">
+            <number>1</number>
+           </property>
            <property name="text">
             <string>X</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
            </property>
           </widget>
          </item>
@@ -716,8 +742,17 @@ gridline-color: rgb(255, 0, 0);</string>
            <property name="styleSheet">
             <string notr="true">color: rgb(255, 0, 0);</string>
            </property>
+           <property name="frameShape">
+            <enum>QFrame::NoFrame</enum>
+           </property>
+           <property name="lineWidth">
+            <number>1</number>
+           </property>
            <property name="text">
             <string>X</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
            </property>
           </widget>
          </item>
@@ -738,8 +773,17 @@ gridline-color: rgb(255, 0, 0);</string>
            <property name="styleSheet">
             <string notr="true">color: rgb(255, 0, 0);</string>
            </property>
+           <property name="frameShape">
+            <enum>QFrame::NoFrame</enum>
+           </property>
+           <property name="lineWidth">
+            <number>1</number>
+           </property>
            <property name="text">
             <string>X</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
            </property>
           </widget>
          </item>
@@ -774,8 +818,17 @@ gridline-color: rgb(255, 0, 0);</string>
            <property name="styleSheet">
             <string notr="true">color: rgb(255, 0, 0);</string>
            </property>
+           <property name="frameShape">
+            <enum>QFrame::NoFrame</enum>
+           </property>
+           <property name="lineWidth">
+            <number>1</number>
+           </property>
            <property name="text">
             <string>X</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
            </property>
           </widget>
          </item>
@@ -803,8 +856,17 @@ gridline-color: rgb(255, 0, 0);</string>
            <property name="styleSheet">
             <string notr="true">color: rgb(255, 0, 0);</string>
            </property>
+           <property name="frameShape">
+            <enum>QFrame::NoFrame</enum>
+           </property>
+           <property name="lineWidth">
+            <number>1</number>
+           </property>
            <property name="text">
             <string>X</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
            </property>
           </widget>
          </item>
@@ -825,8 +887,17 @@ gridline-color: rgb(255, 0, 0);</string>
            <property name="styleSheet">
             <string notr="true">color: rgb(255, 0, 0);</string>
            </property>
+           <property name="frameShape">
+            <enum>QFrame::NoFrame</enum>
+           </property>
+           <property name="lineWidth">
+            <number>1</number>
+           </property>
            <property name="text">
             <string>X</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
            </property>
           </widget>
          </item>
@@ -854,8 +925,17 @@ gridline-color: rgb(255, 0, 0);</string>
            <property name="styleSheet">
             <string notr="true">color: rgb(255, 0, 0);</string>
            </property>
+           <property name="frameShape">
+            <enum>QFrame::NoFrame</enum>
+           </property>
+           <property name="lineWidth">
+            <number>1</number>
+           </property>
            <property name="text">
             <string>X</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
            </property>
           </widget>
          </item>
@@ -1005,6 +1085,18 @@ gridline-color: rgb(255, 0, 0);</string>
          </item>
          <item row="4" column="1" colspan="2">
           <widget class="QLabel" name="avionics_state_panel">
+           <property name="minimumSize">
+            <size>
+             <width>99</width>
+             <height>28</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>99</width>
+             <height>28</height>
+            </size>
+           </property>
            <property name="frameShape">
             <enum>QFrame::WinPanel</enum>
            </property>
@@ -1013,6 +1105,98 @@ gridline-color: rgb(255, 0, 0);</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item row="2" column="1" colspan="2">
+       <widget class="QGroupBox" name="accel_box">
+        <property name="title">
+         <string>Accelerometer</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_7">
+         <item row="0" column="0">
+          <widget class="QLabel" name="accel_x_label">
+           <property name="maximumSize">
+            <size>
+             <width>25</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>X</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="accel_z_label">
+           <property name="maximumSize">
+            <size>
+             <width>25</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Z</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="accel_y_label">
+           <property name="maximumSize">
+            <size>
+             <width>25</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Y</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QLabel" name="accel_x_panel">
+           <property name="frameShape">
+            <enum>QFrame::NoFrame</enum>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QLabel" name="accel_y_panel">
+           <property name="frameShape">
+            <enum>QFrame::NoFrame</enum>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QLabel" name="accel_z_panel">
+           <property name="frameShape">
+            <enum>QFrame::NoFrame</enum>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="norm_label">
+           <property name="text">
+            <string>Norm</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QLabel" name="norm_panel">
+           <property name="text">
+            <string/>
            </property>
           </widget>
          </item>
@@ -1445,6 +1629,9 @@ gridline-color: rgb(255, 0, 0);</string>
           <widget class="QLabel" name="rssi_value_panel">
            <property name="text">
             <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
            </property>
           </widget>
          </item>

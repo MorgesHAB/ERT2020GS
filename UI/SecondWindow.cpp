@@ -14,10 +14,11 @@
 #include <ctime>
 #include <array>
 
-#include <Avionics/StateValues.h>
-#include <DatagramTypes.h>
-#include <File/FileTransmissionStates.h>
-#include <GSE/IgnitionStates.h>
+
+#include "../Telecom/DataStructures/Avionics/StateValues.h"
+#include "../Telecom/DataHandler/DatagramTypes.h"
+#include "../Telecom/DataStructures/File/FileTransmissionStates.h"
+#include "../Telecom/DataStructures/GSE/IgnitionStates.h"
 
 #include <QStyleFactory>
 #include <QString>
