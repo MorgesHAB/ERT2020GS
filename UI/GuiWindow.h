@@ -79,6 +79,7 @@ private:
     void refresh_misses();
     void refresh_ignition_code();
     void refresh_av_state();
+    void refresh_payload();
     
     //uint16_t calculate_misses();  can't do it as we don't send the packet number
 
