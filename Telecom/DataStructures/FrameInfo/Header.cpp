@@ -62,6 +62,8 @@ bool Header::updateRx(std::shared_ptr<Connector> connector) {
         case PL_STATE:
         case PL_ORDER:
         case PL_GPS:
+        case PL_BME_SENSOR:
+        case PL_BNO_SENSOR:
         case PL_IMAGE:
             connector->incrementData(ui_interface::PACKET_CTR_PL);
             break;
