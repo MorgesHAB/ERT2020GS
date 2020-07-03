@@ -39,5 +39,9 @@ std::string PL_BME::log() const {
 
 bool PL_BME::updateRx(std::shared_ptr<Connector> connector) {
     // give to GUI
-    return Data::updateRx(connector);
+    connector->setData(ui_interface::PL_BME_ALTITUDE, altitude);
+    connector->setData(ui_interface::PL_BME_TEMPERATURE, temperature);
+    connector->setData(ui_interface::PL_BME_PRESSURE, pressure);
+    connector->setData(ui_interface::PL_BME_HUMIDITY, humidity);
+    return true;
 }

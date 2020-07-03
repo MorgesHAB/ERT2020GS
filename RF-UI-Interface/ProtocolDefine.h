@@ -144,6 +144,10 @@ namespace ui_interface {
         PL_GPS_SAT_NBR, // uint8_t,
         PL_TEMPERATURE,
         PL_STATE_UI,
+        PL_BME_ALTITUDE,
+        PL_BME_TEMPERATURE,
+        PL_BME_PRESSURE,
+        PL_BME_HUMIDITY,
 
 
         /// !!! THIS MUST BE THE LAST LINE !!!
