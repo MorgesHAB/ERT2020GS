@@ -1268,6 +1268,16 @@ image: url(:/assets/logo.png);</string>
       <string>COM</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_4">
+      <item row="1" column="0">
+       <widget class="QLabel" name="packets_second_label">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The number of packets received in last second&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="text">
+         <string>TOTAL</string>
+        </property>
+       </widget>
+      </item>
       <item row="0" column="0" colspan="2">
        <widget class="QLabel" name="received_pack_cnt_label">
         <property name="minimumSize">
@@ -1284,21 +1294,14 @@ image: url(:/assets/logo.png);</string>
         </property>
        </widget>
       </item>
-      <item row="5" column="0">
+      <item row="7" column="0">
        <widget class="QLabel" name="corrupted_label">
         <property name="text">
          <string>Corrupted Packets</string>
         </property>
        </widget>
       </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="last_datagram_id">
-        <property name="text">
-         <string>AV</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1" colspan="2">
+      <item row="3" column="1" colspan="2">
        <widget class="QProgressBar" name="pl_packets_second_bar">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -1310,13 +1313,17 @@ image: url(:/assets/logo.png);</string>
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The number of packets received in last second&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
         <property name="styleSheet">
-         <string notr="true"/>
+         <string notr="true">QProgressBar::chunk:horizontal { 
+background:rgb(52, 101, 164);} </string>
         </property>
         <property name="maximum">
-         <number>30</number>
+         <number>40</number>
         </property>
         <property name="value">
          <number>30</number>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
         </property>
         <property name="invertedAppearance">
          <bool>false</bool>
@@ -1336,13 +1343,41 @@ image: url(:/assets/logo.png);</string>
         </property>
        </widget>
       </item>
-      <item row="1" column="0">
+      <item row="3" column="0">
        <widget class="QLabel" name="pl_packet_label">
         <property name="toolTip">
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The last received packet's number (defined by TX)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
         <property name="text">
          <string>PL</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="1" colspan="2">
+       <widget class="QLabel" name="time_since_last_panel">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="1" colspan="2">
+       <widget class="QLabel" name="corrupted_panel">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QLabel" name="time_since_last_label">
+        <property name="text">
+         <string>Time since last packet</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="last_datagram_id">
+        <property name="text">
+         <string>AV</string>
         </property>
        </widget>
       </item>
@@ -1358,13 +1393,20 @@ image: url(:/assets/logo.png);</string>
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The number of packets received in last second&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
         <property name="styleSheet">
-         <string notr="true"/>
+         <string notr="true">QProgressBar::chunk:horizontal { 
+background:rgb(52, 101, 164);} </string>
         </property>
         <property name="maximum">
-         <number>30</number>
+         <number>40</number>
         </property>
         <property name="value">
          <number>30</number>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+        <property name="textVisible">
+         <bool>true</bool>
         </property>
         <property name="invertedAppearance">
          <bool>false</bool>
@@ -1374,17 +1416,7 @@ image: url(:/assets/logo.png);</string>
         </property>
        </widget>
       </item>
-      <item row="3" column="0">
-       <widget class="QLabel" name="packets_second_label">
-        <property name="toolTip">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The number of packets received in last second&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-        <property name="text">
-         <string>TOTAL</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="1" colspan="2">
+      <item row="1" column="1" colspan="2">
        <widget class="QProgressBar" name="packets_second_bar">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -1396,7 +1428,8 @@ image: url(:/assets/logo.png);</string>
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The number of packets received in last second&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
         <property name="styleSheet">
-         <string notr="true"/>
+         <string notr="true">QProgressBar::chunk:horizontal { 
+background:rgb(0, 160, 250);} </string>
         </property>
         <property name="maximum">
          <number>40</number>
@@ -1404,32 +1437,14 @@ image: url(:/assets/logo.png);</string>
         <property name="value">
          <number>30</number>
         </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
         <property name="invertedAppearance">
          <bool>false</bool>
         </property>
         <property name="format">
          <string>%v</string>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="0">
-       <widget class="QLabel" name="time_since_last_label">
-        <property name="text">
-         <string>Time since last packet</string>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="1" colspan="2">
-       <widget class="QLabel" name="time_since_last_panel">
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item row="5" column="1" colspan="2">
-       <widget class="QLabel" name="corrupted_panel">
-        <property name="text">
-         <string/>
         </property>
        </widget>
       </item>

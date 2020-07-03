@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'WasserfallenGUIS10596.ui'
+** Form generated from reading UI file 'WasserfallenGUIQ10596.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.9.5
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef WASSERFALLENGUIS10596_H
-#define WASSERFALLENGUIS10596_H
+#ifndef WASSERFALLENGUIQ10596_H
+#define WASSERFALLENGUIQ10596_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QAction>
@@ -142,18 +142,18 @@ public:
     QLabel *euler_z_panel;
     QGroupBox *com_box;
     QGridLayout *gridLayout_4;
+    QLabel *packets_second_label;
     QLabel *received_pack_cnt_label;
     QLabel *corrupted_label;
-    QLabel *last_datagram_id;
     QProgressBar *pl_packets_second_bar;
     QLabel *received_pack_cnt_panel;
     QLabel *pl_packet_label;
-    QProgressBar *av_packets_second_bar;
-    QLabel *packets_second_label;
-    QProgressBar *packets_second_bar;
-    QLabel *time_since_last_label;
     QLabel *time_since_last_panel;
     QLabel *corrupted_panel;
+    QLabel *time_since_last_label;
+    QLabel *last_datagram_id;
+    QProgressBar *av_packets_second_bar;
+    QProgressBar *packets_second_bar;
 
     void setupUi(QWidget *Form)
     {
@@ -828,6 +828,11 @@ public:
         com_box->setObjectName(QStringLiteral("com_box"));
         gridLayout_4 = new QGridLayout(com_box);
         gridLayout_4->setObjectName(QStringLiteral("gridLayout_4"));
+        packets_second_label = new QLabel(com_box);
+        packets_second_label->setObjectName(QStringLiteral("packets_second_label"));
+
+        gridLayout_4->addWidget(packets_second_label, 1, 0, 1, 1);
+
         received_pack_cnt_label = new QLabel(com_box);
         received_pack_cnt_label->setObjectName(QStringLiteral("received_pack_cnt_label"));
         received_pack_cnt_label->setMinimumSize(QSize(155, 0));
@@ -837,23 +842,20 @@ public:
         corrupted_label = new QLabel(com_box);
         corrupted_label->setObjectName(QStringLiteral("corrupted_label"));
 
-        gridLayout_4->addWidget(corrupted_label, 5, 0, 1, 1);
-
-        last_datagram_id = new QLabel(com_box);
-        last_datagram_id->setObjectName(QStringLiteral("last_datagram_id"));
-
-        gridLayout_4->addWidget(last_datagram_id, 2, 0, 1, 1);
+        gridLayout_4->addWidget(corrupted_label, 7, 0, 1, 1);
 
         pl_packets_second_bar = new QProgressBar(com_box);
         pl_packets_second_bar->setObjectName(QStringLiteral("pl_packets_second_bar"));
         sizePolicy.setHeightForWidth(pl_packets_second_bar->sizePolicy().hasHeightForWidth());
         pl_packets_second_bar->setSizePolicy(sizePolicy);
-        pl_packets_second_bar->setStyleSheet(QStringLiteral(""));
-        pl_packets_second_bar->setMaximum(30);
+        pl_packets_second_bar->setStyleSheet(QLatin1String("QProgressBar::chunk:horizontal { \n"
+                                                           "background:rgb(52, 101, 164);} "));
+        pl_packets_second_bar->setMaximum(40);
         pl_packets_second_bar->setValue(30);
+        pl_packets_second_bar->setAlignment(Qt::AlignCenter);
         pl_packets_second_bar->setInvertedAppearance(false);
 
-        gridLayout_4->addWidget(pl_packets_second_bar, 1, 1, 1, 2);
+        gridLayout_4->addWidget(pl_packets_second_bar, 3, 1, 1, 2);
 
         received_pack_cnt_panel = new QLabel(com_box);
         received_pack_cnt_panel->setObjectName(QStringLiteral("received_pack_cnt_panel"));
@@ -863,49 +865,54 @@ public:
         pl_packet_label = new QLabel(com_box);
         pl_packet_label->setObjectName(QStringLiteral("pl_packet_label"));
 
-        gridLayout_4->addWidget(pl_packet_label, 1, 0, 1, 1);
+        gridLayout_4->addWidget(pl_packet_label, 3, 0, 1, 1);
+
+        time_since_last_panel = new QLabel(com_box);
+        time_since_last_panel->setObjectName(QStringLiteral("time_since_last_panel"));
+
+        gridLayout_4->addWidget(time_since_last_panel, 6, 1, 1, 2);
+
+        corrupted_panel = new QLabel(com_box);
+        corrupted_panel->setObjectName(QStringLiteral("corrupted_panel"));
+
+        gridLayout_4->addWidget(corrupted_panel, 7, 1, 1, 2);
+
+        time_since_last_label = new QLabel(com_box);
+        time_since_last_label->setObjectName(QStringLiteral("time_since_last_label"));
+
+        gridLayout_4->addWidget(time_since_last_label, 6, 0, 1, 1);
+
+        last_datagram_id = new QLabel(com_box);
+        last_datagram_id->setObjectName(QStringLiteral("last_datagram_id"));
+
+        gridLayout_4->addWidget(last_datagram_id, 2, 0, 1, 1);
 
         av_packets_second_bar = new QProgressBar(com_box);
         av_packets_second_bar->setObjectName(QStringLiteral("av_packets_second_bar"));
         sizePolicy.setHeightForWidth(av_packets_second_bar->sizePolicy().hasHeightForWidth());
         av_packets_second_bar->setSizePolicy(sizePolicy);
-        av_packets_second_bar->setStyleSheet(QStringLiteral(""));
-        av_packets_second_bar->setMaximum(30);
+        av_packets_second_bar->setStyleSheet(QLatin1String("QProgressBar::chunk:horizontal { \n"
+                                                           "background:rgb(52, 101, 164);} "));
+        av_packets_second_bar->setMaximum(40);
         av_packets_second_bar->setValue(30);
+        av_packets_second_bar->setAlignment(Qt::AlignCenter);
+        av_packets_second_bar->setTextVisible(true);
         av_packets_second_bar->setInvertedAppearance(false);
 
         gridLayout_4->addWidget(av_packets_second_bar, 2, 1, 1, 2);
-
-        packets_second_label = new QLabel(com_box);
-        packets_second_label->setObjectName(QStringLiteral("packets_second_label"));
-
-        gridLayout_4->addWidget(packets_second_label, 3, 0, 1, 1);
 
         packets_second_bar = new QProgressBar(com_box);
         packets_second_bar->setObjectName(QStringLiteral("packets_second_bar"));
         sizePolicy.setHeightForWidth(packets_second_bar->sizePolicy().hasHeightForWidth());
         packets_second_bar->setSizePolicy(sizePolicy);
-        packets_second_bar->setStyleSheet(QStringLiteral(""));
+        packets_second_bar->setStyleSheet(QLatin1String("QProgressBar::chunk:horizontal { \n"
+                                                        "background:rgb(0, 160, 250);} "));
         packets_second_bar->setMaximum(40);
         packets_second_bar->setValue(30);
+        packets_second_bar->setAlignment(Qt::AlignCenter);
         packets_second_bar->setInvertedAppearance(false);
 
-        gridLayout_4->addWidget(packets_second_bar, 3, 1, 1, 2);
-
-        time_since_last_label = new QLabel(com_box);
-        time_since_last_label->setObjectName(QStringLiteral("time_since_last_label"));
-
-        gridLayout_4->addWidget(time_since_last_label, 4, 0, 1, 1);
-
-        time_since_last_panel = new QLabel(com_box);
-        time_since_last_panel->setObjectName(QStringLiteral("time_since_last_panel"));
-
-        gridLayout_4->addWidget(time_since_last_panel, 4, 1, 1, 2);
-
-        corrupted_panel = new QLabel(com_box);
-        corrupted_panel->setObjectName(QStringLiteral("corrupted_panel"));
-
-        gridLayout_4->addWidget(corrupted_panel, 5, 1, 1, 2);
+        gridLayout_4->addWidget(packets_second_bar, 1, 1, 1, 2);
 
 
         gridLayout_10->addWidget(com_box, 0, 1, 1, 2);
@@ -1026,11 +1033,14 @@ public:
         euler_z_panel->setText(QString());
         com_box->setTitle(QApplication::translate("Form", "COM", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
+        packets_second_label->setToolTip(QApplication::translate("Form", "<html><head/><body><p>The number of packets received in last second</p></body></html>", Q_NULLPTR));
+#endif // QT_NO_TOOLTIP
+        packets_second_label->setText(QApplication::translate("Form", "TOTAL", Q_NULLPTR));
+#ifndef QT_NO_TOOLTIP
         received_pack_cnt_label->setToolTip(QApplication::translate("Form", "<html><head/><body><p>The count of the received packets from the start of the program</p></body></html>", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
         received_pack_cnt_label->setText(QApplication::translate("Form", "Total packets", Q_NULLPTR));
         corrupted_label->setText(QApplication::translate("Form", "Corrupted Packets", Q_NULLPTR));
-        last_datagram_id->setText(QApplication::translate("Form", "AV", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
         pl_packets_second_bar->setToolTip(QApplication::translate("Form", "<html><head/><body><p>The number of packets received in last second</p></body></html>", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
@@ -1043,21 +1053,18 @@ public:
         pl_packet_label->setToolTip(QApplication::translate("Form", "<html><head/><body><p>The last received packet's number (defined by TX)</p></body></html>", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
         pl_packet_label->setText(QApplication::translate("Form", "PL", Q_NULLPTR));
+        time_since_last_panel->setText(QString());
+        corrupted_panel->setText(QString());
+        time_since_last_label->setText(QApplication::translate("Form", "Time since last packet", Q_NULLPTR));
+        last_datagram_id->setText(QApplication::translate("Form", "AV", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
         av_packets_second_bar->setToolTip(QApplication::translate("Form", "<html><head/><body><p>The number of packets received in last second</p></body></html>", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
         av_packets_second_bar->setFormat(QApplication::translate("Form", "%v", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
-        packets_second_label->setToolTip(QApplication::translate("Form", "<html><head/><body><p>The number of packets received in last second</p></body></html>", Q_NULLPTR));
-#endif // QT_NO_TOOLTIP
-        packets_second_label->setText(QApplication::translate("Form", "TOTAL", Q_NULLPTR));
-#ifndef QT_NO_TOOLTIP
         packets_second_bar->setToolTip(QApplication::translate("Form", "<html><head/><body><p>The number of packets received in last second</p></body></html>", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
         packets_second_bar->setFormat(QApplication::translate("Form", "%v", Q_NULLPTR));
-        time_since_last_label->setText(QApplication::translate("Form", "Time since last packet", Q_NULLPTR));
-        time_since_last_panel->setText(QString());
-        corrupted_panel->setText(QString());
     } // retranslateUi
 
 };
@@ -1068,4 +1075,4 @@ class Form: public Ui_Form {};
 
 QT_END_NAMESPACE
 
-#endif // WASSERFALLENGUIS10596_H
+#endif // WASSERFALLENGUIQ10596_H
