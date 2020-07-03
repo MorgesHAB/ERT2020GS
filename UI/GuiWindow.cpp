@@ -144,6 +144,7 @@ void GuiWindow::refresh_data()
     refresh_ignition_frame();
     refresh_gps();
     refresh_serial_status();
+    refresh_payload();
 
     ++tick_counter_;
 
@@ -276,6 +277,14 @@ void GuiWindow::refresh_av_state()
     show_ok_X(first_event_ok_panel, data_->getData<bool>(ui_interface::PRIMARY_EVENT_REACHED));
     show_ok_X(second_event_ok_panel, data_->getData<bool>(ui_interface::SECONDARY_EVENT_REACHED));
     show_ok_X(touchdown_event_ok_panel, data_->getData<bool>(ui_interface::TOUCH_DOWN_REACHED));
+}
+
+void GuiWindow::refresh_payload()
+{
+    pl_altitude_panel->setText(qstr(data_->getData<float>(ui_interface::PL_BME_ALTITUDE)));
+    pl_pressure_panel->setText(qstr(data_->getData<float>(ui_interface::PL_BME_PRESSURE)));
+    pl_temperature_panel->setText(qstr(data_->getData<float>(ui_interface::PL_BME_TEMPERATURE)));
+    pl_humid_panel->setText(qstr(data_->getData<float>(ui_interface::PL_BME_HUMIDITY)));
 }
 
 void GuiWindow::initialize_style()
