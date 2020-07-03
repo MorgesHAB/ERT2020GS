@@ -77,12 +77,12 @@ bool IgnitionCode::updateTx(std::shared_ptr<Connector> connector) {
         return true;    // GSE side will send myState (ACK)
     }
     // debug !!!!!!!!!!!!!!!!
-    if (connector->eatData<bool>(ui_interface::IGNITION_CLICKED, false)) {
+    /*if (connector->eatData<bool>(ui_interface::IGNITION_CLICKED, false)) {
         ignitionCode = 3;
         if (myState == WAITING_ARMED_VALIDATION) myState = WAITING_IGNITION_VALIDATION;
         else myState = WAITING_ARMED_VALIDATION;
         return true;
-    }
+    }*/
 
 #ifdef RUNNING_ON_RPI
     // run on GST
