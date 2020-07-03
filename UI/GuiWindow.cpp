@@ -35,7 +35,8 @@
 
 
 constexpr uint32_t REFRESH_RATE(500);
-
+constexpr float M_TO_FT(3.2808399);
+constexpr uint32_t FREQUENCY(1000.0 / REFRESH_RATE);
 using namespace ui_interface;
 
 
@@ -142,16 +143,11 @@ void GuiWindow::refresh_data()
     check_and_show();
     refresh_ignition_frame();
     refresh_gps();
-    refresh_file_transmission_box();
+    refresh_serial_status();
+
     ++tick_counter_;
 
-    //refresh serial port config
-    auto serialStatus = data_->getData<int>(ui_interface::SERIALPORT_STATUS);
-    serialport_status->setStyleSheet(
-            (serialStatus == 0) ? "QLabel {image: url(:/assets/refresh.png);}"
-                                : (serialStatus == 1)
-                                  ? "QLabel {image: url(:/assets/correct.png);}"
-                                  : "QLabel {image: url(:/assets//redCross.png);}");
+
 }
 
 void GuiWindow::xbee_clicked()
@@ -368,10 +364,6 @@ void GuiWindow::initialize_slots_signals()
     connect(reset_button, SIGNAL(pressed()), this, SLOT(reset_button_pressed()));
     connect(ignition_button, SIGNAL(pressed()), this, SLOT(ignite_clicked()));
     connect(change_theme, SIGNAL(pressed()), this, SLOT(theme_change_clicked()));
-    connect(file_transmission_button, SIGNAL(pressed()), this, SLOT(file_transmission_pressed()));
-    connect(filling_valve_button, SIGNAL(pressed()),this, SLOT(fill_valve_pressed()));
-    connect(purge_valve_button, SIGNAL(pressed()),this, SLOT(purge_valve_pressed()));
-    connect(disconnect_wire_button, SIGNAL(pressed()),this, SLOT(disconnect_wire_pressed()));
     connect(manual_mode_button, SIGNAL(pressed()), this, SLOT(manual_mode_pressed()));
     connect(request_rssi, SIGNAL(pressed()), this, SLOT(rssi_request_pressed()));
 }
@@ -400,8 +392,14 @@ void GuiWindow::refresh_telemetry()
 
 void GuiWindow::refresh_gps()
 {
-    altitude_lcd_gps->display(qstr(data_->getData<float>(GPS_ALTITUDE)));
-    altitude_max_lcd_m->display(qstr(data_->getData<float>(ALTITUDE_MAX)));
+    float altitude(data_->getData<float>(GPS_ALTITUDE));
+    altitude_lcd_gps->display(qstr((int)altitude));
+    altitude_lcd_gps_ft->display(qstr((int)(M_TO_FT * altitude)));
+
+    float altitude_max(data_->getData<float>(ALTITUDE_MAX));
+    altitude_max_lcd_m->display(qstr((int)altitude_max));
+    altitude_max_lcd_ft->display(qstr((int)(altitude_max*M_TO_FT)));
+
     longitude_panel->setText(qstr(data_->getData<float>(GPS_LONGITUDE)));
     latitude_panel->setText(qstr(data_->getData<float>(GPS_LATITUDE)));
     hdop_panel->setText(qstr(data_->getData<float>(GPS_HDOP)));
@@ -410,14 +408,30 @@ void GuiWindow::refresh_gps()
 
 void GuiWindow::refresh_com()
 {
-    last_packet_number_panel->setText(qstr(data_->getData<uint32_t>(TX_PACKET_NR)));
+    received_pack_cnt_panel->setText(qstr(data_->getData<uint64_t>(TOTAL_RX_PACKET_CTR)));
+    packets_second_bar->setValue((data_->eatData<uint32_t>(PACKET_CTR_ALL, 0) * FREQUENCY));
+    av_packets_second_bar->setValue((data_->eatData<uint32_t>(PACKET_CTR_AV, 0) * FREQUENCY));
+    pl_packets_second_bar->setValue((data_->eatData<uint32_t>(PACKET_CTR_PL, 0) * FREQUENCY));
+
+    corrupted_panel->setText(qstr(data_->getData<uint64_t>(CORRUPTED_PACKET_CTR)));
+
+    rssi_panel->display(qstr(-1* (int) data_->getData<uint8_t>(ui_interface::RSSI_VALUE)));
+
+    // Time since last received packet
+    time_t t = difftime(std::time(nullptr), data_->getData<time_t>(ui_interface::TIME_SINCE_LAST_RX_PACKET));
+    struct tm* tt = gmtime(&t);
+    char buf[32];
+    std::strftime(buf, 32, "%T", tt);
+    time_since_last_panel->setText(buf);
+
+    /*
     std::string str(DatagramType::getDatagramIDName(data_->getData<uint8_t>(ui_interface::DATAGRAM_ID)));
-    last_datagram_id_panel->setText(QString::fromStdString(str));
     received_pack_cnt_panel->setText(qstr(data_->getData<uint32_t>(RX_PACKET_CTR)));
     uint32_t packets(data_->eatData<uint32_t>(PACKET_RX_RATE_CTR, 0));
     packets_second_bar->setValue((packets * (1000.0 / (REFRESH_RATE))));
-    rssi_value_panel->setText(qstr(-1* (int) data_->getData<uint8_t>(ui_interface::RSSI_VALUE)));
+
     corrupted_panel->setText(qstr(data_->getData<uint64_t>(CORRUPTED_PACKET_CTR)));
+    */
 }
 
 void GuiWindow::check_and_show()
@@ -450,15 +464,6 @@ void GuiWindow::refresh_time()
     time_panel->setText(QString::fromStdString(utilities::time()));
 }
 
-void GuiWindow::refresh_file_transmission_box()
-{
-    FileTransmissionStates state(data_->getData<FileTransmissionStates>(ui_interface::FILE_TRANSMISSION_RECEIVED_STATE));
-    transmitter_state_panel->setText(QString::fromStdString(getStateName(state)));
-    state = data_->getData<FileTransmissionStates>(ui_interface::FILE_TRANSMISSION_MY_STATE);
-    receiver_state_panel->setText(QString::fromStdString(getStateName(state)));
-    file_transmission_progress_bar->setMaximum(data_->getData<uint64_t>(ui_interface::FILE_TRANSMISSION_TOTAL_PACKETS));
-    file_transmission_progress_bar->setValue(data_->getData<uint16_t>(ui_interface::FILE_TRANSMISSION_CURRENT_PACKET));
-}
 
 inline void GuiWindow::show_ok_X(QLabel * label, bool ok)
 {
@@ -477,6 +482,11 @@ void GuiWindow::show_X(QLabel * label)
     label->setText("X");
 }
 
+void GuiWindow::show_dots(QLabel * label)
+{
+    label->setStyleSheet(QLatin1String("color: rgb(0, 255, 255);"));
+    label->setText("...");
+}
 void GuiWindow::keyPressEvent(QKeyEvent * ckey)
 {
     if (ckey->key() == Qt::Key_F11 || ckey->key() == Qt::Key_F) {
@@ -485,6 +495,18 @@ void GuiWindow::keyPressEvent(QKeyEvent * ckey)
     (fullscreen_) ? showFullScreen() : showNormal();
     std::string str("Fullscreen ");
     logger.log(new Gui_Message(str.append(fullscreen_? "ON" : "OFF")));
+}
+
+void GuiWindow::refresh_serial_status()
+{
+    auto serial_status = data_->getData<int>(ui_interface::SERIALPORT_STATUS);
+    if(serial_status==0){
+        show_dots(serial_status_panel);
+    } else if(serial_status==1){
+        show_ok(serial_status_panel);
+    }else{
+        show_X(serial_status_panel);
+    }
 }
 
 #ifdef SOUND_ON

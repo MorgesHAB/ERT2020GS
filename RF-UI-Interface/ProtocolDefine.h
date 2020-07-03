@@ -25,7 +25,7 @@ namespace ui_interface {
         ACTIVE_XBEE,        // bool             **This is set to true-false by the Activate-Xbee button.
         IGNITION_CLICKED,   // bool             **This is set to true when ignition button is clicked.
                             //                @attention !!! Listener should eat this boolean to be able to detect further clicks !!!
-        SERIALPORT_STATUS,                  // bool eaten by Gui
+        SERIALPORT_STATUS,                  //int (enum?)
 
         SERIALPORT_INDEX,
         RSSI_READ_ORDER,
@@ -223,6 +223,16 @@ namespace ui_interface {
                    STATUS_AV_ID,
                    STATUS_AV_VALUE,
                    STATUS_AV_STATE,
+
+                   SLEEP_REACHED,          //bool
+                   CALIBRATION_REACHED,    //bool
+                   IDLE_REACHED,           //bool
+                   FILLING_REACHED,        //bool
+                   LIFTOFF_REACHED,        //bool
+                   COAST_REACHED,          //bool
+                   PRIMARY_EVENT_REACHED,  //bool
+                   SECONDARY_EVENT_REACHED,//bool
+                   TOUCH_DOWN_REACHED,     //bool
 
                    /// GSE orders
                    GSE_ORDER_VALUE,

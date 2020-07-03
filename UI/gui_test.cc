@@ -39,7 +39,8 @@ public:
     {
         float a(0);
 
-        bool test_av = true;
+        bool test_av = false;
+
         // AV STATES TEST
         if(test_av){
         std::this_thread::sleep_for(std::chrono::milliseconds(5000));
@@ -120,7 +121,12 @@ public:
                 c->setData(ui_interface::IGNITION_STATUS, true);
             }
             c->setData(ui_interface::TX_IGNITION_CODE, (uint8_t) a);
-            
+
+            c->setData(ui_interface::SERIALPORT_STATUS,((int)a)%3);
+            c->setData(ui_interface::ALTITUDE_MAX,a);
+            c->setData(ui_interface::GPS_ALTITUDE,a);
+
+
         std::this_thread::sleep_for(std::chrono::milliseconds(1000));
         }
         std::cout << "Ending receiver thread!" << std::endl;

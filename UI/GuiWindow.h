@@ -66,15 +66,16 @@ private:
     void check_and_show();
     
     void refresh_time();
-    void refresh_file_transmission_box();
 
     void show_ok_X(QLabel*, bool);
     void show_ok(QLabel*);
+    void show_dots(QLabel*);
     void show_X(QLabel*);
 
     
     void closeEvent(QCloseEvent * event) override;
     void keyPressEvent(QKeyEvent *event) override;
+    void refresh_serial_status();
     void refresh_misses();
     void refresh_ignition_code();
     void refresh_av_state();
