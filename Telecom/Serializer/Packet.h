@@ -15,6 +15,9 @@
  *
  * \author      ISOZ Lionel - EPFL EL BA3
  * \date        02.11.2019
+ *
+ * \editor      KESKE Cem   - EPFL EL BA5
+ * \date        18.09.2020
  */
 
 #ifndef PACKET_H
@@ -121,7 +124,7 @@ void Packet::write(T t) {
     else if (size == 1) writeY<uint8_t>(t);
     else if (size == 2) writeY<uint16_t>(t);
     else if (size == 4) writeY<uint32_t>(t);
-    else if (size == 8) writeY<uint64_t>(t); // don't work on Rpi
+    else if (size == 8) writeY<uint64_t>(t); // doesn't work on Rpi
     else std::cout << "Error : Incompatible type ..." << std::endl;
 }
 
@@ -131,7 +134,7 @@ void Packet::parse(T &t) {
     if (size == 1) parseY<uint8_t>(t);
     else if (size == 2) parseY<uint16_t>(t);
     else if (size == 4) parseY<uint32_t>(t);
-    else if (size == 8) parseY<uint64_t>(t);  // don't work on Rpi
+    else if (size == 8) parseY<uint64_t>(t);  // donesn't work on Rpi
     else std::cout << "Error : Incompatible type ..." << std::endl;
 }
 

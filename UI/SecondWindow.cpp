@@ -362,7 +362,7 @@ void SecondWindow::refresh_com()
 {
     refresh_misses();
     //last_packet_number_panel->setText(qstr(connector->getData<uint32_t>(TX_PACKET_NR)));
-    std::string str(DatagramType::getDatagramIDName(connector->getData<uint8_t>(ui_interface::DATAGRAM_ID)));
+    std::string str(DatagramType::getDatagramIDName(connector->getData<uint8_t>(ui_interface::LAST_DATAGRAM_ID)));
     //last_datagram_id_panel->setText(QString::fromStdString(str));
     received_pack_cnt_panel->setText(qstr(connector->getData<uint64_t>(TOTAL_RX_PACKET_CTR)));
     // this->speed_lcd->display(connector->getData<float>(SPEED)); no speed

@@ -15,20 +15,20 @@ void GSEOrder::parse(Packet &packet) {
 void GSEOrder::print() const {
     using namespace gse;
     switch (order) {
-        case START_FILLING:
-            std::cout << "Start filling order requested" << std::endl;
+        case OPEN_FILLING:
+            std::cout << "OPEN FILLING VALVE order request" << std::endl;
             break;
-        case STOP_FILLING:
-            std::cout << "Stop filling order requested" << std::endl;
+        case CLOSE_FILLING:
+            std::cout << "CLOSE FILLING VALVE order request" << std::endl;
             break;
-        case PURGE_HOSE:
-            std::cout << "Purge of hose requested" << std::endl;
+        case OPEN_PURGE:
+            std::cout << "OPEN PURGE VALVE order request" << std::endl;
             break;
         case DISCONNECT_HOSE:
-            std::cout << "Disconnection of hose requested" << std::endl;
+            std::cout << "DISCONNECT HOSE requested" << std::endl;
             break;
-        case OPEN_PURGE_VALVE:
-            std::cout << "Opening of purge valve requested" << std::endl;
+        case CLOSE_PURGE:
+            std::cout << "CLOSE PURGE VALVE order request" << std::endl;
             break;
         case SENSOR_VALUES_REQUEST:
             std::cout << "Request for sensor values" << std::endl;
@@ -40,13 +40,16 @@ void GSEOrder::print() const {
 }
 
 bool GSEOrder::updateTx(std::shared_ptr<Connector> connector) {
-    //order = connector->getData<uint8_t>(ui_interface::GSE_ORDER_VALUE);
-    order = gse::OPEN_PURGE_VALVE;
-    return true;
+    order = connector->eatData<gse::GSEOrderValue>(ui_interface::GSE_ORDER, gse::NO_ORDER);
+    return (order!=gse::NO_ORDER);
 }
 
 bool GSEOrder::updateRx(std::shared_ptr<Connector> connector) {
+    connector->setData(ui_interface::GSE_ORDER_ACK, order);
     return true;
 }
 
+std::string GSEOrder::log() const {
+    return "Gse order.";
+}
 

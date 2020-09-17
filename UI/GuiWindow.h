@@ -35,8 +35,10 @@ public:
     void update();
 
 public slots:
-    void fill_valve_pressed();
-    void purge_valve_pressed();
+    void fill_valve_open_pressed();
+    void purge_valve_open_pressed();
+    void fill_valve_close_pressed();
+    void purge_valve_close_pressed();
     void disconnect_wire_pressed();
     void manual_mode_pressed();
     void rssi_request_pressed();
@@ -55,7 +57,7 @@ private:
     void init_password();
     /**
      * @brief ask_password
-     * @return If the pasworrd was entered correctly.
+     * @return True if the pasworrd was entered correctly.
      */
     bool ask_password();
 

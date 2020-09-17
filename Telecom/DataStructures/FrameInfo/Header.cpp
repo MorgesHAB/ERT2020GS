@@ -40,7 +40,7 @@ bool Header::updateRx(std::shared_ptr<Connector> connector) {
         return false;
     }
 
-    connector->setData(ui_interface::DATAGRAM_ID, datagramID);
+    connector->setData(ui_interface::LAST_DATAGRAM_ID, datagramID);
     connector->setData(ui_interface::TIMESTAMP, timestamp);
 
     connector->setData(ui_interface::TIME_SINCE_LAST_RX_PACKET, std::time(nullptr));

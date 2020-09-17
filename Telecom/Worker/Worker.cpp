@@ -19,17 +19,18 @@ Worker::Worker(std::shared_ptr<Connector> connector) : connector(connector) {}
 
 void Worker::mainRoutine() {
     while (connector->getData<bool>(ui_interface::RUNNING)) {
-        // RF packet handler
+        //Create the RF packet handler
         DataHandler dataHandler(connector);
         // Wait that we clicked on Active Xbee or we close the Window
         while (!connector->getData<bool>(ui_interface::ACTIVE_XBEE)) {
             std::this_thread::sleep_for(std::chrono::seconds(1));
-            if (!connector->getData<bool>(ui_interface::RUNNING)) return;
+            if (connector->getData<bool>(ui_interface::RUNNING) == false) return;
         }
 
         // Your RF modem
         RFmodem* xbee = new Xbee(getSerialport());
         //RFmodem* loRa = new LoRa;   // another example
+
         connector->setData(ui_interface::SERIALPORT_STATUS, (xbee->isOpen()) ? 1 : 2);
 
         if (xbee->isOpen()) {
@@ -71,6 +72,9 @@ void Worker::RFroutine(DataHandler& dataHandler, RFmodem* rfmodem) {
     // Manage Image Transmission
     if (dataHandler.updateTx(DatagramType::PL_IMAGE))
         rfmodem->send(dataHandler.getPacket(DatagramType::PL_IMAGE));
+    // Manage GSE Orders
+    if (dataHandler.updateTx(DatagramType::GSE_ORDER))
+        rfmodem->send(dataHandler.getPacket(DatagramType::GSE_ORDER));
 
     // if need to send AT command for RSSI
     if (connector->eatData<bool>(ui_interface::RSSI_READ_ORDER, false))

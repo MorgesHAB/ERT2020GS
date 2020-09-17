@@ -65,7 +65,7 @@ DataHandler::DataHandler(std::shared_ptr<Connector> connector)
         dataHandler[AV_DEBUG]->add(new String("Hello Avionic"));
 
     //// GSE Datagram
-        dataHandler[GSE_ORDER]->add(new GSEOrder);
+        dataHandler[DatagramType::GSE_ORDER]->add(new GSEOrder);
 
         dataHandler[GSE_SENSORS]->add(new GSESensors);
 

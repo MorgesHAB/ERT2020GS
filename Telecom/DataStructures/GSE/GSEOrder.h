@@ -7,13 +7,17 @@
 
 
 #include <Data.h>
-#include <GSE/GSEOrderValues.h>
+#include <GSE/GSEOrderValue.h>
 
 class GSEOrder: public Data {
 public:
     void write(Packet& packet) override;
     void parse(Packet& packet) override;
+
     void print() const override;
+    std::string log() const override;
+
+    ~GSEOrder() override = default;
 
     bool updateTx(std::shared_ptr<Connector> connector) override;
     bool updateRx(std::shared_ptr<Connector> connector) override;

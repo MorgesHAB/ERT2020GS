@@ -22,6 +22,7 @@
 #include "../Telecom/DataHandler/DatagramTypes.h"
 #include "../Telecom/DataStructures/File/FileTransmissionStates.h"
 #include "../Telecom/DataStructures/GSE/IgnitionStates.h"
+#include "../Telecom/DataStructures/GSE/GSEOrderValue.h"
 #include "Gui_message.h"
 #include "../Logger/utilities.h"
 
@@ -82,26 +83,49 @@ GuiWindow::GuiWindow(std::shared_ptr<Connector> connector) :
 #endif
     initialize_style();
     initialize_slots_signals();
-    //init_password();
-    //grabKeyboard();
+    init_password();
+    //grabKeyboard(); otherwise can't enter password
     timer_->start(REFRESH_RATE);
     logger.log(new Gui_Message("Gui started."));
 
 }
 
-void GuiWindow::fill_valve_pressed()
+void GuiWindow::fill_valve_open_pressed()
 {
-    logger.log(new Gui_Message("FILL valve button pressed"));
+    data_->setData(ui_interface::GSE_OPEN_FILL_VALVE, true);
+    logger.log(new Gui_Message("FILL valve OPEN button pressed"));
+    data_->setData(ui_interface::GSE_ORDER, gse::OPEN_FILLING);
 }
 
-void GuiWindow::purge_valve_pressed()
+void GuiWindow::purge_valve_open_pressed()
 {
-    logger.log(new Gui_Message("PURGE valve button pressed"));
+    data_->setData(ui_interface::GSE_OPEN_PURGE_VALVE, true);
+    data_->setData(ui_interface::GSE_ORDER, gse::OPEN_PURGE);
+    logger.log(new Gui_Message("PURGE valve OPEN button pressed"));
+}
+
+void GuiWindow::fill_valve_close_pressed()
+{
+    data_->setData(ui_interface::GSE_CLOSE_FILL_VALVE, true);
+    data_->setData(ui_interface::GSE_ORDER, gse::CLOSE_FILLING);
+    logger.log(new Gui_Message("FILL valve CLOSE button pressed"));
+}
+
+void GuiWindow::purge_valve_close_pressed()
+{
+    data_->setData(ui_interface::GSE_CLOSE_PURGE_VALVE, true);
+    data_->setData(ui_interface::GSE_ORDER, gse::CLOSE_PURGE);
+    logger.log(new Gui_Message("PURGE valve CLOSE button pressed"));
 }
 
 void GuiWindow::disconnect_wire_pressed()
 {
-    logger.log(new Gui_Message("DISCONNECT wire button pressed"));
+    //TODO find a way to delete
+    data_->setData(ui_interface::GSE_DISCONNECT_WIRE, true);
+    data_->setData(ui_interface::GSE_ORDER, gse::DISCONNECT_HOSE);
+    auto* message = new Gui_Message("DISCONNECT wire button pressed");
+    logger.log(message);
+    delete message;
 }
 
 void GuiWindow::manual_mode_pressed()
@@ -114,8 +138,6 @@ void GuiWindow::manual_mode_pressed()
         manual_mode_button->setCheckable(true);
         manual_mode_button->setEnabled(false);
         manual_mode_button->setChecked(true);
-
-
     }
 
 }
@@ -147,8 +169,6 @@ void GuiWindow::refresh_data()
     refresh_payload();
 
     ++tick_counter_;
-
-
 }
 
 void GuiWindow::xbee_clicked()
@@ -375,6 +395,11 @@ void GuiWindow::initialize_slots_signals()
     connect(change_theme, SIGNAL(pressed()), this, SLOT(theme_change_clicked()));
     connect(manual_mode_button, SIGNAL(pressed()), this, SLOT(manual_mode_pressed()));
     connect(request_rssi, SIGNAL(pressed()), this, SLOT(rssi_request_pressed()));
+    connect(filling_open_button,SIGNAL(pressed()),this, SLOT(fill_valve_open_pressed()));
+    connect(filling_close_button,SIGNAL(pressed()),this, SLOT(fill_valve_close_pressed()));
+    connect(purge_open_button,SIGNAL(pressed()),this, SLOT(purge_valve_open_pressed()));
+    connect(purge_close_button,SIGNAL(pressed()),this, SLOT(purge_valve_close_pressed()));
+    connect(disconnect_wire_button, SIGNAL(pressed()),this, SLOT(disconnect_wire_pressed()));
 }
 
 void GuiWindow::refresh_telemetry()
@@ -434,7 +459,7 @@ void GuiWindow::refresh_com()
     time_since_last_panel->setText(buf);
 
     /*
-    std::string str(DatagramType::getDatagramIDName(data_->getData<uint8_t>(ui_interface::DATAGRAM_ID)));
+    std::string str(DatagramType::getDatagramIDName(data_->getData<uint8_t>(ui_interface::LAST_DATAGRAM_ID)));
     received_pack_cnt_panel->setText(qstr(data_->getData<uint32_t>(RX_PACKET_CTR)));
     uint32_t packets(data_->eatData<uint32_t>(PACKET_RX_RATE_CTR, 0));
     packets_second_bar->setValue((packets * (1000.0 / (REFRESH_RATE))));
