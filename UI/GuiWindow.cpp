@@ -354,6 +354,7 @@ bool GuiWindow::ask_password()
 }
 
 void GuiWindow::refresh_ack_blinking() {
+
     auto order = data_->eatData<gse::GSEOrderValue>(ui_interface::GSE_ORDER_ACK, gse::NO_ORDER);
 
     switch (order){
@@ -365,19 +366,19 @@ void GuiWindow::refresh_ack_blinking() {
             disconnect_wire_button->setStyleSheet("");
             break;
         case gse::OPEN_PURGE:
-            purge_open_button->setStyleSheet("background-color: rgb(245, 121, 0);");
+            purge_open_button->setStyleSheet("background-color: rgb(0, 255, 255);");
             break;
         case gse::CLOSE_PURGE:
-            purge_close_button->setStyleSheet("background-color: rgb(245, 121, 0);");
+            purge_close_button->setStyleSheet("background-color: rgb(0, 255, 255);");
             break;
         case gse::OPEN_FILLING:
-            filling_open_button->setStyleSheet("background-color: rgb(245, 121, 0);");
+            filling_open_button->setStyleSheet("background-color: rgb(0, 255, 255);");
             break;
         case gse::CLOSE_FILLING:
-            filling_close_button->setStyleSheet("background-color: rgb(245, 121, 0);");
+            filling_close_button->setStyleSheet("background-color: rgb(0, 255, 255);");
             break;
         case gse::DISCONNECT_HOSE:
-            disconnect_wire_button->setStyleSheet("background-color: rgb(245, 121, 0);");
+            disconnect_wire_button->setStyleSheet("background-color: rgb(0, 255, 255);");
             break;
         default:
             purge_open_button->setStyleSheet("");

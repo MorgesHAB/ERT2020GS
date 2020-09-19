@@ -34,6 +34,7 @@
 #endif
 
 #include "IgnitionCode.h"
+#include "GSEOrderValue.h"
 
 using namespace ignit;
 
@@ -133,6 +134,7 @@ void IgnitionCode::parse(Packet &packet) {
 }
 
 bool IgnitionCode::updateRx(std::shared_ptr<Connector> connector) {
+
     // GST side
     if (receivedState != WAITING_ARMED_VALIDATION &&
         receivedState != WAITING_IGNITION_VALIDATION) {
