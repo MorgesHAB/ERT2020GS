@@ -50,6 +50,6 @@ bool GSEOrder::updateRx(std::shared_ptr<Connector> connector) {
 }
 
 std::string GSEOrder::log() const {
-    return "Gse order.";
+    return "GSE order" + SEPARATOR + std::to_string((int)order);
 }
 

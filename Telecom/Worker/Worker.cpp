@@ -72,6 +72,7 @@ void Worker::RFroutine(DataHandler& dataHandler, RFmodem* rfmodem) {
     // Manage Image Transmission
     if (dataHandler.updateTx(DatagramType::PL_IMAGE))
         rfmodem->send(dataHandler.getPacket(DatagramType::PL_IMAGE));
+
     // Manage GSE Orders
     if (dataHandler.updateTx(DatagramType::GSE_ORDER))
         rfmodem->send(dataHandler.getPacket(DatagramType::GSE_ORDER));

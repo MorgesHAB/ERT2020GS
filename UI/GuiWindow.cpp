@@ -167,6 +167,7 @@ void GuiWindow::refresh_data()
     refresh_gps();
     refresh_serial_status();
     refresh_payload();
+    refresh_ack_blinking();
 
     ++tick_counter_;
 }
@@ -352,6 +353,43 @@ bool GuiWindow::ask_password()
     return result;
 }
 
+void GuiWindow::refresh_ack_blinking() {
+    auto order = data_->eatData<gse::GSEOrderValue>(ui_interface::GSE_ORDER_ACK, gse::NO_ORDER);
+
+    switch (order){
+        case gse::NO_ORDER :
+            purge_open_button->setStyleSheet("");
+            purge_close_button->setStyleSheet("");
+            filling_open_button->setStyleSheet("");
+            filling_close_button->setStyleSheet("");
+            disconnect_wire_button->setStyleSheet("");
+            break;
+        case gse::OPEN_PURGE:
+            purge_open_button->setStyleSheet("background-color: rgb(245, 121, 0);");
+            break;
+        case gse::CLOSE_PURGE:
+            purge_close_button->setStyleSheet("background-color: rgb(245, 121, 0);");
+            break;
+        case gse::OPEN_FILLING:
+            filling_open_button->setStyleSheet("background-color: rgb(245, 121, 0);");
+            break;
+        case gse::CLOSE_FILLING:
+            filling_close_button->setStyleSheet("background-color: rgb(245, 121, 0);");
+            break;
+        case gse::DISCONNECT_HOSE:
+            disconnect_wire_button->setStyleSheet("background-color: rgb(245, 121, 0);");
+            break;
+        default:
+            purge_open_button->setStyleSheet("");
+            purge_close_button->setStyleSheet("");
+            filling_open_button->setStyleSheet("");
+            filling_close_button->setStyleSheet("");
+            disconnect_wire_button->setStyleSheet("");
+            break;
+
+    }
+}
+
 void GuiWindow::refresh_ignition_frame()
 {
     refresh_ignition_code();
@@ -446,9 +484,8 @@ void GuiWindow::refresh_com()
     packets_second_bar->setValue((data_->eatData<uint32_t>(PACKET_CTR_ALL, 0) * FREQUENCY));
     av_packets_second_bar->setValue((data_->eatData<uint32_t>(PACKET_CTR_AV, 0) * FREQUENCY));
     pl_packets_second_bar->setValue((data_->eatData<uint32_t>(PACKET_CTR_PL, 0) * FREQUENCY));
-
+    gse_packets_second_bar->setValue((data_->eatData<uint32_t>(PACKET_CTR_GSE, 0) * FREQUENCY));
     corrupted_panel->setText(qstr(data_->getData<uint64_t>(CORRUPTED_PACKET_CTR)));
-
     rssi_panel->display(qstr(-1* (int) data_->getData<uint8_t>(ui_interface::RSSI_VALUE)));
 
     // Time since last received packet

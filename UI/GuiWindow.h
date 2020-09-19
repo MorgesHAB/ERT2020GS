@@ -61,6 +61,7 @@ private:
      */
     bool ask_password();
 
+    void refresh_ack_blinking();
     void refresh_ignition_frame();
     void refresh_telemetry();
     void refresh_gps();

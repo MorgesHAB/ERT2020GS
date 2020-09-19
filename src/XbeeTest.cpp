@@ -68,9 +68,11 @@ int main(int argc, char** argv) {
                     uint16_t size((info[1] << 8)| info[2]);
                     uint8_t packet[size];
                     serialPort.read(packet, size + 1);
+
                     std::cout << "\nPacket Received" << std::endl;
-                    for (auto e : info) std::cout << " " << +e;
-                    for (auto e : packet) std::cout << " " << +e;
+                    std::cout << "Size: " << std::to_string(size) << std::endl;
+                    for (auto e : info) std::cout << " " << std::hex << +e;
+                    for (auto e : packet) std::cout << " " << std:: hex << +e;
                     std::cout << std::endl;
                 }
             } catch (const serial::IOException &e) {

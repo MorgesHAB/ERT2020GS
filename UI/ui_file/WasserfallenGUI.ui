@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1005</width>
+    <width>1016</width>
     <height>728</height>
    </rect>
   </property>
@@ -86,9 +86,7 @@ color: rgb(255, 255, 255);</string>
             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Get RSSI&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="styleSheet">
-            <string notr="true">
-
-</string>
+            <string notr="true"/>
            </property>
            <property name="text">
             <string>RSSI</string>

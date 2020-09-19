@@ -33,7 +33,6 @@ public:
 
 private:
     std::shared_ptr<Connector> connector;
-
     std::vector<Datagram*> dataHandler;
     DatagramType::DatagramID lastRxID;
 };

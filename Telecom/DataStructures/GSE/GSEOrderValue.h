@@ -16,7 +16,8 @@ namespace gse {
         OPEN_PURGE, //GSE opens purge valve
         CLOSE_PURGE, //GSE opens purge valve to decrease temp
         DISCONNECT_HOSE, //GSE activates motor and pulls hose
-        SENSOR_VALUES_REQUEST //connected or disconnected
+        SENSOR_VALUES_REQUEST, //connected or disconnected
+        TOTAL_ORDER_COUNT
     };
 
     static std::string getOrderName(uint8_t order) {
