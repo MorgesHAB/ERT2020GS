@@ -309,7 +309,6 @@ void GuiWindow::refresh_payload()
     pl_hdop_panel->setText(qstr(data_->getData<float>(ui_interface::PL_GPS_HDOP)));
     pl_gps_altitude_panel->setText(qstr(data_->getData<float>(ui_interface::PL_GPS_ALTITUDE)));
 
-
     pl_bno_temperature_panel->setText(qstr(data_->getData<uint8_t>(ui_interface::PL_BNO_TEMPERATURE)));
     pl_bno_oz_panel->setText(qstr(data_->getData<float>(ui_interface::PL_BNO_ORIENTATION_Z)));
     pl_bno_oy_panel->setText(qstr(data_->getData<float>(ui_interface::PL_BNO_ORIENTATION_Y)));
@@ -319,7 +318,7 @@ void GuiWindow::refresh_payload()
     pl_bno_ax_panel->setText(qstr(data_->getData<float>(ui_interface::PL_BNO_ACCELERATION_X)));
 
     pl_bme_temperature_panel->setText(qstr(data_->getData<float>(ui_interface::PL_BME_TEMPERATURE)));
-    pl_bme_pressure_panel->setText(qstr(data_->getData<float>(ui_interface::PL_BME_PRESSURE)));
+    pl_bme_pressure_panel->setText(qstr((data_->getData<float>(ui_interface::PL_BME_PRESSURE))*100));
     pl_bme_temperature_panel->setText(qstr(data_->getData<float>(ui_interface::PL_BME_TEMPERATURE)));
     pl_bme_humidity_panel->setText(qstr(data_->getData<float>(ui_interface::PL_BME_HUMIDITY)));
     pl_bme_altitude_panel->setText(qstr(data_->getData<float>(ui_interface::PL_BME_ALTITUDE)));

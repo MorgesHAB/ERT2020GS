@@ -24,6 +24,7 @@
 #include <Payload/PLOrder.h>
 #include <Payload/PL_BME.h>
 #include <Payload/PL_BNO.h>
+#include <Payload/PLTemperature.h>
 
 #include <GSE/IgnitionCode.h>
 #include <GSE/GSEOrder.h>
@@ -80,6 +81,7 @@ DataHandler::DataHandler(std::shared_ptr<Connector> connector)
 
         dataHandler[PL_BME_SENSOR]->add(new PL_BME);
         dataHandler[PL_BNO_SENSOR]->add(new PL_BNO);
+        //dataHandler[PL_BME_TEMPERATURE]->add(new PLTemperature);
 
         dataHandler[PL_IMAGE]->add(new File("Yann.png"));
         //dataHandler[PL_IMAGE]->add(new Picture("livePic.jpg", 220, 600, 600));

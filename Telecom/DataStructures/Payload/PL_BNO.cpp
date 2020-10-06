@@ -44,7 +44,7 @@ std::string PL_BNO::log() const {
                      std::to_string(orientationZ) + SEPARATOR +
                      std::to_string(accelerationX) + SEPARATOR +
                      std::to_string(accelerationY) + SEPARATOR +
-                     std::to_string(accelerationZ) );
+                     std::to_string(accelerationZ));
 }
 
 bool PL_BNO::updateRx(std::shared_ptr<Connector> connector) {

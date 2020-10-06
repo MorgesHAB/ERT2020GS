@@ -364,7 +364,7 @@ background:rgb(52, 101, 164);} </string>
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The last received packet's number (defined by TX)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
         <property name="text">
-         <string>PP Rx Packet rate</string>
+         <string>PL Rx Packet rate</string>
         </property>
        </widget>
       </item>
@@ -967,7 +967,7 @@ background:rgb(52, 101, 164);} </string>
       <item row="0" column="1">
        <widget class="QLabel" name="tank_temp_panel_2">
         <property name="text">
-         <string>26.9</string>
+         <string/>
         </property>
         <property name="alignment">
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -1017,7 +1017,7 @@ background:rgb(52, 101, 164);} </string>
       <item row="1" column="1">
        <widget class="QLabel" name="hose_pressure_panel_2">
         <property name="text">
-         <string>1013</string>
+         <string/>
         </property>
         <property name="alignment">
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -1054,7 +1054,7 @@ background:rgb(52, 101, 164);} </string>
       <item row="2" column="1">
        <widget class="QLabel" name="hose_temp_panel_2">
         <property name="text">
-         <string>45</string>
+         <string/>
         </property>
         <property name="alignment">
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -1064,7 +1064,7 @@ background:rgb(52, 101, 164);} </string>
       <item row="3" column="1">
        <widget class="QLabel" name="rocket_weight_panel_2">
         <property name="text">
-         <string>5.7</string>
+         <string/>
         </property>
         <property name="alignment">
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -1398,31 +1398,10 @@ background:rgb(52, 101, 164);} </string>
       <string>Payload BNO</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_20">
-      <item row="0" column="0">
-       <widget class="QLabel" name="pl_bno_temperature_label">
+      <item row="6" column="1">
+       <widget class="QLabel" name="pl_bno_az_panel">
         <property name="text">
-         <string>Temperature</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1">
-       <widget class="QLabel" name="pl_bno_temperature_panel">
-        <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="2">
-       <widget class="QLabel" name="pl_celcius_label_3">
-        <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;°C&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="pl_bno_ox_label">
-        <property name="text">
-         <string>Ox</string>
+         <string/>
         </property>
        </widget>
       </item>
@@ -1430,6 +1409,20 @@ background:rgb(52, 101, 164);} </string>
        <widget class="QLabel" name="pl_bno_oy_label">
         <property name="text">
          <string>Oy</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLabel" name="pl_bno_ox_panel">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QLabel" name="pl_bno_ax_panel">
+        <property name="text">
+         <string/>
         </property>
        </widget>
       </item>
@@ -1461,45 +1454,94 @@ background:rgb(52, 101, 164);} </string>
         </property>
        </widget>
       </item>
-      <item row="1" column="1" colspan="2">
-       <widget class="QLabel" name="pl_bno_ox_panel">
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1" colspan="2">
-       <widget class="QLabel" name="pl_bno_oy_panel">
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="1" colspan="2">
-       <widget class="QLabel" name="pl_bno_oz_panel">
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="1" colspan="2">
-       <widget class="QLabel" name="pl_bno_ax_panel">
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item row="5" column="1" colspan="2">
+      <item row="5" column="1">
        <widget class="QLabel" name="pl_bno_ay_panel">
         <property name="text">
          <string/>
         </property>
        </widget>
       </item>
-      <item row="6" column="1" colspan="2">
-       <widget class="QLabel" name="pl_bno_az_panel">
+      <item row="2" column="1">
+       <widget class="QLabel" name="pl_bno_oy_panel">
         <property name="text">
          <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="pl_bno_temperature_label">
+        <property name="text">
+         <string>Temp.</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLabel" name="pl_bno_temperature_panel">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QLabel" name="pl_bno_oz_panel">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="2">
+       <widget class="QLabel" name="deg_label_2">
+        <property name="text">
+         <string>[deg]</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2">
+       <widget class="QLabel" name="deg_label_3">
+        <property name="text">
+         <string>[deg]</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="2">
+       <widget class="QLabel" name="deg_label">
+        <property name="text">
+         <string>[deg]</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="pl_bno_ox_label">
+        <property name="text">
+         <string>Ox</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="2">
+       <widget class="QLabel" name="ms2_label_2">
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;[m/s&lt;span style=&quot; vertical-align:super;&quot;&gt;2&lt;/span&gt;]&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="2">
+       <widget class="QLabel" name="ms2_label_3">
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;[m/s&lt;span style=&quot; vertical-align:super;&quot;&gt;2&lt;/span&gt;]&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <widget class="QLabel" name="label_7">
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; vertical-align:super;&quot;&gt;O&lt;/span&gt;C&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="2">
+       <widget class="QLabel" name="ms2_label">
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;[m/s&lt;span style=&quot; vertical-align:super;&quot;&gt;2&lt;/span&gt;]&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
        </widget>
       </item>
@@ -2124,14 +2166,14 @@ background:rgb(52, 101, 164);} </string>
       <item row="0" column="2">
        <widget class="QLabel" name="pl_celcius_label_2">
         <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;°C&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;[°C]&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
        </widget>
       </item>
       <item row="1" column="2">
        <widget class="QLabel" name="pl_hpa_label">
         <property name="text">
-         <string>hPa</string>
+         <string>[hPa]</string>
         </property>
        </widget>
       </item>
@@ -2145,7 +2187,7 @@ background:rgb(52, 101, 164);} </string>
       <item row="3" column="2">
        <widget class="QLabel" name="pl_m_label">
         <property name="text">
-         <string>m</string>
+         <string>[m]</string>
         </property>
        </widget>
       </item>
