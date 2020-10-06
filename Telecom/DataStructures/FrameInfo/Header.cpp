@@ -22,13 +22,14 @@ void Header::write(Packet &packet) {
     packet.write(datagramID);
     for (auto& e : myDelimiter) packet.write(e);    
     packet.write(timestamp);
+    packet.parse(packetNumber);
 }
-
 
 void Header::parse(Packet &packet) {
     packet.parse(datagramID);
     for (auto& e : myRxDelimiter) packet.parse(e);
     packet.parse(timestamp);
+    packet.parse(packetNumber);
 }
 
 bool Header::updateRx(std::shared_ptr<Connector> connector) {
@@ -64,10 +65,20 @@ bool Header::updateRx(std::shared_ptr<Connector> connector) {
             connector->incrementData(ui_interface::PACKET_CTR_GSE);
             break;
         case PL_STATE:
+            connector->incrementData(ui_interface::PACKET_CTR_PL);
+            break;
         case PL_ORDER:
+            connector->incrementData(ui_interface::PACKET_CTR_PL);
+            break;
         case PL_GPS:
+            connector->incrementData(ui_interface::PACKET_CTR_PL);
+            break;
         case PL_BME_SENSOR:
+            connector->incrementData(ui_interface::PACKET_CTR_PL);
+            break;
         case PL_BNO_SENSOR:
+            connector->incrementData(ui_interface::PACKET_CTR_PL);
+            break;
         case PL_IMAGE:
             connector->incrementData(ui_interface::PACKET_CTR_PL);
             break;

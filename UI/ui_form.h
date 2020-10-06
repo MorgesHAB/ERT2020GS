@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'WasserfallenGUIMr5417.ui'
+** Form generated from reading UI file 'WasserfallenGUIeD3727.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.9.5
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef WASSERFALLENGUIMR5417_H
-#define WASSERFALLENGUIMR5417_H
+#ifndef WASSERFALLENGUIED3727_H
+#define WASSERFALLENGUIED3727_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QAction>
@@ -156,21 +156,27 @@ public:
     QLabel *avionics_state_panel;
     QGroupBox *groupBox_5;
     QGridLayout *gridLayout_20;
-    QLabel *pl_bno_temperature_label;
-    QLabel *pl_bno_temperature_panel;
-    QLabel *pl_celcius_label_3;
-    QLabel *pl_bno_ox_label;
+    QLabel *pl_bno_az_panel;
     QLabel *pl_bno_oy_label;
+    QLabel *pl_bno_ox_panel;
+    QLabel *pl_bno_ax_panel;
     QLabel *pl_bno_oz_label;
     QLabel *pl_bno_ax_label;
     QLabel *pl_bno_ay_label;
     QLabel *pl_bno_az_label;
-    QLabel *pl_bno_ox_panel;
-    QLabel *pl_bno_oy_panel;
-    QLabel *pl_bno_oz_panel;
-    QLabel *pl_bno_ax_panel;
     QLabel *pl_bno_ay_panel;
-    QLabel *pl_bno_az_panel;
+    QLabel *pl_bno_oy_panel;
+    QLabel *pl_bno_temperature_label;
+    QLabel *pl_bno_temperature_panel;
+    QLabel *pl_bno_oz_panel;
+    QLabel *deg_label_2;
+    QLabel *deg_label_3;
+    QLabel *deg_label;
+    QLabel *pl_bno_ox_label;
+    QLabel *ms2_label_2;
+    QLabel *ms2_label_3;
+    QLabel *label_7;
+    QLabel *ms2_label;
     QGroupBox *euler_box;
     QGridLayout *gridLayout_6;
     QLabel *euler_x_panel;
@@ -995,30 +1001,25 @@ public:
         groupBox_5->setObjectName(QStringLiteral("groupBox_5"));
         gridLayout_20 = new QGridLayout(groupBox_5);
         gridLayout_20->setObjectName(QStringLiteral("gridLayout_20"));
-        pl_bno_temperature_label = new QLabel(groupBox_5);
-        pl_bno_temperature_label->setObjectName(QStringLiteral("pl_bno_temperature_label"));
+        pl_bno_az_panel = new QLabel(groupBox_5);
+        pl_bno_az_panel->setObjectName(QStringLiteral("pl_bno_az_panel"));
 
-        gridLayout_20->addWidget(pl_bno_temperature_label, 0, 0, 1, 1);
-
-        pl_bno_temperature_panel = new QLabel(groupBox_5);
-        pl_bno_temperature_panel->setObjectName(QStringLiteral("pl_bno_temperature_panel"));
-
-        gridLayout_20->addWidget(pl_bno_temperature_panel, 0, 1, 1, 1);
-
-        pl_celcius_label_3 = new QLabel(groupBox_5);
-        pl_celcius_label_3->setObjectName(QStringLiteral("pl_celcius_label_3"));
-
-        gridLayout_20->addWidget(pl_celcius_label_3, 0, 2, 1, 1);
-
-        pl_bno_ox_label = new QLabel(groupBox_5);
-        pl_bno_ox_label->setObjectName(QStringLiteral("pl_bno_ox_label"));
-
-        gridLayout_20->addWidget(pl_bno_ox_label, 1, 0, 1, 1);
+        gridLayout_20->addWidget(pl_bno_az_panel, 6, 1, 1, 1);
 
         pl_bno_oy_label = new QLabel(groupBox_5);
         pl_bno_oy_label->setObjectName(QStringLiteral("pl_bno_oy_label"));
 
         gridLayout_20->addWidget(pl_bno_oy_label, 2, 0, 1, 1);
+
+        pl_bno_ox_panel = new QLabel(groupBox_5);
+        pl_bno_ox_panel->setObjectName(QStringLiteral("pl_bno_ox_panel"));
+
+        gridLayout_20->addWidget(pl_bno_ox_panel, 1, 1, 1, 1);
+
+        pl_bno_ax_panel = new QLabel(groupBox_5);
+        pl_bno_ax_panel->setObjectName(QStringLiteral("pl_bno_ax_panel"));
+
+        gridLayout_20->addWidget(pl_bno_ax_panel, 4, 1, 1, 1);
 
         pl_bno_oz_label = new QLabel(groupBox_5);
         pl_bno_oz_label->setObjectName(QStringLiteral("pl_bno_oz_label"));
@@ -1040,35 +1041,70 @@ public:
 
         gridLayout_20->addWidget(pl_bno_az_label, 6, 0, 1, 1);
 
-        pl_bno_ox_panel = new QLabel(groupBox_5);
-        pl_bno_ox_panel->setObjectName(QStringLiteral("pl_bno_ox_panel"));
+        pl_bno_ay_panel = new QLabel(groupBox_5);
+        pl_bno_ay_panel->setObjectName(QStringLiteral("pl_bno_ay_panel"));
 
-        gridLayout_20->addWidget(pl_bno_ox_panel, 1, 1, 1, 2);
+        gridLayout_20->addWidget(pl_bno_ay_panel, 5, 1, 1, 1);
 
         pl_bno_oy_panel = new QLabel(groupBox_5);
         pl_bno_oy_panel->setObjectName(QStringLiteral("pl_bno_oy_panel"));
 
-        gridLayout_20->addWidget(pl_bno_oy_panel, 2, 1, 1, 2);
+        gridLayout_20->addWidget(pl_bno_oy_panel, 2, 1, 1, 1);
+
+        pl_bno_temperature_label = new QLabel(groupBox_5);
+        pl_bno_temperature_label->setObjectName(QStringLiteral("pl_bno_temperature_label"));
+
+        gridLayout_20->addWidget(pl_bno_temperature_label, 0, 0, 1, 1);
+
+        pl_bno_temperature_panel = new QLabel(groupBox_5);
+        pl_bno_temperature_panel->setObjectName(QStringLiteral("pl_bno_temperature_panel"));
+
+        gridLayout_20->addWidget(pl_bno_temperature_panel, 0, 1, 1, 1);
 
         pl_bno_oz_panel = new QLabel(groupBox_5);
         pl_bno_oz_panel->setObjectName(QStringLiteral("pl_bno_oz_panel"));
 
-        gridLayout_20->addWidget(pl_bno_oz_panel, 3, 1, 1, 2);
+        gridLayout_20->addWidget(pl_bno_oz_panel, 3, 1, 1, 1);
 
-        pl_bno_ax_panel = new QLabel(groupBox_5);
-        pl_bno_ax_panel->setObjectName(QStringLiteral("pl_bno_ax_panel"));
+        deg_label_2 = new QLabel(groupBox_5);
+        deg_label_2->setObjectName(QStringLiteral("deg_label_2"));
 
-        gridLayout_20->addWidget(pl_bno_ax_panel, 4, 1, 1, 2);
+        gridLayout_20->addWidget(deg_label_2, 2, 2, 1, 1);
 
-        pl_bno_ay_panel = new QLabel(groupBox_5);
-        pl_bno_ay_panel->setObjectName(QStringLiteral("pl_bno_ay_panel"));
+        deg_label_3 = new QLabel(groupBox_5);
+        deg_label_3->setObjectName(QStringLiteral("deg_label_3"));
 
-        gridLayout_20->addWidget(pl_bno_ay_panel, 5, 1, 1, 2);
+        gridLayout_20->addWidget(deg_label_3, 1, 2, 1, 1);
 
-        pl_bno_az_panel = new QLabel(groupBox_5);
-        pl_bno_az_panel->setObjectName(QStringLiteral("pl_bno_az_panel"));
+        deg_label = new QLabel(groupBox_5);
+        deg_label->setObjectName(QStringLiteral("deg_label"));
 
-        gridLayout_20->addWidget(pl_bno_az_panel, 6, 1, 1, 2);
+        gridLayout_20->addWidget(deg_label, 3, 2, 1, 1);
+
+        pl_bno_ox_label = new QLabel(groupBox_5);
+        pl_bno_ox_label->setObjectName(QStringLiteral("pl_bno_ox_label"));
+
+        gridLayout_20->addWidget(pl_bno_ox_label, 1, 0, 1, 1);
+
+        ms2_label_2 = new QLabel(groupBox_5);
+        ms2_label_2->setObjectName(QStringLiteral("ms2_label_2"));
+
+        gridLayout_20->addWidget(ms2_label_2, 5, 2, 1, 1);
+
+        ms2_label_3 = new QLabel(groupBox_5);
+        ms2_label_3->setObjectName(QStringLiteral("ms2_label_3"));
+
+        gridLayout_20->addWidget(ms2_label_3, 4, 2, 1, 1);
+
+        label_7 = new QLabel(groupBox_5);
+        label_7->setObjectName(QStringLiteral("label_7"));
+
+        gridLayout_20->addWidget(label_7, 0, 2, 1, 1);
+
+        ms2_label = new QLabel(groupBox_5);
+        ms2_label->setObjectName(QStringLiteral("ms2_label"));
+
+        gridLayout_20->addWidget(ms2_label, 6, 2, 1, 1);
 
 
         gridLayout_10->addWidget(groupBox_5, 2, 1, 1, 1);
@@ -1540,7 +1576,7 @@ public:
 #ifndef QT_NO_TOOLTIP
         pl_packet_label->setToolTip(QApplication::translate("Form", "<html><head/><body><p>The last received packet's number (defined by TX)</p></body></html>", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
-        pl_packet_label->setText(QApplication::translate("Form", "PP Rx Packet rate", Q_NULLPTR));
+        pl_packet_label->setText(QApplication::translate("Form", "PL Rx Packet rate", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
         pl_packets_second_bar->setToolTip(QApplication::translate("Form", "<html><head/><body><p>The number of packets received in last second</p></body></html>", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
@@ -1598,17 +1634,17 @@ public:
         touchdown_label->setText(QApplication::translate("Form", "Touchdown", Q_NULLPTR));
         touchdown_event_ok_panel->setText(QApplication::translate("Form", "X", Q_NULLPTR));
         groupBox_2->setTitle(QApplication::translate("Form", "GSE Sensor Data", Q_NULLPTR));
-        tank_temp_panel_2->setText(QApplication::translate("Form", "26.9", Q_NULLPTR));
+        tank_temp_panel_2->setText(QString());
         celcius_label2_2->setText(QApplication::translate("Form", "[\302\260C]", Q_NULLPTR));
         tank_temp_label_2->setText(QApplication::translate("Form", "Tank Temp", Q_NULLPTR));
         hose_pressure_label_2->setText(QApplication::translate("Form", "Hose Pressure", Q_NULLPTR));
         hpa_panel_2->setText(QApplication::translate("Form", "[hPa]", Q_NULLPTR));
-        hose_pressure_panel_2->setText(QApplication::translate("Form", "1013", Q_NULLPTR));
+        hose_pressure_panel_2->setText(QString());
         hoes_temp_label_2->setText(QApplication::translate("Form", "Hose Temp", Q_NULLPTR));
         celcius_label_3->setText(QApplication::translate("Form", "[\302\260C]", Q_NULLPTR));
         rocket_weight_label_2->setText(QApplication::translate("Form", "Rocket Weight", Q_NULLPTR));
-        hose_temp_panel_2->setText(QApplication::translate("Form", "45", Q_NULLPTR));
-        rocket_weight_panel_2->setText(QApplication::translate("Form", "5.7", Q_NULLPTR));
+        hose_temp_panel_2->setText(QString());
+        rocket_weight_panel_2->setText(QString());
         kg_label_2->setText(QApplication::translate("Form", "[kg]", Q_NULLPTR));
         gps_box->setTitle(QApplication::translate("Form", "GPS", Q_NULLPTR));
         longitude_label->setText(QApplication::translate("Form", "LONGITUDE", Q_NULLPTR));
@@ -1641,21 +1677,27 @@ public:
         celcius_label->setText(QApplication::translate("Form", "<html><head/><body><p><span style=\" vertical-align:super;\">o</span>C</p></body></html>", Q_NULLPTR));
         avionics_state_panel->setText(QString());
         groupBox_5->setTitle(QApplication::translate("Form", "Payload BNO", Q_NULLPTR));
-        pl_bno_temperature_label->setText(QApplication::translate("Form", "Temperature", Q_NULLPTR));
-        pl_bno_temperature_panel->setText(QApplication::translate("Form", "<html><head/><body><p><br/></p></body></html>", Q_NULLPTR));
-        pl_celcius_label_3->setText(QApplication::translate("Form", "<html><head/><body><p>\302\260C</p></body></html>", Q_NULLPTR));
-        pl_bno_ox_label->setText(QApplication::translate("Form", "Ox", Q_NULLPTR));
+        pl_bno_az_panel->setText(QString());
         pl_bno_oy_label->setText(QApplication::translate("Form", "Oy", Q_NULLPTR));
+        pl_bno_ox_panel->setText(QString());
+        pl_bno_ax_panel->setText(QString());
         pl_bno_oz_label->setText(QApplication::translate("Form", "Oz", Q_NULLPTR));
         pl_bno_ax_label->setText(QApplication::translate("Form", "Ax", Q_NULLPTR));
         pl_bno_ay_label->setText(QApplication::translate("Form", "Ay", Q_NULLPTR));
         pl_bno_az_label->setText(QApplication::translate("Form", "Az", Q_NULLPTR));
-        pl_bno_ox_panel->setText(QString());
-        pl_bno_oy_panel->setText(QString());
-        pl_bno_oz_panel->setText(QString());
-        pl_bno_ax_panel->setText(QString());
         pl_bno_ay_panel->setText(QString());
-        pl_bno_az_panel->setText(QString());
+        pl_bno_oy_panel->setText(QString());
+        pl_bno_temperature_label->setText(QApplication::translate("Form", "Temp.", Q_NULLPTR));
+        pl_bno_temperature_panel->setText(QString());
+        pl_bno_oz_panel->setText(QString());
+        deg_label_2->setText(QApplication::translate("Form", "[deg]", Q_NULLPTR));
+        deg_label_3->setText(QApplication::translate("Form", "[deg]", Q_NULLPTR));
+        deg_label->setText(QApplication::translate("Form", "[deg]", Q_NULLPTR));
+        pl_bno_ox_label->setText(QApplication::translate("Form", "Ox", Q_NULLPTR));
+        ms2_label_2->setText(QApplication::translate("Form", "<html><head/><body><p>[m/s<span style=\" vertical-align:super;\">2</span>]</p></body></html>", Q_NULLPTR));
+        ms2_label_3->setText(QApplication::translate("Form", "<html><head/><body><p>[m/s<span style=\" vertical-align:super;\">2</span>]</p></body></html>", Q_NULLPTR));
+        label_7->setText(QApplication::translate("Form", "<html><head/><body><p><span style=\" vertical-align:super;\">O</span>C</p></body></html>", Q_NULLPTR));
+        ms2_label->setText(QApplication::translate("Form", "<html><head/><body><p>[m/s<span style=\" vertical-align:super;\">2</span>]</p></body></html>", Q_NULLPTR));
         euler_box->setTitle(QApplication::translate("Form", "Euler angles", Q_NULLPTR));
         euler_x_panel->setText(QString());
         euler_y_panel->setText(QString());
@@ -1709,10 +1751,10 @@ public:
         pl_bme_altitude_panel->setText(QString());
         pl_bme_humidity_panel->setText(QString());
         pl_bme_pressure_panel->setText(QString());
-        pl_celcius_label_2->setText(QApplication::translate("Form", "<html><head/><body><p>\302\260C</p></body></html>", Q_NULLPTR));
-        pl_hpa_label->setText(QApplication::translate("Form", "hPa", Q_NULLPTR));
+        pl_celcius_label_2->setText(QApplication::translate("Form", "<html><head/><body><p>[\302\260C]</p></body></html>", Q_NULLPTR));
+        pl_hpa_label->setText(QApplication::translate("Form", "[hPa]", Q_NULLPTR));
         pl_percentage_label->setText(QApplication::translate("Form", "%", Q_NULLPTR));
-        pl_m_label->setText(QApplication::translate("Form", "m", Q_NULLPTR));
+        pl_m_label->setText(QApplication::translate("Form", "[m]", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
         logo->setToolTip(QApplication::translate("Form", "<html><head/><body><p>Project Bella Lui 2020</p></body></html>", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
@@ -1744,4 +1786,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // WASSERFALLENGUIMR5417_H
+#endif // WASSERFALLENGUIED3727_H

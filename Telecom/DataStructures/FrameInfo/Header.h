@@ -32,6 +32,7 @@ private:
     const uint8_t myDelimiter[4] = {'E', 'P', 'F', 'L'};
     uint8_t myRxDelimiter[4] = {'-', '-','-','-'};
     uint8_t datagramID;
+    uint32_t packetNumber;
     uint32_t timestamp; // [ms]
 };
 
