@@ -302,10 +302,27 @@ void GuiWindow::refresh_av_state()
 
 void GuiWindow::refresh_payload()
 {
-    pl_altitude_panel->setText(qstr(data_->getData<float>(ui_interface::PL_BME_ALTITUDE)));
-    pl_pressure_panel->setText(qstr(data_->getData<float>(ui_interface::PL_BME_PRESSURE)));
-    pl_temperature_panel->setText(qstr(data_->getData<float>(ui_interface::PL_BME_TEMPERATURE)));
-    pl_humid_panel->setText(qstr(data_->getData<float>(ui_interface::PL_BME_HUMIDITY)));
+
+    pl_sat_nbr_panel->setText(qstr(data_->getData<uint8_t>(ui_interface::PL_GPS_SAT_NBR)));
+    pl_longitude_panel->setText(qstr(data_->getData<float>(ui_interface::PL_GPS_LONGITUDE)));
+    pl_latitude_panel->setText(qstr(data_->getData<float>(ui_interface::PL_GPS_LATITUDE)));
+    pl_hdop_panel->setText(qstr(data_->getData<float>(ui_interface::PL_GPS_HDOP)));
+    pl_gps_altitude_panel->setText(qstr(data_->getData<float>(ui_interface::PL_GPS_ALTITUDE)));
+
+
+    pl_bno_temperature_panel->setText(qstr(data_->getData<uint8_t>(ui_interface::PL_BNO_TEMPERATURE)));
+    pl_bno_oz_panel->setText(qstr(data_->getData<float>(ui_interface::PL_BNO_ORIENTATION_Z)));
+    pl_bno_oy_panel->setText(qstr(data_->getData<float>(ui_interface::PL_BNO_ORIENTATION_Y)));
+    pl_bno_ox_panel->setText(qstr(data_->getData<float>(ui_interface::PL_BNO_ORIENTATION_X)));
+    pl_bno_az_panel->setText(qstr(data_->getData<float>(ui_interface::PL_BNO_ACCELERATION_Z)));
+    pl_bno_ay_panel->setText(qstr(data_->getData<float>(ui_interface::PL_BNO_ACCELERATION_Y)));
+    pl_bno_ax_panel->setText(qstr(data_->getData<float>(ui_interface::PL_BNO_ACCELERATION_X)));
+
+    pl_bme_temperature_panel->setText(qstr(data_->getData<float>(ui_interface::PL_BME_TEMPERATURE)));
+    pl_bme_pressure_panel->setText(qstr(data_->getData<float>(ui_interface::PL_BME_PRESSURE)));
+    pl_bme_temperature_panel->setText(qstr(data_->getData<float>(ui_interface::PL_BME_TEMPERATURE)));
+    pl_bme_humidity_panel->setText(qstr(data_->getData<float>(ui_interface::PL_BME_HUMIDITY)));
+    pl_bme_altitude_panel->setText(qstr(data_->getData<float>(ui_interface::PL_BME_ALTITUDE)));
 }
 
 void GuiWindow::initialize_style()

@@ -125,7 +125,7 @@ namespace ui_interface {
         STATUS_AV_STATE, // enum in DataStructures/Avionics/StateValues.h
 
         /// Avionics state reach
-                SLEEP_REACHED,          //bool
+        SLEEP_REACHED,          //bool
         CALIBRATION_REACHED,    //bool
         IDLE_REACHED,           //bool
         FILLING_REACHED,        //bool
@@ -148,32 +148,39 @@ namespace ui_interface {
         GSE_DISCONNECT_WIRE,
 
         /// GSE orders
-                GSE_ORDER_VALUE, // enum in DataStructures/GSE/GSEOrderValue.h
+        GSE_ORDER_VALUE, // enum in DataStructures/GSE/GSEOrderValue.h
 
         /// GSE sensors
-                GSE_HOSE_PRESSURE,
+        GSE_HOSE_PRESSURE,
         GSE_HOSE_TEMP,
         GSE_HOSE_STATUS,
         GSE_MOTOR_SPEED,
         GSE_TANK_WEIGHT,
 
         /// Payload data
-                PL_GPS_ALTITUDE,    // float                **The last altitude reading
-        PL_GPS_LONGITUDE,    // float               **The last longitude reading
-        PL_GPS_LATITUDE,    // float                **The last latitude reading
-        PL_GPS_HDOP,    // float
-        PL_GPS_SAT_NBR, // uint8_t,
-        PL_TEMPERATURE,
-        PL_STATE_UI,
-        PL_BME_ALTITUDE,
-        PL_BME_TEMPERATURE,
-        PL_BME_PRESSURE,
-        PL_BME_HUMIDITY,
 
+        PL_GPS_ALTITUDE,        //float                **The last altitude reading
+        PL_GPS_LONGITUDE,       //float                **The last longitude reading
+        PL_GPS_LATITUDE,        //float                **The last latitude reading
+        PL_GPS_HDOP,            //float
+        PL_GPS_SAT_NBR,         //uint8_t,
+        PL_TEMPERATURE,         //float
+        PL_STATE_UI,            //float
+        PL_BME_ALTITUDE,        //float
+        PL_BME_TEMPERATURE,     //float
+        PL_BME_PRESSURE,        //float
+        PL_BME_HUMIDITY,        //float
+        PL_BNO_TEMPERATURE,     //uint8_t
+        PL_BNO_ORIENTATION_X,   //float
+        PL_BNO_ORIENTATION_Y,   //float
+        PL_BNO_ORIENTATION_Z,   //float
+        PL_BNO_ACCELERATION_X,  //float
+        PL_BNO_ACCELERATION_Y,  //float
+        PL_BNO_ACCELERATION_Z,  //float
 
         /// !!! THIS MUST BE THE LAST LINE !!!
         /// The size of the connected data array
-                ARRAY_SIZE
+        ARRAY_SIZE
     };
 
     enum StringType {
