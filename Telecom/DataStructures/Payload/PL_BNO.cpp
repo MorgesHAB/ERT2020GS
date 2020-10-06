@@ -48,5 +48,12 @@ std::string PL_BNO::log() const {
 }
 
 bool PL_BNO::updateRx(std::shared_ptr<Connector> connector) {
+    connector->setData(ui_interface::PL_BNO_ACCELERATION_X, accelerationX);
+    connector->setData(ui_interface::PL_BNO_ACCELERATION_Y, accelerationY);
+    connector->setData(ui_interface::PL_BNO_ACCELERATION_Z, accelerationZ);
+    connector->setData(ui_interface::PL_BNO_ORIENTATION_X, orientationX);
+    connector->setData(ui_interface::PL_BNO_ORIENTATION_Y, orientationY);
+    connector->setData(ui_interface::PL_BNO_ORIENTATION_Z, orientationZ);
+    connector->setData(ui_interface::PL_BNO_TEMPERATURE, temperature);
     return Data::updateRx(connector);
 }

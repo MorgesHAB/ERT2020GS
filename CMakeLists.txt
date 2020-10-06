@@ -32,7 +32,6 @@ if (USE_XBEE)
         qt5_add_resources(RCC_SOURCES UI/assets.qrc)      # add resources to Gui
         add_subdirectory(UI)
         add_executable(${PROJECT_NAME} ${RCC_SOURCES} src/ERT2020GS.cpp)
-        add_executable(FancyGUI ${RCC_SOURCES} src/FancyGUI.cpp)
     endif (USE_GUI)
 
 endif (USE_XBEE)
@@ -49,9 +48,7 @@ if (USE_XBEE)
 
     if (USE_GUI)
         target_link_libraries(${PROJECT_NAME} GUI)
-        target_link_libraries(FancyGUI GUI)
         target_include_directories(${PROJECT_NAME} PUBLIC UI)
-        target_include_directories(FancyGUI PUBLIC UI)
     endif (USE_GUI)
 
 endif (USE_XBEE)
