@@ -17,6 +17,7 @@ public:
     bool updateTx(std::shared_ptr<Connector> connector) override;
     bool updateRx(std::shared_ptr<Connector> connector) override;
 
+    
 private:
     uint16_t pressure_1, pressure_2, status;
     int16_t temperature_1, temperature_2, temperature_3;
