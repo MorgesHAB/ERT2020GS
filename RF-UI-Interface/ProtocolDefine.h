@@ -139,6 +139,8 @@ namespace ui_interface {
 
         GSE_ORDER,              //enum GSEOrderValues
         GSE_ORDER_ACK,          //enum GSEOrderValues
+        GSE_PING,               //bool
+        GSE_PING_ACK,           //bool
 
         //TODO Delete later
         GSE_OPEN_PURGE_VALVE,
@@ -150,12 +152,26 @@ namespace ui_interface {
         /// GSE orders
         GSE_ORDER_VALUE, // enum in DataStructures/GSE/GSEOrderValue.h
 
+
         /// GSE sensors
         GSE_HOSE_PRESSURE,
         GSE_HOSE_TEMP,
         GSE_HOSE_STATUS,
         GSE_MOTOR_SPEED,
         GSE_TANK_WEIGHT,
+
+
+        ///Propulsion commands
+        PP_COMMAND, //enum in DataStructures/Propulsion/PPCommands.h
+
+        ///Propulsion Data
+
+        PP_PRESSURE_1, //uint16_t
+        PP_PRESSURE_2, //uint16_t
+        PP_TEMPERATURE_1, //int16_t
+        PP_TEMPERATURE_2, //int16_t
+        PP_TEMPERATURE_3, //int16_t
+        PP_STATUS, //uint16_t
 
         /// Payload data
 

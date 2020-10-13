@@ -22,35 +22,35 @@ namespace DatagramType {
         //TODO This may change for project 2021, no ability to add a random packet ID without using empty enums
         /// Avionic Datagram
 
-            AV_GPS,                 //ID: 0x00
-            AV_STATUS,              //ID: 0x01
-            AV_TELEMETRY,           //ID: 0x02
-            AV_DEBUG,               //ID: 0x03
+            AV_GPS,                 //ID: 0x01
+            AV_STATUS,              //ID: 0x02
+            AV_TELEMETRY,           //ID: 0x03
+            AV_DEBUG,               //ID: 0x04
 
 
 
 
         /// GSE Datagram
-            GSE_ORDER,              //ID: 0x04
-            GSE_SENSORS,            //ID: 0x05
-            GSE_IGNITION,           //ID: 0x06
+            EMPTY5,              //ID: 0x05
+            EMPTY6,              //ID: 0x06
+            GSE_IGNITION,        //ID: 0x07
 
         /// Payload Datagram
-            PL_IMAGE,
-            EMPTY9,
-            EMPTY10,
-            EMPTY11,
-            EMPTY12,
-            EMPTY13,
+            EMPTY8,
+            GSE_ORDER,
+            GSE_SENSORS,
+            GSE_PING,
+            PP_COMMAND,
+            PP_DATA,
 
         /// Propulsion Datagram
             PROPULSION,
 
         /// Air Brakes Datagram
             AIR_BRAKES ,
-            EMPTY,
-            EMPTY1,
-            EMPTY2,
+            EMPTY16,
+            EMPTY17,
+            EMPTY18,
             EMPTY19,
             PL_TEMP,
             PL_BNO_SENSOR,
@@ -58,9 +58,7 @@ namespace DatagramType {
             PL_GPS,
             PL_ORDER,
             PL_STATE,
-
-
-            ENUM25,
+            PL_IMAGE,
 
         /// [Subsystem Name] Datagram
         /// ...

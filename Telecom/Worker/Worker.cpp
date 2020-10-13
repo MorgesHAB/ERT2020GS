@@ -76,6 +76,9 @@ void Worker::RFroutine(DataHandler& dataHandler, RFmodem* rfmodem) {
     // Manage GSE Orders
     if (dataHandler.updateTx(DatagramType::GSE_ORDER))
         rfmodem->send(dataHandler.getPacket(DatagramType::GSE_ORDER));
+    //Manage GSE Ping
+    if (dataHandler.updateTx(DatagramType::GSE_ORDER)) //todo gse ping
+        rfmodem->send(dataHandler.getPacket(DatagramType::GSE_ORDER));
 
     // if need to send AT command for RSSI
     if (connector->eatData<bool>(ui_interface::RSSI_READ_ORDER, false))

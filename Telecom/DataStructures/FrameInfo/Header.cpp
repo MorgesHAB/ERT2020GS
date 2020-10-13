@@ -79,10 +79,16 @@ bool Header::updateRx(std::shared_ptr<Connector> connector) {
         case PL_BNO_SENSOR:
             connector->incrementData(ui_interface::PACKET_CTR_PL);
             break;
-        case PL_IMAGE:
-            connector->incrementData(ui_interface::PACKET_CTR_PL);
-            break;
+        //case PL_IMAGE:
+        //    connector->incrementData(ui_interface::PACKET_CTR_PL);
+        //    break;
         case PROPULSION:
+            connector->incrementData(ui_interface::PACKET_CTR_PP);
+            break;
+        case PP_DATA:
+            connector->incrementData(ui_interface::PACKET_CTR_PP);
+            break;
+        case PP_COMMAND:
             connector->incrementData(ui_interface::PACKET_CTR_PP);
             break;
     }
