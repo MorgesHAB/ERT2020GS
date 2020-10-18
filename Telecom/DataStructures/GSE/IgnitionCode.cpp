@@ -6,6 +6,7 @@
  * \author      ISOZ Lionel - EPFL EL BA3
  * \date        07.12.2019	
  */
+
 // Configuration of the GPIO pin of the Raspberry Pi 4
 //  /!\ it's the nbr in BCM format, not the pin number
 // GPIO which activates the relay which activates the igniter
@@ -36,19 +37,24 @@
 #include "IgnitionCode.h"
 #include "GSEOrderValue.h"
 
+static const uint8_t MAIN_IGNITION_ON = 0x0C;
+static const uint8_t MAIN_IGNITION_OFF = 0x0D;
+
+
+
 using namespace ignit;
 
-IgnitionCode::IgnitionCode() : code(4, false), ignitionCode(0),
-                               myState(SLEEP), receivedState(SLEEP),
-                               ignitionTime(0) {
+IgnitionCode::IgnitionCode() : code({false}), ignitionCode(0), order(MAIN_IGNITION_ON) {
 #ifdef RUNNING_ON_RPI
     wiringPiSetupGpio();
     // Configure GPIO OUT for the igniter
     pinMode(GPIO_OUT_IGNITION, OUTPUT);
     digitalWrite(GPIO_OUT_IGNITION, LOW);
+
     // Configure the red button LED
     pinMode(GPIO_OUT_LED_BUTTON, OUTPUT);
     digitalWrite(GPIO_OUT_LED_BUTTON, LOW);
+
     // Configure GPIO pins as an input
     pinMode(GPIO_IN_KEY_1, INPUT);
     pinMode(GPIO_IN_KEY_2, INPUT);
@@ -62,28 +68,6 @@ IgnitionCode::IgnitionCode() : code(4, false), ignitionCode(0),
 }
 
 bool IgnitionCode::updateTx(std::shared_ptr<Connector> connector) {
-    /*// GSE Side
-    if (myState == IGNITION_ON && ignitionTime != 0) {
-        if (clock() - ignitionTime > SHUTDOWN_TIME) {
-            #ifdef RUNNING_ON_RPI
-            digitalWrite(GPIO_OUT_IGNITION, LOW);
-            #endif
-            myState = SLEEP;
-            std::cout << "Ignition circuit deactivated automatically" << std::endl;
-        }
-    }
-    if (receivedState == WAITING_ARMED_VALIDATION ||
-        receivedState == WAITING_IGNITION_VALIDATION) {
-        receivedState = SLEEP;
-        return true;    // GSE side will send myState (ACK)
-    }*/
-    // debug !!!!!!!!!!!!!!!!
-    /*if (connector->eatData<bool>(ui_interface::IGNITION_CLICKED, false)) {
-        ignitionCode = 3;
-        if (myState == WAITING_ARMED_VALIDATION) myState = WAITING_IGNITION_VALIDATION;
-        else myState = WAITING_ARMED_VALIDATION;
-        return true;
-    }*/
 
 #ifdef RUNNING_ON_RPI
     // run on GST
@@ -112,37 +96,27 @@ bool IgnitionCode::updateTx(std::shared_ptr<Connector> connector) {
     // true if send Ignition packet
     if (key1 && key2 && redButtonPressed &&
         connector->eatData<bool>(ui_interface::IGNITION_CLICKED, false)) {
-        if (myState == WAITING_ARMED_VALIDATION) myState = WAITING_IGNITION_VALIDATION;
-        else myState = WAITING_ARMED_VALIDATION;
-        return true;    // Ignition will be send
+        return true;    // Ignition will be sent
     }
     return false;
 #endif
 }
 
 void IgnitionCode::write(Packet &packet) {
+    packet.write(order);
     packet.write(ignitionCode);
-    packet.write(myState);
 }
 
 
 void IgnitionCode::parse(Packet &packet) {
+    packet.parse(order);
     packet.parse(ignitionCode);
-    packet.parse(receivedState);
     for (uint8_t i(0); i < code.size(); ++i) {
         code[i] = ignitionCode & (1 << i);
     }
 }
 
 bool IgnitionCode::updateRx(std::shared_ptr<Connector> connector) {
-
-    // GST side
-    if (receivedState != WAITING_ARMED_VALIDATION &&
-        receivedState != WAITING_IGNITION_VALIDATION) {
-        connector->setData(ui_interface::IGNITION_STATUS, receivedState);
-        if (receivedState == IGNITION_ON) myState = SLEEP;
-        return true;
-    }
 #ifdef RUNNING_ON_RPI
 /*
 

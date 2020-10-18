@@ -56,7 +56,7 @@ namespace ui_interface {
 
         /// Header
         LAST_DATAGRAM_ID,         // uint8_t            **The ID of the last packet received
-        TX_PACKET_NR,        // uint32_t           **This is the last packet's number. // TODO delete (RF no longer use this)
+        TX_PACKET_NR,        // uint32_t           **This is the last packet's number.
         TIMESTAMP,           // time_t             **The Time of the last packet received
         TOTAL_RX_PACKET_CTR, //uint64_t         just increment when received a packet
 
