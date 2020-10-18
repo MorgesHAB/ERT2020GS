@@ -135,14 +135,14 @@ namespace ui_interface {
         SECONDARY_EVENT_REACHED,//bool
         TOUCH_DOWN_REACHED,     //bool
 
-        /// GSE Commands
+        /// GSE Orders
 
         GSE_ORDER,              //enum GSEOrderValues
         GSE_ORDER_ACK,          //enum GSEOrderValues
         GSE_PING,               //bool
         GSE_PING_ACK,           //bool
 
-        //TODO Delete later
+
         GSE_OPEN_PURGE_VALVE,
         GSE_OPEN_FILL_VALVE,
         GSE_CLOSE_PURGE_VALVE,
@@ -152,13 +152,26 @@ namespace ui_interface {
         /// GSE orders
         GSE_ORDER_VALUE, // enum in DataStructures/GSE/GSEOrderValue.h
 
+        /// GSE states
+
+        GSE_FILL_VALVE_STATE,
+        GSE_PURGE_VALVE_STATE,
+        GSE_MAIN_IGNITION_STATE,
+        GSE_SECONDARY_IGNITION_STATE,
+        GSE_HOSE_DISCONNECT_STATE,
+
 
         /// GSE sensors
+        GSE_BATTERY_LEVEL,
+        GSE_TANK_TEMP,
         GSE_HOSE_PRESSURE,
         GSE_HOSE_TEMP,
         GSE_HOSE_STATUS,
         GSE_MOTOR_SPEED,
-        GSE_TANK_WEIGHT,
+        GSE_ROCKET_WEIGHT,
+        GSE_MAIN_IGNITION_CURRENT,
+        GSE_SECONDARY_IGNITION_CURRENT,
+        GSE_WIND_SPEED,
 
 
         ///Propulsion commands
@@ -279,7 +292,6 @@ namespace ui_interface {
             GSE_HOSE_TEMP,
             GSE_HOSE_STATUS,
             GSE_MOTOR_SPEED,
-            GSE_TANK_WEIGHT
     };
 
 } // namespace

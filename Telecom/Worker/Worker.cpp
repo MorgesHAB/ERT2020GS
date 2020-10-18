@@ -70,15 +70,16 @@ void Worker::RFroutine(DataHandler& dataHandler, RFmodem* rfmodem) {
     }
 
     // Manage Image Transmission
+    /*
     if (dataHandler.updateTx(DatagramType::PL_IMAGE))
         rfmodem->send(dataHandler.getPacket(DatagramType::PL_IMAGE));
-
+    */
     // Manage GSE Orders
     if (dataHandler.updateTx(DatagramType::GSE_ORDER))
         rfmodem->send(dataHandler.getPacket(DatagramType::GSE_ORDER));
     //Manage GSE Ping
-    if (dataHandler.updateTx(DatagramType::GSE_ORDER)) //todo gse ping
-        rfmodem->send(dataHandler.getPacket(DatagramType::GSE_ORDER));
+    if (dataHandler.updateTx(DatagramType::GSE_PING))
+        rfmodem->send(dataHandler.getPacket(DatagramType::GSE_PING));
 
     // if need to send AT command for RSSI
     if (connector->eatData<bool>(ui_interface::RSSI_READ_ORDER, false))

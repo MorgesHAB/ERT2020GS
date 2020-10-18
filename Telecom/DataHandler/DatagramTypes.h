@@ -228,6 +228,7 @@ namespace DatagramType {
             case GSE_ORDER: return "GSE ORDER";
             case GSE_SENSORS: return "GSE SENSORS";
             case GSE_IGNITION: return "GSE IGNITION";
+            case GSE_PING: return "GSE PING";
             case PL_STATE: return "PL STATE";
             case PL_IMAGE: return "PL IMAGE";
             case PL_GPS: return "PL GPS";

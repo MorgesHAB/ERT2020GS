@@ -167,6 +167,7 @@ void GuiWindow::refresh_data()
     refresh_gps();
     refresh_serial_status();
     refresh_payload();
+    refresh_gse();
     refresh_ack_blinking();
 
     ++tick_counter_;
@@ -371,7 +372,13 @@ bool GuiWindow::ask_password()
 
 void GuiWindow::refresh_ack_blinking() {
 
-    auto order = data_->eatData<gse::GSEOrderValue>(ui_interface::GSE_ORDER_ACK, gse::NO_ORDER);
+    if(data_->eatData<bool>(ui_interface::GSE_PING_ACK, false)){
+        echo_button->setStyleSheet("background-color: rgb(0, 255, 255);");
+    }else{
+        echo_button->setStyleSheet("");
+    }
+
+    uint8_t order = data_->eatData<gse::GSEOrderValue>(ui_interface::GSE_ORDER_ACK, gse::NO_ORDER);
 
     switch (order){
         case gse::NO_ORDER :
@@ -406,6 +413,27 @@ void GuiWindow::refresh_ack_blinking() {
 
     }
 }
+
+void GuiWindow::refresh_gse() {
+    //Refresh state display
+    show_on_off(purge_valve_state_panel, data_->getData<bool>(ui_interface::GSE_PURGE_VALVE_STATE));
+    show_on_off(fill_valve_state_panel, data_->getData<bool>(ui_interface::GSE_FILL_VALVE_STATE));
+    show_on_off(main_ignition_state_panel, data_->getData<bool>(ui_interface::GSE_MAIN_IGNITION_STATE));
+    show_on_off(secondary_ignition_state_panel, data_->getData<bool>(ui_interface::GSE_SECONDARY_IGNITION_STATE));
+    show_on_off(hose_disconnect_state_panel, data_->getData<bool>(ui_interface::GSE_HOSE_DISCONNECT_STATE));
+
+
+    //Refresh sensor display
+    tank_temp_panel_2->setText(qstr(data_->getData<float>(ui_interface::GSE_TANK_TEMP)));
+    hose_pressure_panel_2->setText(qstr(data_->getData<float>(ui_interface::GSE_HOSE_PRESSURE)));
+    hose_temp_panel_2->setText(qstr(data_->getData<float>(ui_interface::GSE_HOSE_TEMP)));
+    rocket_weight_panel_2->setText(qstr(data_->getData<float>(ui_interface::GSE_ROCKET_WEIGHT)));
+    battery_level_panel->setText(qstr(data_->getData<float>(ui_interface::GSE_BATTERY_LEVEL)));
+    main_current_panel->setText(qstr(data_->getData<float>(ui_interface::GSE_MAIN_IGNITION_CURRENT)));
+    secondary_current_panel->setText(qstr(data_->getData<float>(ui_interface::GSE_SECONDARY_IGNITION_CURRENT)));
+    wind_speed_panel->setText(qstr(data_->getData<float>(ui_interface::GSE_WIND_SPEED)));
+}
+
 
 void GuiWindow::refresh_ignition_frame()
 {
@@ -455,6 +483,7 @@ void GuiWindow::initialize_slots_signals()
     connect(purge_open_button,SIGNAL(pressed()),this, SLOT(purge_valve_open_pressed()));
     connect(purge_close_button,SIGNAL(pressed()),this, SLOT(purge_valve_close_pressed()));
     connect(disconnect_wire_button, SIGNAL(pressed()),this, SLOT(disconnect_wire_pressed()));
+    connect(echo_button, SIGNAL(pressed()), this, SLOT(echo_button_pressed()));
 }
 
 void GuiWindow::refresh_telemetry()
@@ -575,6 +604,20 @@ void GuiWindow::show_dots(QLabel * label)
     label->setStyleSheet(QLatin1String("color: rgb(0, 255, 255);"));
     label->setText("...");
 }
+
+void GuiWindow::show_on(QLabel * label) {
+    label->setStyleSheet(QLatin1String("color: rgb(0, 255, 0);"));
+    label->setText("ON");
+}
+
+void GuiWindow::show_off(QLabel * label) {
+    label->setStyleSheet(QLatin1String("color: rgb(255, 0, 0);"));
+    label->setText("OFF");
+}
+
+void GuiWindow::show_on_off(QLabel * label, bool ok) {
+    (ok) ? show_on(label) : show_off(label);
+}
 void GuiWindow::keyPressEvent(QKeyEvent * ckey)
 {
     if (ckey->key() == Qt::Key_F11 || ckey->key() == Qt::Key_F) {
@@ -596,6 +639,11 @@ void GuiWindow::refresh_serial_status()
         show_X(serial_status_panel);
     }
 }
+
+void GuiWindow::echo_button_pressed() {
+    data_->setData(ui_interface::GSE_PING, true);
+}
+
 
 #ifdef SOUND_ON
 void GuiWindow::playSound(const char * url)

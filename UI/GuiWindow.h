@@ -39,6 +39,7 @@ public slots:
     void purge_valve_open_pressed();
     void fill_valve_close_pressed();
     void purge_valve_close_pressed();
+    void echo_button_pressed();
     void disconnect_wire_pressed();
     void manual_mode_pressed();
     void rssi_request_pressed();
@@ -74,6 +75,9 @@ private:
     void show_ok(QLabel*);
     void show_dots(QLabel*);
     void show_X(QLabel*);
+    void show_on(QLabel*);
+    void show_off(QLabel*);
+    void show_on_off(QLabel*, bool);
 
     
     void closeEvent(QCloseEvent * event) override;
@@ -83,7 +87,8 @@ private:
     void refresh_ignition_code();
     void refresh_av_state();
     void refresh_payload();
-    
+    void refresh_gse();
+
     //uint16_t calculate_misses();  can't do it as we don't send the packet number
 
 

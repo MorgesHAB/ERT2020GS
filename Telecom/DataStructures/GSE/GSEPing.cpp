@@ -15,7 +15,7 @@ void GSEPing::parse(Packet& packet){
 }
 
 void GSEPing::print() const{
-    std::cout << "GSE Echo Packet" << std::endl;
+    std::cout << "GSE Echo Packet received" << std::endl;
 
 }
 std::string GSEPing::log() const {
