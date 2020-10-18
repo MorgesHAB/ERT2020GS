@@ -11,17 +11,17 @@
 // GPIO which activates the relay which activates the igniter
 #define GPIO_OUT_IGNITION       20
 // GPIO input on the Ground Station
-#define GPIO_IN_KEY_1           11
-#define GPIO_IN_KEY_2           10
-#define GPIO_IN_RED_BUTTON      9
+#define GPIO_IN_KEY_1           24  //WHITE-ORANGE
+#define GPIO_IN_KEY_2           25  //WHITE-BLUE
+#define GPIO_IN_RED_BUTTON      23  //BLUE 
 // GPIO output of the red button LED
-#define GPIO_OUT_LED_BUTTON     23
+#define GPIO_OUT_LED_BUTTON     22 //WHITE-BROWN EXT
 // GPIO on the RPi to read the ignition code via the switches
 // Code order on the dipswitch from left to right : code 3 | code 2 | code 1 | code 0
-#define GPIO_IN_CODE0           25
-#define GPIO_IN_CODE1           24
-#define GPIO_IN_CODE2           27
-#define GPIO_IN_CODE3           22
+#define GPIO_IN_CODE0           8 //WHITE-GREEN
+#define GPIO_IN_CODE1           11 //GREEN
+#define GPIO_IN_CODE2           9 //WHITE-BROWN
+#define GPIO_IN_CODE3           10 //PURPLE
 
 #define SHUTDOWN_TIME           10000000 // on RPi should be 10000
 //////////////////////////////////////
@@ -62,7 +62,7 @@ IgnitionCode::IgnitionCode() : code(4, false), ignitionCode(0),
 }
 
 bool IgnitionCode::updateTx(std::shared_ptr<Connector> connector) {
-    // GSE Side
+    /*// GSE Side
     if (myState == IGNITION_ON && ignitionTime != 0) {
         if (clock() - ignitionTime > SHUTDOWN_TIME) {
             #ifdef RUNNING_ON_RPI
@@ -76,7 +76,7 @@ bool IgnitionCode::updateTx(std::shared_ptr<Connector> connector) {
         receivedState == WAITING_IGNITION_VALIDATION) {
         receivedState = SLEEP;
         return true;    // GSE side will send myState (ACK)
-    }
+    }*/
     // debug !!!!!!!!!!!!!!!!
     /*if (connector->eatData<bool>(ui_interface::IGNITION_CLICKED, false)) {
         ignitionCode = 3;
@@ -105,6 +105,7 @@ bool IgnitionCode::updateTx(std::shared_ptr<Connector> connector) {
     code[1] = digitalRead(GPIO_IN_CODE1);
     code[2] = digitalRead(GPIO_IN_CODE2);
     code[3] = digitalRead(GPIO_IN_CODE3);
+    std::cout << code[0] << code[1] << code[2] << code[3] << std::endl;
     ignitionCode = code[3] << 3 | code[2] << 2 | code[1] << 1 | code[0];
     connector->setData(ui_interface::TX_IGNITION_CODE, ignitionCode);
 
@@ -142,8 +143,9 @@ bool IgnitionCode::updateRx(std::shared_ptr<Connector> connector) {
         if (receivedState == IGNITION_ON) myState = SLEEP;
         return true;
     }
-
 #ifdef RUNNING_ON_RPI
+/*
+
     // run on GSE
     using namespace ignit;
     std::vector<int> codeRx = {digitalRead(GPIO_IN_CODE0),
@@ -184,6 +186,8 @@ bool IgnitionCode::updateRx(std::shared_ptr<Connector> connector) {
     }
 
     return true;
+    */
+    
 #endif
 }
 
