@@ -185,6 +185,7 @@ namespace ui_interface {
         PP_TEMPERATURE_2, //int16_t
         PP_TEMPERATURE_3, //int16_t
         PP_STATUS, //uint16_t
+        PP_MOTOR_POSITION, //int16_t
 
         /// Payload data
 

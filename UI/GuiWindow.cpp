@@ -450,11 +450,6 @@ void GuiWindow::refresh_ignition_frame()
     show_ok_X(red_button_panel, button);
     show_ok_X(ready_ignition_panel, clicked);
 
-    // Ignition status
-    std::string str(ignit::getIgnitionState(
-        data_->eatData<ignit::IgnitionState>(IGNITION_STATUS, ignit::SLEEP)));
-    ignition_status_label->setText(QString::fromStdString(str));
-
 #ifdef SOUND_ON
     if (key1 && key2 && clicked) {
         if (m_player->state() != QMediaPlayer::PlayingState) {

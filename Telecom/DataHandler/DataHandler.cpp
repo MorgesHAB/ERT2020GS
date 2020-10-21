@@ -59,22 +59,19 @@ DataHandler::DataHandler(std::shared_ptr<Connector> connector)
     // Here you can create / compose all your datagram content with your Data
     // First create your Datagram ID in DatagramTypes.h
     // Data are in DataStructures/...
-    //// Avionics Datagram
+        //// Avionics Datagram
         dataHandler[DatagramType::AV_GPS]->add(new GPS);
-
         dataHandler[DatagramType::AV_STATUS]->add(new StatusAV);
-
         dataHandler[DatagramType::AV_TELEMETRY]->add(new Telemetry);
-
         dataHandler[DatagramType::AV_DEBUG]->add(new String("Hello Avionic"));
 
-    //// GSE Datagram
+        //// GSE Datagram
         dataHandler[DatagramType::GSE_ORDER]->add(new GSEOrder);
         dataHandler[DatagramType::GSE_PING]->add(new GSEPing);
         dataHandler[DatagramType::GSE_SENSORS]->add(new GSESensors);
         dataHandler[DatagramType::GSE_IGNITION]->add(new IgnitionCode);
 
-    //// Payload Datagram
+        //// Payload Datagram
         dataHandler[DatagramType::PL_STATE]->add(new PLStatus);
         dataHandler[DatagramType::PL_GPS]->add(new PLGps);
         dataHandler[DatagramType::PL_ORDER]->add(new PLOrder);
@@ -85,27 +82,27 @@ DataHandler::DataHandler(std::shared_ptr<Connector> connector)
         //dataHandler[PL_IMAGE]->add(new File("Yann.png"));
         //dataHandler[PL_IMAGE]->add(new Picture("livePic.jpg", 220, 600, 600));
 
-    //// Propulsion Datagram
-        dataHandler[DatagramType::PROPULSION]->add(new PPPressure);
+        //// Propulsion Datagram
+        //dataHandler[DatagramType::PROPULSION]->add(new PPPressure);
         dataHandler[DatagramType::PP_DATA]->add(new PPData);
         dataHandler[DatagramType::PP_COMMAND]->add(new PPCommand);
 
 
-    //// Air Brakes Datagram
+        //// Air Brakes Datagram
         dataHandler[AIR_BRAKES]->add(new BasicData<float>(DataType::AIR_BRAKES_ANGLE));
 
-    //// [Subsystem Name] Datagram
-        // dataHandler[DatagramID]->add(new MyData);
+        //// [Subsystem Name] Datagram
+        /// // dataHandler[DatagramID]->add(new MyData);
 
 
-    //// TEST ----------- Datagram ----------
-    dataHandler[TEST]->add(new String("First sentence transmit via XBee !!"));
-    dataHandler[TEST]->add(new States({1, 0, 1, 1, 0, 0, 1, 0}));
+        //// TEST ----------- Datagram ----------
+        //dataHandler[TEST]->add(new String("First sentence transmit via XBee !!"));
+        dataHandler[TEST]->add(new States({1, 0, 1, 1, 0, 0, 1, 0}));
 
-    ///////////////////////////////////////////////////////////////////////////
-    ///////////////////////////////////////////////////////////////////////////
-    // END of protocol add CRC
-    for (uint8_t id(1); id < TOTAL_NBR_OF_TYPES; ++id) {
+        ///////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////
+        // END of protocol add CR
+        for (uint8_t id(1); id < TOTAL_NBR_OF_TYPES; ++id) {
         dataHandler[id]->add(new CRC);  // requirement of xbee protocol
     }
 }

@@ -21,6 +21,7 @@ public:
 private:
     uint16_t pressure_1, pressure_2, status;
     int16_t temperature_1, temperature_2, temperature_3;
+    int16_t motor_position;
 };
 
 #endif //ERT2020GS_PPDATA_H

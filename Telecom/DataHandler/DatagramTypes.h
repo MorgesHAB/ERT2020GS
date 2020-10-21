@@ -219,22 +219,23 @@ namespace DatagramType {
 
     static std::string getDatagramIDName(uint8_t DatagramID) {
         switch (DatagramID) {
-            case AV_GPS: return "AV GPS";
-            case AV_STATUS: return "AV STATUS";
-            case AV_TELEMETRY: return "AV TELEMETRY";
-            case AV_DEBUG: return "AV DEBUG";
-            case PROPULSION: return "PROPULSION";
-            case AIR_BRAKES: return "AIR BRAKES";
-            case GSE_ORDER: return "GSE ORDER";
-            case GSE_SENSORS: return "GSE SENSORS";
-            case GSE_IGNITION: return "GSE IGNITION";
-            case GSE_PING: return "GSE PING";
-            case PL_STATE: return "PL STATE";
-            case PL_IMAGE: return "PL IMAGE";
-            case PL_GPS: return "PL GPS";
-            case PL_ORDER: return "PL ORDER";
-            case PL_BME_SENSOR: return "PL BME SENSOR";
-            case PL_BNO_SENSOR: return "PL BNO SENSOR";
+            case AV_GPS: return "AV-GPS";
+            case AV_STATUS: return "AV-STATUS";
+            case AV_TELEMETRY: return "AV-TELEMETRY";
+            case AV_DEBUG: return "AV-DEBUG";
+            case PP_COMMAND: return "PP-COMMAND";
+            case PP_DATA: return "PP-DATA";
+            case AIR_BRAKES: return "AIR-BRAKES";
+            case GSE_ORDER: return "GSE-ORDER";
+            case GSE_SENSORS: return "GSE-SENSORS";
+            case GSE_IGNITION: return "GSE-IGNITION";
+            case GSE_PING: return "GSE-PING";
+            case PL_STATE: return "PL-STATE";
+            case PL_IMAGE: return "PL-IMAGE";
+            case PL_GPS: return "PL-GPS";
+            case PL_ORDER: return "PL-ORDER";
+            case PL_BME_SENSOR: return "PL-BME-SENSOR";
+            case PL_BNO_SENSOR: return "PL-BNO-SENSOR";
             case TEST: return "TEST";
             default: return "Unknown";
         }
@@ -243,3 +244,4 @@ namespace DatagramType {
 } // namespace
 
 #endif //DatagramTypes_H
+

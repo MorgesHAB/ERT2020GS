@@ -41,7 +41,7 @@ static const uint8_t MAIN_IGNITION_ON = 0x0C;
 static const uint8_t MAIN_IGNITION_OFF = 0x0D;
 
 
-
+// #define RUNNING_ON_RPI
 using namespace ignit;
 
 IgnitionCode::IgnitionCode() : code({false}), ignitionCode(0), order(MAIN_IGNITION_ON) {
