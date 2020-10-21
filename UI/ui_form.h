@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'WasserfallenGUId22480.ui'
+** Form generated from reading UI file 'WasserfallenGUIj24228.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.9.5
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef WASSERFALLENGUID22480_H
-#define WASSERFALLENGUID22480_H
+#ifndef WASSERFALLENGUIJ24228_H
+#define WASSERFALLENGUIJ24228_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QAction>
@@ -258,7 +258,6 @@ public:
     QGroupBox *groupBox_2;
     QGridLayout *gridLayout_16;
     QLabel *tank_temp_label_2;
-    QLabel *tank_temp_panel_2;
     QLabel *celcius_label2_2;
     QLabel *hose_pressure_label_2;
     QLabel *hose_pressure_panel_2;
@@ -281,6 +280,7 @@ public:
     QLabel *label_11;
     QLabel *wind_speed_panel;
     QLabel *m_s_unit_label_2;
+    QLabel *tank_temp_panel_2;
     QWidget *tab_9;
     QHBoxLayout *horizontalLayout_7;
     QGroupBox *gse_control_box;
@@ -325,7 +325,7 @@ public:
     {
         if (Form->objectName().isEmpty())
             Form->setObjectName(QStringLiteral("Form"));
-        Form->resize(1095, 719);
+        Form->resize(1059, 719);
         QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -1509,12 +1509,6 @@ public:
 
         gridLayout_16->addWidget(tank_temp_label_2, 0, 0, 1, 1);
 
-        tank_temp_panel_2 = new QLabel(groupBox_2);
-        tank_temp_panel_2->setObjectName(QStringLiteral("tank_temp_panel_2"));
-        tank_temp_panel_2->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
-
-        gridLayout_16->addWidget(tank_temp_panel_2, 0, 1, 1, 1);
-
         celcius_label2_2 = new QLabel(groupBox_2);
         celcius_label2_2->setObjectName(QStringLiteral("celcius_label2_2"));
         celcius_label2_2->setMaximumSize(QSize(40, 16777215));
@@ -1579,6 +1573,7 @@ public:
 
         battery_level_panel = new QLabel(groupBox_2);
         battery_level_panel->setObjectName(QStringLiteral("battery_level_panel"));
+        battery_level_panel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         gridLayout_16->addWidget(battery_level_panel, 4, 1, 1, 1);
 
@@ -1594,6 +1589,7 @@ public:
 
         main_current_panel = new QLabel(groupBox_2);
         main_current_panel->setObjectName(QStringLiteral("main_current_panel"));
+        main_current_panel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         gridLayout_16->addWidget(main_current_panel, 5, 1, 1, 1);
 
@@ -1609,6 +1605,7 @@ public:
 
         secondary_current_panel = new QLabel(groupBox_2);
         secondary_current_panel->setObjectName(QStringLiteral("secondary_current_panel"));
+        secondary_current_panel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         gridLayout_16->addWidget(secondary_current_panel, 6, 1, 1, 1);
 
@@ -1624,6 +1621,7 @@ public:
 
         wind_speed_panel = new QLabel(groupBox_2);
         wind_speed_panel->setObjectName(QStringLiteral("wind_speed_panel"));
+        wind_speed_panel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         gridLayout_16->addWidget(wind_speed_panel, 7, 1, 1, 1);
 
@@ -1631,6 +1629,12 @@ public:
         m_s_unit_label_2->setObjectName(QStringLiteral("m_s_unit_label_2"));
 
         gridLayout_16->addWidget(m_s_unit_label_2, 7, 2, 1, 1);
+
+        tank_temp_panel_2 = new QLabel(groupBox_2);
+        tank_temp_panel_2->setObjectName(QStringLiteral("tank_temp_panel_2"));
+        tank_temp_panel_2->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+
+        gridLayout_16->addWidget(tank_temp_panel_2, 0, 1, 1, 1);
 
 
         horizontalLayout_9->addWidget(groupBox_2);
@@ -1880,7 +1884,7 @@ public:
         tabWidget_2->setCurrentIndex(0);
         tabWidget_3->setCurrentIndex(1);
         tabWidget->setCurrentIndex(1);
-        tabWidget_4->setCurrentIndex(2);
+        tabWidget_4->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(Form);
@@ -2074,7 +2078,7 @@ public:
 #endif // QT_NO_TOOLTIP
         logo->setText(QString());
         tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("Form", "Logo", Q_NULLPTR));
-        serial_status_label->setText(QApplication::translate("Form", "Serial port status", Q_NULLPTR));
+        serial_status_label->setText(QApplication::translate("Form", "XBee status", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
         reset_button->setToolTip(QApplication::translate("Form", "Resets saved data", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
@@ -2087,7 +2091,7 @@ public:
                 << QApplication::translate("Form", "ttyS3", Q_NULLPTR)
                 << QApplication::translate("Form", "ttyS6", Q_NULLPTR)
         );
-        change_theme->setText(QApplication::translate("Form", "Change Color Theme", Q_NULLPTR));
+        change_theme->setText(QApplication::translate("Form", "Color Theme", Q_NULLPTR));
         serial_status_panel->setText(QApplication::translate("Form", "...", Q_NULLPTR));
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("Form", "Config", Q_NULLPTR));
         ignition_box->setTitle(QApplication::translate("Form", "Ignition", Q_NULLPTR));
@@ -2106,7 +2110,6 @@ public:
         tabWidget_4->setTabText(tabWidget_4->indexOf(tab_8), QApplication::translate("Form", "Ignition", Q_NULLPTR));
         groupBox_2->setTitle(QApplication::translate("Form", "GSE Sensor Data", Q_NULLPTR));
         tank_temp_label_2->setText(QApplication::translate("Form", "Tank Temp", Q_NULLPTR));
-        tank_temp_panel_2->setText(QString());
         celcius_label2_2->setText(QApplication::translate("Form", "[\302\260C]", Q_NULLPTR));
         hose_pressure_label_2->setText(QApplication::translate("Form", "Hose Pressure", Q_NULLPTR));
         hose_pressure_panel_2->setText(QString());
@@ -2129,6 +2132,7 @@ public:
         label_11->setText(QApplication::translate("Form", "Wind speed", Q_NULLPTR));
         wind_speed_panel->setText(QString());
         m_s_unit_label_2->setText(QApplication::translate("Form", "[m/s]", Q_NULLPTR));
+        tank_temp_panel_2->setText(QString());
         tabWidget_4->setTabText(tabWidget_4->indexOf(tab_10), QApplication::translate("Form", "GSE Data", Q_NULLPTR));
         gse_control_box->setTitle(QApplication::translate("Form", "GSE Control", Q_NULLPTR));
         filling_open_button->setText(QApplication::translate("Form", "Open", Q_NULLPTR));
@@ -2176,4 +2180,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // WASSERFALLENGUID22480_H
+#endif // WASSERFALLENGUIJ24228_H

@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1095</width>
+    <width>1059</width>
     <height>719</height>
    </rect>
   </property>
@@ -1693,7 +1693,7 @@ image: url(:/assets/logo.png);</string>
                 </size>
                </property>
                <property name="text">
-                <string>Serial port status</string>
+                <string>XBee status</string>
                </property>
               </widget>
              </item>
@@ -1756,7 +1756,7 @@ image: url(:/assets/logo.png);</string>
                 <string notr="true"/>
                </property>
                <property name="text">
-                <string>Change Color Theme</string>
+                <string>Color Theme</string>
                </property>
               </widget>
              </item>
@@ -1808,7 +1808,7 @@ color: rgb(0, 255, 255);</string>
          </size>
         </property>
         <property name="currentIndex">
-         <number>2</number>
+         <number>1</number>
         </property>
         <widget class="QWidget" name="tab_8">
          <attribute name="title">
@@ -2049,16 +2049,6 @@ gridline-color: rgb(255, 0, 0);</string>
                </property>
               </widget>
              </item>
-             <item row="0" column="1">
-              <widget class="QLabel" name="tank_temp_panel_2">
-               <property name="text">
-                <string/>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-               </property>
-              </widget>
-             </item>
              <item row="0" column="2">
               <widget class="QLabel" name="celcius_label2_2">
                <property name="maximumSize">
@@ -2174,6 +2164,9 @@ gridline-color: rgb(255, 0, 0);</string>
                <property name="text">
                 <string/>
                </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
               </widget>
              </item>
              <item row="4" column="2">
@@ -2194,6 +2187,9 @@ gridline-color: rgb(255, 0, 0);</string>
               <widget class="QLabel" name="main_current_panel">
                <property name="text">
                 <string/>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                </property>
               </widget>
              </item>
@@ -2216,6 +2212,9 @@ gridline-color: rgb(255, 0, 0);</string>
                <property name="text">
                 <string/>
                </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
               </widget>
              </item>
              <item row="6" column="2">
@@ -2237,12 +2236,25 @@ gridline-color: rgb(255, 0, 0);</string>
                <property name="text">
                 <string/>
                </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
               </widget>
              </item>
              <item row="7" column="2">
               <widget class="QLabel" name="m_s_unit_label_2">
                <property name="text">
                 <string>[m/s]</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QLabel" name="tank_temp_panel_2">
+               <property name="text">
+                <string/>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                </property>
               </widget>
              </item>
