@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'WasserfallenGUIE24228.ui'
+** Form generated from reading UI file 'WasserfallenGUILh1025.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.9.5
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef WASSERFALLENGUIE24228_H
-#define WASSERFALLENGUIE24228_H
+#ifndef WASSERFALLENGUILH1025_H
+#define WASSERFALLENGUILH1025_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QAction>
@@ -82,7 +82,6 @@ public:
     QLabel *pressure_label;
     QLabel *altitude_panel_telemetry;
     QLabel *speed_label;
-    QLabel *m_unit_label_3;
     QLabel *altitude_label_telemetry;
     QLabel *speed_panel;
     QLabel *temperature_panel;
@@ -91,6 +90,7 @@ public:
     QLabel *temperature_label;
     QLabel *celcius_label;
     QLabel *avionics_state_panel;
+    QLabel *m_unit_label_3;
     QWidget *middle_widget;
     QGridLayout *gridLayout_6;
     QWidget *widget_3;
@@ -211,11 +211,11 @@ public:
     QHBoxLayout *horizontalLayout_2;
     QWidget *widget;
     QGridLayout *gridLayout_12;
-    QPushButton *pushButton;
-    QPushButton *pushButton_3;
-    QPushButton *pushButton_2;
-    QPushButton *pushButton_4;
-    QPushButton *pushButton_5;
+    QPushButton *start_fueling_button;
+    QPushButton *start_homing_button;
+    QPushButton *start_valve_op_button;
+    QPushButton *stop_fueling_button;
+    QPushButton *abort_button;
     QWidget *right_widget;
     QGridLayout *gridLayout_9;
     QTabWidget *tabWidget;
@@ -283,14 +283,16 @@ public:
     QHBoxLayout *horizontalLayout_7;
     QWidget *gse_control_box;
     QGridLayout *gridLayout_15;
+    QLabel *purge_label;
     QPushButton *filling_open_button;
     QPushButton *purge_open_button;
-    QLabel *purge_label;
     QPushButton *purge_close_button;
     QLabel *filling_label;
     QPushButton *filling_close_button;
     QPushButton *disconnect_wire_button;
+    QLabel *label_2;
     QPushButton *echo_button;
+    QPushButton *ignition_off_button;
     QWidget *upper_widget;
     QGridLayout *gridLayout_5;
     QLabel *time_panel;
@@ -604,13 +606,14 @@ public:
         hpa_unit_label->setObjectName(QStringLiteral("hpa_unit_label"));
         hpa_unit_label->setMinimumSize(QSize(40, 0));
         hpa_unit_label->setMaximumSize(QSize(30, 16777215));
+        hpa_unit_label->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
 
         gridLayout_8->addWidget(hpa_unit_label, 3, 2, 1, 1);
 
         avionics_state_label = new QLabel(avionics_box);
         avionics_state_label->setObjectName(QStringLiteral("avionics_state_label"));
 
-        gridLayout_8->addWidget(avionics_state_label, 6, 0, 1, 1);
+        gridLayout_8->addWidget(avionics_state_label, 7, 0, 1, 1);
 
         pressure_label = new QLabel(avionics_box);
         pressure_label->setObjectName(QStringLiteral("pressure_label"));
@@ -620,23 +623,17 @@ public:
         altitude_panel_telemetry = new QLabel(avionics_box);
         altitude_panel_telemetry->setObjectName(QStringLiteral("altitude_panel_telemetry"));
 
-        gridLayout_8->addWidget(altitude_panel_telemetry, 5, 1, 1, 1);
+        gridLayout_8->addWidget(altitude_panel_telemetry, 6, 1, 1, 1);
 
         speed_label = new QLabel(avionics_box);
         speed_label->setObjectName(QStringLiteral("speed_label"));
 
         gridLayout_8->addWidget(speed_label, 4, 0, 1, 1);
 
-        m_unit_label_3 = new QLabel(avionics_box);
-        m_unit_label_3->setObjectName(QStringLiteral("m_unit_label_3"));
-        m_unit_label_3->setMaximumSize(QSize(30, 16777215));
-
-        gridLayout_8->addWidget(m_unit_label_3, 5, 2, 1, 1);
-
         altitude_label_telemetry = new QLabel(avionics_box);
         altitude_label_telemetry->setObjectName(QStringLiteral("altitude_label_telemetry"));
 
-        gridLayout_8->addWidget(altitude_label_telemetry, 5, 0, 1, 1);
+        gridLayout_8->addWidget(altitude_label_telemetry, 6, 0, 1, 1);
 
         speed_panel = new QLabel(avionics_box);
         speed_panel->setObjectName(QStringLiteral("speed_panel"));
@@ -657,6 +654,7 @@ public:
         m_s_unit_label->setObjectName(QStringLiteral("m_s_unit_label"));
         m_s_unit_label->setMinimumSize(QSize(45, 0));
         m_s_unit_label->setMaximumSize(QSize(30, 16777215));
+        m_s_unit_label->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
 
         gridLayout_8->addWidget(m_s_unit_label, 4, 2, 1, 1);
 
@@ -669,13 +667,21 @@ public:
         celcius_label->setObjectName(QStringLiteral("celcius_label"));
         celcius_label->setMinimumSize(QSize(0, 0));
         celcius_label->setMaximumSize(QSize(30, 16777215));
+        celcius_label->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
 
         gridLayout_8->addWidget(celcius_label, 0, 2, 1, 1);
 
         avionics_state_panel = new QLabel(avionics_box);
         avionics_state_panel->setObjectName(QStringLiteral("avionics_state_panel"));
 
-        gridLayout_8->addWidget(avionics_state_panel, 6, 1, 1, 2);
+        gridLayout_8->addWidget(avionics_state_panel, 7, 1, 1, 2);
+
+        m_unit_label_3 = new QLabel(avionics_box);
+        m_unit_label_3->setObjectName(QStringLiteral("m_unit_label_3"));
+        m_unit_label_3->setMaximumSize(QSize(30, 16777215));
+        m_unit_label_3->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+
+        gridLayout_8->addWidget(m_unit_label_3, 6, 2, 1, 1);
 
 
         verticalLayout->addWidget(avionics_box);
@@ -908,6 +914,7 @@ public:
 
         pl_bme_temperature_panel = new QLabel(widget_4);
         pl_bme_temperature_panel->setObjectName(QStringLiteral("pl_bme_temperature_panel"));
+        pl_bme_temperature_panel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         gridLayout_19->addWidget(pl_bme_temperature_panel, 0, 1, 1, 1);
 
@@ -918,36 +925,43 @@ public:
 
         pl_bme_altitude_panel = new QLabel(widget_4);
         pl_bme_altitude_panel->setObjectName(QStringLiteral("pl_bme_altitude_panel"));
+        pl_bme_altitude_panel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         gridLayout_19->addWidget(pl_bme_altitude_panel, 3, 1, 1, 1);
 
         pl_bme_humidity_panel = new QLabel(widget_4);
         pl_bme_humidity_panel->setObjectName(QStringLiteral("pl_bme_humidity_panel"));
+        pl_bme_humidity_panel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         gridLayout_19->addWidget(pl_bme_humidity_panel, 2, 1, 1, 1);
 
         pl_bme_pressure_panel = new QLabel(widget_4);
         pl_bme_pressure_panel->setObjectName(QStringLiteral("pl_bme_pressure_panel"));
+        pl_bme_pressure_panel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         gridLayout_19->addWidget(pl_bme_pressure_panel, 1, 1, 1, 1);
 
         pl_celcius_label_2 = new QLabel(widget_4);
         pl_celcius_label_2->setObjectName(QStringLiteral("pl_celcius_label_2"));
+        pl_celcius_label_2->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         gridLayout_19->addWidget(pl_celcius_label_2, 0, 2, 1, 1);
 
         pl_hpa_label = new QLabel(widget_4);
         pl_hpa_label->setObjectName(QStringLiteral("pl_hpa_label"));
+        pl_hpa_label->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         gridLayout_19->addWidget(pl_hpa_label, 1, 2, 1, 1);
 
         pl_percentage_label = new QLabel(widget_4);
         pl_percentage_label->setObjectName(QStringLiteral("pl_percentage_label"));
+        pl_percentage_label->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         gridLayout_19->addWidget(pl_percentage_label, 2, 2, 1, 1);
 
         pl_m_label = new QLabel(widget_4);
         pl_m_label->setObjectName(QStringLiteral("pl_m_label"));
+        pl_m_label->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         gridLayout_19->addWidget(pl_m_label, 3, 2, 1, 1);
 
@@ -1096,16 +1110,19 @@ public:
 
         deg_label_2 = new QLabel(widget_5);
         deg_label_2->setObjectName(QStringLiteral("deg_label_2"));
+        deg_label_2->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         gridLayout_20->addWidget(deg_label_2, 2, 2, 1, 1);
 
         deg_label_3 = new QLabel(widget_5);
         deg_label_3->setObjectName(QStringLiteral("deg_label_3"));
+        deg_label_3->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         gridLayout_20->addWidget(deg_label_3, 1, 2, 1, 1);
 
         deg_label = new QLabel(widget_5);
         deg_label->setObjectName(QStringLiteral("deg_label"));
+        deg_label->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         gridLayout_20->addWidget(deg_label, 3, 2, 1, 1);
 
@@ -1116,21 +1133,25 @@ public:
 
         ms2_label_2 = new QLabel(widget_5);
         ms2_label_2->setObjectName(QStringLiteral("ms2_label_2"));
+        ms2_label_2->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         gridLayout_20->addWidget(ms2_label_2, 5, 2, 1, 1);
 
         ms2_label_3 = new QLabel(widget_5);
         ms2_label_3->setObjectName(QStringLiteral("ms2_label_3"));
+        ms2_label_3->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         gridLayout_20->addWidget(ms2_label_3, 4, 2, 1, 1);
 
         label_7 = new QLabel(widget_5);
         label_7->setObjectName(QStringLiteral("label_7"));
+        label_7->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         gridLayout_20->addWidget(label_7, 0, 2, 1, 1);
 
         ms2_label = new QLabel(widget_5);
         ms2_label->setObjectName(QStringLiteral("ms2_label"));
+        ms2_label->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         gridLayout_20->addWidget(ms2_label, 6, 2, 1, 1);
 
@@ -1188,6 +1209,7 @@ public:
 
         label_12 = new QLabel(widget_6);
         label_12->setObjectName(QStringLiteral("label_12"));
+        label_12->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         gridLayout_21->addWidget(label_12, 2, 2, 1, 1);
 
@@ -1198,11 +1220,13 @@ public:
 
         label_6 = new QLabel(widget_6);
         label_6->setObjectName(QStringLiteral("label_6"));
+        label_6->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         gridLayout_21->addWidget(label_6, 0, 2, 1, 1);
 
         label_3 = new QLabel(widget_6);
         label_3->setObjectName(QStringLiteral("label_3"));
+        label_3->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         gridLayout_21->addWidget(label_3, 1, 2, 1, 1);
 
@@ -1223,6 +1247,7 @@ public:
 
         label_18 = new QLabel(widget_6);
         label_18->setObjectName(QStringLiteral("label_18"));
+        label_18->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         gridLayout_21->addWidget(label_18, 3, 2, 1, 1);
 
@@ -1233,6 +1258,7 @@ public:
 
         label_20 = new QLabel(widget_6);
         label_20->setObjectName(QStringLiteral("label_20"));
+        label_20->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         gridLayout_21->addWidget(label_20, 4, 2, 1, 1);
 
@@ -1248,6 +1274,7 @@ public:
 
         label_24 = new QLabel(widget_6);
         label_24->setObjectName(QStringLiteral("label_24"));
+        label_24->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         gridLayout_21->addWidget(label_24, 6, 2, 1, 1);
 
@@ -1263,31 +1290,31 @@ public:
         widget->setObjectName(QStringLiteral("widget"));
         gridLayout_12 = new QGridLayout(widget);
         gridLayout_12->setObjectName(QStringLiteral("gridLayout_12"));
-        pushButton = new QPushButton(widget);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
+        start_fueling_button = new QPushButton(widget);
+        start_fueling_button->setObjectName(QStringLiteral("start_fueling_button"));
 
-        gridLayout_12->addWidget(pushButton, 0, 1, 1, 1);
+        gridLayout_12->addWidget(start_fueling_button, 0, 1, 1, 1);
 
-        pushButton_3 = new QPushButton(widget);
-        pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
+        start_homing_button = new QPushButton(widget);
+        start_homing_button->setObjectName(QStringLiteral("start_homing_button"));
 
-        gridLayout_12->addWidget(pushButton_3, 1, 0, 1, 1);
+        gridLayout_12->addWidget(start_homing_button, 1, 0, 1, 1);
 
-        pushButton_2 = new QPushButton(widget);
-        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
+        start_valve_op_button = new QPushButton(widget);
+        start_valve_op_button->setObjectName(QStringLiteral("start_valve_op_button"));
 
-        gridLayout_12->addWidget(pushButton_2, 0, 0, 1, 1);
+        gridLayout_12->addWidget(start_valve_op_button, 0, 0, 1, 1);
 
-        pushButton_4 = new QPushButton(widget);
-        pushButton_4->setObjectName(QStringLiteral("pushButton_4"));
+        stop_fueling_button = new QPushButton(widget);
+        stop_fueling_button->setObjectName(QStringLiteral("stop_fueling_button"));
 
-        gridLayout_12->addWidget(pushButton_4, 1, 1, 1, 1);
+        gridLayout_12->addWidget(stop_fueling_button, 1, 1, 1, 1);
 
-        pushButton_5 = new QPushButton(widget);
-        pushButton_5->setObjectName(QStringLiteral("pushButton_5"));
-        pushButton_5->setStyleSheet(QStringLiteral("color: rgb(204, 0, 0);"));
+        abort_button = new QPushButton(widget);
+        abort_button->setObjectName(QStringLiteral("abort_button"));
+        abort_button->setStyleSheet(QStringLiteral("color: rgb(204, 0, 0);"));
 
-        gridLayout_12->addWidget(pushButton_5, 2, 0, 1, 2);
+        gridLayout_12->addWidget(abort_button, 2, 0, 1, 2);
 
 
         horizontalLayout_2->addWidget(widget);
@@ -1505,6 +1532,7 @@ public:
         celcius_label2_2 = new QLabel(widget_21);
         celcius_label2_2->setObjectName(QStringLiteral("celcius_label2_2"));
         celcius_label2_2->setMaximumSize(QSize(40, 16777215));
+        celcius_label2_2->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         gridLayout_16->addWidget(celcius_label2_2, 0, 2, 1, 1);
 
@@ -1521,7 +1549,9 @@ public:
 
         hpa_panel_2 = new QLabel(widget_21);
         hpa_panel_2->setObjectName(QStringLiteral("hpa_panel_2"));
+        hpa_panel_2->setMinimumSize(QSize(43, 0));
         hpa_panel_2->setMaximumSize(QSize(40, 16777215));
+        hpa_panel_2->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         gridLayout_16->addWidget(hpa_panel_2, 1, 2, 1, 1);
 
@@ -1539,6 +1569,7 @@ public:
         celcius_label_3 = new QLabel(widget_21);
         celcius_label_3->setObjectName(QStringLiteral("celcius_label_3"));
         celcius_label_3->setMaximumSize(QSize(40, 16777215));
+        celcius_label_3->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         gridLayout_16->addWidget(celcius_label_3, 2, 2, 1, 1);
 
@@ -1556,6 +1587,7 @@ public:
         kg_label_2 = new QLabel(widget_21);
         kg_label_2->setObjectName(QStringLiteral("kg_label_2"));
         kg_label_2->setMaximumSize(QSize(40, 16777215));
+        kg_label_2->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         gridLayout_16->addWidget(kg_label_2, 3, 2, 1, 1);
 
@@ -1572,6 +1604,7 @@ public:
 
         voltunit_label = new QLabel(widget_21);
         voltunit_label->setObjectName(QStringLiteral("voltunit_label"));
+        voltunit_label->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         gridLayout_16->addWidget(voltunit_label, 4, 2, 1, 1);
 
@@ -1588,6 +1621,7 @@ public:
 
         m_a_unit_label = new QLabel(widget_21);
         m_a_unit_label->setObjectName(QStringLiteral("m_a_unit_label"));
+        m_a_unit_label->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         gridLayout_16->addWidget(m_a_unit_label, 5, 2, 1, 1);
 
@@ -1604,6 +1638,7 @@ public:
 
         ma_unit_label = new QLabel(widget_21);
         ma_unit_label->setObjectName(QStringLiteral("ma_unit_label"));
+        ma_unit_label->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         gridLayout_16->addWidget(ma_unit_label, 6, 2, 1, 1);
 
@@ -1620,6 +1655,7 @@ public:
 
         m_s_unit_label_2 = new QLabel(widget_21);
         m_s_unit_label_2->setObjectName(QStringLiteral("m_s_unit_label_2"));
+        m_s_unit_label_2->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         gridLayout_16->addWidget(m_s_unit_label_2, 7, 2, 1, 1);
 
@@ -1641,6 +1677,11 @@ public:
         gse_control_box->setObjectName(QStringLiteral("gse_control_box"));
         gridLayout_15 = new QGridLayout(gse_control_box);
         gridLayout_15->setObjectName(QStringLiteral("gridLayout_15"));
+        purge_label = new QLabel(gse_control_box);
+        purge_label->setObjectName(QStringLiteral("purge_label"));
+
+        gridLayout_15->addWidget(purge_label, 1, 0, 1, 1);
+
         filling_open_button = new QPushButton(gse_control_box);
         filling_open_button->setObjectName(QStringLiteral("filling_open_button"));
         filling_open_button->setStyleSheet(QStringLiteral(""));
@@ -1651,11 +1692,6 @@ public:
         purge_open_button->setObjectName(QStringLiteral("purge_open_button"));
 
         gridLayout_15->addWidget(purge_open_button, 1, 1, 1, 1);
-
-        purge_label = new QLabel(gse_control_box);
-        purge_label->setObjectName(QStringLiteral("purge_label"));
-
-        gridLayout_15->addWidget(purge_label, 1, 0, 1, 1);
 
         purge_close_button = new QPushButton(gse_control_box);
         purge_close_button->setObjectName(QStringLiteral("purge_close_button"));
@@ -1678,10 +1714,20 @@ public:
 
         gridLayout_15->addWidget(disconnect_wire_button, 2, 1, 1, 2);
 
+        label_2 = new QLabel(gse_control_box);
+        label_2->setObjectName(QStringLiteral("label_2"));
+
+        gridLayout_15->addWidget(label_2, 2, 0, 1, 1);
+
         echo_button = new QPushButton(gse_control_box);
         echo_button->setObjectName(QStringLiteral("echo_button"));
 
-        gridLayout_15->addWidget(echo_button, 2, 0, 1, 1);
+        gridLayout_15->addWidget(echo_button, 3, 0, 1, 1);
+
+        ignition_off_button = new QPushButton(gse_control_box);
+        ignition_off_button->setObjectName(QStringLiteral("ignition_off_button"));
+
+        gridLayout_15->addWidget(ignition_off_button, 3, 1, 1, 2);
 
 
         horizontalLayout_7->addWidget(gse_control_box);
@@ -1873,11 +1919,11 @@ public:
 
         retranslateUi(Form);
 
-        tabWidget_5->setCurrentIndex(0);
-        tabWidget_2->setCurrentIndex(2);
+        tabWidget_5->setCurrentIndex(1);
+        tabWidget_2->setCurrentIndex(0);
         tabWidget_3->setCurrentIndex(0);
         tabWidget->setCurrentIndex(1);
-        tabWidget_4->setCurrentIndex(1);
+        tabWidget_4->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(Form);
@@ -1952,7 +1998,6 @@ public:
         pressure_label->setText(QApplication::translate("Form", "PRESS.", Q_NULLPTR));
         altitude_panel_telemetry->setText(QString());
         speed_label->setText(QApplication::translate("Form", "SPEED", Q_NULLPTR));
-        m_unit_label_3->setText(QApplication::translate("Form", "[m]", Q_NULLPTR));
         altitude_label_telemetry->setText(QApplication::translate("Form", "ALT.", Q_NULLPTR));
         speed_panel->setText(QString());
         temperature_panel->setText(QString());
@@ -1961,6 +2006,7 @@ public:
         temperature_label->setText(QApplication::translate("Form", "TEMP", Q_NULLPTR));
         celcius_label->setText(QApplication::translate("Form", "<html><head/><body><p>[<span style=\" vertical-align:super;\">o</span>C]</p></body></html>", Q_NULLPTR));
         avionics_state_panel->setText(QString());
+        m_unit_label_3->setText(QApplication::translate("Form", "[m]", Q_NULLPTR));
         euler_z_label->setText(QApplication::translate("Form", "Z", Q_NULLPTR));
         euler_y_label->setText(QApplication::translate("Form", "Y", Q_NULLPTR));
         euler_x_label->setText(QApplication::translate("Form", "X", Q_NULLPTR));
@@ -2031,7 +2077,7 @@ public:
         pl_bno_ox_label->setText(QApplication::translate("Form", "Ox", Q_NULLPTR));
         ms2_label_2->setText(QApplication::translate("Form", "<html><head/><body><p>[m/s<span style=\" vertical-align:super;\">2</span>]</p></body></html>", Q_NULLPTR));
         ms2_label_3->setText(QApplication::translate("Form", "<html><head/><body><p>[m/s<span style=\" vertical-align:super;\">2</span>]</p></body></html>", Q_NULLPTR));
-        label_7->setText(QApplication::translate("Form", "<html><head/><body><p><span style=\" vertical-align:super;\">O</span>C</p></body></html>", Q_NULLPTR));
+        label_7->setText(QApplication::translate("Form", "<html><head/><body><p>[<span style=\" vertical-align:super;\">O</span>C]</p></body></html>", Q_NULLPTR));
         ms2_label->setText(QApplication::translate("Form", "<html><head/><body><p>[m/s<span style=\" vertical-align:super;\">2</span>]</p></body></html>", Q_NULLPTR));
         tabWidget_2->setTabText(tabWidget_2->indexOf(tab_5), QApplication::translate("Form", "PL BNO", Q_NULLPTR));
         label_15->setText(QApplication::translate("Form", "Status", Q_NULLPTR));
@@ -2052,14 +2098,14 @@ public:
         pp_temperature_3_panel->setText(QString());
         label_20->setText(QApplication::translate("Form", "<html><head/><body><p>[m<span style=\" vertical-align:super;\">o</span>C]</p></body></html>", Q_NULLPTR));
         pp_status_panel->setText(QString());
-        pp_motor_position_panel->setText(QApplication::translate("Form", "002", Q_NULLPTR));
+        pp_motor_position_panel->setText(QString());
         label_24->setText(QApplication::translate("Form", "[deg]", Q_NULLPTR));
         tabWidget_3->setTabText(tabWidget_3->indexOf(tab_6), QApplication::translate("Form", "PP Data", Q_NULLPTR));
-        pushButton->setText(QApplication::translate("Form", "Start Fueling", Q_NULLPTR));
-        pushButton_3->setText(QApplication::translate("Form", "Start Homing", Q_NULLPTR));
-        pushButton_2->setText(QApplication::translate("Form", "Start Valve OP", Q_NULLPTR));
-        pushButton_4->setText(QApplication::translate("Form", "Stop Fueling", Q_NULLPTR));
-        pushButton_5->setText(QApplication::translate("Form", "ABORT", Q_NULLPTR));
+        start_fueling_button->setText(QApplication::translate("Form", "Start Fueling", Q_NULLPTR));
+        start_homing_button->setText(QApplication::translate("Form", "Start Homing", Q_NULLPTR));
+        start_valve_op_button->setText(QApplication::translate("Form", "Start Valve OP", Q_NULLPTR));
+        stop_fueling_button->setText(QApplication::translate("Form", "Stop Fueling", Q_NULLPTR));
+        abort_button->setText(QApplication::translate("Form", "ABORT", Q_NULLPTR));
         tabWidget_3->setTabText(tabWidget_3->indexOf(tab_7), QApplication::translate("Form", "PP Control", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
         logo->setToolTip(QApplication::translate("Form", "<html><head/><body><p>Project Bella Lui 2020</p></body></html>", Q_NULLPTR));
@@ -2120,14 +2166,16 @@ public:
         m_s_unit_label_2->setText(QApplication::translate("Form", "[m/s]", Q_NULLPTR));
         tank_temp_panel_2->setText(QString());
         tabWidget_4->setTabText(tabWidget_4->indexOf(tab_10), QApplication::translate("Form", "GSE Data", Q_NULLPTR));
+        purge_label->setText(QApplication::translate("Form", "Purge", Q_NULLPTR));
         filling_open_button->setText(QApplication::translate("Form", "Open", Q_NULLPTR));
         purge_open_button->setText(QApplication::translate("Form", "Open", Q_NULLPTR));
-        purge_label->setText(QApplication::translate("Form", "Purge", Q_NULLPTR));
         purge_close_button->setText(QApplication::translate("Form", "Close", Q_NULLPTR));
         filling_label->setText(QApplication::translate("Form", "Filling", Q_NULLPTR));
         filling_close_button->setText(QApplication::translate("Form", "Close", Q_NULLPTR));
         disconnect_wire_button->setText(QApplication::translate("Form", "Disconnect Wire", Q_NULLPTR));
+        label_2->setText(QApplication::translate("Form", "Wire", Q_NULLPTR));
         echo_button->setText(QApplication::translate("Form", "Echo", Q_NULLPTR));
+        ignition_off_button->setText(QApplication::translate("Form", "Ignition Off", Q_NULLPTR));
         tabWidget_4->setTabText(tabWidget_4->indexOf(tab_9), QApplication::translate("Form", "GSE Control", Q_NULLPTR));
         time_panel->setText(QApplication::translate("Form", "44:44:44", Q_NULLPTR));
         manual_mode_button->setText(QApplication::translate("Form", "Manual Mode", Q_NULLPTR));
@@ -2165,4 +2213,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // WASSERFALLENGUIE24228_H
+#endif // WASSERFALLENGUILH1025_H

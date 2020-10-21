@@ -30,7 +30,7 @@ public:
 
 private:
     std::array<bool,4> code;
-    uint8_t ignitionCode, order;
+    uint8_t ignitionCode, order, gseCode;
 };
 
 

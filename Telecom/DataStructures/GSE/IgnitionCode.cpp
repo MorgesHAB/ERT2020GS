@@ -19,10 +19,10 @@
 #define GPIO_OUT_LED_BUTTON     22 //WHITE-BROWN EXT
 // GPIO on the RPi to read the ignition code via the switches
 // Code order on the dipswitch from left to right : code 3 | code 2 | code 1 | code 0
-#define GPIO_IN_CODE0           8 //WHITE-GREEN
-#define GPIO_IN_CODE1           11 //GREEN
-#define GPIO_IN_CODE2           9 //WHITE-BROWN
-#define GPIO_IN_CODE3           10 //PURPLE
+#define GPIO_IN_CODE0           10 //WHITE-GREEN
+#define GPIO_IN_CODE1           9 //GREEN
+#define GPIO_IN_CODE2           11 //WHITE-BROWN
+#define GPIO_IN_CODE3           8 //PURPLE
 
 #define SHUTDOWN_TIME           10000000 // on RPi should be 10000
 //////////////////////////////////////
@@ -39,14 +39,15 @@
 
 static const uint8_t MAIN_IGNITION_ON = 0x0C;
 static const uint8_t MAIN_IGNITION_OFF = 0x0D;
+static const uint8_t NO_IGNITION_ORDER = 0x00;
 
 
 // #define RUNNING_ON_RPI
 using namespace ignit;
 
-IgnitionCode::IgnitionCode() : code({false}), ignitionCode(0), order(MAIN_IGNITION_ON) {
+IgnitionCode::IgnitionCode() : code({false}), ignitionCode(0), order(NO_IGNITION_ORDER) {
 #ifdef RUNNING_ON_RPI
-    wiringPiSetupGpio();
+    wiringPiSetupSys();
     // Configure GPIO OUT for the igniter
     pinMode(GPIO_OUT_IGNITION, OUTPUT);
     digitalWrite(GPIO_OUT_IGNITION, LOW);
@@ -66,6 +67,7 @@ IgnitionCode::IgnitionCode() : code({false}), ignitionCode(0), order(MAIN_IGNITI
     pinMode(GPIO_IN_CODE3, INPUT);
 #endif
 }
+
 
 bool IgnitionCode::updateTx(std::shared_ptr<Connector> connector) {
 
@@ -96,7 +98,12 @@ bool IgnitionCode::updateTx(std::shared_ptr<Connector> connector) {
     // true if send Ignition packet
     if (key1 && key2 && redButtonPressed &&
         connector->eatData<bool>(ui_interface::IGNITION_CLICKED, false)) {
+        order = MAIN_IGNITION_ON;
         return true;    // Ignition will be sent
+    }
+    if(connector->getData<bool>(ui_interface::IGNITION_OFF_CLICKED)){
+        order = MAIN_IGNITION_OFF;
+        return true;
     }
     return false;
 #endif
@@ -110,14 +117,19 @@ void IgnitionCode::write(Packet &packet) {
 
 void IgnitionCode::parse(Packet &packet) {
     packet.parse(order);
-    packet.parse(ignitionCode);
-    for (uint8_t i(0); i < code.size(); ++i) {
-        code[i] = ignitionCode & (1 << i);
-    }
+    packet.parse(gseCode);
 }
 
 bool IgnitionCode::updateRx(std::shared_ptr<Connector> connector) {
-#ifdef RUNNING_ON_RPI
+
+    if(not(ignitionCode xor gseCode)){ //codes identical
+        connector->setData(ui_interface::IGNITION_CONFIRMED, true);
+    }
+    if(order == MAIN_IGNITION_OFF){
+        connector->setData(ui_interface::IGNITION_OFF_ACK, true);
+    }
+
+    #ifdef RUNNING_ON_RPI
 /*
 
     // run on GSE
@@ -163,6 +175,8 @@ bool IgnitionCode::updateRx(std::shared_ptr<Connector> connector) {
     */
     
 #endif
+
+
 }
 
 void IgnitionCode::print() const {

@@ -19,7 +19,7 @@ public:
     Logger_buffer(size_t size);
 
     /**
-     * @brief Logger_buffer Initalize a default_sized buffer.
+     * @brief Logger_buffer Initalize a default-sized buffer.
      */
     Logger_buffer();
 
