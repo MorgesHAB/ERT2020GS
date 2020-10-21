@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'WasserfallenGUIj24228.ui'
+** Form generated from reading UI file 'WasserfallenGUIE24228.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.9.5
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef WASSERFALLENGUIJ24228_H
-#define WASSERFALLENGUIJ24228_H
+#ifndef WASSERFALLENGUIE24228_H
+#define WASSERFALLENGUIE24228_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QAction>
@@ -53,18 +53,6 @@ public:
     QLabel *time_since_last_panel;
     QLabel *corrupted_label;
     QLabel *corrupted_panel;
-    QWidget *widget_4;
-    QGridLayout *gridLayout_23;
-    QGroupBox *gps_box;
-    QGridLayout *gridLayout_3;
-    QLabel *longitude_label;
-    QLabel *hdop_label;
-    QLabel *latitude_panel;
-    QLabel *sat_nbr_label;
-    QLabel *sat_nbr_panel;
-    QLabel *latitude_label;
-    QLabel *longitude_panel;
-    QLabel *hdop_panel;
     QGroupBox *groupBox_7;
     QGridLayout *gridLayout_22;
     QLabel *altitude_label_gps;
@@ -77,6 +65,16 @@ public:
     QLabel *m_unit_label;
     QLCDNumber *altitude_max_lcd_ft;
     QLabel *ft_unit_label;
+    QGroupBox *gps_box;
+    QGridLayout *gridLayout_3;
+    QLabel *longitude_label;
+    QLabel *hdop_label;
+    QLabel *latitude_panel;
+    QLabel *sat_nbr_label;
+    QLabel *sat_nbr_panel;
+    QLabel *latitude_label;
+    QLabel *longitude_panel;
+    QLabel *hdop_panel;
     QGroupBox *avionics_box;
     QGridLayout *gridLayout_8;
     QLabel *hpa_unit_label;
@@ -131,7 +129,7 @@ public:
     QTabWidget *tabWidget_2;
     QWidget *tab_3;
     QHBoxLayout *horizontalLayout_3;
-    QGroupBox *groupBox_4;
+    QWidget *widget_4;
     QGridLayout *gridLayout_19;
     QLabel *pl_bme_humidity_label;
     QLabel *pl_bme_temperature_label;
@@ -147,7 +145,7 @@ public:
     QLabel *pl_m_label;
     QWidget *tab_4;
     QHBoxLayout *horizontalLayout_4;
-    QGroupBox *groupBox_3;
+    QWidget *widget_31;
     QGridLayout *gridLayout_18;
     QLabel *pl_latitude_label;
     QLabel *pl_sat_nbr_panel;
@@ -161,7 +159,7 @@ public:
     QLabel *pl_hdop_panel;
     QWidget *tab_5;
     QHBoxLayout *horizontalLayout_5;
-    QGroupBox *groupBox_5;
+    QWidget *widget_5;
     QGridLayout *gridLayout_20;
     QLabel *pl_bno_az_panel;
     QLabel *pl_bno_oy_label;
@@ -187,7 +185,7 @@ public:
     QTabWidget *tabWidget_3;
     QWidget *tab_6;
     QHBoxLayout *horizontalLayout_6;
-    QGroupBox *groupBox_6;
+    QWidget *widget_6;
     QGridLayout *gridLayout_21;
     QLabel *label_15;
     QLabel *label_13;
@@ -211,7 +209,7 @@ public:
     QLabel *label_24;
     QWidget *tab_7;
     QHBoxLayout *horizontalLayout_2;
-    QGroupBox *groupBox;
+    QWidget *widget;
     QGridLayout *gridLayout_12;
     QPushButton *pushButton;
     QPushButton *pushButton_3;
@@ -237,7 +235,7 @@ public:
     QTabWidget *tabWidget_4;
     QWidget *tab_8;
     QHBoxLayout *horizontalLayout_8;
-    QGroupBox *ignition_box;
+    QWidget *ignition_box;
     QGridLayout *gridLayout_2;
     QPushButton *ignition_button;
     QLabel *ready_ignition_panel;
@@ -255,7 +253,7 @@ public:
     QLabel *code_0;
     QWidget *tab_10;
     QHBoxLayout *horizontalLayout_9;
-    QGroupBox *groupBox_2;
+    QWidget *widget_21;
     QGridLayout *gridLayout_16;
     QLabel *tank_temp_label_2;
     QLabel *celcius_label2_2;
@@ -283,7 +281,7 @@ public:
     QLabel *tank_temp_panel_2;
     QWidget *tab_9;
     QHBoxLayout *horizontalLayout_7;
-    QGroupBox *gse_control_box;
+    QWidget *gse_control_box;
     QGridLayout *gridLayout_15;
     QPushButton *filling_open_button;
     QPushButton *purge_open_button;
@@ -325,7 +323,7 @@ public:
     {
         if (Form->objectName().isEmpty())
             Form->setObjectName(QStringLiteral("Form"));
-        Form->resize(1059, 719);
+        Form->resize(1038, 667);
         QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -479,62 +477,7 @@ public:
 
         verticalLayout->addWidget(com_box);
 
-        widget_4 = new QWidget(left_widget);
-        widget_4->setObjectName(QStringLiteral("widget_4"));
-        gridLayout_23 = new QGridLayout(widget_4);
-        gridLayout_23->setObjectName(QStringLiteral("gridLayout_23"));
-        gps_box = new QGroupBox(widget_4);
-        gps_box->setObjectName(QStringLiteral("gps_box"));
-        sizePolicy1.setHeightForWidth(gps_box->sizePolicy().hasHeightForWidth());
-        gps_box->setSizePolicy(sizePolicy1);
-        gps_box->setMinimumSize(QSize(0, 0));
-        gridLayout_3 = new QGridLayout(gps_box);
-        gridLayout_3->setObjectName(QStringLiteral("gridLayout_3"));
-        longitude_label = new QLabel(gps_box);
-        longitude_label->setObjectName(QStringLiteral("longitude_label"));
-
-        gridLayout_3->addWidget(longitude_label, 3, 0, 1, 1);
-
-        hdop_label = new QLabel(gps_box);
-        hdop_label->setObjectName(QStringLiteral("hdop_label"));
-
-        gridLayout_3->addWidget(hdop_label, 6, 0, 1, 1);
-
-        latitude_panel = new QLabel(gps_box);
-        latitude_panel->setObjectName(QStringLiteral("latitude_panel"));
-        latitude_panel->setMinimumSize(QSize(0, 0));
-
-        gridLayout_3->addWidget(latitude_panel, 3, 6, 1, 1);
-
-        sat_nbr_label = new QLabel(gps_box);
-        sat_nbr_label->setObjectName(QStringLiteral("sat_nbr_label"));
-
-        gridLayout_3->addWidget(sat_nbr_label, 6, 5, 1, 1);
-
-        sat_nbr_panel = new QLabel(gps_box);
-        sat_nbr_panel->setObjectName(QStringLiteral("sat_nbr_panel"));
-
-        gridLayout_3->addWidget(sat_nbr_panel, 6, 6, 1, 1);
-
-        latitude_label = new QLabel(gps_box);
-        latitude_label->setObjectName(QStringLiteral("latitude_label"));
-
-        gridLayout_3->addWidget(latitude_label, 3, 5, 1, 1);
-
-        longitude_panel = new QLabel(gps_box);
-        longitude_panel->setObjectName(QStringLiteral("longitude_panel"));
-
-        gridLayout_3->addWidget(longitude_panel, 3, 1, 1, 1);
-
-        hdop_panel = new QLabel(gps_box);
-        hdop_panel->setObjectName(QStringLiteral("hdop_panel"));
-
-        gridLayout_3->addWidget(hdop_panel, 6, 1, 1, 1);
-
-
-        gridLayout_23->addWidget(gps_box, 2, 0, 1, 1);
-
-        groupBox_7 = new QGroupBox(widget_4);
+        groupBox_7 = new QGroupBox(left_widget);
         groupBox_7->setObjectName(QStringLiteral("groupBox_7"));
         gridLayout_22 = new QGridLayout(groupBox_7);
         gridLayout_22->setObjectName(QStringLiteral("gridLayout_22"));
@@ -598,10 +541,58 @@ public:
         gridLayout_22->addWidget(ft_unit_label, 1, 4, 1, 1);
 
 
-        gridLayout_23->addWidget(groupBox_7, 1, 0, 1, 1);
+        verticalLayout->addWidget(groupBox_7);
+
+        gps_box = new QGroupBox(left_widget);
+        gps_box->setObjectName(QStringLiteral("gps_box"));
+        sizePolicy1.setHeightForWidth(gps_box->sizePolicy().hasHeightForWidth());
+        gps_box->setSizePolicy(sizePolicy1);
+        gps_box->setMinimumSize(QSize(0, 0));
+        gridLayout_3 = new QGridLayout(gps_box);
+        gridLayout_3->setObjectName(QStringLiteral("gridLayout_3"));
+        longitude_label = new QLabel(gps_box);
+        longitude_label->setObjectName(QStringLiteral("longitude_label"));
+
+        gridLayout_3->addWidget(longitude_label, 3, 0, 1, 1);
+
+        hdop_label = new QLabel(gps_box);
+        hdop_label->setObjectName(QStringLiteral("hdop_label"));
+
+        gridLayout_3->addWidget(hdop_label, 6, 0, 1, 1);
+
+        latitude_panel = new QLabel(gps_box);
+        latitude_panel->setObjectName(QStringLiteral("latitude_panel"));
+        latitude_panel->setMinimumSize(QSize(0, 0));
+
+        gridLayout_3->addWidget(latitude_panel, 3, 6, 1, 1);
+
+        sat_nbr_label = new QLabel(gps_box);
+        sat_nbr_label->setObjectName(QStringLiteral("sat_nbr_label"));
+
+        gridLayout_3->addWidget(sat_nbr_label, 6, 5, 1, 1);
+
+        sat_nbr_panel = new QLabel(gps_box);
+        sat_nbr_panel->setObjectName(QStringLiteral("sat_nbr_panel"));
+
+        gridLayout_3->addWidget(sat_nbr_panel, 6, 6, 1, 1);
+
+        latitude_label = new QLabel(gps_box);
+        latitude_label->setObjectName(QStringLiteral("latitude_label"));
+
+        gridLayout_3->addWidget(latitude_label, 3, 5, 1, 1);
+
+        longitude_panel = new QLabel(gps_box);
+        longitude_panel->setObjectName(QStringLiteral("longitude_panel"));
+
+        gridLayout_3->addWidget(longitude_panel, 3, 1, 1, 1);
+
+        hdop_panel = new QLabel(gps_box);
+        hdop_panel->setObjectName(QStringLiteral("hdop_panel"));
+
+        gridLayout_3->addWidget(hdop_panel, 6, 1, 1, 1);
 
 
-        verticalLayout->addWidget(widget_4);
+        verticalLayout->addWidget(gps_box);
 
         avionics_box = new QGroupBox(left_widget);
         avionics_box->setObjectName(QStringLiteral("avionics_box"));
@@ -611,6 +602,7 @@ public:
         gridLayout_8->setObjectName(QStringLiteral("gridLayout_8"));
         hpa_unit_label = new QLabel(avionics_box);
         hpa_unit_label->setObjectName(QStringLiteral("hpa_unit_label"));
+        hpa_unit_label->setMinimumSize(QSize(40, 0));
         hpa_unit_label->setMaximumSize(QSize(30, 16777215));
 
         gridLayout_8->addWidget(hpa_unit_label, 3, 2, 1, 1);
@@ -663,6 +655,7 @@ public:
 
         m_s_unit_label = new QLabel(avionics_box);
         m_s_unit_label->setObjectName(QStringLiteral("m_s_unit_label"));
+        m_s_unit_label->setMinimumSize(QSize(45, 0));
         m_s_unit_label->setMaximumSize(QSize(30, 16777215));
 
         gridLayout_8->addWidget(m_s_unit_label, 4, 2, 1, 1);
@@ -892,257 +885,257 @@ public:
         tab_3->setObjectName(QStringLiteral("tab_3"));
         horizontalLayout_3 = new QHBoxLayout(tab_3);
         horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
-        groupBox_4 = new QGroupBox(tab_3);
-        groupBox_4->setObjectName(QStringLiteral("groupBox_4"));
-        sizePolicy1.setHeightForWidth(groupBox_4->sizePolicy().hasHeightForWidth());
-        groupBox_4->setSizePolicy(sizePolicy1);
-        gridLayout_19 = new QGridLayout(groupBox_4);
+        widget_4 = new QWidget(tab_3);
+        widget_4->setObjectName(QStringLiteral("widget_4"));
+        sizePolicy1.setHeightForWidth(widget_4->sizePolicy().hasHeightForWidth());
+        widget_4->setSizePolicy(sizePolicy1);
+        gridLayout_19 = new QGridLayout(widget_4);
         gridLayout_19->setObjectName(QStringLiteral("gridLayout_19"));
-        pl_bme_humidity_label = new QLabel(groupBox_4);
+        pl_bme_humidity_label = new QLabel(widget_4);
         pl_bme_humidity_label->setObjectName(QStringLiteral("pl_bme_humidity_label"));
 
         gridLayout_19->addWidget(pl_bme_humidity_label, 2, 0, 1, 1);
 
-        pl_bme_temperature_label = new QLabel(groupBox_4);
+        pl_bme_temperature_label = new QLabel(widget_4);
         pl_bme_temperature_label->setObjectName(QStringLiteral("pl_bme_temperature_label"));
 
         gridLayout_19->addWidget(pl_bme_temperature_label, 0, 0, 1, 1);
 
-        pl_bme_pressure_label = new QLabel(groupBox_4);
+        pl_bme_pressure_label = new QLabel(widget_4);
         pl_bme_pressure_label->setObjectName(QStringLiteral("pl_bme_pressure_label"));
 
         gridLayout_19->addWidget(pl_bme_pressure_label, 1, 0, 1, 1);
 
-        pl_bme_temperature_panel = new QLabel(groupBox_4);
+        pl_bme_temperature_panel = new QLabel(widget_4);
         pl_bme_temperature_panel->setObjectName(QStringLiteral("pl_bme_temperature_panel"));
 
         gridLayout_19->addWidget(pl_bme_temperature_panel, 0, 1, 1, 1);
 
-        pl_bme_altitude_label = new QLabel(groupBox_4);
+        pl_bme_altitude_label = new QLabel(widget_4);
         pl_bme_altitude_label->setObjectName(QStringLiteral("pl_bme_altitude_label"));
 
         gridLayout_19->addWidget(pl_bme_altitude_label, 3, 0, 1, 1);
 
-        pl_bme_altitude_panel = new QLabel(groupBox_4);
+        pl_bme_altitude_panel = new QLabel(widget_4);
         pl_bme_altitude_panel->setObjectName(QStringLiteral("pl_bme_altitude_panel"));
 
         gridLayout_19->addWidget(pl_bme_altitude_panel, 3, 1, 1, 1);
 
-        pl_bme_humidity_panel = new QLabel(groupBox_4);
+        pl_bme_humidity_panel = new QLabel(widget_4);
         pl_bme_humidity_panel->setObjectName(QStringLiteral("pl_bme_humidity_panel"));
 
         gridLayout_19->addWidget(pl_bme_humidity_panel, 2, 1, 1, 1);
 
-        pl_bme_pressure_panel = new QLabel(groupBox_4);
+        pl_bme_pressure_panel = new QLabel(widget_4);
         pl_bme_pressure_panel->setObjectName(QStringLiteral("pl_bme_pressure_panel"));
 
         gridLayout_19->addWidget(pl_bme_pressure_panel, 1, 1, 1, 1);
 
-        pl_celcius_label_2 = new QLabel(groupBox_4);
+        pl_celcius_label_2 = new QLabel(widget_4);
         pl_celcius_label_2->setObjectName(QStringLiteral("pl_celcius_label_2"));
 
         gridLayout_19->addWidget(pl_celcius_label_2, 0, 2, 1, 1);
 
-        pl_hpa_label = new QLabel(groupBox_4);
+        pl_hpa_label = new QLabel(widget_4);
         pl_hpa_label->setObjectName(QStringLiteral("pl_hpa_label"));
 
         gridLayout_19->addWidget(pl_hpa_label, 1, 2, 1, 1);
 
-        pl_percentage_label = new QLabel(groupBox_4);
+        pl_percentage_label = new QLabel(widget_4);
         pl_percentage_label->setObjectName(QStringLiteral("pl_percentage_label"));
 
         gridLayout_19->addWidget(pl_percentage_label, 2, 2, 1, 1);
 
-        pl_m_label = new QLabel(groupBox_4);
+        pl_m_label = new QLabel(widget_4);
         pl_m_label->setObjectName(QStringLiteral("pl_m_label"));
 
         gridLayout_19->addWidget(pl_m_label, 3, 2, 1, 1);
 
 
-        horizontalLayout_3->addWidget(groupBox_4);
+        horizontalLayout_3->addWidget(widget_4);
 
         tabWidget_2->addTab(tab_3, QString());
         tab_4 = new QWidget();
         tab_4->setObjectName(QStringLiteral("tab_4"));
         horizontalLayout_4 = new QHBoxLayout(tab_4);
         horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
-        groupBox_3 = new QGroupBox(tab_4);
-        groupBox_3->setObjectName(QStringLiteral("groupBox_3"));
-        sizePolicy1.setHeightForWidth(groupBox_3->sizePolicy().hasHeightForWidth());
-        groupBox_3->setSizePolicy(sizePolicy1);
-        gridLayout_18 = new QGridLayout(groupBox_3);
+        widget_31 = new QWidget(tab_4);
+        widget_31->setObjectName(QStringLiteral("widget_31"));
+        sizePolicy1.setHeightForWidth(widget_31->sizePolicy().hasHeightForWidth());
+        widget_31->setSizePolicy(sizePolicy1);
+        gridLayout_18 = new QGridLayout(widget_31);
         gridLayout_18->setObjectName(QStringLiteral("gridLayout_18"));
-        pl_latitude_label = new QLabel(groupBox_3);
+        pl_latitude_label = new QLabel(widget_31);
         pl_latitude_label->setObjectName(QStringLiteral("pl_latitude_label"));
 
         gridLayout_18->addWidget(pl_latitude_label, 3, 0, 1, 1);
 
-        pl_sat_nbr_panel = new QLabel(groupBox_3);
+        pl_sat_nbr_panel = new QLabel(widget_31);
         pl_sat_nbr_panel->setObjectName(QStringLiteral("pl_sat_nbr_panel"));
 
         gridLayout_18->addWidget(pl_sat_nbr_panel, 2, 2, 1, 1);
 
-        pl_latitude_panel = new QLabel(groupBox_3);
+        pl_latitude_panel = new QLabel(widget_31);
         pl_latitude_panel->setObjectName(QStringLiteral("pl_latitude_panel"));
 
         gridLayout_18->addWidget(pl_latitude_panel, 3, 2, 1, 1);
 
-        pl_satellites_label = new QLabel(groupBox_3);
+        pl_satellites_label = new QLabel(widget_31);
         pl_satellites_label->setObjectName(QStringLiteral("pl_satellites_label"));
 
         gridLayout_18->addWidget(pl_satellites_label, 2, 0, 1, 1);
 
-        pl_longitude_label = new QLabel(groupBox_3);
+        pl_longitude_label = new QLabel(widget_31);
         pl_longitude_label->setObjectName(QStringLiteral("pl_longitude_label"));
 
         gridLayout_18->addWidget(pl_longitude_label, 4, 0, 1, 1);
 
-        pl_longitude_panel = new QLabel(groupBox_3);
+        pl_longitude_panel = new QLabel(widget_31);
         pl_longitude_panel->setObjectName(QStringLiteral("pl_longitude_panel"));
 
         gridLayout_18->addWidget(pl_longitude_panel, 4, 2, 1, 1);
 
-        pl_gps_altitude_label = new QLabel(groupBox_3);
+        pl_gps_altitude_label = new QLabel(widget_31);
         pl_gps_altitude_label->setObjectName(QStringLiteral("pl_gps_altitude_label"));
 
         gridLayout_18->addWidget(pl_gps_altitude_label, 5, 0, 1, 1);
 
-        pl_gps_altitude_panel = new QLabel(groupBox_3);
+        pl_gps_altitude_panel = new QLabel(widget_31);
         pl_gps_altitude_panel->setObjectName(QStringLiteral("pl_gps_altitude_panel"));
 
         gridLayout_18->addWidget(pl_gps_altitude_panel, 5, 2, 1, 1);
 
-        pl_hdop_label = new QLabel(groupBox_3);
+        pl_hdop_label = new QLabel(widget_31);
         pl_hdop_label->setObjectName(QStringLiteral("pl_hdop_label"));
 
         gridLayout_18->addWidget(pl_hdop_label, 6, 0, 1, 1);
 
-        pl_hdop_panel = new QLabel(groupBox_3);
+        pl_hdop_panel = new QLabel(widget_31);
         pl_hdop_panel->setObjectName(QStringLiteral("pl_hdop_panel"));
 
         gridLayout_18->addWidget(pl_hdop_panel, 6, 2, 1, 1);
 
 
-        horizontalLayout_4->addWidget(groupBox_3);
+        horizontalLayout_4->addWidget(widget_31);
 
         tabWidget_2->addTab(tab_4, QString());
         tab_5 = new QWidget();
         tab_5->setObjectName(QStringLiteral("tab_5"));
         horizontalLayout_5 = new QHBoxLayout(tab_5);
         horizontalLayout_5->setObjectName(QStringLiteral("horizontalLayout_5"));
-        groupBox_5 = new QGroupBox(tab_5);
-        groupBox_5->setObjectName(QStringLiteral("groupBox_5"));
-        sizePolicy1.setHeightForWidth(groupBox_5->sizePolicy().hasHeightForWidth());
-        groupBox_5->setSizePolicy(sizePolicy1);
-        gridLayout_20 = new QGridLayout(groupBox_5);
+        widget_5 = new QWidget(tab_5);
+        widget_5->setObjectName(QStringLiteral("widget_5"));
+        sizePolicy1.setHeightForWidth(widget_5->sizePolicy().hasHeightForWidth());
+        widget_5->setSizePolicy(sizePolicy1);
+        gridLayout_20 = new QGridLayout(widget_5);
         gridLayout_20->setObjectName(QStringLiteral("gridLayout_20"));
-        pl_bno_az_panel = new QLabel(groupBox_5);
+        pl_bno_az_panel = new QLabel(widget_5);
         pl_bno_az_panel->setObjectName(QStringLiteral("pl_bno_az_panel"));
 
         gridLayout_20->addWidget(pl_bno_az_panel, 6, 1, 1, 1);
 
-        pl_bno_oy_label = new QLabel(groupBox_5);
+        pl_bno_oy_label = new QLabel(widget_5);
         pl_bno_oy_label->setObjectName(QStringLiteral("pl_bno_oy_label"));
 
         gridLayout_20->addWidget(pl_bno_oy_label, 2, 0, 1, 1);
 
-        pl_bno_ox_panel = new QLabel(groupBox_5);
+        pl_bno_ox_panel = new QLabel(widget_5);
         pl_bno_ox_panel->setObjectName(QStringLiteral("pl_bno_ox_panel"));
 
         gridLayout_20->addWidget(pl_bno_ox_panel, 1, 1, 1, 1);
 
-        pl_bno_ax_panel = new QLabel(groupBox_5);
+        pl_bno_ax_panel = new QLabel(widget_5);
         pl_bno_ax_panel->setObjectName(QStringLiteral("pl_bno_ax_panel"));
 
         gridLayout_20->addWidget(pl_bno_ax_panel, 4, 1, 1, 1);
 
-        pl_bno_oz_label = new QLabel(groupBox_5);
+        pl_bno_oz_label = new QLabel(widget_5);
         pl_bno_oz_label->setObjectName(QStringLiteral("pl_bno_oz_label"));
 
         gridLayout_20->addWidget(pl_bno_oz_label, 3, 0, 1, 1);
 
-        pl_bno_ax_label = new QLabel(groupBox_5);
+        pl_bno_ax_label = new QLabel(widget_5);
         pl_bno_ax_label->setObjectName(QStringLiteral("pl_bno_ax_label"));
 
         gridLayout_20->addWidget(pl_bno_ax_label, 4, 0, 1, 1);
 
-        pl_bno_ay_label = new QLabel(groupBox_5);
+        pl_bno_ay_label = new QLabel(widget_5);
         pl_bno_ay_label->setObjectName(QStringLiteral("pl_bno_ay_label"));
 
         gridLayout_20->addWidget(pl_bno_ay_label, 5, 0, 1, 1);
 
-        pl_bno_az_label = new QLabel(groupBox_5);
+        pl_bno_az_label = new QLabel(widget_5);
         pl_bno_az_label->setObjectName(QStringLiteral("pl_bno_az_label"));
 
         gridLayout_20->addWidget(pl_bno_az_label, 6, 0, 1, 1);
 
-        pl_bno_ay_panel = new QLabel(groupBox_5);
+        pl_bno_ay_panel = new QLabel(widget_5);
         pl_bno_ay_panel->setObjectName(QStringLiteral("pl_bno_ay_panel"));
 
         gridLayout_20->addWidget(pl_bno_ay_panel, 5, 1, 1, 1);
 
-        pl_bno_oy_panel = new QLabel(groupBox_5);
+        pl_bno_oy_panel = new QLabel(widget_5);
         pl_bno_oy_panel->setObjectName(QStringLiteral("pl_bno_oy_panel"));
 
         gridLayout_20->addWidget(pl_bno_oy_panel, 2, 1, 1, 1);
 
-        pl_bno_temperature_label = new QLabel(groupBox_5);
+        pl_bno_temperature_label = new QLabel(widget_5);
         pl_bno_temperature_label->setObjectName(QStringLiteral("pl_bno_temperature_label"));
 
         gridLayout_20->addWidget(pl_bno_temperature_label, 0, 0, 1, 1);
 
-        pl_bno_temperature_panel = new QLabel(groupBox_5);
+        pl_bno_temperature_panel = new QLabel(widget_5);
         pl_bno_temperature_panel->setObjectName(QStringLiteral("pl_bno_temperature_panel"));
 
         gridLayout_20->addWidget(pl_bno_temperature_panel, 0, 1, 1, 1);
 
-        pl_bno_oz_panel = new QLabel(groupBox_5);
+        pl_bno_oz_panel = new QLabel(widget_5);
         pl_bno_oz_panel->setObjectName(QStringLiteral("pl_bno_oz_panel"));
 
         gridLayout_20->addWidget(pl_bno_oz_panel, 3, 1, 1, 1);
 
-        deg_label_2 = new QLabel(groupBox_5);
+        deg_label_2 = new QLabel(widget_5);
         deg_label_2->setObjectName(QStringLiteral("deg_label_2"));
 
         gridLayout_20->addWidget(deg_label_2, 2, 2, 1, 1);
 
-        deg_label_3 = new QLabel(groupBox_5);
+        deg_label_3 = new QLabel(widget_5);
         deg_label_3->setObjectName(QStringLiteral("deg_label_3"));
 
         gridLayout_20->addWidget(deg_label_3, 1, 2, 1, 1);
 
-        deg_label = new QLabel(groupBox_5);
+        deg_label = new QLabel(widget_5);
         deg_label->setObjectName(QStringLiteral("deg_label"));
 
         gridLayout_20->addWidget(deg_label, 3, 2, 1, 1);
 
-        pl_bno_ox_label = new QLabel(groupBox_5);
+        pl_bno_ox_label = new QLabel(widget_5);
         pl_bno_ox_label->setObjectName(QStringLiteral("pl_bno_ox_label"));
 
         gridLayout_20->addWidget(pl_bno_ox_label, 1, 0, 1, 1);
 
-        ms2_label_2 = new QLabel(groupBox_5);
+        ms2_label_2 = new QLabel(widget_5);
         ms2_label_2->setObjectName(QStringLiteral("ms2_label_2"));
 
         gridLayout_20->addWidget(ms2_label_2, 5, 2, 1, 1);
 
-        ms2_label_3 = new QLabel(groupBox_5);
+        ms2_label_3 = new QLabel(widget_5);
         ms2_label_3->setObjectName(QStringLiteral("ms2_label_3"));
 
         gridLayout_20->addWidget(ms2_label_3, 4, 2, 1, 1);
 
-        label_7 = new QLabel(groupBox_5);
+        label_7 = new QLabel(widget_5);
         label_7->setObjectName(QStringLiteral("label_7"));
 
         gridLayout_20->addWidget(label_7, 0, 2, 1, 1);
 
-        ms2_label = new QLabel(groupBox_5);
+        ms2_label = new QLabel(widget_5);
         ms2_label->setObjectName(QStringLiteral("ms2_label"));
 
         gridLayout_20->addWidget(ms2_label, 6, 2, 1, 1);
 
 
-        horizontalLayout_5->addWidget(groupBox_5);
+        horizontalLayout_5->addWidget(widget_5);
 
         tabWidget_2->addTab(tab_5, QString());
 
@@ -1154,150 +1147,150 @@ public:
         tab_6->setObjectName(QStringLiteral("tab_6"));
         horizontalLayout_6 = new QHBoxLayout(tab_6);
         horizontalLayout_6->setObjectName(QStringLiteral("horizontalLayout_6"));
-        groupBox_6 = new QGroupBox(tab_6);
-        groupBox_6->setObjectName(QStringLiteral("groupBox_6"));
-        gridLayout_21 = new QGridLayout(groupBox_6);
+        widget_6 = new QWidget(tab_6);
+        widget_6->setObjectName(QStringLiteral("widget_6"));
+        gridLayout_21 = new QGridLayout(widget_6);
         gridLayout_21->setObjectName(QStringLiteral("gridLayout_21"));
-        label_15 = new QLabel(groupBox_6);
+        label_15 = new QLabel(widget_6);
         label_15->setObjectName(QStringLiteral("label_15"));
 
         gridLayout_21->addWidget(label_15, 5, 0, 1, 1);
 
-        label_13 = new QLabel(groupBox_6);
+        label_13 = new QLabel(widget_6);
         label_13->setObjectName(QStringLiteral("label_13"));
 
         gridLayout_21->addWidget(label_13, 3, 0, 1, 1);
 
-        label = new QLabel(groupBox_6);
+        label = new QLabel(widget_6);
         label->setObjectName(QStringLiteral("label"));
 
         gridLayout_21->addWidget(label, 1, 0, 1, 1);
 
-        label_9 = new QLabel(groupBox_6);
+        label_9 = new QLabel(widget_6);
         label_9->setObjectName(QStringLiteral("label_9"));
 
         gridLayout_21->addWidget(label_9, 2, 0, 1, 1);
 
-        pp_pressure_1_panel = new QLabel(groupBox_6);
+        pp_pressure_1_panel = new QLabel(widget_6);
         pp_pressure_1_panel->setObjectName(QStringLiteral("pp_pressure_1_panel"));
 
         gridLayout_21->addWidget(pp_pressure_1_panel, 0, 1, 1, 1);
 
-        pp_temperature_1_panel = new QLabel(groupBox_6);
+        pp_temperature_1_panel = new QLabel(widget_6);
         pp_temperature_1_panel->setObjectName(QStringLiteral("pp_temperature_1_panel"));
 
         gridLayout_21->addWidget(pp_temperature_1_panel, 2, 1, 1, 1);
 
-        pp_pressure_2_panel = new QLabel(groupBox_6);
+        pp_pressure_2_panel = new QLabel(widget_6);
         pp_pressure_2_panel->setObjectName(QStringLiteral("pp_pressure_2_panel"));
 
         gridLayout_21->addWidget(pp_pressure_2_panel, 1, 1, 1, 1);
 
-        label_12 = new QLabel(groupBox_6);
+        label_12 = new QLabel(widget_6);
         label_12->setObjectName(QStringLiteral("label_12"));
 
         gridLayout_21->addWidget(label_12, 2, 2, 1, 1);
 
-        label_14 = new QLabel(groupBox_6);
+        label_14 = new QLabel(widget_6);
         label_14->setObjectName(QStringLiteral("label_14"));
 
         gridLayout_21->addWidget(label_14, 4, 0, 1, 1);
 
-        label_6 = new QLabel(groupBox_6);
+        label_6 = new QLabel(widget_6);
         label_6->setObjectName(QStringLiteral("label_6"));
 
         gridLayout_21->addWidget(label_6, 0, 2, 1, 1);
 
-        label_3 = new QLabel(groupBox_6);
+        label_3 = new QLabel(widget_6);
         label_3->setObjectName(QStringLiteral("label_3"));
 
         gridLayout_21->addWidget(label_3, 1, 2, 1, 1);
 
-        label_5 = new QLabel(groupBox_6);
+        label_5 = new QLabel(widget_6);
         label_5->setObjectName(QStringLiteral("label_5"));
 
         gridLayout_21->addWidget(label_5, 0, 0, 1, 1);
 
-        label_16 = new QLabel(groupBox_6);
+        label_16 = new QLabel(widget_6);
         label_16->setObjectName(QStringLiteral("label_16"));
 
         gridLayout_21->addWidget(label_16, 6, 0, 1, 1);
 
-        pp_temperature_2_panel = new QLabel(groupBox_6);
+        pp_temperature_2_panel = new QLabel(widget_6);
         pp_temperature_2_panel->setObjectName(QStringLiteral("pp_temperature_2_panel"));
 
         gridLayout_21->addWidget(pp_temperature_2_panel, 3, 1, 1, 1);
 
-        label_18 = new QLabel(groupBox_6);
+        label_18 = new QLabel(widget_6);
         label_18->setObjectName(QStringLiteral("label_18"));
 
         gridLayout_21->addWidget(label_18, 3, 2, 1, 1);
 
-        pp_temperature_3_panel = new QLabel(groupBox_6);
+        pp_temperature_3_panel = new QLabel(widget_6);
         pp_temperature_3_panel->setObjectName(QStringLiteral("pp_temperature_3_panel"));
 
         gridLayout_21->addWidget(pp_temperature_3_panel, 4, 1, 1, 1);
 
-        label_20 = new QLabel(groupBox_6);
+        label_20 = new QLabel(widget_6);
         label_20->setObjectName(QStringLiteral("label_20"));
 
         gridLayout_21->addWidget(label_20, 4, 2, 1, 1);
 
-        pp_status_panel = new QLabel(groupBox_6);
+        pp_status_panel = new QLabel(widget_6);
         pp_status_panel->setObjectName(QStringLiteral("pp_status_panel"));
 
         gridLayout_21->addWidget(pp_status_panel, 5, 1, 1, 1);
 
-        pp_motor_position_panel = new QLabel(groupBox_6);
+        pp_motor_position_panel = new QLabel(widget_6);
         pp_motor_position_panel->setObjectName(QStringLiteral("pp_motor_position_panel"));
 
         gridLayout_21->addWidget(pp_motor_position_panel, 6, 1, 1, 1);
 
-        label_24 = new QLabel(groupBox_6);
+        label_24 = new QLabel(widget_6);
         label_24->setObjectName(QStringLiteral("label_24"));
 
         gridLayout_21->addWidget(label_24, 6, 2, 1, 1);
 
 
-        horizontalLayout_6->addWidget(groupBox_6);
+        horizontalLayout_6->addWidget(widget_6);
 
         tabWidget_3->addTab(tab_6, QString());
         tab_7 = new QWidget();
         tab_7->setObjectName(QStringLiteral("tab_7"));
         horizontalLayout_2 = new QHBoxLayout(tab_7);
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
-        groupBox = new QGroupBox(tab_7);
-        groupBox->setObjectName(QStringLiteral("groupBox"));
-        gridLayout_12 = new QGridLayout(groupBox);
+        widget = new QWidget(tab_7);
+        widget->setObjectName(QStringLiteral("widget"));
+        gridLayout_12 = new QGridLayout(widget);
         gridLayout_12->setObjectName(QStringLiteral("gridLayout_12"));
-        pushButton = new QPushButton(groupBox);
+        pushButton = new QPushButton(widget);
         pushButton->setObjectName(QStringLiteral("pushButton"));
 
         gridLayout_12->addWidget(pushButton, 0, 1, 1, 1);
 
-        pushButton_3 = new QPushButton(groupBox);
+        pushButton_3 = new QPushButton(widget);
         pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
 
         gridLayout_12->addWidget(pushButton_3, 1, 0, 1, 1);
 
-        pushButton_2 = new QPushButton(groupBox);
+        pushButton_2 = new QPushButton(widget);
         pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
 
         gridLayout_12->addWidget(pushButton_2, 0, 0, 1, 1);
 
-        pushButton_4 = new QPushButton(groupBox);
+        pushButton_4 = new QPushButton(widget);
         pushButton_4->setObjectName(QStringLiteral("pushButton_4"));
 
         gridLayout_12->addWidget(pushButton_4, 1, 1, 1, 1);
 
-        pushButton_5 = new QPushButton(groupBox);
+        pushButton_5 = new QPushButton(widget);
         pushButton_5->setObjectName(QStringLiteral("pushButton_5"));
         pushButton_5->setStyleSheet(QStringLiteral("color: rgb(204, 0, 0);"));
 
         gridLayout_12->addWidget(pushButton_5, 2, 0, 1, 2);
 
 
-        horizontalLayout_2->addWidget(groupBox);
+        horizontalLayout_2->addWidget(widget);
 
         tabWidget_3->addTab(tab_7, QString());
 
@@ -1392,7 +1385,7 @@ public:
         tab_8->setObjectName(QStringLiteral("tab_8"));
         horizontalLayout_8 = new QHBoxLayout(tab_8);
         horizontalLayout_8->setObjectName(QStringLiteral("horizontalLayout_8"));
-        ignition_box = new QGroupBox(tab_8);
+        ignition_box = new QWidget(tab_8);
         ignition_box->setObjectName(QStringLiteral("ignition_box"));
         ignition_box->setMinimumSize(QSize(200, 203));
         gridLayout_2 = new QGridLayout(ignition_box);
@@ -1498,153 +1491,153 @@ public:
         tab_10->setObjectName(QStringLiteral("tab_10"));
         horizontalLayout_9 = new QHBoxLayout(tab_10);
         horizontalLayout_9->setObjectName(QStringLiteral("horizontalLayout_9"));
-        groupBox_2 = new QGroupBox(tab_10);
-        groupBox_2->setObjectName(QStringLiteral("groupBox_2"));
-        sizePolicy1.setHeightForWidth(groupBox_2->sizePolicy().hasHeightForWidth());
-        groupBox_2->setSizePolicy(sizePolicy1);
-        gridLayout_16 = new QGridLayout(groupBox_2);
+        widget_21 = new QWidget(tab_10);
+        widget_21->setObjectName(QStringLiteral("widget_21"));
+        sizePolicy1.setHeightForWidth(widget_21->sizePolicy().hasHeightForWidth());
+        widget_21->setSizePolicy(sizePolicy1);
+        gridLayout_16 = new QGridLayout(widget_21);
         gridLayout_16->setObjectName(QStringLiteral("gridLayout_16"));
-        tank_temp_label_2 = new QLabel(groupBox_2);
+        tank_temp_label_2 = new QLabel(widget_21);
         tank_temp_label_2->setObjectName(QStringLiteral("tank_temp_label_2"));
 
         gridLayout_16->addWidget(tank_temp_label_2, 0, 0, 1, 1);
 
-        celcius_label2_2 = new QLabel(groupBox_2);
+        celcius_label2_2 = new QLabel(widget_21);
         celcius_label2_2->setObjectName(QStringLiteral("celcius_label2_2"));
         celcius_label2_2->setMaximumSize(QSize(40, 16777215));
 
         gridLayout_16->addWidget(celcius_label2_2, 0, 2, 1, 1);
 
-        hose_pressure_label_2 = new QLabel(groupBox_2);
+        hose_pressure_label_2 = new QLabel(widget_21);
         hose_pressure_label_2->setObjectName(QStringLiteral("hose_pressure_label_2"));
 
         gridLayout_16->addWidget(hose_pressure_label_2, 1, 0, 1, 1);
 
-        hose_pressure_panel_2 = new QLabel(groupBox_2);
+        hose_pressure_panel_2 = new QLabel(widget_21);
         hose_pressure_panel_2->setObjectName(QStringLiteral("hose_pressure_panel_2"));
         hose_pressure_panel_2->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         gridLayout_16->addWidget(hose_pressure_panel_2, 1, 1, 1, 1);
 
-        hpa_panel_2 = new QLabel(groupBox_2);
+        hpa_panel_2 = new QLabel(widget_21);
         hpa_panel_2->setObjectName(QStringLiteral("hpa_panel_2"));
         hpa_panel_2->setMaximumSize(QSize(40, 16777215));
 
         gridLayout_16->addWidget(hpa_panel_2, 1, 2, 1, 1);
 
-        hoes_temp_label_2 = new QLabel(groupBox_2);
+        hoes_temp_label_2 = new QLabel(widget_21);
         hoes_temp_label_2->setObjectName(QStringLiteral("hoes_temp_label_2"));
 
         gridLayout_16->addWidget(hoes_temp_label_2, 2, 0, 1, 1);
 
-        hose_temp_panel_2 = new QLabel(groupBox_2);
+        hose_temp_panel_2 = new QLabel(widget_21);
         hose_temp_panel_2->setObjectName(QStringLiteral("hose_temp_panel_2"));
         hose_temp_panel_2->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         gridLayout_16->addWidget(hose_temp_panel_2, 2, 1, 1, 1);
 
-        celcius_label_3 = new QLabel(groupBox_2);
+        celcius_label_3 = new QLabel(widget_21);
         celcius_label_3->setObjectName(QStringLiteral("celcius_label_3"));
         celcius_label_3->setMaximumSize(QSize(40, 16777215));
 
         gridLayout_16->addWidget(celcius_label_3, 2, 2, 1, 1);
 
-        rocket_weight_label_2 = new QLabel(groupBox_2);
+        rocket_weight_label_2 = new QLabel(widget_21);
         rocket_weight_label_2->setObjectName(QStringLiteral("rocket_weight_label_2"));
 
         gridLayout_16->addWidget(rocket_weight_label_2, 3, 0, 1, 1);
 
-        rocket_weight_panel_2 = new QLabel(groupBox_2);
+        rocket_weight_panel_2 = new QLabel(widget_21);
         rocket_weight_panel_2->setObjectName(QStringLiteral("rocket_weight_panel_2"));
         rocket_weight_panel_2->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         gridLayout_16->addWidget(rocket_weight_panel_2, 3, 1, 1, 1);
 
-        kg_label_2 = new QLabel(groupBox_2);
+        kg_label_2 = new QLabel(widget_21);
         kg_label_2->setObjectName(QStringLiteral("kg_label_2"));
         kg_label_2->setMaximumSize(QSize(40, 16777215));
 
         gridLayout_16->addWidget(kg_label_2, 3, 2, 1, 1);
 
-        battery_level_label = new QLabel(groupBox_2);
+        battery_level_label = new QLabel(widget_21);
         battery_level_label->setObjectName(QStringLiteral("battery_level_label"));
 
         gridLayout_16->addWidget(battery_level_label, 4, 0, 1, 1);
 
-        battery_level_panel = new QLabel(groupBox_2);
+        battery_level_panel = new QLabel(widget_21);
         battery_level_panel->setObjectName(QStringLiteral("battery_level_panel"));
         battery_level_panel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         gridLayout_16->addWidget(battery_level_panel, 4, 1, 1, 1);
 
-        voltunit_label = new QLabel(groupBox_2);
+        voltunit_label = new QLabel(widget_21);
         voltunit_label->setObjectName(QStringLiteral("voltunit_label"));
 
         gridLayout_16->addWidget(voltunit_label, 4, 2, 1, 1);
 
-        main_current_label = new QLabel(groupBox_2);
+        main_current_label = new QLabel(widget_21);
         main_current_label->setObjectName(QStringLiteral("main_current_label"));
 
         gridLayout_16->addWidget(main_current_label, 5, 0, 1, 1);
 
-        main_current_panel = new QLabel(groupBox_2);
+        main_current_panel = new QLabel(widget_21);
         main_current_panel->setObjectName(QStringLiteral("main_current_panel"));
         main_current_panel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         gridLayout_16->addWidget(main_current_panel, 5, 1, 1, 1);
 
-        m_a_unit_label = new QLabel(groupBox_2);
+        m_a_unit_label = new QLabel(widget_21);
         m_a_unit_label->setObjectName(QStringLiteral("m_a_unit_label"));
 
         gridLayout_16->addWidget(m_a_unit_label, 5, 2, 1, 1);
 
-        label_8 = new QLabel(groupBox_2);
+        label_8 = new QLabel(widget_21);
         label_8->setObjectName(QStringLiteral("label_8"));
 
         gridLayout_16->addWidget(label_8, 6, 0, 1, 1);
 
-        secondary_current_panel = new QLabel(groupBox_2);
+        secondary_current_panel = new QLabel(widget_21);
         secondary_current_panel->setObjectName(QStringLiteral("secondary_current_panel"));
         secondary_current_panel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         gridLayout_16->addWidget(secondary_current_panel, 6, 1, 1, 1);
 
-        ma_unit_label = new QLabel(groupBox_2);
+        ma_unit_label = new QLabel(widget_21);
         ma_unit_label->setObjectName(QStringLiteral("ma_unit_label"));
 
         gridLayout_16->addWidget(ma_unit_label, 6, 2, 1, 1);
 
-        label_11 = new QLabel(groupBox_2);
+        label_11 = new QLabel(widget_21);
         label_11->setObjectName(QStringLiteral("label_11"));
 
         gridLayout_16->addWidget(label_11, 7, 0, 1, 1);
 
-        wind_speed_panel = new QLabel(groupBox_2);
+        wind_speed_panel = new QLabel(widget_21);
         wind_speed_panel->setObjectName(QStringLiteral("wind_speed_panel"));
         wind_speed_panel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         gridLayout_16->addWidget(wind_speed_panel, 7, 1, 1, 1);
 
-        m_s_unit_label_2 = new QLabel(groupBox_2);
+        m_s_unit_label_2 = new QLabel(widget_21);
         m_s_unit_label_2->setObjectName(QStringLiteral("m_s_unit_label_2"));
 
         gridLayout_16->addWidget(m_s_unit_label_2, 7, 2, 1, 1);
 
-        tank_temp_panel_2 = new QLabel(groupBox_2);
+        tank_temp_panel_2 = new QLabel(widget_21);
         tank_temp_panel_2->setObjectName(QStringLiteral("tank_temp_panel_2"));
         tank_temp_panel_2->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         gridLayout_16->addWidget(tank_temp_panel_2, 0, 1, 1, 1);
 
 
-        horizontalLayout_9->addWidget(groupBox_2);
+        horizontalLayout_9->addWidget(widget_21);
 
         tabWidget_4->addTab(tab_10, QString());
         tab_9 = new QWidget();
         tab_9->setObjectName(QStringLiteral("tab_9"));
         horizontalLayout_7 = new QHBoxLayout(tab_9);
         horizontalLayout_7->setObjectName(QStringLiteral("horizontalLayout_7"));
-        gse_control_box = new QGroupBox(tab_9);
+        gse_control_box = new QWidget(tab_9);
         gse_control_box->setObjectName(QStringLiteral("gse_control_box"));
         gridLayout_15 = new QGridLayout(gse_control_box);
         gridLayout_15->setObjectName(QStringLiteral("gridLayout_15"));
@@ -1881,8 +1874,8 @@ public:
         retranslateUi(Form);
 
         tabWidget_5->setCurrentIndex(0);
-        tabWidget_2->setCurrentIndex(0);
-        tabWidget_3->setCurrentIndex(1);
+        tabWidget_2->setCurrentIndex(2);
+        tabWidget_3->setCurrentIndex(0);
         tabWidget->setCurrentIndex(1);
         tabWidget_4->setCurrentIndex(1);
 
@@ -1937,15 +1930,6 @@ public:
         time_since_last_panel->setText(QString());
         corrupted_label->setText(QApplication::translate("Form", "Corrupted Packets", Q_NULLPTR));
         corrupted_panel->setText(QString());
-        gps_box->setTitle(QApplication::translate("Form", "GPS", Q_NULLPTR));
-        longitude_label->setText(QApplication::translate("Form", "LONGITUDE", Q_NULLPTR));
-        hdop_label->setText(QApplication::translate("Form", "HDOP", Q_NULLPTR));
-        latitude_panel->setText(QString());
-        sat_nbr_label->setText(QApplication::translate("Form", "SATELLITES", Q_NULLPTR));
-        sat_nbr_panel->setText(QString());
-        latitude_label->setText(QApplication::translate("Form", "LATITUDE", Q_NULLPTR));
-        longitude_panel->setText(QString());
-        hdop_panel->setText(QString());
         groupBox_7->setTitle(QApplication::translate("Form", "Altitude", Q_NULLPTR));
         altitude_label_gps->setText(QApplication::translate("Form", "ALTITUDE", Q_NULLPTR));
         ft_unit_label_2->setText(QApplication::translate("Form", "ft", Q_NULLPTR));
@@ -1953,20 +1937,29 @@ public:
         altitude_max_label->setText(QApplication::translate("Form", "ALTITUDE MAX", Q_NULLPTR));
         m_unit_label->setText(QApplication::translate("Form", "m", Q_NULLPTR));
         ft_unit_label->setText(QApplication::translate("Form", "ft", Q_NULLPTR));
+        gps_box->setTitle(QApplication::translate("Form", "GPS", Q_NULLPTR));
+        longitude_label->setText(QApplication::translate("Form", "LONG.", Q_NULLPTR));
+        hdop_label->setText(QApplication::translate("Form", "HDOP", Q_NULLPTR));
+        latitude_panel->setText(QString());
+        sat_nbr_label->setText(QApplication::translate("Form", "SAT.NO", Q_NULLPTR));
+        sat_nbr_panel->setText(QString());
+        latitude_label->setText(QApplication::translate("Form", "LAT.", Q_NULLPTR));
+        longitude_panel->setText(QString());
+        hdop_panel->setText(QString());
         avionics_box->setTitle(QApplication::translate("Form", "Avionics Data", Q_NULLPTR));
-        hpa_unit_label->setText(QApplication::translate("Form", "hPa", Q_NULLPTR));
+        hpa_unit_label->setText(QApplication::translate("Form", "[hPa]", Q_NULLPTR));
         avionics_state_label->setText(QApplication::translate("Form", "AV. STATE", Q_NULLPTR));
         pressure_label->setText(QApplication::translate("Form", "PRESS.", Q_NULLPTR));
         altitude_panel_telemetry->setText(QString());
         speed_label->setText(QApplication::translate("Form", "SPEED", Q_NULLPTR));
-        m_unit_label_3->setText(QApplication::translate("Form", "m", Q_NULLPTR));
+        m_unit_label_3->setText(QApplication::translate("Form", "[m]", Q_NULLPTR));
         altitude_label_telemetry->setText(QApplication::translate("Form", "ALT.", Q_NULLPTR));
         speed_panel->setText(QString());
         temperature_panel->setText(QString());
         pressure_panel->setText(QString());
-        m_s_unit_label->setText(QApplication::translate("Form", "m/s", Q_NULLPTR));
+        m_s_unit_label->setText(QApplication::translate("Form", "[m/s]", Q_NULLPTR));
         temperature_label->setText(QApplication::translate("Form", "TEMP", Q_NULLPTR));
-        celcius_label->setText(QApplication::translate("Form", "<html><head/><body><p><span style=\" vertical-align:super;\">o</span>C</p></body></html>", Q_NULLPTR));
+        celcius_label->setText(QApplication::translate("Form", "<html><head/><body><p>[<span style=\" vertical-align:super;\">o</span>C]</p></body></html>", Q_NULLPTR));
         avionics_state_panel->setText(QString());
         euler_z_label->setText(QApplication::translate("Form", "Z", Q_NULLPTR));
         euler_y_label->setText(QApplication::translate("Form", "Y", Q_NULLPTR));
@@ -1995,7 +1988,6 @@ public:
         secondary_ignition_label->setText(QApplication::translate("Form", "Secondary Ignition", Q_NULLPTR));
         hose_disconnect_label->setText(QApplication::translate("Form", "Hose disconnect", Q_NULLPTR));
         fill_valve_label->setText(QApplication::translate("Form", "Fill Valve", Q_NULLPTR));
-        groupBox_4->setTitle(QApplication::translate("Form", "Payload BME", Q_NULLPTR));
         pl_bme_humidity_label->setText(QApplication::translate("Form", "Humidity", Q_NULLPTR));
         pl_bme_temperature_label->setText(QApplication::translate("Form", "Temperature", Q_NULLPTR));
         pl_bme_pressure_label->setText(QApplication::translate("Form", "Pressure", Q_NULLPTR));
@@ -2009,7 +2001,6 @@ public:
         pl_percentage_label->setText(QApplication::translate("Form", "%", Q_NULLPTR));
         pl_m_label->setText(QApplication::translate("Form", "[m]", Q_NULLPTR));
         tabWidget_2->setTabText(tabWidget_2->indexOf(tab_3), QApplication::translate("Form", "PL BME", Q_NULLPTR));
-        groupBox_3->setTitle(QApplication::translate("Form", "Payload GPS", Q_NULLPTR));
         pl_latitude_label->setText(QApplication::translate("Form", "Latitude", Q_NULLPTR));
         pl_sat_nbr_panel->setText(QString());
         pl_latitude_panel->setText(QString());
@@ -2021,7 +2012,6 @@ public:
         pl_hdop_label->setText(QApplication::translate("Form", "HDOP", Q_NULLPTR));
         pl_hdop_panel->setText(QString());
         tabWidget_2->setTabText(tabWidget_2->indexOf(tab_4), QApplication::translate("Form", "PL GPS", Q_NULLPTR));
-        groupBox_5->setTitle(QApplication::translate("Form", "Payload BNO", Q_NULLPTR));
         pl_bno_az_panel->setText(QString());
         pl_bno_oy_label->setText(QApplication::translate("Form", "Oy", Q_NULLPTR));
         pl_bno_ox_panel->setText(QString());
@@ -2044,7 +2034,6 @@ public:
         label_7->setText(QApplication::translate("Form", "<html><head/><body><p><span style=\" vertical-align:super;\">O</span>C</p></body></html>", Q_NULLPTR));
         ms2_label->setText(QApplication::translate("Form", "<html><head/><body><p>[m/s<span style=\" vertical-align:super;\">2</span>]</p></body></html>", Q_NULLPTR));
         tabWidget_2->setTabText(tabWidget_2->indexOf(tab_5), QApplication::translate("Form", "PL BNO", Q_NULLPTR));
-        groupBox_6->setTitle(QApplication::translate("Form", "PP Data", Q_NULLPTR));
         label_15->setText(QApplication::translate("Form", "Status", Q_NULLPTR));
         label_13->setText(QApplication::translate("Form", "Temp 2", Q_NULLPTR));
         label->setText(QApplication::translate("Form", "Pressure 2", Q_NULLPTR));
@@ -2066,7 +2055,6 @@ public:
         pp_motor_position_panel->setText(QApplication::translate("Form", "002", Q_NULLPTR));
         label_24->setText(QApplication::translate("Form", "[deg]", Q_NULLPTR));
         tabWidget_3->setTabText(tabWidget_3->indexOf(tab_6), QApplication::translate("Form", "PP Data", Q_NULLPTR));
-        groupBox->setTitle(QApplication::translate("Form", "PP Control", Q_NULLPTR));
         pushButton->setText(QApplication::translate("Form", "Start Fueling", Q_NULLPTR));
         pushButton_3->setText(QApplication::translate("Form", "Start Homing", Q_NULLPTR));
         pushButton_2->setText(QApplication::translate("Form", "Start Valve OP", Q_NULLPTR));
@@ -2094,7 +2082,6 @@ public:
         change_theme->setText(QApplication::translate("Form", "Color Theme", Q_NULLPTR));
         serial_status_panel->setText(QApplication::translate("Form", "...", Q_NULLPTR));
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("Form", "Config", Q_NULLPTR));
-        ignition_box->setTitle(QApplication::translate("Form", "Ignition", Q_NULLPTR));
         ignition_button->setText(QApplication::translate("Form", "Ready For Ignition", Q_NULLPTR));
         ready_ignition_panel->setText(QApplication::translate("Form", "X", Q_NULLPTR));
         key_1_label->setText(QApplication::translate("Form", "KEY 1", Q_NULLPTR));
@@ -2108,7 +2095,6 @@ public:
         code_1->setText(QString());
         code_0->setText(QString());
         tabWidget_4->setTabText(tabWidget_4->indexOf(tab_8), QApplication::translate("Form", "Ignition", Q_NULLPTR));
-        groupBox_2->setTitle(QApplication::translate("Form", "GSE Sensor Data", Q_NULLPTR));
         tank_temp_label_2->setText(QApplication::translate("Form", "Tank Temp", Q_NULLPTR));
         celcius_label2_2->setText(QApplication::translate("Form", "[\302\260C]", Q_NULLPTR));
         hose_pressure_label_2->setText(QApplication::translate("Form", "Hose Pressure", Q_NULLPTR));
@@ -2134,7 +2120,6 @@ public:
         m_s_unit_label_2->setText(QApplication::translate("Form", "[m/s]", Q_NULLPTR));
         tank_temp_panel_2->setText(QString());
         tabWidget_4->setTabText(tabWidget_4->indexOf(tab_10), QApplication::translate("Form", "GSE Data", Q_NULLPTR));
-        gse_control_box->setTitle(QApplication::translate("Form", "GSE Control", Q_NULLPTR));
         filling_open_button->setText(QApplication::translate("Form", "Open", Q_NULLPTR));
         purge_open_button->setText(QApplication::translate("Form", "Open", Q_NULLPTR));
         purge_label->setText(QApplication::translate("Form", "Purge", Q_NULLPTR));
@@ -2180,4 +2165,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // WASSERFALLENGUIJ24228_H
+#endif // WASSERFALLENGUIE24228_H
