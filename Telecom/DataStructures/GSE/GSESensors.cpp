@@ -15,8 +15,12 @@ void GSESensors::write(Packet &packet) {
     packet.write(hose_temperature);
     packet.write(tank_temp);
     packet.write(rocket_weight);
-    packet.write(main_current);
-    packet.write(secondary_current);
+    packet.write(main_ignition_current);
+    packet.write(secondary_ignition_current);
+    packet.write(main_disconnect_current);
+    packet.write(secondary_disconnect_current);
+    packet.write(fill_valve_current);
+    packet.write(purge_valve_current);
     packet.write(wind_speed);
 }
 
@@ -32,8 +36,12 @@ void GSESensors::parse(Packet &packet) {
     packet.parse(hose_temperature);
     packet.parse(tank_temp);
     packet.parse(rocket_weight);
-    packet.parse(main_current);
-    packet.parse(secondary_current);
+    packet.parse(main_ignition_current);
+    packet.parse(secondary_ignition_current);
+    packet.parse(main_disconnect_current);
+    packet.parse(secondary_disconnect_current);
+    packet.parse(fill_valve_current);
+    packet.parse(purge_valve_current);
     packet.parse(wind_speed);
 }
 
@@ -46,8 +54,12 @@ void GSESensors::print() const {
               << "Hose temperature : " << hose_temperature << "\n"
               << "Tank temperature : " << tank_temp << "\n"
               << "Rocket weight : " << rocket_weight << "\n"
-              << "Main current : " << main_current << "\n"
-              << "Secondary current : " << secondary_current << "\n"
+              << "Main ignition current : " << main_ignition_current << "\n"
+              << "Secondary ignition current : " << secondary_ignition_current << "\n"
+              << "Main disconnect current : " << main_disconnect_current << "\n"
+              << "Secondary disconnect current : " << secondary_disconnect_current << "\n"
+              << "Fill valve current : " << fill_valve_current << "\n"
+              << "Purge valve current : " << purge_valve_current << "\n"
               << "Wind speed : " << wind_speed << "\n"<< std::endl;
 
 }
@@ -67,10 +79,14 @@ bool GSESensors::updateRx(std::shared_ptr<Connector> connector){
     connector->setData(ui_interface::GSE_PURGE_VALVE_STATE, purge_valve_state);
     connector->setData(ui_interface::GSE_FILL_VALVE_STATE, fill_valve_state);
     //update data
-    connector->setData(ui_interface::GSE_MAIN_IGNITION_CURRENT, main_current);
+    connector->setData(ui_interface::GSE_MAIN_IGNITION_CURRENT, main_ignition_current);
     connector->setData(ui_interface::GSE_HOSE_PRESSURE, hose_pressure);
     connector->setData(ui_interface::GSE_BATTERY_LEVEL, battery_level);
-    connector->setData(ui_interface::GSE_SECONDARY_IGNITION_CURRENT, secondary_current);
+    connector->setData(ui_interface::GSE_SECONDARY_IGNITION_CURRENT, secondary_ignition_current);
+    connector->setData(ui_interface::GSE_MAIN_DISCONNECT_CURRENT, main_disconnect_current);
+    connector->setData(ui_interface::GSE_SECONDARY_DISCONNECT_CURRENT, secondary_disconnect_current);
+    connector->setData(ui_interface::GSE_FILL_VALVE_CURRENT, fill_valve_current);
+    connector->setData(ui_interface::GSE_PURGE_VALVE_CURRENT, purge_valve_current);
     connector->setData(ui_interface::GSE_ROCKET_WEIGHT, rocket_weight);
     connector->setData(ui_interface::GSE_TANK_TEMP, tank_temp);
     connector->setData(ui_interface::GSE_HOSE_TEMP, hose_temperature);
