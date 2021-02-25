@@ -45,6 +45,7 @@ bool GSEOrder::updateTx(std::shared_ptr<Connector> connector) {
 }
 
 bool GSEOrder::updateRx(std::shared_ptr<Connector> connector) {
+    std::cout << "Order set" << std::endl;
     connector->setData(ui_interface::GSE_ORDER_ACK, order);
     return true;
 }

@@ -23,6 +23,7 @@
 #include "../Telecom/DataStructures/File/FileTransmissionStates.h"
 #include "../Telecom/DataStructures/GSE/IgnitionStates.h"
 #include "../Telecom/DataStructures/GSE/GSEOrderValue.h"
+#include "../Telecom/DataStructures/Propulsion/PPCommands.h"
 #include "Gui_message.h"
 #include "../Logger/utilities.h"
 
@@ -33,6 +34,7 @@
 #include <QCoreApplication>
 #include <QInputDialog>
 #include <QDir>
+#include <sstream>
 
 
 constexpr uint32_t REFRESH_RATE(500);
@@ -167,7 +169,9 @@ void GuiWindow::refresh_data()
     refresh_gps();
     refresh_serial_status();
     refresh_payload();
+    refresh_gse();
     refresh_ack_blinking();
+    refresh_pp();
 
     ++tick_counter_;
 }
@@ -347,7 +351,6 @@ void GuiWindow::init_password()
 bool GuiWindow::ask_password()
 {
     logger.log(new Gui_Message("Asked password to user."));
-
     bool ok;
     QString text = QInputDialog::getText(this, tr("Authorization required"),
                                          tr("Enter the password if you have set one."
@@ -364,14 +367,23 @@ bool GuiWindow::ask_password()
             logger.log(new Gui_Message("Password wasn't correct."));
         }
     }
-
     std::cout << "The password is set to " << text.toStdString() << std::endl;
     return result;
 }
 
 void GuiWindow::refresh_ack_blinking() {
+    if(data_->eatData<bool>(ui_interface::GSE_PING_ACK, false)){
+        echo_button->setStyleSheet("background-color: rgb(0, 255, 255);");
+    }else{
+        echo_button->setStyleSheet("");
+    }
+    if(data_->eatData<bool>(ui_interface::IGNITION_OFF_ACK, false)){
+        ignition_off_button->setStyleSheet("background-color: rgb(0, 255, 255);");
+    }else{
+        ignition_off_button->setStyleSheet("");
+    }
 
-    auto order = data_->eatData<gse::GSEOrderValue>(ui_interface::GSE_ORDER_ACK, gse::NO_ORDER);
+    uint8_t order = data_->eatData<gse::GSEOrderValue>(ui_interface::GSE_ORDER_ACK, gse::NO_ORDER);
 
     switch (order){
         case gse::NO_ORDER :
@@ -403,9 +415,30 @@ void GuiWindow::refresh_ack_blinking() {
             filling_close_button->setStyleSheet("");
             disconnect_wire_button->setStyleSheet("");
             break;
-
     }
 }
+
+void GuiWindow::refresh_gse() {
+
+    //Refresh state display
+    show_on_off(purge_valve_state_panel, data_->getData<bool>(ui_interface::GSE_PURGE_VALVE_STATE));
+    show_on_off(fill_valve_state_panel, data_->getData<bool>(ui_interface::GSE_FILL_VALVE_STATE));
+    show_on_off(main_ignition_state_panel, data_->getData<bool>(ui_interface::GSE_MAIN_IGNITION_STATE));
+    show_on_off(secondary_ignition_state_panel, data_->getData<bool>(ui_interface::GSE_SECONDARY_IGNITION_STATE));
+    show_on_off(hose_disconnect_state_panel, data_->getData<bool>(ui_interface::GSE_HOSE_DISCONNECT_STATE));
+
+    //Refresh sensor display
+    tank_temp_panel_2->setText(qstr(data_->getData<float>(ui_interface::GSE_TANK_TEMP)));
+    hose_pressure_panel_2->setText(qstr(data_->getData<float>(ui_interface::GSE_HOSE_PRESSURE)));
+    hose_temp_panel_2->setText(qstr(data_->getData<float>(ui_interface::GSE_HOSE_TEMP)));
+    rocket_weight_panel_2->setText(qstr(data_->getData<float>(ui_interface::GSE_ROCKET_WEIGHT)));
+    battery_level_panel->setText(qstr(data_->getData<float>(ui_interface::GSE_BATTERY_LEVEL)));
+    main_current_panel->setText(qstr(data_->getData<float>(ui_interface::GSE_MAIN_IGNITION_CURRENT)));
+    secondary_current_panel->setText(qstr(data_->getData<float>(ui_interface::GSE_SECONDARY_IGNITION_CURRENT)));
+    wind_speed_panel->setText(qstr(data_->getData<float>(ui_interface::GSE_WIND_SPEED)));
+
+}
+
 
 void GuiWindow::refresh_ignition_frame()
 {
@@ -421,11 +454,6 @@ void GuiWindow::refresh_ignition_frame()
     show_ok_X(key_2_panel, key2);
     show_ok_X(red_button_panel, button);
     show_ok_X(ready_ignition_panel, clicked);
-
-    // Ignition status
-    std::string str(ignit::getIgnitionState(
-        data_->eatData<ignit::IgnitionState>(IGNITION_STATUS, ignit::SLEEP)));
-    ignition_status_label->setText(QString::fromStdString(str));
 
 #ifdef SOUND_ON
     if (key1 && key2 && clicked) {
@@ -455,6 +483,13 @@ void GuiWindow::initialize_slots_signals()
     connect(purge_open_button,SIGNAL(pressed()),this, SLOT(purge_valve_open_pressed()));
     connect(purge_close_button,SIGNAL(pressed()),this, SLOT(purge_valve_close_pressed()));
     connect(disconnect_wire_button, SIGNAL(pressed()),this, SLOT(disconnect_wire_pressed()));
+    connect(echo_button, SIGNAL(pressed()), this, SLOT(echo_button_pressed()));
+    connect(start_valve_op_button, SIGNAL(pressed()), this, SLOT(start_valve_op_pressed()));
+    connect(start_fueling_button, SIGNAL(pressed()), this, SLOT(start_fueling_pressed()));
+    connect(start_homing_button, SIGNAL(pressed()), this, SLOT(start_homing_pressed()));
+    connect(stop_fueling_button, SIGNAL(pressed()), this, SLOT(stop_fueling_pressed()));
+    connect(abort_button, SIGNAL(pressed()), this, SLOT(abort_pressed()));
+    connect(ignition_off_button, SIGNAL(pressed()), this, SLOT(ignition_off_pressed()));
 }
 
 void GuiWindow::refresh_telemetry()
@@ -502,6 +537,7 @@ void GuiWindow::refresh_com()
     av_packets_second_bar->setValue((data_->eatData<uint32_t>(PACKET_CTR_AV, 0) * FREQUENCY));
     pl_packets_second_bar->setValue((data_->eatData<uint32_t>(PACKET_CTR_PL, 0) * FREQUENCY));
     gse_packets_second_bar->setValue((data_->eatData<uint32_t>(PACKET_CTR_GSE, 0) * FREQUENCY));
+    pp_packets_second_bar->setValue((data_->eatData<uint32_t>(PACKET_CTR_PP, 0) * FREQUENCY));
     corrupted_panel->setText(qstr(data_->getData<uint64_t>(CORRUPTED_PACKET_CTR)));
     rssi_panel->display(qstr(-1* (int) data_->getData<uint8_t>(ui_interface::RSSI_VALUE)));
 
@@ -524,26 +560,8 @@ void GuiWindow::refresh_com()
 
 void GuiWindow::check_and_show()
 {
-    using namespace ignit;
-    switch (data_->eatData<IgnitionState>(IGNITION_STATUS, ignit::SLEEP)) {
-    case WRONG_CODE_RECEIVED:
-        QMessageBox::warning(this, "GSE Info", "The GSE informs you that you are entering the wrong code - No Ignition - Permission denied");
-        break;
-    case ARMED:
-        QMessageBox::warning(this, "GSE Info", "GSE confirmation : Code is correct - ARMED - Ready for Ignition !");
-        break;
-    case IGNITION_ON:
-#ifdef SOUND_ON
-        // playSound(takeoff);
-#endif
-        QMessageBox::warning(this, "GSE Info", "Ignition circuit active ! Igniters should be burning!");
-        break;
-    default:
-        break;
-    }
-
-    if (data_->eatData<bool>(FILE_TRANSMISSION_ALL_RECEIVED, false)) {
-        QMessageBox::warning(this, "File", "File transmission finished - All received");
+    if(data_->getData<bool>(ui_interface::IGNITION_CONFIRMED)){
+        QMessageBox::warning(this, "GSE Info", "The code which was sent from the GSE matches your code on the GST");
     }
 }
 
@@ -575,6 +593,21 @@ void GuiWindow::show_dots(QLabel * label)
     label->setStyleSheet(QLatin1String("color: rgb(0, 255, 255);"));
     label->setText("...");
 }
+
+void GuiWindow::show_on(QLabel * label) {
+    label->setStyleSheet(QLatin1String("color: rgb(0, 255, 0);"));
+    label->setText("ON");
+}
+
+void GuiWindow::show_off(QLabel * label) {
+    label->setStyleSheet(QLatin1String("color: rgb(255, 0, 0);"));
+    label->setText("OFF");
+}
+
+void GuiWindow::show_on_off(QLabel * label, bool ok) {
+    (ok) ? show_on(label) : show_off(label);
+}
+
 void GuiWindow::keyPressEvent(QKeyEvent * ckey)
 {
     if (ckey->key() == Qt::Key_F11 || ckey->key() == Qt::Key_F) {
@@ -596,6 +629,55 @@ void GuiWindow::refresh_serial_status()
         show_X(serial_status_panel);
     }
 }
+
+void GuiWindow::echo_button_pressed() {
+    data_->setData(ui_interface::GSE_PING, true);
+    logger.log(new Gui_Message("Echo button pressed"));
+}
+
+void GuiWindow::start_valve_op_pressed() {
+    data_->setData(ui_interface::PP_COMMAND, pp::START_VALVE_OPERATION);
+    logger.log(new Gui_Message("Start valve operation button pressed"));
+}
+
+void GuiWindow::stop_fueling_pressed() {
+    data_->setData(ui_interface::PP_COMMAND, pp::STOP_FUELING);
+    logger.log(new Gui_Message("Stop fueling button pressed"));
+}
+
+void GuiWindow::start_homing_pressed() {
+    data_->setData(ui_interface::PP_COMMAND, pp::START_HOMING);
+    logger.log(new Gui_Message("Start homing button pressed"));
+}
+
+void GuiWindow::abort_pressed() {
+    data_->setData(ui_interface::PP_COMMAND, pp::ABORT);
+    logger.log(new Gui_Message("Abort button pressed"));
+}
+
+void GuiWindow::start_fueling_pressed() {
+    data_->setData(ui_interface::PP_COMMAND, pp::START_FUELING);
+    logger.log(new Gui_Message("Start fueling pressed"));
+}
+
+void GuiWindow::refresh_pp() {
+    pp_pressure_1_panel->setText(qstr(data_->getData<uint16_t>(ui_interface::PP_PRESSURE_1)));
+    pp_pressure_2_panel->setText(qstr(data_->getData<uint16_t>(ui_interface::PP_PRESSURE_2)));
+    pp_temperature_1_panel->setText(qstr(data_->getData<int16_t>(ui_interface::PP_TEMPERATURE_1)));
+    pp_temperature_2_panel->setText(qstr(data_->getData<int16_t>(ui_interface::PP_TEMPERATURE_2)));
+    pp_temperature_3_panel->setText(qstr(data_->getData<int16_t>(ui_interface::PP_TEMPERATURE_3)));
+    uint16_t status = data_->getData<int16_t>(ui_interface::PP_STATUS);
+    std::stringstream stream;
+    stream << "0x" << std::hex << status;
+    pp_status_panel->setText(QString::fromStdString(stream.str()));
+    pp_motor_position_panel->setText(qstr(data_->getData<int16_t>(ui_interface::PP_MOTOR_POSITION)));
+}
+
+void GuiWindow::ignition_off_pressed() {
+    data_->setData(ui_interface::IGNITION_OFF_CLICKED, true);
+    logger.log(new Gui_Message("Ignition OFF button pressed"));
+}
+
 
 #ifdef SOUND_ON
 void GuiWindow::playSound(const char * url)

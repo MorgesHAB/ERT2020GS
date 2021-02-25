@@ -10,6 +10,8 @@
 #include "Header.h"
 #include <DatagramTypes.h>
 
+static uint32_t packet_number_tx = 0;
+
 Header::Header(uint8_t datagramID) : datagramID(datagramID),
                                      timestamp(std::time(nullptr)) {}
 
@@ -22,7 +24,8 @@ void Header::write(Packet &packet) {
     packet.write(datagramID);
     for (auto& e : myDelimiter) packet.write(e);    
     packet.write(timestamp);
-    packet.parse(packetNumber);
+    packet.write(packet_number_tx);
+    ++packet_number_tx;
 }
 
 void Header::parse(Packet &packet) {
@@ -79,10 +82,16 @@ bool Header::updateRx(std::shared_ptr<Connector> connector) {
         case PL_BNO_SENSOR:
             connector->incrementData(ui_interface::PACKET_CTR_PL);
             break;
-        case PL_IMAGE:
-            connector->incrementData(ui_interface::PACKET_CTR_PL);
-            break;
+        //case PL_IMAGE:
+        //    connector->incrementData(ui_interface::PACKET_CTR_PL);
+        //    break;
         case PROPULSION:
+            connector->incrementData(ui_interface::PACKET_CTR_PP);
+            break;
+        case PP_DATA:
+            connector->incrementData(ui_interface::PACKET_CTR_PP);
+            break;
+        case PP_COMMAND:
             connector->incrementData(ui_interface::PACKET_CTR_PP);
             break;
     }

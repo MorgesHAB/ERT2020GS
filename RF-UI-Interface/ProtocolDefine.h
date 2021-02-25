@@ -37,10 +37,14 @@ namespace ui_interface {
         //////////////// RF modem
         /// Ignition
         IGNITION_STATUS,            // bool        ** true :  FIRE,  false : ABORTED
+        IGNITION_CONFIRMED,
+
         IGNITION_KEY_1_ACTIVATED,   // bool
         IGNITION_KEY_2_ACTIVATED,   // bool
         IGNITION_RED_BUTTON_PUSHED, // bool
         IGNITION_SENT,              // bool to eat
+        IGNITION_OFF_CLICKED,
+        IGNITION_OFF_ACK,
 
         /// Packet Rate
         PACKET_CTR_ALL,
@@ -56,7 +60,7 @@ namespace ui_interface {
 
         /// Header
         LAST_DATAGRAM_ID,         // uint8_t            **The ID of the last packet received
-        TX_PACKET_NR,        // uint32_t           **This is the last packet's number. // TODO delete (RF no longer use this)
+        TX_PACKET_NR,        // uint32_t           **This is the last packet's number.
         TIMESTAMP,           // time_t             **The Time of the last packet received
         TOTAL_RX_PACKET_CTR, //uint64_t         just increment when received a packet
 
@@ -135,12 +139,14 @@ namespace ui_interface {
         SECONDARY_EVENT_REACHED,//bool
         TOUCH_DOWN_REACHED,     //bool
 
-        /// GSE Commands
+        /// GSE Orders
 
         GSE_ORDER,              //enum GSEOrderValues
         GSE_ORDER_ACK,          //enum GSEOrderValues
+        GSE_PING,               //bool
+        GSE_PING_ACK,           //bool
 
-        //TODO Delete later
+
         GSE_OPEN_PURGE_VALVE,
         GSE_OPEN_FILL_VALVE,
         GSE_CLOSE_PURGE_VALVE,
@@ -150,12 +156,40 @@ namespace ui_interface {
         /// GSE orders
         GSE_ORDER_VALUE, // enum in DataStructures/GSE/GSEOrderValue.h
 
+        /// GSE states
+
+        GSE_FILL_VALVE_STATE,
+        GSE_PURGE_VALVE_STATE,
+        GSE_MAIN_IGNITION_STATE,
+        GSE_SECONDARY_IGNITION_STATE,
+        GSE_HOSE_DISCONNECT_STATE,
+
+
         /// GSE sensors
+        GSE_BATTERY_LEVEL,
+        GSE_TANK_TEMP,
         GSE_HOSE_PRESSURE,
         GSE_HOSE_TEMP,
         GSE_HOSE_STATUS,
         GSE_MOTOR_SPEED,
-        GSE_TANK_WEIGHT,
+        GSE_ROCKET_WEIGHT,
+        GSE_MAIN_IGNITION_CURRENT,
+        GSE_SECONDARY_IGNITION_CURRENT,
+        GSE_WIND_SPEED,
+
+
+        ///Propulsion commands
+        PP_COMMAND,         //enum in DataStructures/Propulsion/PPCommands.h
+
+        ///Propulsion Data
+
+        PP_PRESSURE_1,      //uint16_t
+        PP_PRESSURE_2,      //uint16_t
+        PP_TEMPERATURE_1,   //int16_t
+        PP_TEMPERATURE_2,   //int16_t
+        PP_TEMPERATURE_3,   //int16_t
+        PP_STATUS,          //uint16_t
+        PP_MOTOR_POSITION,  //int16_t
 
         /// Payload data
 
@@ -201,22 +235,23 @@ namespace ui_interface {
             IGNITION_RED_BUTTON_PUSHED,
             IGNITION_SENT,
 
+
             /// PacketNb
             PACKET_RX_RATE_CTR,
             RX_PACKET_CTR,
             CORRUPTED_PACKET_CTR,
 
             /// Header
-            LAST_DATAGRAM_ID, // uint8_t
-            TX_PACKET_NR,// uint32_t
-            TIMESTAMP, // time_t
+            LAST_DATAGRAM_ID,   // uint8_t
+            TX_PACKET_NR,       // uint32_t
+            TIMESTAMP,          // time_t
 
             /// GPS Data Structure
-            GPS_ALTITUDE,// float
-            GPS_LONGITUDE,// float
-            GPS_LATITUDE,// float
-            GPS_HDOP,    // float
-            GPS_SAT_NBR, // uint8_t
+            GPS_ALTITUDE,   // float
+            GPS_LONGITUDE,  // float
+            GPS_LATITUDE,   // float
+            GPS_HDOP,       // float
+            GPS_SAT_NBR,    // uint8_t
 
             // Telemetry Avionic Data
             T_ACCELEROMETER_X, T_ACCELEROMETER_Y,
@@ -255,6 +290,7 @@ namespace ui_interface {
             STATUS_AV_ID,
             STATUS_AV_VALUE,
             STATUS_AV_STATE,
+
             /// GSE orders
             GSE_ORDER_VALUE,
 
@@ -263,7 +299,6 @@ namespace ui_interface {
             GSE_HOSE_TEMP,
             GSE_HOSE_STATUS,
             GSE_MOTOR_SPEED,
-            GSE_TANK_WEIGHT
     };
 
 } // namespace

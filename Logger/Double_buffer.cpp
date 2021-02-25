@@ -3,10 +3,7 @@
 #include <iostream>
 #include <ios>
 #include <iosfwd>
-#include <fstream>
 #include <thread>
-#include <sstream>
-#include <iomanip>
 
 
 Double_buffer::Double_buffer(const std::string & filename) : output_file_(), filename_(filename), current_buffer(0){}
@@ -44,10 +41,6 @@ void Double_buffer::display() const
 
 void Double_buffer::log_buffer(size_t index){
 
-
-    //std::cout << "inside the thread";
-    //std::cout << "Logging the buffer no: " + std::to_string(index) + "\n" << std::endl;
-
     size_t last_position(buffers_[index].position()); //last position not valid i.e not ready to fill
     if(last_position==0) return;
 
@@ -57,9 +50,6 @@ void Double_buffer::log_buffer(size_t index){
         std::cerr << "Could not open file for writing, data will be lost." << std::endl << std::flush;
         return;
     }
-
-
-
 
     for(size_t i(0); i < last_position; ++i){
         output_file_ << (buffers_[index])[i] << std::endl << std::endl;

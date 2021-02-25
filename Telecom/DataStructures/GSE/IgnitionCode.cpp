@@ -6,22 +6,23 @@
  * \author      ISOZ Lionel - EPFL EL BA3
  * \date        07.12.2019	
  */
+
 // Configuration of the GPIO pin of the Raspberry Pi 4
 //  /!\ it's the nbr in BCM format, not the pin number
 // GPIO which activates the relay which activates the igniter
 #define GPIO_OUT_IGNITION       20
 // GPIO input on the Ground Station
-#define GPIO_IN_KEY_1           11
-#define GPIO_IN_KEY_2           10
-#define GPIO_IN_RED_BUTTON      9
+#define GPIO_IN_KEY_1           24  //WHITE-ORANGE
+#define GPIO_IN_KEY_2           25  //WHITE-BLUE
+#define GPIO_IN_RED_BUTTON      23  //BLUE 
 // GPIO output of the red button LED
-#define GPIO_OUT_LED_BUTTON     23
+#define GPIO_OUT_LED_BUTTON     22 //WHITE-BROWN EXT
 // GPIO on the RPi to read the ignition code via the switches
 // Code order on the dipswitch from left to right : code 3 | code 2 | code 1 | code 0
-#define GPIO_IN_CODE0           25
-#define GPIO_IN_CODE1           24
-#define GPIO_IN_CODE2           27
-#define GPIO_IN_CODE3           22
+#define GPIO_IN_CODE0           10 //WHITE-GREEN
+#define GPIO_IN_CODE1           9 //GREEN
+#define GPIO_IN_CODE2           11 //WHITE-BROWN
+#define GPIO_IN_CODE3           8 //PURPLE
 
 #define SHUTDOWN_TIME           10000000 // on RPi should be 10000
 //////////////////////////////////////
@@ -36,19 +37,25 @@
 #include "IgnitionCode.h"
 #include "GSEOrderValue.h"
 
+static const uint8_t MAIN_IGNITION_ON = 0x0C;
+static const uint8_t MAIN_IGNITION_OFF = 0x0D;
+static const uint8_t NO_IGNITION_ORDER = 0x00;
+
+
+// #define RUNNING_ON_RPI
 using namespace ignit;
 
-IgnitionCode::IgnitionCode() : code(4, false), ignitionCode(0),
-                               myState(SLEEP), receivedState(SLEEP),
-                               ignitionTime(0) {
+IgnitionCode::IgnitionCode() : code({false}), ignitionCode(0), order(NO_IGNITION_ORDER) {
 #ifdef RUNNING_ON_RPI
-    wiringPiSetupGpio();
+    wiringPiSetupSys();
     // Configure GPIO OUT for the igniter
     pinMode(GPIO_OUT_IGNITION, OUTPUT);
     digitalWrite(GPIO_OUT_IGNITION, LOW);
+
     // Configure the red button LED
     pinMode(GPIO_OUT_LED_BUTTON, OUTPUT);
     digitalWrite(GPIO_OUT_LED_BUTTON, LOW);
+
     // Configure GPIO pins as an input
     pinMode(GPIO_IN_KEY_1, INPUT);
     pinMode(GPIO_IN_KEY_2, INPUT);
@@ -61,29 +68,8 @@ IgnitionCode::IgnitionCode() : code(4, false), ignitionCode(0),
 #endif
 }
 
+
 bool IgnitionCode::updateTx(std::shared_ptr<Connector> connector) {
-    // GSE Side
-    if (myState == IGNITION_ON && ignitionTime != 0) {
-        if (clock() - ignitionTime > SHUTDOWN_TIME) {
-            #ifdef RUNNING_ON_RPI
-            digitalWrite(GPIO_OUT_IGNITION, LOW);
-            #endif
-            myState = SLEEP;
-            std::cout << "Ignition circuit deactivated automatically" << std::endl;
-        }
-    }
-    if (receivedState == WAITING_ARMED_VALIDATION ||
-        receivedState == WAITING_IGNITION_VALIDATION) {
-        receivedState = SLEEP;
-        return true;    // GSE side will send myState (ACK)
-    }
-    // debug !!!!!!!!!!!!!!!!
-    /*if (connector->eatData<bool>(ui_interface::IGNITION_CLICKED, false)) {
-        ignitionCode = 3;
-        if (myState == WAITING_ARMED_VALIDATION) myState = WAITING_IGNITION_VALIDATION;
-        else myState = WAITING_ARMED_VALIDATION;
-        return true;
-    }*/
 
 #ifdef RUNNING_ON_RPI
     // run on GST
@@ -105,45 +91,47 @@ bool IgnitionCode::updateTx(std::shared_ptr<Connector> connector) {
     code[1] = digitalRead(GPIO_IN_CODE1);
     code[2] = digitalRead(GPIO_IN_CODE2);
     code[3] = digitalRead(GPIO_IN_CODE3);
+    std::cout << code[0] << code[1] << code[2] << code[3] << std::endl;
     ignitionCode = code[3] << 3 | code[2] << 2 | code[1] << 1 | code[0];
     connector->setData(ui_interface::TX_IGNITION_CODE, ignitionCode);
 
     // true if send Ignition packet
     if (key1 && key2 && redButtonPressed &&
         connector->eatData<bool>(ui_interface::IGNITION_CLICKED, false)) {
-        if (myState == WAITING_ARMED_VALIDATION) myState = WAITING_IGNITION_VALIDATION;
-        else myState = WAITING_ARMED_VALIDATION;
-        return true;    // Ignition will be send
+        order = MAIN_IGNITION_ON;
+        return true;    // Ignition will be sent
+    }
+    if(connector->getData<bool>(ui_interface::IGNITION_OFF_CLICKED)){
+        order = MAIN_IGNITION_OFF;
+        return true;
     }
     return false;
 #endif
 }
 
 void IgnitionCode::write(Packet &packet) {
+    packet.write(order);
     packet.write(ignitionCode);
-    packet.write(myState);
 }
 
 
 void IgnitionCode::parse(Packet &packet) {
-    packet.parse(ignitionCode);
-    packet.parse(receivedState);
-    for (uint8_t i(0); i < code.size(); ++i) {
-        code[i] = ignitionCode & (1 << i);
-    }
+    packet.parse(order);
+    packet.parse(gseCode);
 }
 
 bool IgnitionCode::updateRx(std::shared_ptr<Connector> connector) {
 
-    // GST side
-    if (receivedState != WAITING_ARMED_VALIDATION &&
-        receivedState != WAITING_IGNITION_VALIDATION) {
-        connector->setData(ui_interface::IGNITION_STATUS, receivedState);
-        if (receivedState == IGNITION_ON) myState = SLEEP;
-        return true;
+    if(not(ignitionCode xor gseCode)){ //codes identical
+        connector->setData(ui_interface::IGNITION_CONFIRMED, true);
+    }
+    if(order == MAIN_IGNITION_OFF){
+        connector->setData(ui_interface::IGNITION_OFF_ACK, true);
     }
 
-#ifdef RUNNING_ON_RPI
+    #ifdef RUNNING_ON_RPI
+/*
+
     // run on GSE
     using namespace ignit;
     std::vector<int> codeRx = {digitalRead(GPIO_IN_CODE0),
@@ -184,7 +172,11 @@ bool IgnitionCode::updateRx(std::shared_ptr<Connector> connector) {
     }
 
     return true;
+    */
+    
 #endif
+
+
 }
 
 void IgnitionCode::print() const {

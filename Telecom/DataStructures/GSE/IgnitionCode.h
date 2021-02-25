@@ -13,7 +13,7 @@
 #ifndef IgnitionCode_H
 #define IgnitionCode_H
 
-#include <vector>
+#include <array>
 #include <Data.h>
 #include "IgnitionStates.h"
 
@@ -29,10 +29,8 @@ public:
     bool updateRx(std::shared_ptr<Connector> connector) override;
 
 private:
-    std::vector<bool> code;
-    uint8_t ignitionCode;
-    ignit::IgnitionState myState, receivedState;
-    clock_t ignitionTime;
+    std::array<bool,4> code;
+    uint8_t ignitionCode, order, gseCode;
 };
 
 

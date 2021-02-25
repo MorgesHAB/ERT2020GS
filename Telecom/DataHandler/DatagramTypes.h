@@ -22,35 +22,35 @@ namespace DatagramType {
         //TODO This may change for project 2021, no ability to add a random packet ID without using empty enums
         /// Avionic Datagram
 
-            AV_GPS,                 //ID: 0x00
-            AV_STATUS,              //ID: 0x01
-            AV_TELEMETRY,           //ID: 0x02
-            AV_DEBUG,               //ID: 0x03
+            AV_GPS,                 //ID: 0x01
+            AV_STATUS,              //ID: 0x02
+            AV_TELEMETRY,           //ID: 0x03
+            AV_DEBUG,               //ID: 0x04
 
 
 
 
         /// GSE Datagram
-            GSE_ORDER,              //ID: 0x04
-            GSE_SENSORS,            //ID: 0x05
-            GSE_IGNITION,           //ID: 0x06
+            EMPTY5,              //ID: 0x05
+            EMPTY6,              //ID: 0x06
+            GSE_IGNITION,        //ID: 0x07
 
         /// Payload Datagram
-            PL_IMAGE,
-            EMPTY9,
-            EMPTY10,
-            EMPTY11,
-            EMPTY12,
-            EMPTY13,
+            EMPTY8,
+            GSE_ORDER,
+            GSE_SENSORS,
+            GSE_PING,
+            PP_COMMAND,
+            PP_DATA,
 
         /// Propulsion Datagram
             PROPULSION,
 
         /// Air Brakes Datagram
             AIR_BRAKES ,
-            EMPTY,
-            EMPTY1,
-            EMPTY2,
+            EMPTY16,
+            EMPTY17,
+            EMPTY18,
             EMPTY19,
             PL_TEMP,
             PL_BNO_SENSOR,
@@ -58,9 +58,7 @@ namespace DatagramType {
             PL_GPS,
             PL_ORDER,
             PL_STATE,
-
-
-            ENUM25,
+            PL_IMAGE,
 
         /// [Subsystem Name] Datagram
         /// ...
@@ -221,21 +219,23 @@ namespace DatagramType {
 
     static std::string getDatagramIDName(uint8_t DatagramID) {
         switch (DatagramID) {
-            case AV_GPS: return "AV GPS";
-            case AV_STATUS: return "AV STATUS";
-            case AV_TELEMETRY: return "AV TELEMETRY";
-            case AV_DEBUG: return "AV DEBUG";
-            case PROPULSION: return "PROPULSION";
-            case AIR_BRAKES: return "AIR BRAKES";
-            case GSE_ORDER: return "GSE ORDER";
-            case GSE_SENSORS: return "GSE SENSORS";
-            case GSE_IGNITION: return "GSE IGNITION";
-            case PL_STATE: return "PL STATE";
-            case PL_IMAGE: return "PL IMAGE";
-            case PL_GPS: return "PL GPS";
-            case PL_ORDER: return "PL ORDER";
-            case PL_BME_SENSOR: return "PL BME SENSOR";
-            case PL_BNO_SENSOR: return "PL BNO SENSOR";
+            case AV_GPS: return "AV-GPS";
+            case AV_STATUS: return "AV-STATUS";
+            case AV_TELEMETRY: return "AV-TELEMETRY";
+            case AV_DEBUG: return "AV-DEBUG";
+            case PP_COMMAND: return "PP-COMMAND";
+            case PP_DATA: return "PP-DATA";
+            case AIR_BRAKES: return "AIR-BRAKES";
+            case GSE_ORDER: return "GSE-ORDER";
+            case GSE_SENSORS: return "GSE-SENSORS";
+            case GSE_IGNITION: return "GSE-IGNITION";
+            case GSE_PING: return "GSE-PING";
+            case PL_STATE: return "PL-STATE";
+            case PL_IMAGE: return "PL-IMAGE";
+            case PL_GPS: return "PL-GPS";
+            case PL_ORDER: return "PL-ORDER";
+            case PL_BME_SENSOR: return "PL-BME-SENSOR";
+            case PL_BNO_SENSOR: return "PL-BNO-SENSOR";
             case TEST: return "TEST";
             default: return "Unknown";
         }
@@ -244,3 +244,4 @@ namespace DatagramType {
 } // namespace
 
 #endif //DatagramTypes_H
+
