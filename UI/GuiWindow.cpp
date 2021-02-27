@@ -435,10 +435,10 @@ void GuiWindow::refresh_gse() {
     battery_level_panel->setText(qstr(data_->getData<float>(ui_interface::GSE_BATTERY_LEVEL)));
     main_current_panel->setText(qstr(data_->getData<float>(ui_interface::GSE_MAIN_IGNITION_CURRENT)));
     secondary_current_panel->setText(qstr(data_->getData<float>(ui_interface::GSE_SECONDARY_IGNITION_CURRENT)));
-    current_1_panel->setText(qstr(data_->getData<float>(ui_interface::GSE_MAIN_DISCONNECT_CURRENT)));
-    current_2_panel->setText(qstr(data_->getData<float>(ui_interface::GSE_SECONDARY_DISCONNECT_CURRENT)));
-    current_3_panel->setText(qstr(data_->getData<float>(ui_interface::GSE_FILL_VALVE_CURRENT)));
-    current_4_panel->setText(qstr(data_->getData<float>(ui_interface::GSE_PURGE_VALVE_CURRENT)));
+    main_disconnect_current_panel->setText(qstr(data_->getData<float>(ui_interface::GSE_MAIN_DISCONNECT_CURRENT)));
+    secondary_disconnect_current_panel->setText(qstr(data_->getData<float>(ui_interface::GSE_SECONDARY_DISCONNECT_CURRENT)));
+    fill_valve_current_label->setText(qstr(data_->getData<float>(ui_interface::GSE_FILL_VALVE_CURRENT)));
+    purge_valve_current_label->setText(qstr(data_->getData<float>(ui_interface::GSE_PURGE_VALVE_CURRENT)));
     wind_speed_panel->setText(qstr(data_->getData<float>(ui_interface::GSE_WIND_SPEED)));
 
 }
