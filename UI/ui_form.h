@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'WasserfallenGUIEOAZUo.ui'
+** Form generated from reading UI file 'MainGUItKzZCJ.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.15.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef WASSERFALLENGUIEOAZUO_H
-#define WASSERFALLENGUIEOAZUO_H
+#ifndef MAINGUITKZZCJ_H
+#define MAINGUITKZZCJ_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
@@ -311,10 +311,10 @@ public:
     QLabel *label_22;
     QLabel *label_23;
     QLabel *label_25;
-    QLabel *current_1_panel;
-    QLabel *current_2_panel;
-    QLabel *current_3_panel;
-    QLabel *current_4_panel;
+    QLabel *main_disconnect_current_panel;
+    QLabel *secondary_disconnect_current_panel;
+    QLabel *fill_valve_current_label;
+    QLabel *purge_valve_current_label;
     QWidget *tab_9;
     QHBoxLayout *horizontalLayout_7;
     QWidget *gse_control_box;
@@ -1901,29 +1901,29 @@ public:
 
         gridLayout_16->addWidget(label_25, 10, 2, 1, 1);
 
-        current_1_panel = new QLabel(widget_7);
-        current_1_panel->setObjectName(QString::fromUtf8("current_1_panel"));
-        current_1_panel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+        main_disconnect_current_panel = new QLabel(widget_7);
+        main_disconnect_current_panel->setObjectName(QString::fromUtf8("main_disconnect_current_panel"));
+        main_disconnect_current_panel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
-        gridLayout_16->addWidget(current_1_panel, 7, 1, 1, 1);
+        gridLayout_16->addWidget(main_disconnect_current_panel, 7, 1, 1, 1);
 
-        current_2_panel = new QLabel(widget_7);
-        current_2_panel->setObjectName(QString::fromUtf8("current_2_panel"));
-        current_2_panel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+        secondary_disconnect_current_panel = new QLabel(widget_7);
+        secondary_disconnect_current_panel->setObjectName(QString::fromUtf8("secondary_disconnect_current_panel"));
+        secondary_disconnect_current_panel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
-        gridLayout_16->addWidget(current_2_panel, 8, 1, 1, 1);
+        gridLayout_16->addWidget(secondary_disconnect_current_panel, 8, 1, 1, 1);
 
-        current_3_panel = new QLabel(widget_7);
-        current_3_panel->setObjectName(QString::fromUtf8("current_3_panel"));
-        current_3_panel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+        fill_valve_current_label = new QLabel(widget_7);
+        fill_valve_current_label->setObjectName(QString::fromUtf8("fill_valve_current_label"));
+        fill_valve_current_label->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
-        gridLayout_16->addWidget(current_3_panel, 9, 1, 1, 1);
+        gridLayout_16->addWidget(fill_valve_current_label, 9, 1, 1, 1);
 
-        current_4_panel = new QLabel(widget_7);
-        current_4_panel->setObjectName(QString::fromUtf8("current_4_panel"));
-        current_4_panel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+        purge_valve_current_label = new QLabel(widget_7);
+        purge_valve_current_label->setObjectName(QString::fromUtf8("purge_valve_current_label"));
+        purge_valve_current_label->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
-        gridLayout_16->addWidget(current_4_panel, 10, 1, 1, 1);
+        gridLayout_16->addWidget(purge_valve_current_label, 10, 1, 1, 1);
 
 
         horizontalLayout_9->addWidget(widget_7);
@@ -2280,10 +2280,10 @@ public:
         label_22->setText(QCoreApplication::translate("Form", " [mA]", nullptr));
         label_23->setText(QCoreApplication::translate("Form", " [mA]", nullptr));
         label_25->setText(QCoreApplication::translate("Form", " [mA]", nullptr));
-        current_1_panel->setText(QString());
-        current_2_panel->setText(QString());
-        current_3_panel->setText(QString());
-        current_4_panel->setText(QString());
+        main_disconnect_current_panel->setText(QString());
+        secondary_disconnect_current_panel->setText(QString());
+        fill_valve_current_label->setText(QString());
+        purge_valve_current_label->setText(QString());
         tabWidget_4->setTabText(tabWidget_4->indexOf(tab_10), QCoreApplication::translate("Form", "GSE Data", nullptr));
         purge_label->setText(QCoreApplication::translate("Form", "Purge", nullptr));
         filling_open_button->setText(QCoreApplication::translate("Form", "Open", nullptr));
@@ -2306,4 +2306,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // WASSERFALLENGUIEOAZUO_H
+#endif // MAINGUITKZZCJ_H
