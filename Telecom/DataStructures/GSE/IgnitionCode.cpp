@@ -36,6 +36,7 @@
 
 #include "IgnitionCode.h"
 #include "GSEOrderValue.h"
+#include "../Propulsion/PPCommands.h"
 
 static const uint8_t MAIN_IGNITION_ON = 0x0C;
 static const uint8_t MAIN_IGNITION_OFF = 0x0D;
@@ -99,7 +100,7 @@ bool IgnitionCode::updateTx(std::shared_ptr<Connector> connector) {
     if (key1 && key2 && redButtonPressed &&
         connector->eatData<bool>(ui_interface::IGNITION_CLICKED, false)) {
         order = MAIN_IGNITION_ON;
-        data_->setData(ui_interface::PP_COMMAND, pp::START_VALVE_OPERATION);
+        connector->setData(ui_interface::PP_COMMAND, pp::START_VALVE_OPERATION);
         return true;    // Ignition will be sent
     }
     if(connector->getData<bool>(ui_interface::IGNITION_OFF_CLICKED)){
