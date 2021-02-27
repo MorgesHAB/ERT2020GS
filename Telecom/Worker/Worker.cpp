@@ -12,7 +12,7 @@
 #include <Xbee.h>
 #include "Worker.h"
 
-#define IGNITION_PACKET_FLOW_NBR        5
+#define PACKET_FLOW_NBR        5
 
 Worker::Worker(std::shared_ptr<Connector> connector) : connector(connector) {}
 
@@ -53,38 +53,50 @@ void Worker::mainRoutine() {
 
 void Worker::RFroutine(DataHandler& dataHandler, RFmodem* rfmodem) {
     // Manage Reception
+
     if (rfmodem->receive(dataHandler)) {
         //if (connector->getData<bool>(ui_interface::LOGGING_ACTIVE)) // always log -waiting a button
             dataHandler.logLastRxPacket();
         dataHandler.printLastRxPacket();
     }
+
     // Manage Transmission
+    
     // Manage Ignition
     if (dataHandler.updateTx(DatagramType::GSE_IGNITION)) {
         // /!\ Critical point /!\.
-        for (int i(0); i < IGNITION_PACKET_FLOW_NBR; ++i) {
+        for (int i(0); i < PACKET_FLOW_NBR; ++i) {
             rfmodem->send(dataHandler.getPacket(DatagramType::GSE_IGNITION));
             std::this_thread::sleep_for(std::chrono::milliseconds(10));
         }
         connector->setData(ui_interface::IGNITION_SENT, true);
     }
 
-    // Manage Image Transmission
-    /*
-    if (dataHandler.updateTx(DatagramType::PL_IMAGE))
-        rfmodem->send(dataHandler.getPacket(DatagramType::PL_IMAGE));
-    */
+
     // Manage GSE Orders
-    if (dataHandler.updateTx(DatagramType::GSE_ORDER))
-        rfmodem->send(dataHandler.getPacket(DatagramType::GSE_ORDER));
+    if (dataHandler.updateTx(DatagramType::GSE_ORDER)) {
+        for (int i(0); i < PACKET_FLOW_NBR; ++i) {
+            rfmodem->send(dataHandler.getPacket(DatagramType::GSE_ORDER));
+            std::this_thread::sleep_for(std::chrono::milliseconds(10));
+        }
+    }
 
     //Manage GSE Ping
-    if (dataHandler.updateTx(DatagramType::GSE_PING))
-        rfmodem->send(dataHandler.getPacket(DatagramType::GSE_PING));
+    if (dataHandler.updateTx(DatagramType::GSE_PING)) {
+            rfmodem->send(dataHandler.getPacket(DatagramType::GSE_PING));
+    }
 
     //Manage PP Commands
-    if (dataHandler.updateTx(DatagramType::PP_COMMAND))
-        rfmodem->send(dataHandler.getPacket(DatagramType::PP_COMMAND));
+    if (dataHandler.updateTx(DatagramType::PP_COMMAND)){
+        for (int i(0); i < PACKET_FLOW_NBR; ++i) {
+            rfmodem->send(dataHandler.getPacket(DatagramType::PP_COMMAND));
+            std::this_thread::sleep_for(std::chrono::milliseconds(10));
+        }
+    }
+    
+    // Manage Image Transmission
+    /*if (dataHandler.updateTx(DatagramType::PL_IMAGE))
+        rfmodem->send(dataHandler.getPacket(DatagramType::PL_IMAGE));*/
 
     // if need to send AT command for RSSI
     if (connector->eatData<bool>(ui_interface::RSSI_READ_ORDER, false))
