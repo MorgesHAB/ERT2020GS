@@ -34,6 +34,13 @@ namespace ui_interface {
         // logging
                 LOGGING_ACTIVE,             // bool - GUI button
 
+        /// UI LCS
+        UI_LCS_CHECK_1,
+        UI_LCS_CHECK_2,
+        UI_LCS_CHECK_3,
+        UI_LCS_CHECK_4,
+        UI_LCS_LAUNCH,
+
         //////////////// RF modem
         /// Ignition
         IGNITION_STATUS,            // bool        ** true :  FIRE,  false : ABORTED

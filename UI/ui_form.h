@@ -1,16 +1,17 @@
 /********************************************************************************
-** Form generated from reading UI file 'MainGUItKzZCJ.ui'
+** Form generated from reading UI file 'MainGUIfppvwE.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.15.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef MAINGUITKZZCJ_H
-#define MAINGUITKZZCJ_H
+#ifndef MAINGUIFPPVWE_H
+#define MAINGUIFPPVWE_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QCheckBox>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QGridLayout>
@@ -329,6 +330,17 @@ public:
     QLabel *label_2;
     QPushButton *echo_button;
     QPushButton *ignition_off_button;
+    QWidget *lcs_tab;
+    QHBoxLayout *horizontalLayout_71;
+    QWidget *lcs_container;
+    QVBoxLayout *verticalLayout_2;
+    QCheckBox *lcs_button;
+    QWidget *lcs_check_container;
+    QHBoxLayout *horizontalLayout_12;
+    QCheckBox *lcs_check_1;
+    QCheckBox *lcs_check_2;
+    QCheckBox *lcs_check_3;
+    QCheckBox *lcs_check_4;
 
     void setupUi(QWidget *Form)
     {
@@ -1993,8 +2005,186 @@ public:
         horizontalLayout_7->addWidget(gse_control_box);
 
         tabWidget_4->addTab(tab_9, QString());
+        lcs_tab = new QWidget();
+        lcs_tab->setObjectName(QString::fromUtf8("lcs_tab"));
+        horizontalLayout_71 = new QHBoxLayout(lcs_tab);
+        horizontalLayout_71->setObjectName(QString::fromUtf8("horizontalLayout_71"));
+        lcs_container = new QWidget(lcs_tab);
+        lcs_container->setObjectName(QString::fromUtf8("lcs_container"));
+        QSizePolicy sizePolicy3(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy3.setHorizontalStretch(0);
+        sizePolicy3.setVerticalStretch(0);
+        sizePolicy3.setHeightForWidth(lcs_container->sizePolicy().hasHeightForWidth());
+        lcs_container->setSizePolicy(sizePolicy3);
+        verticalLayout_2 = new QVBoxLayout(lcs_container);
+        verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
+        lcs_button = new QCheckBox(lcs_container);
+        lcs_button->setObjectName(QString::fromUtf8("lcs_button"));
+        lcs_button->setEnabled(true);
+        sizePolicy.setHeightForWidth(lcs_button->sizePolicy().hasHeightForWidth());
+        lcs_button->setSizePolicy(sizePolicy);
+        lcs_button->setTabletTracking(false);
+        lcs_button->setFocusPolicy(Qt::NoFocus);
+        lcs_button->setAutoFillBackground(false);
+        lcs_button->setStyleSheet(QString::fromUtf8("QCheckBox {\n"
+"	min-width: 100%;\n"
+"	min-height:100%;\n"
+"	spacing: 0;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator {\n"
+"	width:180%;\n"
+"	height: 180%;\n"
+"	spacing: 0;\n"
+"    subcontrol-position: center;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked {\n"
+"background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:\n"
+"0.5, fx:0.5, fy:0.5, \n"
+"stop:0 rgba(235, 0, 0, 255), \n"
+"stop:0.85 rgba(200, 0, 0, 255), \n"
+"stop:0.85001 rgba(10,0,0,255), \n"
+"stop:0.90 rgba(10,0,0,255), \n"
+"stop:0.9001 rgba(10,0,0,0));\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked:hover {\n"
+"background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:\n"
+"0.5, fx:0.5, fy:0.5, \n"
+"stop:0 rgba(255, 50, 50, 255), \n"
+"stop:0.85 rgba(200, 0, 0, 255), \n"
+"stop:0.85001 rgba(10,0,0,255), \n"
+"stop:0.90 rgba(10,0,0,255), \n"
+"stop:0.9001 rgba(10,0,0,0));\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked:pressed {\n"
+"background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:\n"
+"0.5, fx:0.5, fy:0.5, \n"
+"stop:0 rgba(15"
+                        "0, 0, 0, 255), \n"
+"stop:0.85 rgba(200, 0, 0, 255), \n"
+"stop:0.85001 rgba(10,0,0,255), \n"
+"stop:0.90 rgba(10,0,0,255), \n"
+"stop:0.9001 rgba(10,0,0,0));\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:checked {\n"
+"background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:\n"
+"0.5, fx:0.5, fy:0.5, \n"
+"stop:0 rgba(100, 0, 0, 255), \n"
+"stop:0.85 rgba(80, 0, 0, 255), \n"
+"stop:0.85001 rgba(10,0,0,255), \n"
+"stop:0.90 rgba(10,0,0,255), \n"
+"stop:0.9001 rgba(10,0,0,0));\n"
+"}"));
+        lcs_button->setCheckable(true);
+        lcs_button->setChecked(false);
+        lcs_button->setTristate(false);
 
-        gridLayout_9->addWidget(tabWidget_4, 1, 0, 1, 3);
+        verticalLayout_2->addWidget(lcs_button);
+
+        lcs_check_container = new QWidget(lcs_container);
+        lcs_check_container->setObjectName(QString::fromUtf8("lcs_check_container"));
+        QSizePolicy sizePolicy4(QSizePolicy::Expanding, QSizePolicy::Maximum);
+        sizePolicy4.setHorizontalStretch(0);
+        sizePolicy4.setVerticalStretch(0);
+        sizePolicy4.setHeightForWidth(lcs_check_container->sizePolicy().hasHeightForWidth());
+        lcs_check_container->setSizePolicy(sizePolicy4);
+        horizontalLayout_12 = new QHBoxLayout(lcs_check_container);
+        horizontalLayout_12->setObjectName(QString::fromUtf8("horizontalLayout_12"));
+        horizontalLayout_12->setContentsMargins(10, -1, 10, -1);
+        lcs_check_1 = new QCheckBox(lcs_check_container);
+        lcs_check_1->setObjectName(QString::fromUtf8("lcs_check_1"));
+        QSizePolicy sizePolicy5(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        sizePolicy5.setHorizontalStretch(0);
+        sizePolicy5.setVerticalStretch(0);
+        sizePolicy5.setHeightForWidth(lcs_check_1->sizePolicy().hasHeightForWidth());
+        lcs_check_1->setSizePolicy(sizePolicy5);
+        lcs_check_1->setMinimumSize(QSize(30, 30));
+        lcs_check_1->setStyleSheet(QString::fromUtf8("QCheckBox::indicator {\n"
+"	width: 50%;\n"
+"	height:50%;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked {\n"
+"background-color:qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(100, 0, 0), stop:0.4 rgba(55, 0, 0, 255), stop:0.5 rgba(55,0,0,200), stop:0.55 rgba(55, 0, 0, 0));\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:checked {\n"
+"background-color:qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(255, 100, 100), stop:0.4 rgba(255, 0, 0, 255), stop:0.5 rgba(255,0,0,255), stop:0.7 rgba(255, 158, 158, 0));\n"
+"}"));
+        lcs_check_1->setIconSize(QSize(0, 0));
+        lcs_check_1->setChecked(true);
+        lcs_check_1->setTristate(false);
+
+        horizontalLayout_12->addWidget(lcs_check_1, 0, Qt::AlignHCenter);
+
+        lcs_check_2 = new QCheckBox(lcs_check_container);
+        lcs_check_2->setObjectName(QString::fromUtf8("lcs_check_2"));
+        lcs_check_2->setStyleSheet(QString::fromUtf8("QCheckBox::indicator {\n"
+"	width: 50%;\n"
+"	height:50%;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked {\n"
+"background-color:qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(100, 0, 0), stop:0.4 rgba(55, 0, 0, 255), stop:0.5 rgba(55,0,0,200), stop:0.55 rgba(55, 0, 0, 0));\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:checked {\n"
+"background-color:qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(255, 100, 100), stop:0.4 rgba(255, 0, 0, 255), stop:0.5 rgba(255,0,0,255), stop:0.7 rgba(255, 158, 158, 0));\n"
+"}"));
+
+        horizontalLayout_12->addWidget(lcs_check_2, 0, Qt::AlignHCenter);
+
+        lcs_check_3 = new QCheckBox(lcs_check_container);
+        lcs_check_3->setObjectName(QString::fromUtf8("lcs_check_3"));
+        sizePolicy.setHeightForWidth(lcs_check_3->sizePolicy().hasHeightForWidth());
+        lcs_check_3->setSizePolicy(sizePolicy);
+        lcs_check_3->setStyleSheet(QString::fromUtf8("QCheckBox::indicator {\n"
+"	width: 50%;\n"
+"	height:50%;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked {\n"
+"background-color:qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(100, 0, 0), stop:0.4 rgba(55, 0, 0, 255), stop:0.5 rgba(55,0,0,200), stop:0.55 rgba(55, 0, 0, 0));\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:checked {\n"
+"background-color:qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(255, 100, 100), stop:0.4 rgba(255, 0, 0, 255), stop:0.5 rgba(255,0,0,255), stop:0.7 rgba(255, 158, 158, 0));\n"
+"}"));
+        lcs_check_3->setChecked(true);
+
+        horizontalLayout_12->addWidget(lcs_check_3, 0, Qt::AlignHCenter);
+
+        lcs_check_4 = new QCheckBox(lcs_check_container);
+        lcs_check_4->setObjectName(QString::fromUtf8("lcs_check_4"));
+        lcs_check_4->setStyleSheet(QString::fromUtf8("QCheckBox::indicator {\n"
+"	width: 50%;\n"
+"	height:50%;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked {\n"
+"background-color:qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(100, 0, 0), stop:0.4 rgba(55, 0, 0, 255), stop:0.5 rgba(55,0,0,200), stop:0.55 rgba(55, 0, 0, 0));\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:checked {\n"
+"background-color:qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(255, 100, 100), stop:0.4 rgba(255, 0, 0, 255), stop:0.5 rgba(255,0,0,255), stop:0.7 rgba(255, 158, 158, 0));\n"
+"}"));
+        lcs_check_4->setChecked(false);
+
+        horizontalLayout_12->addWidget(lcs_check_4, 0, Qt::AlignHCenter);
+
+
+        verticalLayout_2->addWidget(lcs_check_container);
+
+
+        horizontalLayout_71->addWidget(lcs_container);
+
+        tabWidget_4->addTab(lcs_tab, QString());
+
+        gridLayout_9->addWidget(tabWidget_4, 1, 0, 1, 4);
 
 
         horizontalLayout_11->addWidget(right_widget);
@@ -2006,7 +2196,7 @@ public:
         tabWidget_2->setCurrentIndex(0);
         tabWidget_3->setCurrentIndex(0);
         tabWidget->setCurrentIndex(1);
-        tabWidget_4->setCurrentIndex(1);
+        tabWidget_4->setCurrentIndex(3);
 
 
         QMetaObject::connectSlotsByName(Form);
@@ -2296,6 +2486,12 @@ public:
         echo_button->setText(QCoreApplication::translate("Form", "Echo", nullptr));
         ignition_off_button->setText(QCoreApplication::translate("Form", "Ignition Off", nullptr));
         tabWidget_4->setTabText(tabWidget_4->indexOf(tab_9), QCoreApplication::translate("Form", "GSE Control", nullptr));
+        lcs_button->setText(QString());
+        lcs_check_1->setText(QString());
+        lcs_check_2->setText(QString());
+        lcs_check_3->setText(QString());
+        lcs_check_4->setText(QString());
+        tabWidget_4->setTabText(tabWidget_4->indexOf(lcs_tab), QCoreApplication::translate("Form", "LCS", nullptr));
     } // retranslateUi
 
 };
@@ -2306,4 +2502,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // MAINGUITKZZCJ_H
+#endif // MAINGUIFPPVWE_H

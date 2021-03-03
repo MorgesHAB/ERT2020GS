@@ -72,10 +72,14 @@ IgnitionCode::IgnitionCode() : code({false}), ignitionCode(0), order(NO_IGNITION
 
 bool IgnitionCode::updateTx(std::shared_ptr<Connector> connector) {
 
+bool key1, key2, redButtonPressed;
+
 #ifdef RUNNING_ON_RPI
     // run on GST
+
     // Read Data to print on Gui for visual confirmation of component operation
-    bool key1(digitalRead(GPIO_IN_KEY_1)), key2(digitalRead(GPIO_IN_KEY_2));
+    key1 = digitalRead(GPIO_IN_KEY_1);
+    key2 = digitalRead(GPIO_IN_KEY_2);
     connector->setData(ui_interface::IGNITION_KEY_1_ACTIVATED, key1);
     connector->setData(ui_interface::IGNITION_KEY_2_ACTIVATED, key2);
     if (key1 && key2 &&
@@ -84,7 +88,7 @@ bool IgnitionCode::updateTx(std::shared_ptr<Connector> connector) {
     } else {
         digitalWrite(GPIO_OUT_LED_BUTTON, LOW);
     }
-    bool redButtonPressed(digitalRead(GPIO_IN_RED_BUTTON));
+    redButtonPressed(digitalRead(GPIO_IN_RED_BUTTON));
     connector->setData(ui_interface::IGNITION_RED_BUTTON_PUSHED,
                        redButtonPressed);
 
@@ -95,20 +99,34 @@ bool IgnitionCode::updateTx(std::shared_ptr<Connector> connector) {
     std::cout << code[0] << code[1] << code[2] << code[3] << std::endl;
     ignitionCode = code[3] << 3 | code[2] << 2 | code[1] << 1 | code[0];
     connector->setData(ui_interface::TX_IGNITION_CODE, ignitionCode);
+ 
+#endif
 
-    // true if send Ignition packet
+    // check if gui launch press
+    bool lcs_launch_pressed = connector->getData<bool>(ui_interface::UI_LCS_LAUNCH);
+    
+    // if lcs_launch_pressed, then send GUI code
+    if (lcs_launch_pressed) {
+        code[0] = connector->getData<bool>(ui_interface::UI_LCS_CHECK_1);
+        code[1] = connector->getData<bool>(ui_interface::UI_LCS_CHECK_2);
+        code[2] = connector->getData<bool>(ui_interface::UI_LCS_CHECK_3);
+        code[3] = connector->getData<bool>(ui_interface::UI_LCS_CHECK_4);
+        std::cout << code[0] << code[1] << code[2] << code[3] << std::endl;
+        ignitionCode = code[3] << 3 | code[2] << 2 | code[1] << 1 | code[0];
+    }    
+
     if (key1 && key2 && redButtonPressed &&
         connector->eatData<bool>(ui_interface::IGNITION_CLICKED, false)) {
         order = MAIN_IGNITION_ON;
         connector->setData(ui_interface::PP_COMMAND, pp::START_VALVE_OPERATION);
         return true;    // Ignition will be sent
     }
+
     if(connector->getData<bool>(ui_interface::IGNITION_OFF_CLICKED)){
         order = MAIN_IGNITION_OFF;
         return true;
     }
     return false;
-#endif
 }
 
 void IgnitionCode::write(Packet &packet) {

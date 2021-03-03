@@ -55,6 +55,11 @@ public slots:
     void ignite_clicked();
     void theme_change_clicked();
     void file_transmission_pressed();
+    void lcs_1_checked();
+    void lcs_2_checked();
+    void lcs_3_checked();
+    void lcs_4_checked();
+    void lcs_launch();
 
 private:
     enum Theme {WHITE_ON_BLACK = 0, GREEN_ON_BLACK, BLACK_ON_WHITE, THEME_COUNT};
