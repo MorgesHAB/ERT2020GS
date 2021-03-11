@@ -29,6 +29,7 @@ if (USE_XBEE)
 
     if (USE_GUI)
         find_package(Qt5Widgets)
+        find_package(Qt5Charts)
         qt5_add_resources(RCC_SOURCES UI/assets.qrc)      # add resources to Gui
         add_subdirectory(UI)
         add_executable(${PROJECT_NAME} ${RCC_SOURCES} src/ERT2020GS.cpp)

@@ -20,6 +20,7 @@
 #include <chrono>
 #include <QApplication>
 #include <GuiWindow.h>
+#include <GraphWindow.h>
 #include <SecondWindow.h>
 #include <connector.h>
 #include <Worker.h>
@@ -37,6 +38,7 @@ int main(int argc, char **argv) {
     GuiWindow guiWindow(connector);
 
     //SecondWindow secWindow(connector);
+    GraphWindow graphWindow(connector) ;
 
     //run all threads
     std::thread t1(&Worker::mainRoutine, Worker(connector));
@@ -44,6 +46,7 @@ int main(int argc, char **argv) {
     std::this_thread::sleep_for(std::chrono::milliseconds(300));
 
     guiWindow.show();
+    graphWindow.show();
 
     std::this_thread::sleep_for(std::chrono::milliseconds(300));
 	

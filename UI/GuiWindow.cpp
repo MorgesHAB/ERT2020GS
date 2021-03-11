@@ -78,7 +78,8 @@ GuiWindow::GuiWindow(std::shared_ptr<Connector> connector)
 #endif
   initialize_style();
   initialize_slots_signals();
-  init_password();
+  //init_password();
+
   // grabKeyboard(); otherwise can't enter password
   timer_->start(REFRESH_RATE);
   logger.log(new Gui_Message("Gui started."));

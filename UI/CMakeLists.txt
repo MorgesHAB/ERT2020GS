@@ -20,6 +20,7 @@ file(GLOB SOURCES "*.cpp")
 add_library(${PROJECT_NAME} ${SOURCES})
 
 target_link_libraries(${PROJECT_NAME} Qt5::Widgets)
+target_link_libraries(${PROJECT_NAME} Qt5::Charts)
 if (USE_SOUND)
     target_link_libraries(${PROJECT_NAME} Qt5::Multimedia)
 endif (USE_SOUND)

@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'MainGUIfppvwE.ui'
+** Form generated from reading UI file 'MainGUIwXvMJe.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.15.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef MAINGUIFPPVWE_H
-#define MAINGUIFPPVWE_H
+#ifndef MAINGUIWXVMJE_H
+#define MAINGUIWXVMJE_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
@@ -2027,12 +2027,14 @@ public:
         lcs_button->setFocusPolicy(Qt::NoFocus);
         lcs_button->setAutoFillBackground(false);
         lcs_button->setStyleSheet(QString::fromUtf8("QCheckBox {\n"
+"	antialiasing: true;\n"
 "	min-width: 100%;\n"
 "	min-height:100%;\n"
 "	spacing: 0;\n"
 "}\n"
 "\n"
 "QCheckBox::indicator {\n"
+"	antialiasing: true;\n"
 "	width:180%;\n"
 "	height: 180%;\n"
 "	spacing: 0;\n"
@@ -2043,41 +2045,33 @@ public:
 "background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:\n"
 "0.5, fx:0.5, fy:0.5, \n"
 "stop:0 rgba(235, 0, 0, 255), \n"
-"stop:0.85 rgba(200, 0, 0, 255), \n"
-"stop:0.85001 rgba(10,0,0,255), \n"
-"stop:0.90 rgba(10,0,0,255), \n"
-"stop:0.9001 rgba(10,0,0,0));\n"
+"stop:0.999 rgba(235,0,0,255),\n"
+"stop:0.9999 rgba(235,0,0,0));\n"
 "}\n"
 "\n"
 "QCheckBox::indicator:unchecked:hover {\n"
 "background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:\n"
 "0.5, fx:0.5, fy:0.5, \n"
-"stop:0 rgba(255, 50, 50, 255), \n"
-"stop:0.85 rgba(200, 0, 0, 255), \n"
-"stop:0.85001 rgba(10,0,0,255), \n"
-"stop:0.90 rgba(10,0,0,255), \n"
-"stop:0.9001 rgba(10,0,0,0));\n"
+"stop:0 rgba(255, 0, 0, 255), \n"
+"stop:0.999 rgba(255,0,0,235),\n"
+"stop:0.9999 rgba(255,0,0,0));\n"
 "}\n"
 "\n"
 "QCheckBox::indicator:unchecked:pressed {\n"
 "background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:\n"
 "0.5, fx:0.5, fy:0.5, \n"
-"stop:0 rgba(15"
-                        "0, 0, 0, 255), \n"
-"stop:0.85 rgba(200, 0, 0, 255), \n"
-"stop:0.85001 rgba(10,0,0,255), \n"
-"stop:0.90 rgba(10,0,0,255), \n"
-"stop:0.9001 rgba(10,0,0,0));\n"
+"stop:0 rgba(200, 0, 0, 255), \n"
+"stop:0.999 rgba(200,0,0,235),\n"
+"stop:0.9999 rgba(200,0,0,0));\n"
 "}\n"
-"\n"
+""
+                        "\n"
 "QCheckBox::indicator:checked {\n"
 "background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:\n"
 "0.5, fx:0.5, fy:0.5, \n"
-"stop:0 rgba(100, 0, 0, 255), \n"
-"stop:0.85 rgba(80, 0, 0, 255), \n"
-"stop:0.85001 rgba(10,0,0,255), \n"
-"stop:0.90 rgba(10,0,0,255), \n"
-"stop:0.9001 rgba(10,0,0,0));\n"
+"stop:0 rgba(120, 0, 0, 255), \n"
+"stop:0.999 rgba(120,0,0,235),\n"
+"stop:0.9999 rgba(120,0,0,0));\n"
 "}"));
         lcs_button->setCheckable(true);
         lcs_button->setChecked(false);
@@ -2502,4 +2496,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // MAINGUIFPPVWE_H
+#endif // MAINGUIWXVMJE_H

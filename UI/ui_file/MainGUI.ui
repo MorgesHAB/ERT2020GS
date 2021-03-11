@@ -2974,12 +2974,14 @@ gridline-color: rgb(255, 0, 0);</string>
                </property>
                <property name="styleSheet">
                 <string notr="true">QCheckBox {
+	antialiasing: true;
 	min-width: 100%;
 	min-height:100%;
 	spacing: 0;
 }
 
 QCheckBox::indicator {
+	antialiasing: true;
 	width:180%;
 	height: 180%;
 	spacing: 0;
@@ -2990,40 +2992,32 @@ QCheckBox::indicator:unchecked {
 background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:
 0.5, fx:0.5, fy:0.5, 
 stop:0 rgba(235, 0, 0, 255), 
-stop:0.85 rgba(200, 0, 0, 255), 
-stop:0.85001 rgba(10,0,0,255), 
-stop:0.90 rgba(10,0,0,255), 
-stop:0.9001 rgba(10,0,0,0));
+stop:0.999 rgba(235,0,0,255),
+stop:0.9999 rgba(235,0,0,0));
 }
 
 QCheckBox::indicator:unchecked:hover {
 background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:
 0.5, fx:0.5, fy:0.5, 
-stop:0 rgba(255, 50, 50, 255), 
-stop:0.85 rgba(200, 0, 0, 255), 
-stop:0.85001 rgba(10,0,0,255), 
-stop:0.90 rgba(10,0,0,255), 
-stop:0.9001 rgba(10,0,0,0));
+stop:0 rgba(255, 0, 0, 255), 
+stop:0.999 rgba(255,0,0,235),
+stop:0.9999 rgba(255,0,0,0));
 }
 
 QCheckBox::indicator:unchecked:pressed {
 background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:
 0.5, fx:0.5, fy:0.5, 
-stop:0 rgba(150, 0, 0, 255), 
-stop:0.85 rgba(200, 0, 0, 255), 
-stop:0.85001 rgba(10,0,0,255), 
-stop:0.90 rgba(10,0,0,255), 
-stop:0.9001 rgba(10,0,0,0));
+stop:0 rgba(200, 0, 0, 255), 
+stop:0.999 rgba(200,0,0,235),
+stop:0.9999 rgba(200,0,0,0));
 }
 
 QCheckBox::indicator:checked {
 background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:
 0.5, fx:0.5, fy:0.5, 
-stop:0 rgba(100, 0, 0, 255), 
-stop:0.85 rgba(80, 0, 0, 255), 
-stop:0.85001 rgba(10,0,0,255), 
-stop:0.90 rgba(10,0,0,255), 
-stop:0.9001 rgba(10,0,0,0));
+stop:0 rgba(120, 0, 0, 255), 
+stop:0.999 rgba(120,0,0,235),
+stop:0.9999 rgba(120,0,0,0));
 }</string>
                </property>
                <property name="text">
