@@ -515,23 +515,21 @@ void GuiWindow::initialize_slots_signals() {
   connect(disconnect_wire_button, SIGNAL(pressed()), this,
           SLOT(disconnect_wire_pressed()));
   connect(echo_button, SIGNAL(pressed()), this, SLOT(echo_button_pressed()));
-  connect(start_valve_op_button, SIGNAL(pressed()), this,
-          SLOT(start_valve_op_pressed()));
-  connect(start_fueling_button, SIGNAL(pressed()), this,
-          SLOT(start_fueling_pressed()));
-  connect(start_homing_button, SIGNAL(pressed()), this,
-          SLOT(start_homing_pressed()));
-  connect(stop_fueling_button, SIGNAL(pressed()), this,
-          SLOT(stop_fueling_pressed()));
-  connect(abort_button, SIGNAL(pressed()), this, SLOT(abort_pressed()));
-  connect(ignition_off_button, SIGNAL(pressed()), this,
-          SLOT(ignition_off_pressed()));
 
-  connect(lcs_check_1, SIGNAL(pressed()), this, SLOT(lcs_1_checked()));
-  connect(lcs_check_2, SIGNAL(pressed()), this, SLOT(lcs_2_checked()));
-  connect(lcs_check_3, SIGNAL(pressed()), this, SLOT(lcs_3_checked()));
-  connect(lcs_check_4, SIGNAL(pressed()), this, SLOT(lcs_4_checked()));
-  connect(lcs_button, SIGNAL(pressed()), this, SLOT(lcs_launch()));
+  connect(arm_button,           SIGNAL(pressed()), this, SLOT(arm_pressed()));
+  connect(disarm_button,            SIGNAL(pressed()), this, SLOT(disarm_pressed()));
+  connect(open_venting_button,      SIGNAL(pressed()), this, SLOT(open_venting_pressed()));
+  connect(close_venting_button,     SIGNAL(pressed()), this, SLOT(close_venting_pressed()));
+  connect(start_calibration_button, SIGNAL(pressed()), this, SLOT(start_calibration_pressed()));
+  connect(recover_button,           SIGNAL(pressed()), this, SLOT(recover_pressed()));
+  connect(abort_button,             SIGNAL(pressed()), this, SLOT(abort_pressed()));
+  connect(ignition_off_button,      SIGNAL(pressed()), this, SLOT(ignition_off_pressed()));
+
+  connect(lcs_check_1, SIGNAL(clicked(bool)), this, SLOT(lcs_1_checked(bool)));
+  connect(lcs_check_2, SIGNAL(clicked(bool)), this, SLOT(lcs_2_checked(bool)));
+  connect(lcs_check_3, SIGNAL(clicked(bool)), this, SLOT(lcs_3_checked(bool)));
+  connect(lcs_check_4, SIGNAL(clicked(bool)), this, SLOT(lcs_4_checked(bool)));
+  connect(lcs_button, SIGNAL(clicked(bool)), this, SLOT(lcs_launch(bool)));
 }
 
 void GuiWindow::refresh_telemetry() {
@@ -609,7 +607,7 @@ void GuiWindow::refresh_com() {
 }
 
 void GuiWindow::check_and_show() {
-  if (data_->getData<bool>(ui_interface::IGNITION_CONFIRMED)) {
+  if (data_->eatData<bool>(ui_interface::IGNITION_CONFIRMED, false)) {
     QMessageBox::warning(
         this, "GSE Info",
         "The code which was sent from the GSE matches your code on the GST");
@@ -678,58 +676,66 @@ void GuiWindow::echo_button_pressed() {
   logger.log(new Gui_Message("Echo button pressed"));
 }
 
-void GuiWindow::start_valve_op_pressed() {
-  data_->setData(ui_interface::PP_COMMAND, pp::START_VALVE_OPERATION);
-  logger.log(new Gui_Message("Start valve operation button pressed"));
+void GuiWindow::arm_pressed() {
+  data_->setData(ui_interface::PP_COMMAND, pp::ARM);
+  logger.log(new Gui_Message("Arm button pressed"));
 }
 
-void GuiWindow::stop_fueling_pressed() {
-  data_->setData(ui_interface::PP_COMMAND, pp::STOP_FUELING);
-  logger.log(new Gui_Message("Stop fueling button pressed"));
+void GuiWindow::disarm_pressed() {
+  data_->setData(ui_interface::PP_COMMAND, pp::DISARM);
+  logger.log(new Gui_Message("Disarm button pressed"));
 }
 
-void GuiWindow::start_homing_pressed() {
-  data_->setData(ui_interface::PP_COMMAND, pp::START_HOMING);
-  logger.log(new Gui_Message("Start homing button pressed"));
+void GuiWindow::open_venting_pressed() {
+  data_->setData(ui_interface::PP_COMMAND, pp::OPEN_VENTING);
+  logger.log(new Gui_Message("Open venting button pressed"));
+}
+
+void GuiWindow::close_venting_pressed() {
+  data_->setData(ui_interface::PP_COMMAND, pp::CLOSE_VENTING);
+  logger.log(new Gui_Message("Close venting button pressed"));
+}
+
+void GuiWindow::start_calibration_pressed() {
+  data_->setData(ui_interface::PP_COMMAND, pp::START_CALIBRATION);
+  logger.log(new Gui_Message("Start calibration button pressed"));
+}
+
+void GuiWindow::recover_pressed() {
+  data_->setData(ui_interface::PP_COMMAND, pp::RECOVER);
+  logger.log(new Gui_Message("Recover button pressed"));
 }
 
 void GuiWindow::abort_pressed() {
   data_->setData(ui_interface::PP_COMMAND, pp::ABORT);
-  logger.log(new Gui_Message("Abort button pressed"));
+  logger.log(new Gui_Message("Abort PP button pressed"));
 }
 
-void GuiWindow::start_fueling_pressed() {
-  data_->setData(ui_interface::PP_COMMAND, pp::START_FUELING);
-  logger.log(new Gui_Message("Start fueling pressed"));
-}
-
-void GuiWindow::lcs_1_checked() {
-  data_->setData(ui_interface::UI_LCS_CHECK_1,
-                 lcs_check_1->checkState() == Qt::Checked);
+void GuiWindow::lcs_1_checked(bool checked) {
+  data_->setData<bool>(ui_interface::UI_LCS_CHECK_1, checked);
   logger.log(new Gui_Message("LCS Check 1 Pressed"));
 }
 
-void GuiWindow::lcs_2_checked() {
-  data_->setData(ui_interface::UI_LCS_CHECK_1,
-                 lcs_check_1->checkState() == Qt::Checked);
+void GuiWindow::lcs_2_checked(bool checked) {
+  data_->setData<bool>(ui_interface::UI_LCS_CHECK_2, checked);
   logger.log(new Gui_Message("LCS Check 2 Pressed"));
 }
 
-void GuiWindow::lcs_3_checked() {
-  data_->setData(ui_interface::UI_LCS_CHECK_1,
-                 lcs_check_1->checkState() == Qt::Checked);
+void GuiWindow::lcs_3_checked(bool checked) {
+  data_->setData<bool>(ui_interface::UI_LCS_CHECK_3, checked);
   logger.log(new Gui_Message("LCS Check 3 Pressed"));
 }
 
-void GuiWindow::lcs_4_checked() {
-  data_->setData(ui_interface::UI_LCS_CHECK_1,
-                 lcs_check_1->checkState() == Qt::Checked);
+void GuiWindow::lcs_4_checked(bool checked) {
+  data_->setData<bool>(ui_interface::UI_LCS_CHECK_4, checked);
   logger.log(new Gui_Message("LCS Check 4 Pressed"));
 }
 
-void GuiWindow::lcs_launch() {
-  data_->setData(ui_interface::UI_LCS_LAUNCH, true);
-  logger.log(new Gui_Message("LCS Pressed"));
+void GuiWindow::lcs_launch(bool checked) {
+  if (checked) {
+    data_->setData(ui_interface::UI_LCS_LAUNCH, true);
+    logger.log(new Gui_Message("LCS Pressed"));
+  }
 }
 
 void GuiWindow::refresh_pp() {
@@ -743,10 +749,16 @@ void GuiWindow::refresh_pp() {
       qstr(data_->getData<int16_t>(ui_interface::PP_TEMPERATURE_2)));
   pp_temperature_3_panel->setText(
       qstr(data_->getData<int16_t>(ui_interface::PP_TEMPERATURE_3)));
-  uint16_t status = data_->getData<int16_t>(ui_interface::PP_STATUS);
-  std::stringstream stream;
-  stream << "0x" << std::hex << status;
-  pp_status_panel->setText(QString::fromStdString(stream.str()));
+  uint32_t statusData = data_->getData<int32_t>(ui_interface::PP_STATUS);
+  std::cout << statusData << std::endl;
+  float psuVoltage = (statusData >> 16) / 10.0f;
+  bool venting_state = ((statusData >> 8) & 0xFF) != 0;
+  uint8_t state = statusData & 0xFF;
+  pp_psu_voltage_panel->setText(QString::number(psuVoltage, 'g', 1));
+  pp_venting_panel->setText(venting_state ? "Open" : "Close");
+  if (state < pp::nb_status) 
+    pp_status_panel->setText(QString::fromStdString(pp::status_value[state]));
+
   pp_motor_position_panel->setText(
       qstr(data_->getData<int16_t>(ui_interface::PP_MOTOR_POSITION)));
 }

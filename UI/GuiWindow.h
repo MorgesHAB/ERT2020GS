@@ -41,10 +41,12 @@ public slots:
     void purge_valve_close_pressed();
     void echo_button_pressed();
     void disconnect_wire_pressed();
-    void start_valve_op_pressed();
-    void start_fueling_pressed();
-    void start_homing_pressed();
-    void stop_fueling_pressed();
+    void arm_pressed();
+    void disarm_pressed();
+    void open_venting_pressed();
+    void close_venting_pressed();
+    void start_calibration_pressed();
+    void recover_pressed();
     void abort_pressed();
     void manual_mode_pressed();
     void ignition_off_pressed();
@@ -55,11 +57,11 @@ public slots:
     void ignite_clicked();
     void theme_change_clicked();
     void file_transmission_pressed();
-    void lcs_1_checked();
-    void lcs_2_checked();
-    void lcs_3_checked();
-    void lcs_4_checked();
-    void lcs_launch();
+    void lcs_1_checked(bool checked);
+    void lcs_2_checked(bool checked);
+    void lcs_3_checked(bool checked);
+    void lcs_4_checked(bool checked);
+    void lcs_launch(bool checked);
 
 private:
     enum Theme {WHITE_ON_BLACK = 0, GREEN_ON_BLACK, BLACK_ON_WHITE, THEME_COUNT};

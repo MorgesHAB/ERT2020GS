@@ -20,10 +20,13 @@ void PPCommand::print() const {
     using namespace pp;
     switch (command) {
         case NO_COMMAND : std::cout << "NO COMMAND "; break;
-        case START_VALVE_OPERATION: std::cout << "START_VALVE_OPERATION "; break;
-        case START_FUELING: std::cout << "START_FUELING "; break;
-        case STOP_FUELING: std::cout << "STOP_FUELING "; break;
-        case START_HOMING: std::cout << "START_HOMING "; break;
+        case IGNITION : std::cout << "IGNITION"; break;
+        case ARM: std::cout << "ARM"; break;
+        case DISARM: std::cout << "DISARM"; break;
+        case OPEN_VENTING: std::cout << "OPEN VENTING"; break;
+        case CLOSE_VENTING: std::cout << "CLOSE VENTING"; break;
+        case START_CALIBRATION: std::cout << "START CALIBRATION"; break;
+        case RECOVER: std::cout << "RECOVER"; break;
         case ABORT: std::cout << "ABORT "; break;
         default: break;
     }

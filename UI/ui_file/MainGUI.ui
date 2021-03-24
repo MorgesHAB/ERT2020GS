@@ -1061,7 +1061,7 @@ background:rgb(52, 101, 164);} </string>
          </size>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>3</number>
         </property>
         <widget class="QWidget" name="tab_3">
          <attribute name="title">
@@ -1466,13 +1466,6 @@ background:rgb(52, 101, 164);} </string>
           </item>
          </layout>
         </widget>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QTabWidget" name="tabWidget_3">
-        <property name="currentIndex">
-         <number>0</number>
-        </property>
         <widget class="QWidget" name="tab_6">
          <attribute name="title">
           <string>PP Data</string>
@@ -1481,6 +1474,92 @@ background:rgb(52, 101, 164);} </string>
           <item>
            <widget class="QWidget" name="widget_6" native="true">
             <layout class="QGridLayout" name="gridLayout_21">
+             <item row="2" column="1">
+              <widget class="QLabel" name="pp_temperature_1_panel">
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="0">
+              <widget class="QLabel" name="label_14">
+               <property name="text">
+                <string>Temp 3</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="2">
+              <widget class="QLabel" name="label_6">
+               <property name="text">
+                <string>[Bar]</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="1">
+              <widget class="QLabel" name="pp_temperature_3_panel">
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <widget class="QLabel" name="label_9">
+               <property name="text">
+                <string>Temp 1</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QLabel" name="label">
+               <property name="text">
+                <string>Pressure 2</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="2">
+              <widget class="QLabel" name="label_12">
+               <property name="text">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;[&lt;span style=&quot; vertical-align:super;&quot;&gt;o&lt;/span&gt;C]&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QLabel" name="pp_pressure_2_panel">
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QLabel" name="pp_pressure_1_panel">
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item row="5" column="1">
+              <widget class="QLabel" name="pp_status_panel">
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="2">
+              <widget class="QLabel" name="label_3">
+               <property name="text">
+                <string>[Bar]</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+              </widget>
+             </item>
              <item row="5" column="0">
               <widget class="QLabel" name="label_15">
                <property name="text">
@@ -1495,75 +1574,10 @@ background:rgb(52, 101, 164);} </string>
                </property>
               </widget>
              </item>
-             <item row="1" column="0">
-              <widget class="QLabel" name="label">
-               <property name="text">
-                <string>Pressure 2</string>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="0">
-              <widget class="QLabel" name="label_9">
-               <property name="text">
-                <string>Temp 1</string>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="1">
-              <widget class="QLabel" name="pp_pressure_1_panel">
+             <item row="8" column="1">
+              <widget class="QLabel" name="pp_motor_position_panel">
                <property name="text">
                 <string/>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="1">
-              <widget class="QLabel" name="pp_temperature_1_panel">
-               <property name="text">
-                <string/>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="1">
-              <widget class="QLabel" name="pp_pressure_2_panel">
-               <property name="text">
-                <string/>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="2">
-              <widget class="QLabel" name="label_12">
-               <property name="text">
-                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;[m&lt;span style=&quot; vertical-align:super;&quot;&gt;o&lt;/span&gt;C]&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-               </property>
-              </widget>
-             </item>
-             <item row="4" column="0">
-              <widget class="QLabel" name="label_14">
-               <property name="text">
-                <string>Temp 3</string>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="2">
-              <widget class="QLabel" name="label_6">
-               <property name="text">
-                <string>[mBar]</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="2">
-              <widget class="QLabel" name="label_3">
-               <property name="text">
-                <string>[mBar]</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                </property>
               </widget>
              </item>
@@ -1574,10 +1588,13 @@ background:rgb(52, 101, 164);} </string>
                </property>
               </widget>
              </item>
-             <item row="6" column="0">
-              <widget class="QLabel" name="label_16">
+             <item row="4" column="2">
+              <widget class="QLabel" name="label_20">
                <property name="text">
-                <string>Motor pos</string>
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;[&lt;span style=&quot; vertical-align:super;&quot;&gt;o&lt;/span&gt;C]&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                </property>
               </widget>
              </item>
@@ -1588,51 +1605,65 @@ background:rgb(52, 101, 164);} </string>
                </property>
               </widget>
              </item>
+             <item row="8" column="2">
+              <widget class="QLabel" name="label_24">
+               <property name="text">
+                <string>[deg]</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+              </widget>
+             </item>
              <item row="3" column="2">
               <widget class="QLabel" name="label_18">
                <property name="text">
-                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;[m&lt;span style=&quot; vertical-align:super;&quot;&gt;o&lt;/span&gt;C]&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;[&lt;span style=&quot; vertical-align:super;&quot;&gt;o&lt;/span&gt;C]&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
                <property name="alignment">
                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                </property>
               </widget>
              </item>
-             <item row="4" column="1">
-              <widget class="QLabel" name="pp_temperature_3_panel">
+             <item row="6" column="0">
+              <widget class="QLabel" name="label_26">
                <property name="text">
-                <string/>
+                <string>Venting</string>
                </property>
               </widget>
              </item>
-             <item row="4" column="2">
-              <widget class="QLabel" name="label_20">
+             <item row="8" column="0">
+              <widget class="QLabel" name="label_16">
                <property name="text">
-                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;[m&lt;span style=&quot; vertical-align:super;&quot;&gt;o&lt;/span&gt;C]&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                <string>Motor pos</string>
                </property>
               </widget>
              </item>
-             <item row="5" column="1">
-              <widget class="QLabel" name="pp_status_panel">
+             <item row="7" column="0">
+              <widget class="QLabel" name="label_27">
                <property name="text">
-                <string/>
+                <string>PSU Voltage</string>
                </property>
               </widget>
              </item>
              <item row="6" column="1">
-              <widget class="QLabel" name="pp_motor_position_panel">
+              <widget class="QLabel" name="pp_venting_panel">
                <property name="text">
                 <string/>
                </property>
               </widget>
              </item>
-             <item row="6" column="2">
-              <widget class="QLabel" name="label_24">
+             <item row="7" column="1">
+              <widget class="QLabel" name="pp_psu_voltage_panel">
                <property name="text">
-                <string>[deg]</string>
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item row="7" column="2">
+              <widget class="QLabel" name="label_29">
+               <property name="text">
+                <string>[V]</string>
                </property>
                <property name="alignment">
                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -1644,6 +1675,13 @@ background:rgb(52, 101, 164);} </string>
           </item>
          </layout>
         </widget>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QTabWidget" name="tabWidget_3">
+        <property name="currentIndex">
+         <number>0</number>
+        </property>
         <widget class="QWidget" name="tab_7">
          <attribute name="title">
           <string>PP Control</string>
@@ -1653,34 +1691,51 @@ background:rgb(52, 101, 164);} </string>
            <widget class="QWidget" name="widget" native="true">
             <layout class="QGridLayout" name="gridLayout_12">
              <item row="0" column="1">
-              <widget class="QPushButton" name="start_fueling_button">
+              <widget class="QPushButton" name="disarm_button">
                <property name="text">
-                <string>Start Fueling</string>
+                <string>Disarm</string>
                </property>
               </widget>
              </item>
              <item row="1" column="0">
-              <widget class="QPushButton" name="start_homing_button">
+              <widget class="QPushButton" name="open_venting_button">
                <property name="text">
-                <string>Start Homing</string>
+                <string>Open Venting</string>
                </property>
               </widget>
              </item>
              <item row="0" column="0">
-              <widget class="QPushButton" name="start_valve_op_button">
+              <widget class="QPushButton" name="arm_button">
+               <property name="styleSheet">
+                <string notr="true"/>
+               </property>
                <property name="text">
-                <string>Start Valve OP</string>
+                <string>Arm</string>
                </property>
               </widget>
              </item>
              <item row="1" column="1">
-              <widget class="QPushButton" name="stop_fueling_button">
+              <widget class="QPushButton" name="close_venting_button">
                <property name="text">
-                <string>Stop Fueling</string>
+                <string>Close Venting</string>
                </property>
               </widget>
              </item>
-             <item row="2" column="0" colspan="2">
+             <item row="2" column="0">
+              <widget class="QPushButton" name="start_calibration_button">
+               <property name="text">
+                <string>Start calibration</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="1">
+              <widget class="QPushButton" name="recover_button">
+               <property name="text">
+                <string>Recover</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="0" colspan="2">
               <widget class="QPushButton" name="abort_button">
                <property name="styleSheet">
                 <string notr="true">color: rgb(204, 0, 0);</string>
@@ -2974,14 +3029,12 @@ gridline-color: rgb(255, 0, 0);</string>
                </property>
                <property name="styleSheet">
                 <string notr="true">QCheckBox {
-	antialiasing: true;
 	min-width: 100%;
 	min-height:100%;
 	spacing: 0;
 }
 
 QCheckBox::indicator {
-	antialiasing: true;
 	width:180%;
 	height: 180%;
 	spacing: 0;
@@ -3070,11 +3123,11 @@ stop:0.9999 rgba(120,0,0,0));
 }
 
 QCheckBox::indicator:unchecked {
-background-color:qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(100, 0, 0), stop:0.4 rgba(55, 0, 0, 255), stop:0.5 rgba(55,0,0,200), stop:0.55 rgba(55, 0, 0, 0));
+background-color:qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgb(100, 0, 0), stop:0.4 rgba(55, 0, 0, 255), stop:0.5 rgba(55,0,0,200), stop:0.55 rgba(55, 0, 0, 0));
 }
 
 QCheckBox::indicator:checked {
-background-color:qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(255, 100, 100), stop:0.4 rgba(255, 0, 0, 255), stop:0.5 rgba(255,0,0,255), stop:0.7 rgba(255, 158, 158, 0));
+background-color:qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgb(255, 100, 100), stop:0.4 rgba(255, 0, 0, 255), stop:0.5 rgba(255,0,0,255), stop:0.7 rgba(255, 158, 158, 0));
 }</string>
                   </property>
                   <property name="text">
@@ -3087,7 +3140,7 @@ background-color:qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5,
                    </size>
                   </property>
                   <property name="checked">
-                   <bool>true</bool>
+                   <bool>false</bool>
                   </property>
                   <property name="tristate">
                    <bool>false</bool>
@@ -3103,11 +3156,11 @@ background-color:qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5,
 }
 
 QCheckBox::indicator:unchecked {
-background-color:qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(100, 0, 0), stop:0.4 rgba(55, 0, 0, 255), stop:0.5 rgba(55,0,0,200), stop:0.55 rgba(55, 0, 0, 0));
+background-color:qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgb(100, 0, 0), stop:0.4 rgba(55, 0, 0, 255), stop:0.5 rgba(55,0,0,200), stop:0.55 rgba(55, 0, 0, 0));
 }
 
 QCheckBox::indicator:checked {
-background-color:qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(255, 100, 100), stop:0.4 rgba(255, 0, 0, 255), stop:0.5 rgba(255,0,0,255), stop:0.7 rgba(255, 158, 158, 0));
+background-color:qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgb(255, 100, 100), stop:0.4 rgba(255, 0, 0, 255), stop:0.5 rgba(255,0,0,255), stop:0.7 rgba(255, 158, 158, 0));
 }</string>
                   </property>
                   <property name="text">
@@ -3130,18 +3183,18 @@ background-color:qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5,
 }
 
 QCheckBox::indicator:unchecked {
-background-color:qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(100, 0, 0), stop:0.4 rgba(55, 0, 0, 255), stop:0.5 rgba(55,0,0,200), stop:0.55 rgba(55, 0, 0, 0));
+background-color:qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgb(100, 0, 0), stop:0.4 rgba(55, 0, 0, 255), stop:0.5 rgba(55,0,0,200), stop:0.55 rgba(55, 0, 0, 0));
 }
 
 QCheckBox::indicator:checked {
-background-color:qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(255, 100, 100), stop:0.4 rgba(255, 0, 0, 255), stop:0.5 rgba(255,0,0,255), stop:0.7 rgba(255, 158, 158, 0));
+background-color:qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgb(255, 100, 100), stop:0.4 rgba(255, 0, 0, 255), stop:0.5 rgba(255,0,0,255), stop:0.7 rgba(255, 158, 158, 0));
 }</string>
                   </property>
                   <property name="text">
                    <string/>
                   </property>
                   <property name="checked">
-                   <bool>true</bool>
+                   <bool>false</bool>
                   </property>
                  </widget>
                 </item>
@@ -3154,11 +3207,11 @@ background-color:qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5,
 }
 
 QCheckBox::indicator:unchecked {
-background-color:qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(100, 0, 0), stop:0.4 rgba(55, 0, 0, 255), stop:0.5 rgba(55,0,0,200), stop:0.55 rgba(55, 0, 0, 0));
+background-color:qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgb(100, 0, 0), stop:0.4 rgba(55, 0, 0, 255), stop:0.5 rgba(55,0,0,200), stop:0.55 rgba(55, 0, 0, 0));
 }
 
 QCheckBox::indicator:checked {
-background-color:qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(255, 100, 100), stop:0.4 rgba(255, 0, 0, 255), stop:0.5 rgba(255,0,0,255), stop:0.7 rgba(255, 158, 158, 0));
+background-color:qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgb(255, 100, 100), stop:0.4 rgba(255, 0, 0, 255), stop:0.5 rgba(255,0,0,255), stop:0.7 rgba(255, 158, 158, 0));
 }</string>
                   </property>
                   <property name="text">
