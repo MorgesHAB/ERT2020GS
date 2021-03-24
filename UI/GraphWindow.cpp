@@ -31,15 +31,16 @@ GraphWindow::GraphWindow(std::shared_ptr<Connector> connector) : data_(connector
                     "color: rgb(255, 255, 255);"));
 
 
-  addGraph(ui_interface::GPS_ALTITUDE, "Altitude", QColor(qRgb(255, 0, 0)));
+  addGraph(ui_interface::GSE_HOSE_PRESSURE, "GSE Hose Pressure", 100, QColor(qRgb(255, 0, 0)), 0, 4000);
 }
 
-void GraphWindow::addGraph(ui_interface::DataType dataType, QString name, QColor lineColor) {
-  Chart *chart = new Chart(data_,dataType);
+void GraphWindow::addGraph(ui_interface::DataType dataType, QString name, qreal refreshRate, QColor lineColor, qreal minY, qreal maxY) {
+  Chart *chart = new Chart(data_,dataType, refreshRate);
   chart->setTitle(name);
   chart->legend()->hide();
   chart->setAnimationOptions(QChart::AllAnimations);
   chart->setLineColor(lineColor);
+  chart->setYRange(minY, maxY);
   QtCharts::QChartView *chartView = new QChartView(chart);
   chartView->setRenderHint(QPainter::HighQualityAntialiasing);
   mainLayout->addWidget(chartView);

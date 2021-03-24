@@ -19,10 +19,11 @@ QT_CHARTS_USE_NAMESPACE
 class Chart : public QChart {
   Q_OBJECT
  public:
-  Chart(std::shared_ptr<Connector> connector, ui_interface::DataType dataType, QGraphicsItem *parent = nullptr, Qt::WindowFlags wFlags = {});
+  Chart(std::shared_ptr<Connector> connector, ui_interface::DataType dataType, qreal refresh_time, QGraphicsItem *parent = nullptr, Qt::WindowFlags wFlags = {});
   virtual ~Chart();
 
   void setLineColor(QColor color);
+  void setYRange(qreal min, qreal max);
   void setDataType(ui_interface::DataType dataType);
 
  public slots:
@@ -37,6 +38,6 @@ class Chart : public QChart {
   QValueAxis *m_axisY;
   qreal m_x;
   qreal m_y;
-  qreal step_size;
+  qreal refresh_time;
   ui_interface::DataType dataType;
 };

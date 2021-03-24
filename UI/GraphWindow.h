@@ -30,7 +30,7 @@ class GraphWindow : public QWidget {
  public:
   GraphWindow(std::shared_ptr<Connector> connector);
 
-  void addGraph(ui_interface::DataType dataType, QString name, QColor lineColor);
+  void addGraph(ui_interface::DataType dataType, QString name, qreal refreshRate, QColor lineColor, qreal minY, qreal maxY);
 
  private:
   std::shared_ptr<Connector> data_;
