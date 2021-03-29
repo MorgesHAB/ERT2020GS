@@ -1,10 +1,11 @@
 #pragma once
 
-#include <memory>
 #include <qlineseries.h>
 
 #include <QtCharts/QChart>
 #include <QtCore/QTimer>
+#include <memory>
+#include <qrgb.h>
 
 #include "ProtocolDefine.h"
 #include "connector.h"
@@ -19,7 +20,8 @@ QT_CHARTS_USE_NAMESPACE
 class Chart : public QChart {
   Q_OBJECT
  public:
-  Chart(std::shared_ptr<Connector> connector, ui_interface::DataType dataType, qreal refresh_time, QGraphicsItem *parent = nullptr, Qt::WindowFlags wFlags = {});
+  Chart(std::shared_ptr<Connector> connector, std::vector<ui_interface::DataType> dataTypes,
+               std::vector<QRgb> colors, qreal refresh_time);
   virtual ~Chart();
 
   void setLineColor(QColor color);
@@ -32,12 +34,12 @@ class Chart : public QChart {
  private:
   std::shared_ptr<Connector> data_;
   QTimer m_timer;
-  QLineSeries *m_series;
+  std::vector<QLineSeries *> m_series;
   QStringList m_titles;
   QValueAxis *m_axisX;
   QValueAxis *m_axisY;
-  qreal m_x;
-  qreal m_y;
+  std::vector<qreal> m_x;
+  std::vector<qreal> m_y;
   qreal refresh_time;
-  ui_interface::DataType dataType;
+  std::vector<ui_interface::DataType> dataTypes;
 };

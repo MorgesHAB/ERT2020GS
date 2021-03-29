@@ -9,20 +9,9 @@
 
 #pragma once
 
-#include <qmainwindow.h>
-#include <qwidget.h>
-#include <qwindow.h>
-#include <qwindowdefs.h>
-
-#include <QCloseEvent>
-#include <QKeyEvent>
-#include <QTimer>
 #include <QtCharts/QChartView>
-#include <memory>
 
-#include "../RF-UI-Interface/ProtocolDefine.h"
 #include "../RF-UI-Interface/connector.h"
-#include "gui_logger.h"
 #include "ui_form.h"
 
 class GraphWindow : public QWidget {
@@ -30,9 +19,12 @@ class GraphWindow : public QWidget {
  public:
   GraphWindow(std::shared_ptr<Connector> connector);
 
-  void addGraph(ui_interface::DataType dataType, QString name, qreal refreshRate, QColor lineColor, qreal minY, qreal maxY);
+  void addGraph(std::vector<ui_interface::DataType> dataTypes, std::vector<QRgb> colors,
+                QString name, qreal refreshRate, qreal minY, qreal maxY);
 
  private:
   std::shared_ptr<Connector> data_;
-  QGridLayout *mainLayout;
+  QGridLayout *main_layout;
+  QGridLayout *graph_layout;
+  QComboBox comboxBox;
 };
