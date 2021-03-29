@@ -24,14 +24,14 @@ void GSEOrder::print() const {
         case OPEN_PURGE:
             std::cout << "OPEN PURGE VALVE order request" << std::endl;
             break;
-        case DISCONNECT_HOSE:
-            std::cout << "DISCONNECT HOSE requested" << std::endl;
+        case MAIN_DISCONNECT_ON:
+            std::cout << "MAIN DISCONNECT ON requested" << std::endl;
+            break;
+        case MAIN_DISCONNECT_OFF:
+            std::cout << "MAIN DISCONNECT OFF requested" << std::endl;
             break;
         case CLOSE_PURGE:
             std::cout << "CLOSE PURGE VALVE order request" << std::endl;
-            break;
-        case SENSOR_VALUES_REQUEST:
-            std::cout << "Request for sensor values" << std::endl;
             break;
         default:
             break;

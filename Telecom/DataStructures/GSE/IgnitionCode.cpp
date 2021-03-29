@@ -40,6 +40,8 @@
 
 static const uint8_t MAIN_IGNITION_ON = 0x0C;
 static const uint8_t MAIN_IGNITION_OFF = 0x0D;
+static const uint8_t SECONDARY_IGNITION_ON = 0x0E;
+static const uint8_t SECONDARY_IGNITION_OFF = 0x0F;
 static const uint8_t NO_IGNITION_ORDER = 0x00;
 
 
@@ -142,7 +144,7 @@ void IgnitionCode::parse(Packet &packet) {
 
 bool IgnitionCode::updateRx(std::shared_ptr<Connector> connector) {
 
-    if(not(ignitionCode xor gseCode)){ //codes identical
+    if(gseCode == 1){ //codes identical
         connector->setData(ui_interface::IGNITION_CONFIRMED, true);
     }
     if(order == MAIN_IGNITION_OFF){

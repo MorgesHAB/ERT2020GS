@@ -112,7 +112,7 @@ void GuiWindow::purge_valve_close_pressed() {
 void GuiWindow::disconnect_wire_pressed() {
   // TODO find a way to delete
   data_->setData(ui_interface::GSE_DISCONNECT_WIRE, true);
-  data_->setData(ui_interface::GSE_ORDER, gse::DISCONNECT_HOSE);
+  data_->setData(ui_interface::GSE_ORDER, gse::MAIN_DISCONNECT_ON);
   auto* message = new Gui_Message("DISCONNECT wire button pressed");
   logger.log(message);
   delete message;
@@ -414,7 +414,7 @@ void GuiWindow::refresh_ack_blinking() {
       filling_close_button->setStyleSheet(
           "background-color: rgb(0, 255, 255);");
       break;
-    case gse::DISCONNECT_HOSE:
+    case gse::MAIN_DISCONNECT_ON:
       disconnect_wire_button->setStyleSheet(
           "background-color: rgb(0, 255, 255);");
       break;
@@ -438,8 +438,10 @@ void GuiWindow::refresh_gse() {
               data_->getData<bool>(ui_interface::GSE_MAIN_IGNITION_STATE));
   show_on_off(secondary_ignition_state_panel,
               data_->getData<bool>(ui_interface::GSE_SECONDARY_IGNITION_STATE));
-  show_on_off(hose_disconnect_state_panel,
-              data_->getData<bool>(ui_interface::GSE_HOSE_DISCONNECT_STATE));
+  show_on_off(main_disconnect_state_panel,
+              data_->getData<bool>(ui_interface::GSE_MAIN_DISCONNECT_STATE));
+  show_on_off(secondary_disconnect_state_panel,
+              data_->getData<bool>(ui_interface::GSE_SECONDARY_DISCONNECT_STATE));
 
   // Refresh sensor display
   tank_temp_panel_2->setText(
@@ -740,27 +742,26 @@ void GuiWindow::lcs_launch(bool checked) {
 
 void GuiWindow::refresh_pp() {
   pp_pressure_1_panel->setText(
-      qstr(data_->getData<uint16_t>(ui_interface::PP_PRESSURE_1)));
+      qstr(data_->getData<int32_t>(ui_interface::PP_PRESSURE_1) / 1000.0));
   pp_pressure_2_panel->setText(
-      qstr(data_->getData<uint16_t>(ui_interface::PP_PRESSURE_2)));
+      qstr(data_->getData<int32_t>(ui_interface::PP_PRESSURE_2) / 1000.0));
   pp_temperature_1_panel->setText(
-      qstr(data_->getData<int16_t>(ui_interface::PP_TEMPERATURE_1)));
+      qstr(data_->getData<int16_t>(ui_interface::PP_TEMPERATURE_1) / 10.0));
   pp_temperature_2_panel->setText(
-      qstr(data_->getData<int16_t>(ui_interface::PP_TEMPERATURE_2)));
+      qstr(data_->getData<int16_t>(ui_interface::PP_TEMPERATURE_2) / 10.0));
   pp_temperature_3_panel->setText(
-      qstr(data_->getData<int16_t>(ui_interface::PP_TEMPERATURE_3)));
+      qstr(data_->getData<int16_t>(ui_interface::PP_TEMPERATURE_3) / 10.0));
   uint32_t statusData = data_->getData<int32_t>(ui_interface::PP_STATUS);
-  std::cout << statusData << std::endl;
-  float psuVoltage = (statusData >> 16) / 10.0f;
+  float psuVoltage = ((statusData >> 16) & 0xFFFF) / 10.0f;
   bool venting_state = ((statusData >> 8) & 0xFF) != 0;
   uint8_t state = statusData & 0xFF;
-  pp_psu_voltage_panel->setText(QString::number(psuVoltage, 'g', 1));
-  pp_venting_panel->setText(venting_state ? "Open" : "Close");
+  pp_psu_voltage_panel->setText(QString::number(psuVoltage));
+  pp_venting_panel->setText(venting_state ? "Open" : "Closed");
   if (state < pp::nb_status) 
     pp_status_panel->setText(QString::fromStdString(pp::status_value[state]));
 
   pp_motor_position_panel->setText(
-      qstr(data_->getData<int16_t>(ui_interface::PP_MOTOR_POSITION)));
+      QString::number(-data_->getData<int32_t>(ui_interface::PP_MOTOR_POSITION)/4.0/1024.0/66.0*1.0*360.0));
 }
 
 void GuiWindow::ignition_off_pressed() {

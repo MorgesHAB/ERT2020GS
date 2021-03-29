@@ -10,6 +10,8 @@
 #ifndef IgnitionStates_H
 #define IgnitionStates_H
 
+#include <string>
+
 namespace ignit {
 
     enum IgnitionState {

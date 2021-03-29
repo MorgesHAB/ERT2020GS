@@ -169,7 +169,8 @@ namespace ui_interface {
         GSE_PURGE_VALVE_STATE,
         GSE_MAIN_IGNITION_STATE,
         GSE_SECONDARY_IGNITION_STATE,
-        GSE_HOSE_DISCONNECT_STATE,
+        GSE_MAIN_DISCONNECT_STATE,
+        GSE_SECONDARY_DISCONNECT_STATE,
 
 
         /// GSE sensors
