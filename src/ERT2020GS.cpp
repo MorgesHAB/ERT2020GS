@@ -21,6 +21,7 @@
 #include <QApplication>
 #include <GuiWindow.h>
 #include <GraphWindow.h>
+#include <TerminalWindow.h>
 #include <SecondWindow.h>
 #include <connector.h>
 #include <Worker.h>
@@ -37,8 +38,9 @@ int main(int argc, char **argv) {
     
     GuiWindow guiWindow(connector);
 
-    //SecondWindow secWindow(connector);
     GraphWindow graphWindow(connector) ;
+
+    TerminalWindow terminalWindow(connector) ;
 
     //run all threads
     std::thread t1(&Worker::mainRoutine, Worker(connector));
@@ -47,6 +49,7 @@ int main(int argc, char **argv) {
 
     guiWindow.show();
     graphWindow.show();
+    terminalWindow.show();
 
     std::this_thread::sleep_for(std::chrono::milliseconds(300));
 	
