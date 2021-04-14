@@ -140,14 +140,18 @@ void IgnitionCode::write(Packet &packet) {
 void IgnitionCode::parse(Packet &packet) {
     packet.parse(order);
     packet.parse(gseCode);
+    std::cout << "#######" << order << "   " << gseCode << std::endl;
 }
 
 bool IgnitionCode::updateRx(std::shared_ptr<Connector> connector) {
 
-    if(gseCode == 1){ //codes identical
-        connector->setData(ui_interface::IGNITION_CONFIRMED, true);
+    std::cout << "#######" << order << "   " << gseCode << std::endl;
+    if (order == MAIN_IGNITION_ON) {
+        connector->setData(ui_interface::IGNITION_CONFIRMED, gseCode == 1);
     }
-    if(order == MAIN_IGNITION_OFF){
+
+
+    if (order == MAIN_IGNITION_OFF) {
         connector->setData(ui_interface::IGNITION_OFF_ACK, true);
     }
 

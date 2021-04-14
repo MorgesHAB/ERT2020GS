@@ -78,7 +78,7 @@ GuiWindow::GuiWindow(std::shared_ptr<Connector> connector)
 #endif
   initialize_style();
   initialize_slots_signals();
-  //init_password();
+  // init_password();
 
   // grabKeyboard(); otherwise can't enter password
   timer_->start(REFRESH_RATE);
@@ -109,11 +109,20 @@ void GuiWindow::purge_valve_close_pressed() {
   logger.log(new Gui_Message("PURGE valve CLOSE button pressed"));
 }
 
-void GuiWindow::disconnect_wire_pressed() {
+void GuiWindow::disconnect_on_pressed() {
   // TODO find a way to delete
   data_->setData(ui_interface::GSE_DISCONNECT_WIRE, true);
   data_->setData(ui_interface::GSE_ORDER, gse::MAIN_DISCONNECT_ON);
-  auto* message = new Gui_Message("DISCONNECT wire button pressed");
+  auto* message = new Gui_Message("DISCONNECT on button pressed");
+  logger.log(message);
+  delete message;
+}
+
+void GuiWindow::disconnect_off_pressed() {
+  // TODO find a way to delete
+  data_->setData(ui_interface::GSE_DISCONNECT_WIRE, true);
+  data_->setData(ui_interface::GSE_ORDER, gse::MAIN_DISCONNECT_OFF);
+  auto* message = new Gui_Message("DISCONNECT off button pressed");
   logger.log(message);
   delete message;
 }
@@ -163,12 +172,10 @@ void GuiWindow::xbee_clicked() {
     logger.log(new Gui_Message("XBee ON button clicked!"));
     std::cout << "XBee ON button clicked!" << std::endl;
     uint64_t index = serialport_selector->currentIndex();
-    data_->setData(
-        ui_interface::SERIALPORT_INDEX,
-        index);  // index selection hardcoded inside the telecom worker :(
+    data_->setData(ui_interface::SERIALPORT_INDEX,
+                   index);  // index selection hardcoded inside the telecom worker :(
     data_->setData(ui_interface::ACTIVE_XBEE, true);
-    logger.log(
-        new Gui_Message("XBee port no " + std::to_string(index) + "selected."));
+    logger.log(new Gui_Message("XBee port no " + std::to_string(index) + "selected."));
     xbee_button->setText("STOP XBee");
   } else {
     logger.log(new Gui_Message("XBee STOP button clicked!"));
@@ -186,8 +193,7 @@ void GuiWindow::ignite_clicked() {
   ready_ignition_ = !ready_ignition_;
   data_->setData(ui_interface::IGNITION_CLICKED, ready_ignition_);
   show_ok_X(ready_ignition_panel, ready_ignition_);
-  logger.log(
-      new Gui_Message(str.append(ready_ignition_ ? "READY" : "NOT READY")));
+  logger.log(new Gui_Message(str.append(ready_ignition_ ? "READY" : "NOT READY")));
 }
 
 void GuiWindow::theme_change_clicked() {
@@ -200,15 +206,13 @@ void GuiWindow::theme_change_clicked() {
     setStyleSheet(
         QLatin1String("background-color: rgb(30, 30, 30);\n"
                       "color: rgb(255, 255, 255);"));
-    packets_second_bar->setStyleSheet(
-        QLatin1String("color: rgb(255, 255, 255);"));
+    packets_second_bar->setStyleSheet(QLatin1String("color: rgb(255, 255, 255);"));
   } else if (current_theme_ == GREEN_ON_BLACK) {
     str += "Theme set to \"green on black.\"";
     setStyleSheet(
         QLatin1String("background-color: rgb(30, 30, 30);\n"
                       "color: rgb(0, 255, 0);"));
-    packets_second_bar->setStyleSheet(
-        QLatin1String("color: rgb(255, 255, 255);"));
+    packets_second_bar->setStyleSheet(QLatin1String("color: rgb(255, 255, 255);"));
   } else if (current_theme_ == BLACK_ON_WHITE) {
     str += "Theme set to \"black on white.\"";
     setStyleSheet(
@@ -238,10 +242,8 @@ uint16_t GuiWindow::calculate_misses()
 void GuiWindow::closeEvent(QCloseEvent* event) {
   logger.log(new Gui_Message("Window close attempt..."));
   QMessageBox::StandardButton resBtn = QMessageBox::question(
-      this, "BELLA LUI 2020",
-      tr("Ending mission Bella Lui 2020.\nAre you sure?\n"),
-      QMessageBox::Cancel | QMessageBox::No | QMessageBox::Yes,
-      QMessageBox::Yes);
+      this, "BELLA LUI 2020", tr("Ending mission Bella Lui 2020.\nAre you sure?\n"),
+      QMessageBox::Cancel | QMessageBox::No | QMessageBox::Yes, QMessageBox::Yes);
 
   if (resBtn != QMessageBox::Yes) {
     event->ignore();
@@ -273,67 +275,42 @@ void GuiWindow::refresh_ignition_code() {
 }
 
 void GuiWindow::refresh_av_state() {
-  std::string str(
-      avionic::getAVStateName(data_->getData<uint8_t>(STATUS_AV_STATE)));
+  std::string str(avionic::getAVStateName(data_->getData<uint8_t>(STATUS_AV_STATE)));
   avionics_state_panel->setText(QString::fromStdString(str));
 
-  show_ok_X(sleep_state_ok_panel,
-            data_->getData<bool>(ui_interface::SLEEP_REACHED));
-  show_ok_X(calibration_state_ok_panel,
-            data_->getData<bool>(ui_interface::CALIBRATION_REACHED));
-  show_ok_X(idle_state_ok_panel,
-            data_->getData<bool>(ui_interface::IDLE_REACHED));
-  show_ok_X(filling_av_ok_panel,
-            data_->getData<bool>(ui_interface::FILLING_REACHED));
-  show_ok_X(liftoff_state_ok_panel,
-            data_->getData<bool>(ui_interface::LIFTOFF_REACHED));
-  show_ok_X(coast_state_ok_panel,
-            data_->getData<bool>(ui_interface::COAST_REACHED));
-  show_ok_X(first_event_ok_panel,
-            data_->getData<bool>(ui_interface::PRIMARY_EVENT_REACHED));
-  show_ok_X(second_event_ok_panel,
-            data_->getData<bool>(ui_interface::SECONDARY_EVENT_REACHED));
-  show_ok_X(touchdown_event_ok_panel,
-            data_->getData<bool>(ui_interface::TOUCH_DOWN_REACHED));
+  show_ok_X(sleep_state_ok_panel, data_->getData<bool>(ui_interface::SLEEP_REACHED));
+  show_ok_X(calibration_state_ok_panel, data_->getData<bool>(ui_interface::CALIBRATION_REACHED));
+  show_ok_X(idle_state_ok_panel, data_->getData<bool>(ui_interface::IDLE_REACHED));
+  show_ok_X(filling_av_ok_panel, data_->getData<bool>(ui_interface::FILLING_REACHED));
+  show_ok_X(liftoff_state_ok_panel, data_->getData<bool>(ui_interface::LIFTOFF_REACHED));
+  show_ok_X(coast_state_ok_panel, data_->getData<bool>(ui_interface::COAST_REACHED));
+  show_ok_X(first_event_ok_panel, data_->getData<bool>(ui_interface::PRIMARY_EVENT_REACHED));
+  show_ok_X(second_event_ok_panel, data_->getData<bool>(ui_interface::SECONDARY_EVENT_REACHED));
+  show_ok_X(touchdown_event_ok_panel, data_->getData<bool>(ui_interface::TOUCH_DOWN_REACHED));
 }
 
 void GuiWindow::refresh_payload() {
-  pl_sat_nbr_panel->setText(
-      qstr(data_->getData<uint8_t>(ui_interface::PL_GPS_SAT_NBR)));
-  pl_longitude_panel->setText(
-      qstr(data_->getData<float>(ui_interface::PL_GPS_LONGITUDE)));
-  pl_latitude_panel->setText(
-      qstr(data_->getData<float>(ui_interface::PL_GPS_LATITUDE)));
-  pl_hdop_panel->setText(
-      qstr(data_->getData<float>(ui_interface::PL_GPS_HDOP)));
-  pl_gps_altitude_panel->setText(
-      qstr(data_->getData<float>(ui_interface::PL_GPS_ALTITUDE)));
+  pl_sat_nbr_panel->setText(qstr(data_->getData<uint8_t>(ui_interface::PL_GPS_SAT_NBR)));
+  pl_longitude_panel->setText(qstr(data_->getData<float>(ui_interface::PL_GPS_LONGITUDE)));
+  pl_latitude_panel->setText(qstr(data_->getData<float>(ui_interface::PL_GPS_LATITUDE)));
+  pl_hdop_panel->setText(qstr(data_->getData<float>(ui_interface::PL_GPS_HDOP)));
+  pl_gps_altitude_panel->setText(qstr(data_->getData<float>(ui_interface::PL_GPS_ALTITUDE)));
 
   pl_bno_temperature_panel->setText(
       qstr(data_->getData<uint8_t>(ui_interface::PL_BNO_TEMPERATURE)));
-  pl_bno_oz_panel->setText(
-      qstr(data_->getData<float>(ui_interface::PL_BNO_ORIENTATION_Z)));
-  pl_bno_oy_panel->setText(
-      qstr(data_->getData<float>(ui_interface::PL_BNO_ORIENTATION_Y)));
-  pl_bno_ox_panel->setText(
-      qstr(data_->getData<float>(ui_interface::PL_BNO_ORIENTATION_X)));
-  pl_bno_az_panel->setText(
-      qstr(data_->getData<float>(ui_interface::PL_BNO_ACCELERATION_Z)));
-  pl_bno_ay_panel->setText(
-      qstr(data_->getData<float>(ui_interface::PL_BNO_ACCELERATION_Y)));
-  pl_bno_ax_panel->setText(
-      qstr(data_->getData<float>(ui_interface::PL_BNO_ACCELERATION_X)));
+  pl_bno_oz_panel->setText(qstr(data_->getData<float>(ui_interface::PL_BNO_ORIENTATION_Z)));
+  pl_bno_oy_panel->setText(qstr(data_->getData<float>(ui_interface::PL_BNO_ORIENTATION_Y)));
+  pl_bno_ox_panel->setText(qstr(data_->getData<float>(ui_interface::PL_BNO_ORIENTATION_X)));
+  pl_bno_az_panel->setText(qstr(data_->getData<float>(ui_interface::PL_BNO_ACCELERATION_Z)));
+  pl_bno_ay_panel->setText(qstr(data_->getData<float>(ui_interface::PL_BNO_ACCELERATION_Y)));
+  pl_bno_ax_panel->setText(qstr(data_->getData<float>(ui_interface::PL_BNO_ACCELERATION_X)));
 
-  pl_bme_temperature_panel->setText(
-      qstr(data_->getData<float>(ui_interface::PL_BME_TEMPERATURE)));
+  pl_bme_temperature_panel->setText(qstr(data_->getData<float>(ui_interface::PL_BME_TEMPERATURE)));
   pl_bme_pressure_panel->setText(
       qstr((data_->getData<float>(ui_interface::PL_BME_PRESSURE)) * 100));
-  pl_bme_temperature_panel->setText(
-      qstr(data_->getData<float>(ui_interface::PL_BME_TEMPERATURE)));
-  pl_bme_humidity_panel->setText(
-      qstr(data_->getData<float>(ui_interface::PL_BME_HUMIDITY)));
-  pl_bme_altitude_panel->setText(
-      qstr(data_->getData<float>(ui_interface::PL_BME_ALTITUDE)));
+  pl_bme_temperature_panel->setText(qstr(data_->getData<float>(ui_interface::PL_BME_TEMPERATURE)));
+  pl_bme_humidity_panel->setText(qstr(data_->getData<float>(ui_interface::PL_BME_HUMIDITY)));
+  pl_bme_altitude_panel->setText(qstr(data_->getData<float>(ui_interface::PL_BME_ALTITUDE)));
 }
 
 void GuiWindow::initialize_style() {
@@ -344,11 +321,11 @@ void GuiWindow::initialize_style() {
 
 void GuiWindow::init_password() {
   bool ok;
-  QString text = QInputDialog::getText(
-      this, tr("Password initialization"),
-      tr("Enter a password to use when enabling the manual mode. "
-         "\nIf you cancel this step the default password will be: EPFL"),
-      QLineEdit::Normal, "EPFL", &ok, Qt::Tool);
+  QString text =
+      QInputDialog::getText(this, tr("Password initialization"),
+                            tr("Enter a password to use when enabling the manual mode. "
+                               "\nIf you cancel this step the default password will be: EPFL"),
+                            QLineEdit::Normal, "EPFL", &ok, Qt::Tool);
   if (ok && !text.isEmpty()) password_ = text.toStdString();
   logger.log(new Gui_Message("The password is set."));
   std::cout << "The password is set to " << text.toStdString() << std::endl;
@@ -357,11 +334,10 @@ void GuiWindow::init_password() {
 bool GuiWindow::ask_password() {
   logger.log(new Gui_Message("Asked password to user."));
   bool ok;
-  QString text =
-      QInputDialog::getText(this, tr("Authorization required"),
-                            tr("Enter the password if you have set one."
-                               "\nThe default password is: EPFL"),
-                            QLineEdit::Normal, "", &ok, Qt::Tool);
+  QString text = QInputDialog::getText(this, tr("Authorization required"),
+                                       tr("Enter the password if you have set one."
+                                          "\nThe default password is: EPFL"),
+                                       QLineEdit::Normal, "", &ok, Qt::Tool);
   bool result(false);
   if (ok && !text.isEmpty()) {
     if (password_ == text.toStdString()) {  // password is correct
@@ -369,8 +345,7 @@ bool GuiWindow::ask_password() {
       result = true;
 
     } else {
-      QMessageBox::warning(this, "Warning",
-                           "Wrong password, permission denied.");
+      QMessageBox::warning(this, "Warning", "Wrong password, permission denied.");
       logger.log(new Gui_Message("Password wasn't correct."));
     }
   }
@@ -390,8 +365,7 @@ void GuiWindow::refresh_ack_blinking() {
     ignition_off_button->setStyleSheet("");
   }
 
-  uint8_t order = data_->eatData<gse::GSEOrderValue>(
-      ui_interface::GSE_ORDER_ACK, gse::NO_ORDER);
+  uint8_t order = data_->eatData<gse::GSEOrderValue>(ui_interface::GSE_ORDER_ACK, gse::NO_ORDER);
 
   switch (order) {
     case gse::NO_ORDER:
@@ -399,7 +373,8 @@ void GuiWindow::refresh_ack_blinking() {
       purge_close_button->setStyleSheet("");
       filling_open_button->setStyleSheet("");
       filling_close_button->setStyleSheet("");
-      disconnect_wire_button->setStyleSheet("");
+      disconnect_on_button->setStyleSheet("");
+      disconnect_off_button->setStyleSheet("");
       break;
     case gse::OPEN_PURGE:
       purge_open_button->setStyleSheet("background-color: rgb(0, 255, 255);");
@@ -411,29 +386,29 @@ void GuiWindow::refresh_ack_blinking() {
       filling_open_button->setStyleSheet("background-color: rgb(0, 255, 255);");
       break;
     case gse::CLOSE_FILLING:
-      filling_close_button->setStyleSheet(
-          "background-color: rgb(0, 255, 255);");
+      filling_close_button->setStyleSheet("background-color: rgb(0, 255, 255);");
       break;
     case gse::MAIN_DISCONNECT_ON:
-      disconnect_wire_button->setStyleSheet(
-          "background-color: rgb(0, 255, 255);");
+      disconnect_on_button->setStyleSheet("background-color: rgb(0, 255, 255);");
+      break;
+    case gse::MAIN_DISCONNECT_OFF:
+      disconnect_off_button->setStyleSheet("background-color: rgb(0, 255, 255);");
       break;
     default:
       purge_open_button->setStyleSheet("");
       purge_close_button->setStyleSheet("");
       filling_open_button->setStyleSheet("");
       filling_close_button->setStyleSheet("");
-      disconnect_wire_button->setStyleSheet("");
+      disconnect_on_button->setStyleSheet("");
+      disconnect_off_button->setStyleSheet("");
       break;
   }
 }
 
 void GuiWindow::refresh_gse() {
   // Refresh state display
-  show_on_off(purge_valve_state_panel,
-              data_->getData<bool>(ui_interface::GSE_PURGE_VALVE_STATE));
-  show_on_off(fill_valve_state_panel,
-              data_->getData<bool>(ui_interface::GSE_FILL_VALVE_STATE));
+  show_on_off(purge_valve_state_panel, data_->getData<bool>(ui_interface::GSE_PURGE_VALVE_STATE));
+  show_on_off(fill_valve_state_panel, data_->getData<bool>(ui_interface::GSE_FILL_VALVE_STATE));
   show_on_off(main_ignition_state_panel,
               data_->getData<bool>(ui_interface::GSE_MAIN_IGNITION_STATE));
   show_on_off(secondary_ignition_state_panel,
@@ -444,30 +419,23 @@ void GuiWindow::refresh_gse() {
               data_->getData<bool>(ui_interface::GSE_SECONDARY_DISCONNECT_STATE));
 
   // Refresh sensor display
-  tank_temp_panel_2->setText(
-      qstr(data_->getData<float>(ui_interface::GSE_TANK_TEMP)));
-  hose_pressure_panel_2->setText(
-      qstr(data_->getData<float>(ui_interface::GSE_HOSE_PRESSURE)));
-  hose_temp_panel_2->setText(
-      qstr(data_->getData<float>(ui_interface::GSE_HOSE_TEMP)));
-  rocket_weight_panel_2->setText(
-      qstr(data_->getData<float>(ui_interface::GSE_ROCKET_WEIGHT)));
-  battery_level_panel->setText(
-      qstr(data_->getData<float>(ui_interface::GSE_BATTERY_LEVEL)));
-  main_current_panel->setText(
-      qstr(data_->getData<float>(ui_interface::GSE_MAIN_IGNITION_CURRENT)));
-  secondary_current_panel->setText(qstr(
-      data_->getData<float>(ui_interface::GSE_SECONDARY_IGNITION_CURRENT)));
+  tank_temp_panel_2->setText(qstr(data_->getData<uint32_t>(ui_interface::GSE_TANK_TEMP)));
+  hose_pressure_panel_2->setText(qstr(data_->getData<uint32_t>(ui_interface::GSE_HOSE_PRESSURE)));
+  hose_temp_panel_2->setText(qstr(data_->getData<uint32_t>(ui_interface::GSE_HOSE_TEMP)));
+  rocket_weight_panel_2->setText(qstr(data_->getData<uint32_t>(ui_interface::GSE_ROCKET_WEIGHT)));
+  battery_level_panel->setText(qstr(data_->getData<uint32_t>(ui_interface::GSE_BATTERY_LEVEL)));
+  main_current_panel->setText(qstr(data_->getData<uint32_t>(ui_interface::GSE_MAIN_IGNITION_CURRENT)));
+  secondary_current_panel->setText(
+      qstr(data_->getData<uint32_t>(ui_interface::GSE_SECONDARY_IGNITION_CURRENT)));
   main_disconnect_current_panel->setText(
-      qstr(data_->getData<float>(ui_interface::GSE_MAIN_DISCONNECT_CURRENT)));
-  secondary_disconnect_current_panel->setText(qstr(
-      data_->getData<float>(ui_interface::GSE_SECONDARY_DISCONNECT_CURRENT)));
+      qstr(data_->getData<uint32_t>(ui_interface::GSE_MAIN_DISCONNECT_CURRENT)));
+  secondary_disconnect_current_panel->setText(
+      qstr(data_->getData<uint32_t>(ui_interface::GSE_SECONDARY_DISCONNECT_CURRENT)));
   fill_valve_current_label->setText(
-      qstr(data_->getData<float>(ui_interface::GSE_FILL_VALVE_CURRENT)));
+      qstr(data_->getData<uint32_t>(ui_interface::GSE_FILL_VALVE_CURRENT)));
   purge_valve_current_label->setText(
-      qstr(data_->getData<float>(ui_interface::GSE_PURGE_VALVE_CURRENT)));
-  wind_speed_panel->setText(
-      qstr(data_->getData<float>(ui_interface::GSE_WIND_SPEED)));
+      qstr(data_->getData<uint32_t>(ui_interface::GSE_PURGE_VALVE_CURRENT)));
+  wind_speed_panel->setText(qstr(data_->getData<uint32_t>(ui_interface::GSE_WIND_SPEED)));
 }
 
 void GuiWindow::refresh_ignition_frame() {
@@ -503,29 +471,24 @@ void GuiWindow::initialize_slots_signals() {
   connect(reset_button, SIGNAL(pressed()), this, SLOT(reset_button_pressed()));
   connect(ignition_button, SIGNAL(pressed()), this, SLOT(ignite_clicked()));
   connect(change_theme, SIGNAL(pressed()), this, SLOT(theme_change_clicked()));
-  connect(manual_mode_button, SIGNAL(pressed()), this,
-          SLOT(manual_mode_pressed()));
+  connect(manual_mode_button, SIGNAL(pressed()), this, SLOT(manual_mode_pressed()));
   connect(request_rssi, SIGNAL(pressed()), this, SLOT(rssi_request_pressed()));
-  connect(filling_open_button, SIGNAL(pressed()), this,
-          SLOT(fill_valve_open_pressed()));
-  connect(filling_close_button, SIGNAL(pressed()), this,
-          SLOT(fill_valve_close_pressed()));
-  connect(purge_open_button, SIGNAL(pressed()), this,
-          SLOT(purge_valve_open_pressed()));
-  connect(purge_close_button, SIGNAL(pressed()), this,
-          SLOT(purge_valve_close_pressed()));
-  connect(disconnect_wire_button, SIGNAL(pressed()), this,
-          SLOT(disconnect_wire_pressed()));
+  connect(filling_open_button, SIGNAL(pressed()), this, SLOT(fill_valve_open_pressed()));
+  connect(filling_close_button, SIGNAL(pressed()), this, SLOT(fill_valve_close_pressed()));
+  connect(purge_open_button, SIGNAL(pressed()), this, SLOT(purge_valve_open_pressed()));
+  connect(purge_close_button, SIGNAL(pressed()), this, SLOT(purge_valve_close_pressed()));
+  connect(disconnect_on_button, SIGNAL(pressed()), this, SLOT(disconnect_on_pressed()));
+  connect(disconnect_off_button, SIGNAL(pressed()), this, SLOT(disconnect_off_pressed()));
   connect(echo_button, SIGNAL(pressed()), this, SLOT(echo_button_pressed()));
 
-  connect(arm_button,           SIGNAL(pressed()), this, SLOT(arm_pressed()));
-  connect(disarm_button,            SIGNAL(pressed()), this, SLOT(disarm_pressed()));
-  connect(open_venting_button,      SIGNAL(pressed()), this, SLOT(open_venting_pressed()));
-  connect(close_venting_button,     SIGNAL(pressed()), this, SLOT(close_venting_pressed()));
+  connect(arm_button, SIGNAL(pressed()), this, SLOT(arm_pressed()));
+  connect(disarm_button, SIGNAL(pressed()), this, SLOT(disarm_pressed()));
+  connect(open_venting_button, SIGNAL(pressed()), this, SLOT(open_venting_pressed()));
+  connect(close_venting_button, SIGNAL(pressed()), this, SLOT(close_venting_pressed()));
   connect(start_calibration_button, SIGNAL(pressed()), this, SLOT(start_calibration_pressed()));
-  connect(recover_button,           SIGNAL(pressed()), this, SLOT(recover_pressed()));
-  connect(abort_button,             SIGNAL(pressed()), this, SLOT(abort_pressed()));
-  connect(ignition_off_button,      SIGNAL(pressed()), this, SLOT(ignition_off_pressed()));
+  connect(recover_button, SIGNAL(pressed()), this, SLOT(recover_pressed()));
+  connect(abort_button, SIGNAL(pressed()), this, SLOT(abort_pressed()));
+  connect(ignition_off_button, SIGNAL(pressed()), this, SLOT(ignition_off_pressed()));
 
   connect(lcs_check_1, SIGNAL(clicked(bool)), this, SLOT(lcs_1_checked(bool)));
   connect(lcs_check_2, SIGNAL(clicked(bool)), this, SLOT(lcs_2_checked(bool)));
@@ -544,8 +507,7 @@ void GuiWindow::refresh_telemetry() {
   accel_x_panel->setText(qstr(accelx));
   accel_y_panel->setText(qstr(accely));
   accel_z_panel->setText(qstr(accelz));
-  norm_panel->setText(
-      qstr(std::sqrt(accelx * accelx + accely * accely + accelz * accelz)));
+  norm_panel->setText(qstr(std::sqrt(accelx * accelx + accely * accely + accelz * accelz)));
 
   euler_x_panel->setText(qstr(data_->getData<float>(T_EULER_X)));
   euler_y_panel->setText(qstr(data_->getData<float>(T_EULER_Y)));
@@ -571,27 +533,18 @@ void GuiWindow::refresh_gps() {
 }
 
 void GuiWindow::refresh_com() {
-  received_pack_cnt_panel->setText(
-      qstr(data_->getData<uint64_t>(TOTAL_RX_PACKET_CTR)));
-  packets_second_bar->setValue(
-      (data_->eatData<uint32_t>(PACKET_CTR_ALL, 0) * FREQUENCY));
-  av_packets_second_bar->setValue(
-      (data_->eatData<uint32_t>(PACKET_CTR_AV, 0) * FREQUENCY));
-  pl_packets_second_bar->setValue(
-      (data_->eatData<uint32_t>(PACKET_CTR_PL, 0) * FREQUENCY));
-  gse_packets_second_bar->setValue(
-      (data_->eatData<uint32_t>(PACKET_CTR_GSE, 0) * FREQUENCY));
-  pp_packets_second_bar->setValue(
-      (data_->eatData<uint32_t>(PACKET_CTR_PP, 0) * FREQUENCY));
-  corrupted_panel->setText(
-      qstr(data_->getData<uint64_t>(CORRUPTED_PACKET_CTR)));
-  rssi_panel->display(
-      qstr(-1 * (int)data_->getData<uint8_t>(ui_interface::RSSI_VALUE)));
+  received_pack_cnt_panel->setText(qstr(data_->getData<uint64_t>(TOTAL_RX_PACKET_CTR)));
+  packets_second_bar->setValue((data_->eatData<uint32_t>(PACKET_CTR_ALL, 0) * FREQUENCY));
+  av_packets_second_bar->setValue((data_->eatData<uint32_t>(PACKET_CTR_AV, 0) * FREQUENCY));
+  pl_packets_second_bar->setValue((data_->eatData<uint32_t>(PACKET_CTR_PL, 0) * FREQUENCY));
+  gse_packets_second_bar->setValue((data_->eatData<uint32_t>(PACKET_CTR_GSE, 0) * FREQUENCY));
+  pp_packets_second_bar->setValue((data_->eatData<uint32_t>(PACKET_CTR_PP, 0) * FREQUENCY));
+  corrupted_panel->setText(qstr(data_->getData<uint64_t>(CORRUPTED_PACKET_CTR)));
+  rssi_panel->display(qstr(-1 * (int)data_->getData<uint8_t>(ui_interface::RSSI_VALUE)));
 
   // Time since last received packet
   time_t t =
-      difftime(std::time(nullptr),
-               data_->getData<time_t>(ui_interface::TIME_SINCE_LAST_RX_PACKET));
+      difftime(std::time(nullptr), data_->getData<time_t>(ui_interface::TIME_SINCE_LAST_RX_PACKET));
   struct tm* tt = gmtime(&t);
   char buf[32];
   std::strftime(buf, 32, "%T", tt);
@@ -609,20 +562,16 @@ void GuiWindow::refresh_com() {
 }
 
 void GuiWindow::check_and_show() {
-  if (data_->eatData<bool>(ui_interface::IGNITION_CONFIRMED, false)) {
-    QMessageBox::warning(
-        this, "GSE Info",
-        "The code which was sent from the GSE matches your code on the GST");
+  if (data_->getData<bool>(ui_interface::IGNITION_CONFIRMED)) {
+    gse_launch_ack_label->setStyleSheet("color: green;");
+  } else {
+    gse_launch_ack_label->setStyleSheet("color: red;");
   }
 }
 
-void GuiWindow::refresh_time() {
-  time_panel->setText(QString::fromStdString(utilities::time()));
-}
+void GuiWindow::refresh_time() { time_panel->setText(QString::fromStdString(utilities::time())); }
 
-inline void GuiWindow::show_ok_X(QLabel* label, bool ok) {
-  (ok) ? show_ok(label) : show_X(label);
-}
+inline void GuiWindow::show_ok_X(QLabel* label, bool ok) { (ok) ? show_ok(label) : show_X(label); }
 
 void GuiWindow::show_ok(QLabel* label) {
   label->setStyleSheet(QLatin1String("color: rgb(0, 255, 0);"));
@@ -649,9 +598,7 @@ void GuiWindow::show_off(QLabel* label) {
   label->setText("OFF");
 }
 
-void GuiWindow::show_on_off(QLabel* label, bool ok) {
-  (ok) ? show_on(label) : show_off(label);
-}
+void GuiWindow::show_on_off(QLabel* label, bool ok) { (ok) ? show_on(label) : show_off(label); }
 
 void GuiWindow::keyPressEvent(QKeyEvent* ckey) {
   if (ckey->key() == Qt::Key_F11 || ckey->key() == Qt::Key_F) {
@@ -741,10 +688,8 @@ void GuiWindow::lcs_launch(bool checked) {
 }
 
 void GuiWindow::refresh_pp() {
-  pp_pressure_1_panel->setText(
-      qstr(data_->getData<int32_t>(ui_interface::PP_PRESSURE_1) / 1000.0));
-  pp_pressure_2_panel->setText(
-      qstr(data_->getData<int32_t>(ui_interface::PP_PRESSURE_2) / 1000.0));
+  pp_pressure_1_panel->setText(qstr(data_->getData<int32_t>(ui_interface::PP_PRESSURE_1) / 1000.0));
+  pp_pressure_2_panel->setText(qstr(data_->getData<int32_t>(ui_interface::PP_PRESSURE_2) / 1000.0));
   pp_temperature_1_panel->setText(
       qstr(data_->getData<int16_t>(ui_interface::PP_TEMPERATURE_1) / 10.0));
   pp_temperature_2_panel->setText(
@@ -757,11 +702,12 @@ void GuiWindow::refresh_pp() {
   uint8_t state = statusData & 0xFF;
   pp_psu_voltage_panel->setText(QString::number(psuVoltage));
   pp_venting_panel->setText(venting_state ? "Open" : "Closed");
-  if (state < pp::nb_status) 
+  if (state < pp::nb_status)
     pp_status_panel->setText(QString::fromStdString(pp::status_value[state]));
 
   pp_motor_position_panel->setText(
-      QString::number(-data_->getData<int32_t>(ui_interface::PP_MOTOR_POSITION)/4.0/1024.0/66.0*1.0*360.0));
+      QString::number(-data_->getData<int32_t>(ui_interface::PP_MOTOR_POSITION) / 4.0 / 1024.0 /
+                      66.0 * 1.0 * 360.0));
 }
 
 void GuiWindow::ignition_off_pressed() {

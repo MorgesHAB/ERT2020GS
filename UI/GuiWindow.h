@@ -40,7 +40,8 @@ public slots:
     void fill_valve_close_pressed();
     void purge_valve_close_pressed();
     void echo_button_pressed();
-    void disconnect_wire_pressed();
+    void disconnect_on_pressed();
+    void disconnect_off_pressed();
     void arm_pressed();
     void disarm_pressed();
     void open_venting_pressed();

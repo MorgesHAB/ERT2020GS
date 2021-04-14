@@ -47,6 +47,7 @@ void GSESensors::parse(Packet &packet) {
 }
 
 void GSESensors::print() const {
+  return;
   std::cout << "GSE SENSORS PACKET\n"
             << std::endl
             << "States:  [" << fill_valve_state << "," << purge_valve_state << ","
@@ -76,7 +77,7 @@ bool GSESensors::updateRx(std::shared_ptr<Connector> connector) {
   // update states
   connector->setData(ui_interface::GSE_SECONDARY_IGNITION_STATE, secondary_ignition_state);
   connector->setData(ui_interface::GSE_MAIN_IGNITION_STATE, main_ignition_state);
-  connector->setData(ui_interface::GSE_MAIN_DISCONNECT_CURRENT, main_disconnect_state);
+  connector->setData(ui_interface::GSE_MAIN_DISCONNECT_STATE, main_disconnect_state);
   connector->setData(ui_interface::GSE_SECONDARY_DISCONNECT_STATE, secondary_disconnect_state);
   connector->setData(ui_interface::GSE_PURGE_VALVE_STATE, purge_valve_state);
   connector->setData(ui_interface::GSE_FILL_VALVE_STATE, fill_valve_state);

@@ -11,6 +11,7 @@
 
 #include <QWidget>
 #include <QGridLayout>
+#include <memory>
 
 #include "Terminal.h"
 

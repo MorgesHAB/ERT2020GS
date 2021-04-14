@@ -21,7 +21,7 @@ public:
     bool updateRx(std::shared_ptr<Connector> connector) override;
 
 private:
-    float tank_temp, hose_pressure, hose_temperature, rocket_weight, battery_level, main_ignition_current, secondary_ignition_current, main_disconnect_current, secondary_disconnect_current, fill_valve_current, purge_valve_current,  wind_speed;
+    uint32_t tank_temp, hose_pressure, hose_temperature, rocket_weight, battery_level, main_ignition_current, secondary_ignition_current, main_disconnect_current, secondary_disconnect_current, fill_valve_current, purge_valve_current,  wind_speed;
     bool purge_valve_state, fill_valve_state, main_ignition_state, secondary_ignition_state, main_disconnect_state, secondary_disconnect_state;
 };
 

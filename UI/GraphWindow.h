@@ -10,6 +10,7 @@
 #pragma once
 
 #include <QtCharts/QChartView>
+#include <memory>
 
 #include "../RF-UI-Interface/connector.h"
 #include "ui_form.h"

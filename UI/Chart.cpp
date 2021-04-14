@@ -1,18 +1,18 @@
 #include "Chart.h"
 
-#include <cstddef>
 #include <qlineseries.h>
 #include <qpainter.h>
 #include <qrgb.h>
+#include <sys/types.h>
 
 #include <QtCharts/QAbstractAxis>
 #include <QtCharts/QLineSeries>
 #include <QtCharts/QValueAxis>
 #include <QtCore/QDebug>
 #include <QtCore/QRandomGenerator>
+#include <cstddef>
 #include <iostream>
 #include <memory>
-#include <sys/types.h>
 
 #include "connector.h"
 
@@ -50,7 +50,6 @@ Chart::Chart(std::shared_ptr<Connector> connector, std::vector<ui_interface::Dat
     m_series.back()->attachAxis(m_axisY);
   }
 
-
   setTheme(ChartThemeDark);
   setBackgroundBrush(QBrush(QColor(qRgb(30, 30, 30))));
 
@@ -70,7 +69,18 @@ void Chart::handleTimeout() {
     m_x.at(i) += refresh_time / 1000;
 
     m_y.at(i) = data_->getData<int16_t>(dataTypes.at(i)) / 10.0;
+
     m_series.at(i)->append(m_x.at(i), m_y.at(i));
-    if (m_axisX->max() - 2 <= m_x.at(i)) scroll(plotArea().width() / (m_axisX->tickCount() - 1), 0);
+    if (m_axisX->max() - 2 <= m_x.at(i)) {
+      scroll(plotArea().width() / (m_axisX->tickCount() - 1), 0);
+      m_series.at(i)->removePoints(0, 2 * 1000/refresh_time);
+      std::cout <<  m_series.at(i)->points().size() << std::endl;
+    }
   }
+
+//qreal Chart::nextPoint(size_t i) {
+//  if (dataTypes.at(i) == ui_interface::PP_TEMPERATURE_1) return data_->getData<int16_t>(dataTypes.at(i)) / 10.0; 
+//}
+
+
 }
