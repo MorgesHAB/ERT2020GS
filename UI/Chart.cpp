@@ -9,7 +9,6 @@
 #include <QtCharts/QLineSeries>
 #include <QtCharts/QValueAxis>
 #include <QtCore/QDebug>
-#include <QtCore/QRandomGenerator>
 #include <cstddef>
 #include <iostream>
 #include <memory>
