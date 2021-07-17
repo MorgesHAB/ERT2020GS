@@ -17,7 +17,8 @@ namespace pp {
         CLOSE_VENTING,
         START_CALIBRATION,
         RECOVER,
-        ABORT
+        ABORT,
+        RPI_START
     };
 
     const int nb_status = 10;

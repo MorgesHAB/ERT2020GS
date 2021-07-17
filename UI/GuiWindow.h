@@ -47,6 +47,7 @@ public slots:
     void open_venting_pressed();
     void close_venting_pressed();
     void start_calibration_pressed();
+    void rpi_start_pressed();
     void recover_pressed();
     void abort_pressed();
     void manual_mode_pressed();

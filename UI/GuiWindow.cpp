@@ -486,6 +486,7 @@ void GuiWindow::initialize_slots_signals() {
   connect(open_venting_button, SIGNAL(pressed()), this, SLOT(open_venting_pressed()));
   connect(close_venting_button, SIGNAL(pressed()), this, SLOT(close_venting_pressed()));
   connect(start_calibration_button, SIGNAL(pressed()), this, SLOT(start_calibration_pressed()));
+  connect(rpi_start_button, SIGNAL(pressed()), this, SLOT(rpi_start_pressed()));
   connect(recover_button, SIGNAL(pressed()), this, SLOT(recover_pressed()));
   connect(abort_button, SIGNAL(pressed()), this, SLOT(abort_pressed()));
   connect(ignition_off_button, SIGNAL(pressed()), this, SLOT(ignition_off_pressed()));
@@ -648,6 +649,11 @@ void GuiWindow::close_venting_pressed() {
 void GuiWindow::start_calibration_pressed() {
   data_->setData(ui_interface::PP_COMMAND, pp::START_CALIBRATION);
   logger.log(new Gui_Message("Start calibration button pressed"));
+}
+
+void GuiWindow::rpi_start_pressed() {
+  data_->setData(ui_interface::PP_COMMAND, pp::RPI_START);
+  logger.log(new Gui_Message("Rpi start button pressed"));
 }
 
 void GuiWindow::recover_pressed() {

@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'MainGUIjAvxgw.ui'
+** Form generated from reading UI file 'MainGUIqgnpTN.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.15.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef MAINGUIJAVXGW_H
-#define MAINGUIJAVXGW_H
+#ifndef MAINGUIQGNPTN_H
+#define MAINGUIQGNPTN_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
@@ -216,13 +216,14 @@ public:
     QHBoxLayout *horizontalLayout_2;
     QWidget *widget;
     QGridLayout *gridLayout_12;
-    QPushButton *disarm_button;
-    QPushButton *open_venting_button;
-    QPushButton *arm_button;
     QPushButton *close_venting_button;
     QPushButton *start_calibration_button;
+    QPushButton *disarm_button;
+    QPushButton *arm_button;
     QPushButton *recover_button;
+    QPushButton *open_venting_button;
     QPushButton *abort_button;
+    QPushButton *rpi_start_button;
     QWidget *right_widget;
     QGridLayout *gridLayout_9;
     QGroupBox *av_states_box;
@@ -1366,22 +1367,6 @@ public:
         widget->setObjectName(QString::fromUtf8("widget"));
         gridLayout_12 = new QGridLayout(widget);
         gridLayout_12->setObjectName(QString::fromUtf8("gridLayout_12"));
-        disarm_button = new QPushButton(widget);
-        disarm_button->setObjectName(QString::fromUtf8("disarm_button"));
-
-        gridLayout_12->addWidget(disarm_button, 0, 1, 1, 1);
-
-        open_venting_button = new QPushButton(widget);
-        open_venting_button->setObjectName(QString::fromUtf8("open_venting_button"));
-
-        gridLayout_12->addWidget(open_venting_button, 1, 0, 1, 1);
-
-        arm_button = new QPushButton(widget);
-        arm_button->setObjectName(QString::fromUtf8("arm_button"));
-        arm_button->setStyleSheet(QString::fromUtf8(""));
-
-        gridLayout_12->addWidget(arm_button, 0, 0, 1, 1);
-
         close_venting_button = new QPushButton(widget);
         close_venting_button->setObjectName(QString::fromUtf8("close_venting_button"));
 
@@ -1392,16 +1377,37 @@ public:
 
         gridLayout_12->addWidget(start_calibration_button, 2, 0, 1, 1);
 
+        disarm_button = new QPushButton(widget);
+        disarm_button->setObjectName(QString::fromUtf8("disarm_button"));
+
+        gridLayout_12->addWidget(disarm_button, 0, 1, 1, 1);
+
+        arm_button = new QPushButton(widget);
+        arm_button->setObjectName(QString::fromUtf8("arm_button"));
+        arm_button->setStyleSheet(QString::fromUtf8(""));
+
+        gridLayout_12->addWidget(arm_button, 0, 0, 1, 1);
+
         recover_button = new QPushButton(widget);
         recover_button->setObjectName(QString::fromUtf8("recover_button"));
 
         gridLayout_12->addWidget(recover_button, 2, 1, 1, 1);
 
+        open_venting_button = new QPushButton(widget);
+        open_venting_button->setObjectName(QString::fromUtf8("open_venting_button"));
+
+        gridLayout_12->addWidget(open_venting_button, 1, 0, 1, 1);
+
         abort_button = new QPushButton(widget);
         abort_button->setObjectName(QString::fromUtf8("abort_button"));
         abort_button->setStyleSheet(QString::fromUtf8("color: rgb(204, 0, 0);"));
 
-        gridLayout_12->addWidget(abort_button, 3, 0, 1, 2);
+        gridLayout_12->addWidget(abort_button, 4, 0, 1, 2);
+
+        rpi_start_button = new QPushButton(widget);
+        rpi_start_button->setObjectName(QString::fromUtf8("rpi_start_button"));
+
+        gridLayout_12->addWidget(rpi_start_button, 3, 0, 1, 2);
 
 
         horizontalLayout_2->addWidget(widget);
@@ -2462,13 +2468,14 @@ public:
         pp_psu_voltage_panel->setText(QString());
         label_29->setText(QCoreApplication::translate("Form", "[V]", nullptr));
         tabWidget_2->setTabText(tabWidget_2->indexOf(tab_6), QCoreApplication::translate("Form", "PP Data", nullptr));
-        disarm_button->setText(QCoreApplication::translate("Form", "Disarm", nullptr));
-        open_venting_button->setText(QCoreApplication::translate("Form", "Open Venting", nullptr));
-        arm_button->setText(QCoreApplication::translate("Form", "Arm", nullptr));
         close_venting_button->setText(QCoreApplication::translate("Form", "Close Venting", nullptr));
         start_calibration_button->setText(QCoreApplication::translate("Form", "Start calibration", nullptr));
+        disarm_button->setText(QCoreApplication::translate("Form", "Disarm", nullptr));
+        arm_button->setText(QCoreApplication::translate("Form", "Arm", nullptr));
         recover_button->setText(QCoreApplication::translate("Form", "Recover", nullptr));
+        open_venting_button->setText(QCoreApplication::translate("Form", "Open Venting", nullptr));
         abort_button->setText(QCoreApplication::translate("Form", "ABORT", nullptr));
+        rpi_start_button->setText(QCoreApplication::translate("Form", "RPi Start", nullptr));
         tabWidget_3->setTabText(tabWidget_3->indexOf(tab_7), QCoreApplication::translate("Form", "PP Control", nullptr));
         av_states_box->setTitle(QCoreApplication::translate("Form", "AV States", nullptr));
         filling_av_ok_panel->setText(QCoreApplication::translate("Form", "X", nullptr));
@@ -2594,4 +2601,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // MAINGUIJAVXGW_H
+#endif // MAINGUIQGNPTN_H
