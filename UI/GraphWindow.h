@@ -28,4 +28,6 @@ class GraphWindow : public QWidget {
   QGridLayout *main_layout;
   QGridLayout *graph_layout;
   QComboBox comboxBox;
+  unsigned int count;
 };
+

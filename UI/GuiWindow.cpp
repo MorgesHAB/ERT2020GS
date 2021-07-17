@@ -419,23 +419,23 @@ void GuiWindow::refresh_gse() {
               data_->getData<bool>(ui_interface::GSE_SECONDARY_DISCONNECT_STATE));
 
   // Refresh sensor display
-  tank_temp_panel_2->setText(qstr(data_->getData<uint32_t>(ui_interface::GSE_TANK_TEMP)));
-  hose_pressure_panel_2->setText(qstr(data_->getData<uint32_t>(ui_interface::GSE_HOSE_PRESSURE)));
-  hose_temp_panel_2->setText(qstr(data_->getData<uint32_t>(ui_interface::GSE_HOSE_TEMP)));
-  rocket_weight_panel_2->setText(qstr(data_->getData<uint32_t>(ui_interface::GSE_ROCKET_WEIGHT)));
-  battery_level_panel->setText(qstr(data_->getData<uint32_t>(ui_interface::GSE_BATTERY_LEVEL)));
-  main_current_panel->setText(qstr(data_->getData<uint32_t>(ui_interface::GSE_MAIN_IGNITION_CURRENT)));
+  tank_temp_panel_2->setText(qstr(data_->getData<uint32_t>(ui_interface::GSE_TANK_TEMP)/1000.0));
+  hose_pressure_panel_2->setText(qstr(data_->getData<uint32_t>(ui_interface::GSE_HOSE_PRESSURE)/1000.0));
+  hose_temp_panel_2->setText(qstr(data_->getData<uint32_t>(ui_interface::GSE_HOSE_TEMP)/1000.0));
+  rocket_weight_panel_2->setText(qstr(data_->getData<uint32_t>(ui_interface::GSE_ROCKET_WEIGHT)/1000.0));
+  battery_level_panel->setText(qstr(data_->getData<uint32_t>(ui_interface::GSE_BATTERY_LEVEL)/1000.0));
+  main_current_panel->setText(qstr(data_->getData<uint32_t>(ui_interface::GSE_MAIN_IGNITION_CURRENT)/1000.0));
   secondary_current_panel->setText(
-      qstr(data_->getData<uint32_t>(ui_interface::GSE_SECONDARY_IGNITION_CURRENT)));
+      qstr(data_->getData<uint32_t>(ui_interface::GSE_SECONDARY_IGNITION_CURRENT)/1000.0));
   main_disconnect_current_panel->setText(
-      qstr(data_->getData<uint32_t>(ui_interface::GSE_MAIN_DISCONNECT_CURRENT)));
+      qstr(data_->getData<uint32_t>(ui_interface::GSE_MAIN_DISCONNECT_CURRENT)/1000.0));
   secondary_disconnect_current_panel->setText(
-      qstr(data_->getData<uint32_t>(ui_interface::GSE_SECONDARY_DISCONNECT_CURRENT)));
+      qstr(data_->getData<uint32_t>(ui_interface::GSE_SECONDARY_DISCONNECT_CURRENT)/1000.0));
   fill_valve_current_label->setText(
-      qstr(data_->getData<uint32_t>(ui_interface::GSE_FILL_VALVE_CURRENT)));
+      qstr(data_->getData<uint32_t>(ui_interface::GSE_FILL_VALVE_CURRENT)/1000.0));
   purge_valve_current_label->setText(
-      qstr(data_->getData<uint32_t>(ui_interface::GSE_PURGE_VALVE_CURRENT)));
-  wind_speed_panel->setText(qstr(data_->getData<uint32_t>(ui_interface::GSE_WIND_SPEED)));
+      qstr(data_->getData<uint32_t>(ui_interface::GSE_PURGE_VALVE_CURRENT)/1000.0));
+  wind_speed_panel->setText(qstr(data_->getData<uint32_t>(ui_interface::GSE_WIND_SPEED)/1000.0));
 }
 
 void GuiWindow::refresh_ignition_frame() {
