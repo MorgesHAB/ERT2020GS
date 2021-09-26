@@ -34,6 +34,8 @@
 #include "../Telecom/DataStructures/GSE/GSEOrderValue.h"
 #include "../Telecom/DataStructures/GSE/IgnitionStates.h"
 #include "../Telecom/DataStructures/Propulsion/PPCommands.h"
+#include "../Telecom/DataStructures/Avionics/TVCCommands.h"
+#include "../Telecom/DataStructures/Avionics/TVCStatusValue.h"
 #include "Gui_message.h"
 
 constexpr uint32_t REFRESH_RATE(500);
@@ -163,6 +165,7 @@ void GuiWindow::refresh_data() {
   refresh_gse();
   refresh_ack_blinking();
   refresh_pp();
+  refresh_tvc();
 
   ++tick_counter_;
 }
@@ -486,10 +489,14 @@ void GuiWindow::initialize_slots_signals() {
   connect(open_venting_button, SIGNAL(pressed()), this, SLOT(open_venting_pressed()));
   connect(close_venting_button, SIGNAL(pressed()), this, SLOT(close_venting_pressed()));
   connect(start_calibration_button, SIGNAL(pressed()), this, SLOT(start_calibration_pressed()));
-  connect(rpi_start_button, SIGNAL(pressed()), this, SLOT(rpi_start_pressed()));
   connect(recover_button, SIGNAL(pressed()), this, SLOT(recover_pressed()));
   connect(abort_button, SIGNAL(pressed()), this, SLOT(abort_pressed()));
   connect(ignition_off_button, SIGNAL(pressed()), this, SLOT(ignition_off_pressed()));
+
+  connect(tvc_boot_button, SIGNAL(pressed()), this, SLOT(tvc_boot_pressed()));
+  connect(tvc_shutdown_button, SIGNAL(pressed()), this, SLOT(tvc_shutdown_pressed()));
+  connect(tvc_abort_button, SIGNAL(pressed()), this, SLOT(tvc_abort_pressed()));
+  connect(tvc_recover_button, SIGNAL(pressed()), this, SLOT(tvc_recover_pressed()));
 
   connect(lcs_check_1, SIGNAL(clicked(bool)), this, SLOT(lcs_1_checked(bool)));
   connect(lcs_check_2, SIGNAL(clicked(bool)), this, SLOT(lcs_2_checked(bool)));
@@ -651,11 +658,6 @@ void GuiWindow::start_calibration_pressed() {
   logger.log(new Gui_Message("Start calibration button pressed"));
 }
 
-void GuiWindow::rpi_start_pressed() {
-  data_->setData(ui_interface::PP_COMMAND, pp::RPI_START);
-  logger.log(new Gui_Message("Rpi start button pressed"));
-}
-
 void GuiWindow::recover_pressed() {
   data_->setData(ui_interface::PP_COMMAND, pp::RECOVER);
   logger.log(new Gui_Message("Recover button pressed"));
@@ -664,6 +666,26 @@ void GuiWindow::recover_pressed() {
 void GuiWindow::abort_pressed() {
   data_->setData(ui_interface::PP_COMMAND, pp::ABORT);
   logger.log(new Gui_Message("Abort PP button pressed"));
+}
+
+void GuiWindow::tvc_boot_pressed() {
+  data_->setData(ui_interface::TVC_COMMAND, tvc_commands::BOOT);
+  logger.log(new Gui_Message("TVC Boot button pressed"));
+}
+
+void GuiWindow::tvc_shutdown_pressed() {
+  data_->setData(ui_interface::TVC_COMMAND, tvc_commands::SHUTDOWN);
+  logger.log(new Gui_Message("TVC Shutdown button pressed"));
+}
+
+void GuiWindow::tvc_abort_pressed() {
+  data_->setData(ui_interface::TVC_COMMAND, tvc_commands::ABORT);
+  logger.log(new Gui_Message("TVC Abort button pressed"));
+}
+
+void GuiWindow::tvc_recover_pressed() {
+  data_->setData(ui_interface::TVC_COMMAND, tvc_commands::RECOVER);
+  logger.log(new Gui_Message("TVC Recover button pressed"));
 }
 
 void GuiWindow::lcs_1_checked(bool checked) {
@@ -714,6 +736,10 @@ void GuiWindow::refresh_pp() {
   pp_motor_position_panel->setText(
       QString::number(-data_->getData<int32_t>(ui_interface::PP_MOTOR_POSITION) / 4.0 / 1024.0 /
                       66.0 * 1.0 * 360.0));
+}
+
+void GuiWindow::refresh_tvc() {
+  tvc_status_panel->setText(QString::fromStdString(tvc_status::status_name[data_->getData<int32_t>(ui_interface::TVC_STATUS)]));
 }
 
 void GuiWindow::ignition_off_pressed() {

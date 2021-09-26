@@ -47,7 +47,6 @@ public slots:
     void open_venting_pressed();
     void close_venting_pressed();
     void start_calibration_pressed();
-    void rpi_start_pressed();
     void recover_pressed();
     void abort_pressed();
     void manual_mode_pressed();
@@ -59,6 +58,10 @@ public slots:
     void ignite_clicked();
     void theme_change_clicked();
     void file_transmission_pressed();
+    void tvc_boot_pressed();
+    void tvc_shutdown_pressed();
+    void tvc_abort_pressed();
+    void tvc_recover_pressed();
     void lcs_1_checked(bool checked);
     void lcs_2_checked(bool checked);
     void lcs_3_checked(bool checked);
@@ -82,6 +85,7 @@ private:
     void refresh_telemetry();
     void refresh_gps();
     void refresh_com();
+    void refresh_tvc();
     void check_and_show();
     
     void refresh_time();

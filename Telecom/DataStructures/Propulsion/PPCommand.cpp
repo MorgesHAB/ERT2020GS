@@ -27,7 +27,6 @@ void PPCommand::print() const {
         case CLOSE_VENTING: std::cout << "CLOSE VENTING"; break;
         case START_CALIBRATION: std::cout << "START CALIBRATION"; break;
         case RECOVER: std::cout << "RECOVER"; break;
-        case RPI_START: std::cout << "RPI Start"; break;
         case ABORT: std::cout << "ABORT "; break;
         default: break;
     }

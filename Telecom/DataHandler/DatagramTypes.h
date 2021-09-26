@@ -38,18 +38,18 @@ namespace DatagramType {
             GSE_IGNITION,        //ID: 0x07
 
         /// Payload Datagram
-            EMPTY8,
-            GSE_ORDER,
-            GSE_SENSORS,
-            GSE_PING,
-            PP_COMMAND,
-            PP_DATA,
+            EMPTY8,              //ID: 0x08
+            GSE_ORDER,           //ID: 0x09
+            GSE_SENSORS,         //ID: 0x0a
+            GSE_PING,            //ID: 0x0b
+            PP_COMMAND,          //ID: 0x0c
+            PP_DATA,             //ID: 0x0d
 
-        /// Propulsion Datagram
-            PROPULSION,
+        /// TVC Datagram
+            TVC_COMMAND,         //ID: 0x0e
+            TVC_STATUS,          //ID: 0xef
 
         /// Air Brakes Datagram
-            AIR_BRAKES ,
             EMPTY16,
             EMPTY17,
             EMPTY18,
@@ -225,9 +225,11 @@ namespace DatagramType {
             case AV_STATUS: return "AV-STATUS";
             case AV_TELEMETRY: return "AV-TELEMETRY";
             case AV_DEBUG: return "AV-DEBUG";
+            case TVC_COMMAND: return "TVC-COMMAND";
+            case TVC_STATUS: return "TVC-STATUS";
             case PP_COMMAND: return "PP-COMMAND";
             case PP_DATA: return "PP-DATA";
-            case AIR_BRAKES: return "AIR-BRAKES";
+            //case AIR_BRAKES: return "AIR-BRAKES";
             case GSE_ORDER: return "GSE-ORDER";
             case GSE_SENSORS: return "GSE-SENSORS";
             case GSE_IGNITION: return "GSE-IGNITION";

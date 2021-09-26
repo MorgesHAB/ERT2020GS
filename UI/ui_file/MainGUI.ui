@@ -1512,34 +1512,13 @@ background:rgb(52, 101, 164);} </string>
           <item>
            <widget class="QWidget" name="widget_6" native="true">
             <layout class="QGridLayout" name="gridLayout_21">
-             <item row="2" column="1">
-              <widget class="QLabel" name="pp_temperature_1_panel">
+             <item row="4" column="2">
+              <widget class="QLabel" name="label_20">
                <property name="text">
-                <string/>
-               </property>
-              </widget>
-             </item>
-             <item row="4" column="0">
-              <widget class="QLabel" name="label_14">
-               <property name="text">
-                <string>Temp 3</string>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="2">
-              <widget class="QLabel" name="label_6">
-               <property name="text">
-                <string>[Bar]</string>
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;[&lt;span style=&quot; vertical-align:super;&quot;&gt;o&lt;/span&gt;C]&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
                <property name="alignment">
                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-               </property>
-              </widget>
-             </item>
-             <item row="4" column="1">
-              <widget class="QLabel" name="pp_temperature_3_panel">
-               <property name="text">
-                <string/>
                </property>
               </widget>
              </item>
@@ -1550,41 +1529,24 @@ background:rgb(52, 101, 164);} </string>
                </property>
               </widget>
              </item>
-             <item row="1" column="0">
-              <widget class="QLabel" name="label">
+             <item row="3" column="0">
+              <widget class="QLabel" name="label_13">
                <property name="text">
-                <string>Pressure 2</string>
+                <string>Temp 2</string>
                </property>
               </widget>
              </item>
-             <item row="2" column="2">
-              <widget class="QLabel" name="label_12">
-               <property name="text">
-                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;[&lt;span style=&quot; vertical-align:super;&quot;&gt;o&lt;/span&gt;C]&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="1">
-              <widget class="QLabel" name="pp_pressure_2_panel">
+             <item row="6" column="1">
+              <widget class="QLabel" name="pp_venting_panel">
                <property name="text">
                 <string/>
                </property>
               </widget>
              </item>
-             <item row="0" column="1">
-              <widget class="QLabel" name="pp_pressure_1_panel">
+             <item row="7" column="0">
+              <widget class="QLabel" name="label_27">
                <property name="text">
-                <string/>
-               </property>
-              </widget>
-             </item>
-             <item row="5" column="1">
-              <widget class="QLabel" name="pp_status_panel">
-               <property name="text">
-                <string/>
+                <string>PSU Voltage</string>
                </property>
               </widget>
              </item>
@@ -1598,17 +1560,27 @@ background:rgb(52, 101, 164);} </string>
                </property>
               </widget>
              </item>
-             <item row="5" column="0">
-              <widget class="QLabel" name="label_15">
+             <item row="1" column="1">
+              <widget class="QLabel" name="pp_pressure_2_panel">
                <property name="text">
-                <string>Status</string>
+                <string/>
                </property>
               </widget>
              </item>
-             <item row="3" column="0">
-              <widget class="QLabel" name="label_13">
+             <item row="6" column="0">
+              <widget class="QLabel" name="label_26">
                <property name="text">
-                <string>Temp 2</string>
+                <string>Venting</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="2">
+              <widget class="QLabel" name="label_12">
+               <property name="text">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;[&lt;span style=&quot; vertical-align:super;&quot;&gt;o&lt;/span&gt;C]&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                </property>
               </widget>
              </item>
@@ -1626,13 +1598,17 @@ background:rgb(52, 101, 164);} </string>
                </property>
               </widget>
              </item>
-             <item row="4" column="2">
-              <widget class="QLabel" name="label_20">
+             <item row="5" column="1">
+              <widget class="QLabel" name="pp_status_panel">
                <property name="text">
-                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;[&lt;span style=&quot; vertical-align:super;&quot;&gt;o&lt;/span&gt;C]&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                <string/>
                </property>
-               <property name="alignment">
-                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </widget>
+             </item>
+             <item row="8" column="0">
+              <widget class="QLabel" name="label_16">
+               <property name="text">
+                <string>Motor pos</string>
                </property>
               </widget>
              </item>
@@ -1640,6 +1616,37 @@ background:rgb(52, 101, 164);} </string>
               <widget class="QLabel" name="pp_temperature_2_panel">
                <property name="text">
                 <string/>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="2">
+              <widget class="QLabel" name="label_6">
+               <property name="text">
+                <string>[Bar]</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="0">
+              <widget class="QLabel" name="label_14">
+               <property name="text">
+                <string>Temp 3</string>
+               </property>
+              </widget>
+             </item>
+             <item row="5" column="0">
+              <widget class="QLabel" name="label_15">
+               <property name="text">
+                <string>Status</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QLabel" name="label">
+               <property name="text">
+                <string>Pressure 2</string>
                </property>
               </widget>
              </item>
@@ -1663,31 +1670,34 @@ background:rgb(52, 101, 164);} </string>
                </property>
               </widget>
              </item>
-             <item row="6" column="0">
-              <widget class="QLabel" name="label_26">
-               <property name="text">
-                <string>Venting</string>
-               </property>
-              </widget>
-             </item>
-             <item row="8" column="0">
-              <widget class="QLabel" name="label_16">
-               <property name="text">
-                <string>Motor pos</string>
-               </property>
-              </widget>
-             </item>
-             <item row="7" column="0">
-              <widget class="QLabel" name="label_27">
-               <property name="text">
-                <string>PSU Voltage</string>
-               </property>
-              </widget>
-             </item>
-             <item row="6" column="1">
-              <widget class="QLabel" name="pp_venting_panel">
+             <item row="2" column="1">
+              <widget class="QLabel" name="pp_temperature_1_panel">
                <property name="text">
                 <string/>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="1">
+              <widget class="QLabel" name="pp_temperature_3_panel">
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QLabel" name="pp_pressure_1_panel">
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item row="7" column="2">
+              <widget class="QLabel" name="label_29">
+               <property name="text">
+                <string>[V]</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                </property>
               </widget>
              </item>
@@ -1698,10 +1708,24 @@ background:rgb(52, 101, 164);} </string>
                </property>
               </widget>
              </item>
-             <item row="7" column="2">
-              <widget class="QLabel" name="label_29">
+             <item row="9" column="0">
+              <widget class="QLabel" name="label_31">
                <property name="text">
-                <string>[V]</string>
+                <string>Thrurst target</string>
+               </property>
+              </widget>
+             </item>
+             <item row="9" column="1">
+              <widget class="QLabel" name="pp_thrust_target_panel">
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item row="9" column="2">
+              <widget class="QLabel" name="label_32">
+               <property name="text">
+                <string>[N]</string>
                </property>
                <property name="alignment">
                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -1718,7 +1742,7 @@ background:rgb(52, 101, 164);} </string>
       <item row="1" column="0">
        <widget class="QTabWidget" name="tabWidget_3">
         <property name="currentIndex">
-         <number>0</number>
+         <number>1</number>
         </property>
         <widget class="QWidget" name="tab_7">
          <attribute name="title">
@@ -1728,6 +1752,13 @@ background:rgb(52, 101, 164);} </string>
           <item>
            <widget class="QWidget" name="widget" native="true">
             <layout class="QGridLayout" name="gridLayout_12">
+             <item row="2" column="1">
+              <widget class="QPushButton" name="recover_button">
+               <property name="text">
+                <string>Recover</string>
+               </property>
+              </widget>
+             </item>
              <item row="1" column="1">
               <widget class="QPushButton" name="close_venting_button">
                <property name="text">
@@ -1735,17 +1766,20 @@ background:rgb(52, 101, 164);} </string>
                </property>
               </widget>
              </item>
+             <item row="3" column="0" colspan="2">
+              <widget class="QPushButton" name="abort_button">
+               <property name="styleSheet">
+                <string notr="true">color: rgb(204, 0, 0);</string>
+               </property>
+               <property name="text">
+                <string>ABORT</string>
+               </property>
+              </widget>
+             </item>
              <item row="2" column="0">
               <widget class="QPushButton" name="start_calibration_button">
                <property name="text">
                 <string>Start calibration</string>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="1">
-              <widget class="QPushButton" name="disarm_button">
-               <property name="text">
-                <string>Disarm</string>
                </property>
               </widget>
              </item>
@@ -1759,13 +1793,6 @@ background:rgb(52, 101, 164);} </string>
                </property>
               </widget>
              </item>
-             <item row="2" column="1">
-              <widget class="QPushButton" name="recover_button">
-               <property name="text">
-                <string>Recover</string>
-               </property>
-              </widget>
-             </item>
              <item row="1" column="0">
               <widget class="QPushButton" name="open_venting_button">
                <property name="text">
@@ -1773,22 +1800,83 @@ background:rgb(52, 101, 164);} </string>
                </property>
               </widget>
              </item>
-             <item row="4" column="0" colspan="2">
-              <widget class="QPushButton" name="abort_button">
-               <property name="styleSheet">
-                <string notr="true">color: rgb(204, 0, 0);</string>
-               </property>
+             <item row="0" column="1">
+              <widget class="QPushButton" name="disarm_button">
                <property name="text">
-                <string>ABORT</string>
+                <string>Disarm</string>
                </property>
               </widget>
              </item>
-             <item row="3" column="0" colspan="2">
-              <widget class="QPushButton" name="rpi_start_button">
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="tab_tvc">
+         <attribute name="title">
+          <string>TVC Control</string>
+         </attribute>
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <widget class="QWidget" name="widget" native="true">
+            <layout class="QGridLayout" name="gridLayout_12">
+             <item row="0" column="0">
+              <widget class="QPushButton" name="tvc_boot_button">
+               <property name="styleSheet">
+                <string notr="true"/>
+               </property>
                <property name="text">
-                <string>RPi Start</string>
+                <string>Boot</string>
                </property>
               </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QPushButton" name="tvc_abort_button">
+               <property name="text">
+                <string>Abort</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QPushButton" name="tvc_recover_button">
+               <property name="text">
+                <string>Recover</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QPushButton" name="tvc_shutdown_button">
+               <property name="text">
+                <string>Shutdown</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="1">
+              <widget class="QLabel" name="tvc_status_panel">
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="0">
+              <widget class="QLabel" name="label_33">
+               <property name="text">
+                <string>Status</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <spacer name="verticalSpacer">
+               <property name="orientation">
+                <enum>Qt::Vertical</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>20</width>
+                 <height>40</height>
+                </size>
+               </property>
+              </spacer>
              </item>
             </layout>
            </widget>
@@ -2746,13 +2834,6 @@ gridline-color: rgb(255, 0, 0);</string>
                </property>
               </widget>
              </item>
-             <item row="1" column="1">
-              <widget class="QPushButton" name="purge_open_button">
-               <property name="text">
-                <string>Open</string>
-               </property>
-              </widget>
-             </item>
              <item row="3" column="0">
               <widget class="QPushButton" name="echo_button">
                <property name="text">
@@ -2802,6 +2883,13 @@ gridline-color: rgb(255, 0, 0);</string>
               <widget class="QPushButton" name="disconnect_off_button">
                <property name="text">
                 <string>Off</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QPushButton" name="purge_open_button">
+               <property name="text">
+                <string>Open</string>
                </property>
               </widget>
              </item>

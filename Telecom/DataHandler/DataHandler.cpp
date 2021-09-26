@@ -18,6 +18,8 @@
 #include <Avionics/GPS.h>
 #include <Avionics/Telemetry.h>
 #include <Avionics/StatusAV.h>
+#include <Avionics/TVCCommand.h>
+#include <Avionics/TVCStatus.h>
 
 #include <Payload/PLStatus.h>
 #include <Payload/PLGps.h>
@@ -64,6 +66,8 @@ DataHandler::DataHandler(std::shared_ptr<Connector> connector)
         dataHandler[DatagramType::AV_STATUS]->add(new StatusAV);
         dataHandler[DatagramType::AV_TELEMETRY]->add(new Telemetry);
         dataHandler[DatagramType::AV_DEBUG]->add(new String("Hello Avionic"));
+        dataHandler[DatagramType::TVC_COMMAND]->add(new TVCCommand);
+        dataHandler[DatagramType::TVC_STATUS]->add(new TVCStatus);
 
         //// GSE Datagram
         dataHandler[DatagramType::GSE_ORDER]->add(new GSEOrder);
@@ -89,7 +93,7 @@ DataHandler::DataHandler(std::shared_ptr<Connector> connector)
 
 
         //// Air Brakes Datagram
-        dataHandler[AIR_BRAKES]->add(new BasicData<float>(DataType::AIR_BRAKES_ANGLE));
+        //dataHandler[AIR_BRAKES]->add(new BasicData<float>(DataType::AIR_BRAKES_ANGLE));
 
         //// [Subsystem Name] Datagram
         /// // dataHandler[DatagramID]->add(new MyData);

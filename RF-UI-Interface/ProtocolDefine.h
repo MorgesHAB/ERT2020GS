@@ -146,6 +146,11 @@ namespace ui_interface {
         SECONDARY_EVENT_REACHED,//bool
         TOUCH_DOWN_REACHED,     //bool
 
+
+        // TVC
+        TVC_COMMAND,
+        TVC_STATUS,
+
         /// GSE Orders
 
         GSE_ORDER,              //enum GSEOrderValues

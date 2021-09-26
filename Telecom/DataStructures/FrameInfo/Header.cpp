@@ -56,6 +56,8 @@ bool Header::updateRx(std::shared_ptr<Connector> connector) {
         case AV_STATUS:
         case AV_GPS:
         case AV_DEBUG:
+        case TVC_COMMAND:
+        case TVC_STATUS:
             connector->incrementData(ui_interface::PACKET_CTR_AV);
             break;
         case GSE_SENSORS:
@@ -85,9 +87,9 @@ bool Header::updateRx(std::shared_ptr<Connector> connector) {
         //case PL_IMAGE:
         //    connector->incrementData(ui_interface::PACKET_CTR_PL);
         //    break;
-        case PROPULSION:
-            connector->incrementData(ui_interface::PACKET_CTR_PP);
-            break;
+        //case PROPULSION:
+        //    connector->incrementData(ui_interface::PACKET_CTR_PP);
+        //    break;
         case PP_DATA:
             connector->incrementData(ui_interface::PACKET_CTR_PP);
             break;
