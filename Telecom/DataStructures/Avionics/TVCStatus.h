@@ -16,6 +16,7 @@ public:
 
 private:
   int32_t status;
+  int32_t thrust;
 };
 
 #endif // ERT2020GS_TVCSTATUS_H

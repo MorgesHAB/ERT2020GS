@@ -93,6 +93,13 @@ void Worker::RFroutine(DataHandler& dataHandler, RFmodem* rfmodem) {
             std::this_thread::sleep_for(std::chrono::milliseconds(10));
         }
     }
+
+    if (dataHandler.updateTx(DatagramType::TVC_COMMAND)){
+        for (int i(0); i < PACKET_FLOW_NBR; ++i) {
+            rfmodem->send(dataHandler.getPacket(DatagramType::TVC_COMMAND));
+            std::this_thread::sleep_for(std::chrono::milliseconds(10));
+        }
+    }
     
     // Manage Image Transmission
     /*if (dataHandler.updateTx(DatagramType::PL_IMAGE))
