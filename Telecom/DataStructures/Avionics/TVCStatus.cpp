@@ -17,6 +17,7 @@ bool TVCStatus::updateTx(std::shared_ptr<Connector> connector) { return false; }
 
 bool TVCStatus::updateRx(std::shared_ptr<Connector> connector) {
   connector->setData(ui_interface::TVC_STATUS, status);
+  connector->setData(ui_interface::TVC_REPLY_PING, true);
   return true;
 }
 
