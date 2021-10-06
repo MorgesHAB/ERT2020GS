@@ -35,7 +35,7 @@ void PPCommand::print() const {
 
 bool PPCommand::updateTx(std::shared_ptr<Connector> connector) {
     command = connector->eatData<pp::CommandValue>(ui_interface::PP_COMMAND, pp::NO_COMMAND);
-    return (command!=pp::NO_COMMAND);
+    return (command!=pp::NO_COMMAND || connector->eatData<bool>(ui_interface::PP_REPLY_PING, false));
 }
 
 bool PPCommand::updateRx(std::shared_ptr<Connector> connector) {

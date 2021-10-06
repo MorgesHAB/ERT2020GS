@@ -151,6 +151,7 @@ namespace ui_interface {
         TVC_COMMAND,
         TVC_STATUS,
         TVC_REPLY_PING,
+        PP_REPLY_PING,
 
         /// GSE Orders
 
