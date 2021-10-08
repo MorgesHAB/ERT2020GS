@@ -50,8 +50,6 @@ bool StatusAV::updateRx(std::shared_ptr<Connector> connector) {
             break;
         case IDLE: connector->setData(ui_interface::IDLE_REACHED, true);
             break;
-        case FILLING: connector->setData(ui_interface::FILLING_REACHED, true);
-            break;
         case LIFTOFF: connector->setData(ui_interface::LIFTOFF_REACHED, true);
             break;
         case COAST: connector->setData(ui_interface::COAST_REACHED, true);

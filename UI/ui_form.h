@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'MainGUItDdVDG.ui'
+** Form generated from reading UI file 'MainGUIgkogUE.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.15.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef MAINGUITDDVDG_H
-#define MAINGUITDDVDG_H
+#ifndef MAINGUIGKOGUE_H
+#define MAINGUIGKOGUE_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
@@ -231,35 +231,35 @@ public:
     QHBoxLayout *horizontalLayout_21;
     QWidget *widget1;
     QGridLayout *gridLayout_121;
-    QPushButton *tvc_boot_button;
+    QPushButton *tvc_shutdown_button;
     QPushButton *tvc_abort_button;
     QPushButton *tvc_recover_button;
-    QPushButton *tvc_shutdown_button;
+    QSpacerItem *verticalSpacer;
+    QPushButton *tvc_boot_button;
     QLabel *tvc_status_panel;
     QLabel *label_33;
-    QSpacerItem *verticalSpacer;
+    QLabel *label_34;
+    QLabel *tvc_rpi_status_panel;
     QWidget *right_widget;
     QGridLayout *gridLayout_9;
     QGroupBox *av_states_box;
     QGridLayout *gridLayout_11;
-    QLabel *filling_av_ok_panel;
-    QLabel *second_event_label;
     QLabel *touchdown_label;
-    QLabel *coast_label;
-    QLabel *second_event_ok_panel;
-    QLabel *calibration_label;
-    QLabel *calibration_state_ok_panel;
-    QLabel *first_event_ok_panel;
-    QLabel *filling_label_av;
-    QLabel *liftoff_state_ok_panel;
-    QLabel *touchdown_event_ok_panel;
-    QLabel *coast_state_ok_panel;
-    QLabel *idle_label;
     QLabel *idle_state_ok_panel;
-    QLabel *first_event_label;
-    QLabel *liftoff_label;
-    QLabel *sleep_label;
     QLabel *sleep_state_ok_panel;
+    QLabel *second_event_label;
+    QLabel *coast_label;
+    QLabel *liftoff_label;
+    QLabel *liftoff_state_ok_panel;
+    QLabel *calibration_label;
+    QLabel *sleep_label;
+    QLabel *touchdown_event_ok_panel;
+    QLabel *calibration_state_ok_panel;
+    QLabel *coast_state_ok_panel;
+    QLabel *second_event_ok_panel;
+    QLabel *idle_label;
+    QLabel *first_event_ok_panel;
+    QLabel *first_event_label;
     QTabWidget *tabWidget_4;
     QWidget *tab_8;
     QHBoxLayout *horizontalLayout_8;
@@ -1446,11 +1446,10 @@ public:
         widget1->setObjectName(QString::fromUtf8("widget1"));
         gridLayout_121 = new QGridLayout(widget1);
         gridLayout_121->setObjectName(QString::fromUtf8("gridLayout_121"));
-        tvc_boot_button = new QPushButton(widget1);
-        tvc_boot_button->setObjectName(QString::fromUtf8("tvc_boot_button"));
-        tvc_boot_button->setStyleSheet(QString::fromUtf8(""));
+        tvc_shutdown_button = new QPushButton(widget1);
+        tvc_shutdown_button->setObjectName(QString::fromUtf8("tvc_shutdown_button"));
 
-        gridLayout_121->addWidget(tvc_boot_button, 0, 0, 1, 1);
+        gridLayout_121->addWidget(tvc_shutdown_button, 0, 1, 1, 1);
 
         tvc_abort_button = new QPushButton(widget1);
         tvc_abort_button->setObjectName(QString::fromUtf8("tvc_abort_button"));
@@ -1462,10 +1461,15 @@ public:
 
         gridLayout_121->addWidget(tvc_recover_button, 1, 1, 1, 1);
 
-        tvc_shutdown_button = new QPushButton(widget1);
-        tvc_shutdown_button->setObjectName(QString::fromUtf8("tvc_shutdown_button"));
+        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
-        gridLayout_121->addWidget(tvc_shutdown_button, 0, 1, 1, 1);
+        gridLayout_121->addItem(verticalSpacer, 2, 0, 1, 1);
+
+        tvc_boot_button = new QPushButton(widget1);
+        tvc_boot_button->setObjectName(QString::fromUtf8("tvc_boot_button"));
+        tvc_boot_button->setStyleSheet(QString::fromUtf8(""));
+
+        gridLayout_121->addWidget(tvc_boot_button, 0, 0, 1, 1);
 
         tvc_status_panel = new QLabel(widget1);
         tvc_status_panel->setObjectName(QString::fromUtf8("tvc_status_panel"));
@@ -1477,9 +1481,15 @@ public:
 
         gridLayout_121->addWidget(label_33, 3, 0, 1, 1);
 
-        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        label_34 = new QLabel(widget1);
+        label_34->setObjectName(QString::fromUtf8("label_34"));
 
-        gridLayout_121->addItem(verticalSpacer, 2, 0, 1, 1);
+        gridLayout_121->addWidget(label_34, 4, 0, 1, 1);
+
+        tvc_rpi_status_panel = new QLabel(widget1);
+        tvc_rpi_status_panel->setObjectName(QString::fromUtf8("tvc_rpi_status_panel"));
+
+        gridLayout_121->addWidget(tvc_rpi_status_panel, 4, 1, 1, 1);
 
 
         horizontalLayout_21->addWidget(widget1);
@@ -1501,100 +1511,10 @@ public:
         av_states_box->setSizePolicy(sizePolicy1);
         gridLayout_11 = new QGridLayout(av_states_box);
         gridLayout_11->setObjectName(QString::fromUtf8("gridLayout_11"));
-        filling_av_ok_panel = new QLabel(av_states_box);
-        filling_av_ok_panel->setObjectName(QString::fromUtf8("filling_av_ok_panel"));
-        filling_av_ok_panel->setMinimumSize(QSize(23, 0));
-        filling_av_ok_panel->setMaximumSize(QSize(23, 16777215));
-        filling_av_ok_panel->setStyleSheet(QString::fromUtf8("color: rgb(255, 0, 0);"));
-        filling_av_ok_panel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
-
-        gridLayout_11->addWidget(filling_av_ok_panel, 4, 2, 1, 1);
-
-        second_event_label = new QLabel(av_states_box);
-        second_event_label->setObjectName(QString::fromUtf8("second_event_label"));
-
-        gridLayout_11->addWidget(second_event_label, 8, 1, 1, 1);
-
         touchdown_label = new QLabel(av_states_box);
         touchdown_label->setObjectName(QString::fromUtf8("touchdown_label"));
 
-        gridLayout_11->addWidget(touchdown_label, 9, 1, 1, 1);
-
-        coast_label = new QLabel(av_states_box);
-        coast_label->setObjectName(QString::fromUtf8("coast_label"));
-
-        gridLayout_11->addWidget(coast_label, 6, 1, 1, 1);
-
-        second_event_ok_panel = new QLabel(av_states_box);
-        second_event_ok_panel->setObjectName(QString::fromUtf8("second_event_ok_panel"));
-        second_event_ok_panel->setMinimumSize(QSize(23, 0));
-        second_event_ok_panel->setMaximumSize(QSize(23, 16777215));
-        second_event_ok_panel->setStyleSheet(QString::fromUtf8("color: rgb(255, 0, 0);"));
-        second_event_ok_panel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
-
-        gridLayout_11->addWidget(second_event_ok_panel, 8, 2, 1, 1);
-
-        calibration_label = new QLabel(av_states_box);
-        calibration_label->setObjectName(QString::fromUtf8("calibration_label"));
-        calibration_label->setStyleSheet(QString::fromUtf8(""));
-
-        gridLayout_11->addWidget(calibration_label, 2, 1, 1, 1);
-
-        calibration_state_ok_panel = new QLabel(av_states_box);
-        calibration_state_ok_panel->setObjectName(QString::fromUtf8("calibration_state_ok_panel"));
-        calibration_state_ok_panel->setMinimumSize(QSize(23, 0));
-        calibration_state_ok_panel->setMaximumSize(QSize(23, 16777215));
-        calibration_state_ok_panel->setStyleSheet(QString::fromUtf8("color: rgb(255, 0, 0);"));
-        calibration_state_ok_panel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
-
-        gridLayout_11->addWidget(calibration_state_ok_panel, 2, 2, 1, 1);
-
-        first_event_ok_panel = new QLabel(av_states_box);
-        first_event_ok_panel->setObjectName(QString::fromUtf8("first_event_ok_panel"));
-        first_event_ok_panel->setMinimumSize(QSize(23, 0));
-        first_event_ok_panel->setMaximumSize(QSize(23, 16777215));
-        first_event_ok_panel->setStyleSheet(QString::fromUtf8("color: rgb(255, 0, 0);"));
-        first_event_ok_panel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
-
-        gridLayout_11->addWidget(first_event_ok_panel, 7, 2, 1, 1);
-
-        filling_label_av = new QLabel(av_states_box);
-        filling_label_av->setObjectName(QString::fromUtf8("filling_label_av"));
-
-        gridLayout_11->addWidget(filling_label_av, 4, 1, 1, 1);
-
-        liftoff_state_ok_panel = new QLabel(av_states_box);
-        liftoff_state_ok_panel->setObjectName(QString::fromUtf8("liftoff_state_ok_panel"));
-        liftoff_state_ok_panel->setMinimumSize(QSize(23, 0));
-        liftoff_state_ok_panel->setMaximumSize(QSize(23, 16777215));
-        liftoff_state_ok_panel->setStyleSheet(QString::fromUtf8("color: rgb(255, 0, 0);"));
-        liftoff_state_ok_panel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
-
-        gridLayout_11->addWidget(liftoff_state_ok_panel, 5, 2, 1, 1);
-
-        touchdown_event_ok_panel = new QLabel(av_states_box);
-        touchdown_event_ok_panel->setObjectName(QString::fromUtf8("touchdown_event_ok_panel"));
-        touchdown_event_ok_panel->setMinimumSize(QSize(23, 0));
-        touchdown_event_ok_panel->setMaximumSize(QSize(23, 16777215));
-        touchdown_event_ok_panel->setStyleSheet(QString::fromUtf8("color: rgb(255, 0, 0);"));
-        touchdown_event_ok_panel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
-
-        gridLayout_11->addWidget(touchdown_event_ok_panel, 9, 2, 1, 1);
-
-        coast_state_ok_panel = new QLabel(av_states_box);
-        coast_state_ok_panel->setObjectName(QString::fromUtf8("coast_state_ok_panel"));
-        coast_state_ok_panel->setMinimumSize(QSize(23, 0));
-        coast_state_ok_panel->setMaximumSize(QSize(23, 16777215));
-        coast_state_ok_panel->setStyleSheet(QString::fromUtf8("color: rgb(255, 0, 0);"));
-        coast_state_ok_panel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
-
-        gridLayout_11->addWidget(coast_state_ok_panel, 6, 2, 1, 1);
-
-        idle_label = new QLabel(av_states_box);
-        idle_label->setObjectName(QString::fromUtf8("idle_label"));
-        idle_label->setStyleSheet(QString::fromUtf8(""));
-
-        gridLayout_11->addWidget(idle_label, 3, 1, 1, 1);
+        gridLayout_11->addWidget(touchdown_label, 8, 1, 1, 1);
 
         idle_state_ok_panel = new QLabel(av_states_box);
         idle_state_ok_panel->setObjectName(QString::fromUtf8("idle_state_ok_panel"));
@@ -1605,21 +1525,6 @@ public:
 
         gridLayout_11->addWidget(idle_state_ok_panel, 3, 2, 1, 1);
 
-        first_event_label = new QLabel(av_states_box);
-        first_event_label->setObjectName(QString::fromUtf8("first_event_label"));
-
-        gridLayout_11->addWidget(first_event_label, 7, 1, 1, 1);
-
-        liftoff_label = new QLabel(av_states_box);
-        liftoff_label->setObjectName(QString::fromUtf8("liftoff_label"));
-
-        gridLayout_11->addWidget(liftoff_label, 5, 1, 1, 1);
-
-        sleep_label = new QLabel(av_states_box);
-        sleep_label->setObjectName(QString::fromUtf8("sleep_label"));
-
-        gridLayout_11->addWidget(sleep_label, 1, 1, 1, 1);
-
         sleep_state_ok_panel = new QLabel(av_states_box);
         sleep_state_ok_panel->setObjectName(QString::fromUtf8("sleep_state_ok_panel"));
         sleep_state_ok_panel->setMinimumSize(QSize(23, 0));
@@ -1628,6 +1533,97 @@ public:
         sleep_state_ok_panel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         gridLayout_11->addWidget(sleep_state_ok_panel, 1, 2, 1, 1);
+
+        second_event_label = new QLabel(av_states_box);
+        second_event_label->setObjectName(QString::fromUtf8("second_event_label"));
+
+        gridLayout_11->addWidget(second_event_label, 7, 1, 1, 1);
+
+        coast_label = new QLabel(av_states_box);
+        coast_label->setObjectName(QString::fromUtf8("coast_label"));
+
+        gridLayout_11->addWidget(coast_label, 5, 1, 1, 1);
+
+        liftoff_label = new QLabel(av_states_box);
+        liftoff_label->setObjectName(QString::fromUtf8("liftoff_label"));
+
+        gridLayout_11->addWidget(liftoff_label, 4, 1, 1, 1);
+
+        liftoff_state_ok_panel = new QLabel(av_states_box);
+        liftoff_state_ok_panel->setObjectName(QString::fromUtf8("liftoff_state_ok_panel"));
+        liftoff_state_ok_panel->setMinimumSize(QSize(23, 0));
+        liftoff_state_ok_panel->setMaximumSize(QSize(23, 16777215));
+        liftoff_state_ok_panel->setStyleSheet(QString::fromUtf8("color: rgb(255, 0, 0);"));
+        liftoff_state_ok_panel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+
+        gridLayout_11->addWidget(liftoff_state_ok_panel, 4, 2, 1, 1);
+
+        calibration_label = new QLabel(av_states_box);
+        calibration_label->setObjectName(QString::fromUtf8("calibration_label"));
+        calibration_label->setStyleSheet(QString::fromUtf8(""));
+
+        gridLayout_11->addWidget(calibration_label, 2, 1, 1, 1);
+
+        sleep_label = new QLabel(av_states_box);
+        sleep_label->setObjectName(QString::fromUtf8("sleep_label"));
+
+        gridLayout_11->addWidget(sleep_label, 1, 1, 1, 1);
+
+        touchdown_event_ok_panel = new QLabel(av_states_box);
+        touchdown_event_ok_panel->setObjectName(QString::fromUtf8("touchdown_event_ok_panel"));
+        touchdown_event_ok_panel->setMinimumSize(QSize(23, 0));
+        touchdown_event_ok_panel->setMaximumSize(QSize(23, 16777215));
+        touchdown_event_ok_panel->setStyleSheet(QString::fromUtf8("color: rgb(255, 0, 0);"));
+        touchdown_event_ok_panel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+
+        gridLayout_11->addWidget(touchdown_event_ok_panel, 8, 2, 1, 1);
+
+        calibration_state_ok_panel = new QLabel(av_states_box);
+        calibration_state_ok_panel->setObjectName(QString::fromUtf8("calibration_state_ok_panel"));
+        calibration_state_ok_panel->setMinimumSize(QSize(23, 0));
+        calibration_state_ok_panel->setMaximumSize(QSize(23, 16777215));
+        calibration_state_ok_panel->setStyleSheet(QString::fromUtf8("color: rgb(255, 0, 0);"));
+        calibration_state_ok_panel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+
+        gridLayout_11->addWidget(calibration_state_ok_panel, 2, 2, 1, 1);
+
+        coast_state_ok_panel = new QLabel(av_states_box);
+        coast_state_ok_panel->setObjectName(QString::fromUtf8("coast_state_ok_panel"));
+        coast_state_ok_panel->setMinimumSize(QSize(23, 0));
+        coast_state_ok_panel->setMaximumSize(QSize(23, 16777215));
+        coast_state_ok_panel->setStyleSheet(QString::fromUtf8("color: rgb(255, 0, 0);"));
+        coast_state_ok_panel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+
+        gridLayout_11->addWidget(coast_state_ok_panel, 5, 2, 1, 1);
+
+        second_event_ok_panel = new QLabel(av_states_box);
+        second_event_ok_panel->setObjectName(QString::fromUtf8("second_event_ok_panel"));
+        second_event_ok_panel->setMinimumSize(QSize(23, 0));
+        second_event_ok_panel->setMaximumSize(QSize(23, 16777215));
+        second_event_ok_panel->setStyleSheet(QString::fromUtf8("color: rgb(255, 0, 0);"));
+        second_event_ok_panel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+
+        gridLayout_11->addWidget(second_event_ok_panel, 7, 2, 1, 1);
+
+        idle_label = new QLabel(av_states_box);
+        idle_label->setObjectName(QString::fromUtf8("idle_label"));
+        idle_label->setStyleSheet(QString::fromUtf8(""));
+
+        gridLayout_11->addWidget(idle_label, 3, 1, 1, 1);
+
+        first_event_ok_panel = new QLabel(av_states_box);
+        first_event_ok_panel->setObjectName(QString::fromUtf8("first_event_ok_panel"));
+        first_event_ok_panel->setMinimumSize(QSize(23, 0));
+        first_event_ok_panel->setMaximumSize(QSize(23, 16777215));
+        first_event_ok_panel->setStyleSheet(QString::fromUtf8("color: rgb(255, 0, 0);"));
+        first_event_ok_panel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+
+        gridLayout_11->addWidget(first_event_ok_panel, 6, 2, 1, 1);
+
+        first_event_label = new QLabel(av_states_box);
+        first_event_label->setObjectName(QString::fromUtf8("first_event_label"));
+
+        gridLayout_11->addWidget(first_event_label, 6, 1, 1, 1);
 
 
         gridLayout_9->addWidget(av_states_box, 5, 1, 1, 1);
@@ -2524,14 +2520,14 @@ public:
         label_26->setText(QCoreApplication::translate("Form", "Venting", nullptr));
         label_12->setText(QCoreApplication::translate("Form", "<html><head/><body><p>[<span style=\" vertical-align:super;\">o</span>C]</p></body></html>", nullptr));
         pp_motor_position_panel->setText(QString());
-        label_5->setText(QCoreApplication::translate("Form", "Pressure 1", nullptr));
+        label_5->setText(QCoreApplication::translate("Form", "CC Pressure", nullptr));
         pp_status_panel->setText(QString());
         label_16->setText(QCoreApplication::translate("Form", "Motor pos", nullptr));
         pp_temperature_2_panel->setText(QString());
         label_6->setText(QCoreApplication::translate("Form", "[Bar]", nullptr));
         label_14->setText(QCoreApplication::translate("Form", "Temp 3", nullptr));
         label_15->setText(QCoreApplication::translate("Form", "Status", nullptr));
-        label->setText(QCoreApplication::translate("Form", "Pressure 2", nullptr));
+        label->setText(QCoreApplication::translate("Form", "Tank Pressure", nullptr));
         label_24->setText(QCoreApplication::translate("Form", "[deg]", nullptr));
         label_18->setText(QCoreApplication::translate("Form", "<html><head/><body><p>[<span style=\" vertical-align:super;\">o</span>C]</p></body></html>", nullptr));
         pp_temperature_1_panel->setText(QString());
@@ -2551,32 +2547,32 @@ public:
         open_venting_button->setText(QCoreApplication::translate("Form", "Open Venting", nullptr));
         disarm_button->setText(QCoreApplication::translate("Form", "Disarm", nullptr));
         tabWidget_3->setTabText(tabWidget_3->indexOf(tab_7), QCoreApplication::translate("Form", "PP Control", nullptr));
-        tvc_boot_button->setText(QCoreApplication::translate("Form", "Boot", nullptr));
+        tvc_shutdown_button->setText(QCoreApplication::translate("Form", "Shutdown", nullptr));
         tvc_abort_button->setText(QCoreApplication::translate("Form", "Abort", nullptr));
         tvc_recover_button->setText(QCoreApplication::translate("Form", "Recover", nullptr));
-        tvc_shutdown_button->setText(QCoreApplication::translate("Form", "Shutdown", nullptr));
+        tvc_boot_button->setText(QCoreApplication::translate("Form", "Boot", nullptr));
         tvc_status_panel->setText(QString());
-        label_33->setText(QCoreApplication::translate("Form", "Status", nullptr));
+        label_33->setText(QCoreApplication::translate("Form", "HB Status", nullptr));
+        label_34->setText(QCoreApplication::translate("Form", "RPi Status", nullptr));
+        tvc_rpi_status_panel->setText(QString());
         tabWidget_3->setTabText(tabWidget_3->indexOf(tab_tvc), QCoreApplication::translate("Form", "TVC Control", nullptr));
         av_states_box->setTitle(QCoreApplication::translate("Form", "AV States", nullptr));
-        filling_av_ok_panel->setText(QCoreApplication::translate("Form", "X", nullptr));
-        second_event_label->setText(QCoreApplication::translate("Form", "2nd Event", nullptr));
         touchdown_label->setText(QCoreApplication::translate("Form", "Touchdown", nullptr));
-        coast_label->setText(QCoreApplication::translate("Form", "Coast", nullptr));
-        second_event_ok_panel->setText(QCoreApplication::translate("Form", "X", nullptr));
-        calibration_label->setText(QCoreApplication::translate("Form", "Calibration", nullptr));
-        calibration_state_ok_panel->setText(QCoreApplication::translate("Form", "X", nullptr));
-        first_event_ok_panel->setText(QCoreApplication::translate("Form", "X", nullptr));
-        filling_label_av->setText(QCoreApplication::translate("Form", "Filling", nullptr));
-        liftoff_state_ok_panel->setText(QCoreApplication::translate("Form", "X", nullptr));
-        touchdown_event_ok_panel->setText(QCoreApplication::translate("Form", "X", nullptr));
-        coast_state_ok_panel->setText(QCoreApplication::translate("Form", "X", nullptr));
-        idle_label->setText(QCoreApplication::translate("Form", "IDLE", nullptr));
         idle_state_ok_panel->setText(QCoreApplication::translate("Form", "X", nullptr));
-        first_event_label->setText(QCoreApplication::translate("Form", "1st Event", nullptr));
-        liftoff_label->setText(QCoreApplication::translate("Form", "Lift off", nullptr));
-        sleep_label->setText(QCoreApplication::translate("Form", "Sleep", nullptr));
         sleep_state_ok_panel->setText(QCoreApplication::translate("Form", "X", nullptr));
+        second_event_label->setText(QCoreApplication::translate("Form", "2nd Event", nullptr));
+        coast_label->setText(QCoreApplication::translate("Form", "Coast", nullptr));
+        liftoff_label->setText(QCoreApplication::translate("Form", "Lift off", nullptr));
+        liftoff_state_ok_panel->setText(QCoreApplication::translate("Form", "X", nullptr));
+        calibration_label->setText(QCoreApplication::translate("Form", "Calibration", nullptr));
+        sleep_label->setText(QCoreApplication::translate("Form", "Sleep", nullptr));
+        touchdown_event_ok_panel->setText(QCoreApplication::translate("Form", "X", nullptr));
+        calibration_state_ok_panel->setText(QCoreApplication::translate("Form", "X", nullptr));
+        coast_state_ok_panel->setText(QCoreApplication::translate("Form", "X", nullptr));
+        second_event_ok_panel->setText(QCoreApplication::translate("Form", "X", nullptr));
+        idle_label->setText(QCoreApplication::translate("Form", "IDLE", nullptr));
+        first_event_ok_panel->setText(QCoreApplication::translate("Form", "X", nullptr));
+        first_event_label->setText(QCoreApplication::translate("Form", "1st Event", nullptr));
         ignition_button->setText(QCoreApplication::translate("Form", "Ready For Ignition", nullptr));
         ready_ignition_panel->setText(QCoreApplication::translate("Form", "X", nullptr));
         key_1_label->setText(QCoreApplication::translate("Form", "KEY 1", nullptr));
@@ -2682,4 +2678,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // MAINGUITDDVDG_H
+#endif // MAINGUIGKOGUE_H

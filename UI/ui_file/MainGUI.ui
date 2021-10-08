@@ -1594,7 +1594,7 @@ background:rgb(52, 101, 164);} </string>
              <item row="0" column="0">
               <widget class="QLabel" name="label_5">
                <property name="text">
-                <string>Pressure 1</string>
+                <string>CC Pressure</string>
                </property>
               </widget>
              </item>
@@ -1646,7 +1646,7 @@ background:rgb(52, 101, 164);} </string>
              <item row="1" column="0">
               <widget class="QLabel" name="label">
                <property name="text">
-                <string>Pressure 2</string>
+                <string>Tank Pressure</string>
                </property>
               </widget>
              </item>
@@ -1820,13 +1820,10 @@ background:rgb(52, 101, 164);} </string>
           <item>
            <widget class="QWidget" name="widget" native="true">
             <layout class="QGridLayout" name="gridLayout_12">
-             <item row="0" column="0">
-              <widget class="QPushButton" name="tvc_boot_button">
-               <property name="styleSheet">
-                <string notr="true"/>
-               </property>
+             <item row="0" column="1">
+              <widget class="QPushButton" name="tvc_shutdown_button">
                <property name="text">
-                <string>Boot</string>
+                <string>Shutdown</string>
                </property>
               </widget>
              </item>
@@ -1844,10 +1841,26 @@ background:rgb(52, 101, 164);} </string>
                </property>
               </widget>
              </item>
-             <item row="0" column="1">
-              <widget class="QPushButton" name="tvc_shutdown_button">
+             <item row="2" column="0">
+              <spacer name="verticalSpacer">
+               <property name="orientation">
+                <enum>Qt::Vertical</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>20</width>
+                 <height>40</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item row="0" column="0">
+              <widget class="QPushButton" name="tvc_boot_button">
+               <property name="styleSheet">
+                <string notr="true"/>
+               </property>
                <property name="text">
-                <string>Shutdown</string>
+                <string>Boot</string>
                </property>
               </widget>
              </item>
@@ -1861,22 +1874,23 @@ background:rgb(52, 101, 164);} </string>
              <item row="3" column="0">
               <widget class="QLabel" name="label_33">
                <property name="text">
-                <string>Status</string>
+                <string>HB Status</string>
                </property>
               </widget>
              </item>
-             <item row="2" column="0">
-              <spacer name="verticalSpacer">
-               <property name="orientation">
-                <enum>Qt::Vertical</enum>
+             <item row="4" column="0">
+              <widget class="QLabel" name="label_34">
+               <property name="text">
+                <string>RPi Status</string>
                </property>
-               <property name="sizeHint" stdset="0">
-                <size>
-                 <width>20</width>
-                 <height>40</height>
-                </size>
+              </widget>
+             </item>
+             <item row="4" column="1">
+              <widget class="QLabel" name="tvc_rpi_status_panel">
+               <property name="text">
+                <string/>
                </property>
-              </spacer>
+              </widget>
              </item>
             </layout>
            </widget>
@@ -1903,8 +1917,15 @@ background:rgb(52, 101, 164);} </string>
          <string>AV States</string>
         </property>
         <layout class="QGridLayout" name="gridLayout_11">
-         <item row="4" column="2">
-          <widget class="QLabel" name="filling_av_ok_panel">
+         <item row="8" column="1">
+          <widget class="QLabel" name="touchdown_label">
+           <property name="text">
+            <string>Touchdown</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="2">
+          <widget class="QLabel" name="idle_state_ok_panel">
            <property name="minimumSize">
             <size>
              <width>23</width>
@@ -1928,29 +1949,54 @@ background:rgb(52, 101, 164);} </string>
            </property>
           </widget>
          </item>
-         <item row="8" column="1">
+         <item row="1" column="2">
+          <widget class="QLabel" name="sleep_state_ok_panel">
+           <property name="minimumSize">
+            <size>
+             <width>23</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>23</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(255, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string>X</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="1">
           <widget class="QLabel" name="second_event_label">
            <property name="text">
             <string>2nd Event</string>
            </property>
           </widget>
          </item>
-         <item row="9" column="1">
-          <widget class="QLabel" name="touchdown_label">
-           <property name="text">
-            <string>Touchdown</string>
-           </property>
-          </widget>
-         </item>
-         <item row="6" column="1">
+         <item row="5" column="1">
           <widget class="QLabel" name="coast_label">
            <property name="text">
             <string>Coast</string>
            </property>
           </widget>
          </item>
-         <item row="8" column="2">
-          <widget class="QLabel" name="second_event_ok_panel">
+         <item row="4" column="1">
+          <widget class="QLabel" name="liftoff_label">
+           <property name="text">
+            <string>Lift off</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="2">
+          <widget class="QLabel" name="liftoff_state_ok_panel">
            <property name="minimumSize">
             <size>
              <width>23</width>
@@ -1984,6 +2030,38 @@ background:rgb(52, 101, 164);} </string>
            </property>
           </widget>
          </item>
+         <item row="1" column="1">
+          <widget class="QLabel" name="sleep_label">
+           <property name="text">
+            <string>Sleep</string>
+           </property>
+          </widget>
+         </item>
+         <item row="8" column="2">
+          <widget class="QLabel" name="touchdown_event_ok_panel">
+           <property name="minimumSize">
+            <size>
+             <width>23</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>23</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(255, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string>X</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
          <item row="2" column="2">
           <widget class="QLabel" name="calibration_state_ok_panel">
            <property name="minimumSize">
@@ -2009,90 +2087,33 @@ background:rgb(52, 101, 164);} </string>
            </property>
           </widget>
          </item>
-         <item row="7" column="2">
-          <widget class="QLabel" name="first_event_ok_panel">
-           <property name="minimumSize">
-            <size>
-             <width>23</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>23</width>
-             <height>16777215</height>
-            </size>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">color: rgb(255, 0, 0);</string>
-           </property>
-           <property name="text">
-            <string>X</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item row="4" column="1">
-          <widget class="QLabel" name="filling_label_av">
-           <property name="text">
-            <string>Filling</string>
-           </property>
-          </widget>
-         </item>
          <item row="5" column="2">
-          <widget class="QLabel" name="liftoff_state_ok_panel">
-           <property name="minimumSize">
-            <size>
-             <width>23</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>23</width>
-             <height>16777215</height>
-            </size>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">color: rgb(255, 0, 0);</string>
-           </property>
-           <property name="text">
-            <string>X</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item row="9" column="2">
-          <widget class="QLabel" name="touchdown_event_ok_panel">
-           <property name="minimumSize">
-            <size>
-             <width>23</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>23</width>
-             <height>16777215</height>
-            </size>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">color: rgb(255, 0, 0);</string>
-           </property>
-           <property name="text">
-            <string>X</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item row="6" column="2">
           <widget class="QLabel" name="coast_state_ok_panel">
+           <property name="minimumSize">
+            <size>
+             <width>23</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>23</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(255, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string>X</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="2">
+          <widget class="QLabel" name="second_event_ok_panel">
            <property name="minimumSize">
             <size>
              <width>23</width>
@@ -2126,8 +2147,8 @@ background:rgb(52, 101, 164);} </string>
            </property>
           </widget>
          </item>
-         <item row="3" column="2">
-          <widget class="QLabel" name="idle_state_ok_panel">
+         <item row="6" column="2">
+          <widget class="QLabel" name="first_event_ok_panel">
            <property name="minimumSize">
             <size>
              <width>23</width>
@@ -2151,49 +2172,10 @@ background:rgb(52, 101, 164);} </string>
            </property>
           </widget>
          </item>
-         <item row="7" column="1">
+         <item row="6" column="1">
           <widget class="QLabel" name="first_event_label">
            <property name="text">
             <string>1st Event</string>
-           </property>
-          </widget>
-         </item>
-         <item row="5" column="1">
-          <widget class="QLabel" name="liftoff_label">
-           <property name="text">
-            <string>Lift off</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="1">
-          <widget class="QLabel" name="sleep_label">
-           <property name="text">
-            <string>Sleep</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="2">
-          <widget class="QLabel" name="sleep_state_ok_panel">
-           <property name="minimumSize">
-            <size>
-             <width>23</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>23</width>
-             <height>16777215</height>
-            </size>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">color: rgb(255, 0, 0);</string>
-           </property>
-           <property name="text">
-            <string>X</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
            </property>
           </widget>
          </item>

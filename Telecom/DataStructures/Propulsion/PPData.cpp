@@ -44,7 +44,7 @@ bool PPData::updateRx(std::shared_ptr <Connector> connector) {
     connector->setData(ui_interface::PP_STATUS, status);
 
     connector->setData(ui_interface::PP_MOTOR_POSITION, motor_position);
-    connector->setData(ui_interface::PP_REPLY_PING, true);
+    connector->incrementData(ui_interface::PP_REPLY_PING);
 
     return true;
 }

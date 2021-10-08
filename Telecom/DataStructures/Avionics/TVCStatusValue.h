@@ -25,4 +25,24 @@ namespace tvc_status {
     };
 }
 
+namespace gnc_status {
+    enum Value{
+        EMPTY = 0,
+        IDLE,
+        RAIL,
+        LAUNCH,
+        COAST
+    };
+
+    const int nb_status = 6;
+
+    const std::string status_name[nb_status] = {
+        "EMPTY",
+        "IDLE",
+        "RAIL",
+        "LAUNCH",
+        "COAST"
+    };
+}
+
 #endif //ERT2020GS_TVCSTATUSVALUE_H

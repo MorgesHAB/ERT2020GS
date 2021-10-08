@@ -284,7 +284,6 @@ void GuiWindow::refresh_av_state() {
   show_ok_X(sleep_state_ok_panel, data_->getData<bool>(ui_interface::SLEEP_REACHED));
   show_ok_X(calibration_state_ok_panel, data_->getData<bool>(ui_interface::CALIBRATION_REACHED));
   show_ok_X(idle_state_ok_panel, data_->getData<bool>(ui_interface::IDLE_REACHED));
-  show_ok_X(filling_av_ok_panel, data_->getData<bool>(ui_interface::FILLING_REACHED));
   show_ok_X(liftoff_state_ok_panel, data_->getData<bool>(ui_interface::LIFTOFF_REACHED));
   show_ok_X(coast_state_ok_panel, data_->getData<bool>(ui_interface::COAST_REACHED));
   show_ok_X(first_event_ok_panel, data_->getData<bool>(ui_interface::PRIMARY_EVENT_REACHED));
@@ -739,7 +738,9 @@ void GuiWindow::refresh_pp() {
 }
 
 void GuiWindow::refresh_tvc() {
-  tvc_status_panel->setText(QString::fromStdString(tvc_status::status_name[data_->getData<int32_t>(ui_interface::TVC_STATUS)]));
+  tvc_status_panel->setText(QString::fromStdString(tvc_status::status_name[data_->getData<int8_t>(ui_interface::TVC_STATUS)]));
+  tvc_rpi_status_panel->setText(QString::fromStdString(gnc_status::status_name[data_->getData<int8_t>(ui_interface::GNC_STATUS)]));
+  pp_thrust_target_panel->setText(QString::number(data_->getData<int32_t>(ui_interface::GNC_THRUST)));
 }
 
 void GuiWindow::ignition_off_pressed() {

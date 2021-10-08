@@ -27,7 +27,7 @@ void TVCCommand::print() const {
 
 bool TVCCommand::updateTx(std::shared_ptr<Connector> connector) {
     command = connector->eatData<tvc_commands::CommandValue>(ui_interface::TVC_COMMAND, tvc_commands::NO_COMMAND);
-    return (command!=tvc_commands::NO_COMMAND || connector->eatData<bool>(ui_interface::TVC_REPLY_PING, false));
+    return (command!=tvc_commands::NO_COMMAND);
 }
 
 bool TVCCommand::updateRx(std::shared_ptr<Connector> connector) {
